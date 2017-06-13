@@ -1,0 +1,161 @@
+// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+$clr-login-background-color: $clr-white !default;
+$clr-login-width: baselineRem(21) !default;
+$clr-login-icon-size: $clr-icon-dimension-sm !default;
+
+@include exports('login.clarity') {
+    .login-wrapper {
+        display: flex;
+        background: generateLoginBackground();
+        background-size: cover;
+        background-position: $clr-login-width 0;
+        background-repeat: no-repeat;
+
+        .login {
+            background: $clr-login-background-color;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: $clr_baselineRem_1 $clr_baselineRem_2_5;
+            height: auto;
+            min-height: 100vh;
+            width: $clr-login-width;
+
+            .title {
+                @include clr-getTypePropertiesForDomElement(login_productName, (color, font-weight, font-family, font-size, letter-spacing));
+                line-height: $clr_baselineRem_1_5;
+
+                .welcome {
+                    line-height: $clr_baselineRem_1_5;
+                }
+                .hint {
+                    margin-top: $clr_baselineRem_1_25;
+                    font-size: rem(14/$clr-rem-denominator);
+                }
+            }
+
+            .trademark {
+                @include clr-getTypePropertiesForDomElement(login_trademark, (color, font-weight, font-family, font-size, letter-spacing));
+            }
+
+            .subtitle {
+                @include clr-getTypePropertiesForDomElement(login_subtitle, (color, font-weight, font-family, font-size, letter-spacing));
+                line-height: $clr_baselineRem_1_5;
+            }
+
+            .login-group {
+                display: flex;
+                flex-direction: column;
+                padding: $clr_baselineRem_2 0 0 0;
+
+                .auth-source {
+                    margin: $clr_baselineRem_0_25 0 $clr_baselineRem_0_75 0;
+                }
+
+                .username {
+                    margin: $clr_baselineRem_0_25 0 $clr_baselineRem_0_75 0;
+                }
+
+                .password {
+                    margin: $clr_baselineRem_0_25 0 $clr_baselineRem_0_75 0;
+                }
+
+                .checkbox {
+                    margin: $clr_baselineRem_0_25 0 $clr_baselineRem_0_75 0;
+                }
+
+                .tooltip-validation {
+                    margin-top: $clr_baselineRem_0_25;
+                }
+
+                .tooltip-validation .username,
+                .tooltip-validation .password {
+                    width: 100%;
+                    margin-top: 0; //Since the top margin is now handled by the tooltip itself
+                }
+
+                .error {
+                    display: none;
+                    margin: $clr_baselineRem_0_25 0 0 0;
+                    padding: $clr_baselineRem_0_375 $clr_baselineRem_0_5;
+                    background: clr-getColor(dark-midtone, reds);
+                    color: $clr-login-background-color;
+                    border-radius: $clr-default-borderradius;
+                    line-height: $clr_baselineRem_0_75;
+
+                    &:before {
+                        display: inline-block; //needed for IE. display: none to display:flex on parent doesnt work
+                        content: '';
+                        background: generateErrorIcon($clr-login-background-color);
+                        margin: 1px $clr_baselineRem_0_25 0 0;
+                        height: $clr-login-icon-size;
+                        width: $clr-login-icon-size;
+                    }
+
+                    &.active {
+                        display: flex;
+
+                        &:before {
+                            flex: 0 0 $clr-login-icon-size;
+                        }
+                    }
+                }
+
+                .btn {
+                    margin: $clr_baselineRem_3 0 0 0;
+                    max-width: none;
+                }
+
+                .error + .btn{
+                    margin: $clr_baselineRem_1 0 0 0;
+                }
+
+                .signup {
+                    margin-top: $clr_baselineRem_0_5;
+                    font-size: rem(14/$clr-rem-denominator);
+                    text-align: center;
+                }
+            }
+
+            &:after{
+                position: absolute;
+                content: '';
+                display: block;
+                width: 1px;
+                height: 100%;
+                background: rgba($clr-black,0.1);
+                top: 0;
+                right: -2px;
+            }
+        }
+    }
+
+    @media screen and (max-width: map-get($clr-breakpoints, medium)) {
+        .login-wrapper {
+            justify-content: center;
+            background: $clr-login-background-color;
+
+            .login {
+                width: 100%;
+                margin-left: 0;
+                padding: $clr_baselineRem_1 20%;
+
+                &:after{
+                    content: none;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: map-get($clr-breakpoints, small)) {
+        .login-wrapper {
+            .login {
+                padding: $clr_baselineRem_1 15%;
+            }
+        }
+    }
+}

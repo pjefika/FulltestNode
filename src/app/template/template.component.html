@@ -1,0 +1,35 @@
+<div class="main-container">
+    <header class="header header-6">
+        <div class="branding">
+            <a class="nav-link">
+                <clr-icon shape="home"></clr-icon>
+                <span class="title">Fulltest</span>
+            </a>
+        </div>
+        <div class="header-nav">
+            <a class="active nav-link"><span class="nav-text">Menu 1</span></a>
+            <a class="nav-link"><span class="nav-text">Menu 2</span></a>
+        </div>
+        <div class="header-actions">
+            <a class="nav-link nav-icon">
+                <clr-icon shape="cog"></clr-icon>
+            </a>
+        </div>
+    </header>
+    <nav class="subnav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link mouseclick" routerLink="/cadastro" (click)="createCadastroComponent()">Cadastro</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mouseclick">Fulltest</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="content-container">
+        <div class="content-area">
+            <dynamic-component [componentData]="componentData"></dynamic-component>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

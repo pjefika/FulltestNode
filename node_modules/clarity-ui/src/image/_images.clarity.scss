@@ -1,0 +1,67 @@
+// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin icon-background-styles() {
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+}
+
+@include exports('images.clarity') {
+    %icon-styles {
+        display: inline-block;
+        height: $clr-icon-dimension-sm;
+        width: $clr-icon-dimension-sm;
+        padding: 0;
+        @include icon-background-styles();
+    }
+
+    .alert-icon, .clr-icon {
+        @extend %icon-styles;
+
+        &.clr-icon-danger, &.icon-danger {
+            background-image: generateErrorIcon();
+        }
+
+        &.clr-icon-danger-white, &.icon-danger-white {
+            background-image: generateErrorIcon($gray-lightest);
+        }
+
+        &.clr-icon-warning, &.icon-warning {
+            background-image: generateWarningIcon();
+        }
+
+        &.clr-icon-warning-white {
+            background-image: generateWarningIcon($gray-lightest);
+        }
+
+        &.clr-icon-success, &.icon-success {
+            background-image: generateSuccessIcon();
+        }
+
+        &.clr-icon-success-white {
+            background-image: generateSuccessIcon($gray-lightest);
+        }
+
+        &.clr-icon-info, &.icon-info {
+            background-image: generateInfoIcon();
+        }
+
+        &.clr-icon-info-white {
+            background-image: generateInfoIcon($gray-lightest);
+        }
+
+        &.clr-icon-update {
+            background-image: generateUpdateIcon();
+        }
+
+        &.clr-icon-caret {
+            background-image: generateCaretIcon();
+        }
+
+        &.clr-vmw-logo {
+            background-image: generateVMWLogo();
+        }
+    }
+}
