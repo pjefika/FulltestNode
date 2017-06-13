@@ -11,15 +11,23 @@
             <a class="nav-link"><span class="nav-text">Menu 2</span></a>-->
         </div>
         <div class="header-actions">
-            <a class="nav-link nav-icon">
+            <clr-dropdown clrMenuPosition="bottom-right">
+                <button class="nav-icon" clrDropdownToggle>
                 <clr-icon shape="cog"></clr-icon>
-            </a>
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+                <clr-dropdown-menu>
+                    <a href="..." clrDropdownItem>About</a>
+                    <a href="..." clrDropdownItem>Preferences</a>
+                    <a clrDropdownItem (click)="sair()">Log out</a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
         </div>
     </header>
     <nav class="subnav">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link mouseclick" routerLink="/cadastro">Cadastro</a>
+                <a class="nav-link mouseclick" (click)="createCadastroComponent()">Cadastro</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link mouseclick">Fulltest</a>
@@ -28,7 +36,7 @@
     </nav>
     <div class="content-container">
         <div class="content-area">
-            <router-outlet></router-outlet>
+            <dynamic-component [componentData]="componentData"></dynamic-component>
         </div>
     </div>
 </div>
