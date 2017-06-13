@@ -5,11 +5,8 @@
     <button type="button" class="btn btn-primary" (click)="getCadastro()" [disabled]="searching">Buscar</button>
 </div>
 <hr/>
-
 <div id="loading-spinner" *ngIf="searching">
-
     <span class="spinner">Loading...</span>
-
 </div>
 <div *ngIf="cadastro">
     <clr-stack-view>

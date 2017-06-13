@@ -7,8 +7,8 @@
             </a>
         </div>
         <div class="header-nav">
-            <a class="active nav-link"><span class="nav-text">Menu 1</span></a>
-            <a class="nav-link"><span class="nav-text">Menu 2</span></a>
+            <!--<a class="active nav-link"><span class="nav-text">Menu 1</span></a>
+            <a class="nav-link"><span class="nav-text">Menu 2</span></a>-->
         </div>
         <div class="header-actions">
             <a class="nav-link nav-icon">
@@ -19,7 +19,7 @@
     <nav class="subnav">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link mouseclick" routerLink="/cadastro" (click)="createCadastroComponent()">Cadastro</a>
+                <a class="nav-link mouseclick" routerLink="/cadastro">Cadastro</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link mouseclick">Fulltest</a>
@@ -28,8 +28,7 @@
     </nav>
     <div class="content-container">
         <div class="content-area">
-            <dynamic-component [componentData]="componentData"></dynamic-component>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>
-<router-outlet></router-outlet>

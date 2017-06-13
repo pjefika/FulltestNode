@@ -22,8 +22,6 @@ export class CadastroService {
                return response.json() as Cadastro
             })
             .catch(this.handleError);
-
-        //return this.cadastro;
     }
 
     private handleError(error: any): Promise<any> {

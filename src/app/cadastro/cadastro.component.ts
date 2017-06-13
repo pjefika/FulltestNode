@@ -1,24 +1,33 @@
-import { Component, Injector, Input } from '@angular/core';
-
-import { CadastroService } from './cadastro.service';
-
-import { Cadastro } from '../viewmodel/cadastro';
+import { Component, Injector, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import 'rxjs/add/operator/toPromise';
+
+import { CadastroService } from './cadastro.service';
+import { Cadastro } from '../viewmodel/cadastro';
+import { Util } from '../util/util';
 
 @Component({
     templateUrl: 'cadastro.component.html',
     styleUrls: ['cadastro.component.css']
 })
 
-export class CadastroComponent {
-    constructor(private cadastroService: CadastroService) { }
+export class CadastroComponent implements OnInit {
+    constructor(private cadastroService: CadastroService, private router: Router, private util: Util) { }
+
+    ngOnInit(): void {
+        this.util.isLogado().then((result: boolean) => {
+            if(!result) {
+                this.router.navigate(['./fulltest/entrar']);
+            }
+        })
+    }
 
     cadastro: Cadastro;
     instancia: string = "4131543457";
     searching: boolean = false;
 
-    getCadastro(): void {
+    getCadastro(): void {        
 
         this.searching = true;
         this.cadastroService.getCadastro(this.instancia).then(

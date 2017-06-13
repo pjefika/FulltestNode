@@ -12,25 +12,30 @@ import { TemplateComponent } from './template/template.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { DynamicComponent } from './dynamiccomponent/dynamic.component';
 import { CadastroService } from './cadastro/cadastro.service';
+import { LoginComponent } from './login/login.component';
+import { Util } from './util/util';
 
-
+import { AppRoutingModule }     from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateComponent,
     CadastroComponent,
-    DynamicComponent
+    DynamicComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     ClarityModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [
-    CadastroService
+    CadastroService,
+    Util
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
