@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Util } from '../util/util';
 import { CadastroComponent } from '../cadastro/cadastro.component';
+import { TestComponent } from '../test/test.component';
 import { DynamicComponent } from '../dynamiccomponent/dynamic.component'
 
 
@@ -40,5 +41,12 @@ export class TemplateComponent implements OnInit {
     }
   }
 
-
+  createFulltestComponent() {
+    this.componentData = {
+      component: TestComponent,
+      inputs: {
+        input: 1
+      }
+    }
+  }
 }

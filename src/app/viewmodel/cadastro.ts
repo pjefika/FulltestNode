@@ -6,6 +6,6 @@ export class Cadastro {
     designador: string;
     instancia: string;
     designadorAcesso: string;
-    rede: Rede[];
-    servicos: Servicos[];
+    rede: Rede;
+    servicos: Servicos;
 }

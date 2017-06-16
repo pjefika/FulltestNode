@@ -10,13 +10,10 @@ const routes: Routes = [
         path: '', redirectTo: 'fulltest/entrar', pathMatch: 'full'
     },
     {
-        path: 'fulltest', redirectTo: 'fulltest/entrar', pathMatch: 'full'
-    },
-    {
         path: 'fulltest/entrar', component: LoginComponent
     },
     {
-        path: 'fulltest/inicio', component: TemplateComponent
+        path: 'fulltest', component: TemplateComponent
     }
 ]
 

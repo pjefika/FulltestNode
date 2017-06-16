@@ -28,72 +28,72 @@
             </clr-stack-block>
         </clr-stack-block>
 
-        <clr-stack-block [clrSbExpanded]="true" *ngFor="let rede of cadastro.rede">
+        <clr-stack-block [clrSbExpanded]="true">
             <clr-stack-label>Informações de Rede:</clr-stack-label>
             <clr-stack-content></clr-stack-content>
             <clr-stack-block>
                 <clr-stack-label>Ip DSLAM:</clr-stack-label>
-                <clr-stack-content>{{rede.ipDslam}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.rede.ipDslam}}</clr-stack-content>
             </clr-stack-block>
             <clr-stack-block>
                 <clr-stack-label>Vendor DSLAM:</clr-stack-label>
-                <clr-stack-content>{{rede.vendorDslam}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.rede.vendorDslam}}</clr-stack-content>
             </clr-stack-block>
             <clr-stack-block>
                 <clr-stack-label>Modelos DSLAM:</clr-stack-label>
-                <clr-stack-content>{{rede.modeloDslam}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.rede.modeloDslam}}</clr-stack-content>
             </clr-stack-block>
             <clr-stack-block>
                 <clr-stack-label>Slot:</clr-stack-label>
-                <clr-stack-content>{{rede.slot}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.rede.slot}}</clr-stack-content>
             </clr-stack-block>
             <clr-stack-block>
                 <clr-stack-label>Porta:</clr-stack-label>
-                <clr-stack-content>{{rede.porta}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.rede.porta}}</clr-stack-content>
             </clr-stack-block>
             <clr-stack-block>
                 <clr-stack-label>Sequencial:</clr-stack-label>
-                <clr-stack-content>{{rede.sequencial}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.rede.sequencial}}</clr-stack-content>
             </clr-stack-block>
             <clr-stack-block>
                 <clr-stack-label>Logica:</clr-stack-label>
-                <clr-stack-content>{{rede.logica}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.rede.logica}}</clr-stack-content>
             </clr-stack-block>
             <clr-stack-block>
                 <clr-stack-label>Rin:</clr-stack-label>
-                <clr-stack-content>{{rede.rin}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.rede.rin}}</clr-stack-content>
             </clr-stack-block>
             <clr-stack-block>
                 <clr-stack-label>Vlan VoIP:</clr-stack-label>
-                <clr-stack-content>{{rede.vlanVoip}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.rede.vlanVoip}}</clr-stack-content>
             </clr-stack-block>
             <clr-stack-block>
                 <clr-stack-label>VLAN VoD:</clr-stack-label>
-                <clr-stack-content>{{rede.vlanVod}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.rede.vlanVod}}</clr-stack-content>
             </clr-stack-block>
             <clr-stack-block>
                 <clr-stack-label>VLAN Multicast:</clr-stack-label>
-                <clr-stack-content>{{rede.vlanMulticast}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.rede.vlanMulticast}}</clr-stack-content>
             </clr-stack-block>
         </clr-stack-block>
-        <clr-stack-block [clrSbExpanded]="true" *ngFor="let servico of cadastro.servicos">
+        <clr-stack-block [clrSbExpanded]="true">
             <clr-stack-label>Serviços</clr-stack-label>
             <clr-stack-content></clr-stack-content>
             <clr-stack-block>
                 <clr-stack-label>Velocidade de Download:</clr-stack-label>
-                <clr-stack-content>{{servico.velDown}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.servicos.velDown}}</clr-stack-content>
             </clr-stack-block>
             <clr-stack-block>
                 <clr-stack-label>Velocidade de Upload:</clr-stack-label>
-                <clr-stack-content>{{servico.velUp}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.servicos.velUp}}</clr-stack-content>
             </clr-stack-block>
             <clr-stack-block>
                 <clr-stack-label>SIP?:</clr-stack-label>
-                <clr-stack-content>{{servico.isSip}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.servicos.isSip}}</clr-stack-content>
             </clr-stack-block>
             <clr-stack-block>
                 <clr-stack-label>Hibrido?:</clr-stack-label>
-                <clr-stack-content>{{servico.isHib}}</clr-stack-content>
+                <clr-stack-content>{{cadastro.servicos.isHib}}</clr-stack-content>
             </clr-stack-block>
         </clr-stack-block>
     </clr-stack-view>

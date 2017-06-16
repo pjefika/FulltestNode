@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Usuario } from '../viewmodel/usuario';
-
 import { Router } from '@angular/router';
 
+import { LoginService } from './login.service';
 import { CadastroComponent } from '../cadastro/cadastro.component';
-
 import { Util } from '../util/util';
+
+import { Usuario } from '../viewmodel/usuario';
 
 @Component({
     templateUrl: 'login.component.html',
@@ -17,14 +16,33 @@ export class LoginComponent implements OnInit {
     usuario = new Usuario();
     erroLogar: boolean = false;
 
-    constructor(private router: Router, private util: Util) { }
+    constructor(private router: Router, private util: Util, private loginService: LoginService) { }
 
     ngOnInit(): void {
+        this.usuario.login = "G0034481";
+        this.usuario.senha = "Ab010203";
+
         this.util.isLogado().then((result: boolean) => {
             if (result) {
-                this.router.navigate(['./fulltest/inicio']);
+                this.router.navigate(['./fulltest/']);
             }
         })
+    }
+
+    consultar(): void {
+        this.loginService
+            .getUsuario(this.usuario)
+            .then(data => {
+                if (data) {
+                    sessionStorage.setItem('user', this.usuario.login);
+                    this.router.navigate(['./fulltest/']);
+                } else {
+                    this.erroLogar = true;
+                    console.log("erro[2]");
+                }
+            }, error => {
+                console.log("erro[1]");
+            });
     }
 
     entrar(): void {
@@ -40,6 +58,6 @@ export class LoginComponent implements OnInit {
         } else {
             this.erroLogar = true;
         }
-    }   
+    }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Injector, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import 'rxjs/add/operator/toPromise';
@@ -30,7 +30,9 @@ export class CadastroComponent implements OnInit {
     getCadastro(): void {        
 
         this.searching = true;
-        this.cadastroService.getCadastro(this.instancia).then(
+        this.cadastroService
+        .getCadastro(this.instancia)
+        .then(
             data => {                
                 this.cadastro = data
                 this.searching = false;

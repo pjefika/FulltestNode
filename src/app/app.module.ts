@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpModule }    from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { ClarityModule } from "clarity-angular";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -10,16 +10,22 @@ import { AppComponent } from './app.component';
 
 import { TemplateComponent } from './template/template.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { TestComponent } from './test/test.component';
 import { DynamicComponent } from './dynamiccomponent/dynamic.component';
-import { CadastroService } from './cadastro/cadastro.service';
 import { LoginComponent } from './login/login.component';
+
+import { CadastroService } from './cadastro/cadastro.service';
+import { LoginService } from './login/login.service';
+import { TestService } from './test/test.service';
 import { Util } from './util/util';
 
-import { AppRoutingModule }     from './app-routing.module';
+
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    TestComponent,
     TemplateComponent,
     CadastroComponent,
     DynamicComponent,
@@ -35,6 +41,8 @@ import { AppRoutingModule }     from './app-routing.module';
   ],
   providers: [
     CadastroService,
+    LoginService,
+    TestService,
     Util
   ],
   bootstrap: [AppComponent],
