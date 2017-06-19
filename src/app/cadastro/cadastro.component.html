@@ -119,7 +119,7 @@
                 <span class="spinner">Loading...</span>
             </div>
             <div *ngIf="!searchFulltest">
-                <table class="table" *ngIf="objectValid">
+                <table class="table table-compact" *ngIf="objectValid">
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -141,6 +141,7 @@
             </div>
         </div>
         <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="realizaFulltest()" [disabled]="reFulltest">Realizar Fulltest</button>
             <button class="btn btn-outline" type="button" (click)="modalFulltest = false">Fechar</button>
         </div>
     </clr-modal>
