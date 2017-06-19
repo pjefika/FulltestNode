@@ -20,7 +20,7 @@
                 <table class="table table-vertical table-compact">
                     <tbody>
                         <tr>
-                            <td colspan="2" id="center-table">Cadastro</td>
+                            <td colspan="2" class="center-table">Cadastro</td>
                         </tr>
                         <tr>
                             <td>Designador: </td>
@@ -35,7 +35,7 @@
                             <td>{{cadastro.designadorAcesso}}</td>
                         </tr>
                         <tr>
-                            <td colspan="2" id="center-table">Informações de rede</td>
+                            <td colspan="2" class="center-table">Informações de rede</td>
                         </tr>
                         <tr>
                             <td>Ip DSLAM:</td>
@@ -82,7 +82,7 @@
                             <td>{{cadastro.rede.vlanMulticast}}</td>
                         </tr>
                         <tr>
-                            <td colspan="2" id="center-table">Informações de serviço</td>
+                            <td colspan="2" class="center-table">Informações de serviço</td>
                         </tr>
                         <tr>
                             <td>Velocidade de Download:</td>
@@ -133,7 +133,7 @@
                         </tbody>
                     </table>
                 </div>
-                <button type="button" class="btn btn-success" (click)="realizaFulltest()" [disabled]="reFulltest" style="text-align: center;">Realizar Fulltest</button>
+                <button type="button" class="btn btn-success center-table" (click)="realizaFulltest()" [disabled]="reFulltest">Realizar Fulltest</button>
             </div>
         </div>
     </div>
