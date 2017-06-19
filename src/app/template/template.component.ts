@@ -1,45 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import { CadastroComponent } from './../cadastro/cadastro.component';
+import { Util } from './../util/util';
 import { Router } from '@angular/router';
-
-import { Util } from '../util/util';
-import { CadastroComponent } from '../cadastro/cadastro.component';
-import { DynamicComponent } from '../dynamiccomponent/dynamic.component'
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'template-full',
-  templateUrl: 'template.component.html',
-  styleUrls: ['template.component.css']
+    selector: 'template-full',
+    templateUrl: 'template.component.html',
+    styleUrls: ['template.component.css']
 })
 
 export class TemplateComponent implements OnInit {
 
-  constructor(private router: Router, private util: Util) { }
+    // Instância: 4131543457 ** 3125211148
 
-  componentData = null;
+    componentData = null;
+    instancia: string = "4131543457";
 
-  ngOnInit(): void {
-    this.util.isLogado().then((result: boolean) => {
-      if (!result) {
-        this.router.navigate(['./fulltest/entrar']);
-      }
-    });
+    btnBuscaCadastro: boolean = false;
 
-    this.createCadastroComponent();
+    constructor(private router: Router, private util: Util) { }
 
-  }
-
-  sair(): void {
-    sessionStorage.clear();
-    this.router.navigate(['./fulltest/entrar']);
-  }
-
-  createCadastroComponent() {
-    this.componentData = {
-      component: CadastroComponent,
-      inputs: {
-        input: 0
-      }
+    ngOnInit(): void {
+        this.util.isLogado().then((result: boolean) => {
+            if (!result) {
+                this.router.navigate(['./fulltest/entrar']);
+            }
+        });
     }
-  }
+
+    sair(): void {
+        sessionStorage.clear();
+        this.router.navigate(['./fulltest/entrar']);
+    }
+
+    createCadastroComponent() {
+        this.btnBuscaCadastro = true;
+        this.componentData = {
+            component: CadastroComponent,
+            inputs: {
+                instancia: this.instancia
+            }
+        }
+    }
 }
