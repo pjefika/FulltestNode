@@ -45,8 +45,6 @@ export class CadastroComponent implements OnInit {
     informAlertType: string;
     mensagemAlert: string;
 
-    reFulltest: boolean = false;
-
     getCadastro(): void {
         this.searching = true;
         this.cadastroService
@@ -67,13 +65,11 @@ export class CadastroComponent implements OnInit {
 
     realizaFulltest(): void {
         this.searchFulltest = true;
-        this.reFulltest = true;
         this.cadastroService
             .getValidacao(this.cadastro)
             .then(data => {
                 this.objectValid = data;
                 this.searchFulltest = false;
-                this.reFulltest = false;
             }, error => {
                 this.searchFulltest = false;
                 this.alertTypeOn = true;

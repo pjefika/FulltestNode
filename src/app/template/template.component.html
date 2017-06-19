@@ -1,15 +1,16 @@
 <div class="main-container">
     <header class="header header-6">
         <div class="branding">
-            <a class="nav-link">
+            <a class="nav-link" href="/fulltest">
                 <clr-icon shape="home"></clr-icon>
                 <span class="title">Fulltest</span>
             </a>
         </div>
         <div class="search">
             <label for="search_input">
-                <input id="search_input" [(ngModel)]="instancia" name="instancia" type="text" placeholder="Buscar cadastro..." (blur)="createCadastroComponent()">
-            </label>            
+                <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..." 
+                [(ngModel)]="instancia" (keyup.enter)="createCadastroComponent()" >
+            </label>
         </div>
         <div class="header-nav">
             <!--<a class="active nav-link"><span class="nav-text">Menu 1</span></a>
@@ -22,8 +23,6 @@
                 <clr-icon shape="caret down"></clr-icon>
             </button>
                 <clr-dropdown-menu>
-                    <a href="..." clrDropdownItem>About</a>
-                    <a href="..." clrDropdownItem>Preferences</a>
                     <a clrDropdownItem (click)="sair()">Sair</a>
                 </clr-dropdown-menu>
             </clr-dropdown>
