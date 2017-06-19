@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 
 import { Util } from '../util/util';
 import { CadastroComponent } from '../cadastro/cadastro.component';
-import { TestComponent } from '../test/test.component';
 import { DynamicComponent } from '../dynamiccomponent/dynamic.component'
 
 
@@ -24,7 +23,10 @@ export class TemplateComponent implements OnInit {
       if (!result) {
         this.router.navigate(['./fulltest/entrar']);
       }
-    })
+    });
+
+    this.createCadastroComponent();
+
   }
 
   sair(): void {
@@ -37,15 +39,6 @@ export class TemplateComponent implements OnInit {
       component: CadastroComponent,
       inputs: {
         input: 0
-      }
-    }
-  }
-
-  createFulltestComponent() {
-    this.componentData = {
-      component: TestComponent,
-      inputs: {
-        input: 1
       }
     }
   }

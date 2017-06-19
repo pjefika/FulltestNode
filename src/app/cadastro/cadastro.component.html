@@ -1,100 +1,147 @@
 <div>
-    <h1>Buscar cadastro</h1>
-    <label>Instância:</label>
-    <input type="text" [(ngModel)]="instancia" placeholder="Insira a instancia" />
-    <button type="button" class="btn btn-primary" (click)="getCadastro()" [disabled]="searching">Buscar</button>
-</div>
-<hr/>
-<div id="loading-spinner" *ngIf="searching">
-    <span class="spinner">Loading...</span>
-</div>
-<div *ngIf="cadastro">
-    <clr-stack-view>
-        <clr-stack-header>Cadastro</clr-stack-header>
-        <clr-stack-block [clrSbExpanded]="true">
-            <clr-stack-label>Informações do cliente</clr-stack-label>
-            <clr-stack-content></clr-stack-content>
-            <clr-stack-block>
-                <clr-stack-label>Designador:</clr-stack-label>
-                <clr-stack-content>{{cadastro.designador}}</clr-stack-content>
+    <!--Busca do cadastro-->
+    <div id="buscaCadastro">
+        <h1>Buscar cadastro</h1>
+        <label>Instância:</label>
+        <input type="text" [(ngModel)]="instancia" placeholder="Insira a instancia" />
+        <button type="button" class="btn btn-primary" (click)="getCadastro()" [disabled]="searching">Buscar</button>
+    </div>
+    <hr/>
+    <!--Infos-->
+    <clr-alert [clrAlertType]="informAlertType" *ngIf="alertTypeOn">
+        <div class="alert-item">
+            <span class="alert-text">
+            {{mensagemAlert}}
+        </span>
+        </div>
+    </clr-alert>
+    <!--Loading-->
+    <div id="loading-spinner" *ngIf="searching">
+        <span class="spinner">Loading...</span>
+    </div>
+    <!--Informações do cadastro-->
+    <div *ngIf="cadastro">
+        <button type="button" class="btn btn-success" (click)="realizaFulltest()">Realizar Fulltest</button>
+        <clr-stack-view>
+            <clr-stack-header>Cadastro</clr-stack-header>
+            <clr-stack-block [clrSbExpanded]="true">
+                <clr-stack-label>Informações do cliente</clr-stack-label>
+                <clr-stack-content></clr-stack-content>
+                <clr-stack-block>
+                    <clr-stack-label>Designador:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.designador}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Instancia:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.instancia}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Designador de Acesso:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.designadorAcesso}}</clr-stack-content>
+                </clr-stack-block>
             </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>Instancia:</clr-stack-label>
-                <clr-stack-content>{{cadastro.instancia}}</clr-stack-content>
-            </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>Designador de Acesso:</clr-stack-label>
-                <clr-stack-content>{{cadastro.designadorAcesso}}</clr-stack-content>
-            </clr-stack-block>
-        </clr-stack-block>
 
-        <clr-stack-block [clrSbExpanded]="true">
-            <clr-stack-label>Informações de Rede:</clr-stack-label>
-            <clr-stack-content></clr-stack-content>
-            <clr-stack-block>
-                <clr-stack-label>Ip DSLAM:</clr-stack-label>
-                <clr-stack-content>{{cadastro.rede.ipDslam}}</clr-stack-content>
+            <clr-stack-block [clrSbExpanded]="true">
+                <clr-stack-label>Informações de Rede:</clr-stack-label>
+                <clr-stack-content></clr-stack-content>
+                <clr-stack-block>
+                    <clr-stack-label>Ip DSLAM:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.rede.ipDslam}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Vendor DSLAM:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.rede.vendorDslam}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Modelos DSLAM:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.rede.modeloDslam}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Slot:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.rede.slot}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Porta:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.rede.porta}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Sequencial:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.rede.sequencial}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Logica:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.rede.logica}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Rin:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.rede.rin}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Vlan VoIP:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.rede.vlanVoip}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>VLAN VoD:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.rede.vlanVod}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>VLAN Multicast:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.rede.vlanMulticast}}</clr-stack-content>
+                </clr-stack-block>
             </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>Vendor DSLAM:</clr-stack-label>
-                <clr-stack-content>{{cadastro.rede.vendorDslam}}</clr-stack-content>
+            <clr-stack-block [clrSbExpanded]="true">
+                <clr-stack-label>Serviços</clr-stack-label>
+                <clr-stack-content></clr-stack-content>
+                <clr-stack-block>
+                    <clr-stack-label>Velocidade de Download:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.servicos.velDown}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Velocidade de Upload:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.servicos.velUp}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>SIP?:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.servicos.isSip}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Hibrido?:</clr-stack-label>
+                    <clr-stack-content>{{cadastro.servicos.isHib}}</clr-stack-content>
+                </clr-stack-block>
             </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>Modelos DSLAM:</clr-stack-label>
-                <clr-stack-content>{{cadastro.rede.modeloDslam}}</clr-stack-content>
-            </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>Slot:</clr-stack-label>
-                <clr-stack-content>{{cadastro.rede.slot}}</clr-stack-content>
-            </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>Porta:</clr-stack-label>
-                <clr-stack-content>{{cadastro.rede.porta}}</clr-stack-content>
-            </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>Sequencial:</clr-stack-label>
-                <clr-stack-content>{{cadastro.rede.sequencial}}</clr-stack-content>
-            </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>Logica:</clr-stack-label>
-                <clr-stack-content>{{cadastro.rede.logica}}</clr-stack-content>
-            </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>Rin:</clr-stack-label>
-                <clr-stack-content>{{cadastro.rede.rin}}</clr-stack-content>
-            </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>Vlan VoIP:</clr-stack-label>
-                <clr-stack-content>{{cadastro.rede.vlanVoip}}</clr-stack-content>
-            </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>VLAN VoD:</clr-stack-label>
-                <clr-stack-content>{{cadastro.rede.vlanVod}}</clr-stack-content>
-            </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>VLAN Multicast:</clr-stack-label>
-                <clr-stack-content>{{cadastro.rede.vlanMulticast}}</clr-stack-content>
-            </clr-stack-block>
-        </clr-stack-block>
-        <clr-stack-block [clrSbExpanded]="true">
-            <clr-stack-label>Serviços</clr-stack-label>
-            <clr-stack-content></clr-stack-content>
-            <clr-stack-block>
-                <clr-stack-label>Velocidade de Download:</clr-stack-label>
-                <clr-stack-content>{{cadastro.servicos.velDown}}</clr-stack-content>
-            </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>Velocidade de Upload:</clr-stack-label>
-                <clr-stack-content>{{cadastro.servicos.velUp}}</clr-stack-content>
-            </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>SIP?:</clr-stack-label>
-                <clr-stack-content>{{cadastro.servicos.isSip}}</clr-stack-content>
-            </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>Hibrido?:</clr-stack-label>
-                <clr-stack-content>{{cadastro.servicos.isHib}}</clr-stack-content>
-            </clr-stack-block>
-        </clr-stack-block>
-    </clr-stack-view>
+        </clr-stack-view>
+    </div>
+    <!--Modal-->
+    <clr-modal [(clrModalOpen)]="modalFulltest" [clrModalSize]="'xl'" [clrModalStaticBackdrop]="true">
+        <h3 class="modal-title">Validações Fulltest</h3>
+        <div class="modal-body">
+            <div id="loading-spinner" *ngIf="searchFulltest">
+                <span class="spinner">Loading...</span>
+            </div>
+            <div *ngIf="!searchFulltest">
+                <table class="table" *ngIf="objectValid">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Mensagem</th>
+                            <th>Resultado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let valid of objectValid.valids">
+                            <td>{{valid.nome}}</td>
+                            <td>{{valid.mensagem}}</td>
+                            <td>
+                                <clr-icon shape="check" *ngIf="valid.resultado" class="is-success"></clr-icon>
+                                <clr-icon shape="times" *ngIf="!valid.resultado" class="is-error"></clr-icon>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" type="button" (click)="modalFulltest = false">Fechar</button>
+        </div>
+    </clr-modal>
 </div>

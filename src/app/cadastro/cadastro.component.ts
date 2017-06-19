@@ -1,3 +1,5 @@
+import { ObjectValid } from './../viewmodel/objectValid';
+import { Valids } from './../viewmodel/validacao';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -22,25 +24,57 @@ export class CadastroComponent implements OnInit {
             }
         })
     }
+    /*
+    Instâncias : 3125211148 // 4131543457
+     */
 
     cadastro: Cadastro;
-    instancia: string = "4131543457";
+    objectValid: ObjectValid;
+
+    instancia: string = "3125211148";
     searching: boolean = false;
 
-    getCadastro(): void {        
+    modalFulltest: boolean = false;
+    searchFulltest: boolean = false;
 
+    alertTypeOn: boolean = false;
+    informAlertType: string;
+    mensagemAlert: string;    
+
+    getCadastro(): void {
         this.searching = true;
         this.cadastroService
         .getCadastro(this.instancia)
         .then(
             data => {                
-                this.cadastro = data
+                this.cadastro = data;
                 this.searching = false;
-                //console.log(this.cadastro);
             },
             error => {
-                console.log("erro");
+                this.alertTypeOn = true;
+                this.informAlertType = "alert-warning";
+                this.mensagemAlert = ""                
+                console.log(error);
             });
+    }
+
+    realizaFulltest(): void {
+        this.modalFulltest = true;
+        this.searchFulltest = true;
+        this.cadastroService
+        .getValidacao(this.cadastro)
+        .then(
+            data => {
+                this.objectValid = data;
+                this.searchFulltest = false;
+            },
+            error => {
+                this.alertTypeOn = true;
+                this.informAlertType = "alert-warning";
+                this.mensagemAlert = ""                
+                console.log(error);
+            }
+        )
     }
 
 }

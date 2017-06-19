@@ -1,5 +1,5 @@
 <div class="login-wrapper">
-    <form class="login" (ngSubmit)="consultar()">
+    <form class="login" (ngSubmit)="entrar()">
         <label class="title">
             <h3 class="welcome">Bem Vindo ao</h3>
             Efika Fulltest
@@ -9,7 +9,7 @@
             <input [(ngModel)]="usuario.login" class="username" type="text" id="login_username" placeholder="Username" name="login">
             <input [(ngModel)]="usuario.senha" class="password" type="password" id="login_password" placeholder="Password" name="senha">            
             <div class="error active" *ngIf="erroLogar">
-                Usuário ou senha incorreta.
+                {{erroMensagem}}
             </div>
             <button type="submit" class="btn btn-primary">Entrar</button>
         </div>

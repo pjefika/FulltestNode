@@ -14,7 +14,9 @@ import { Usuario } from '../viewmodel/usuario';
 
 export class LoginComponent implements OnInit {
     usuario = new Usuario();
+
     erroLogar: boolean = false;
+    erroMensagem: string;
 
     constructor(private router: Router, private util: Util, private loginService: LoginService) { }
 
@@ -29,7 +31,7 @@ export class LoginComponent implements OnInit {
         })
     }
 
-    consultar(): void {
+    entrar(): void {
         this.loginService
             .getUsuario(this.usuario)
             .then(data => {
@@ -38,26 +40,14 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['./fulltest/']);
                 } else {
                     this.erroLogar = true;
-                    console.log("erro[2]");
+                    this.erroMensagem = "Usuário ou senha incorretos, por favor verifique."
+                    //console.log("erro[2]");
                 }
             }, error => {
-                console.log("erro[1]");
+                this.erroLogar = true;
+                this.erroMensagem = "Falha na autenticação, por favor verifique com seu supervisor."
+                //console.log("erro[1]");
             });
-    }
-
-    entrar(): void {
-        if (this.usuario.login && this.usuario.senha) {
-            //insere na session o login do usuario.
-            sessionStorage.setItem('user', this.usuario.login);
-
-            // console.log("Usuário: " + this.usuario.login);
-            // console.log("Senha: " + this.usuario.senha);
-
-            //colocar validação se login ok ir para \/
-            this.router.navigate(['./fulltest/inicio']);
-        } else {
-            this.erroLogar = true;
-        }
     }
 
 }

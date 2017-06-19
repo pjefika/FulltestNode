@@ -10,13 +10,11 @@ import { AppComponent } from './app.component';
 
 import { TemplateComponent } from './template/template.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { TestComponent } from './test/test.component';
 import { DynamicComponent } from './dynamiccomponent/dynamic.component';
 import { LoginComponent } from './login/login.component';
 
 import { CadastroService } from './cadastro/cadastro.service';
 import { LoginService } from './login/login.service';
-import { TestService } from './test/test.service';
 import { Util } from './util/util';
 
 
@@ -25,7 +23,6 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
     TemplateComponent,
     CadastroComponent,
     DynamicComponent,
@@ -42,7 +39,6 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [
     CadastroService,
     LoginService,
-    TestService,
     Util
   ],
   bootstrap: [AppComponent],
