@@ -7,7 +7,13 @@
         </label>
         <div class="login-group">
             <input [(ngModel)]="usuario.login" class="username" type="text" id="login_username" placeholder="Username" name="login">
-            <input [(ngModel)]="usuario.senha" class="password" type="password" id="login_password" placeholder="Password" name="senha">            
+            <input [(ngModel)]="usuario.senha" class="password" type="password" id="login_password" placeholder="Password" name="senha">
+            <!--<div class="checkbox">
+                <input type="checkbox" id="rememberme" [(ngModel)]="permanecerLogado" name="permanecerLogado">
+                <label for="rememberme">
+                    Permanecer logado
+                </label>
+            </div>-->
             <div class="error active" *ngIf="erroLogar">
                 {{erroMensagem}}
             </div>

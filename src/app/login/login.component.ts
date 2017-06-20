@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
                 } else {
                     this.erroLogar = true;
                     this.erroMensagem = "Usuário ou senha incorretos, por favor verifique."
+                    this.usuario.senha = "";
                     //console.log("erro[2]");
                 }
             }, error => {

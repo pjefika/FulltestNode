@@ -1,3 +1,4 @@
+import { PrincipalComponent } from './../principal/principal.component';
 import { CadastroComponent } from './../cadastro/cadastro.component';
 import { Util } from './../util/util';
 import { Router } from '@angular/router';
@@ -25,11 +26,21 @@ export class TemplateComponent implements OnInit {
                 this.router.navigate(['./fulltest/entrar']);
             }
         });
+        this.createPrincipalComponen();
     }
 
     sair(): void {
         sessionStorage.clear();
         this.router.navigate(['./fulltest/entrar']);
+    }
+
+    createPrincipalComponen() {
+        this.componentData = {
+            component: PrincipalComponent,
+            inputs: {
+                nothing: 1
+            }
+        }
     }
 
     createCadastroComponent() {

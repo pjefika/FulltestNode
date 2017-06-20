@@ -12,36 +12,41 @@ import { TemplateComponent } from './template/template.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { DynamicComponent } from './dynamiccomponent/dynamic.component';
 import { LoginComponent } from './login/login.component';
+import { PrincipalComponent } from './principal/principal.component';
 
 import { CadastroService } from './cadastro/cadastro.service';
 import { LoginService } from './login/login.service';
 import { Util } from './util/util';
 
-
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TemplateComponent,
-    CadastroComponent,
-    DynamicComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    ClarityModule.forRoot(),
-    BrowserAnimationsModule,
-    AppRoutingModule
-  ],
-  providers: [
-    CadastroService,
-    LoginService,
-    Util
-  ],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    declarations: [
+        AppComponent,
+        TemplateComponent,
+        CadastroComponent,
+        DynamicComponent,
+        LoginComponent,
+        PrincipalComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        ClarityModule.forRoot(),
+        BrowserAnimationsModule,
+        AppRoutingModule
+    ],
+    providers: [
+        CadastroService,
+        LoginService,
+        Util
+    ],
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    entryComponents: [
+        PrincipalComponent
+    ]
 })
-export class AppModule { }
+
+export class AppModule {}
