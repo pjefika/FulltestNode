@@ -1,3 +1,5 @@
+import { FulltestService } from './cadastro/fulltest.service';
+import { FulltestComponent } from './cadastro/fulltest.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -27,7 +29,8 @@ import { AppRoutingModule } from './app-routing.module';
         CadastroComponent,
         DynamicComponent,
         LoginComponent,
-        PrincipalComponent
+        PrincipalComponent,
+        FulltestComponent
     ],
     imports: [
         BrowserModule,
@@ -40,13 +43,11 @@ import { AppRoutingModule } from './app-routing.module';
     providers: [
         CadastroService,
         LoginService,
+        FulltestService,
         Util
     ],
     bootstrap: [AppComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    entryComponents: [
-        PrincipalComponent
-    ]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class AppModule {}

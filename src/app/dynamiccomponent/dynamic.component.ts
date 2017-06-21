@@ -1,3 +1,4 @@
+import { PrincipalComponent } from './../principal/principal.component';
 import { Component, Input, ViewContainerRef, ViewChild, ReflectiveInjector, ComponentFactoryResolver } from '@angular/core';
 
 import { CadastroComponent } from '../cadastro/cadastro.component';
@@ -6,7 +7,7 @@ import { LoginComponent } from '../login/login.component';
 @Component({
     selector: 'dynamic-component',
     templateUrl: 'dynamic.component.html',
-    entryComponents: [CadastroComponent, LoginComponent],
+    entryComponents: [CadastroComponent, LoginComponent, PrincipalComponent],
 })
 
 export class DynamicComponent {

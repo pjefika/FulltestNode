@@ -1,9 +1,11 @@
+import { FulltestComponent } from './fulltest.component';
 import { ObjectValid } from './../viewmodel/objectValid';
 import { Valids } from './../viewmodel/validacao';
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit, Injector, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import 'rxjs/add/operator/toPromise';
+import { Wizard } from "clarity-angular";
 
 import { CadastroService } from './cadastro.service';
 import { Cadastro } from '../viewmodel/cadastro';
@@ -15,18 +17,12 @@ import { Util } from '../util/util';
 })
 
 export class CadastroComponent implements OnInit {
+
+    @ViewChild("wizardmodal") wizardmodal: Wizard;
+
     constructor(private cadastroService: CadastroService, private router: Router, private util: Util, private injector: Injector) {
         // Injeta o parametro input/dados passados para a variavel
         this.instancia = this.injector.get('instancia');
-    }
-
-    ngOnInit(): void {
-        this.util.isLogado().then((result: boolean) => {
-            if (!result) {
-                this.router.navigate(['./fulltest/entrar']);
-            }
-        });
-        this.getCadastro();
     }
 
     cadastro: Cadastro;
@@ -39,11 +35,24 @@ export class CadastroComponent implements OnInit {
     instancia: string;
     searching: boolean = false;
 
-    searchFulltest: boolean = false;
+    searchFulltest: boolean = false; 
 
     alertTypeOn: boolean = false;
     informAlertType: string;
     mensagemAlert: string;
+
+    modalOpen: boolean = false;
+
+    doFulltest: boolean = false;
+
+    ngOnInit(): void {
+        this.util.isLogado().then((result: boolean) => {
+            if (!result) {
+                this.router.navigate(['./fulltest/entrar']);
+            }
+        });
+        this.getCadastro();
+    }
 
     getCadastro(): void {
         this.searching = true;
@@ -52,32 +61,12 @@ export class CadastroComponent implements OnInit {
             .then(data => {
                 this.cadastro = data;
                 this.searching = false;
-                this.realizaFulltest();
             }, error => {
                 this.alertTypeOn = true;
                 this.searching = false;
                 this.informAlertType = "alert-danger";
                 this.error = error.json();
                 this.mensagemAlert = this.error.message;
-                //console.log(error);
             });
     }
-
-    realizaFulltest(): void {
-        this.searchFulltest = true;
-        this.cadastroService
-            .getValidacao(this.cadastro)
-            .then(data => {
-                this.objectValid = data;
-                this.searchFulltest = false;
-            }, error => {
-                this.searchFulltest = false;
-                this.alertTypeOn = true;
-                this.informAlertType = "alert-danger";
-                this.error = error.json();
-                this.mensagemAlert = this.error.message;
-                //console.log(error);
-            })
-    }
-
 }
