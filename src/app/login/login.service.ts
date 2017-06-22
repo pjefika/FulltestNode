@@ -1,11 +1,10 @@
+import { Usuario } from './../viewmodel/usuario';
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
 import 'rxjs/Rx';
-
-import { Usuario } from '../viewmodel/usuario';
 
 @Injectable()
 export class LoginService {
@@ -15,14 +14,26 @@ export class LoginService {
 
     constructor(private http: Http) { }
 
-    getUsuario(usuario: Usuario): Promise<Boolean> {
+    autentica(usuario: Usuario): Promise<Boolean> {
         const url = `${this.efikaWSUrl}` + "verificarCredencial";
         return this.http.post(url, JSON.stringify(usuario), this.options)
-            .timeout(25000)
+            .timeout(9000)
             .toPromise()
             .then(response => {
                 return response.json() as Boolean
-            }).catch(this.handleError);
+            })
+            .catch(this.handleError);
+    }
+
+    getUsuario(matricula: string): Promise<Usuario> {
+        const url = `${this.efikaWSUrl}` + "consultar/" + matricula;
+        return this.http.get(url, this.options)
+            .timeout(10000)
+            .toPromise()
+            .then(response => {
+                return response.json() as Usuario
+            })
+            .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {

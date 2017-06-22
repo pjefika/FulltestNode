@@ -1,4 +1,3 @@
-import { FulltestComponent } from './../fulltest/fulltest.component';
 import { ObjectValid } from './../viewmodel/objectValid';
 import { Valids } from './../viewmodel/validacao';
 import { Component, OnInit, Injector, ViewChild } from '@angular/core';
@@ -24,7 +23,6 @@ export class CadastroComponent implements OnInit {
         // Injeta o parametro input/dados passados para a variavel
         this.instancia = this.injector.get('instancia');
     }
-
     cadastro: Cadastro;
 
     error: {
@@ -34,12 +32,9 @@ export class CadastroComponent implements OnInit {
         alertType: string,
         alertMesage: string
     }
-
     instancia: string;
-    searching: boolean = false;
-    
+    searching: boolean = false;    
     alertTypeOn: boolean = false;
-
     modalOpen: boolean = false;
 
     ngOnInit(): void {

@@ -1,3 +1,4 @@
+import { Md5 } from 'ts-md5/dist/md5';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -15,15 +16,14 @@ import { Usuario } from '../viewmodel/usuario';
 export class LoginComponent implements OnInit {
     usuario = new Usuario();
 
+    logando: boolean = false;
+
     erroLogar: boolean = false;
     erroMensagem: string;
 
     constructor(private router: Router, private util: Util, private loginService: LoginService) { }
 
     ngOnInit(): void {
-        this.usuario.login;
-        this.usuario.senha;
-
         this.util.isLogado().then((result: boolean) => {
             if (result) {
                 this.router.navigate(['./fulltest/']);
@@ -32,20 +32,25 @@ export class LoginComponent implements OnInit {
     }
 
     entrar(): void {
+        this.logando = true;
         this.loginService
-            .getUsuario(this.usuario)
+            .autentica(this.usuario)
             .then(data => {
                 if (data) {
-                    sessionStorage.setItem('user', this.usuario.login);
-                    this.router.navigate(['./fulltest/']);
+                    sessionStorage.setItem('user', JSON.stringify({user: this.usuario.login, token: Md5.hashStr("fulltest-app")}));
+                    this.router.navigate(['./fulltest/']);                    
                 } else {
                     this.erroLogar = true;
                     this.erroMensagem = "Usuário ou senha incorretos, por favor verifique."
                     this.usuario.senha = "";
                 }
+                this.logando = false;
             }, error => {
+                this.usuario.login = ""
+                this.usuario.senha = ""
                 this.erroLogar = true;
                 this.erroMensagem = error.mError
+                this.logando = false;
             });
     }
 

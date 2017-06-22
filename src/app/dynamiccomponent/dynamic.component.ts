@@ -1,3 +1,4 @@
+import { LoadingComponent } from './../loading/loading.component';
 import { CadastroWizardComponent } from './../cadastro/cadastro-wizard.component';
 import { PrincipalComponent } from './../principal/principal.component';
 import { Component, Input, ViewContainerRef, ViewChild, ReflectiveInjector, ComponentFactoryResolver } from '@angular/core';
@@ -8,7 +9,7 @@ import { LoginComponent } from '../login/login.component';
 @Component({
     selector: 'dynamic-component',
     templateUrl: 'dynamic.component.html',
-    entryComponents: [CadastroComponent, LoginComponent, PrincipalComponent, CadastroWizardComponent],
+    entryComponents: [CadastroComponent, LoginComponent, PrincipalComponent, CadastroWizardComponent, LoadingComponent],
 })
 
 export class DynamicComponent {

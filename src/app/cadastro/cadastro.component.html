@@ -8,11 +8,12 @@
         </div>
     </clr-alert>
     <!--Loading-->
-    <div id="loading-spinner" *ngIf="searching">
+    <!--<div id="loading-spinner" *ngIf="searching">
         <span class="spinner">Loading...</span>
         <br/>
         <span>Buscando cadastro...</span>
-    </div>
+    </div>-->
+    <loading-component [searching]="searching" [searchWhat]="'Buscando cadastro...'"></loading-component>
     <!--Informações do cadastro-->
     <div *ngIf="cadastro">
         <div class="row">
@@ -35,7 +36,7 @@
                             <td>{{cadastro.designadorAcesso}}</td>
                         </tr>
                     </tbody>
-                </table>                
+                </table>
                 <table class="table table-compact table-vertical">
                     <tbody>
                         <tr>

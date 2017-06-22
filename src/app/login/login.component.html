@@ -17,7 +17,7 @@
             <div class="error active" *ngIf="erroLogar">
                 {{erroMensagem}}
             </div>
-            <button type="submit" class="btn btn-primary">Entrar</button>
+            <button type="submit" class="btn btn-primary" [clrLoading]="logando" [disabled]="logando">Entrar</button>
         </div>
     </form>
 </div>

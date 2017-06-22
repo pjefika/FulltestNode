@@ -1,3 +1,4 @@
+import { LoadingComponent } from './loading/loading.component';
 import { CadastroWizardComponent } from './cadastro/cadastro-wizard.component';
 import { FulltestComponent } from './fulltest/fulltest.component';
 import { FulltestService } from './fulltest/fulltest.service';
@@ -32,7 +33,8 @@ import { AppRoutingModule } from './app-routing.module';
         LoginComponent,
         PrincipalComponent,
         FulltestComponent,
-        CadastroWizardComponent
+        CadastroWizardComponent,
+        LoadingComponent
     ],
     imports: [
         BrowserModule,

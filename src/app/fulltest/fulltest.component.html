@@ -7,11 +7,7 @@
         </span>
         </div>
     </clr-alert>
-    <div id="loading-spinner" *ngIf="searchFulltest">
-        <span class="spinner">Loading...</span>
-        <br/>
-        <span>Realizando Fulltest...</span>
-    </div>
+    <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Fulltest...'"></loading-component>
     <div *ngIf="!searchFulltest">
         <table class="table table-compact" *ngIf="objectValid">
             <thead>
