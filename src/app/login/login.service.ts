@@ -3,6 +3,8 @@ import { Headers, Http, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
+import 'rxjs/Rx';
+
 import { Usuario } from '../viewmodel/usuario';
 
 @Injectable()
@@ -16,6 +18,7 @@ export class LoginService {
     getUsuario(usuario: Usuario): Promise<Boolean> {
         const url = `${this.efikaWSUrl}` + "verificarCredencial";
         return this.http.post(url, JSON.stringify(usuario), this.options)
+            .timeout(25000)
             .toPromise()
             .then(response => {
                 return response.json() as Boolean
@@ -23,7 +26,21 @@ export class LoginService {
     }
 
     private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
+        //console.error('Ocorreu o seguinte erro: ', error); // for demo purposes only
+        var er: any;
+        if (error.message === "Timeout has occurred") {
+            er = {
+                tError: "Timeout",
+                mError: "Tempo de busca excedido, por favor realize a busca novamente, caso o problema persista informe ao administrador do sistema."
+            }
+        } else {
+            var erJson: any;
+            erJson = error.json();
+            er = {
+                tError: "",
+                mError: erJson.message
+            }
+        }
+        return Promise.reject(er);
     }
 }

@@ -1,4 +1,12 @@
 <div>
+    <!--Infoss-->
+    <clr-alert [clrAlertType]="msg.alertType" *ngIf="alertTypeOn">
+        <div class="alert-item">
+            <span class="alert-text">
+            {{msg.alertMesage}}
+        </span>
+        </div>
+    </clr-alert>
     <div id="loading-spinner" *ngIf="searchFulltest">
         <span class="spinner">Loading...</span>
         <br/>

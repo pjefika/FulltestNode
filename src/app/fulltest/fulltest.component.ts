@@ -1,4 +1,4 @@
-import { CadastroService } from './../cadastro/cadastro.service';
+import { FulltestService } from './fulltest.service';
 import { Router } from '@angular/router';
 import { Util } from './../util/util';
 import { ObjectValid } from './../viewmodel/objectValid';
@@ -21,17 +21,12 @@ export class FulltestComponent implements OnInit {
     alertTypeOn: boolean = false;
     doFulltest: boolean = false;
 
-    informAlertType: string;
-    mensagemAlert: string;
-    error: {
-        message: string;
-    }
     msg: {
         alertType: string,
         alertMesage: string
     }
 
-    constructor(private cadastroService: CadastroService, private util: Util, private router: Router) { }
+    constructor(private fulltestService: FulltestService, private util: Util, private router: Router) { }
 
     ngOnInit(): void {
         this.util.isLogado().then((result: boolean) => {
@@ -44,7 +39,7 @@ export class FulltestComponent implements OnInit {
 
     realizaFulltest(): void {
         this.searchFulltest = true;
-        this.cadastroService
+        this.fulltestService
             .getValidacao(this.cadastro)
             .then(data => {
                 this.objectValid = data;
@@ -52,11 +47,12 @@ export class FulltestComponent implements OnInit {
             }, error => {
                 this.searchFulltest = false;
                 this.alertTypeOn = true;
-                this.doFulltest = true;
-                this.error = error.json();
+                if (error.tError !== "Timeout") {
+                    this.doFulltest = true;
+                }
                 this.msg = {
                     alertType: "alert-danger",
-                    alertMesage: this.error.message
+                    alertMesage: error.mError
                 }
             })
     }
