@@ -1,13 +1,13 @@
+import { CadastroService } from './../cadastro/cadastro.service';
 import { Router } from '@angular/router';
 import { Util } from './../util/util';
-import { CadastroService } from './cadastro.service';
 import { ObjectValid } from './../viewmodel/objectValid';
 import { Cadastro } from './../viewmodel/cadastro';
 import { Component, Input, OnInit } from '@angular/core';
 
 
 @Component({
-    selector: "full-test-coponent",
+    selector: "full-test-component",
     templateUrl: 'fulltest.component.html',
     styleUrls: ['fulltest.component.css']
 })

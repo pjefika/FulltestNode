@@ -4,13 +4,8 @@
     </label>
 
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor, risus vitae volutpat facilisis, nibh eros dignissim
-        lacus, ut lacinia justo dui in nibh. Curabitur molestie nisl sed eleifend rutrum. Proin eget porta turpis. Nam in
-        viverra lacus. Etiam risus elit, placerat vitae efficitur eget, imperdiet id ante. Nunc eleifend leo quis dapibus
-        hendrerit. Proin pulvinar et nunc at sollicitudin. Aenean interdum, orci nec elementum semper, est ante commodo urna,
-        a malesuada dolor lacus in nibh. Pellentesque laoreet sem vitae velit varius, gravida rhoncus urna interdum. Duis
-        maximus urna id gravida laoreet. Quisque suscipit vehicula tellus, eget molestie ante facilisis sed. Etiam est dui,
-        ornare ut consectetur eu, lobortis in risus. Vestibulum eget mauris ut leo porttitor accumsan molestie vitae est.
+        Gerenciamento de equipamentos de maneira simplificada. Com apenas um clique acione uma série de comandos e análises. Valide
+        a qualidade dos serviços do cliente em questão de segundos. Tudo através de uma única Interface.
     </p>
 
     <button type="button" (click)="mdOpen = true" class="btn btn-primary">Ver tutorial</button>
@@ -27,8 +22,7 @@
             <ng-template clrPageTitle>Página principal</ng-template>
             <div>
                 <p>
-                    Ao entrar na página principal insira a Instância no campo <b style="color: red">"Buscar cadastro"</b> e pressione
-                    a tecla <b>Enter</b> e aguarde a busca.
+                    Ao entrar na página principal insira a Instância no campo <b style="color: red">"Buscar cadastro"</b>                    e pressione a tecla <b>Enter</b> e aguarde a busca.
                 </p>
                 <br/>
                 <img src={{imgbusca}}/>
@@ -40,16 +34,16 @@
             <div>
                 <p>Após completar a busca a seguinte tabela irá aparecer do lado esquerdo contendo as informações do cliente.</p>
                 <br/>
-                <img src={{imgcadastro}} style="width: 50%;"/>
+                <img src={{imgcadastro}} style="width: 50%;" />
             </div>
         </clr-wizard-page>
 
         <clr-wizard-page>
             <ng-template clrPageTitle>Fulltest</ng-template>
             <div>
-                <p>O Fulltest é carregado automaticamente após a consulta do cadastro, mostrando as informações do teste, 
-                    ao clicar no botão "Realizar Fulltest" ira refazer o teste mostrando as novas informações.</p>
-                <img src={{imgfulltest}} style="width: 100%;"/>                
+                <p>O Fulltest é carregado automaticamente após a consulta do cadastro, mostrando as informações do teste, ao
+                    clicar no botão "Realizar Fulltest" ira refazer o teste mostrando as novas informações.</p>
+                <img src={{imgfulltest}} style="width: 100%;" />
             </div>
         </clr-wizard-page>
     </clr-wizard>

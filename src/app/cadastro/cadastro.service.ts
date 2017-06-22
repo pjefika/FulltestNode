@@ -31,7 +31,6 @@ export class CadastroService {
 
     getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
         const url = `${this.fulltestUrl}` + "fulltest/";
-        //console.log(url);
         return this.http.post(url, JSON.stringify(cadastro), this.options)
             .toPromise()
             .then(response => {

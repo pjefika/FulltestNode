@@ -1,4 +1,4 @@
-import { FulltestComponent } from './fulltest.component';
+import { FulltestComponent } from './../fulltest/fulltest.component';
 import { ObjectValid } from './../viewmodel/objectValid';
 import { Valids } from './../viewmodel/validacao';
 import { Component, OnInit, Injector, ViewChild } from '@angular/core';
@@ -26,24 +26,21 @@ export class CadastroComponent implements OnInit {
     }
 
     cadastro: Cadastro;
-    objectValid: ObjectValid;
 
     error: {
         message: string;
     }
+    msg: {
+        alertType: string,
+        alertMesage: string
+    }
 
     instancia: string;
     searching: boolean = false;
-
-    searchFulltest: boolean = false; 
-
+    
     alertTypeOn: boolean = false;
-    informAlertType: string;
-    mensagemAlert: string;
 
     modalOpen: boolean = false;
-
-    doFulltest: boolean = false;
 
     ngOnInit(): void {
         this.util.isLogado().then((result: boolean) => {
@@ -64,9 +61,11 @@ export class CadastroComponent implements OnInit {
             }, error => {
                 this.alertTypeOn = true;
                 this.searching = false;
-                this.informAlertType = "alert-danger";
                 this.error = error.json();
-                this.mensagemAlert = this.error.message;
+                this.msg = {
+                    alertType: "alert-danger",
+                    alertMesage: this.error.message
+                }
             });
     }
 }
