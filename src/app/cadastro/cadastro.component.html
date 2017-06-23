@@ -1,19 +1,5 @@
 <div>
-    <!--Infoss-->
-    <clr-alert [clrAlertType]="msg.alertType" *ngIf="alertTypeOn">
-        <div class="alert-item">
-            <span class="alert-text">
-            {{msg.alertMesage}}
-        </span>
-        </div>
-    </clr-alert>
-    <!--Loading-->
-    <!--<div id="loading-spinner" *ngIf="searching">
-        <span class="spinner">Loading...</span>
-        <br/>
-        <span>Buscando cadastro...</span>
-    </div>-->
-    <loading-component [searching]="searching" [searchWhat]="'Buscando cadastro...'"></loading-component>
+    <alert-component [msg]="msg" [ativo]="alertTypeOn"></alert-component>
     <!--Informações do cadastro-->
     <div *ngIf="cadastro">
         <div class="row">
@@ -122,5 +108,5 @@
             </div>
         </div>
     </div>
-
+    <loading-component [searching]="searching" [searchWhat]="'Buscando Cadastro...'"></loading-component>
 </div>

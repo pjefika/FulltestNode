@@ -1,8 +1,8 @@
 <div class="main-container">
-    <header class="header header-6">
+    <header class="header header-5">
         <div class="branding">
             <a class="nav-link" href="/fulltest">
-                <clr-icon shape="home"></clr-icon>
+                <clr-icon shape="home" class="is-success"></clr-icon>
                 <span class="title">Fulltest</span>
             </a>
         </div>
@@ -11,10 +11,6 @@
                 <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..." 
                 [(ngModel)]="instancia" (keyup.enter)="createCadastroComponent()" >
             </label>
-        </div>
-        <div class="header-nav">
-            <!--<a class="active nav-link"><span class="nav-text">Menu 1</span></a>
-            <a class="nav-link"><span class="nav-text">Menu 2</span></a>-->
         </div>
         <div class="header-actions">
             <clr-dropdown clrMenuPosition="bottom-right">
@@ -28,13 +24,6 @@
             </clr-dropdown>
         </div>
     </header>
-    <!--<nav class="subnav">
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link mouseclick" (click)="createCadastroComponent()">Cadastro</a>
-            </li>
-        </ul>
-    </nav>-->
     <div class="content-container">
         <div class="content-area">
             <dynamic-component [componentData]="componentData"></dynamic-component>

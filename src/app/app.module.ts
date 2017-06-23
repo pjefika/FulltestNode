@@ -1,3 +1,4 @@
+import { AlertComponent } from './alert/alert.component';
 import { LoadingComponent } from './loading/loading.component';
 import { CadastroWizardComponent } from './cadastro/cadastro-wizard.component';
 import { FulltestComponent } from './fulltest/fulltest.component';
@@ -34,7 +35,8 @@ import { AppRoutingModule } from './app-routing.module';
         PrincipalComponent,
         FulltestComponent,
         CadastroWizardComponent,
-        LoadingComponent
+        LoadingComponent,
+        AlertComponent
     ],
     imports: [
         BrowserModule,

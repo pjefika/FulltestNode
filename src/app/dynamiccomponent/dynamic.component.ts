@@ -1,3 +1,4 @@
+import { AlertComponent } from './../alert/alert.component';
 import { LoadingComponent } from './../loading/loading.component';
 import { CadastroWizardComponent } from './../cadastro/cadastro-wizard.component';
 import { PrincipalComponent } from './../principal/principal.component';
@@ -9,7 +10,7 @@ import { LoginComponent } from '../login/login.component';
 @Component({
     selector: 'dynamic-component',
     templateUrl: 'dynamic.component.html',
-    entryComponents: [CadastroComponent, LoginComponent, PrincipalComponent, CadastroWizardComponent, LoadingComponent],
+    entryComponents: [CadastroComponent, LoginComponent, PrincipalComponent, CadastroWizardComponent, LoadingComponent, AlertComponent],
 })
 
 export class DynamicComponent {

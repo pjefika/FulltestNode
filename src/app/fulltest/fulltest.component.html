@@ -1,12 +1,5 @@
-<div>
-    <!--Infoss-->
-    <clr-alert [clrAlertType]="msg.alertType" *ngIf="alertTypeOn">
-        <div class="alert-item">
-            <span class="alert-text">
-            {{msg.alertMesage}}
-        </span>
-        </div>
-    </clr-alert>
+<div >
+    <alert-component [msg]="msg" [ativo]="alertTypeOn"></alert-component>
     <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Fulltest...'"></loading-component>
     <div *ngIf="!searchFulltest">
         <table class="table table-compact" *ngIf="objectValid">

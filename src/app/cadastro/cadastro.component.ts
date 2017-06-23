@@ -54,7 +54,6 @@ export class CadastroComponent implements OnInit {
                 this.cadastro = data;
                 this.searching = false;
             }, error => {
-                console.log("entrou")
                 this.alertTypeOn = true;
                 this.searching = false;
                 this.msg = {
