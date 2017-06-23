@@ -1,5 +1,5 @@
-import { AlertComponent } from './alert/alert.component';
-import { LoadingComponent } from './loading/loading.component';
+import { AlertComponent } from './util/alert/alert.component';
+import { LoadingComponent } from './util/loading/loading.component';
 import { CadastroWizardComponent } from './cadastro/cadastro-wizard.component';
 import { FulltestComponent } from './fulltest/fulltest.component';
 import { FulltestService } from './fulltest/fulltest.service';
@@ -36,6 +36,8 @@ import { AppRoutingModule } from './app-routing.module';
         FulltestComponent,
         CadastroWizardComponent,
         LoadingComponent,
+        AlertComponent,
+        LoadingComponent,
         AlertComponent
     ],
     imports: [
@@ -53,7 +55,15 @@ import { AppRoutingModule } from './app-routing.module';
         Util
     ],
     bootstrap: [AppComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    entryComponents: [
+        CadastroComponent,
+        LoginComponent,
+        PrincipalComponent,
+        CadastroWizardComponent,
+        LoadingComponent,
+        AlertComponent
+    ]
 })
 
-export class AppModule {}
+export class AppModule { }
