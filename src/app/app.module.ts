@@ -1,3 +1,4 @@
+import { MomentModule } from 'angular2-moment';
 import { AlertComponent } from './util/alert/alert.component';
 import { LoadingComponent } from './util/loading/loading.component';
 import { CadastroWizardComponent } from './cadastro/cadastro-wizard.component';
@@ -38,7 +39,7 @@ import { AppRoutingModule } from './app-routing.module';
         LoadingComponent,
         AlertComponent,
         LoadingComponent,
-        AlertComponent
+        AlertComponent,
     ],
     imports: [
         BrowserModule,
@@ -46,7 +47,8 @@ import { AppRoutingModule } from './app-routing.module';
         HttpModule,
         ClarityModule.forRoot(),
         BrowserAnimationsModule,
-        AppRoutingModule
+        AppRoutingModule,
+        MomentModule
     ],
     providers: [
         CadastroService,

@@ -12,10 +12,10 @@ import { Component, OnInit } from '@angular/core';
 
 export class TemplateComponent implements OnInit {
 
-    // Instância: ** 3125211148
+    // Instância: ** 3125211148 ** 6235845854
 
     componentData = null;
-    instancia: string = "3125211148";
+    instancia: string = "";
     btnBuscaCadastro: boolean = false;
 
     constructor(private router: Router, private util: Util) { }

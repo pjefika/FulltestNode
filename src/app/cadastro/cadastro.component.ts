@@ -33,7 +33,7 @@ export class CadastroComponent implements OnInit {
         alertMesage: string
     }
     instancia: string;
-    searching: boolean = false;    
+    searching: boolean = false;
     alertTypeOn: boolean = false;
     modalOpen: boolean = false;
 
