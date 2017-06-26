@@ -7,9 +7,9 @@
             </a>
         </div>
         <div class="search">
-            <label for="search_input">
-                <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..." 
-                [(ngModel)]="instancia" (keyup.enter)="createCadastroComponent()" >
+            <label for="search_input" for="search_input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-lg tooltip-bottom-right">                
+                <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..." [(ngModel)]="instancia" (keyup.enter)="createCadastroComponent()">
+                <span class="tooltip-content">Após inserir a instância pressione "Enter"</span>
             </label>
         </div>
         <div class="header-actions">
