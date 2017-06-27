@@ -11,9 +11,7 @@ export class LoadingComponent implements OnInit {
     @Input() searchWhat: string;
     @Input() searching: boolean;
 
-    constructor() { }
-
-    
+    constructor() { }    
 
     ngOnInit() { }
 }

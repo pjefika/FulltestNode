@@ -1,3 +1,5 @@
+import { ToastyComponent } from './util/toasty/toasty.component';
+import {ToastyModule} from 'ng2-toasty';
 import { MomentModule } from 'angular2-moment';
 import { AlertComponent } from './util/alert/alert.component';
 import { LoadingComponent } from './util/loading/loading.component';
@@ -38,8 +40,7 @@ import { AppRoutingModule } from './app-routing.module';
         CadastroWizardComponent,
         LoadingComponent,
         AlertComponent,
-        LoadingComponent,
-        AlertComponent,
+        ToastyComponent
     ],
     imports: [
         BrowserModule,
@@ -48,7 +49,8 @@ import { AppRoutingModule } from './app-routing.module';
         ClarityModule.forRoot(),
         BrowserAnimationsModule,
         AppRoutingModule,
-        MomentModule
+        MomentModule,
+        ToastyModule.forRoot()
     ],
     providers: [
         CadastroService,
@@ -64,7 +66,8 @@ import { AppRoutingModule } from './app-routing.module';
         PrincipalComponent,
         CadastroWizardComponent,
         LoadingComponent,
-        AlertComponent
+        AlertComponent,
+        ToastyComponent
     ]
 })
 

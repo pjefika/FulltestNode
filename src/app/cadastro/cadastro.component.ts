@@ -1,3 +1,4 @@
+import { ToastyComponent } from './../util/toasty/toasty.component';
 import { ObjectValid } from './../viewmodel/objectValid';
 import { Valids } from './../viewmodel/validacao';
 import { Component, OnInit, Injector, ViewChild } from '@angular/core';
@@ -12,30 +13,30 @@ import { Util } from '../util/util';
 
 @Component({
     templateUrl: 'cadastro.component.html',
-    styleUrls: ['cadastro.component.css']
+    styleUrls: ['cadastro.component.css'],
+    providers: [ToastyComponent]
 })
 
 export class CadastroComponent implements OnInit {
 
     @ViewChild("wizardmodal") wizardmodal: Wizard;
 
-    constructor(private cadastroService: CadastroService, private router: Router, private util: Util, private injector: Injector) {
+    constructor(private cadastroService: CadastroService, private router: Router, private util: Util, private injector: Injector, private toastyComponent: ToastyComponent) {
         // Injeta o parametro input/dados passados para a variavel
         this.instancia = this.injector.get('instancia');
     }
     cadastro: Cadastro;
 
-    error: {
-        message: string;
-    }
-    msg: {
-        alertType: string,
-        alertMesage: string
-    }
     instancia: string;
     searching: boolean = false;
     alertTypeOn: boolean = false;
     modalOpen: boolean = false;
+
+    toastyInfo: {
+        titulo: string;
+        msg: string;
+        theme: string;
+    }
 
     ngOnInit(): void {
         this.util.isLogado().then((result: boolean) => {
@@ -54,12 +55,15 @@ export class CadastroComponent implements OnInit {
                 this.cadastro = data;
                 this.searching = false;
             }, error => {
-                this.alertTypeOn = true;
                 this.searching = false;
-                this.msg = {
-                    alertType: "alert-danger",
-                    alertMesage: error.mError
+                this.toastyInfo = {
+                    titulo: "Ops, ocorreu um erro.",
+                    msg: error.mError,
+                    theme: "error"
                 }
+                this.toastyComponent.toastyInfo = this.toastyInfo;
+                this.toastyComponent.addToasty();
             });
     }
+
 }

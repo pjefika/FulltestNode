@@ -1,4 +1,4 @@
-import { CadastroComponent } from './../cadastro/cadastro.component';
+import { ToastyComponent } from './../util/toasty/toasty.component';
 import { FulltestService } from './fulltest.service';
 import { Router } from '@angular/router';
 import { Util } from './../util/util';
@@ -9,7 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
     selector: "full-test-component",
     templateUrl: 'fulltest.component.html',
-    styleUrls: ['fulltest.component.css']
+    styleUrls: ['fulltest.component.css'],
+    providers: [ToastyComponent]
 })
 
 export class FulltestComponent implements OnInit {
@@ -21,12 +22,13 @@ export class FulltestComponent implements OnInit {
     alertTypeOn: boolean = false;
     doFulltest: boolean = false;
 
-    msg: {
-        alertType: string,
-        alertMesage: string
+    toastyInfo: {
+        titulo: string;
+        msg: string;
+        theme: string;
     }
 
-    constructor(private fulltestService: FulltestService, private util: Util, private router: Router, private cadastroComponent: CadastroComponent) { }
+    constructor(private fulltestService: FulltestService, private util: Util, private router: Router, private toastyComponent: ToastyComponent) { }
 
     ngOnInit(): void {
         this.util.isLogado().then((result: boolean) => {
@@ -34,7 +36,8 @@ export class FulltestComponent implements OnInit {
                 this.router.navigate(['./fulltest/entrar']);
             }
         });
-        this.realizaFulltest();
+        //Inicia o fulltest assim que inicializa o componente
+        //this.realizaFulltest();
     }
 
     realizaFulltest(): void {
@@ -49,12 +52,13 @@ export class FulltestComponent implements OnInit {
                 if (error.tError !== "Timeout") {
                     this.doFulltest = true;
                 }
-                this.msg = {
-                    alertType: "alert-danger",
-                    alertMesage: error.mError
+                this.toastyInfo = {
+                    titulo: "Ops, ocorreu um erro.",
+                    msg: error.mError,
+                    theme: "error"
                 }
-                this.cadastroComponent.alertTypeOn = true;
-                this.cadastroComponent.msg = this.msg;
+                this.toastyComponent.toastyInfo = this.toastyInfo;
+                this.toastyComponent.addToasty();
             })
     }
 }
