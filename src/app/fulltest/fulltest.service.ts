@@ -19,7 +19,7 @@ export class FulltestService {
         const url = `${this.fulltestUrl}` + "fulltest/";
         //console.log(url);
         return this.http.post(url, JSON.stringify(cadastro), this.options)
-            .timeout(60000)
+            .timeout(100000)
             .toPromise()
             .then(response => {
                 return response.json() as ObjectValid
