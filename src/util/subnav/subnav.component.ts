@@ -12,20 +12,21 @@ export class SubnavComponent implements OnInit {
 
     @Input() menus: [{ nome: string, component: string }];
 
+    @Input() liberarSubNav: boolean = false;
+
     ngOnInit() { }
 
     abrecomponent(l) {
-        //console.log(l);
-        switch (l.component) {
-            case "full-test-component":
-                this.templateComponent.createRealizaFulltestComponent();
-                break;
-            case "cadastro-component":
-                this.templateComponent.createCadastroComponent();
-                break;
+        if (this.liberarSubNav) {
+            switch (l.component) {
+                case "full-test-component":
+                    this.templateComponent.createRealizaFulltestComponent();
+                    break;
+                case "cadastro-component":
+                    this.templateComponent.createCadastroComponent();
+                    break;
+            }
         }
-
-
     }
 
 }

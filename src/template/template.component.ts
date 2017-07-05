@@ -1,3 +1,4 @@
+import { BrancoComponent } from './../branco/branco.component';
 import { Cadastro } from './../viewmodel/cadastro';
 import { FulltestComponent } from './../fulltest/fulltest.component';
 import { sideNavMockCadastro } from './mock/cadastro/mock-sidenav-cadastro';
@@ -31,6 +32,8 @@ export class TemplateComponent implements OnInit {
     componentData = null;
 
     cadastro: Cadastro;
+
+    liberarSubNav: boolean = false;
 
     toastyInfo: {
         titulo: string;
@@ -66,13 +69,15 @@ export class TemplateComponent implements OnInit {
         this.nav = true;
         this.subNavMenus = subNavMockCadastro;
         this.sideNavMenus = sideNavMockCadastro;
-        this.createCadastroComponent();
+        this.liberarSubNav = false;
+        this.createCadastroComponent();        
     }
 
     /**
     * Ações do header-nav
     **/
     cadastroClick() {
+        this.createPrincipalComponent();
         this.buscaCadastro = true;
         this.nav = false;
         this.subNavMenus = null;
@@ -80,6 +85,7 @@ export class TemplateComponent implements OnInit {
     }
 
     massivoClick() {
+        this.emptyComponentData();
         this.nav = true;
         this.buscaCadastro = false;
         this.subNavMenus = subNavMockMassivo;
@@ -89,6 +95,15 @@ export class TemplateComponent implements OnInit {
     /**
     * Insere components no dynamic component
     **/
+    emptyComponentData() {        
+        this.componentData = {
+            component: BrancoComponent,
+            inputs: {
+                nothing: null
+            }
+        }
+    }
+
     createPrincipalComponent() {
         this.componentData = {
             component: PrincipalComponent,
@@ -99,6 +114,7 @@ export class TemplateComponent implements OnInit {
     }
 
     createCadastroComponent() {
+        this.emptyComponentData();
         this.componentData = {
             component: CadastroComponent,
             inputs: {

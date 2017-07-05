@@ -1,3 +1,4 @@
+import { BrancoComponent } from './../branco/branco.component';
 import { FulltestService } from './../fulltest/fulltest.service';
 import { FulltestComponent } from './../fulltest/fulltest.component';
 import { LoadingComponent } from './../util/loading/loading.component';
@@ -40,7 +41,8 @@ import { AppComponent } from './app.component';
         CadastroWizardComponent,
         LoadingComponent,
         FulltestComponent,
-        ToastyComponent
+        ToastyComponent,
+        BrancoComponent
     ],
     imports: [
         BrowserModule,
@@ -66,6 +68,7 @@ import { AppComponent } from './app.component';
         PrincipalComponent,
         CadastroComponent,
         FulltestComponent,
+        BrancoComponent
     ]
 })
 export class AppModule { }
