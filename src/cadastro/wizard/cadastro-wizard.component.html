@@ -1,0 +1,160 @@
+<div>
+    <button type="button" class="btn btn-primary btn-block" (click)="modalOpen = true">Alterar informações do cadastro</button>
+
+    <clr-wizard #wizardmd [(clrWizardOpen)]="modalOpen" clrWizardSize="lg">
+        <clr-wizard-title>Informações de cadastro</clr-wizard-title>
+
+        <clr-wizard-button [type]="'cancel'">Sair</clr-wizard-button>
+        <clr-wizard-button [type]="'previous'">Voltar</clr-wizard-button>
+        <clr-wizard-button [type]="'next'">Proximo</clr-wizard-button>
+        <clr-wizard-button [type]="'finish'">Concluido</clr-wizard-button>
+
+        <clr-wizard-page [clrWizardPageNextDisabled]="!formpageone.valid">
+            <ng-template clrPageTitle>Informações de Cadastro</ng-template>
+            <form #formpageone="ngForm">
+                <section class="form-block">
+                    <div class="form-group">
+                        <label>Instância: </label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.instancia ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.instancia" name="instancia" placeholder="Insira a Instância" />
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Designador: </label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.designador ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.designador" name="designador" placeholder="Insira o Designador" />
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Designador de Acesso: </label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.designadorAcesso ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.designadorAcesso" name="designadorAcesso" placeholder="Insira o Designador de Acesso"/>
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                </section>
+            </form>
+        </clr-wizard-page>
+
+        <clr-wizard-page [clrWizardPageNextDisabled]="!formpagetwo.valid">
+            <ng-template clrPageTitle>Informações de Rede</ng-template>
+            <form #formpagetwo="ngForm">
+                <section class="form-block">
+                    <div class="form-group">
+                        <label>Ip DSLAM:</label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.ipDslam ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.rede.ipDslam" name="ipDslam" placeholder="Insira o ipDslam" />
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Vendor DSLAM:</label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.vendorDslam ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.rede.vendorDslam" name="vendorDslam" placeholder="Insira o Vendor DSLAM"/>
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Modelo DSLAM:</label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.modeloDslam ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.rede.modeloDslam" name="modeloDslam" placeholder="Insira o Modelo DSLAM"/>
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Slot:</label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.slot ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.rede.slot" name="slot" placeholder="Insira o Slot"/>
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Porta:</label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.porta ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.rede.porta" name="porta" placeholder="Insira a Porta"/>
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Endereço Sequencial da Porta:</label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.sequencial ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.rede.sequencial" name="sequencial" placeholder="Insira o Endereço Sequencial da Porta"/>
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Porta Lógica:</label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.logica ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.rede.logica" name="logica" placeholder="Insira a Porta Lógica"/>
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label>RIN:</label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.rin ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.rede.rin" name="rin" placeholder="Insira o RIN"/>
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Vlan VoIP:</label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.vlanVoip ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.rede.vlanVoip" name="vlanVoip" placeholder="Vlan VoIP"/>
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Vlan VoD:</label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.vlanVod ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.rede.vlanVod" name="vlanVod" placeholder="Insira o Vlan VoD"/>
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Vlan Multicast:</label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.vlanMulticast ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.rede.vlanMulticast" name="vlanMulticast" placeholder="Insira o Vlan Multicast"/>
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                </section>
+            </form>
+        </clr-wizard-page>
+
+        <clr-wizard-page [clrWizardPageNextDisabled]="!formpagethree.valid">
+            <ng-template clrPageTitle>Informações de Serviço</ng-template>
+            <form #formpagethree="ngForm">
+                <section class="form-block">
+                    <div class="form-group">
+                        <label>Velocidade de Download:</label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.servicos.velDown ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.servicos.velDown" name="velDown" placeholder="Insira a Velocidade de Download"/>
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Velocidade de Upload:</label>
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.servicos.velUp ? '': 'invalid'">
+                                        <input type="text" required [(ngModel)]="cadastro.servicos.velUp" name="velUp" placeholder="Insira a Velocidade de Upload"/>
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label>SIP: </label>
+                        <clr-checkbox name="isSip" required [(ngModel)]="cadastro.servicos.isSip">
+                            {{cadastro.servicos.isSip ? 'Sim': 'Não'}}
+                        </clr-checkbox>
+                    </div>
+                    <div class="form-group">
+                        <label>Híbrido: </label>
+                        <clr-checkbox name="isHib" required [(ngModel)]="cadastro.servicos.isHib">
+                            {{cadastro.servicos.isHib ? 'Sim': 'Não'}}
+                        </clr-checkbox>
+                    </div>
+                </section>
+            </form>
+        </clr-wizard-page>
+    </clr-wizard>
+</div>
