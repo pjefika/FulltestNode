@@ -1,3 +1,5 @@
+import { FulltestCrmService } from './../cadastrofulltestcrm/fulltestcrm.service';
+import { FulltestCrmComponent } from './../cadastrofulltestcrm/fulltestcrm.component';
 import { BrancoComponent } from './../branco/branco.component';
 import { FulltestService } from './../fulltest/fulltest.service';
 import { FulltestComponent } from './../fulltest/fulltest.component';
@@ -42,7 +44,8 @@ import { AppComponent } from './app.component';
         LoadingComponent,
         FulltestComponent,
         ToastyComponent,
-        BrancoComponent
+        BrancoComponent,
+        FulltestCrmComponent
     ],
     imports: [
         BrowserModule,
@@ -59,6 +62,7 @@ import { AppComponent } from './app.component';
         LoginService,
         CadastroService,
         FulltestService,
+        FulltestCrmService,
         ToastyComponent,
         FulltestComponent
     ],
@@ -68,7 +72,8 @@ import { AppComponent } from './app.component';
         PrincipalComponent,
         CadastroComponent,
         FulltestComponent,
-        BrancoComponent
+        BrancoComponent,
+        FulltestCrmComponent
     ]
 })
 export class AppModule { }

@@ -50,8 +50,10 @@ export class CadastroComponent implements OnInit {
                 this.router.navigate(['./fulltest/entrar']);
             }
         });
-
-        if (!this.cadastro) {
+        //Se cadastro já foi consultado e preenchido o mesmo so atribui para a variavel. 
+        if (this.templateComponent.cadastro) {
+            this.cadastro = this.templateComponent.cadastro;
+        } else {
             this.getCadastro();
         }
     }
@@ -65,6 +67,7 @@ export class CadastroComponent implements OnInit {
                 this.searching = false;
                 this.templateComponent.cadastro = this.cadastro;
                 this.templateComponent.liberarSubNav = true;
+                this.templateComponent.liberarSidNav = true;
             }, error => {
                 this.searching = false;
                 this.toastyInfo = {

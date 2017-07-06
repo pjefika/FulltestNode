@@ -25,8 +25,8 @@ export class LoginService {
             .catch(this.handleError);
     }
 
-    getUsuario(matricula: string): Promise<Usuario> {
-        const url = `${this.efikaWSUrl}` + "consultar/" + matricula;
+    getUsuario(usuario: Usuario): Promise<Usuario> {
+        const url = `${this.efikaWSUrl}` + "consultar/" + usuario.login;
         return this.http.get(url, this.options)
             .timeout(10000)
             .toPromise()

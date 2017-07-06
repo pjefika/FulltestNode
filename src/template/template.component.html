@@ -3,7 +3,7 @@
         <div class="branding">
             <a class="nav-link" href="/fulltest">
                 <clr-icon shape="home" class="is-success"></clr-icon>
-                <span class="title">Fulltest</span>
+                <span class="title">Efika Fulltest</span>
             </a>
         </div>
         <div class="header-nav">
@@ -12,7 +12,7 @@
                     <span class="tooltip-content">Consultar instância</span>
                 </clr-icon>
             </a>
-            <a class="nav-link nav-icon" (click)="massivoClick()">
+            <a class="nav-link nav-icon" (click)="massivoClick()" [class.disabled]="!mostraMassivo">
                 <clr-icon shape="layers" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
                     <span class="tooltip-content">Massivo</span>
                 </clr-icon>
@@ -45,7 +45,7 @@
             <dynamic-component [componentData]="componentData"></dynamic-component>
         </div>
         <nav class="sidenav" *ngIf="nav">
-            <sidenav-component [menus]="sideNavMenus"></sidenav-component>
+            <sidenav-component [menus]="sideNavMenus" [liberarSidNav]="liberarSidNav"></sidenav-component>
         </nav>
     </div>
 </div>

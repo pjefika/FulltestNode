@@ -37,8 +37,13 @@ export class LoginComponent implements OnInit {
             .autentica(this.usuario)
             .then(data => {
                 if (data) {
-                    sessionStorage.setItem('user', JSON.stringify({user: this.usuario.login, token: Md5.hashStr("fulltest-app")}));
-                    this.router.navigate(['./fulltest/']);                    
+                    this.loginService
+                        .getUsuario(this.usuario)
+                        .then(data => {
+                            this.usuario = data;
+                            sessionStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
+                            this.router.navigate(['./fulltest/']);
+                        });
                 } else {
                     this.erroLogar = true;
                     this.erroMensagem = "Usuário ou senha incorretos, por favor verifique."

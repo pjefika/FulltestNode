@@ -1,3 +1,6 @@
+import { ToastyComponent } from './../util/toasty/toasty.component';
+import { Usuario } from './../viewmodel/usuario';
+import { FulltestCrmComponent } from './../cadastrofulltestcrm/fulltestcrm.component';
 import { BrancoComponent } from './../branco/branco.component';
 import { Cadastro } from './../viewmodel/cadastro';
 import { FulltestComponent } from './../fulltest/fulltest.component';
@@ -34,6 +37,9 @@ export class TemplateComponent implements OnInit {
     cadastro: Cadastro;
 
     liberarSubNav: boolean = false;
+    liberarSidNav: boolean = false;
+
+    mostraMassivo: boolean = false;
 
     toastyInfo: {
         titulo: string;
@@ -43,8 +49,12 @@ export class TemplateComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private util: Util) { }
+        private util: Util,
+        private toastyComponent: ToastyComponent) { }
 
+    /**
+    * Faz ao iniciar o componente 
+    **/
     ngOnInit(): void {
         this.util.isLogado().then((result: boolean) => {
             if (!result) {
@@ -52,12 +62,23 @@ export class TemplateComponent implements OnInit {
             }
         });
         this.createPrincipalComponent();
+        this.validaUsr();
+    }
+
+    validaUsr() {
+        //Ativa ou Bloqueia o Menu de Massivo, ativo se maior que 6
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        if (usr.nv >= 6) {
+            this.mostraMassivo = true;
+        } else {
+            this.mostraMassivo = false;
+        }
     }
 
     /**
     * Sair do sistema
     **/
-    sair(): void {
+    sair() {
         sessionStorage.clear();
         this.router.navigate(['./fulltest/entrar']);
     }
@@ -66,11 +87,17 @@ export class TemplateComponent implements OnInit {
     * Ação para busca da instância
     **/
     busca() {
-        this.nav = true;
-        this.subNavMenus = subNavMockCadastro;
-        this.sideNavMenus = sideNavMockCadastro;
-        this.liberarSubNav = false;
-        this.createCadastroComponent();        
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        if (usr.nv === 1) {
+            this.createRealizaFulltestCrmComponent();
+        } else {
+            this.createCadastroComponent();
+            this.subNavMenus = subNavMockCadastro;
+            this.sideNavMenus = sideNavMockCadastro;
+            this.nav = true;
+            this.liberarSubNav = false;
+            this.liberarSidNav = false;
+        }
     }
 
     /**
@@ -85,17 +112,27 @@ export class TemplateComponent implements OnInit {
     }
 
     massivoClick() {
-        this.emptyComponentData();
-        this.nav = true;
-        this.buscaCadastro = false;
-        this.subNavMenus = subNavMockMassivo;
-        this.sideNavMenus = sideNavMockMassivo;
+        if (this.mostraMassivo) {
+            this.emptyComponentData();
+            this.nav = true;
+            this.buscaCadastro = false;
+            this.subNavMenus = subNavMockMassivo;
+            this.sideNavMenus = sideNavMockMassivo;
+        } else {
+            this.toastyInfo = {
+                titulo: "Informativo",
+                msg: "Você não possui acesso para entrar neste menu",
+                theme: "warning"
+            }
+            this.toastyComponent.toastyInfo = this.toastyInfo;
+            this.toastyComponent.addToasty();
+        }
     }
 
     /**
     * Insere components no dynamic component
     **/
-    emptyComponentData() {        
+    emptyComponentData() {
         this.componentData = {
             component: BrancoComponent,
             inputs: {
@@ -126,6 +163,17 @@ export class TemplateComponent implements OnInit {
     createRealizaFulltestComponent() {
         this.componentData = {
             component: FulltestComponent,
+            inputs: {
+                cadastro: this.cadastro
+            }
+        }
+    }
+
+    createRealizaFulltestCrmComponent() {
+        //fulltest-crm-component
+        this.emptyComponentData();
+        this.componentData = {
+            component: FulltestCrmComponent,
             inputs: {
                 cadastro: this.cadastro
             }
