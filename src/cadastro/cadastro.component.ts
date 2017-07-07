@@ -20,18 +20,6 @@ import { Util } from '../util/util';
 
 export class CadastroComponent implements OnInit {
 
-    @ViewChild("wizardmodal") wizardmodal: Wizard;
-
-    constructor(
-        private cadastroService: CadastroService, 
-        private router: Router, 
-        private util: Util, 
-        private injector: Injector, 
-        private toastyComponent: ToastyComponent,
-        private templateComponent: TemplateComponent) {
-        // Injeta o parametro input/dados passados para a variavel
-        this.instancia = this.injector.get('instancia');
-    }
     cadastro: Cadastro;
 
     instancia: string;
@@ -42,6 +30,19 @@ export class CadastroComponent implements OnInit {
         titulo: string;
         msg: string;
         theme: string;
+    }
+
+    @ViewChild("wizardmodal") wizardmodal: Wizard;
+
+    constructor(
+        private cadastroService: CadastroService,
+        private router: Router,
+        private util: Util,
+        private injector: Injector,
+        private toastyComponent: ToastyComponent,
+        private templateComponent: TemplateComponent) {
+        // Injeta o parametro input/dados passados para a variavel
+        this.instancia = this.injector.get('instancia');
     }
 
     ngOnInit(): void {

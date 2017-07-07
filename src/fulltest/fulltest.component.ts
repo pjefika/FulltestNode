@@ -15,7 +15,7 @@ import { Component, Input, OnInit, Injector } from '@angular/core';
 
 export class FulltestComponent implements OnInit {
 
-    @Input() cadastro: Cadastro;
+    cadastro: Cadastro;
     objectValid: ObjectValid;
 
     searchFulltest: boolean = false;
@@ -30,10 +30,10 @@ export class FulltestComponent implements OnInit {
 
     constructor(
         private fulltestService: FulltestService,
-        private util: Util,
         private router: Router,
-        private toastyComponent: ToastyComponent,
-        private injector: Injector) {
+        private util: Util,
+        private injector: Injector,
+        private toastyComponent: ToastyComponent) {
         // Injeta o parametro input/dados passados para a variavel
         this.cadastro = this.injector.get('cadastro');
     }

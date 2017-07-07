@@ -14,9 +14,9 @@ export class CadastroService {
     private headers = new Headers({ 'Content-Type': 'text/plain' });
     private stealerAPIUrl = 'http://10.40.195.81:8080/stealerAPI/oss/';  // URL to stealerAPI
 
-    private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
-    private options = new RequestOptions({ headers: this.headersAppJson });
-    private fulltestUrl = 'http://10.40.195.81:8080/fulltestAPI/fulltest/';  // URL to FulltestAPI
+    // private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
+    // private options = new RequestOptions({ headers: this.headersAppJson });
+    // private fulltestUrl = 'http://10.40.195.81:8080/fulltestAPI/fulltest/';  // URL to FulltestAPI
 
     constructor(private http: Http) { }
 

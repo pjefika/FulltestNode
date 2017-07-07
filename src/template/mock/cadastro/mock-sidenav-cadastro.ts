@@ -1,7 +1,7 @@
 import { SideNav } from './../../../viewmodel/sidenav';
 export const sideNavMockCadastro: SideNav[] = [
     {
-        nome: "Gerenciar Técnico",
+        nome: "Gerenciar Perfil Vel.",
         component: ""
     },
     {
@@ -10,6 +10,10 @@ export const sideNavMockCadastro: SideNav[] = [
     },
     {
         nome: "Resumo Técnico",
+        component: ""
+    },
+    {
+        nome: "Gerenciar Estado",
         component: ""
     },
     {

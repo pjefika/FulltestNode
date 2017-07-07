@@ -27,6 +27,9 @@ export class TemplateComponent implements OnInit {
     buscaCadastro: boolean = false;
     nav: boolean = false;
 
+    subnav: boolean = false;
+    sidenav: boolean = false;
+
     instancia: string = "";
 
     subNavMenus: SubNav[];
@@ -39,7 +42,7 @@ export class TemplateComponent implements OnInit {
     liberarSubNav: boolean = false;
     liberarSidNav: boolean = false;
 
-    mostraMassivo: boolean = false;
+    mostraMenus: boolean = false;
 
     toastyInfo: {
         titulo: string;
@@ -68,11 +71,12 @@ export class TemplateComponent implements OnInit {
     validaUsr() {
         //Ativa ou Bloqueia o Menu de Massivo, ativo se maior que 6
         let usr = JSON.parse(sessionStorage.getItem('user'));
-        if (usr.nv >= 6) {
-            this.mostraMassivo = true;
-        } else {
-            this.mostraMassivo = false;
-        }
+        //descomentar quando lançar
+        // if (usr.nv >= 6) {
+        //     this.mostraMenus = true;
+        // } else {
+        //     this.mostraMenus = false;
+        // }
     }
 
     /**
@@ -87,6 +91,7 @@ export class TemplateComponent implements OnInit {
     * Ação para busca da instância
     **/
     busca() {
+        this.cadastro = null;
         let usr = JSON.parse(sessionStorage.getItem('user'));
         if (usr.nv === 1) {
             this.createRealizaFulltestCrmComponent();
@@ -94,9 +99,11 @@ export class TemplateComponent implements OnInit {
             this.createCadastroComponent();
             this.subNavMenus = subNavMockCadastro;
             this.sideNavMenus = sideNavMockCadastro;
-            this.nav = true;
-            this.liberarSubNav = false;
-            this.liberarSidNav = false;
+            //descomentar quando adicionar infos...
+            this.subnav = true;
+            // this.sidenav = true;
+            // this.liberarSubNav = true;
+            // this.liberarSidNav = true;
         }
     }
 
@@ -106,18 +113,21 @@ export class TemplateComponent implements OnInit {
     cadastroClick() {
         this.createPrincipalComponent();
         this.buscaCadastro = true;
-        this.nav = false;
+        this.subnav = false;
+        this.sidenav = false;
         this.subNavMenus = null;
         this.sideNavMenus = null;
     }
 
     massivoClick() {
-        if (this.mostraMassivo) {
+        if (this.mostraMenus) {
             this.emptyComponentData();
-            this.nav = true;
             this.buscaCadastro = false;
-            this.subNavMenus = subNavMockMassivo;
-            this.sideNavMenus = sideNavMockMassivo;
+            //descomentar quando adicionar infos...
+            // this.subnav = true;
+            // this.sidenav = true;          
+            // this.subNavMenus = subNavMockMassivo;
+            // this.sideNavMenus = sideNavMockMassivo;
         } else {
             this.toastyInfo = {
                 titulo: "Informativo",
@@ -170,12 +180,11 @@ export class TemplateComponent implements OnInit {
     }
 
     createRealizaFulltestCrmComponent() {
-        //fulltest-crm-component
         this.emptyComponentData();
         this.componentData = {
             component: FulltestCrmComponent,
             inputs: {
-                cadastro: this.cadastro
+                instancia: this.instancia
             }
         }
     }

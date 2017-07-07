@@ -1,5 +1,5 @@
 <div>
-    <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Fulltest...'"></loading-component>
+    <loading-component [searching]="searchFulltest" [searchWhat]="searchWhat"></loading-component>
     <div *ngIf="!searchFulltest">
         <div *ngIf="objectValid">
             <table class="table table-compact" style="margin: 7px 0 0 0;">

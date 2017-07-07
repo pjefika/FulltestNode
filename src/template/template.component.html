@@ -12,9 +12,14 @@
                     <span class="tooltip-content">Consultar instância</span>
                 </clr-icon>
             </a>
-            <a class="nav-link nav-icon" (click)="massivoClick()" [class.disabled]="!mostraMassivo">
+            <a class="nav-link nav-icon" (click)="massivoClick()" [class.disabled]="!mostraMenus">
                 <clr-icon shape="layers" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
                     <span class="tooltip-content">Massivo</span>
+                </clr-icon>
+            </a>
+            <a class="nav-link nav-icon" [class.disabled]="!mostraMenus">
+                <clr-icon shape="shuffle" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
+                    <span class="tooltip-content">Manobra</span>
                 </clr-icon>
             </a>
         </div>
@@ -36,7 +41,7 @@
             </clr-dropdown>
         </div>
     </header>
-    <nav class="subnav" *ngIf="nav">
+    <nav class="subnav" *ngIf="subnav">
         <subnav-component [menus]="subNavMenus" [liberarSubNav]="liberarSubNav"></subnav-component>
     </nav>
     <div class="content-container">
@@ -44,7 +49,7 @@
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
             <dynamic-component [componentData]="componentData"></dynamic-component>
         </div>
-        <nav class="sidenav" *ngIf="nav">
+        <nav class="sidenav" *ngIf="sidenav">
             <sidenav-component [menus]="sideNavMenus" [liberarSidNav]="liberarSidNav"></sidenav-component>
         </nav>
     </div>

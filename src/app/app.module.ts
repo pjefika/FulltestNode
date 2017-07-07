@@ -1,3 +1,4 @@
+import { ManobraComponent } from './../manobra/manobra.component';
 import { FulltestCrmService } from './../cadastrofulltestcrm/fulltestcrm.service';
 import { FulltestCrmComponent } from './../cadastrofulltestcrm/fulltestcrm.component';
 import { BrancoComponent } from './../branco/branco.component';
@@ -45,7 +46,8 @@ import { AppComponent } from './app.component';
         FulltestComponent,
         ToastyComponent,
         BrancoComponent,
-        FulltestCrmComponent
+        FulltestCrmComponent,
+        ManobraComponent
     ],
     imports: [
         BrowserModule,

@@ -3,4 +3,5 @@
 }
 a.disabled {
     cursor: not-allowed;
+    color: gray !important; /*Descomentar quando adicionar funcionalidade*/
 }
