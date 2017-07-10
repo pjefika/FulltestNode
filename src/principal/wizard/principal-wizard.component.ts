@@ -14,6 +14,8 @@ export class PrincipalWizardComponent implements OnInit {
     imgcadastro = "./assets/imagens/cadastro.png";
     imgfulltest = "./assets/imagens/fulltest.png";
 
+    mdOpen: boolean = false;
+
     constructor() { }
 
     ngOnInit() { }
