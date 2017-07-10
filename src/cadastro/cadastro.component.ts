@@ -1,4 +1,4 @@
-import { TemplateComponent } from './../template/template.component';
+import { HolderService } from './../util/holder/holder.service';
 import { ToastyComponent } from './../util/toasty/toasty.component';
 import { ObjectValid } from './../viewmodel/objectValid';
 import { Valids } from './../viewmodel/validacao';
@@ -32,15 +32,13 @@ export class CadastroComponent implements OnInit {
         theme: string;
     }
 
-    @ViewChild("wizardmodal") wizardmodal: Wizard;
-
     constructor(
         private cadastroService: CadastroService,
         private router: Router,
         private util: Util,
         private injector: Injector,
         private toastyComponent: ToastyComponent,
-        private templateComponent: TemplateComponent) {
+        private holderService: HolderService) {
         // Injeta o parametro input/dados passados para a variavel
         this.instancia = this.injector.get('instancia');
     }
@@ -52,8 +50,8 @@ export class CadastroComponent implements OnInit {
             }
         });
         //Se cadastro já foi consultado e preenchido o mesmo so atribui para a variavel. 
-        if (this.templateComponent.cadastro) {
-            this.cadastro = this.templateComponent.cadastro;
+        if (this.holderService.cadastro) {
+            this.cadastro = this.holderService.cadastro;
         } else {
             this.getCadastro();
         }
@@ -66,9 +64,7 @@ export class CadastroComponent implements OnInit {
             .then(data => {
                 this.cadastro = data;
                 this.searching = false;
-                this.templateComponent.cadastro = this.cadastro;
-                this.templateComponent.liberarSubNav = true;
-                this.templateComponent.liberarSidNav = true;
+                this.holderService.cadastro = this.cadastro;
             }, error => {
                 this.searching = false;
                 this.toastyInfo = {

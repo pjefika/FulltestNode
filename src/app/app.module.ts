@@ -1,3 +1,5 @@
+import { HolderService } from './../util/holder/holder.service';
+import { HolderComponent } from './../util/holder/holder.component';
 import { AlertComponent } from './../util/alert/alert.component';
 import { ManobraComponent } from './../manobra/manobra.component';
 import { FulltestCrmService } from './../cadastrofulltestcrm/fulltestcrm.service';
@@ -59,7 +61,7 @@ import { AppComponent } from './app.component';
         BrowserAnimationsModule,
         AppRoutingModule,
         MomentModule,
-        ToastyModule.forRoot()
+        ToastyModule.forRoot(),
     ],
     providers: [
         Util,
@@ -67,16 +69,17 @@ import { AppComponent } from './app.component';
         CadastroService,
         FulltestService,
         FulltestCrmService,
-        ToastyComponent
+        ToastyComponent,
+        HolderService
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     entryComponents: [
         PrincipalComponent,
-        CadastroComponent,
         FulltestComponent,
-        BrancoComponent,
-        FulltestCrmComponent
+        CadastroComponent,
+        FulltestCrmComponent,
+        BrancoComponent
     ]
 })
 export class AppModule { }

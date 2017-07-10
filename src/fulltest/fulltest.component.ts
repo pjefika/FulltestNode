@@ -1,3 +1,4 @@
+import { HolderService } from './../util/holder/holder.service';
 import { TemplateComponent } from './../template/template.component';
 import { ToastyComponent } from './../util/toasty/toasty.component';
 import { FulltestService } from './fulltest.service';
@@ -33,9 +34,11 @@ export class FulltestComponent implements OnInit {
         private router: Router,
         private util: Util,
         private injector: Injector,
-        private toastyComponent: ToastyComponent) {
+        private toastyComponent: ToastyComponent,
+        private holderService: HolderService) {
         // Injeta o parametro input/dados passados para a variavel
         this.cadastro = this.injector.get('cadastro');
+        this.objectValid = this.injector.get('valid');
     }
 
     ngOnInit(): void {
@@ -55,6 +58,7 @@ export class FulltestComponent implements OnInit {
             .then(data => {
                 this.objectValid = data;
                 this.searchFulltest = false;
+                this.holderService.objectValid = this.objectValid;
             }, error => {
                 this.searchFulltest = false;
                 if (error.tError !== "Timeout") {
@@ -67,6 +71,7 @@ export class FulltestComponent implements OnInit {
                 }
                 this.toastyComponent.toastyInfo = this.toastyInfo;
                 this.toastyComponent.addToasty();
-            })
+            });
+
     }
 }

@@ -1,3 +1,5 @@
+import { HolderService } from './../util/holder/holder.service';
+import { ObjectValid } from './../viewmodel/objectValid';
 import { ToastyComponent } from './../util/toasty/toasty.component';
 import { Usuario } from './../viewmodel/usuario';
 import { FulltestCrmComponent } from './../cadastrofulltestcrm/fulltestcrm.component';
@@ -37,7 +39,9 @@ export class TemplateComponent implements OnInit {
 
     componentData = null;
 
+
     cadastro: Cadastro;
+    objectValid: ObjectValid;
 
     liberarSubNav: boolean = false;
     liberarSidNav: boolean = false;
@@ -53,7 +57,8 @@ export class TemplateComponent implements OnInit {
     constructor(
         private router: Router,
         private util: Util,
-        private toastyComponent: ToastyComponent) { }
+        private toastyComponent: ToastyComponent,
+        private holderService: HolderService) { }
 
     /**
     * Faz ao iniciar o componente 
@@ -96,18 +101,19 @@ export class TemplateComponent implements OnInit {
     * Ação para busca da instância
     **/
     busca() {
-        this.cadastro = null;
+        this.holderService.cadastro = null;
+        this.holderService.objectValid = null;
         let usr = JSON.parse(sessionStorage.getItem('user'));
         if (usr.nv === 1) {
             this.createRealizaFulltestCrmComponent();
         } else {
+            this.cadastro = this.holderService.cadastro;
             this.createCadastroComponent();
             this.subNavMenus = subNavMockCadastro;
             this.sideNavMenus = sideNavMockCadastro;
-            //descomentar quando adicionar infos...
             this.subnav = true;
             // this.sidenav = true;
-            // this.liberarSubNav = true;
+            this.liberarSubNav = true;
             // this.liberarSidNav = true;
         }
     }
@@ -176,10 +182,15 @@ export class TemplateComponent implements OnInit {
     }
 
     createRealizaFulltestComponent() {
-        this.componentData = {
-            component: FulltestComponent,
-            inputs: {
-                cadastro: this.cadastro
+        this.cadastro = this.holderService.cadastro;
+        this.objectValid = this.holderService.objectValid;
+        if (this.cadastro) {
+            this.componentData = {
+                component: FulltestComponent,
+                inputs: {
+                    cadastro: this.cadastro,
+                    valid: this.objectValid
+                }
             }
         }
     }
