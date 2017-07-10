@@ -65,8 +65,7 @@ import { AppComponent } from './app.component';
         CadastroService,
         FulltestService,
         FulltestCrmService,
-        ToastyComponent,
-        FulltestComponent
+        ToastyComponent
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
