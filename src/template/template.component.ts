@@ -69,10 +69,12 @@ export class TemplateComponent implements OnInit {
     }
 
     validaUsr() {
-        //Ativa ou Bloqueia o Menu de Massivo, ativo se maior que 6 e ativa o botão search
-        let usr = JSON.parse(sessionStorage.getItem('user'));
-        if (usr.nv === 1) {
-            this.buscaCadastro = true;
+        //Ativa ou Bloqueia o Menu de Massivo, ativo se maior que 6 e ativa o botão search        
+        if (sessionStorage.getItem('user')) {
+            let usr = JSON.parse(sessionStorage.getItem('user'));
+            if (usr.nv === 1) {
+                this.buscaCadastro = true;
+            }
         }
         //descomentar quando lançar
         // if (usr.nv >= 6) {
