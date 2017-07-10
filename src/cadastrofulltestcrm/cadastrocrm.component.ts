@@ -1,18 +1,18 @@
+import { CadastroCrmService } from './cadastrocrm.service';
 import { Router } from '@angular/router';
 import { Util } from './../util/util';
 import { ToastyComponent } from './../util/toasty/toasty.component';
 import { ObjectValid } from './../viewmodel/objectValid';
 import { Cadastro } from './../viewmodel/cadastro';
-import { FulltestCrmService } from './fulltestcrm.service';
 import { Component, OnInit, Injector } from '@angular/core';
 
 @Component({
-    selector: 'fulltest-crm-component',
-    templateUrl: 'fulltestcrm.component.html',
-    styleUrls: ['fulltestcrm.component.css']
+    selector: 'cadastro-crm-component',
+    templateUrl: 'cadastrocrm.component.html',
+    styleUrls: ['cadastrocrm.component.css']
 })
 
-export class FulltestCrmComponent implements OnInit {
+export class CadastroCrmComponent implements OnInit {
 
     cadastro: Cadastro;
     instancia: string;
@@ -32,7 +32,7 @@ export class FulltestCrmComponent implements OnInit {
     searchWhat: string;
 
     constructor(
-        private fulltestCrmService: FulltestCrmService,
+        private cadastroCrmService: CadastroCrmService,
         private toastyComponent: ToastyComponent,
         private util: Util,
         private router: Router,
@@ -54,12 +54,12 @@ export class FulltestCrmComponent implements OnInit {
     getCadastro(): void {
         this.searchFulltest = true;
         this.searchWhat = "Buscando Cadastro...";
-        this.fulltestCrmService
+        this.cadastroCrmService
             .getCadastro(this.instancia)
             .then(data => {                
                 this.cadastro = data;
                 this.searchFulltest = false;
-                this.realizaFulltest();
+                this.fazFulltest();
             }, error => {
                 this.searchFulltest = false;
                 this.toastyInfo = {
@@ -72,26 +72,18 @@ export class FulltestCrmComponent implements OnInit {
             });
     }
 
-    realizaFulltest(): void {
-        this.searchFulltest = true;
-        this.searchWhat = "Realizando Fulltest...";
-        this.fulltestCrmService
-            .getValidacao(this.cadastro)
-            .then(data => {
-                this.objectValid = data;
-                this.searchFulltest = false;
-            }, error => {
-                this.searchFulltest = false;
-                if (error.tError !== "Timeout") {
-                    this.doFulltest = true;
-                }
-                this.toastyInfo = {
-                    titulo: "Ops, ocorreu um erro.",
-                    msg: error.mError,
-                    theme: "error"
-                }
-                this.toastyComponent.toastyInfo = this.toastyInfo;
-                this.toastyComponent.addToasty();
-            })
+    fazFulltest(): void {
+        this.cadastro.asserts.forEach(assert => {
+            if (assert.asserts === "HAS_BLOQUEIO_RADIUS" && assert.value === false) {
+                //Faz algo
+            }
+            if (assert.asserts === "DIVERGENCIA_TBS_RADIUS" && assert.value === false) {
+                //Faz algo
+            }
+            if (assert.asserts === "CIRCUITO_ATIVO" && assert.value === true) {
+                //Faz algo
+            }
+            
+        });
     }
 }

@@ -7,27 +7,11 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
 
 @Injectable()
-export class FulltestCrmService {
+export class CadastroCrmService {
 
     private headers = new Headers({ 'Content-Type': 'text/plain' });
     private stealerAPIUrl = 'http://10.40.195.81:8080/stealerAPI/oss/';  // URL to stealerAPI
-
-    private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
-    private options = new RequestOptions({ headers: this.headersAppJson });
-    private fulltestUrl = 'http://10.40.195.81:8080/fulltestAPI/fulltest/';  // URL to FulltestAPI
-
     constructor(private http: Http) { }
-
-    getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
-        const url = `${this.fulltestUrl}` + "corrective/";
-        //console.log(url);
-        return this.http.post(url, JSON.stringify(cadastro), this.options)
-            .timeout(100000)
-            .toPromise()
-            .then(response => {
-                return response.json() as ObjectValid
-            }).catch(this.handleError);
-    }
 
     getCadastro(instancia: string): Promise<Cadastro> {
         const url = `${this.stealerAPIUrl}${instancia}`;

@@ -1,7 +1,7 @@
 import { Valids } from './validacao';
 
 export class ObjectValid {
-    valids: Valids[];
+    valids: Valids[];    
     dataInicio: number;
     dataFim: number;
     mensagem: string;

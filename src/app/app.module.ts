@@ -1,9 +1,10 @@
+import { FulltestCrmService } from './../fulltestcrm/fulltestcrm.service';
+import { CadastroCrmService } from './../cadastrofulltestcrm/cadastrocrm.service';
+import { FullltestCrmComponent } from './../fulltestcrm/fulltestcrm.component';
+import { CadastroCrmComponent } from './../cadastrofulltestcrm/cadastrocrm.component';
 import { HolderService } from './../util/holder/holder.service';
-import { HolderComponent } from './../util/holder/holder.component';
 import { AlertComponent } from './../util/alert/alert.component';
 import { ManobraComponent } from './../manobra/manobra.component';
-import { FulltestCrmService } from './../cadastrofulltestcrm/fulltestcrm.service';
-import { FulltestCrmComponent } from './../cadastrofulltestcrm/fulltestcrm.component';
 import { BrancoComponent } from './../branco/branco.component';
 import { FulltestService } from './../fulltest/fulltest.service';
 import { FulltestComponent } from './../fulltest/fulltest.component';
@@ -49,9 +50,10 @@ import { AppComponent } from './app.component';
         FulltestComponent,
         ToastyComponent,
         BrancoComponent,
-        FulltestCrmComponent,
         ManobraComponent,
-        AlertComponent
+        AlertComponent,
+        CadastroCrmComponent,
+        FullltestCrmComponent
     ],
     imports: [
         BrowserModule,
@@ -68,9 +70,10 @@ import { AppComponent } from './app.component';
         LoginService,
         CadastroService,
         FulltestService,
-        FulltestCrmService,
         ToastyComponent,
-        HolderService
+        HolderService, 
+        CadastroCrmService,
+        FulltestCrmService
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -78,8 +81,8 @@ import { AppComponent } from './app.component';
         PrincipalComponent,
         FulltestComponent,
         CadastroComponent,
-        FulltestCrmComponent,
-        BrancoComponent
+        BrancoComponent,
+        CadastroCrmComponent
     ]
 })
 export class AppModule { }

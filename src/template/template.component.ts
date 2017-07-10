@@ -1,8 +1,8 @@
+import { CadastroCrmComponent } from './../cadastrofulltestcrm/cadastrocrm.component';
 import { HolderService } from './../util/holder/holder.service';
 import { ObjectValid } from './../viewmodel/objectValid';
 import { ToastyComponent } from './../util/toasty/toasty.component';
 import { Usuario } from './../viewmodel/usuario';
-import { FulltestCrmComponent } from './../cadastrofulltestcrm/fulltestcrm.component';
 import { BrancoComponent } from './../branco/branco.component';
 import { Cadastro } from './../viewmodel/cadastro';
 import { FulltestComponent } from './../fulltest/fulltest.component';
@@ -198,7 +198,7 @@ export class TemplateComponent implements OnInit {
     createRealizaFulltestCrmComponent() {
         this.emptyComponentData();
         this.componentData = {
-            component: FulltestCrmComponent,
+            component: CadastroCrmComponent,
             inputs: {
                 instancia: this.instancia
             }
