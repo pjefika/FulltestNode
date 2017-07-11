@@ -47,6 +47,9 @@ export class TemplateComponent implements OnInit {
     liberarSidNav: boolean = false;
 
     mostraMenus: boolean = false;
+    mostraToggle: boolean = false;
+
+    eachFulltest: boolean = false;
 
     toastyInfo: {
         titulo: string;
@@ -77,8 +80,12 @@ export class TemplateComponent implements OnInit {
         //Ativa ou Bloqueia o Menu de Massivo, ativo se maior que 6 e ativa o botão search        
         if (sessionStorage.getItem('user')) {
             let usr = JSON.parse(sessionStorage.getItem('user'));
+
             if (usr.nv === 1) {
                 this.buscaCadastro = true;
+            }
+            if (usr.nv >= 3) {
+                this.mostraToggle = true;
             }
         }
         //descomentar quando lançar
@@ -107,14 +114,19 @@ export class TemplateComponent implements OnInit {
         if (usr.nv === 1) {
             this.createRealizaFulltestCrmComponent();
         } else {
-            this.cadastro = this.holderService.cadastro;
-            this.createCadastroComponent();
-            this.subNavMenus = subNavMockCadastro;
-            this.sideNavMenus = sideNavMockCadastro;
-            this.subnav = true;
-            // this.sidenav = true;
-            this.liberarSubNav = true;
-            // this.liberarSidNav = true;
+            if (!this.eachFulltest) {
+                this.createRealizaFulltestCrmComponent();
+                this.subnav = false;
+            } else {
+                this.cadastro = this.holderService.cadastro;
+                this.createCadastroComponent();
+                this.subNavMenus = subNavMockCadastro;
+                this.sideNavMenus = sideNavMockCadastro;
+                this.subnav = true;
+                // this.sidenav = true;
+                this.liberarSubNav = true;
+                // this.liberarSidNav = true;
+            }
         }
     }
 
