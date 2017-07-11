@@ -6,8 +6,8 @@
             <h5 class="hint">Utilize seu login e senha para entrar</h5>
         </label>
         <div class="login-group">
-            <input [(ngModel)]="usuario.login" class="username" type="text" id="login_username" placeholder="Username" name="login">
-            <input [(ngModel)]="usuario.senha" class="password" type="password" id="login_password" placeholder="Password" name="senha">
+            <input [(ngModel)]="usuario.login" class="username" type="text" id="login_username" placeholder="Usuário" name="login">
+            <input [(ngModel)]="usuario.senha" class="password" type="password" id="login_password" placeholder="Senha" name="senha">
             <div class="error active" *ngIf="erroLogar">
                 {{erroMensagem}}
             </div>

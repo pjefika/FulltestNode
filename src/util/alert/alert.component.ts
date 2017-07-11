@@ -10,6 +10,7 @@ export class AlertComponent implements OnInit {
 
     @Input() msg: any;
     @Input() ativo: boolean = false;
+    @Input() closeable: boolean = true;
 
     constructor() { }
 
