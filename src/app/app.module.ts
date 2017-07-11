@@ -1,3 +1,4 @@
+import { AdmComponent } from './../adm/adm.component';
 import { FulltestCrmService } from './../fulltestcrm/fulltestcrm.service';
 import { CadastroCrmService } from './../cadastrofulltestcrm/cadastrocrm.service';
 import { FullltestCrmComponent } from './../fulltestcrm/fulltestcrm.component';
@@ -53,7 +54,8 @@ import { AppComponent } from './app.component';
         ManobraComponent,
         AlertComponent,
         CadastroCrmComponent,
-        FullltestCrmComponent
+        FullltestCrmComponent,
+        AdmComponent
     ],
     imports: [
         BrowserModule,
@@ -71,9 +73,10 @@ import { AppComponent } from './app.component';
         CadastroService,
         FulltestService,
         ToastyComponent,
-        HolderService, 
+        HolderService,
         CadastroCrmService,
-        FulltestCrmService
+        FulltestCrmService,
+        AdmComponent
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

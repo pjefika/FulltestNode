@@ -46,6 +46,16 @@
     </nav>
     <div class="content-container">
         <div class="content-area">
+            <div *ngIf="mostraToggle">
+                <div class="form-group">
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="toggle_1" [(ngModel)]="eachFulltest">
+                        <label for="toggle_1">Selecione qual teste irá realizar:</label>
+                    </div>
+                    <label *ngIf="eachFulltest">CO</label>
+                    <label *ngIf="!eachFulltest">CRM</label>
+                </div>
+            </div>
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
             <dynamic-component [componentData]="componentData"></dynamic-component>
         </div>
