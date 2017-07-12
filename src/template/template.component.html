@@ -47,13 +47,24 @@
     <div class="content-container">
         <div class="content-area">
             <div *ngIf="mostraToggle">
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <div class="toggle-switch">
                         <input type="checkbox" id="toggle_1" [(ngModel)]="eachFulltest">
                         <label for="toggle_1">Selecione qual teste irá realizar:</label>
                     </div>
                     <label *ngIf="eachFulltest">CO</label>
                     <label *ngIf="!eachFulltest">CRM</label>
+                </div> -->
+                <div class="form-group">
+                    <label>Selecione qual teste irá realizar:</label>
+                    <div class="radio-inline">
+                        <input type="radio" name="gridRadios1" id="checkrads_11" [(ngModel)]="eachFulltest" value="CO">
+                        <label for="checkrads_11">CO</label>
+                    </div>
+                    <div class="radio-inline">
+                        <input type="radio" name="gridRadios1" id="checkrads_12" [(ngModel)]="eachFulltest" value="CRM" checked>
+                        <label for="checkrads_12">CRM</label>
+                    </div>
                 </div>
             </div>
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>

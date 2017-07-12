@@ -49,7 +49,7 @@ export class TemplateComponent implements OnInit {
     mostraMenus: boolean = false;
     mostraToggle: boolean = false;
 
-    eachFulltest: boolean = false;
+    eachFulltest: string;
 
     toastyInfo: {
         titulo: string;
@@ -114,10 +114,10 @@ export class TemplateComponent implements OnInit {
         if (usr.nv === 1) {
             this.createRealizaFulltestCrmComponent();
         } else {
-            if (!this.eachFulltest) {
+            if (this.eachFulltest === "CRM") {
                 this.createRealizaFulltestCrmComponent();
                 this.subnav = false;
-            } else {
+            } else if (this.eachFulltest === "CO") {
                 this.cadastro = this.holderService.cadastro;
                 this.createCadastroComponent();
                 this.subNavMenus = subNavMockCadastro;
