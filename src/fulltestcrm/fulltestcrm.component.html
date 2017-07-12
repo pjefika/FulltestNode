@@ -2,21 +2,21 @@
     <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Fulltest'"></loading-component>
     <div *ngIf="!searchFulltest">
         <div *ngIf="objectValid">
-            <table class="table table-compact" style="margin: 7px 0 0 0;">
+            <!-- <table class="table table-compact" style="margin: 7px 0 0 0;">
                 <thead>
                     <tr>
                         <th colspan="2">Informações gerais Fulltest</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!--<tr>
+                    <tr>
                         <td class="left">Data Início</td>
                         <td>{{objectValid.dataInicio | amDateFormat: 'DD/MM/YYYY HH:mm:ss'}}</td>
                     </tr>
                     <tr>
                         <td class="left">Data Fim</td>
                         <td>{{objectValid.dataFim | amDateFormat: 'DD/MM/YYYY HH:mm:ss'}}</td>
-                    </tr>-->
+                    </tr>
                     <tr>
                         <td class="left">Duração do Fulltest</td>
                         <td>{{objectValid.dataFim | amDifference: objectValid.dataInicio: 'seconds'}} Segundos</td>
@@ -29,7 +29,7 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
             <table class="table table-compact">
                 <thead>
                     <tr>
@@ -53,6 +53,6 @@
                 </tbody>
             </table>
         </div>
-        <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" [disabled]="doFulltest">Realizar Fulltest</button>
+        <!-- <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" [disabled]="doFulltest">Realizar Fulltest</button> -->
     </div>
 </div>

@@ -106,8 +106,12 @@ export class CadastroCrmComponent implements OnInit {
                 this.objectValid = data;
                 this.searchFulltest = false;
                 this.listResumo.fulltest = this.objectValid.resultado;
-                //console.log(this.objectValid.mensagem);
-                this.callAlert(this.objectValid.mensagem, "alert-success");
+                let typeAlert;
+                if (this.listResumo.fulltest) {
+                    this.callAlert(this.objectValid.mensagem, "alert-success");
+                } else {
+                    this.callAlert(this.objectValid.mensagem, "alert-danger");
+                }
             }, error => {
                 this.callAlert(error.mError, "alert-danger");
                 this.listResumo.fulltest = false;
