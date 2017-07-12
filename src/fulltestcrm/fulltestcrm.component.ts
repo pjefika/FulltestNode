@@ -2,7 +2,7 @@ import { ToastyComponent } from './../util/toasty/toasty.component';
 import { ObjectValid } from './../viewmodel/objectValid';
 import { Cadastro } from './../viewmodel/cadastro';
 import { FulltestCrmService } from './fulltestcrm.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'fulltest-crm-component',
@@ -13,7 +13,8 @@ import { Component, OnInit } from '@angular/core';
 export class FullltestCrmComponent implements OnInit {
 
     cadastro: Cadastro;
-    objectValid: ObjectValid;
+
+    @Input() objectValid: ObjectValid;
 
     doFulltest: boolean = false;
 
