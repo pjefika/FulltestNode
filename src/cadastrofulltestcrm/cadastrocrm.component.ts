@@ -198,18 +198,31 @@ export class CadastroCrmComponent implements OnInit {
     */
     makeLoger(msgConclusao) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
+        let inst: string = this.instancia;
+        let desA: string = "-1";
+        let des: string = "-1";
+        let cust: string = "-1";
+        let cadastro: boolean = false;
+        let semBloqueio: boolean = false;
+        let fulltest: boolean = false;
+
+        if (this.cadastro) {
+            inst = this.cadastro.instancia;
+            desA = this.cadastro.designadorAcesso;
+            des = this.cadastro.designador;
+            cust = JSON.stringify(this.cadastro);
+        }
         this.loger = {
-            instancia: this.cadastro.instancia,
-            designador: this.cadastro.designador,
-            designadorAcesso: this.cadastro.designadorAcesso,
+            instancia: inst,
+            designador: des,
+            designadorAcesso: desA,
             executor: usr.user,
             conclusao: msgConclusao,
-            cadastro: this.listResumo.cadastro,
-            semBloqueio: this.listResumo.bloqueio,
-            fulltest: this.listResumo.fulltest,
-            customer: JSON.stringify(this.cadastro)
+            cadastro: cadastro,
+            semBloqueio: semBloqueio,
+            fulltest: fulltest,
+            customer: cust
         }
-        //Descomentar quando for ativo...
-        //this.logerService.makeLog(this.loger);
+        this.logerService.makeLog(this.loger);
     }
 }

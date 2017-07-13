@@ -15,6 +15,10 @@ export class LogerService {
         const url = `${this.fulltestAPIUrl}` + "log/";
         this.http.post(url, JSON.stringify(loger), this.options)
             .timeout(10000)
+            .toPromise()
+            .then(response => {
+                //console.log(response.json());
+            })
             .catch(this.handleError);
     }
 
