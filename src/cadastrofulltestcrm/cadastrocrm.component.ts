@@ -194,7 +194,7 @@ export class CadastroCrmComponent implements OnInit {
     }
 
     /*
-    *  Loger...
+    * Loger... 
     */
     makeLoger(msgConclusao) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -211,6 +211,9 @@ export class CadastroCrmComponent implements OnInit {
             desA = this.cadastro.designadorAcesso;
             des = this.cadastro.designador;
             cust = JSON.stringify(this.cadastro);
+            cadastro = this.listResumo.cadastro;
+            semBloqueio = this.listResumo.bloqueio;
+            fulltest = this.listResumo.fulltest;
         }
         this.loger = {
             instancia: inst,
