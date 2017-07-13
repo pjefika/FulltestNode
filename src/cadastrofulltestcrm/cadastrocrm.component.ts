@@ -215,7 +215,7 @@ export class CadastroCrmComponent implements OnInit {
             cadastro = this.listResumo.cadastro;
             semBloqueio = this.listResumo.bloqueio;
             fulltest = this.listResumo.fulltest;
-
+            // Se objvalid 
             if (this.objectValid) {
                 objval = JSON.stringify(this.objectValid);
             }
@@ -231,7 +231,7 @@ export class CadastroCrmComponent implements OnInit {
             semBloqueio: semBloqueio,
             fulltest: fulltest,
             customer: cust,
-            objectValids: objval
+            valids: objval
         }
         this.logerService.makeLog(this.loger);
     }
