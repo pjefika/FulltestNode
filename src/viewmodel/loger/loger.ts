@@ -8,4 +8,5 @@ export class Loger {
     semBloqueio: boolean;
     fulltest: boolean;
     customer: string;
+    valids: string;
 }

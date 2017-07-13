@@ -194,7 +194,7 @@ export class CadastroCrmComponent implements OnInit {
     }
 
     /*
-    *  Loger...
+    * Loger... 
     */
     makeLoger(msgConclusao) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -205,13 +205,22 @@ export class CadastroCrmComponent implements OnInit {
         let cadastro: boolean = false;
         let semBloqueio: boolean = false;
         let fulltest: boolean = false;
+        let objval: string = "-1";
 
         if (this.cadastro) {
             inst = this.cadastro.instancia;
             desA = this.cadastro.designadorAcesso;
             des = this.cadastro.designador;
             cust = JSON.stringify(this.cadastro);
+            cadastro = this.listResumo.cadastro;
+            semBloqueio = this.listResumo.bloqueio;
+            fulltest = this.listResumo.fulltest;
+            // Se objvalid 
+            if (this.objectValid) {
+                objval = JSON.stringify(this.objectValid);
+            }
         }
+
         this.loger = {
             instancia: inst,
             designador: des,
@@ -221,7 +230,8 @@ export class CadastroCrmComponent implements OnInit {
             cadastro: cadastro,
             semBloqueio: semBloqueio,
             fulltest: fulltest,
-            customer: cust
+            customer: cust,
+            valids: objval
         }
         this.logerService.makeLog(this.loger);
     }
