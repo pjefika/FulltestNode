@@ -67,6 +67,7 @@ export class TemplateComponent implements OnInit {
     * Faz ao iniciar o componente 
     **/
     ngOnInit(): void {
+        console.log("v1.0.0");
         this.util.isLogado().then((result: boolean) => {
             if (!result) {
                 this.router.navigate(['./fulltest/entrar']);

@@ -213,7 +213,7 @@ export class CadastroCrmComponent implements OnInit {
             des = this.cadastro.designador;
             cust = JSON.stringify(this.cadastro);
             cadastro = this.listResumo.cadastro;
-            semBloqueio = this.listResumo.bloqueio;
+            semBloqueio = !this.listResumo.bloqueio;
             fulltest = this.listResumo.fulltest;
             // Se objvalid 
             if (this.objectValid) {
