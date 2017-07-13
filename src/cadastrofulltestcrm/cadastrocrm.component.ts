@@ -1,3 +1,5 @@
+import { LogerService } from './../util/loger/loger.service';
+import { Loger } from './../viewmodel/loger/loger';
 import { FulltestCrmService } from './../fulltestcrm/fulltestcrm.service';
 import { element } from 'protractor';
 import { Resumo } from './../viewmodel/tabelaresumo';
@@ -51,13 +53,16 @@ export class CadastroCrmComponent implements OnInit {
     alertAtivo: boolean = false;
     alertCloseable: boolean = true;
 
+    loger: Loger;
+
     constructor(
         private cadastroCrmService: CadastroCrmService,
         private toastyComponent: ToastyComponent,
         private util: Util,
         private router: Router,
         private injector: Injector,
-        private fulltestCrmService: FulltestCrmService) {
+        private fulltestCrmService: FulltestCrmService,
+        private logerService: LogerService) {
         // Injeta o parametro input/dados passados para a variavel
         this.instancia = this.injector.get('instancia');
     }
@@ -72,6 +77,7 @@ export class CadastroCrmComponent implements OnInit {
         this.getCadastro();
     }
 
+    //Busca instancia retornando cadastro.
     getCadastro() {
         this.searchCadastro = true;
         this.cadastroCrmService
@@ -84,11 +90,12 @@ export class CadastroCrmComponent implements OnInit {
                     this.getValidacao();
                 } else {
                     let msgalerterror = "Cliente com erro de cadastro, favor transferir chamada ao CO utilizando o fluxo com o problema/sintoma informado pelo cliente."
+                    this.makeLoger(msgalerterror);
                     this.callAlert(msgalerterror, "alert-danger");
                 }
             }, error => {
                 this.searchCadastro = false;
-                console.log(error);
+                this.makeLoger(error.mError);
                 if (error.mError == "Erro de Cadastro - Circuito não assinalado no TBS.") {
                     let msgalerterror = "Cliente com erro de cadastro, favor transferir chamada ao CO utilizando o fluxo com o problema/sintoma informado pelo cliente."
                     this.callAlert(msgalerterror, "alert-danger");
@@ -98,6 +105,7 @@ export class CadastroCrmComponent implements OnInit {
             });
     }
 
+    //Faz validações com o cadastro buscado.
     getValidacao() {
         this.searchFulltest = true;
         this.fulltestCrmService
@@ -112,14 +120,18 @@ export class CadastroCrmComponent implements OnInit {
                 } else {
                     this.callAlert(this.objectValid.mensagem, "alert-danger");
                 }
+                this.makeLoger(this.objectValid.mensagem);
             }, error => {
                 this.callAlert(error.mError, "alert-danger");
                 this.listResumo.fulltest = false;
                 this.searchFulltest = false;
+                this.makeLoger(error.mError);
                 //this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
             });
     }
-
+    /*
+    *  Chamadas para infos na tela Toasty e Alert 
+    */
     callToasty(titulo, msg, theme) {
         this.toastyInfo = {
             titulo: titulo,
@@ -139,6 +151,9 @@ export class CadastroCrmComponent implements OnInit {
         this.alertCloseable = false;
     }
 
+    /**
+    * Validações dos Asserts para a lista de resumo.
+    */
     rnAsserts() {
         let bloqueio = null;
         let tbsradius = null;
@@ -176,5 +191,25 @@ export class CadastroCrmComponent implements OnInit {
             cadastro: cad,
             fulltest: false
         }
+    }
+
+    /*
+    *  Loger...
+    */
+    makeLoger(msgConclusao) {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        this.loger = {
+            instancia: this.cadastro.instancia,
+            designador: this.cadastro.designador,
+            designadorAcesso: this.cadastro.designadorAcesso,
+            executor: usr.user,
+            conclusao: msgConclusao,
+            cadastro: this.listResumo.cadastro,
+            semBloqueio: this.listResumo.bloqueio,
+            fulltest: this.listResumo.fulltest,
+            customer: JSON.stringify(this.cadastro)
+        }
+        //Descomentar quando for ativo...
+        //this.logerService.makeLog(this.loger);
     }
 }
