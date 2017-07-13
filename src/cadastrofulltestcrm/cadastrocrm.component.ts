@@ -205,6 +205,7 @@ export class CadastroCrmComponent implements OnInit {
         let cadastro: boolean = false;
         let semBloqueio: boolean = false;
         let fulltest: boolean = false;
+        let objval: string = "-1";
 
         if (this.cadastro) {
             inst = this.cadastro.instancia;
@@ -214,7 +215,12 @@ export class CadastroCrmComponent implements OnInit {
             cadastro = this.listResumo.cadastro;
             semBloqueio = this.listResumo.bloqueio;
             fulltest = this.listResumo.fulltest;
+
+            if (this.objectValid) {
+                objval = JSON.stringify(this.objectValid);
+            }
         }
+
         this.loger = {
             instancia: inst,
             designador: des,
@@ -224,7 +230,8 @@ export class CadastroCrmComponent implements OnInit {
             cadastro: cadastro,
             semBloqueio: semBloqueio,
             fulltest: fulltest,
-            customer: cust
+            customer: cust,
+            objectValids: objval
         }
         this.logerService.makeLog(this.loger);
     }
