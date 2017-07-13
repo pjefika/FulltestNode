@@ -1,3 +1,4 @@
+import { LogerService } from './../util/loger/loger.service';
 import { AdmComponent } from './../adm/adm.component';
 import { FulltestCrmService } from './../fulltestcrm/fulltestcrm.service';
 import { CadastroCrmService } from './../cadastrofulltestcrm/cadastrocrm.service';
@@ -76,7 +77,8 @@ import { AppComponent } from './app.component';
         HolderService,
         CadastroCrmService,
         FulltestCrmService,
-        AdmComponent
+        AdmComponent,
+        LogerService
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

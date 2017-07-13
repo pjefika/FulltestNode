@@ -1,9 +1,9 @@
-<div class="main-container">
-    <header class="header header-4">
+<clr-main-container>
+    <clr-header class="header-4">
         <div class="branding">
-            <a class="nav-link" href="/fulltest">
+            <a class="nav-link" >
                 <clr-icon shape="home" class="is-success"></clr-icon>
-                <span class="title">CO - Efika Fulltest</span>
+                <span class="title" id="tituloprincipal">CO - Efika Fulltest</span>
             </a>
         </div>
         <div class="header-nav">
@@ -40,7 +40,7 @@
                 </clr-dropdown-menu>
             </clr-dropdown>
         </div>
-    </header>
+    </clr-header>
     <nav class="subnav" *ngIf="subnav">
         <subnav-component [menus]="subNavMenus" [liberarSubNav]="liberarSubNav"></subnav-component>
     </nav>
@@ -48,12 +48,15 @@
         <div class="content-area">
             <div *ngIf="mostraToggle">
                 <div class="form-group">
-                    <div class="toggle-switch">
-                        <input type="checkbox" id="toggle_1" [(ngModel)]="eachFulltest">
-                        <label for="toggle_1">Selecione qual teste irá realizar:</label>
+                    <label>Selecione qual teste irá realizar:</label>
+                    <div class="radio-inline">
+                        <input type="radio" name="gridRadios1" id="checkrads_11" [(ngModel)]="eachFulltest" value="CO" checked>
+                        <label for="checkrads_11">CO</label>
                     </div>
-                    <label *ngIf="eachFulltest">CO</label>
-                    <label *ngIf="!eachFulltest">CRM</label>
+                    <div class="radio-inline">
+                        <input type="radio" name="gridRadios1" id="checkrads_12" [(ngModel)]="eachFulltest" value="CRM">
+                        <label for="checkrads_12">CRM</label>
+                    </div>
                 </div>
             </div>
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
@@ -63,4 +66,4 @@
             <sidenav-component [menus]="sideNavMenus" [liberarSidNav]="liberarSidNav"></sidenav-component>
         </nav>
     </div>
-</div>
+</clr-main-container>
