@@ -1,5 +1,5 @@
-import { SignpostService } from './../util/singpost/signpost.service';
-import { SignpostComponent } from './../util/singpost/signpost.component';
+import { PopoverService } from './../util/singpost/popover.service';
+import { PopoverComponent } from './../util/singpost/popover.component';
 import { LogerService } from './../util/loger/loger.service';
 import { AdmComponent } from './../adm/adm.component';
 import { FulltestCrmService } from './../fulltestcrm/fulltestcrm.service';
@@ -59,7 +59,7 @@ import { AppComponent } from './app.component';
         CadastroCrmComponent,
         FullltestCrmComponent,
         AdmComponent,
-        SignpostComponent
+        PopoverComponent
     ],
     imports: [
         BrowserModule,
@@ -82,7 +82,7 @@ import { AppComponent } from './app.component';
         FulltestCrmService,
         AdmComponent,
         LogerService,
-        SignpostService
+        PopoverService
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

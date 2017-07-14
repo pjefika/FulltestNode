@@ -30,6 +30,7 @@
             </label>
         </div>
         <div class="header-actions">
+            <popover-component [cadastro]="holderService.cadastro" *ngIf="holderService.cadastro"></popover-component>
             <clr-dropdown clrMenuPosition="bottom-right">
                 <button class="nav-icon" clrDropdownToggle>
                     <clr-icon shape="user"></clr-icon>
@@ -63,7 +64,7 @@
                     </div>
                 </div>
                 <div class="col-md-1">
-                    <!-- <signpost-component [state]="signpostState" *ngIf="holderService.cadastro" [cadastro]="holderService.cadastro"></signpost-component> -->
+
                 </div>
             </div>
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
