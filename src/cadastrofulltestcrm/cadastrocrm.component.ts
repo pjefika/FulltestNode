@@ -1,3 +1,4 @@
+import { HolderService } from './../util/holder/holder.service';
 import { LogerService } from './../util/loger/loger.service';
 import { Loger } from './../viewmodel/loger/loger';
 import { FulltestCrmService } from './../fulltestcrm/fulltestcrm.service';
@@ -62,7 +63,8 @@ export class CadastroCrmComponent implements OnInit {
         private router: Router,
         private injector: Injector,
         private fulltestCrmService: FulltestCrmService,
-        private logerService: LogerService) {
+        private logerService: LogerService,
+        private holderService: HolderService) {
         // Injeta o parametro input/dados passados para a variavel
         this.instancia = this.injector.get('instancia');
     }
@@ -82,8 +84,9 @@ export class CadastroCrmComponent implements OnInit {
         this.searchCadastro = true;
         this.cadastroCrmService
             .getCadastro(this.instancia)
-            .then(data => {
+            .then(data => {                
                 this.cadastro = data;
+                this.holderService.cadastro = this.cadastro;
                 this.searchCadastro = false;
                 this.rnAsserts();
                 if (this.listResumo.cadastro) {
@@ -215,7 +218,6 @@ export class CadastroCrmComponent implements OnInit {
             cadastro = this.listResumo.cadastro;
             semBloqueio = !this.listResumo.bloqueio;
             fulltest = this.listResumo.fulltest;
-            // Se objvalid 
             if (this.objectValid) {
                 objval = JSON.stringify(this.objectValid);
             }

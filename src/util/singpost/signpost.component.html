@@ -1,0 +1,9 @@
+<clr-signpost [clrSignpostPosition]="'bottom-left'">
+    <clr-signpost-content *clrIfOpen="state">
+        <h3 style="margin-top: 0">Resumo</h3>
+        <div *ngIf="cadastro">
+            <label>Instância: </label> {{cadastro.instancia}}
+            <label>Designador: </label> {{cadastro.designador}}
+        </div>
+    </clr-signpost-content>
+</clr-signpost>

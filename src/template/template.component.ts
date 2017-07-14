@@ -57,6 +57,8 @@ export class TemplateComponent implements OnInit {
         theme: string;
     }
 
+    signpostState: boolean = false;
+
     constructor(
         private router: Router,
         private util: Util,
@@ -85,7 +87,7 @@ export class TemplateComponent implements OnInit {
             if (usr.nv === 1) {
                 this.buscaCadastro = true;
             }
-            if (usr.nv >= 3) {
+            if (usr.nv >= 2) {
                 this.mostraToggle = true;
             }
         }
@@ -217,5 +219,4 @@ export class TemplateComponent implements OnInit {
             }
         }
     }
-
 }
