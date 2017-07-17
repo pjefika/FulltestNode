@@ -5,7 +5,7 @@ export const subNavMockCrm: SubNav[] = [
         component: "cadastro-crm-component"
     },
     {
-        nome: "Outras Ações",
-        component: ""
+        nome: "Testes Complementares",
+        component: "complementares-component"
     },
 ]

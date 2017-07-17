@@ -1,3 +1,5 @@
+import { ComplementaresComponent } from './../crm/complementares/complementares.component';
+import { ComplementaresService } from './../crm/complementares/complementares.service';
 import { FulltestCrmService } from './../crm/fulltestcrm/fulltestcrm.service';
 import { FulltestService } from './../co/fulltest/fulltest.service';
 import { FullltestCrmComponent } from './../crm/fulltestcrm/fulltestcrm.component';
@@ -59,7 +61,8 @@ import { AppComponent } from './app.component';
         CadastroCrmComponent,
         FullltestCrmComponent,
         AdmComponent,
-        PopoverComponent
+        PopoverComponent,
+        ComplementaresComponent
     ],
     imports: [
         BrowserModule,
@@ -82,7 +85,8 @@ import { AppComponent } from './app.component';
         FulltestCrmService,
         AdmComponent,
         LogerService,
-        PopoverService
+        PopoverService,
+        ComplementaresService
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
