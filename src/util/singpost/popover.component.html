@@ -8,7 +8,7 @@
             <table class="table table-compact table-vertical">
                 <tbody>
                     <tr>
-                        <th colspan="2">Informações de Cadastro</th>
+                        <th colspan="2" style="text-align: center;">Informações de Cadastro</th>
                     </tr>
                     <tr>
                         <th>Instância: </th>
@@ -21,6 +21,23 @@
                     <tr>
                         <th>Designador de Acesso: </th>
                         <td>{{cadastro.designadorAcesso}}</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2" style="text-align: center;">Informações de Serviço</th>
+                    </tr>
+                    <tr>
+                        <th>Velocidade contratada:</th>
+                        <td>{{cadastro.servicos.velDown}} / {{cadastro.servicos.velUp}}</td>
+                    </tr>
+                    <tr>
+                        <th>SIP:</th>
+                        <td *ngIf="cadastro.servicos.isSip">Sim</td>
+                        <td *ngIf="!cadastro.servicos.isSip">Não</td>
+                    </tr>
+                    <tr>
+                        <th>Híbrido:</th>
+                        <td *ngIf="cadastro.servicos.isHib">Sim</td>
+                        <td *ngIf="!cadastro.servicos.isHib">Não</td>
                     </tr>
                 </tbody>
             </table>
