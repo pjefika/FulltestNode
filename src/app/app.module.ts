@@ -1,3 +1,4 @@
+import { ToggleComponent } from './../template/toggle/toggle.component';
 import { AssocontService } from './../util/comp_complementares/assocont/assocont.service';
 import { AssocontComponent } from './../util/comp_complementares/assocont/assocont.component';
 import { ResetService } from './../util/comp_complementares/portreset/reset.service';
@@ -68,7 +69,8 @@ import { AppComponent } from './app.component';
         PopoverComponent,
         ComplementaresComponent,
         ResetComponent,
-        AssocontComponent
+        AssocontComponent,
+        ToggleComponent
     ],
     imports: [
         BrowserModule,

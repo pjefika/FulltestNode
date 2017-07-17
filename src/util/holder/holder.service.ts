@@ -7,7 +7,8 @@ export class HolderService {
 
     cadastro: Cadastro;
     objectValid: ObjectValid;
+    eachFulltest: string;
 
-    constructor() {}
+    constructor() { }
 
 }
