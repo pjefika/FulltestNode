@@ -1,12 +1,9 @@
-import { ObjectValid } from './../viewmodel/objectValid';
-import { Valids } from './../viewmodel/validacao';
+import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
-
-import { Cadastro } from '../viewmodel/cadastro';
 
 @Injectable()
 export class CadastroService {

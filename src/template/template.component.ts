@@ -1,19 +1,20 @@
-import { CadastroCrmComponent } from './../cadastrofulltestcrm/cadastrocrm.component';
+import { CadastroCrmComponent } from './../crm/cadastrofulltestcrm/cadastrocrm.component';
+import { FulltestComponent } from './../co/fulltest/fulltest.component';
+import { CadastroComponent } from './../co/cadastro/cadastro.component';
+import { ObjectValid } from './../viewmodel/fulltest/objectValid';
+import { Cadastro } from './../viewmodel/cadastro/cadastro';
+import { SideNav } from './../viewmodel/menus/sidenav';
+import { SubNav } from './../viewmodel/menus/subnav';
+import { subNavMockCrm } from './mock/crm/mock-subnav-crm';
 import { HolderService } from './../util/holder/holder.service';
-import { ObjectValid } from './../viewmodel/objectValid';
 import { ToastyComponent } from './../util/toasty/toasty.component';
 import { Usuario } from './../viewmodel/usuario';
 import { BrancoComponent } from './../branco/branco.component';
-import { Cadastro } from './../viewmodel/cadastro';
-import { FulltestComponent } from './../fulltest/fulltest.component';
 import { sideNavMockCadastro } from './mock/cadastro/mock-sidenav-cadastro';
 import { subNavMockCadastro } from './mock/cadastro/mock-subnav-cadastro';
-import { CadastroComponent } from './../cadastro/cadastro.component';
 import { PrincipalComponent } from './../principal/principal.component';
 import { sideNavMockMassivo } from './mock/massivo/mock-sidenav-massivo';
 import { subNavMockMassivo } from './mock/massivo/mock-subnav-massivo';
-import { SideNav } from './../viewmodel/sidenav';
-import { SubNav } from './../viewmodel/subnav';
 import { Util } from './../util/util';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -49,7 +50,7 @@ export class TemplateComponent implements OnInit {
     mostraMenus: boolean = false;
     mostraToggle: boolean = false;
 
-    eachFulltest: string = "CO";
+    eachFulltest: string = "CRM";
 
     toastyInfo: {
         titulo: string;
@@ -119,7 +120,9 @@ export class TemplateComponent implements OnInit {
         } else {
             if (this.eachFulltest === "CRM") {
                 this.createRealizaFulltestCrmComponent();
-                this.subnav = false;
+                this.subNavMenus = subNavMockCrm;
+                this.subnav = true;
+                this.liberarSubNav = true;
             } else {
                 this.cadastro = this.holderService.cadastro;
                 this.createCadastroComponent();

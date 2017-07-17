@@ -1,7 +1,8 @@
-import { HolderService } from './../util/holder/holder.service';
-import { ToastyComponent } from './../util/toasty/toasty.component';
-import { ObjectValid } from './../viewmodel/objectValid';
-import { Valids } from './../viewmodel/validacao';
+import { Cadastro } from './../../viewmodel/cadastro/cadastro';
+import { HolderService } from './../../util/holder/holder.service';
+import { ToastyComponent } from './../../util/toasty/toasty.component';
+import { Util } from './../../util/util';
+
 import { Component, OnInit, Injector, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -9,8 +10,6 @@ import 'rxjs/add/operator/toPromise';
 import { Wizard } from "clarity-angular";
 
 import { CadastroService } from './cadastro.service';
-import { Cadastro } from '../viewmodel/cadastro';
-import { Util } from '../util/util';
 
 @Component({
     selector: 'cadastro-component',

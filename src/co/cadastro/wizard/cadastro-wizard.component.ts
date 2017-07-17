@@ -1,4 +1,5 @@
-import { Cadastro } from './../../viewmodel/cadastro';
+import { Cadastro } from './../../../viewmodel/cadastro/cadastro';
+
 import { Wizard } from 'clarity-angular';
 import { Component, Input, ViewChild } from '@angular/core';
 

@@ -1,11 +1,11 @@
-import { HolderService } from './../util/holder/holder.service';
-import { TemplateComponent } from './../template/template.component';
-import { ToastyComponent } from './../util/toasty/toasty.component';
+import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
+import { Cadastro } from './../../viewmodel/cadastro/cadastro';
+import { HolderService } from './../../util/holder/holder.service';
+import { ToastyComponent } from './../../util/toasty/toasty.component';
+import { Util } from './../../util/util';
+
 import { FulltestService } from './fulltest.service';
 import { Router } from '@angular/router';
-import { Util } from './../util/util';
-import { ObjectValid } from './../viewmodel/objectValid';
-import { Cadastro } from './../viewmodel/cadastro';
 import { Component, Input, OnInit, Injector } from '@angular/core';
 
 @Component({

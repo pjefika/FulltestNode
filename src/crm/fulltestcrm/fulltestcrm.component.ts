@@ -1,6 +1,6 @@
-import { ToastyComponent } from './../util/toasty/toasty.component';
-import { ObjectValid } from './../viewmodel/objectValid';
-import { Cadastro } from './../viewmodel/cadastro';
+import { ToastyComponent } from './../../util/toasty/toasty.component';
+import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
+import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { FulltestCrmService } from './fulltestcrm.service';
 import { Component, OnInit, Input } from '@angular/core';
 

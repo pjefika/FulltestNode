@@ -1,15 +1,16 @@
-import { HolderService } from './../util/holder/holder.service';
-import { LogerService } from './../util/loger/loger.service';
-import { Loger } from './../viewmodel/loger/loger';
+import { HolderService } from './../../util/holder/holder.service';
+import { LogerService } from './../../util/loger/loger.service';
+import { Util } from './../../util/util';
+import { ToastyComponent } from './../../util/toasty/toasty.component';
+import { Loger } from './../../viewmodel/loger/loger';
+import { Resumo } from './../../viewmodel/fulltest/tabelaresumo';
+import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
+import { Cadastro } from './../../viewmodel/cadastro/cadastro';
+
 import { FulltestCrmService } from './../fulltestcrm/fulltestcrm.service';
 import { element } from 'protractor';
-import { Resumo } from './../viewmodel/tabelaresumo';
 import { CadastroCrmService } from './cadastrocrm.service';
 import { Router } from '@angular/router';
-import { Util } from './../util/util';
-import { ToastyComponent } from './../util/toasty/toasty.component';
-import { ObjectValid } from './../viewmodel/objectValid';
-import { Cadastro } from './../viewmodel/cadastro';
 import { Component, OnInit, Injector } from '@angular/core';
 
 @Component({
@@ -75,8 +76,12 @@ export class CadastroCrmComponent implements OnInit {
                 this.router.navigate(['./fulltest/entrar']);
             }
         });
-        //Inicia o fulltest assim que inicializa o componente
-        this.getCadastro();
+        if (this.holderService.cadastro) {
+            this.cadastro = this.holderService.cadastro
+        } else {
+            //Inicia o fulltest assim que inicializa o componente
+            this.getCadastro();
+        }
     }
 
     //Busca instancia retornando cadastro.
@@ -84,7 +89,7 @@ export class CadastroCrmComponent implements OnInit {
         this.searchCadastro = true;
         this.cadastroCrmService
             .getCadastro(this.instancia)
-            .then(data => {                
+            .then(data => {
                 this.cadastro = data;
                 this.holderService.cadastro = this.cadastro;
                 this.searchCadastro = false;

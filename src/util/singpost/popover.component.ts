@@ -1,6 +1,6 @@
+import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { PopoverService } from './popover.service';
 
-import { Cadastro } from './../../viewmodel/cadastro';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

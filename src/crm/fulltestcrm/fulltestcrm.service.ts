@@ -1,5 +1,5 @@
-import { ObjectValid } from './../viewmodel/objectValid';
-import { Cadastro } from './../viewmodel/cadastro';
+import { Cadastro } from './../../viewmodel/cadastro/cadastro';
+import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
 import { RequestOptions, Headers, Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
