@@ -1,3 +1,5 @@
+import { MakeLogerService } from './../rnservices/makeloger.service';
+import { AssertService } from './../rnservices/assert.service';
 import { HolderService } from './../../util/holder/holder.service';
 import { LogerService } from './../../util/loger/loger.service';
 import { Util } from './../../util/util';
@@ -16,7 +18,8 @@ import { Component, OnInit, Injector } from '@angular/core';
 @Component({
     selector: 'cadastro-crm-component',
     templateUrl: 'cadastrocrm.component.html',
-    styleUrls: ['cadastrocrm.component.css']
+    styleUrls: ['cadastrocrm.component.css'],
+    providers: [AssertService, MakeLogerService]
 })
 
 export class CadastroCrmComponent implements OnInit {
@@ -65,7 +68,9 @@ export class CadastroCrmComponent implements OnInit {
         private injector: Injector,
         private fulltestCrmService: FulltestCrmService,
         private logerService: LogerService,
-        private holderService: HolderService) {
+        private holderService: HolderService,
+        private assertService: AssertService,
+        private makeLogerService: MakeLogerService) {
         // Injeta o parametro input/dados passados para a variavel
         this.instancia = this.injector.get('instancia');
     }
@@ -93,17 +98,10 @@ export class CadastroCrmComponent implements OnInit {
                 this.cadastro = data;
                 this.holderService.cadastro = this.cadastro;
                 this.searchCadastro = false;
-                this.rnAsserts();
-                if (this.listResumo.cadastro) {
-                    this.getValidacao();
-                } else {
-                    let msgalerterror = "Cliente com erro de cadastro, favor transferir chamada ao CO utilizando o fluxo com o problema/sintoma informado pelo cliente."
-                    this.makeLoger(msgalerterror);
-                    this.callAlert(msgalerterror, "alert-danger");
-                }
+                this.assert();
             }, error => {
                 this.searchCadastro = false;
-                this.makeLoger(error.mError);
+                this.mloger(error.mError);
                 if (error.mError == "Erro de Cadastro - Circuito não assinalado no TBS.") {
                     let msgalerterror = "Cliente com erro de cadastro, favor transferir chamada ao CO utilizando o fluxo com o problema/sintoma informado pelo cliente."
                     this.callAlert(msgalerterror, "alert-danger");
@@ -122,18 +120,17 @@ export class CadastroCrmComponent implements OnInit {
                 this.objectValid = data;
                 this.searchFulltest = false;
                 this.listResumo.fulltest = this.objectValid.resultado;
-                let typeAlert;
                 if (this.listResumo.fulltest) {
                     this.callAlert(this.objectValid.mensagem, "alert-success");
                 } else {
                     this.callAlert(this.objectValid.mensagem, "alert-danger");
                 }
-                this.makeLoger(this.objectValid.mensagem);
+                this.mloger(this.objectValid.mensagem);
             }, error => {
                 this.callAlert(error.mError, "alert-danger");
                 this.listResumo.fulltest = false;
                 this.searchFulltest = false;
-                this.makeLoger(error.mError);
+                this.mloger(error.mError);
                 //this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
             });
     }
@@ -162,84 +159,34 @@ export class CadastroCrmComponent implements OnInit {
     /**
     * Validações dos Asserts para a lista de resumo.
     */
-    rnAsserts() {
-        let bloqueio = null;
-        let tbsradius = null;
-        let circuito = null;
-        this.cadastro.asserts.forEach(element => {
-            if (element.asserts == "HAS_BLOQUEIO_RADIUS") {
-                bloqueio = element.value;
-            }
-            if (element.asserts === "DIVERGENCIA_TBS_RADIUS") {
-                tbsradius = element.value;
-            }
-            if (element.asserts === "CIRCUITO_ATIVO") {
-                circuito = element.value;
-            }
-        });
-        this.listAsserts = {
-            tbsradius: tbsradius,
-            circuito: circuito,
-            bloqueio: bloqueio
-        }
-        this.validaAsserts();
-    }
-
-    validaAsserts() {
-        let cad: boolean = false;
-        let bloc: boolean = false;
-        if (!this.listAsserts.tbsradius && this.listAsserts.circuito) {
-            cad = true;
-        }
-        if (this.listAsserts.bloqueio) {
-            bloc = this.listAsserts.bloqueio;
-        }
-        this.listResumo = {
-            bloqueio: bloc,
-            cadastro: cad,
-            fulltest: false
-        }
+    assert() {
+        this.assertService
+            .rnAsserts(this.cadastro)
+            .then(data => {
+                this.listAsserts = data;
+                this.assertService.validaAsserts(this.listAsserts)
+                    .then(data => {
+                        this.listResumo = data;
+                        if (this.listResumo.cadastro) {
+                            this.getValidacao();
+                        } else {
+                            let msgalerterror = "Cliente com erro de cadastro, favor transferir chamada ao CO utilizando o fluxo com o problema/sintoma informado pelo cliente."
+                            this.mloger(msgalerterror);
+                            this.callAlert(msgalerterror, "alert-danger");
+                        }
+                    });
+            });
     }
 
     /*
     * Loger... 
     */
-    makeLoger(msgConclusao) {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
-        let inst: string = this.instancia;
-        let desA: string = "-1";
-        let des: string = "-1";
-        let cust: string = "-1";
-        let cadastro: boolean = false;
-        let semBloqueio: boolean = false;
-        let fulltest: boolean = false;
-        let objval: string = "-1";
-
-        if (this.cadastro) {
-            inst = this.cadastro.instancia;
-            desA = this.cadastro.designadorAcesso;
-            des = this.cadastro.designador;
-            cust = JSON.stringify(this.cadastro);
-            cadastro = this.listResumo.cadastro;
-            semBloqueio = !this.listResumo.bloqueio;
-            fulltest = this.listResumo.fulltest;
-            if (this.objectValid) {
-                objval = JSON.stringify(this.objectValid);
-            }
-        }
-
-        this.loger = {
-            instancia: inst,
-            designador: des,
-            designadorAcesso: desA,
-            executor: usr.user,
-            conclusao: msgConclusao,
-            cadastro: cadastro,
-            semBloqueio: semBloqueio,
-            fulltest: fulltest,
-            customer: cust,
-            valids: objval
-        }
-        this.logerService.makeLog(this.loger);
+    mloger(msgConclusao) {
+        this.makeLogerService
+            .makeLoger(msgConclusao, this.instancia, this.cadastro, this.objectValid, this.listResumo)
+            .then(data => {                
+                this.loger = data;
+                this.logerService.makeLog(this.loger);                
+            })
     }
 }

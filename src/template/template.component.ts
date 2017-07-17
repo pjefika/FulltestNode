@@ -65,7 +65,7 @@ export class TemplateComponent implements OnInit {
         private router: Router,
         private util: Util,
         private toastyComponent: ToastyComponent,
-        private holderService: HolderService) { }
+        public holderService: HolderService) { }
 
     /**
     * Faz ao iniciar o componente 
