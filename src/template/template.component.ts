@@ -1,3 +1,4 @@
+import { ComplementaresComponent } from './../crm/complementares/complementares.component';
 import { CadastroCrmComponent } from './../crm/cadastrofulltestcrm/cadastrocrm.component';
 import { FulltestComponent } from './../co/fulltest/fulltest.component';
 import { CadastroComponent } from './../co/cadastro/cadastro.component';
@@ -170,8 +171,8 @@ export class TemplateComponent implements OnInit {
 
     /**
     * Insere components no dynamic component
-    **/
-    emptyComponentData() {
+    **/    
+    emptyComponentData() { // Vazio
         this.componentData = {
             component: BrancoComponent,
             inputs: {
@@ -180,7 +181,7 @@ export class TemplateComponent implements OnInit {
         }
     }
 
-    createPrincipalComponent() {
+    createPrincipalComponent() { //Componente Principal
         this.componentData = {
             component: PrincipalComponent,
             inputs: {
@@ -189,7 +190,10 @@ export class TemplateComponent implements OnInit {
         }
     }
 
-    createCadastroComponent() {
+    /**
+    * Componentes do CO
+    **/
+    createCadastroComponent() { // Cadastro CO
         this.emptyComponentData();
         this.componentData = {
             component: CadastroComponent,
@@ -199,7 +203,7 @@ export class TemplateComponent implements OnInit {
         }
     }
 
-    createRealizaFulltestComponent() {
+    createRealizaFulltestComponent() { //Fullteste CO
         this.cadastro = this.holderService.cadastro;
         this.objectValid = this.holderService.objectValid;
         if (this.cadastro) {
@@ -213,12 +217,25 @@ export class TemplateComponent implements OnInit {
         }
     }
 
-    createRealizaFulltestCrmComponent() {
+    /**
+    * Componentes do CRM
+    **/
+    createRealizaFulltestCrmComponent() { // Cadastro / Fullteste CRM
         this.emptyComponentData();
         this.componentData = {
             component: CadastroCrmComponent,
             inputs: {
                 instancia: this.instancia
+            }
+        }
+    }
+
+    createComplementaresComponent() { // Testes Complementares CRM
+        this.emptyComponentData();
+        this.componentData = {
+            component: ComplementaresComponent,
+            inputs: {
+                cadastro: this.cadastro
             }
         }
     }

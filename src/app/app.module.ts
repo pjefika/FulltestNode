@@ -1,3 +1,7 @@
+import { AssocontService } from './../util/comp_complementares/assocont/assocont.service';
+import { AssocontComponent } from './../util/comp_complementares/assocont/assocont.component';
+import { ResetService } from './../util/comp_complementares/portreset/reset.service';
+import { ResetComponent } from './../util/comp_complementares/portreset/reset.component';
 import { ComplementaresComponent } from './../crm/complementares/complementares.component';
 import { ComplementaresService } from './../crm/complementares/complementares.service';
 import { FulltestCrmService } from './../crm/fulltestcrm/fulltestcrm.service';
@@ -62,7 +66,9 @@ import { AppComponent } from './app.component';
         FullltestCrmComponent,
         AdmComponent,
         PopoverComponent,
-        ComplementaresComponent
+        ComplementaresComponent,
+        ResetComponent,
+        AssocontComponent
     ],
     imports: [
         BrowserModule,
@@ -86,7 +92,9 @@ import { AppComponent } from './app.component';
         AdmComponent,
         LogerService,
         PopoverService,
-        ComplementaresService
+        ComplementaresService,
+        ResetService,
+        AssocontService
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -95,7 +103,8 @@ import { AppComponent } from './app.component';
         FulltestComponent,
         CadastroComponent,
         BrancoComponent,
-        CadastroCrmComponent
+        CadastroCrmComponent,
+        ComplementaresComponent
     ]
 })
 export class AppModule { }

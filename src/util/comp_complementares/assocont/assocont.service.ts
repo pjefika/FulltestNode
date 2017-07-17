@@ -1,15 +1,18 @@
-import { Http } from '@angular/http';
+import { Cadastro } from './../../../viewmodel/cadastro/cadastro';
+import { RequestOptions, Headers, Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
-@Injectable()
-export class ComplementaresService {
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/Rx';
 
-    private headers = new Headers({ 'Content-Type': 'text/plain' });
+@Injectable()
+export class AssocontService {
+    
+    private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
+    private options = new RequestOptions({ headers: this.headersAppJson });
     private Url = '';  // URL to ...
 
-    
     constructor(private http: Http) { }
-
 
     private handleError(error: any): Promise<any> {
         //console.error('Ocorreu o seguinte erro: ', error); // for demo purposes only

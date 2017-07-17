@@ -18,14 +18,31 @@ export class SubnavComponent implements OnInit {
 
     abrecomponent(l) {
         if (this.liberarSubNav) {
-            switch (l.component) {
-                case "full-test-component":
-                    this.templateComponent.createRealizaFulltestComponent();
-                    break;
-                case "cadastro-component":
-                    this.templateComponent.createCadastroComponent();
-                    break;
-            }
+            this.switchCO(l);
+            this.switchCrm(l);
+        }
+    }
+
+
+    switchCO(l) {
+        switch (l.component) {
+            case "full-test-component":
+                this.templateComponent.createRealizaFulltestComponent();
+                break;
+            case "cadastro-component":
+                this.templateComponent.createCadastroComponent();
+                break;
+        }
+    }
+
+    switchCrm(l) {
+        switch (l.component) {
+            case "cadastro-crm-component":
+                this.templateComponent.createRealizaFulltestCrmComponent();
+                break;
+            case "complementares-component":
+                this.templateComponent.createComplementaresComponent();
+                break;
         }
     }
 
