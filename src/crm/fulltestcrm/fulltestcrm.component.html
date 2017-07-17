@@ -1,5 +1,4 @@
-<div>
-    <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Fulltest'"></loading-component>
+<div>    
     <div *ngIf="!searchFulltest">
         <div *ngIf="objectValid">
             <!-- <table class="table table-compact" style="margin: 7px 0 0 0;">
@@ -55,4 +54,5 @@
         </div>
         <!-- <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" [disabled]="doFulltest">Realizar Fulltest</button> -->
     </div>
+    <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Fulltest'"></loading-component>
 </div>

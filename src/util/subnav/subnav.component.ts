@@ -17,13 +17,12 @@ export class SubnavComponent implements OnInit {
     ngOnInit() { }
 
     abrecomponent(l) {
+        console.log(this.liberarSubNav)
         if (this.liberarSubNav) {
             this.switchCO(l);
             this.switchCrm(l);
         }
     }
-
-
     switchCO(l) {
         switch (l.component) {
             case "full-test-component":

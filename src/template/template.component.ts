@@ -114,24 +114,20 @@ export class TemplateComponent implements OnInit {
         this.holderService.cadastro = null;
         this.holderService.objectValid = null;
         let usr = JSON.parse(sessionStorage.getItem('user'));
-        if (usr.nv === 1) {
+        if (usr.nv === 1 || this.holderService.eachFulltest === "CRM") {
             this.createRealizaFulltestCrmComponent();
+            this.subNavMenus = subNavMockCrm;
+            this.subnav = true;
+            this.liberarSubNav = true;
         } else {
-            if (this.holderService.eachFulltest === "CRM") {
-                this.createRealizaFulltestCrmComponent();
-                this.subNavMenus = subNavMockCrm;
-                this.subnav = true;
-                this.liberarSubNav = true;
-            } else {
-                this.cadastro = this.holderService.cadastro;
-                this.createCadastroComponent();
-                this.subNavMenus = subNavMockCadastro;
-                this.sideNavMenus = sideNavMockCadastro;
-                this.subnav = true;
-                // this.sidenav = true;
-                this.liberarSubNav = true;
-                // this.liberarSidNav = true;
-            }
+            this.cadastro = this.holderService.cadastro;
+            this.createCadastroComponent();
+            this.subNavMenus = subNavMockCadastro;
+            this.subnav = true;
+            this.liberarSubNav = true;
+            // this.sidenav = true;
+            // this.sideNavMenus = sideNavMockCadastro;
+            // this.liberarSidNav = true;
         }
     }
 
@@ -169,7 +165,7 @@ export class TemplateComponent implements OnInit {
 
     /**
     * Insere components no dynamic component
-    **/    
+    **/
     emptyComponentData() { // Vazio
         this.componentData = {
             component: BrancoComponent,
