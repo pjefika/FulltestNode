@@ -64,6 +64,7 @@ export class CadastroComponent implements OnInit {
                 this.cadastro = data;
                 this.searching = false;
                 this.holderService.cadastro = this.cadastro;
+                this.holderService.liberarSubNav = true;
             }, error => {
                 this.searching = false;
                 this.toastyInfo = {

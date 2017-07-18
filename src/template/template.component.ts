@@ -45,9 +45,6 @@ export class TemplateComponent implements OnInit {
     cadastro: Cadastro;
     objectValid: ObjectValid;
 
-    liberarSubNav: boolean = false;
-    liberarSidNav: boolean = false;
-
     mostraMenus: boolean = false;
     mostraToggle: boolean = false;
 
@@ -117,16 +114,13 @@ export class TemplateComponent implements OnInit {
             this.createRealizaFulltestCrmComponent();
             this.subNavMenus = subNavMockCrm;
             this.subnav = true;
-            this.liberarSubNav = true;
         } else {
             this.cadastro = this.holderService.cadastro;
             this.createCadastroComponent();
             this.subNavMenus = subNavMockCadastro;
             this.subnav = true;
-            this.liberarSubNav = true;
             // this.sidenav = true;
             // this.sideNavMenus = sideNavMockCadastro;
-            // this.liberarSidNav = true;
         }
     }
 
@@ -243,5 +237,6 @@ export class TemplateComponent implements OnInit {
         this.holderService.objectValid = null;
         this.holderService.listAsserts = null;
         this.holderService.listResumo = null;
+        this.holderService.liberarSubNav = null;
     }
 }

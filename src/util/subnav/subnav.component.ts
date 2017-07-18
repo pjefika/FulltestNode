@@ -1,3 +1,4 @@
+import { HolderService } from './../holder/holder.service';
 import { TemplateComponent } from './../../template/template.component';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -8,17 +9,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class SubnavComponent implements OnInit {
-    constructor(private templateComponent: TemplateComponent) { }
+    constructor(
+        private templateComponent: TemplateComponent,
+        public holderService: HolderService) { }
 
     @Input() menus: [{ nome: string, component: string }];
 
-    @Input() liberarSubNav: boolean = false;
-    
     ngOnInit() { }
 
-    abrecomponent(l) {
-        //console.log(this.liberarSubNav)
-        if (this.liberarSubNav) {
+    abrecomponent(l) {        
+        if (this.holderService.liberarSubNav) {
             this.switchCO(l);
             this.switchCrm(l);
         }

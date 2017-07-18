@@ -130,6 +130,7 @@ export class CadastroCrmComponent implements OnInit {
                     this.callAlert(this.objectValid.mensagem, "alert-danger");
                 }
                 this.mloger(this.objectValid.mensagem);
+                this.holderService.liberarSubNav = true;
             }, error => {
                 this.callAlert(error.mError, "alert-danger");
                 this.listResumo.fulltest = false;

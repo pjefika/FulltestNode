@@ -21,6 +21,8 @@ export class HolderService {
         fulltest: boolean;
     }
 
+    liberarSubNav: boolean = false;
+
     constructor() { }
 
 }

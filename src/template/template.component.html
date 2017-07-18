@@ -51,7 +51,7 @@
         </div>
     </clr-header>
     <nav class="subnav" *ngIf="subnav">
-        <subnav-component [menus]="subNavMenus" [liberarSubNav]="liberarSubNav"></subnav-component>
+        <subnav-component [menus]="subNavMenus"></subnav-component>
     </nav>
     <div class="content-container">
         <div class="content-area">            
@@ -59,7 +59,7 @@
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
         </div>
         <nav class="sidenav" *ngIf="sidenav">
-            <sidenav-component [menus]="sideNavMenus" [liberarSidNav]="liberarSidNav"></sidenav-component>
+            <sidenav-component [menus]="sideNavMenus"></sidenav-component>
         </nav>
     </div>
 </clr-main-container>
