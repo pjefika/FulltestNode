@@ -1,0 +1,87 @@
+<div>
+    <loading-component [searching]="searchCadastro" [searchWhat]="'Buscando Cadastro...'"></loading-component>
+    <div *ngIf="cadastro">
+        <h3>Fulltest CRM</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-compact table-vertical" style="margin: 7px 0 0 0;">
+                    <tbody>
+                        <tr>
+                            <th colspan="2">Informações de Cadastro</th>
+                        </tr>
+                        <tr>
+                            <th>Instância: </th>
+                            <td>{{cadastro.instancia}}</td>
+                        </tr>
+                        <tr>
+                            <th>Designador: </th>
+                            <td>{{cadastro.designador}}</td>
+                        </tr>
+                        <tr>
+                            <th>Designador de Acesso: </th>
+                            <td>{{cadastro.designadorAcesso}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-compact table-vertical" style="margin: 7px 0 0 0;">
+                    <tbody>
+                        <tr>
+                            <th colspan="2">Informações de Serviço</th>
+                        </tr>
+                        <tr>
+                            <th>Velocidade contratada:</th>
+                            <td>{{cadastro.servicos.velDown}} / {{cadastro.servicos.velUp}}</td>
+                        </tr>
+                        <tr>
+                            <th>SIP:</th>
+                            <td *ngIf="cadastro.servicos.isSip">Sim</td>
+                            <td *ngIf="!cadastro.servicos.isSip">Não</td>
+                        </tr>
+                        <tr>
+                            <th>Híbrido:</th>
+                            <td *ngIf="cadastro.servicos.isHib">Sim</td>
+                            <td *ngIf="!cadastro.servicos.isHib">Não</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <table class="table table-compact table-vertical" style="margin: 7px 0 0 0;" *ngIf="listResumo">
+            <tbody>
+                <tr>
+                    <th colspan="2">Tabela Resumo</th>
+                </tr>
+                <tr>
+                    <th>Cadastro</th>
+                    <td>
+                        <clr-icon shape="check" class="is-success" *ngIf="listResumo.cadastro"></clr-icon>
+                        <clr-icon shape="times" class="is-error" *ngIf="!listResumo.cadastro"></clr-icon>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Sem Bloqueio</th>
+                    <td>
+                        <clr-icon shape="check" class="is-success" *ngIf="!listResumo.bloqueio"></clr-icon>
+                        <clr-icon shape="times" class="is-error" *ngIf="listResumo.bloqueio"></clr-icon>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Fulltest</th>
+                    <td>
+                        <span class="spinner spinner-sm" *ngIf="searchFulltest">
+                            Loading...
+                        </span>
+                        <div *ngIf="!searchFulltest">
+                            <clr-icon shape="check" class="is-success" *ngIf="listResumo.fulltest"></clr-icon>
+                            <clr-icon shape="times" class="is-error" *ngIf="!listResumo.fulltest"></clr-icon>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <fulltest-crm-component [objectValid]="objectValid"></fulltest-crm-component>
+    </div>
+    <alert-component [msg]="alertMsg" [ativo]="alertAtivo" [closeable]="alertCloseable"></alert-component>
+</div>

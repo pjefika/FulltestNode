@@ -1,0 +1,50 @@
+<div>
+    <a class="nav-link nav-icon" (click)="ativo = true">
+        <clr-icon shape="info-circle"></clr-icon>
+    </a>
+    <clr-modal [(clrModalOpen)]="ativo" [clrModalStaticBackdrop]="true">
+        <h3 class="modal-title">Resumo</h3>
+        <div class="modal-body">
+            <table class="table table-compact table-vertical">
+                <tbody>
+                    <tr>
+                        <th colspan="2" style="text-align: center;">Informações de Cadastro</th>
+                    </tr>
+                    <tr>
+                        <th>Instância: </th>
+                        <td>{{cadastro.instancia}}</td>
+                    </tr>
+                    <tr>
+                        <th>Designador: </th>
+                        <td>{{cadastro.designador}}</td>
+                    </tr>
+                    <tr>
+                        <th>Designador de Acesso: </th>
+                        <td>{{cadastro.designadorAcesso}}</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2" style="text-align: center;">Informações de Serviço</th>
+                    </tr>
+                    <tr>
+                        <th>Velocidade contratada:</th>
+                        <td>{{cadastro.servicos.velDown}} / {{cadastro.servicos.velUp}}</td>
+                    </tr>
+                    <tr>
+                        <th>SIP:</th>
+                        <td *ngIf="cadastro.servicos.isSip">Sim</td>
+                        <td *ngIf="!cadastro.servicos.isSip">Não</td>
+                    </tr>
+                    <tr>
+                        <th>Híbrido:</th>
+                        <td *ngIf="cadastro.servicos.isHib">Sim</td>
+                        <td *ngIf="!cadastro.servicos.isHib">Não</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline" (click)="ativo = false">Fechar</button>
+            <!-- <button type="button" class="btn btn-primary" (click)="basic = false">Ok</button> -->
+        </div>
+    </clr-modal>
+</div>

@@ -10,15 +10,7 @@ import { Wizard } from "clarity-angular";
 
 export class PrincipalComponent implements OnInit {
 
-    @ViewChild("wizardlg") wizard: Wizard;
-
     constructor(private router: Router, private util: Util) { }
-
-    imgbusca = "./assets/imagens/bemvindo.png";
-    imgcadastro = "./assets/imagens/cadastro.png";
-    imgfulltest = "./assets/imagens/fulltest.png";
-
-    mdOpen: boolean = false;
 
     ngOnInit(): void {
         this.util.isLogado().then((result: boolean) => {

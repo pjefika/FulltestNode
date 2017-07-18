@@ -1,0 +1,24 @@
+<div>
+    <a class="nav-link nav-icon" (click)="modalToggle = true">
+        <clr-icon shape="switch"></clr-icon>
+    </a>
+    <clr-modal [(clrModalOpen)]="modalToggle" [clrModalStaticBackdrop]="true" [clrModalClosable]="false">
+        <h3 class="modal-title">Escolha Fulltest</h3>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Selecione qual teste irá realizar:</label>
+                <div class="radio-inline">
+                    <input type="radio" name="gridRadios1" id="checkrads_11" [(ngModel)]="eachFulltest" value="CO" checked>
+                    <label for="checkrads_11">CO</label>
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" name="gridRadios1" id="checkrads_12" [(ngModel)]="eachFulltest" value="CRM">
+                    <label for="checkrads_12">CRM</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="modalToggle = false" (click)="hitclose()">Voltar</button>
+        </div>
+    </clr-modal>
+</div>

@@ -1,22 +1,29 @@
-import { SignpostService } from './../util/singpost/signpost.service';
-import { SignpostComponent } from './../util/singpost/signpost.component';
+import { ToggleComponent } from './../template/toggle/toggle.component';
+import { AssocontService } from './../util/comp_complementares/assocont/assocont.service';
+import { AssocontComponent } from './../util/comp_complementares/assocont/assocont.component';
+import { ResetService } from './../util/comp_complementares/portreset/reset.service';
+import { ResetComponent } from './../util/comp_complementares/portreset/reset.component';
+import { ComplementaresComponent } from './../crm/complementares/complementares.component';
+import { ComplementaresService } from './../crm/complementares/complementares.service';
+import { FulltestCrmService } from './../crm/fulltestcrm/fulltestcrm.service';
+import { FulltestService } from './../co/fulltest/fulltest.service';
+import { FullltestCrmComponent } from './../crm/fulltestcrm/fulltestcrm.component';
+import { ManobraComponent } from './../co/manobra/manobra.component';
+import { FulltestComponent } from './../co/fulltest/fulltest.component';
+import { CadastroCrmService } from './../crm/cadastrofulltestcrm/cadastrocrm.service';
+import { CadastroService } from './../co/cadastro/cadastro.service';
+import { CadastroCrmComponent } from './../crm/cadastrofulltestcrm/cadastrocrm.component';
+import { CadastroWizardComponent } from './../co/cadastro/wizard/cadastro-wizard.component';
+import { CadastroComponent } from './../co/cadastro/cadastro.component';
+import { PopoverService } from './../util/singpost/popover.service';
+import { PopoverComponent } from './../util/singpost/popover.component';
 import { LogerService } from './../util/loger/loger.service';
 import { AdmComponent } from './../adm/adm.component';
-import { FulltestCrmService } from './../fulltestcrm/fulltestcrm.service';
-import { CadastroCrmService } from './../cadastrofulltestcrm/cadastrocrm.service';
-import { FullltestCrmComponent } from './../fulltestcrm/fulltestcrm.component';
-import { CadastroCrmComponent } from './../cadastrofulltestcrm/cadastrocrm.component';
 import { HolderService } from './../util/holder/holder.service';
 import { AlertComponent } from './../util/alert/alert.component';
-import { ManobraComponent } from './../manobra/manobra.component';
 import { BrancoComponent } from './../branco/branco.component';
-import { FulltestService } from './../fulltest/fulltest.service';
-import { FulltestComponent } from './../fulltest/fulltest.component';
 import { LoadingComponent } from './../util/loading/loading.component';
 import { ToastyComponent } from './../util/toasty/toasty.component';
-import { CadastroService } from './../cadastro/cadastro.service';
-import { CadastroWizardComponent } from './../cadastro/wizard/cadastro-wizard.component';
-import { CadastroComponent } from './../cadastro/cadastro.component';
 import { PrincipalWizardComponent } from './../principal/wizard/principal-wizard.component';
 import { PrincipalComponent } from './../principal/principal.component';
 import { DynamicComponent } from './../dynamiccomponent/dynamic.component';
@@ -59,7 +66,11 @@ import { AppComponent } from './app.component';
         CadastroCrmComponent,
         FullltestCrmComponent,
         AdmComponent,
-        SignpostComponent
+        PopoverComponent,
+        ComplementaresComponent,
+        ResetComponent,
+        AssocontComponent,
+        ToggleComponent
     ],
     imports: [
         BrowserModule,
@@ -82,7 +93,10 @@ import { AppComponent } from './app.component';
         FulltestCrmService,
         AdmComponent,
         LogerService,
-        SignpostService
+        PopoverService,
+        ComplementaresService,
+        ResetService,
+        AssocontService
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -91,7 +105,8 @@ import { AppComponent } from './app.component';
         FulltestComponent,
         CadastroComponent,
         BrancoComponent,
-        CadastroCrmComponent
+        CadastroCrmComponent,
+        ComplementaresComponent
     ]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { SideNav } from './../../../viewmodel/sidenav';
+import { SideNav } from './../../../viewmodel/menus/sidenav';
 export const sideNavMockMassivo: SideNav[] = [
     {
         nome: "Relatório Fibra Atn",

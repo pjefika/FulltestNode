@@ -1,4 +1,11 @@
 <clr-main-container>
+    <!-- <clr-alert [clrAlertType]="'alert-info'" [clrAlertAppLevel]="true">
+        <div class="alert-item">
+            <span class="alert-text">Tutorial</span>
+            <div class="alert-actions">
+            </div>
+        </div>
+    </clr-alert> -->
     <clr-header class="header-4">
         <div class="branding">
             <a class="nav-link" href="fulltest/">
@@ -17,11 +24,11 @@
                     <span class="tooltip-content">Massivo</span>
                 </clr-icon>
             </a>
-            <a class="nav-link nav-icon" [class.disabled]="!mostraMenus">
+            <!-- <a class="nav-link nav-icon" [class.disabled]="!mostraMenus">
                 <clr-icon shape="shuffle" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
                     <span class="tooltip-content">Manobra</span>
                 </clr-icon>
-            </a>
+            </a> -->
         </div>
         <div class="search" *ngIf="buscaCadastro">
             <label for="search_input" for="search_input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-lg tooltip-bottom-right">                
@@ -30,6 +37,8 @@
             </label>
         </div>
         <div class="header-actions">
+            <popover-component [cadastro]="holderService.cadastro" *ngIf="holderService.cadastro"></popover-component>
+            <toggle-component *ngIf="mostraToggle"></toggle-component>
             <clr-dropdown clrMenuPosition="bottom-right">
                 <button class="nav-icon" clrDropdownToggle>
                     <clr-icon shape="user"></clr-icon>
@@ -42,35 +51,15 @@
         </div>
     </clr-header>
     <nav class="subnav" *ngIf="subnav">
-        <subnav-component [menus]="subNavMenus" [liberarSubNav]="liberarSubNav"></subnav-component>
+        <subnav-component [menus]="subNavMenus"></subnav-component>
     </nav>
     <div class="content-container">
-        <div class="content-area">
-            <div class="row">
-                <div class="col-md-11">
-                    <div *ngIf="mostraToggle">
-                        <div class="form-group">
-                            <label>Selecione qual teste irá realizar:</label>
-                            <div class="radio-inline">
-                                <input type="radio" name="gridRadios1" id="checkrads_11" [(ngModel)]="eachFulltest" value="CO" checked>
-                                <label for="checkrads_11">CO</label>
-                            </div>
-                            <div class="radio-inline">
-                                <input type="radio" name="gridRadios1" id="checkrads_12" [(ngModel)]="eachFulltest" value="CRM">
-                                <label for="checkrads_12">CRM</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-1">
-                    <!-- <signpost-component [state]="signpostState" *ngIf="holderService.cadastro" [cadastro]="holderService.cadastro"></signpost-component> -->
-                </div>
-            </div>
-            <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
+        <div class="content-area">            
             <dynamic-component [componentData]="componentData"></dynamic-component>
+            <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
         </div>
         <nav class="sidenav" *ngIf="sidenav">
-            <sidenav-component [menus]="sideNavMenus" [liberarSidNav]="liberarSidNav"></sidenav-component>
+            <sidenav-component [menus]="sideNavMenus"></sidenav-component>
         </nav>
     </div>
 </clr-main-container>
