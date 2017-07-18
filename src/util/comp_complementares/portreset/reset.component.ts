@@ -14,7 +14,9 @@ export class ResetComponent implements OnInit {
 
     @Input() cadastro: Cadastro;
 
-    loadingbtn: boolean = false;
+    modalActive: boolean = false;
+    btnResetActive: boolean = false;
+    btnLoading: boolean = false;
 
     constructor(
         private util: Util,
@@ -31,7 +33,15 @@ export class ResetComponent implements OnInit {
 
     reset() {
         console.log("resetou.... só q não!");
-        //this.loadingbtn = true;
+        this.modalActive = false;
+        this.btnResetActive = true;
+        this.btnLoading = true;
+
+        setTimeout(function () {
+            this.btnLoading = false;
+            console.log(this.btnLoading);
+            console.log("Fim reset...")
+        }, 2000);
     }
 
 }
