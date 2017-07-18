@@ -13,11 +13,11 @@ export class SubnavComponent implements OnInit {
     @Input() menus: [{ nome: string, component: string }];
 
     @Input() liberarSubNav: boolean = false;
-
+    
     ngOnInit() { }
 
     abrecomponent(l) {
-        console.log(this.liberarSubNav)
+        //console.log(this.liberarSubNav)
         if (this.liberarSubNav) {
             this.switchCO(l);
             this.switchCrm(l);

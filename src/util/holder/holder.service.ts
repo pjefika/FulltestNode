@@ -9,6 +9,18 @@ export class HolderService {
     objectValid: ObjectValid;
     eachFulltest: string = "CRM"; // Se for deixar em produção retirar valores.
 
+    listAsserts: {
+        tbsradius: boolean;
+        circuito: boolean;
+        bloqueio: boolean;
+    }
+
+    listResumo: {
+        cadastro: boolean;
+        bloqueio: boolean;
+        fulltest: boolean;
+    }
+
     constructor() { }
 
 }

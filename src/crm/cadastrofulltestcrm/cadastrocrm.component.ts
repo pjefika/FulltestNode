@@ -82,7 +82,10 @@ export class CadastroCrmComponent implements OnInit {
             }
         });
         if (this.holderService.cadastro) {
-            this.cadastro = this.holderService.cadastro
+            this.cadastro = this.holderService.cadastro;
+            this.objectValid = this.holderService.objectValid;
+            this.listAsserts = this.holderService.listAsserts;
+            this.listResumo = this.holderService.listResumo;
         } else {
             //Inicia o fulltest assim que inicializa o componente
             this.getCadastro();
@@ -118,6 +121,7 @@ export class CadastroCrmComponent implements OnInit {
             .getValidacao(this.cadastro)
             .then(data => {
                 this.objectValid = data;
+                this.holderService.objectValid = this.objectValid;
                 this.searchFulltest = false;
                 this.listResumo.fulltest = this.objectValid.resultado;
                 if (this.listResumo.fulltest) {
@@ -164,9 +168,11 @@ export class CadastroCrmComponent implements OnInit {
             .rnAsserts(this.cadastro)
             .then(data => {
                 this.listAsserts = data;
+                this.holderService.listAsserts = this.listAsserts;
                 this.assertService.validaAsserts(this.listAsserts)
                     .then(data => {
                         this.listResumo = data;
+                        this.holderService.listResumo = this.listResumo;
                         if (this.listResumo.cadastro) {
                             this.getValidacao();
                         } else {
@@ -184,9 +190,9 @@ export class CadastroCrmComponent implements OnInit {
     mloger(msgConclusao) {
         this.makeLogerService
             .makeLoger(msgConclusao, this.instancia, this.cadastro, this.objectValid, this.listResumo)
-            .then(data => {                
+            .then(data => {
                 this.loger = data;
-                this.logerService.makeLog(this.loger);                
+                this.logerService.makeLog(this.loger);
             })
     }
 }

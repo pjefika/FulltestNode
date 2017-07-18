@@ -111,8 +111,7 @@ export class TemplateComponent implements OnInit {
     * Ação para busca da instância
     **/
     busca() {
-        this.holderService.cadastro = null;
-        this.holderService.objectValid = null;
+        this.holderReset();
         let usr = JSON.parse(sessionStorage.getItem('user'));
         if (usr.nv === 1 || this.holderService.eachFulltest === "CRM") {
             this.createRealizaFulltestCrmComponent();
@@ -222,15 +221,27 @@ export class TemplateComponent implements OnInit {
                 instancia: this.instancia
             }
         }
+
     }
 
     createComplementaresComponent() { // Testes Complementares CRM
-        this.emptyComponentData();
-        this.componentData = {
-            component: ComplementaresComponent,
-            inputs: {
-                cadastro: this.cadastro
+        this.objectValid = this.holderService.objectValid
+        if (this.objectValid) {
+            this.emptyComponentData();
+            this.componentData = {
+                component: ComplementaresComponent,
+                inputs: {
+                    cadastro: this.cadastro
+                }
             }
         }
+    }
+
+    //Holder Functions
+    holderReset() { // Reseta as variaveis da Holder
+        this.holderService.cadastro = null;
+        this.holderService.objectValid = null;
+        this.holderService.listAsserts = null;
+        this.holderService.listResumo = null;
     }
 }
