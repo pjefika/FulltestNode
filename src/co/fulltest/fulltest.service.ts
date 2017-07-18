@@ -16,7 +16,7 @@ export class FulltestService {
     constructor(private http: Http) { }
 
     getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
-        const url = `${this.fulltestUrl}` + "fulltest/";
+        const url = `${this.fulltestUrl}` + "corrective/";
         //console.log(url);
         return this.http.post(url, JSON.stringify(cadastro), this.options)
             .timeout(100000)
