@@ -66,7 +66,6 @@ export class TemplateComponent implements OnInit {
     * Faz ao iniciar o componente 
     **/
     ngOnInit(): void {
-        console.log("v1.0.0");
         this.util.isLogado().then((result: boolean) => {
             if (!result) {
                 this.router.navigate(['./fulltest/entrar']);
@@ -128,12 +127,12 @@ export class TemplateComponent implements OnInit {
     * Ações do header-nav
     **/
     cadastroClick() {
-        this.createPrincipalComponent();
         this.buscaCadastro = true;
-        this.subnav = false;
-        this.sidenav = false;
-        this.subNavMenus = null;
-        this.sideNavMenus = null;
+        //this.createPrincipalComponent();        
+        // this.subnav = false;
+        // this.sidenav = false;
+        // this.subNavMenus = null;
+        // this.sideNavMenus = null;
     }
 
     massivoClick() {

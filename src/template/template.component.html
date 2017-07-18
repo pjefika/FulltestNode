@@ -14,16 +14,16 @@
             </a>
         </div>
         <div class="header-nav">
-            <a class="nav-link nav-icon" (click)="cadastroClick()">
+            <a class="nav-link nav-icon" (click)="cadastroClick()" [class.active]="buscaCadastro">
                 <clr-icon shape="headphones" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
                     <span class="tooltip-content">Consultar instância</span>
                 </clr-icon>
             </a>
-            <a class="nav-link nav-icon" (click)="massivoClick()" [class.disabled]="!mostraMenus">
+            <!-- <a class="nav-link nav-icon" (click)="massivoClick()" [class.disabled]="!mostraMenus">
                 <clr-icon shape="layers" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
                     <span class="tooltip-content">Massivo</span>
                 </clr-icon>
-            </a>
+            </a> -->
             <!-- <a class="nav-link nav-icon" [class.disabled]="!mostraMenus">
                 <clr-icon shape="shuffle" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
                     <span class="tooltip-content">Manobra</span>
