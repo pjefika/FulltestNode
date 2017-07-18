@@ -23,6 +23,13 @@ export class HolderService {
 
     liberarSubNav: boolean = false;
 
+    alertState: {
+        msg: string,
+        alertType: string,
+        alertAtivo: boolean,
+        alertCloseable: boolean
+    }
+
     constructor() { }
 
 }

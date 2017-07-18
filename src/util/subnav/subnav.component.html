@@ -1,5 +1,5 @@
 <ul class="nav">
     <li class="nav-item" *ngFor="let l of menus">
-        <a class="nav-link" (click)="abrecomponent(l)" [class.disabled]="!holderService.liberarSubNav">{{l.nome}}</a>
+        <a class="nav-link" (click)="abrecomponent(l)" [class.disabled]="!holderService.liberarSubNav" [class.active]="true">{{l.nome}}</a>
     </li>
 </ul>

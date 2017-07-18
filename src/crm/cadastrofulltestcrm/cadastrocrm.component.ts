@@ -82,10 +82,7 @@ export class CadastroCrmComponent implements OnInit {
             }
         });
         if (this.holderService.cadastro) {
-            this.cadastro = this.holderService.cadastro;
-            this.objectValid = this.holderService.objectValid;
-            this.listAsserts = this.holderService.listAsserts;
-            this.listResumo = this.holderService.listResumo;
+            this.holderAtribuition();
         } else {
             //Inicia o fulltest assim que inicializa o componente
             this.getCadastro();
@@ -159,6 +156,13 @@ export class CadastroCrmComponent implements OnInit {
         }
         this.alertAtivo = true;
         this.alertCloseable = false;
+
+        this.holderService.alertState = {
+            msg: msg,
+            alertType: type,
+            alertAtivo: true,
+            alertCloseable: false
+        }
     }
 
     /**
@@ -195,5 +199,19 @@ export class CadastroCrmComponent implements OnInit {
                 this.loger = data;
                 this.logerService.makeLog(this.loger);
             })
+    }
+
+    holderAtribuition() {
+        this.cadastro = this.holderService.cadastro;
+        this.objectValid = this.holderService.objectValid;
+        this.listAsserts = this.holderService.listAsserts;
+        this.listResumo = this.holderService.listResumo;
+
+        this.alertMsg = {
+            msg: this.holderService.alertState.msg,
+            alertType: this.holderService.alertState.alertType
+        }
+        this.alertAtivo = this.holderService.alertState.alertAtivo;
+        this.alertCloseable = this.holderService.alertState.alertCloseable;
     }
 }

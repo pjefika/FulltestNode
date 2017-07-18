@@ -19,4 +19,8 @@ export class Util {
         return Promise.resolve(false);
     }
 
+    active() {
+        
+    }
+
 }

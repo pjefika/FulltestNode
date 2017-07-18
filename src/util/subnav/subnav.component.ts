@@ -1,3 +1,4 @@
+import { SubNav } from './../../viewmodel/menus/subnav';
 import { HolderService } from './../holder/holder.service';
 import { TemplateComponent } from './../../template/template.component';
 import { Component, OnInit, Input } from '@angular/core';
@@ -13,7 +14,7 @@ export class SubnavComponent implements OnInit {
         private templateComponent: TemplateComponent,
         public holderService: HolderService) { }
 
-    @Input() menus: [{ nome: string, component: string }];
+    @Input() menus: SubNav[];
 
     ngOnInit() { }
 
@@ -44,5 +45,6 @@ export class SubnavComponent implements OnInit {
                 break;
         }
     }
+    
 
 }
