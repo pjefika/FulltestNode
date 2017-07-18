@@ -2,110 +2,111 @@
     <!--Informações do cadastro-->
     <div *ngIf="cadastro">
         <h3>Cadastro</h3>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-6">
-                <table class="table table-compact table-vertical" style="margin: 7px 0 0 0;">
-                    <tbody>
-                        <tr>
-                            <th colspan="2">Informações de Cadastro</th>
-                        </tr>
-                        <tr>
-                            <th>Instância: </th>
-                            <td>{{cadastro.instancia}}</td>
-                        </tr>
-                        <tr>
-                            <th>Designador: </th>
-                            <td>{{cadastro.designador}}</td>
-                        </tr>
-                        <tr>
-                            <th>Designador de Acesso: </th>
-                            <td>{{cadastro.designadorAcesso}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="table table-compact table-vertical">
-                    <tbody>
-                        <tr>
-                            <th colspan="2">Informações de Rede</th>
-                        </tr>
-                        <tr>
-                            <th>Ip DSLAM:</th>
-                            <td>{{cadastro.rede.ipDslam}}</td>
-                        </tr>
-                        <tr>
-                            <th>Vendor DSLAM:</th>
-                            <td>{{cadastro.rede.vendorDslam}}</td>
-                        </tr>
-                        <tr>
-                            <th>Modelo DSLAM:</th>
-                            <td>{{cadastro.rede.modeloDslam}}</td>
-                        </tr>
-                        <tr>
-                            <th>Slot:</th>
-                            <td>{{cadastro.rede.slot}}</td>
-                        </tr>
-                        <tr>
-                            <th>Porta:</th>
-                            <td>{{cadastro.rede.porta}}</td>
-                        </tr>
-                        <tr>
-                            <th>Endereço Sequencial da Porta:</th>
-                            <td>{{cadastro.rede.sequencial}}</td>
-                        </tr>
-                        <tr>
-                            <th>Porta Lógica:</th>
-                            <td>{{cadastro.rede.logica}}</td>
-                        </tr>
-                        <tr>
-                            <th>RIN:</th>
-                            <td>{{cadastro.rede.rin}}</td>
-                        </tr>
-                        <tr>
-                            <th>Vlan VoIP:</th>
-                            <td>{{cadastro.rede.vlanVoip}}</td>
-                        </tr>
-                        <tr>
-                            <th>Vlan VoD:</th>
-                            <td>{{cadastro.rede.vlanVod}}</td>
-                        </tr>
-                        <tr>
-                            <th>Vlan Multicast:</th>
-                            <td>{{cadastro.rede.vlanMulticast}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="table table-compact table-vertical">
-                    <tbody>
-                        <tr>
-                            <th colspan="2">Informações de Serviço</th>
-                        </tr>
-                        <tr>
-                            <th>Velocidade de Download:</th>
-                            <td>{{cadastro.servicos.velDown}}</td>
-                        </tr>
-                        <tr>
-                            <th>Velocidade de Upload:</th>
-                            <td>{{cadastro.servicos.velUp}}</td>
-                        </tr>
-                        <tr>
-                            <th>SIP:</th>
-                            <td *ngIf="cadastro.servicos.isSip">Sim</td>
-                            <td *ngIf="!cadastro.servicos.isSip">Não</td>
-                        </tr>
-                        <tr>
-                            <th>Híbrido:</th>
-                            <td *ngIf="cadastro.servicos.isHib">Sim</td>
-                            <td *ngIf="!cadastro.servicos.isHib">Não</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div>
-                    <cadastro-wizard-component [cadastro]="cadastro"></cadastro-wizard-component>
-                </div>
+
             </div>
             <div class="col-md-6">
 
             </div>
+        </div> -->
+        <table class="table table-compact table-vertical" style="margin: 7px 0 0 0;">
+            <tbody>
+                <tr>
+                    <th colspan="2">Informações de Cadastro</th>
+                </tr>
+                <tr>
+                    <th>Instância: </th>
+                    <td>{{cadastro.instancia}}</td>
+                </tr>
+                <tr>
+                    <th>Designador: </th>
+                    <td>{{cadastro.designador}}</td>
+                </tr>
+                <tr>
+                    <th>Designador de Acesso: </th>
+                    <td>{{cadastro.designadorAcesso}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-compact table-vertical">
+            <tbody>
+                <tr>
+                    <th colspan="2">Informações de Rede</th>
+                </tr>
+                <tr>
+                    <th>Ip DSLAM:</th>
+                    <td>{{cadastro.rede.ipDslam}}</td>
+                </tr>
+                <tr>
+                    <th>Vendor DSLAM:</th>
+                    <td>{{cadastro.rede.vendorDslam}}</td>
+                </tr>
+                <tr>
+                    <th>Modelo DSLAM:</th>
+                    <td>{{cadastro.rede.modeloDslam}}</td>
+                </tr>
+                <tr>
+                    <th>Slot:</th>
+                    <td>{{cadastro.rede.slot}}</td>
+                </tr>
+                <tr>
+                    <th>Porta:</th>
+                    <td>{{cadastro.rede.porta}}</td>
+                </tr>
+                <tr>
+                    <th>Endereço Sequencial da Porta:</th>
+                    <td>{{cadastro.rede.sequencial}}</td>
+                </tr>
+                <tr>
+                    <th>Porta Lógica:</th>
+                    <td>{{cadastro.rede.logica}}</td>
+                </tr>
+                <tr>
+                    <th>RIN:</th>
+                    <td>{{cadastro.rede.rin}}</td>
+                </tr>
+                <tr>
+                    <th>Vlan VoIP:</th>
+                    <td>{{cadastro.rede.vlanVoip}}</td>
+                </tr>
+                <tr>
+                    <th>Vlan VoD:</th>
+                    <td>{{cadastro.rede.vlanVod}}</td>
+                </tr>
+                <tr>
+                    <th>Vlan Multicast:</th>
+                    <td>{{cadastro.rede.vlanMulticast}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-compact table-vertical">
+            <tbody>
+                <tr>
+                    <th colspan="2">Informações de Serviço</th>
+                </tr>
+                <tr>
+                    <th>Velocidade de Download:</th>
+                    <td>{{cadastro.servicos.velDown}}</td>
+                </tr>
+                <tr>
+                    <th>Velocidade de Upload:</th>
+                    <td>{{cadastro.servicos.velUp}}</td>
+                </tr>
+                <tr>
+                    <th>SIP:</th>
+                    <td *ngIf="cadastro.servicos.isSip">Sim</td>
+                    <td *ngIf="!cadastro.servicos.isSip">Não</td>
+                </tr>
+                <tr>
+                    <th>Híbrido:</th>
+                    <td *ngIf="cadastro.servicos.isHib">Sim</td>
+                    <td *ngIf="!cadastro.servicos.isHib">Não</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <cadastro-wizard-component [cadastro]="cadastro"></cadastro-wizard-component>
         </div>
     </div>
     <loading-component [searching]="searching" [searchWhat]="'Buscando Cadastro...'"></loading-component>
