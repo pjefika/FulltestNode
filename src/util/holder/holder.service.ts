@@ -8,27 +8,24 @@ export class HolderService {
     cadastro: Cadastro;
     objectValid: ObjectValid;
     eachFulltest: string = "CRM"; // Se for deixar em produção retirar valores.
-
+    liberarSubNav: boolean = false;
     listAsserts: {
         tbsradius: boolean;
         circuito: boolean;
         bloqueio: boolean;
     }
-
     listResumo: {
         cadastro: boolean;
         bloqueio: boolean;
         fulltest: boolean;
     }
-
-    liberarSubNav: boolean = false;
-
     alertState: {
         msg: string,
         alertType: string,
         alertAtivo: boolean,
         alertCloseable: boolean
     }
+    whoSubNavIsActive: string;
 
     constructor() { }
 

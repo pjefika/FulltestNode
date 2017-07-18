@@ -181,6 +181,7 @@ export class TemplateComponent implements OnInit {
     * Componentes do CO
     **/
     createCadastroComponent() { // Cadastro CO
+        this.holderService.whoSubNavIsActive = "cadastro-component";
         this.emptyComponentData();
         this.componentData = {
             component: CadastroComponent,
@@ -191,6 +192,7 @@ export class TemplateComponent implements OnInit {
     }
 
     createRealizaFulltestComponent() { //Fullteste CO
+        this.holderService.whoSubNavIsActive = "full-test-component";
         this.cadastro = this.holderService.cadastro;
         this.objectValid = this.holderService.objectValid;
         if (this.cadastro) {
@@ -208,6 +210,7 @@ export class TemplateComponent implements OnInit {
     * Componentes do CRM
     **/
     createRealizaFulltestCrmComponent() { // Cadastro / Fullteste CRM
+        this.holderService.whoSubNavIsActive = "cadastro-crm-component";
         this.emptyComponentData();
         this.componentData = {
             component: CadastroCrmComponent,
@@ -219,6 +222,7 @@ export class TemplateComponent implements OnInit {
     }
 
     createComplementaresComponent() { // Testes Complementares CRM
+        this.holderService.whoSubNavIsActive = "complementares-component";
         this.objectValid = this.holderService.objectValid
         if (this.objectValid) {
             this.emptyComponentData();
