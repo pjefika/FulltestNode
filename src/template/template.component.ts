@@ -100,6 +100,7 @@ export class TemplateComponent implements OnInit {
     **/
     sair() {
         sessionStorage.clear();
+        this.holderReset();
         this.router.navigate(['./fulltest/entrar']);
     }
 
