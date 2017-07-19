@@ -1,7 +1,6 @@
 <div>
-    <button class="btn btn-primary btn-block" [disabled]="btnValidDisable" [clrLoading]="searchingValids" (click)="validar()">Validar Manobra</button>
-
-    <table class="table table-compact table-vertical" *ngIf="validManobra">
+    <h3>Manobra</h3>
+    <table class="table table-compact table-vertical" *ngIf="validManobra" style="margin: 7px 0 0 0;">
         <tbody>
             <tr>
                 <th colspan="2" style="text-align: center;">Validações Manobra</th>
@@ -15,6 +14,6 @@
             </tr>
         </tbody>
     </table>
-
+    <button class="btn btn-primary btn-block" [disabled]="btnValidDisable" [clrLoading]="searchingValids" (click)="validar()">Validar Manobra</button>
     <alert-component [msg]="alertMsg" [ativo]="alertAtivo" [closeable]="alertCloseable"></alert-component>
 </div>
