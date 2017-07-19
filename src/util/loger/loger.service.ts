@@ -11,13 +11,13 @@ export class LogerService {
 
     constructor(private http: Http) { }
 
-    makeLog(loger: Loger) {
+    makeLog(loger: Loger): Promise<Boolean> {
         const url = `${this.fulltestAPIUrl}` + "log/";
-        this.http.post(url, JSON.stringify(loger), this.options)
+        return this.http.post(url, JSON.stringify(loger), this.options)
             .timeout(10000)
             .toPromise()
             .then(response => {
-                //console.log(response.json());
+                return true;
             })
             .catch(this.handleError);
     }

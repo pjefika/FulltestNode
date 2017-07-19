@@ -1,5 +1,5 @@
 import { SubNav } from './../../../viewmodel/menus/subnav';
-export const subNavMockCadastro: SubNav[] = [
+export const subNavMockCo: SubNav[] = [
     {
         nome: "Cadastro",
         component: "cadastro-component"

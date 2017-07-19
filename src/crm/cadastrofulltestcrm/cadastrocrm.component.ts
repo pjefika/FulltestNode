@@ -197,7 +197,12 @@ export class CadastroCrmComponent implements OnInit {
             .makeLoger(msgConclusao, this.instancia, this.cadastro, this.objectValid, this.listResumo)
             .then(data => {
                 this.loger = data;
-                this.logerService.makeLog(this.loger);
+                this.logerService.makeLog(this.loger)
+                    .then(data => {
+                        //console.log("Log realizado com sucesso.");
+                    }, error => {
+                        console.log("Erro ao fazer log da ação.")
+                    });
             })
     }
 

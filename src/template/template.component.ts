@@ -1,3 +1,4 @@
+import { subNavMockCo } from './mock/co/mock-subnav-co';
 import { ManobraComponent } from './../co/manobra/manobra.component';
 import { ComplementaresComponent } from './../crm/complementares/complementares.component';
 import { CadastroCrmComponent } from './../crm/cadastrofulltestcrm/cadastrocrm.component';
@@ -12,8 +13,6 @@ import { HolderService } from './../util/holder/holder.service';
 import { ToastyComponent } from './../util/toasty/toasty.component';
 import { Usuario } from './../viewmodel/usuario';
 import { BrancoComponent } from './../branco/branco.component';
-import { sideNavMockCadastro } from './mock/cadastro/mock-sidenav-cadastro';
-import { subNavMockCadastro } from './mock/cadastro/mock-subnav-cadastro';
 import { PrincipalComponent } from './../principal/principal.component';
 import { sideNavMockMassivo } from './mock/massivo/mock-sidenav-massivo';
 import { subNavMockMassivo } from './mock/massivo/mock-subnav-massivo';
@@ -117,7 +116,7 @@ export class TemplateComponent implements OnInit {
         } else {
             this.cadastro = this.holderService.cadastro;
             this.createCadastroComponent();
-            this.subNavMenus = subNavMockCadastro;
+            this.subNavMenus = subNavMockCo;
             this.subnav = true;
             // this.sidenav = true;
             // this.sideNavMenus = sideNavMockCadastro;
@@ -253,5 +252,6 @@ export class TemplateComponent implements OnInit {
         this.holderService.listAsserts = null;
         this.holderService.listResumo = null;
         this.holderService.liberarSubNav = null;
+        this.holderService.alertState = null;
     }
 }
