@@ -1,3 +1,4 @@
+import { ManobraComponent } from './../co/manobra/manobra.component';
 import { ComplementaresComponent } from './../crm/complementares/complementares.component';
 import { CadastroCrmComponent } from './../crm/cadastrofulltestcrm/cadastrocrm.component';
 import { FulltestComponent } from './../co/fulltest/fulltest.component';
@@ -201,6 +202,17 @@ export class TemplateComponent implements OnInit {
                     cadastro: this.cadastro,
                     valid: this.objectValid
                 }
+            }
+        }
+    }
+
+    createManobraComponent() { // Manobra CO
+        this.holderService.whoSubNavIsActive = "manobra-component";
+        this.emptyComponentData();
+        this.componentData = {
+            component: ManobraComponent,
+            inputs: {
+                cadastro: this.cadastro
             }
         }
     }

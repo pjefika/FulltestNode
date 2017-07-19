@@ -1,0 +1,20 @@
+<div>
+    <button class="btn btn-primary btn-block" [disabled]="btnValidDisable" [clrLoading]="searchingValids" (click)="validar()">Validar Manobra</button>
+
+    <table class="table table-compact table-vertical" *ngIf="validManobra">
+        <tbody>
+            <tr>
+                <th colspan="2" style="text-align: center;">Validações Manobra</th>
+            </tr>
+            <tr *ngFor="let valid of validManobra">
+                <th>{{valid.msg}}</th>
+                <td>
+                    <clr-icon shape="check" *ngIf="valid.inf" class="is-success"></clr-icon>
+                    <clr-icon shape="times" *ngIf="!valid.inf" class="is-error"></clr-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <alert-component [msg]="alertMsg" [ativo]="alertAtivo" [closeable]="alertCloseable"></alert-component>
+</div>

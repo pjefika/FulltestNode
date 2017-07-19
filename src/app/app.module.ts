@@ -106,7 +106,8 @@ import { AppComponent } from './app.component';
         CadastroComponent,
         BrancoComponent,
         CadastroCrmComponent,
-        ComplementaresComponent
+        ComplementaresComponent,
+        ManobraComponent
     ]
 })
 export class AppModule { }

@@ -33,6 +33,9 @@ export class SubnavComponent implements OnInit {
             case "cadastro-component":
                 this.templateComponent.createCadastroComponent();
                 break;
+            case "manobra-component":
+                this.templateComponent.createManobraComponent();
+                break;
         }
     }
 
