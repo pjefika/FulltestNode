@@ -37,9 +37,9 @@ export class ResetComponent implements OnInit {
         this.btnResetActive = true;
         this.btnLoading = true;
 
-        setTimeout(function () {
+        setTimeout(() => {
             this.btnLoading = false;
-            console.log(this.btnLoading);
+            this.btnResetActive = false;
             console.log("Fim reset...")
         }, 2000);
     }
