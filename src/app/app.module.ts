@@ -1,3 +1,5 @@
+import { PopoverService } from './../util/singpost/popover.service';
+import { PopoverComponent } from './../util/singpost/popover.component';
 import { ToggleComponent } from './../template/toggle/toggle.component';
 import { AssocontService } from './../util/comp_complementares/assocont/assocont.service';
 import { AssocontComponent } from './../util/comp_complementares/assocont/assocont.component';
@@ -15,8 +17,6 @@ import { CadastroService } from './../co/cadastro/cadastro.service';
 import { CadastroCrmComponent } from './../crm/cadastrofulltestcrm/cadastrocrm.component';
 import { CadastroWizardComponent } from './../co/cadastro/wizard/cadastro-wizard.component';
 import { CadastroComponent } from './../co/cadastro/cadastro.component';
-import { PopoverService } from './../util/singpost/popover.service';
-import { PopoverComponent } from './../util/singpost/popover.component';
 import { LogerService } from './../util/loger/loger.service';
 import { AdmComponent } from './../adm/adm.component';
 import { HolderService } from './../util/holder/holder.service';

@@ -40,8 +40,7 @@ export class TemplateComponent implements OnInit {
     sideNavMenus: SideNav[];
 
     componentData = null;
-
-
+    
     cadastro: Cadastro;
     objectValid: ObjectValid;
 
