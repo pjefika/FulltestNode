@@ -1,5 +1,6 @@
-import { PopoverService } from './../util/singpost/popover.service';
-import { PopoverComponent } from './../util/singpost/popover.component';
+import { ManobraService } from './../co/manobra/manobra.service';
+import { PopoverService } from './../util/popover/popover.service';
+import { PopoverComponent } from './../util/popover/popover.component';
 import { ToggleComponent } from './../template/toggle/toggle.component';
 import { AssocontService } from './../util/comp_complementares/assocont/assocont.service';
 import { AssocontComponent } from './../util/comp_complementares/assocont/assocont.component';
@@ -96,7 +97,8 @@ import { AppComponent } from './app.component';
         PopoverService,
         ComplementaresService,
         ResetService,
-        AssocontService
+        AssocontService,
+        ManobraService
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

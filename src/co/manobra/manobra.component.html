@@ -1,19 +1,61 @@
 <div>
     <h3>Manobra</h3>
-    <table class="table table-compact table-vertical" *ngIf="validManobra" style="margin: 7px 0 0 0;">
-        <tbody>
-            <tr>
-                <th colspan="2" style="text-align: center;">Validações Manobra</th>
-            </tr>
-            <tr *ngFor="let valid of validManobra">
-                <th>{{valid.msg}}</th>
-                <td>
-                    <clr-icon shape="check" *ngIf="valid.inf" class="is-success"></clr-icon>
-                    <clr-icon shape="times" *ngIf="!valid.inf" class="is-error"></clr-icon>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <button class="btn btn-primary btn-block" [disabled]="btnValidDisable" [clrLoading]="searchingValids" (click)="validar()">Validar Manobra</button>
+    <div *ngIf="!searchFulltest">
+        <div *ngIf="objectValid">
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-compact">
+                        <thead>
+                            <tr>
+                                <th colspan="3">Informações de Fulltest</th>
+                            </tr>
+                            <tr>
+                                <th class="left">Nome</th>
+                                <th class="left">Mensagem</th>
+                                <th>Resultado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let valid of objectValid.valids">
+                                <td class="left">{{valid.nome}}</td>
+                                <td class="left">{{valid.mensagem}}</td>
+                                <td>
+                                    <clr-icon shape="check" *ngIf="valid.resultado" class="is-success"></clr-icon>
+                                    <clr-icon shape="times" *ngIf="!valid.resultado" class="is-error"></clr-icon>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <div *ngIf="validManobra">
+                        <label for="idordem" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left ahundredpercent"
+                            [class.invalid]="ordemInput.invalid && (ordemInput.dirty || ordemInput.touched)">
+                            <input class="ahundredpercent" ngModel name="ordem" type="text" id="idordem" [(ngModel)]="ordem" #ordemInput="ngModel" required placeholder="Insira a ordem" 
+                            (change)="enterBtnInput()">
+                            <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                        </label>
+                        <table class="table table-compact table-vertical" *ngIf="listValidManobra">
+                            <tbody>
+                                <tr>
+                                    <th colspan="2" style="text-align: center;">Validações Manobra</th>
+                                </tr>
+                                <tr *ngFor="let valid of listValidManobra">
+                                    <th>{{valid.msg}}</th>
+                                    <td>
+                                        <clr-icon shape="check" *ngIf="valid.inf" class="is-success"></clr-icon>
+                                        <clr-icon shape="times" *ngIf="!valid.inf" class="is-error"></clr-icon>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-primary btn-block" [disabled]="btnValidDisable" [clrLoading]="searchingValids" (click)="validar()">Validar Manobra</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" [disabled]="doFulltest">Realizar Fulltest</button> -->
+    </div>
+    <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Fulltest'"></loading-component>
     <alert-component [msg]="alertMsg" [ativo]="alertAtivo" [closeable]="alertCloseable"></alert-component>
 </div>
