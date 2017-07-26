@@ -71,7 +71,7 @@ import { AppComponent } from './app.component';
         ComplementaresComponent,
         ResetComponent,
         AssocontComponent,
-        ToggleComponent
+        ToggleComponent,
     ],
     imports: [
         BrowserModule,

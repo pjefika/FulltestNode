@@ -55,15 +55,17 @@ export class ManobraComponent implements OnInit {
                 this.router.navigate(['./fulltest/entrar']);
             }
         });
-        if (this.holderService.cadastro) {
-            this.holderAtribuition();
+        this.holderAtribuition();
+        if (this.cadastro && !this.objectValid) {
             this.realizaFulltest();
         } else {
-            console.log("Sem cadastro...")
+            if (this.objectValid.resultado) {
+                this.validManobra = true;
+            }
         }
     }
 
-    //Realiza fulltest antes de entrar na pagina...
+    //Realiza fulltest ao entrar na pagina...
     realizaFulltest(): void {
         this.searchFulltest = true;
         this.manobraService
@@ -72,7 +74,12 @@ export class ManobraComponent implements OnInit {
                 this.objectValid = data;
                 this.holderService.objectValid = this.objectValid;
                 this.searchFulltest = false;
-                this.validManobra = true;
+                if (this.objectValid.resultado) {
+                    this.validManobra = true;
+                    this.callAlert(this.objectValid.mensagem, "alert-success");
+                } else {                    
+                    this.callAlert(this.objectValid.mensagem, "alert-danger");
+                }
             }, error => {
                 this.searchFulltest = false;
                 if (error.tError !== "Timeout") {
@@ -87,7 +94,6 @@ export class ManobraComponent implements OnInit {
                 this.toastyComponent.addToasty();
             })
     }
-
 
     validar() {
         if (this.ordem) {
@@ -140,6 +146,7 @@ export class ManobraComponent implements OnInit {
 
     holderAtribuition() {
         this.cadastro = this.holderService.cadastro;
+        this.objectValid = this.holderService.objectValid;
         if (this.holderService.alertState) {
             this.alertMsg = {
                 msg: this.holderService.alertState.msg,
@@ -151,7 +158,7 @@ export class ManobraComponent implements OnInit {
     }
 
     enterBtnInput() {
-        if (!this.ordem) {           
+        if (!this.ordem) {
             this.btnValidDisable = true;
         } else {
             this.btnValidDisable = false;

@@ -11,12 +11,12 @@ export class ManobraService {
 
     private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
     private options = new RequestOptions({ headers: this.headersAppJson });
-    private fulltestUrl = 'http://10.40.195.81:8080/fulltestAPI/fulltest/';  // URL to FulltestAPI
+    private fulltestUrl = 'http://10.40.195.81:8080/fulltestAPI_manobra/fulltest/';  // URL to FulltestAPI **--** Modificar path pois está em outro path....
 
     constructor(private http: Http) { }
 
     getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
-        const url = `${this.fulltestUrl}` + "corrective/";
+        const url = `${this.fulltestUrl}` + "manobra/";
         //console.log(url);
         return this.http.post(url, JSON.stringify(cadastro), this.options)
             .timeout(100000)
