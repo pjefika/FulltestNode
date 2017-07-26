@@ -21,7 +21,7 @@ export class ManobraComponent implements OnInit {
     @Input() ordem: string;
     btnValidDisable: boolean = true;
     validManobra: boolean = false;
-    listValidManobra: [{ msg: string, inf: boolean }]; // Fazer variavel na holder para segurar estado da pagina...
+    listValidManobra: [{ msg: string, inf: boolean }]; // Não precisa colocar na holder pois a cada ves que entra ira refazer o teste...
     searchingValids: boolean = false;
     searchFulltest: boolean = false;
     doFulltest: boolean = false;
@@ -56,23 +56,19 @@ export class ManobraComponent implements OnInit {
             }
         });
         this.holderAtribuition();
-        if (this.cadastro && !this.objectValid) {
+        if (this.cadastro) {
             this.realizaFulltest();
-        } else {
-            if (this.objectValid.resultado) {
-                this.validManobra = true;
-            }
         }
     }
 
     //Realiza fulltest ao entrar na pagina...
     realizaFulltest(): void {
+        this.alertAtivo = false;
         this.searchFulltest = true;
         this.manobraService
             .getValidacao(this.cadastro)
             .then(data => {
                 this.objectValid = data;
-                this.holderService.objectValid = this.objectValid;
                 this.searchFulltest = false;
                 if (this.objectValid.resultado) {
                     this.validManobra = true;
@@ -95,14 +91,12 @@ export class ManobraComponent implements OnInit {
             })
     }
 
-    validar() {
+    validar() { // Realizar RN ao clicar no botão validar...
         if (this.ordem) {
             this.alertAtivo = false;
             this.btnValidDisable = true;
             this.searchingValids = true;
             this.mock();
-        } else {
-            console.log("Por favor insira a ordem");
         }
     }
 
@@ -146,7 +140,6 @@ export class ManobraComponent implements OnInit {
 
     holderAtribuition() {
         this.cadastro = this.holderService.cadastro;
-        this.objectValid = this.holderService.objectValid;
         if (this.holderService.alertState) {
             this.alertMsg = {
                 msg: this.holderService.alertState.msg,

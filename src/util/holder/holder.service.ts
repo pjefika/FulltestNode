@@ -7,7 +7,7 @@ export class HolderService {
 
     cadastro: Cadastro;
     objectValid: ObjectValid;
-    eachFulltest: string = "CRM"; // Se for deixar em produção retirar valores.
+    eachFulltest: string; // Se for deixar em produção retirar valores.
     liberarSubNav: boolean = false;
     listAsserts: {
         tbsradius: boolean;

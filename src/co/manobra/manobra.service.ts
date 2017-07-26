@@ -3,6 +3,9 @@ import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin';
+
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
 
@@ -24,6 +27,19 @@ export class ManobraService {
             .then(response => {
                 return response.json() as ObjectValid
             }).catch(this.handleError);
+    }
+
+    test() {
+        Observable.forkJoin(
+            this.http.get("Link1")
+            .map(res => res.json()),
+            this.http.get("Link2")
+            .map(res => res.json())
+        ).subscribe(
+            data => {
+                
+            }
+        )
     }
 
     private handleError(error: any): Promise<any> {

@@ -1,3 +1,4 @@
+import { FulltestTableComponent } from './../util/comp_complementares/fulltest_table/fulltest-table.component';
 import { ManobraService } from './../co/manobra/manobra.service';
 import { PopoverService } from './../util/popover/popover.service';
 import { PopoverComponent } from './../util/popover/popover.component';
@@ -72,6 +73,7 @@ import { AppComponent } from './app.component';
         ResetComponent,
         AssocontComponent,
         ToggleComponent,
+        FulltestTableComponent
     ],
     imports: [
         BrowserModule,

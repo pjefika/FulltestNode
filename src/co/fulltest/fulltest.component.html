@@ -30,7 +30,8 @@
                     </tr>
                 </tbody>
             </table>
-            <table class="table table-compact">
+            <fulltest-table-component [objectValid]="objectValid"></fulltest-table-component>
+            <!-- <table class="table table-compact">
                 <thead>
                     <tr>
                         <th colspan="3">Informações de Fulltest</th>
@@ -51,7 +52,7 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
         </div>
         <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" [disabled]="doFulltest">Realizar Fulltest</button>
     </div>
