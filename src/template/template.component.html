@@ -25,7 +25,7 @@
             </label>
         </div>
         <div class="header-actions">
-            <popover-component [cadastro]="holderService.cadastro" *ngIf="holderService.cadastro"></popover-component>
+            <popover-component [cadastro]="holderService.cadastro" [objectValid]="holderService.objectValid" *ngIf="holderService.cadastro"></popover-component>
             <toggle-component *ngIf="mostraToggle"></toggle-component>
             <clr-dropdown clrMenuPosition="bottom-right">
                 <button class="nav-icon" clrDropdownToggle>
@@ -42,7 +42,8 @@
         <subnav-component [menus]="subNavMenus"></subnav-component>
     </nav>
     <div class="content-container">
-        <div class="content-area">            
+        <div class="content-area">
+            <h3>{{headerTitle}}</h3>
             <dynamic-component [componentData]="componentData"></dynamic-component>
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
         </div>

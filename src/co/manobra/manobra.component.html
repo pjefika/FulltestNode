@@ -1,5 +1,4 @@
 <div>
-    <h3>Manobra</h3>
     <div *ngIf="!searchFulltest">
         <div *ngIf="objectValid">
             <div class="row">
@@ -8,7 +7,7 @@
                     <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" *ngIf="!objectValid.resultado">Realizar Fulltest</button>
                 </div>
                 <div class="col-md-6">
-                    <div *ngIf="validManobra" style="margin: 7px 0 0 0;">
+                    <div class="marginspace" *ngIf="validManobra">
                         <label for="idordem" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left ahundredpercent"
                             [class.invalid]="ordemInput.invalid && (ordemInput.dirty || ordemInput.touched)">
                             <input class="ahundredpercent" ngModel name="ordem" type="text" id="idordem" [(ngModel)]="ordem" #ordemInput="ngModel" required placeholder="Insira a ordem" 

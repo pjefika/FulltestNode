@@ -55,6 +55,8 @@ export class TemplateComponent implements OnInit {
 
     signpostState: boolean = false;
 
+    headerTitle: string; // Titulo para a pagina se precisar...
+
     constructor(
         private router: Router,
         private util: Util,
@@ -168,6 +170,7 @@ export class TemplateComponent implements OnInit {
     }
 
     createPrincipalComponent() { //Componente Principal
+        this.headerTitle = "Bem Vindo ao Efika Fulltest";
         this.componentData = {
             component: PrincipalComponent,
             inputs: {
@@ -180,6 +183,7 @@ export class TemplateComponent implements OnInit {
     * Componentes do CO
     **/
     createCadastroComponent() { // Cadastro CO
+        //this.headerTitle = "Informações de Cadastro";
         this.holderService.whoSubNavIsActive = "cadastro-component";
         this.emptyComponentData();
         this.componentData = {
@@ -191,6 +195,7 @@ export class TemplateComponent implements OnInit {
     }
 
     createRealizaFulltestComponent() { //Fullteste CO
+        //this.headerTitle = "Fulltest CO";
         this.holderService.whoSubNavIsActive = "full-test-component";
         this.cadastro = this.holderService.cadastro;
         this.objectValid = this.holderService.objectValid;
@@ -206,6 +211,7 @@ export class TemplateComponent implements OnInit {
     }
 
     createManobraComponent() { // Manobra CO
+        //this.headerTitle = "Manobra";
         this.holderService.whoSubNavIsActive = "manobra-component";
         this.emptyComponentData();
         this.componentData = {
@@ -220,6 +226,7 @@ export class TemplateComponent implements OnInit {
     * Componentes do CRM
     **/
     createRealizaFulltestCrmComponent() { // Cadastro / Fullteste CRM
+        //this.headerTitle = "Fulltest CRM";
         this.holderService.whoSubNavIsActive = "cadastro-crm-component";
         this.emptyComponentData();
         this.componentData = {
@@ -231,7 +238,8 @@ export class TemplateComponent implements OnInit {
 
     }
 
-    createComplementaresComponent() { // Testes Complementares CRM
+    createComplementaresComponent() { // Testes Complementares CRM        
+        //this.headerTitle = "Tests Complementares";
         this.holderService.whoSubNavIsActive = "complementares-component";
         this.objectValid = this.holderService.objectValid
         if (this.objectValid) {
@@ -253,5 +261,6 @@ export class TemplateComponent implements OnInit {
         this.holderService.listResumo = null;
         this.holderService.liberarSubNav = null;
         this.holderService.alertState = null;
+        this.headerTitle = "" //Reseta titulo
     }
 }

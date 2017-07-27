@@ -29,6 +29,7 @@ export class ManobraService {
             }).catch(this.handleError);
     }
 
+    //Multiple requests
     test() {
         Observable.forkJoin(
             this.http.get("Link1")

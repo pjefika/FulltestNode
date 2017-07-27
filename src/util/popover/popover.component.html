@@ -2,7 +2,7 @@
     <a class="nav-link nav-icon" (click)="ativo = true">
         <clr-icon shape="info-circle"></clr-icon>
     </a>
-    <clr-modal [(clrModalOpen)]="ativo" [clrModalStaticBackdrop]="true">
+    <clr-modal [(clrModalOpen)]="ativo" [clrModalStaticBackdrop]="true" [clrModalSize]="'lg'">
         <h3 class="modal-title">Resumo Atendimento</h3>
         <div class="modal-body">
             <table class="table table-compact table-vertical">
@@ -41,6 +41,7 @@
                     </tr>
                 </tbody>
             </table>
+            <!-- <fulltest-table-component [objectValid]="objectValid" *ngIf="objectValid"></fulltest-table-component> -->            
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-outline" (click)="ativo = false">Fechar</button>

@@ -15,6 +15,7 @@ const routes: Routes = [
     {
         path: 'fulltest', component: TemplateComponent
     }
+    //Identificar NotFoundPage e mostrar na tela.
 ]
 
 @NgModule({
