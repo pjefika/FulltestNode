@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './../util/404notfound/notfound.component';
 import { FulltestTableComponent } from './../util/comp_complementares/fulltest_table/fulltest-table.component';
 import { ManobraService } from './../co/manobra/manobra.service';
 import { PopoverService } from './../util/popover/popover.service';
@@ -73,7 +74,8 @@ import { AppComponent } from './app.component';
         ResetComponent,
         AssocontComponent,
         ToggleComponent,
-        FulltestTableComponent
+        FulltestTableComponent,
+        NotFoundComponent
     ],
     imports: [
         BrowserModule,

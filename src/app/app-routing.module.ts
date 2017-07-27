@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './../util/404notfound/notfound.component';
 import { TemplateComponent } from './../template/template.component';
 import { LoginComponent } from './../login/login.component';
 
@@ -14,8 +15,10 @@ const routes: Routes = [
     },
     {
         path: 'fulltest', component: TemplateComponent
+    },
+    {
+        path: '**', component: NotFoundComponent
     }
-    //Identificar NotFoundPage e mostrar na tela.
 ]
 
 @NgModule({
