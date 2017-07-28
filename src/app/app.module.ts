@@ -1,8 +1,7 @@
+import { PopoverComponent } from './../util/comp_complementares/popover/popover.component';
 import { NotFoundComponent } from './../util/404notfound/notfound.component';
 import { FulltestTableComponent } from './../util/comp_complementares/fulltest_table/fulltest-table.component';
 import { ManobraService } from './../co/manobra/manobra.service';
-import { PopoverService } from './../util/popover/popover.service';
-import { PopoverComponent } from './../util/popover/popover.component';
 import { ToggleComponent } from './../template/toggle/toggle.component';
 import { AssocontService } from './../util/comp_complementares/assocont/assocont.service';
 import { AssocontComponent } from './../util/comp_complementares/assocont/assocont.component';
@@ -98,7 +97,6 @@ import { AppComponent } from './app.component';
         FulltestCrmService,
         AdmComponent,
         LogerService,
-        PopoverService,
         ComplementaresService,
         ResetService,
         AssocontService,

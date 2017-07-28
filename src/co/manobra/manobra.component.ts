@@ -1,3 +1,4 @@
+import { Analitico } from './../../viewmodel/manobra/analitico';
 import { FormsModule } from '@angular/forms';
 import { ToastyComponent } from './../../util/toasty/toasty.component';
 import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
@@ -18,13 +19,14 @@ export class ManobraComponent implements OnInit {
 
     cadastro: Cadastro;
     objectValid: ObjectValid;
+    listAnalitico: Analitico[]; // Está vai ser a variavel...
     @Input() ordem: string;
     btnValidDisable: boolean = true;
     validManobra: boolean = false;
-    listValidManobra: [{ msg: string, inf: boolean }]; // Não precisa colocar na holder pois a cada ves que entra ira refazer o teste...
     searchingValids: boolean = false;
     searchFulltest: boolean = false;
     doFulltest: boolean = false;
+    nameBtnValidManobra = "Validar Manobra";
 
     toastyInfo: {
         titulo: string;
@@ -73,7 +75,7 @@ export class ManobraComponent implements OnInit {
                 if (this.objectValid.resultado) {
                     this.validManobra = true;
                     this.callAlert(this.objectValid.mensagem, "alert-success");
-                } else {                    
+                } else {
                     this.callAlert(this.objectValid.mensagem, "alert-danger");
                 }
             }, error => {
@@ -93,33 +95,41 @@ export class ManobraComponent implements OnInit {
 
     validar() { // Realizar RN ao clicar no botão validar...
         if (this.ordem) {
-            this.alertAtivo = false;
             this.btnValidDisable = true;
             this.searchingValids = true;
-            this.mock();
+            this.nameBtnValidManobra = "Validando Manobra";
+            this.manobraService
+                .getRn(this.cadastro, this.ordem)
+                .subscribe(data => {
+                    this.cadastro = data;
+                    this.manobraService
+                        .getAnalitico(this.cadastro)
+                        .then(data => {
+                            this.listAnalitico = data;
+                            this.searchingValids = false;
+                            this.nameBtnValidManobra = "Manobra Validada";
+                        }, error => {
+                            if (error.tError !== "Timeout") {
+                                this.doFulltest = true;
+                            }
+                            this.toastyInfo = {
+                                titulo: "Ops, ocorreu um erro.",
+                                msg: error.mError,
+                                theme: "error"
+                            }
+                            this.toastyComponent.toastyInfo = this.toastyInfo;
+                            this.toastyComponent.addToasty();
+                        });
+                }, error => {
+                    this.toastyInfo = {
+                        titulo: "Ops, ocorreu um erro.",
+                        msg: error.mError,
+                        theme: "error"
+                    }
+                    this.toastyComponent.toastyInfo = this.toastyInfo;
+                    this.toastyComponent.addToasty();
+                });
         }
-    }
-
-    mock() {
-        let test2 = { msg: "Teste 2...", inf: true }
-        let test3 = { msg: "Teste 3...", inf: true }
-        let test4 = { msg: "Teste 4...", inf: true }
-
-        this.listValidManobra = [{ msg: "Teste 1", inf: true }]
-
-        setTimeout(() => {
-            this.listValidManobra.push(test2);
-            setTimeout(() => {
-                this.listValidManobra.push(test3);
-                setTimeout(() => {
-                    this.listValidManobra.push(test4);
-                    this.btnValidDisable = false;
-                    this.searchingValids = false;
-                    this.callAlert("Eu Aprovo... ", "alert-success");
-                    //this.callAlert("Eu Não Aprovo... ", "alert-danger");
-                }, 1500);
-            }, 1500);
-        }, 1500);
     }
 
     callAlert(msg, type) {
@@ -129,25 +139,10 @@ export class ManobraComponent implements OnInit {
         }
         this.alertAtivo = true;
         this.alertCloseable = false;
-
-        this.holderService.alertState = {
-            msg: msg,
-            alertType: type,
-            alertAtivo: true,
-            alertCloseable: false
-        }
     }
 
     holderAtribuition() {
         this.cadastro = this.holderService.cadastro;
-        if (this.holderService.alertState) {
-            this.alertMsg = {
-                msg: this.holderService.alertState.msg,
-                alertType: this.holderService.alertState.alertType
-            }
-            this.alertAtivo = this.holderService.alertState.alertAtivo;
-            this.alertCloseable = this.holderService.alertState.alertCloseable;
-        }
     }
 
     enterBtnInput() {

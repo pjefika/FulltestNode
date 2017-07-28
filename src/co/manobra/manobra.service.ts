@@ -1,9 +1,11 @@
+import { Analitico } from './../../viewmodel/manobra/analitico';
+import { element } from 'protractor';
 import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 
 import 'rxjs/add/operator/toPromise';
@@ -14,15 +16,16 @@ export class ManobraService {
 
     private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
     private options = new RequestOptions({ headers: this.headersAppJson });
-    private fulltestUrl = 'http://10.40.195.81:8080/fulltestAPI_manobra/fulltest/';  // URL to FulltestAPI **--** Modificar path pois está em outro path....
+    private fulltestUrl = 'http://10.40.195.81:8080/fulltestAPI_manobra/';  // URL to FulltestAPI **--** Modificar path pois está em outro path....
+    private manobraAssertsUrl = 'http://10.40.195.81:8080/stealerAPI/';
 
     constructor(private http: Http) { }
 
     getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
-        const url = `${this.fulltestUrl}` + "manobra/";
+        const url = `${this.fulltestUrl}` + "fulltest/manobra/";
         //console.log(url);
         return this.http.post(url, JSON.stringify(cadastro), this.options)
-            .timeout(100000)
+            .timeout(120000)
             .toPromise()
             .then(response => {
                 return response.json() as ObjectValid
@@ -30,17 +33,41 @@ export class ManobraService {
     }
 
     //Multiple requests
-    test() {
-        Observable.forkJoin(
-            this.http.get("Link1")
-            .map(res => res.json()),
-            this.http.get("Link2")
-            .map(res => res.json())
-        ).subscribe(
+    getRn(cadastro: Cadastro, ordem: string): Observable<Cadastro> {
+        const urlStealer = `${this.manobraAssertsUrl}` + "manobra/asserts";
+        const urlFulltest = `${this.fulltestUrl}` + "manobra/asserts";
+        let _data: { cust: Cadastro, workOrderId: string };
+        _data = { cust: cadastro, workOrderId: ordem };
+        return Observable.forkJoin(
+            this.http.post(urlStealer, JSON.stringify(_data), this.options)
+                .map(res => res.json()),
+            this.http.post(urlFulltest, JSON.stringify(cadastro), this.options)
+                .map(res => res.json())
+        ).map(
             data => {
-                
+                data[0].forEach(element => {
+                    cadastro.asserts.push(element);
+                });
+                data[1].forEach(element => {
+                    cadastro.asserts.push(element);
+                });
+                return cadastro as Cadastro;
+            },
+            err => {
+                this.handleError(err);
             }
-        )
+            )
+    }
+
+    getAnalitico(cadastro: Cadastro): Promise<Analitico[]> {
+        const urlFulltest = `${this.fulltestUrl}` + "manobra/analitico";
+        return this.http.post(urlFulltest, JSON.stringify(cadastro), this.options)
+            .timeout(120000)
+            .toPromise()
+            .then(response => {
+                return response.json() as Analitico[];
+            })
+            .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {

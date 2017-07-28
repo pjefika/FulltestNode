@@ -17,7 +17,7 @@ export class ResetService {
     reset(cadastro: Cadastro): Promise<Boolean> {
         const url = `${this.Url}` + "restodolink/";
         return this.http.post(url, JSON.stringify(cadastro), this.options)
-            .timeout(100000)
+            .timeout(120000)
             .toPromise()
             .then(response => {
                 return true;

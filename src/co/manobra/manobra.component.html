@@ -14,21 +14,22 @@
                             (change)="enterBtnInput()">
                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                         </label>
-                        <table class="table table-compact table-vertical" *ngIf="listValidManobra">
+                        <table class="table table-compact table-vertical" *ngIf="listAnalitico">
                             <tbody>
                                 <tr>
                                     <th colspan="2" style="text-align: center;">Validações Manobra</th>
                                 </tr>
-                                <tr *ngFor="let valid of listValidManobra">
-                                    <th>{{valid.msg}}</th>
-                                    <td>
+                                <tr *ngFor="let valid of listAnalitico">
+                                    <th>{{valid.motivo}}</th>
+                                    <th>{{valid.conclusao}}</th>
+                                    <!-- <td>
                                         <clr-icon shape="check" *ngIf="valid.inf" class="is-success"></clr-icon>
                                         <clr-icon shape="times" *ngIf="!valid.inf" class="is-error"></clr-icon>
-                                    </td>
+                                    </td> -->
                                 </tr>
                             </tbody>
                         </table>
-                        <button class="btn btn-primary btn-block" [disabled]="btnValidDisable" [clrLoading]="searchingValids" (click)="validar()">Validar Manobra</button>
+                        <button class="btn btn-primary btn-block" [disabled]="btnValidDisable" [clrLoading]="searchingValids" (click)="validar()">{{nameBtnValidManobra}}</button>
                     </div>
                 </div>
             </div>
