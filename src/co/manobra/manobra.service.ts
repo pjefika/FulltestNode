@@ -1,3 +1,4 @@
+import { Motivo } from './../../viewmodel/manobra/motivo';
 import { Analitico } from './../../viewmodel/manobra/analitico';
 import { element } from 'protractor';
 import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
@@ -33,9 +34,9 @@ export class ManobraService {
     }
 
     //Multiple requests
-    getRn(cadastro: Cadastro, ordem: string): Observable<Cadastro> {
+    getRn(cadastro: Cadastro, ordem: string, ): Observable<Cadastro> {
         const urlStealer = `${this.manobraAssertsUrl}` + "manobra/asserts";
-        const urlFulltest = `${this.fulltestUrl}` + "manobra/asserts";
+        const urlFulltest = `${this.fulltestUrl}` + "manobra/asserts";    
         let _data: { cust: Cadastro, workOrderId: string };
         _data = { cust: cadastro, workOrderId: ordem };
         return Observable.forkJoin(
@@ -50,22 +51,34 @@ export class ManobraService {
                 });
                 data[1].forEach(element => {
                     cadastro.asserts.push(element);
-                });
+                });                
                 return cadastro as Cadastro;
-            },
-            err => {
+            }, err => {
                 this.handleError(err);
             }
             )
     }
 
-    getAnalitico(cadastro: Cadastro): Promise<Analitico[]> {
+    getAnalitico(cadastro: Cadastro, motivoSelected: string, executor: string): Promise<Analitico> {
         const urlFulltest = `${this.fulltestUrl}` + "manobra/analitico";
-        return this.http.post(urlFulltest, JSON.stringify(cadastro), this.options)
+        let _data: { cust: Cadastro, motivo: string, executor: string }
+        _data = { cust: cadastro, motivo: motivoSelected, executor: executor }
+        return this.http.post(urlFulltest, JSON.stringify(_data), this.options)
             .timeout(120000)
             .toPromise()
             .then(response => {
                 return response.json() as Analitico[];
+            })
+            .catch(this.handleError);
+    }
+
+    getListaMotivo(): Promise<Motivo[]> {
+        const urlFulltest = `${this.fulltestUrl}` + "manobra/motivos";
+        return this.http.get(urlFulltest, this.options)
+            .timeout(120000)
+            .toPromise()
+            .then(response => {
+                return response.json() as Motivo[]
             })
             .catch(this.handleError);
     }

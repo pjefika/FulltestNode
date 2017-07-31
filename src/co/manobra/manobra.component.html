@@ -7,29 +7,48 @@
                     <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" *ngIf="!objectValid.resultado">Realizar Fulltest</button>
                 </div>
                 <div class="col-md-6">
-                    <div class="marginspace" *ngIf="validManobra">
-                        <label for="idordem" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left ahundredpercent"
-                            [class.invalid]="ordemInput.invalid && (ordemInput.dirty || ordemInput.touched)">
-                            <input class="ahundredpercent" ngModel name="ordem" type="text" id="idordem" [(ngModel)]="ordem" #ordemInput="ngModel" required placeholder="Insira a ordem" 
-                            (change)="enterBtnInput()">
-                            <span class="tooltip-content">Este campo precisa ser preenchido</span>
-                        </label>
-                        <table class="table table-compact table-vertical" *ngIf="listAnalitico">
+                    <div *ngIf="validManobra">
+                        <div *ngIf="!validedManobra">
+                            <form class="compact">
+                                <label>Informações da Validação</label>
+                                <section class="form-block">
+                                    <div class="form-group">
+                                        <label>Ordem: </label>
+                                        <label for="idordem" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left"
+                                            [class.invalid]="ordemInput.invalid && (ordemInput.dirty || ordemInput.touched)">
+                                        <input ngModel name="ordem" type="text" id="idordem" [(ngModel)]="ordem" #ordemInput="ngModel" required placeholder="Insira a ordem" 
+                                        (change)="enterBtnInput()">
+                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                    </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="selecMotivo">Motivo Informado: </label>
+                                        <div class="select" id="selecMotivo">
+                                            <select [(ngModel)]="motivoSelected" name="motivoSelected">
+                                            <option *ngFor="let value of motivos" [ngValue]="value.name">{{value.motivo}}</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </section>
+                            </form>
+                            <button class="btn btn-primary btn-block" [disabled]="btnValidDisable" [clrLoading]="searchingValids" (click)="validar()">{{nameBtnValidManobra}}</button>
+                        </div>
+                        <table class="table table-compact table-vertical marginspace" *ngIf="analitico">
                             <tbody>
                                 <tr>
                                     <th colspan="2" style="text-align: center;">Validações Manobra</th>
                                 </tr>
-                                <tr *ngFor="let valid of listAnalitico">
-                                    <th>{{valid.motivo}}</th>
-                                    <th>{{valid.conclusao}}</th>
-                                    <!-- <td>
-                                        <clr-icon shape="check" *ngIf="valid.inf" class="is-success"></clr-icon>
-                                        <clr-icon shape="times" *ngIf="!valid.inf" class="is-error"></clr-icon>
-                                    </td> -->
+                                <tr *ngFor="let value of analitico.analises">
+
+                                    <th>{{value.motivo.motivo}}</th>
+                                    <th>{{value.conclusao.frase}}</th>
+                                    <!-- <th>
+                                        <clr-icon shape="check" *ngIf="valid.conclusao.includes('OK')" class="is-success"></clr-icon>
+                                        <clr-icon shape="times" *ngIf="!valid.conclusao.includes('OK')" class="is-error"></clr-icon>
+                                    </th> -->
                                 </tr>
                             </tbody>
                         </table>
-                        <button class="btn btn-primary btn-block" [disabled]="btnValidDisable" [clrLoading]="searchingValids" (click)="validar()">{{nameBtnValidManobra}}</button>
                     </div>
                 </div>
             </div>

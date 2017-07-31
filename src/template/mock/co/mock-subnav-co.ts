@@ -1,7 +1,7 @@
 import { SubNav } from './../../../viewmodel/menus/subnav';
 export const subNavMockCo: SubNav[] = [
     {
-        nome: "Cadastro",
+        nome: "Informações de Cadastro",
         component: "cadastro-component"
     },
     // { // Desabilitado para lançamento...
@@ -9,7 +9,7 @@ export const subNavMockCo: SubNav[] = [
     //     component: "full-test-component"
     // },
     {
-        nome: "Manobra",
+        nome: "Validador Manobra",
         component: "manobra-component"
     },
     // {

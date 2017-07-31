@@ -8,10 +8,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
     {
-        path: '', redirectTo: 'fulltest/entrar', pathMatch: 'full'
+        path: '', redirectTo: '/entrar', pathMatch: 'full'
     },
     {
-        path: 'fulltest/entrar', component: LoginComponent
+        path: 'entrar', component: LoginComponent
     },
     {
         path: 'fulltest', component: TemplateComponent
@@ -26,6 +26,6 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 
-export class AppRoutingModule { 
-    
+export class AppRoutingModule {
+
 }

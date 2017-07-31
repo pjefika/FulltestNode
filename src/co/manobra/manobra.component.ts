@@ -1,3 +1,4 @@
+import { Motivo } from './../../viewmodel/manobra/motivo';
 import { Analitico } from './../../viewmodel/manobra/analitico';
 import { FormsModule } from '@angular/forms';
 import { ToastyComponent } from './../../util/toasty/toasty.component';
@@ -19,13 +20,17 @@ export class ManobraComponent implements OnInit {
 
     cadastro: Cadastro;
     objectValid: ObjectValid;
-    listAnalitico: Analitico[]; // Está vai ser a variavel...
+    analitico: Analitico;
     @Input() ordem: string;
+    motivos: Motivo[];
+    motivoSelected: string;
     btnValidDisable: boolean = true;
     validManobra: boolean = false;
+    validedManobra: boolean = false;
     searchingValids: boolean = false;
     searchFulltest: boolean = false;
     doFulltest: boolean = false;
+
     nameBtnValidManobra = "Validar Manobra";
 
     toastyInfo: {
@@ -60,6 +65,7 @@ export class ManobraComponent implements OnInit {
         this.holderAtribuition();
         if (this.cadastro) {
             this.realizaFulltest();
+            this.getListaMotivo();
         }
     }
 
@@ -74,7 +80,7 @@ export class ManobraComponent implements OnInit {
                 this.searchFulltest = false;
                 if (this.objectValid.resultado) {
                     this.validManobra = true;
-                    this.callAlert(this.objectValid.mensagem, "alert-success");
+                    //this.callAlert(this.objectValid.mensagem, "alert-success");
                 } else {
                     this.callAlert(this.objectValid.mensagem, "alert-danger");
                 }
@@ -93,21 +99,29 @@ export class ManobraComponent implements OnInit {
             })
     }
 
-    validar() { // Realizar RN ao clicar no botão validar...
-        if (this.ordem) {
+    validar() {
+        if (this.ordem && this.motivoSelected) {
             this.btnValidDisable = true;
             this.searchingValids = true;
             this.nameBtnValidManobra = "Validando Manobra";
+            let usr = JSON.parse(sessionStorage.getItem('user'));
             this.manobraService
                 .getRn(this.cadastro, this.ordem)
                 .subscribe(data => {
                     this.cadastro = data;
                     this.manobraService
-                        .getAnalitico(this.cadastro)
+                        .getAnalitico(this.cadastro, this.motivoSelected, usr.user)
                         .then(data => {
-                            this.listAnalitico = data;
+                            this.analitico = data;
                             this.searchingValids = false;
-                            this.nameBtnValidManobra = "Manobra Validada";
+                            this.validedManobra = true;
+                            if (this.analitico.manobrar) {
+                                let _manobraMotivo = "Liberar manobra - " + this.analitico.conclusao.conclusao.frase + ": " + this.analitico.conclusao.motivo.motivo;                         
+                                this.callAlert(_manobraMotivo, "alert-success");                                
+                            } else {
+                                let _manobraMotivo = "Manobra negada - Conclusão: " + this.analitico.conclusao.conclusao.frase;
+                                this.callAlert(_manobraMotivo, "alert-danger");
+                            }
                         }, error => {
                             if (error.tError !== "Timeout") {
                                 this.doFulltest = true;
@@ -130,6 +144,22 @@ export class ManobraComponent implements OnInit {
                     this.toastyComponent.addToasty();
                 });
         }
+    }
+
+    getListaMotivo() {
+        this.manobraService
+            .getListaMotivo()
+            .then(data => {
+                this.motivos = data;
+            }, error => {
+                this.toastyInfo = {
+                    titulo: "Ops, ocorreu um erro.",
+                    msg: error.mError,
+                    theme: "error"
+                }
+                this.toastyComponent.toastyInfo = this.toastyInfo;
+                this.toastyComponent.addToasty();
+            });
     }
 
     callAlert(msg, type) {
