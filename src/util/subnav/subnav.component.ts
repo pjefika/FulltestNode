@@ -18,12 +18,13 @@ export class SubnavComponent implements OnInit {
 
     ngOnInit() { }
 
-    abrecomponent(l) {        
+    abrecomponent(l) {
         if (this.holderService.liberarSubNav) {
             this.switchCO(l);
             this.switchCrm(l);
         }
     }
+
     switchCO(l) {
         switch (l.component) {
             case "full-test-component":
@@ -31,6 +32,9 @@ export class SubnavComponent implements OnInit {
                 break;
             case "cadastro-component":
                 this.templateComponent.createCadastroComponent();
+                break;
+            case "manobra-component":
+                this.templateComponent.createManobraComponent();
                 break;
         }
     }
@@ -45,6 +49,13 @@ export class SubnavComponent implements OnInit {
                 break;
         }
     }
-    
+
+    subNavActive(l): Boolean {
+        let active = false;
+        if (l.component == this.holderService.whoSubNavIsActive) {
+            active = true;
+        }
+        return active;
+    }
 
 }

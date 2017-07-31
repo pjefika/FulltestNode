@@ -1,5 +1,5 @@
 import { SideNav } from './../../../viewmodel/menus/sidenav';
-export const sideNavMockCadastro: SideNav[] = [
+export const sideNavMockCo: SideNav[] = [
     {
         nome: "Gerenciar Perfil Vel.",
         component: ""

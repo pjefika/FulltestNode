@@ -14,10 +14,9 @@ import { Usuario } from '../viewmodel/usuario';
 })
 
 export class LoginComponent implements OnInit {
+
     usuario = new Usuario();
-
     logando: boolean = false;
-
     erroLogar: boolean = false;
     erroMensagem: string;
 

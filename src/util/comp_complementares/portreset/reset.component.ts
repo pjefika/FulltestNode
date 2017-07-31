@@ -1,3 +1,4 @@
+import { HolderService } from './../../holder/holder.service';
 import { Router } from '@angular/router';
 import { Util } from './../../util';
 import { ResetService } from './reset.service';
@@ -14,12 +15,24 @@ export class ResetComponent implements OnInit {
 
     @Input() cadastro: Cadastro;
 
-    loadingbtn: boolean = false;
+    modalActive: boolean = false;
+    btnResetActive: boolean = false;
+    btnLoading: boolean = false;
+
+    result: boolean = false;
+
+    alertMsg: {
+        msg: string;
+        alertType: string;
+    }
+    alertAtivo: boolean = false;
+    alertCloseable: boolean = true;
 
     constructor(
         private util: Util,
         private router: Router,
-        private resetService: ResetService) { }
+        private resetService: ResetService,
+        private holderService: HolderService) { }
 
     ngOnInit() {
         this.util.isLogado().then((result: boolean) => {
@@ -30,8 +43,39 @@ export class ResetComponent implements OnInit {
     }
 
     reset() {
-        console.log("resetou.... só q não!");
-        //this.loadingbtn = true;
+        this.modalActive = false;
+        this.btnResetActive = true;
+        this.btnLoading = true;
+
+        setTimeout(() => {
+            this.btnLoading = false;
+            this.btnResetActive = false;
+
+            this.result = true; // Simulador resultado true ou false para o reset...
+
+            if (this.result) {
+                this.callAlert("Modem resetado com sucesso, aguarde o modem subir.", "alert-success");
+            } else {
+                this.callAlert("Erro ao realizar reset do modem.", "alert-danger");
+            }
+
+        }, 3000);
+    }
+
+    callAlert(msg, type) {
+        this.alertMsg = {
+            msg: msg,
+            alertType: type
+        }
+        this.alertAtivo = true;
+        this.alertCloseable = false;
+
+        this.holderService.alertState = {
+            msg: msg,
+            alertType: type,
+            alertAtivo: true,
+            alertCloseable: false
+        }
     }
 
 }

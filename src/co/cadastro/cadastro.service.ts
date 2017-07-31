@@ -20,7 +20,7 @@ export class CadastroService {
     getCadastro(instancia: string): Promise<Cadastro> {
         const url = `${this.stealerAPIUrl}${instancia}`;
         return this.http.get(url, { headers: this.headers })
-            .timeout(100000)
+            .timeout(120000)
             .toPromise()
             .then(response => {
                 return response.json() as Cadastro

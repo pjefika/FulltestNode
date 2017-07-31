@@ -1,3 +1,7 @@
+import { PopoverComponent } from './../util/comp_complementares/popover/popover.component';
+import { NotFoundComponent } from './../util/404notfound/notfound.component';
+import { FulltestTableComponent } from './../util/comp_complementares/fulltest_table/fulltest-table.component';
+import { ManobraService } from './../co/manobra/manobra.service';
 import { ToggleComponent } from './../template/toggle/toggle.component';
 import { AssocontService } from './../util/comp_complementares/assocont/assocont.service';
 import { AssocontComponent } from './../util/comp_complementares/assocont/assocont.component';
@@ -15,8 +19,6 @@ import { CadastroService } from './../co/cadastro/cadastro.service';
 import { CadastroCrmComponent } from './../crm/cadastrofulltestcrm/cadastrocrm.component';
 import { CadastroWizardComponent } from './../co/cadastro/wizard/cadastro-wizard.component';
 import { CadastroComponent } from './../co/cadastro/cadastro.component';
-import { PopoverService } from './../util/singpost/popover.service';
-import { PopoverComponent } from './../util/singpost/popover.component';
 import { LogerService } from './../util/loger/loger.service';
 import { AdmComponent } from './../adm/adm.component';
 import { HolderService } from './../util/holder/holder.service';
@@ -70,7 +72,9 @@ import { AppComponent } from './app.component';
         ComplementaresComponent,
         ResetComponent,
         AssocontComponent,
-        ToggleComponent
+        ToggleComponent,
+        FulltestTableComponent,
+        NotFoundComponent
     ],
     imports: [
         BrowserModule,
@@ -93,10 +97,10 @@ import { AppComponent } from './app.component';
         FulltestCrmService,
         AdmComponent,
         LogerService,
-        PopoverService,
         ComplementaresService,
         ResetService,
-        AssocontService
+        AssocontService,
+        ManobraService
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -106,7 +110,8 @@ import { AppComponent } from './app.component';
         CadastroComponent,
         BrancoComponent,
         CadastroCrmComponent,
-        ComplementaresComponent
+        ComplementaresComponent,
+        ManobraComponent
     ]
 })
 export class AppModule { }

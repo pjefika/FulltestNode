@@ -19,7 +19,7 @@ export class FulltestService {
         const url = `${this.fulltestUrl}` + "corrective/";
         //console.log(url);
         return this.http.post(url, JSON.stringify(cadastro), this.options)
-            .timeout(100000)
+            .timeout(120000)
             .toPromise()
             .then(response => {
                 return response.json() as ObjectValid

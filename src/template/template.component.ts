@@ -1,3 +1,5 @@
+import { subNavMockCo } from './mock/co/mock-subnav-co';
+import { ManobraComponent } from './../co/manobra/manobra.component';
 import { ComplementaresComponent } from './../crm/complementares/complementares.component';
 import { CadastroCrmComponent } from './../crm/cadastrofulltestcrm/cadastrocrm.component';
 import { FulltestComponent } from './../co/fulltest/fulltest.component';
@@ -11,8 +13,6 @@ import { HolderService } from './../util/holder/holder.service';
 import { ToastyComponent } from './../util/toasty/toasty.component';
 import { Usuario } from './../viewmodel/usuario';
 import { BrancoComponent } from './../branco/branco.component';
-import { sideNavMockCadastro } from './mock/cadastro/mock-sidenav-cadastro';
-import { subNavMockCadastro } from './mock/cadastro/mock-subnav-cadastro';
 import { PrincipalComponent } from './../principal/principal.component';
 import { sideNavMockMassivo } from './mock/massivo/mock-sidenav-massivo';
 import { subNavMockMassivo } from './mock/massivo/mock-subnav-massivo';
@@ -40,8 +40,7 @@ export class TemplateComponent implements OnInit {
     sideNavMenus: SideNav[];
 
     componentData = null;
-
-
+    
     cadastro: Cadastro;
     objectValid: ObjectValid;
 
@@ -56,6 +55,8 @@ export class TemplateComponent implements OnInit {
 
     signpostState: boolean = false;
 
+    headerTitle: string; // Titulo para a pagina se precisar...
+
     constructor(
         private router: Router,
         private util: Util,
@@ -66,7 +67,6 @@ export class TemplateComponent implements OnInit {
     * Faz ao iniciar o componente 
     **/
     ngOnInit(): void {
-        console.log("v1.0.0");
         this.util.isLogado().then((result: boolean) => {
             if (!result) {
                 this.router.navigate(['./fulltest/entrar']);
@@ -101,7 +101,8 @@ export class TemplateComponent implements OnInit {
     **/
     sair() {
         sessionStorage.clear();
-        this.router.navigate(['./fulltest/entrar']);
+        this.holderReset();
+        this.router.navigate(['./entrar']);
     }
 
     /**
@@ -117,7 +118,7 @@ export class TemplateComponent implements OnInit {
         } else {
             this.cadastro = this.holderService.cadastro;
             this.createCadastroComponent();
-            this.subNavMenus = subNavMockCadastro;
+            this.subNavMenus = subNavMockCo;
             this.subnav = true;
             // this.sidenav = true;
             // this.sideNavMenus = sideNavMockCadastro;
@@ -128,12 +129,12 @@ export class TemplateComponent implements OnInit {
     * Ações do header-nav
     **/
     cadastroClick() {
-        this.createPrincipalComponent();
         this.buscaCadastro = true;
-        this.subnav = false;
-        this.sidenav = false;
-        this.subNavMenus = null;
-        this.sideNavMenus = null;
+        //this.createPrincipalComponent();        
+        // this.subnav = false;
+        // this.sidenav = false;
+        // this.subNavMenus = null;
+        // this.sideNavMenus = null;
     }
 
     massivoClick() {
@@ -169,6 +170,7 @@ export class TemplateComponent implements OnInit {
     }
 
     createPrincipalComponent() { //Componente Principal
+        this.headerTitle = "Bem Vindo ao Efika Fulltest";
         this.componentData = {
             component: PrincipalComponent,
             inputs: {
@@ -181,6 +183,8 @@ export class TemplateComponent implements OnInit {
     * Componentes do CO
     **/
     createCadastroComponent() { // Cadastro CO
+        //this.headerTitle = "Informações de Cadastro";
+        this.holderService.whoSubNavIsActive = "cadastro-component";
         this.emptyComponentData();
         this.componentData = {
             component: CadastroComponent,
@@ -191,6 +195,8 @@ export class TemplateComponent implements OnInit {
     }
 
     createRealizaFulltestComponent() { //Fullteste CO
+        //this.headerTitle = "Fulltest CO";
+        this.holderService.whoSubNavIsActive = "full-test-component";
         this.cadastro = this.holderService.cadastro;
         this.objectValid = this.holderService.objectValid;
         if (this.cadastro) {
@@ -204,10 +210,24 @@ export class TemplateComponent implements OnInit {
         }
     }
 
+    createManobraComponent() { // Manobra CO
+        //this.headerTitle = "Manobra";
+        this.holderService.whoSubNavIsActive = "manobra-component";
+        this.emptyComponentData();
+        this.componentData = {
+            component: ManobraComponent,
+            inputs: {
+                cadastro: this.cadastro
+            }
+        }
+    }
+
     /**
     * Componentes do CRM
     **/
     createRealizaFulltestCrmComponent() { // Cadastro / Fullteste CRM
+        //this.headerTitle = "Fulltest CRM";
+        this.holderService.whoSubNavIsActive = "cadastro-crm-component";
         this.emptyComponentData();
         this.componentData = {
             component: CadastroCrmComponent,
@@ -218,7 +238,9 @@ export class TemplateComponent implements OnInit {
 
     }
 
-    createComplementaresComponent() { // Testes Complementares CRM
+    createComplementaresComponent() { // Testes Complementares CRM        
+        //this.headerTitle = "Tests Complementares";
+        this.holderService.whoSubNavIsActive = "complementares-component";
         this.objectValid = this.holderService.objectValid
         if (this.objectValid) {
             this.emptyComponentData();
@@ -238,5 +260,7 @@ export class TemplateComponent implements OnInit {
         this.holderService.listAsserts = null;
         this.holderService.listResumo = null;
         this.holderService.liberarSubNav = null;
+        this.holderService.alertState = null;
+        this.headerTitle = "" //Reseta titulo
     }
 }

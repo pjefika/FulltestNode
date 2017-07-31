@@ -1,32 +1,20 @@
 <clr-main-container>
-    <!-- <clr-alert [clrAlertType]="'alert-info'" [clrAlertAppLevel]="true">
-        <div class="alert-item">
-            <span class="alert-text">Tutorial</span>
-            <div class="alert-actions">
-            </div>
-        </div>
-    </clr-alert> -->
     <clr-header class="header-4">
         <div class="branding">
-            <a class="nav-link" href="fulltest/">
+            <a class="nav-link">
                 <clr-icon shape="home" class="is-success"></clr-icon>
                 <span class="title" id="tituloprincipal">CO - Efika Fulltest</span>
             </a>
         </div>
         <div class="header-nav">
-            <a class="nav-link nav-icon" (click)="cadastroClick()">
+            <a class="nav-link nav-icon" (click)="cadastroClick()" [class.active]="buscaCadastro">
                 <clr-icon shape="headphones" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
                     <span class="tooltip-content">Consultar instância</span>
                 </clr-icon>
             </a>
-            <a class="nav-link nav-icon" (click)="massivoClick()" [class.disabled]="!mostraMenus">
+            <!-- <a class="nav-link nav-icon" (click)="massivoClick()" [class.disabled]="!mostraMenus">
                 <clr-icon shape="layers" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
                     <span class="tooltip-content">Massivo</span>
-                </clr-icon>
-            </a>
-            <!-- <a class="nav-link nav-icon" [class.disabled]="!mostraMenus">
-                <clr-icon shape="shuffle" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
-                    <span class="tooltip-content">Manobra</span>
                 </clr-icon>
             </a> -->
         </div>
@@ -37,7 +25,7 @@
             </label>
         </div>
         <div class="header-actions">
-            <popover-component [cadastro]="holderService.cadastro" *ngIf="holderService.cadastro"></popover-component>
+            <popover-component [cadastro]="holderService.cadastro" [objectValid]="holderService.objectValid" *ngIf="holderService.cadastro"></popover-component>
             <toggle-component *ngIf="mostraToggle"></toggle-component>
             <clr-dropdown clrMenuPosition="bottom-right">
                 <button class="nav-icon" clrDropdownToggle>
@@ -54,7 +42,8 @@
         <subnav-component [menus]="subNavMenus"></subnav-component>
     </nav>
     <div class="content-container">
-        <div class="content-area">            
+        <div class="content-area">
+            <h3>{{headerTitle}}</h3>
             <dynamic-component [componentData]="componentData"></dynamic-component>
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
         </div>

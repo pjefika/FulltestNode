@@ -1,5 +1,5 @@
-import { Cadastro } from './../../viewmodel/cadastro/cadastro';
-import { PopoverService } from './popover.service';
+import { ObjectValid } from './../../../viewmodel/fulltest/objectValid';
+import { Cadastro } from './../../../viewmodel/cadastro/cadastro';
 
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -13,9 +13,9 @@ export class PopoverComponent implements OnInit {
 
     ativo: boolean = false;
     @Input() cadastro: Cadastro;
+    @Input() objectValid: ObjectValid;
 
-    constructor(
-        private popoverService: PopoverService) { }
+    constructor() { }
 
     ngOnInit() { }
 

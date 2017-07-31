@@ -29,6 +29,7 @@ export class ToggleComponent implements OnInit {
     }
 
     hitclose() {
+        this.modalToggle = false;
         this.holderService.eachFulltest = this.eachFulltest;
     }
 }
