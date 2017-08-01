@@ -176,7 +176,7 @@ export class ManobraComponent implements OnInit {
     }
 
     enterBtnInput() {
-        if (!this.ordem) {
+        if (!this.ordem && !this.motivoSelected) {
             this.btnValidDisable = true;
         } else {
             this.btnValidDisable = false;
