@@ -91,6 +91,7 @@ export class CadastroCrmComponent implements OnInit {
 
     //Busca instancia retornando cadastro.
     getCadastro() {
+        this.holderService.liberarSubNav = true; // Libera subnav ao entrar no getcadastro...
         this.searchCadastro = true;
         this.cadastroCrmService
             .getCadastro(this.instancia)
@@ -98,7 +99,7 @@ export class CadastroCrmComponent implements OnInit {
                 this.cadastro = data;
                 this.holderService.cadastro = this.cadastro;
                 this.searchCadastro = false;
-                this.assert();
+                this.assert();                
             }, error => {
                 this.searchCadastro = false;
                 this.mloger(error.mError);
@@ -127,7 +128,7 @@ export class CadastroCrmComponent implements OnInit {
                     this.callAlert(this.objectValid.mensagem, "alert-danger");
                 }
                 this.mloger(this.objectValid.mensagem);
-                this.holderService.liberarSubNav = true;
+                //this.holderService.liberarSubNav = true; // apos termino do fulltest libera a lista de subnav
             }, error => {
                 this.callAlert(error.mError, "alert-danger");
                 this.listResumo.fulltest = false;

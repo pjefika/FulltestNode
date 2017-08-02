@@ -225,6 +225,7 @@ export class TemplateComponent implements OnInit {
     /**
     * Componentes do CRM
     **/
+    
     createRealizaFulltestCrmComponent() { // Cadastro / Fullteste CRM
         //this.headerTitle = "Fulltest CRM";
         this.holderService.whoSubNavIsActive = "cadastro-crm-component";
@@ -251,6 +252,10 @@ export class TemplateComponent implements OnInit {
                 }
             }
         }
+    }
+
+    createGoToAcsLink() {
+        var newwindow = window.open('http://10.40.195.81:8080/acs-arris');
     }
 
     //Holder Functions
