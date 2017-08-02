@@ -47,6 +47,9 @@ export class SubnavComponent implements OnInit {
             case "complementares-component":
                 this.templateComponent.createComplementaresComponent();
                 break;
+            case "link-acs":
+                this.templateComponent.createGoToAcsLink();
+                break;
         }
     }
 
