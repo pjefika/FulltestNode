@@ -1,3 +1,4 @@
+import { UrlService } from './../util/url-service/url.service';
 import { PopoverComponent } from './../util/comp_complementares/popover/popover.component';
 import { NotFoundComponent } from './../util/404notfound/notfound.component';
 import { FulltestTableComponent } from './../util/comp_complementares/fulltest_table/fulltest-table.component';
@@ -100,7 +101,8 @@ import { AppComponent } from './app.component';
         ComplementaresService,
         ResetService,
         AssocontService,
-        ManobraService
+        ManobraService,
+        UrlService
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

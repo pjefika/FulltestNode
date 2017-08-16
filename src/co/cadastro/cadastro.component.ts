@@ -45,7 +45,7 @@ export class CadastroComponent implements OnInit {
     ngOnInit(): void {
         this.util.isLogado().then((result: boolean) => {
             if (!result) {
-                this.router.navigate(['./fulltest/entrar']);
+                this.router.navigate(['./entrar']);
             }
         });
         //Se cadastro já foi consultado e preenchido o mesmo so atribui para a variavel. 

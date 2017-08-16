@@ -40,7 +40,7 @@ export class TemplateComponent implements OnInit {
     sideNavMenus: SideNav[];
 
     componentData = null;
-    
+
     cadastro: Cadastro;
     objectValid: ObjectValid;
 
@@ -69,7 +69,7 @@ export class TemplateComponent implements OnInit {
     ngOnInit(): void {
         this.util.isLogado().then((result: boolean) => {
             if (!result) {
-                this.router.navigate(['./fulltest/entrar']);
+                this.router.navigate(['./entrar']);
             }
         });
         this.createPrincipalComponent();
@@ -102,7 +102,7 @@ export class TemplateComponent implements OnInit {
     sair() {
         sessionStorage.clear();
         this.holderReset();
-        this.router.navigate(['fulltest/entrar']);
+        this.router.navigate(['/entrar']);
     }
 
     /**
@@ -225,7 +225,7 @@ export class TemplateComponent implements OnInit {
     /**
     * Componentes do CRM
     **/
-    
+
     createRealizaFulltestCrmComponent() { // Cadastro / Fullteste CRM
         //this.headerTitle = "Fulltest CRM";
         this.holderService.whoSubNavIsActive = "cadastro-crm-component";
