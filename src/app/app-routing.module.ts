@@ -7,15 +7,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-    {
-        path: 'entrar', component: LoginComponent
-    },
-    {
-        path: '', component: TemplateComponent
-    },
-    {
-        path: '**', component: NotFoundComponent
-    }
+    { path: 'entrar', component: LoginComponent },
+    { path: '', component: TemplateComponent },
+    { path: '**', component: NotFoundComponent }
 ]
 
 @NgModule({

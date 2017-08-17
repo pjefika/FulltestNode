@@ -1,3 +1,4 @@
+import { TableCadastroComponent } from './../util/table-cadastro/table-cadastro.component';
 import { UrlService } from './../util/url-service/url.service';
 import { PopoverComponent } from './../util/comp_complementares/popover/popover.component';
 import { NotFoundComponent } from './../util/404notfound/notfound.component';
@@ -75,7 +76,8 @@ import { AppComponent } from './app.component';
         AssocontComponent,
         ToggleComponent,
         FulltestTableComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        TableCadastroComponent
     ],
     imports: [
         BrowserModule,

@@ -116,13 +116,16 @@ export class ManobraComponent implements OnInit {
                             this.searchingValids = false;
                             this.validedManobra = true;
                             if (this.analitico.manobrar) {
-                                let _manobraMotivo = "Liberar manobra - " + this.analitico.conclusao.conclusao.frase + ": " + this.analitico.conclusao.motivo.motivo;                         
-                                this.callAlert(_manobraMotivo, "alert-success");                                
+                                let _manobraMotivo = "Liberar manobra - " + this.analitico.conclusao.conclusao.frase + ": " + this.analitico.conclusao.motivo.motivo;
+                                this.callAlert(_manobraMotivo, "alert-success");
                             } else {
                                 let _manobraMotivo = "Manobra negada - Conclusão: " + this.analitico.conclusao.conclusao.frase;
                                 this.callAlert(_manobraMotivo, "alert-danger");
                             }
                         }, error => {
+                            this.btnValidDisable = false;
+                            this.searchingValids = false;
+                            this.eraseInfoValid();
                             if (error.tError !== "Timeout") {
                                 this.doFulltest = true;
                             }
@@ -135,14 +138,26 @@ export class ManobraComponent implements OnInit {
                             this.toastyComponent.addToasty();
                         });
                 }, error => {
+                    let jError = error.json();
+                    this.btnValidDisable = false;
+                    this.searchingValids = false;
+                    this.eraseInfoValid();
                     this.toastyInfo = {
                         titulo: "Ops, ocorreu um erro.",
-                        msg: error.mError,
+                        msg: jError.message,
                         theme: "error"
                     }
                     this.toastyComponent.toastyInfo = this.toastyInfo;
                     this.toastyComponent.addToasty();
                 });
+        } else {
+            this.toastyInfo = {
+                titulo: "Ops, ocorreu um erro.",
+                msg: "Por favor preencha os campos",
+                theme: "error"
+            }
+            this.toastyComponent.toastyInfo = this.toastyInfo;
+            this.toastyComponent.addToasty();
         }
     }
 
@@ -181,6 +196,11 @@ export class ManobraComponent implements OnInit {
         } else {
             this.btnValidDisable = false;
         }
+    }
+
+    eraseInfoValid() {
+        this.ordem = null;
+        this.motivoSelected = null;
     }
 
 }
