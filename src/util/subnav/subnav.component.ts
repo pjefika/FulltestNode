@@ -36,6 +36,9 @@ export class SubnavComponent implements OnInit {
             case "manobra-component":
                 this.templateComponent.createManobraComponent();
                 break;
+            case "configuracao-linha-component":
+                this.templateComponent.createConfiguracaoLinhaComponent();
+                break;
         }
     }
 

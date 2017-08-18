@@ -12,6 +12,10 @@ export const subNavMockCo: SubNav[] = [
         nome: "Validador Manobra",
         component: "manobra-component"
     },
+    {
+        nome: "Configuração Linha",
+        component: "configuracao-linha-component"
+    }
     // {
     //     nome: "Configurações de porta",
     //     component: ""

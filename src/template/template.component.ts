@@ -1,3 +1,4 @@
+import { ConfiguracaoLinhaComponent } from './../co/configuracao-linha/configuracao-linha.component';
 import { subNavMockCo } from './mock/co/mock-subnav-co';
 import { ManobraComponent } from './../co/manobra/manobra.component';
 import { ComplementaresComponent } from './../crm/complementares/complementares.component';
@@ -206,6 +207,16 @@ export class TemplateComponent implements OnInit {
                     cadastro: this.cadastro,
                     valid: this.objectValid
                 }
+            }
+        }
+    }
+
+    createConfiguracaoLinhaComponent() {
+        this.holderService.whoSubNavIsActive = "configuracao-linha-component";
+        this.componentData = {
+            component: ConfiguracaoLinhaComponent,
+            inputs: {
+                nothing: null
             }
         }
     }

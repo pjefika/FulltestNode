@@ -1,3 +1,5 @@
+import { ConfiguracaoLinhaService } from './../co/configuracao-linha/configuracao-linha.service';
+import { ConfiguracaoLinhaComponent } from './../co/configuracao-linha/configuracao-linha.component';
 import { TableCadastroComponent } from './../util/table-cadastro/table-cadastro.component';
 import { UrlService } from './../util/url-service/url.service';
 import { PopoverComponent } from './../util/comp_complementares/popover/popover.component';
@@ -77,7 +79,8 @@ import { AppComponent } from './app.component';
         ToggleComponent,
         FulltestTableComponent,
         NotFoundComponent,
-        TableCadastroComponent
+        TableCadastroComponent,
+        ConfiguracaoLinhaComponent
     ],
     imports: [
         BrowserModule,
@@ -104,7 +107,8 @@ import { AppComponent } from './app.component';
         ResetService,
         AssocontService,
         ManobraService,
-        UrlService
+        UrlService,
+        ConfiguracaoLinhaService
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -115,7 +119,8 @@ import { AppComponent } from './app.component';
         BrancoComponent,
         CadastroCrmComponent,
         ComplementaresComponent,
-        ManobraComponent
+        ManobraComponent,
+        ConfiguracaoLinhaComponent
     ]
 })
 export class AppModule { }
