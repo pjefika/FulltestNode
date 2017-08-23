@@ -1,3 +1,3 @@
 <section class="sidenav-content">
-    <a class="nav-link" *ngFor="let l of menus" (click)="abrecomponent(l)" [class.disabled]="!liberarSidNav">{{l.nome}}</a>
+    <a class="nav-link mouse-pointer" *ngFor="let l of menus" (click)="abrecomponent(l)" [class.disabled]="!holderService.liberarSideNav" [class.active]="sideNavActive(l)">{{l.nome}}</a>
 </section>

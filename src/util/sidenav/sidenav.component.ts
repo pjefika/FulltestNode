@@ -1,3 +1,5 @@
+import { HolderService } from './../holder/holder.service';
+import { TemplateComponent } from './../../template/template.component';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,21 +9,54 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class SidenavComponent implements OnInit {
-    constructor() { }
+
+    constructor(
+        private templateComponent: TemplateComponent,
+        public holderService: HolderService) { }
 
     @Input() menus: [{ nome: string, component: string }];
 
-    @Input() liberarSidNav: boolean = false;
+    private howSideNavIsActive: string;
 
     ngOnInit() { }
 
-    abrecomponent(l) {
-        if (this.liberarSidNav) {
+    public abrecomponent(l) {
+        if (this.holderService.liberarSideNav) {
+            this.howSideNavIsActive = l.component;
             switch (l.component) {
-                case "":
-                    
+                case "agrupamento-component":
+
+
+                    break;
+                case "custgroup-component":
+
+                    break;
+                case "ncos-component":
+                    break;
+                case "linha-component":
+
+                    break;
+                case "servico-component":
+
+                    break;
+                case "status-portas-component":
+
+                    break;
+                case "manobrar-component":
+
+                    break;
+                case "status-linha-component":
+
                     break;
             }
         }
+    }
+
+    sideNavActive(l): Boolean {
+        let active = false;
+        if (l.component === this.howSideNavIsActive) {
+            active = true;
+        }
+        return active;
     }
 }

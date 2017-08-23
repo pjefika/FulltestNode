@@ -9,6 +9,7 @@ export class HolderService {
     objectValid: ObjectValid;
     eachFulltest: string; // Se for deixar em produção retirar valores.
     liberarSubNav: boolean = false;
+    liberarSideNav: boolean = false;
     listAsserts: {
         tbsradius: boolean;
         circuito: boolean;

@@ -1,3 +1,4 @@
+import { sideNavConfLinha } from './../co/configuracao-linha/mock/mock-sidenav-co';
 import { ConfiguracaoLinhaComponent } from './../co/configuracao-linha/configuracao-linha.component';
 import { subNavMockCo } from './mock/co/mock-subnav-co';
 import { ManobraComponent } from './../co/manobra/manobra.component';
@@ -121,8 +122,6 @@ export class TemplateComponent implements OnInit {
             this.createCadastroComponent();
             this.subNavMenus = subNavMockCo;
             this.subnav = true;
-            // this.sidenav = true;
-            // this.sideNavMenus = sideNavMockCadastro;
         }
     }
 
@@ -131,22 +130,12 @@ export class TemplateComponent implements OnInit {
     **/
     cadastroClick() {
         this.buscaCadastro = true;
-        //this.createPrincipalComponent();        
-        // this.subnav = false;
-        // this.sidenav = false;
-        // this.subNavMenus = null;
-        // this.sideNavMenus = null;
     }
 
     massivoClick() {
         if (this.mostraMenus) {
             this.emptyComponentData();
             this.buscaCadastro = false;
-            //descomentar quando adicionar infos...
-            // this.subnav = true;
-            // this.sidenav = true;          
-            // this.subNavMenus = subNavMockMassivo;
-            // this.sideNavMenus = sideNavMockMassivo;
         } else {
             this.toastyInfo = {
                 titulo: "Informativo",
@@ -162,6 +151,7 @@ export class TemplateComponent implements OnInit {
     * Insere components no dynamic component
     **/
     emptyComponentData() { // Vazio
+        this.sidenav = false;
         this.componentData = {
             component: BrancoComponent,
             inputs: {
@@ -172,6 +162,7 @@ export class TemplateComponent implements OnInit {
 
     createPrincipalComponent() { //Componente Principal
         this.headerTitle = "Bem Vindo ao Efika Fulltest";
+        this.sidenav = false;
         this.componentData = {
             component: PrincipalComponent,
             inputs: {
@@ -185,6 +176,7 @@ export class TemplateComponent implements OnInit {
     **/
     createCadastroComponent() { // Cadastro CO
         //this.headerTitle = "Informações de Cadastro";
+        this.sidenav = false;
         this.holderService.whoSubNavIsActive = "cadastro-component";
         this.emptyComponentData();
         this.componentData = {
@@ -197,6 +189,7 @@ export class TemplateComponent implements OnInit {
 
     createRealizaFulltestComponent() { //Fullteste CO
         //this.headerTitle = "Fulltest CO";
+        this.sidenav = false;
         this.holderService.whoSubNavIsActive = "full-test-component";
         this.cadastro = this.holderService.cadastro;
         this.objectValid = this.holderService.objectValid;
@@ -213,6 +206,8 @@ export class TemplateComponent implements OnInit {
 
     createConfiguracaoLinhaComponent() {
         this.holderService.whoSubNavIsActive = "configuracao-linha-component";
+        this.sidenav = true;
+        this.sideNavMenus = sideNavConfLinha;
         this.componentData = {
             component: ConfiguracaoLinhaComponent,
             inputs: {
@@ -223,6 +218,7 @@ export class TemplateComponent implements OnInit {
 
     createManobraComponent() { // Manobra CO
         //this.headerTitle = "Manobra";
+        this.sidenav = false;
         this.holderService.whoSubNavIsActive = "manobra-component";
         this.emptyComponentData();
         this.componentData = {
@@ -239,6 +235,7 @@ export class TemplateComponent implements OnInit {
 
     createRealizaFulltestCrmComponent() { // Cadastro / Fullteste CRM
         //this.headerTitle = "Fulltest CRM";
+        this.sidenav = false;
         this.holderService.whoSubNavIsActive = "cadastro-crm-component";
         this.emptyComponentData();
         this.componentData = {
@@ -252,6 +249,7 @@ export class TemplateComponent implements OnInit {
 
     createComplementaresComponent() { // Testes Complementares CRM        
         //this.headerTitle = "Tests Complementares";
+        this.sidenav = false;
         this.holderService.whoSubNavIsActive = "complementares-component";
         this.objectValid = this.holderService.objectValid
         if (this.objectValid) {

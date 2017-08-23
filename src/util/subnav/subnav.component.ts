@@ -10,6 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class SubnavComponent implements OnInit {
+    
     constructor(
         private templateComponent: TemplateComponent,
         public holderService: HolderService) { }
