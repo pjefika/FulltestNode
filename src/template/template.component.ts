@@ -36,7 +36,7 @@ export class TemplateComponent implements OnInit {
     subnav: boolean = false;
     sidenav: boolean = false;
 
-    instancia: string = "";
+    instancia: string = "4131543457";
 
     subNavMenus: SubNav[];
     sideNavMenus: SideNav[];
@@ -274,6 +274,7 @@ export class TemplateComponent implements OnInit {
         this.holderService.listAsserts = null;
         this.holderService.listResumo = null;
         this.holderService.liberarSubNav = null;
+        this.holderService.liberarSideNav = null;
         this.holderService.alertState = null;
         this.headerTitle = "" //Reseta titulo
     }

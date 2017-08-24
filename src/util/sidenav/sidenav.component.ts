@@ -1,17 +1,18 @@
+import { ConfiguracaoLinhaComponent } from './../../co/configuracao-linha/configuracao-linha.component';
 import { HolderService } from './../holder/holder.service';
-import { TemplateComponent } from './../../template/template.component';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'sidenav-component',
     templateUrl: 'sidenav.component.html',
-    styleUrls: ['sidenav.component.css']
+    styleUrls: ['sidenav.component.css'],
+    providers: [ConfiguracaoLinhaComponent]
 })
 
 export class SidenavComponent implements OnInit {
 
     constructor(
-        private templateComponent: TemplateComponent,
+        private configuracaoLinhaComponent: ConfiguracaoLinhaComponent,
         public holderService: HolderService) { }
 
     @Input() menus: [{ nome: string, component: string }];
@@ -23,36 +24,40 @@ export class SidenavComponent implements OnInit {
     public abrecomponent(l) {
         if (this.holderService.liberarSideNav) {
             this.howSideNavIsActive = l.component;
-            switch (l.component) {
-                case "agrupamento-component":
-
-
-                    break;
-                case "custgroup-component":
-
-                    break;
-                case "ncos-component":
-                    break;
-                case "linha-component":
-
-                    break;
-                case "servico-component":
-
-                    break;
-                case "status-portas-component":
-
-                    break;
-                case "manobrar-component":
-
-                    break;
-                case "status-linha-component":
-
-                    break;
-            }
+            this.configuracaoLinhaComponents(l);
         }
     }
 
-    sideNavActive(l): Boolean {
+    private configuracaoLinhaComponents(l) {
+        switch (l.component) {
+            case "agrupamento-component":
+                this.configuracaoLinhaComponent.createAgrupamentoComponent();
+                break;
+            case "custgroup-component":
+
+                break;
+            case "ncos-component":
+
+                break;
+            case "linha-component":
+
+                break;
+            case "servico-component":
+
+                break;
+            case "status-portas-component":
+
+                break;
+            case "manobrar-component":
+
+                break;
+            case "status-linha-component":
+
+                break;
+        }
+    }
+
+    public sideNavActive(l): Boolean {
         let active = false;
         if (l.component === this.howSideNavIsActive) {
             active = true;

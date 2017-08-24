@@ -1,3 +1,4 @@
+import { AgrupamentoComponent } from './../co/configuracao-linha/actions/agrupamento/agrupamento.component';
 import { ConfiguracaoLinhaService } from './../co/configuracao-linha/configuracao-linha.service';
 import { ConfiguracaoLinhaComponent } from './../co/configuracao-linha/configuracao-linha.component';
 import { TableCadastroComponent } from './../util/table-cadastro/table-cadastro.component';
@@ -80,7 +81,8 @@ import { AppComponent } from './app.component';
         FulltestTableComponent,
         NotFoundComponent,
         TableCadastroComponent,
-        ConfiguracaoLinhaComponent
+        ConfiguracaoLinhaComponent,
+        AgrupamentoComponent
     ],
     imports: [
         BrowserModule,

@@ -6,23 +6,6 @@ export class ConfiguracaoLinhaService {
 
     constructor() { }
 
-    public getLstComandos(): string[] {
-        let listComandos: string[] = [];
-        listComandos.push("Ativar Agrupamento");
-        listComandos.push("Desativar Agrupamento");
-        listComandos.push("Consultar Agrupamento");
-        listComandos.push("Alterar CUSTGROUP");
-        listComandos.push("Alterar NCOS");
-        listComandos.push("Criar Linha");
-        listComandos.push("Deletar Linha");
-        listComandos.push("Ativar Serviço");
-        listComandos.push("Desativar Serviço");
-        listComandos.push("Listar Status da Portas");
-        listComandos.push("Manobrar");
-        listComandos.push("Status da Linha");
-        return listComandos;
-    }
-
     public getInformacoes(): InfoLinha {
         let info: InfoLinha;
         info = {

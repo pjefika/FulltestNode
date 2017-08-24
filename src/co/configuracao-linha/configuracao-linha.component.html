@@ -1,44 +1,33 @@
 <div>
-    <div class="row" *ngIf="infoLinha">
-        <div class="col-md-6">
-            <label for="lstComandos">Comandos</label>
-            <div class="select">
-                <select id="lstComandos" [(ngModel)]="comandoSelecionado">
-                    <option selected disabled>Selecione</option>
-                    <option *ngFor="let comando of listaDeComandos" [ngValue]="comando">
-                        {{comando}}
-                    </option>
-                </select>
-            </div>
-            <button type="button" class="btn btn-primary btn-block" (click)="doAction()">Executar</button>
+    <div>
+        <div *ngIf="infoLinha">
+            <table class="table table-vertical table-compact">
+                <tbody>
+                    <tr>
+                        <th colspan="2" class="align-text-center">Informações da linha</th>
+                    </tr>
+                    <tr>
+                        <th>Central</th>
+                        <td>{{infoLinha.central}}</td>
+                    </tr>
+                    <tr>
+                        <th>IP</th>
+                        <td>{{infoLinha.ip}}</td>
+                    </tr>
+                    <tr>
+                        <th>Facilidade</th>
+                        <td>{{infoLinha.facilidade}}</td>
+                    </tr>
+                    <tr>
+                        <th>Detalhes</th>
+                        <td>{{infoLinha.detalhes}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="col-md-6">
-            <div *ngIf="infoLinha">
-                <table class="table table-vertical table-compact">
-                    <tbody>
-                        <tr>
-                            <th colspan="2" class="align-text-center">Informações da linha</th>
-                        </tr>
-                        <tr>
-                            <th>Central</th>
-                            <td>{{infoLinha.central}}</td>
-                        </tr>
-                        <tr>
-                            <th>IP</th>
-                            <td>{{infoLinha.ip}}</td>
-                        </tr>
-                        <tr>
-                            <th>Facilidade</th>
-                            <td>{{infoLinha.facilidade}}</td>
-                        </tr>
-                        <tr>
-                            <th>Detalhes</th>
-                            <td>{{infoLinha.detalhes}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <loading-component [searching]="searching" [searchWhat]="searchingWhat"></loading-component>
     </div>
-    <loading-component [searching]="searching" [searchWhat]="searchingWhat"></loading-component>
+    <div>
+        <dynamic-component [componentData]="componentDataConfLine"></dynamic-component>
+    </div>
 </div>
