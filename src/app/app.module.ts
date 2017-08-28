@@ -1,3 +1,14 @@
+import { StatusPortaComponent } from './../co/configuracao-linha/actions/status-porta/status-porta.component';
+import { StatusLinhaComponent } from './../co/configuracao-linha/actions/status-linha/status-linha.component';
+import { ServicoLinhaComponent } from './../co/configuracao-linha/actions/servico/servico-linha.component';
+import { NcosComponent } from './../co/configuracao-linha/actions/ncos/ncos.component';
+import { ManobrarLinhaComponent } from './../co/configuracao-linha/actions/manobrar/manobrar-linha.component';
+import { LinhaComponent } from './../co/configuracao-linha/actions/linha/linha.component';
+import { CustgroupComponent } from './../co/configuracao-linha/actions/custgroup/custgroup.component';
+import { DesativarAgrupamentoComponent } from './../co/configuracao-linha/actions/agrupamento/desativar/desativar-agrupamento.component';
+import { AtivarAgrupamentoComponent } from './../co/configuracao-linha/actions/agrupamento/ativar/ativar-agrupamento.component';
+import { ConsultarAgrupamentoComponent } from './../co/configuracao-linha/actions/agrupamento/consultar/consultar-agrupamento.component';
+import { DndModule } from 'ng2-dnd';
 import { AgrupamentoComponent } from './../co/configuracao-linha/actions/agrupamento/agrupamento.component';
 import { ConfiguracaoLinhaService } from './../co/configuracao-linha/configuracao-linha.service';
 import { ConfiguracaoLinhaComponent } from './../co/configuracao-linha/configuracao-linha.component';
@@ -82,7 +93,17 @@ import { AppComponent } from './app.component';
         NotFoundComponent,
         TableCadastroComponent,
         ConfiguracaoLinhaComponent,
-        AgrupamentoComponent
+        AgrupamentoComponent,
+        ConsultarAgrupamentoComponent,
+        AtivarAgrupamentoComponent,
+        DesativarAgrupamentoComponent,
+        CustgroupComponent,
+        LinhaComponent,
+        ManobrarLinhaComponent,
+        NcosComponent,
+        ServicoLinhaComponent,
+        StatusLinhaComponent,
+        StatusPortaComponent
     ],
     imports: [
         BrowserModule,
@@ -93,6 +114,7 @@ import { AppComponent } from './app.component';
         AppRoutingModule,
         MomentModule,
         ToastyModule.forRoot(),
+        DndModule.forRoot()
     ],
     providers: [
         Util,
@@ -122,7 +144,15 @@ import { AppComponent } from './app.component';
         CadastroCrmComponent,
         ComplementaresComponent,
         ManobraComponent,
-        ConfiguracaoLinhaComponent
+        ConfiguracaoLinhaComponent,
+        AgrupamentoComponent,
+        CustgroupComponent,
+        LinhaComponent,
+        ManobrarLinhaComponent,
+        NcosComponent,
+        ServicoLinhaComponent,
+        StatusLinhaComponent,
+        StatusPortaComponent
     ]
 })
 export class AppModule { }

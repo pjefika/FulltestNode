@@ -1,3 +1,4 @@
+import { BrancoComponent } from './../../branco/branco.component';
 import { AgrupamentoComponent } from './actions/agrupamento/agrupamento.component';
 import { HolderService } from './../../util/holder/holder.service';
 import { ToastyComponent } from './../../util/toasty/toasty.component';
@@ -17,25 +18,27 @@ export class ConfiguracaoLinhaComponent implements OnInit {
     public infoLinha: InfoLinha;
     public searching: boolean = false;
     public searchingWhat: string;
-    public componentDataConfLine = null;
+
+    private componentData = null;
 
     constructor(
         private configuracaoLinhaService: ConfiguracaoLinhaService,
         private toastyComponent: ToastyComponent,
-        private holderService: HolderService) { }
+        public holderService: HolderService) { }
 
     ngOnInit() {
-        this.searching = true;
-        this.searchingWhat = "Buscando Informações da Instância..."
-        setTimeout(() => {
-            this.searching = false;
-            this.holderService.liberarSideNav = true;
-            this.getInformacoes();
-        }, 2000);
+        this.getInformacoes();
     }
 
     private getInformacoes() {
         this.infoLinha = this.configuracaoLinhaService.getInformacoes();
+        this.holderService.infoLinha = this.infoLinha;
+        this.holderService.liberarSideNav = true;
+        // this.searching = true;
+        // this.searchingWhat = "Buscando Informações da Instância..."
+        // this.searching = false;
+        // this.holderService.liberarSideNav = true;
+        // this.infoLinha = this.configuracaoLinhaService.getInformacoes();
     }
 
     private callToasty(titulo: string, msg: string, theme: string) {
@@ -45,15 +48,6 @@ export class ConfiguracaoLinhaComponent implements OnInit {
             theme: theme
         }
         this.toastyComponent.addToasty();
-    }
-
-    public createAgrupamentoComponent() {
-        this.componentDataConfLine = {
-            component: AgrupamentoComponent,
-            inputs: {
-                infoLinha: this.infoLinha
-            }
-        }
     }
 
 }

@@ -1,0 +1,21 @@
+<div *ngIf="ativo">
+    <div>
+        <input type="text" [(ngModel)]="linha" style="width: 100%;">
+        <button type="button" class="btn btn-primary btn-block" (click)="montaListaAgrupamento();tamanhoArray()">Adicionar</button>
+    </div>
+    <div>
+        <div *ngIf="sizeInstancias > 0">
+            <h4>Instâncias</h4>
+            <div>
+                <ul class="list-group" dnd-sortable-container [sortableData]="instancias">
+                    <li *ngFor="let instancia of instancias; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">
+                        {{instancia}}
+                        <span *ngIf="i==0">Piloto</span>
+                        <span *ngIf="i!=0">Membro {{i}}</span>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-primary btn-block" (click)="criarAgrupamento()">Ativar Agrupamento</button>
+            </div>
+        </div>
+    </div>
+</div>

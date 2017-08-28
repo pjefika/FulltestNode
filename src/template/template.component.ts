@@ -1,3 +1,7 @@
+import { TemplateCOService } from './util-service/template-co.service';
+import { TemplateCrmService } from './util-service/tempalte-crm.service';
+import { TemplateService } from './util-service/template.service';
+import { AgrupamentoComponent } from './../co/configuracao-linha/actions/agrupamento/agrupamento.component';
 import { sideNavConfLinha } from './../co/configuracao-linha/mock/mock-sidenav-co';
 import { ConfiguracaoLinhaComponent } from './../co/configuracao-linha/configuracao-linha.component';
 import { subNavMockCo } from './mock/co/mock-subnav-co';
@@ -25,7 +29,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'template-full',
     templateUrl: 'template.component.html',
-    styleUrls: ['template.component.css']
+    styleUrls: ['template.component.css'],
+    providers: [TemplateService, TemplateCrmService, TemplateCOService]
 })
 
 export class TemplateComponent implements OnInit {
@@ -63,7 +68,10 @@ export class TemplateComponent implements OnInit {
         private router: Router,
         private util: Util,
         private toastyComponent: ToastyComponent,
-        public holderService: HolderService) { }
+        public holderService: HolderService,
+        private templateService: TemplateService,
+        private templateCrmService: TemplateCrmService,
+        public templateCOService: TemplateCOService) { }
 
     /**
     * Faz ao iniciar o componente 
@@ -78,8 +86,7 @@ export class TemplateComponent implements OnInit {
         this.validaUsr();
     }
 
-    validaUsr() {
-        //Ativa ou Bloqueia o Menu de Massivo, ativo se maior que 6 e ativa o botão search        
+    public validaUsr() {
         if (sessionStorage.getItem('user')) {
             let usr = JSON.parse(sessionStorage.getItem('user'));
 
@@ -90,18 +97,12 @@ export class TemplateComponent implements OnInit {
                 this.mostraToggle = true;
             }
         }
-        //descomentar quando lançar
-        // if (usr.nv >= 6) {
-        //     this.mostraMenus = true;
-        // } else {
-        //     this.mostraMenus = false;
-        // }
     }
 
     /**
     * Sair do sistema
     **/
-    sair() {
+    public sair() {
         sessionStorage.clear();
         this.holderReset();
         this.router.navigate(['./entrar']);
@@ -110,7 +111,7 @@ export class TemplateComponent implements OnInit {
     /**
     * Ação para busca da instância
     **/
-    busca() {
+    public busca() {
         this.holderReset();
         let usr = JSON.parse(sessionStorage.getItem('user'));
         if (usr.nv === 1 || this.holderService.eachFulltest === "CRM") {
@@ -128,11 +129,11 @@ export class TemplateComponent implements OnInit {
     /**
     * Ações do header-nav
     **/
-    cadastroClick() {
+    public cadastroClick() {
         this.buscaCadastro = true;
     }
 
-    massivoClick() {
+    public massivoClick() {
         if (this.mostraMenus) {
             this.emptyComponentData();
             this.buscaCadastro = false;
@@ -150,121 +151,162 @@ export class TemplateComponent implements OnInit {
     /**
     * Insere components no dynamic component
     **/
-    emptyComponentData() { // Vazio
+    public emptyComponentData() { // Vazio
         this.sidenav = false;
-        this.componentData = {
-            component: BrancoComponent,
-            inputs: {
-                nothing: null
-            }
-        }
+        this.templateService.emptyComponentData()
+            .then(data => {
+                this.componentData = data;
+            });
     }
 
-    createPrincipalComponent() { //Componente Principal
+    public createPrincipalComponent() { //Componente Principal
         this.headerTitle = "Bem Vindo ao Efika Fulltest";
         this.sidenav = false;
-        this.componentData = {
-            component: PrincipalComponent,
-            inputs: {
-                nothing: null
-            }
-        }
+        this.templateService.createPrincipalComponent()
+            .then(data => {
+                this.componentData = data;
+            });
     }
 
     /**
     * Componentes do CO
     **/
-    createCadastroComponent() { // Cadastro CO
+    public createCadastroComponent() { // Cadastro CO
         //this.headerTitle = "Informações de Cadastro";
         this.sidenav = false;
         this.holderService.whoSubNavIsActive = "cadastro-component";
-        this.emptyComponentData();
-        this.componentData = {
-            component: CadastroComponent,
-            inputs: {
-                instancia: this.instancia
-            }
-        }
+        //this.emptyComponentData();
+        this.templateCOService.createCadastroComponent(this.instancia)
+            .then(data => {
+                this.componentData = data;
+            });
     }
 
-    createRealizaFulltestComponent() { //Fullteste CO
+    public createRealizaFulltestComponent() { //Fullteste CO
         //this.headerTitle = "Fulltest CO";
         this.sidenav = false;
         this.holderService.whoSubNavIsActive = "full-test-component";
         this.cadastro = this.holderService.cadastro;
         this.objectValid = this.holderService.objectValid;
         if (this.cadastro) {
-            this.componentData = {
-                component: FulltestComponent,
-                inputs: {
-                    cadastro: this.cadastro,
-                    valid: this.objectValid
-                }
-            }
+            this.templateCOService.createRealizaFulltestComponent(this.cadastro, this.objectValid)
+                .then(data => {
+                    this.componentData = data;
+                });
         }
     }
 
-    createConfiguracaoLinhaComponent() {
+    public createConfiguracaoLinhaComponent() {
         this.holderService.whoSubNavIsActive = "configuracao-linha-component";
         this.sidenav = true;
         this.sideNavMenus = sideNavConfLinha;
-        this.componentData = {
-            component: ConfiguracaoLinhaComponent,
-            inputs: {
-                nothing: null
-            }
-        }
+        this.templateCOService.createConfiguracaoLinhaComponent()
+            .then(data => {
+                this.componentData = data;
+            });
     }
 
-    createManobraComponent() { // Manobra CO
+    public createManobraComponent() { // Manobra CO
         //this.headerTitle = "Manobra";
         this.sidenav = false;
         this.holderService.whoSubNavIsActive = "manobra-component";
         this.emptyComponentData();
-        this.componentData = {
-            component: ManobraComponent,
-            inputs: {
-                cadastro: this.cadastro
-            }
-        }
+        this.templateCOService.createManobraComponent(this.cadastro)
+            .then(data => {
+                this.componentData = data;
+            });
     }
 
     /**
     * Componentes do CRM
     **/
 
-    createRealizaFulltestCrmComponent() { // Cadastro / Fullteste CRM
+    public createRealizaFulltestCrmComponent() { // Cadastro / Fullteste CRM
         //this.headerTitle = "Fulltest CRM";
         this.sidenav = false;
         this.holderService.whoSubNavIsActive = "cadastro-crm-component";
         this.emptyComponentData();
-        this.componentData = {
-            component: CadastroCrmComponent,
-            inputs: {
-                instancia: this.instancia
-            }
-        }
+        this.templateCrmService.createRealizaFulltestCrmComponent(this.instancia)
+            .then(data => {
+                this.componentData = data;
+            });
 
     }
 
-    createComplementaresComponent() { // Testes Complementares CRM        
+    public createComplementaresComponent() { // Testes Complementares CRM        
         //this.headerTitle = "Tests Complementares";
         this.sidenav = false;
         this.holderService.whoSubNavIsActive = "complementares-component";
         this.objectValid = this.holderService.objectValid
         if (this.objectValid) {
-            this.emptyComponentData();
-            this.componentData = {
-                component: ComplementaresComponent,
-                inputs: {
-                    cadastro: this.cadastro
-                }
-            }
+            this.templateCrmService.createComplementaresComponent(this.cadastro)
+                .then(data => {
+                    this.componentData = data;
+                });
         }
     }
 
     createGoToAcsLink() {
         var newwindow = window.open('http://10.40.195.81:8080/acs-arris');
+    }
+
+    /*
+    * Create Sidenav Components Linha 
+    */
+    public createAgrupamentoComponent() {
+        this.templateCOService.createAgrupamentoComponent()
+            .then(data => {
+                this.componentData = data;
+            });
+    }
+
+    public createCustgroupComponent() {
+        this.templateCOService.createCustgroupComponent()
+            .then(data => {
+                this.componentData = data;
+            });
+    }
+
+    public createLinhaComponent() {
+        this.templateCOService.createLinhaComponent()
+            .then(data => {
+                this.componentData = data;
+            });
+    }
+
+    public createManobrarLinhaComponent() {
+        this.templateCOService.createManobrarLinhaComponent()
+            .then(data => {
+                this.componentData = data;
+            });
+    }
+
+    public createNcosComponent() {
+        this.templateCOService.createNcosComponent()
+            .then(data => {
+                this.componentData = data;
+            });
+    }
+
+    public createServicoLinhaComponent() {
+        this.templateCOService.createServicoLinhaComponent()
+            .then(data => {
+                this.componentData = data;
+            });
+    }
+
+    public createStatusLinhaComponent() {
+        this.templateCOService.createStatusLinhaComponent()
+            .then(data => {
+                this.componentData = data;
+            });
+    }
+
+    public createStatusPortaComponent() {
+        this.templateCOService.createStatusPortaComponent()
+            .then(data => {
+                this.componentData = data;
+            });
     }
 
     //Holder Functions

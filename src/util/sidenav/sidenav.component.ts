@@ -1,19 +1,18 @@
-import { ConfiguracaoLinhaComponent } from './../../co/configuracao-linha/configuracao-linha.component';
+import { TemplateComponent } from './../../template/template.component';
 import { HolderService } from './../holder/holder.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'sidenav-component',
     templateUrl: 'sidenav.component.html',
-    styleUrls: ['sidenav.component.css'],
-    providers: [ConfiguracaoLinhaComponent]
+    styleUrls: ['sidenav.component.css']
 })
 
 export class SidenavComponent implements OnInit {
 
     constructor(
-        private configuracaoLinhaComponent: ConfiguracaoLinhaComponent,
-        public holderService: HolderService) { }
+        public holderService: HolderService,
+        private templateComponent: TemplateComponent) { }
 
     @Input() menus: [{ nome: string, component: string }];
 
@@ -28,31 +27,31 @@ export class SidenavComponent implements OnInit {
         }
     }
 
-    private configuracaoLinhaComponents(l) {
+    private configuracaoLinhaComponents(l) {        
         switch (l.component) {
             case "agrupamento-component":
-                this.configuracaoLinhaComponent.createAgrupamentoComponent();
+                this.templateComponent.createAgrupamentoComponent();
                 break;
             case "custgroup-component":
-
+                this.templateComponent.createCustgroupComponent();
                 break;
             case "ncos-component":
-
+                this.templateComponent.createNcosComponent();
                 break;
             case "linha-component":
-
+                this.templateComponent.createLinhaComponent();
                 break;
-            case "servico-component":
-
+            case "servico-linha-component":                
+                this.templateComponent.createServicoLinhaComponent();
                 break;
-            case "status-portas-component":
-
+            case "status-porta-component":
+                this.templateComponent.createStatusPortaComponent();
                 break;
-            case "manobrar-component":
-
+            case "manobrar-linha-component":
+                this.templateComponent.createManobrarLinhaComponent();
                 break;
             case "status-linha-component":
-
+                this.templateComponent.createStatusLinhaComponent();
                 break;
         }
     }

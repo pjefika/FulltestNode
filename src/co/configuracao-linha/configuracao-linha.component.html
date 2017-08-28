@@ -1,33 +1,28 @@
 <div>
-    <div>
-        <div *ngIf="infoLinha">
-            <table class="table table-vertical table-compact">
-                <tbody>
-                    <tr>
-                        <th colspan="2" class="align-text-center">Informações da linha</th>
-                    </tr>
-                    <tr>
-                        <th>Central</th>
-                        <td>{{infoLinha.central}}</td>
-                    </tr>
-                    <tr>
-                        <th>IP</th>
-                        <td>{{infoLinha.ip}}</td>
-                    </tr>
-                    <tr>
-                        <th>Facilidade</th>
-                        <td>{{infoLinha.facilidade}}</td>
-                    </tr>
-                    <tr>
-                        <th>Detalhes</th>
-                        <td>{{infoLinha.detalhes}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <loading-component [searching]="searching" [searchWhat]="searchingWhat"></loading-component>
+    <div *ngIf="infoLinha">
+        <table class="table table-vertical table-compact">
+            <tbody>
+                <tr>
+                    <th colspan="2" class="align-text-center">Informações da linha</th>
+                </tr>
+                <tr>
+                    <th>Central</th>
+                    <td>{{infoLinha.central}}</td>
+                </tr>
+                <tr>
+                    <th>IP</th>
+                    <td>{{infoLinha.ip}}</td>
+                </tr>
+                <tr>
+                    <th>Facilidade</th>
+                    <td>{{infoLinha.facilidade}}</td>
+                </tr>
+                <tr>
+                    <th>Detalhes</th>
+                    <td>{{infoLinha.detalhes}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div>
-        <dynamic-component [componentData]="componentDataConfLine"></dynamic-component>
-    </div>
+    <loading-component [searching]="searching" [searchWhat]="searchingWhat"></loading-component>
 </div>

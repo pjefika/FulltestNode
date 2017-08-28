@@ -18,18 +18,18 @@ export const sideNavConfLinha: SideNav[] = [
     },
     {
         nome: "Serviço",
-        component: "servico-component"
+        component: "servico-linha-component"
     },
     {
         nome: "Listar Status das Portas",
-        component: "status-portas-component"
+        component: "status-porta-component"
     },
     {
         nome: "Manobrar",
-        component: "manobrar-component"
+        component: "manobrar-linha-component"
     },
     {
-        nome: "Status da Linha",
+        nome: "Listar Status da Linha",
         component: "status-linha-component"
     }
 ]

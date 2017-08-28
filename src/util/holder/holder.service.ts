@@ -1,3 +1,4 @@
+import { InfoLinha } from './../../viewmodel/cadastro-linha/infolinha';
 import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { Injectable } from '@angular/core';
@@ -6,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class HolderService {
 
     cadastro: Cadastro;
+    infoLinha: InfoLinha;
     objectValid: ObjectValid;
     eachFulltest: string; // Se for deixar em produção retirar valores.
     liberarSubNav: boolean = false;

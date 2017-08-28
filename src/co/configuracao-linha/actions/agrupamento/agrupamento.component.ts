@@ -10,10 +10,35 @@ import { Component, OnInit } from '@angular/core';
 
 export class AgrupamentoComponent implements OnInit {
 
+    private qualComando: string;
+
+    private consultar: boolean = false;
+    private ativar: boolean = false;
+    private desativar: boolean = false;
+
     constructor() { }
 
     ngOnInit() {
-        console.log("entrou aq")
-     }
+    }
+
+    public comandoSelecionado() {
+        switch (this.qualComando) {
+            case "consultar":
+                this.consultar = true;
+                this.ativar = false;
+                this.desativar = false;
+                break;
+            case "ativar":
+                this.ativar = true;
+                this.consultar = false;
+                this.desativar = false;
+                break;
+            case "desativar":
+                this.desativar = true;
+                this.consultar = false;
+                this.ativar = false;
+                break;
+        }
+    }
 
 }
