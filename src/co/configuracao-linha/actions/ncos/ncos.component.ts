@@ -9,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class NcosComponent implements OnInit {
+
+    private newncos: string;
+
     constructor() { }
 
     ngOnInit() { }

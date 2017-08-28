@@ -1,1 +1,13 @@
-Linha Component
+<div>
+    <h3>Linha</h3>
+    <div class="select">
+        <select [(ngModel)]="qualComando" (change)="comandoSelecionado()">
+            <option value="criar">Criar Linha</option>
+            <option value="deletar">Deletar Linha</option>
+        </select>
+    </div>
+
+    <criar-linha-component [ativo]="criarLinha"></criar-linha-component>
+    <deletar-linha-component [ativo]="deletarLinha"></deletar-linha-component>
+
+</div>

@@ -1,5 +1,5 @@
 import { DesativarAgrupamentoService } from './desativar-agrupamento.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'desativar-agrupamento-component',
@@ -9,7 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class DesativarAgrupamentoComponent implements OnInit {
+
+    @Input() ativo: boolean = false;
+
+    private linha: string;
+    private instancias: string[] = [];
+    private sizeInstancias: number;
+
     constructor() { }
 
     ngOnInit() { }
+
+    public montaListaAgrupamento() {
+        if (this.instancias) {
+            this.instancias.push(this.linha);
+        } else {
+            this.instancias = [this.linha];
+        }
+    }
+
+    public tamanhoArray() {
+        this.sizeInstancias = this.instancias.length;
+    }
+
+    public desativarAgrupamento() {
+        console.log(this.instancias)        
+    }
 }

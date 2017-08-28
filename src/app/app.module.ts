@@ -1,3 +1,5 @@
+import { DeletarLinhaComponent } from './../co/configuracao-linha/actions/linha/deletar/deletar-linha.component';
+import { CriarLinhaComponent } from './../co/configuracao-linha/actions/linha/criar/criar-linha.component';
 import { StatusPortaComponent } from './../co/configuracao-linha/actions/status-porta/status-porta.component';
 import { StatusLinhaComponent } from './../co/configuracao-linha/actions/status-linha/status-linha.component';
 import { ServicoLinhaComponent } from './../co/configuracao-linha/actions/servico/servico-linha.component';
@@ -103,7 +105,9 @@ import { AppComponent } from './app.component';
         NcosComponent,
         ServicoLinhaComponent,
         StatusLinhaComponent,
-        StatusPortaComponent
+        StatusPortaComponent,
+        CriarLinhaComponent,
+        DeletarLinhaComponent
     ],
     imports: [
         BrowserModule,

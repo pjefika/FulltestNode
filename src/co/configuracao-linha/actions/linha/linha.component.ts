@@ -10,8 +10,29 @@ import { Component, OnInit } from '@angular/core';
 
 export class LinhaComponent implements OnInit {
 
+    private instanciaBinada: string;
+    private listLens = [];
+    private qualLen: string;
+    private qualComando: string;
+
+    private criarLinha: boolean = false;
+    private deletarLinha: boolean = false;
+
     constructor() { }
 
     ngOnInit() { }
-    
+
+    public comandoSelecionado() {
+        switch (this.qualComando) {
+            case "criar":
+                this.criarLinha = true;
+                this.deletarLinha = false;
+                break;
+            case "deletar":
+                this.deletarLinha = true;
+                this.criarLinha = false;
+                break;
+        }
+    }
+
 }

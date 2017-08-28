@@ -9,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class CustgroupComponent implements OnInit {
+
+    private newcustgroup: string;
+
     constructor() { }
 
     ngOnInit() { }
+
+    public setCustgroup() {
+        console.log(this.newcustgroup);
+
+    }
 }

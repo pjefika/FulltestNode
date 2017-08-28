@@ -1,0 +1,20 @@
+<div *ngIf="ativo" class="margin-dez">
+    <div class="row">
+        <div class="col-md-6">
+            <label>Instância Binada: </label>
+            <input type="text" style="width: 100%;" [(ngModel)]="instanciaBinada" placeholder="Insira a instância binada">
+            <button type="button" class="btn btn-primary btn-block">Consultar Len's</button>
+        </div>
+        <div class="col-md-6">
+            <label>LENs Livres</label>
+            <div class="select">
+                <select [(ngModel)]="qualLen">
+                        <option value="op1">op1</option>
+                        <option value="op2">op2</option>
+                        <option value="op3">op3</option>
+                    </select>
+            </div>
+            <button class="btn btn-primary btn-block">Criar Linha</button>
+        </div>
+    </div>
+</div>
