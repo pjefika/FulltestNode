@@ -15,4 +15,8 @@ export class NcosComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }
+
+    public setNcos() {
+        
+    }
 }
