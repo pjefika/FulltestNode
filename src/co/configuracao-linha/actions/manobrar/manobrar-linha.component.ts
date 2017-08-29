@@ -9,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ManobrarLinhaComponent implements OnInit {
-    
+
+    private instanciaBinada: string;
+    private listLens = [];
+    private qualLen: string;
+
     constructor() { }
 
     ngOnInit() { }
