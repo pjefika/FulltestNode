@@ -27,8 +27,11 @@ export class SidenavComponent implements OnInit {
         }
     }
 
-    private configuracaoLinhaComponents(l) {        
+    private configuracaoLinhaComponents(l) {
         switch (l.component) {
+            case "configuracao-linha-component":
+                this.templateComponent.createConfiguracaoLinhaComponent();
+                break;
             case "agrupamento-component":
                 this.templateComponent.createAgrupamentoComponent();
                 break;
@@ -41,7 +44,7 @@ export class SidenavComponent implements OnInit {
             case "linha-component":
                 this.templateComponent.createLinhaComponent();
                 break;
-            case "servico-linha-component":                
+            case "servico-linha-component":
                 this.templateComponent.createServicoLinhaComponent();
                 break;
             case "status-porta-component":

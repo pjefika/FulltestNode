@@ -1,6 +1,10 @@
 import { SideNav } from './../../../viewmodel/menus/sidenav';
 export const sideNavConfLinha: SideNav[] = [
     {
+        nome: "Informações da Linha",
+        component: "configuracao-linha-component"
+    },
+    {
         nome: "Agrupamento",
         component: "agrupamento-component"
     },
