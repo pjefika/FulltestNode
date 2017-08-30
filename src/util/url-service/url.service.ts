@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class UrlService {
-    
+
     //Modificar IPs 
     private urlIp = "10.40.195.81:8080/"; // QA PeleServ    
     //private urlIp = "10.200.35.67:80/"; Produção CO
@@ -12,15 +12,17 @@ export class UrlService {
 
     //Modificar path names
     public pathFulltestAPI = "fulltestAPI/";
-    public pathStealerAPI = "stealerAPI/";
+    public pathStealerAPI = "stealerAPI/"; //stealerAPI_qa
     public pathAuth = "efikaAuth/";
 
+    //Request Options *Não Mecher*
     private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
     public options = new RequestOptions({ headers: this.headersAppJson });
     public url = "http://" + this.urlIp;
 
     constructor(private http: Http) { }
 
+    //Todo mundo faz a chamada para o request passando os parametros.
     public request(rqst: string, command: string, _data?: any, otherUrl?: string) {
         //Verifica se url é outra
         this.hOtherUrl(otherUrl);
