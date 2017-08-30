@@ -4,10 +4,16 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class UrlService {
-
-    //private urlIp = "10.40.195.81:8080/"; // QA PeleServ
+    
+    //Modificar IPs 
+    private urlIp = "10.40.195.81:8080/"; // QA PeleServ    
     //private urlIp = "10.200.35.67:80/"; Produção CO
-    private urlIp = "dprcuradm0111:8080/"; // CREMO
+    //private urlIp = "dprcuradm0111:8080/"; // CREMO
+
+    //Modificar path names
+    public pathFulltestAPI = "fulltestAPI/";
+    public pathStealerAPI = "stealerAPI/";
+    public pathAuth = "efikaAuth/";
 
     private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
     public options = new RequestOptions({ headers: this.headersAppJson });

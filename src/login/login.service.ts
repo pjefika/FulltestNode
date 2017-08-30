@@ -14,7 +14,7 @@ export class LoginService {
         private urlService: UrlService) { }
 
     autentica(usuario: Usuario): Promise<Boolean> {
-        return this.urlService.request("post", "efikaAuth/autentica/verificarCredencial", usuario, "10.40.195.81:8080/")
+        return this.urlService.request("post", this.urlService.pathAuth + "autentica/verificarCredencial", usuario, "10.40.195.81:8080/")
             .then(data => {
                 return data as Boolean
             })
@@ -22,7 +22,7 @@ export class LoginService {
     }
 
     getUsuario(usuario: Usuario): Promise<Usuario> {
-        return this.urlService.request("get", "efikaAuth/autentica/consultar/", usuario.login, "10.40.195.81:8080/")
+        return this.urlService.request("get", this.urlService.pathAuth + "autentica/consultar/", usuario.login, "10.40.195.81:8080/")
             .then(data => {
                 return data as Usuario
             })

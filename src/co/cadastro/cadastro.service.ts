@@ -12,7 +12,7 @@ export class CadastroService {
         private urlService: UrlService) { }
 
     getCadastro(instancia: string): Promise<Cadastro> {
-        return this.urlService.request("get", "stealerAPI/oss/", instancia)
+        return this.urlService.request("get", this.urlService.pathStealerAPI + "oss/", instancia)
             .then(response => {
                 return response as Cadastro
             })

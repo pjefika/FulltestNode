@@ -1,3 +1,4 @@
+import { SideNav } from './../../viewmodel/menus/sidenav';
 import { TemplateComponent } from './../../template/template.component';
 import { HolderService } from './../holder/holder.service';
 import { Component, OnInit, Input } from '@angular/core';
@@ -14,7 +15,9 @@ export class SidenavComponent implements OnInit {
         public holderService: HolderService,
         private templateComponent: TemplateComponent) { }
 
-    @Input() menus: [{ nome: string, component: string }];
+    @Input() menus: SideNav[];
+    @Input() ativo: boolean;
+
 
     private howSideNavIsActive: string;
 

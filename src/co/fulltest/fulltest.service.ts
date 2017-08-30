@@ -13,7 +13,7 @@ export class FulltestService {
         private urlService: UrlService) { }
 
     getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
-        return this.urlService.request("post", "fulltestAPI/fulltest/corrective/", cadastro)
+        return this.urlService.request("post", this.urlService.pathFulltestAPI + "fulltest/corrective/", cadastro)
             .then(data => {
                 return data as ObjectValid
             })

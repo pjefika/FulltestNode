@@ -6,29 +6,29 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class HolderService {
 
-    cadastro: Cadastro;
-    infoLinha: InfoLinha;
-    objectValid: ObjectValid;
-    eachFulltest: string; // Se for deixar em produção retirar valores.
-    liberarSubNav: boolean = false;
-    liberarSideNav: boolean = false;
-    listAsserts: {
+    public cadastro: Cadastro;
+    public infoLinha: InfoLinha;
+    public objectValid: ObjectValid;
+    public eachFulltest: string;
+    public liberarSubNav: boolean = false;
+    public liberarSideNav: boolean = false;
+    public listAsserts: {
         tbsradius: boolean;
         circuito: boolean;
         bloqueio: boolean;
     }
-    listResumo: {
+    public listResumo: {
         cadastro: boolean;
         bloqueio: boolean;
         fulltest: boolean;
     }
-    alertState: {
+    public alertState: {
         msg: string,
         alertType: string,
         alertAtivo: boolean,
         alertCloseable: boolean
     }
-    whoSubNavIsActive: string;
+    public whoSubNavIsActive: string;
 
     constructor() { }
 

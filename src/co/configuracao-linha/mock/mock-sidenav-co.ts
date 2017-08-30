@@ -6,7 +6,21 @@ export const sideNavConfLinha: SideNav[] = [
     },
     {
         nome: "Agrupamento",
-        component: "agrupamento-component"
+        collapsible: true,
+        collapsibleMenu: [
+            {
+                nome: "Ativar",
+                component: "ativar-agrupamento-component"
+            },
+            {
+                nome: "Consultar",
+                component: "consultar-agrupamento-component"
+            },
+            {
+                nome: "Desativar",
+                component: "desativar-agrupamento-component"
+            },
+        ]
     },
     {
         nome: "Alterar CUSTGROUP",
@@ -18,7 +32,17 @@ export const sideNavConfLinha: SideNav[] = [
     },
     {
         nome: "Linha",
-        component: "linha-component"
+        collapsible: true,
+        collapsibleMenu: [
+            {
+                nome: "Criar Linha",
+                component: "criar-linha-component"
+            },
+            {
+                nome: "Deletar Linha",
+                component: "deletar-linha-component"
+            }
+        ]
     },
     {
         nome: "Serviço",

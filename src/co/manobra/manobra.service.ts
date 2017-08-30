@@ -21,7 +21,7 @@ export class ManobraService {
         private http: Http) { }
 
     getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
-        return this.urlService.request("post", "fulltestAPI_manobra/fulltest/manobra/", cadastro)
+        return this.urlService.request("post", this.urlService.pathFulltestAPI + "fulltest/manobra/", cadastro)
             .then(data => {
                 return data as ObjectValid
             })
@@ -31,7 +31,7 @@ export class ManobraService {
     getAnalitico(cadastro: Cadastro, motivoSelected: string, executor: string): Promise<Analitico> {
         let _data: { cust: Cadastro, motivo: string, executor: string }
         _data = { cust: cadastro, motivo: motivoSelected, executor: executor }
-        return this.urlService.request("post", "fulltestAPI_manobra/manobra/analitico", _data)
+        return this.urlService.request("post", this.urlService.pathFulltestAPI + "manobra/analitico", _data)
             .then(data => {
                 return data as Analitico[];
             })
@@ -39,7 +39,7 @@ export class ManobraService {
     }
 
     getListaMotivo(): Promise<Motivo[]> {
-        return this.urlService.request("get", "fulltestAPI_manobra/manobra/motivos")
+        return this.urlService.request("get", this.urlService.pathFulltestAPI + "manobra/motivos")
             .then(data => {
                 return data as Motivo[]
             })
@@ -48,8 +48,8 @@ export class ManobraService {
 
     //Multiple requests
     getRn(cadastro: Cadastro, ordem: string, ): Observable<Cadastro> {
-        const urlStealer = this.urlService.url + "fulltestAPI_manobra/manobra/asserts";
-        const urlFulltest = this.urlService.url + "stealerAPI/manobra/asserts";
+        const urlStealer = this.urlService.url + this.urlService.pathFulltestAPI + "manobra/asserts";
+        const urlFulltest = this.urlService.url + this.urlService.pathStealerAPI + "manobra/asserts";
         let _data: { cust: Cadastro, workOrderId: string };
         _data = { cust: cadastro, workOrderId: ordem };
         return Observable.forkJoin(

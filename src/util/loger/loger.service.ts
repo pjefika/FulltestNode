@@ -8,14 +8,12 @@ export class LogerService {
     constructor(
         private urlService: UrlService) { }
 
-    makeLog(loger: Loger): Promise<Boolean> {
-
-        return this.urlService.request("post", "fulltestAPI/crm/log", loger)
+    public makeLog(loger: Loger): Promise<Boolean> {
+        return this.urlService.request("post", this.urlService.pathFulltestAPI + "crm/log", loger)
             .then(data => {
                 return true
             })
             .catch(this.handleError);
-
     }
 
     private handleError(error: any): Promise<any> {
