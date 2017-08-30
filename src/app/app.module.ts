@@ -107,7 +107,7 @@ import { AppComponent } from './app.component';
         StatusLinhaComponent,
         StatusPortaComponent,
         CriarLinhaComponent,
-        DeletarLinhaComponent
+        DeletarLinhaComponent,
     ],
     imports: [
         BrowserModule,

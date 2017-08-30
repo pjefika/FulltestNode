@@ -15,13 +15,15 @@ export class SidenavComponent implements OnInit {
         public holderService: HolderService,
         private templateComponent: TemplateComponent) { }
 
-    @Input() menus: SideNav[];
-    @Input() ativo: boolean;
+    @Input() public menus: SideNav[];
+    @Input() public ativo: boolean;
 
 
     private howSideNavIsActive: string;
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.howSideNavIsActive = "configuracao-linha-component";
+    }
 
     public abrecomponent(l) {
         if (this.holderService.liberarSideNav) {

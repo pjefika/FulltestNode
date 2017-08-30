@@ -60,7 +60,7 @@ export class TemplateComponent implements OnInit {
         theme: string;
     }
 
-    signpostState: boolean = false;
+    //signpostState: boolean = false;
 
     headerTitle: string; // Titulo para a pagina se precisar...
 
