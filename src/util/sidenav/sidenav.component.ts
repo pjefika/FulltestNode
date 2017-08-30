@@ -22,12 +22,12 @@ export class SidenavComponent implements OnInit {
     private howSideNavIsActive: string;
 
     ngOnInit() {
-        this.howSideNavIsActive = "configuracao-linha-component";
+        this.howSideNavIsActive = this.holderService.whoSideNavIsActive;
     }
 
     public abrecomponent(l) {
         if (this.holderService.liberarSideNav) {
-            this.howSideNavIsActive = l.component;
+            this.holderService.whoSideNavIsActive = l.component;
             this.configuracaoLinhaComponents(l);
         }
     }
@@ -66,7 +66,7 @@ export class SidenavComponent implements OnInit {
 
     public sideNavActive(l): Boolean {
         let active = false;
-        if (l.component === this.howSideNavIsActive) {
+        if (l.component === this.holderService.whoSideNavIsActive) {
             active = true;
         }
         return active;

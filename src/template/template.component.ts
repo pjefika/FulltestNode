@@ -207,6 +207,17 @@ export class TemplateComponent implements OnInit {
             });
     }
 
+    public createConfiguracaoLinhaComponent() {
+        this.holderService.whoSubNavIsActive = "configuracao-linha-component";
+        this.holderService.whoSideNavIsActive = "configuracao-linha-component";
+        this.sidenav = true;
+        this.sideNavMenus = sideNavConfLinha;
+        this.templateCOService.createConfiguracaoLinhaComponent()
+            .then(data => {
+                this.componentData = data;
+            });
+    }
+
     /**
     * Componentes do CRM
     **/
@@ -243,16 +254,6 @@ export class TemplateComponent implements OnInit {
     /*
     * Create Sidenav Components Linha 
     */
-    public createConfiguracaoLinhaComponent() {
-        this.holderService.whoSubNavIsActive = "configuracao-linha-component";
-        this.sidenav = true;
-        this.sideNavMenus = sideNavConfLinha;
-        this.templateCOService.createConfiguracaoLinhaComponent()
-            .then(data => {
-                this.componentData = data;
-            });
-    }
-    
     public createAgrupamentoComponent() {
         this.templateCOService.createAgrupamentoComponent()
             .then(data => {

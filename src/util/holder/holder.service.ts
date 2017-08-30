@@ -29,6 +29,7 @@ export class HolderService {
         alertCloseable: boolean
     }
     public whoSubNavIsActive: string;
+    public whoSideNavIsActive: string;
 
     constructor() { }
 
