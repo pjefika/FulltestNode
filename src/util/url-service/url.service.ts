@@ -12,8 +12,9 @@ export class UrlService {
 
     //Modificar path names
     public pathFulltestAPI = "fulltestAPI/";
-    public pathStealerAPI = "stealerAPI/"; //stealerAPI_qa
+    public pathStealerAPI = "stealerAPI_qa/"; //stealerAPI_qa
     public pathAuth = "efikaAuth/";
+    public pathDmsAPI = "dmsAPI/";
 
     //Request Options *Não Mecher*
     private headersAppJson = new Headers({ 'Content-Type': 'application/json' });

@@ -1,5 +1,5 @@
 export class Rede {
-    id: number;
+    tipo: string;
     ipDslam: string;
     vendorDslam: string;
     modeloDslam: string;
@@ -11,4 +11,5 @@ export class Rede {
     vlanVoip: number;
     vlanVod: number;
     vlanMulticast: number;
+    cvLan: number;
 }

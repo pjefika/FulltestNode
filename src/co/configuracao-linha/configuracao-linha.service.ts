@@ -1,20 +1,30 @@
-import { InfoLinha } from './../../viewmodel/cadastro-linha/infolinha';
+import { CadastroLinha } from './../../viewmodel/cadastro-linha/cadastro-linha';
+import { UrlService } from './../../util/url-service/url.service';
+import { Linha } from './../../viewmodel/cadastro/linha';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ConfiguracaoLinhaService {
 
-    constructor() { }
+    constructor(
+        private urlService: UrlService) { }
 
-    public getInformacoes(): InfoLinha {
-        let info: InfoLinha;
-        info = {
-            central: "PRCTA_PVS01(2)",
-            ip: "10.141.245.97",
-            facilidade: "CTAC 50 6 00 85",
-            detalhes: "CUSTGRP: CTA_POS NCOS:115"
-        }
-        return info;
+    public getInformacoes(linha: Linha) {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let dms = { dn: linha.dn, central: linha.central }
+        let _data: { dms: any, executor: string };
+        _data = { dms: dms, executor: usr.usr };
+        return this.urlService.request("post", this.urlService.pathDmsAPI + "dms/consultar", _data)
+            .then(data => {
+                return data as CadastroLinha
+            })
+            .catch(this.handleError);
+
+
+    }
+
+    private handleError(error: any): Promise<any> {
+        return Promise.reject(error);
     }
 
 }

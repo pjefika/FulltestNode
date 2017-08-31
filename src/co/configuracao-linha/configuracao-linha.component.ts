@@ -1,8 +1,9 @@
+import { CadastroLinha } from './../../viewmodel/cadastro-linha/cadastro-linha';
+import { Linha } from './../../viewmodel/cadastro/linha';
 import { BrancoComponent } from './../../branco/branco.component';
 import { AgrupamentoComponent } from './actions/agrupamento/agrupamento.component';
 import { HolderService } from './../../util/holder/holder.service';
 import { ToastyComponent } from './../../util/toasty/toasty.component';
-import { InfoLinha } from './../../viewmodel/cadastro-linha/infolinha';
 import { ConfiguracaoLinhaService } from './configuracao-linha.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -15,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class ConfiguracaoLinhaComponent implements OnInit {
 
-    public infoLinha: InfoLinha;
+    public cadastroLinha: CadastroLinha;
     public searching: boolean = false;
     public searchingWhat: string;
 
@@ -31,17 +32,21 @@ export class ConfiguracaoLinhaComponent implements OnInit {
     }
 
     private getInformacoes() {
-        this.infoLinha = this.configuracaoLinhaService.getInformacoes();
-        this.holderService.infoLinha = this.infoLinha;
-        this.holderService.liberarSideNav = true;
-        // this.searching = true;
-        // this.searchingWhat = "Buscando Informações da Instância..."
-        // this.searching = false;
-        // this.holderService.liberarSideNav = true;
-        // this.infoLinha = this.configuracaoLinhaService.getInformacoes();
+        this.searching = true;
+        this.searchingWhat = "Buscando Informações da Instância..."
+        this.configuracaoLinhaService.getInformacoes(this.holderService.cadastro.linha)
+            .then(data => {
+                this.cadastroLinha = data;
+                this.holderService.cadastroLinha = this.cadastroLinha;
+                this.holderService.liberarSideNav = true;
+                this.searching = false;
+            }, error => {
+                this.searching = false;
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);                
+            });
     }
 
-    private callToasty(titulo: string, msg: string, theme: string) {
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,
