@@ -27,12 +27,12 @@
         <div class="header-actions">
             <popover-component [cadastro]="holderService.cadastro" [objectValid]="holderService.objectValid" *ngIf="holderService.cadastro"></popover-component>
             <toggle-component *ngIf="mostraToggle"></toggle-component>
-            <clr-dropdown clrMenuPosition="bottom-right">
-                <button class="nav-icon" clrDropdownToggle>
+            <clr-dropdown>
+                <button class="nav-icon" clrDropdownTrigger>
                     <clr-icon shape="user"></clr-icon>
                     <clr-icon shape="caret down"></clr-icon>
                 </button>
-                <clr-dropdown-menu>
+                <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
                     <a clrDropdownItem (click)="sair()">Sair</a>
                 </clr-dropdown-menu>
             </clr-dropdown>
