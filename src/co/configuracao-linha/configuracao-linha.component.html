@@ -1,7 +1,7 @@
 <div>
     <h3>Informações da Linha</h3>
-    <!-- <div *ngIf="infoLinha">
-        <table class="table table-vertical table-compact">
+    <div *ngIf="!searching">
+        <table class="table table-vertical table-compact" *ngIf="cadastroLinha">
             <tbody>
                 <tr>
                     <th colspan="2" class="align-text-center">Informações da linha</th>
@@ -24,7 +24,7 @@
                 </tr>
             </tbody>
         </table>
-        <button class="btn btn-primary btn-block">Buscar</button>
-    </div> -->
+        <button class="btn btn-primary btn-block" (click)="getInformacoes()">Buscar Informações da Linha</button>
+    </div>
     <loading-component [searching]="searching" [searchWhat]="searchingWhat"></loading-component>
 </div>

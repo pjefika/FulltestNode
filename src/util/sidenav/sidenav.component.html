@@ -1,4 +1,4 @@
 <section class="sidenav-content">
-    <a class="nav-link mouse-pointer" *ngFor="let l of menus" (click)="abrecomponent(l)" [class.disabled]="!holderService.liberarSideNav"
-        [class.active]="sideNavActive(l)">{{l.nome}}</a>
+    <a class="nav-link" *ngFor="let l of menus" (click)="abrecomponent(l)" [class.disabled]="!holderService.liberarSideNav" [class.active]="sideNavActive(l)"
+        [style.cursor]="!holderService.liberarSideNav ? 'not-allowed': 'pointer'">{{l.nome}}</a>
 </section>
