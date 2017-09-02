@@ -41,7 +41,7 @@ export class TemplateComponent implements OnInit {
     subnav: boolean = false;
     sidenav: boolean = false;
 
-    instancia: string = "4131543457";
+    instancia: string;// = "4131543457"
 
     subNavMenus: SubNav[];
     sideNavMenus: SideNav[];
