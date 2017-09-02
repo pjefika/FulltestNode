@@ -13,14 +13,12 @@ export class ConfiguracaoLinhaService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, executor: string };
-        _data = { dms: dms, executor: usr.usr };
+        _data = { dms: dms, executor: usr.user };
         return this.urlService.request("post", this.urlService.pathDmsAPI + "dms/consultar", _data)
             .then(data => {
                 return data as CadastroLinha
             })
             .catch(this.handleError);
-
-
     }
 
     private handleError(error: any): Promise<any> {
