@@ -28,7 +28,11 @@ export class ConfiguracaoLinhaComponent implements OnInit {
         public holderService: HolderService) { }
 
     ngOnInit() {
-        this.getInformacoes();
+        if (this.holderService.cadastroLinha) {
+            this.cadastroLinha = this.holderService.cadastroLinha
+        } else {
+            this.getInformacoes();
+        }
     }
 
     private getInformacoes() {
@@ -42,7 +46,7 @@ export class ConfiguracaoLinhaComponent implements OnInit {
                 this.searching = false;
             }, error => {
                 this.searching = false;
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);                
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);
             });
     }
 

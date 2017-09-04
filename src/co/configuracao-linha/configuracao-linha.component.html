@@ -4,23 +4,42 @@
         <table class="table table-vertical table-compact" *ngIf="cadastroLinha">
             <tbody>
                 <tr>
-                    <th colspan="2" class="align-text-center">Informações da linha</th>
+                    <th colspan="2" style="text-align: center;">Informações da linha</th>
                 </tr>
                 <tr>
-                    <th>Central</th>
-                    <td>{{infoLinha.central}}</td>
+                    <th>DN</th>
+                    <td>{{cadastroLinha.dn}}</td>
                 </tr>
                 <tr>
-                    <th>IP</th>
-                    <td>{{infoLinha.ip}}</td>
+                    <th>Len</th>
+                    <td>{{cadastroLinha.len}}</td>
                 </tr>
                 <tr>
-                    <th>Facilidade</th>
-                    <td>{{infoLinha.facilidade}}</td>
+                    <th>CustGrp</th>
+                    <td>{{cadastroLinha.custGrp}}</td>
                 </tr>
                 <tr>
-                    <th>Detalhes</th>
-                    <td>{{infoLinha.detalhes}}</td>
+                    <th>SubGrp</th>
+                    <td>{{cadastroLinha.subGrp}}</td>
+                </tr>
+                <tr>
+                    <th>Ncos</th>
+                    <td>{{cadastroLinha.ncos}}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{cadastroLinha.status}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-vertical table-compact" *ngIf="cadastroLinha.servicos">
+            <tbody>
+                <tr>
+                    <th colspan="2" style="text-align: center;">Serviços da Linha</th>
+                </tr>
+                <tr *ngFor="let servico of cadastroLinha.servicos">
+                    <th>{{servico.desc}}</th>
+                    <td>{{servico.key}}</td>
                 </tr>
             </tbody>
         </table>
