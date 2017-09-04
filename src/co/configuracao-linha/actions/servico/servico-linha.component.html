@@ -8,17 +8,27 @@
             <option value="desativar">Desativar</option>
         </select>
     </div>
-
-    <label>Serviços: </label>
-    <div class="select">
-        <select>
-            <option selected disabled>Selecione</option>
+    <br/>
+    <label>Selecione os serviços a baixo: </label>
+    <div class="select multiple">
+        <select multiple [(ngModel)]="listaDeServicos">
             <option value="servico1">servico1</option>
             <option value="servico2">servico2</option>
             <option value="servico3">servico3</option>
             <option value="servico4">servico4</option>
+            <option value="servico5">servico5</option>
+            <option value="servico6">servico6</option>
+            <option value="servico7">servico7</option>
+            <option value="servico8">servico8</option>
         </select>
     </div>
+
+    <label>Lista de serviços selecionadas:</label>
+    <ul class="list-unstyled">
+        <li *ngFor="let servico of listaDeServicos">
+            {{servico}}
+        </li>
+    </ul>
 
     <button class="btn btn-primary btn-block">Executar</button>
 </div>

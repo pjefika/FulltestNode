@@ -255,6 +255,7 @@ export class TemplateComponent implements OnInit {
     * Create Sidenav Components Linha 
     */
     public createAgrupamentoComponent() {
+        this.holderService.whoSideNavIsActive = "agrupamento-component";
         this.templateCOService.createAgrupamentoComponent()
             .then(data => {
                 this.componentData = data;
@@ -262,6 +263,7 @@ export class TemplateComponent implements OnInit {
     }
 
     public createCustgroupComponent() {
+        this.holderService.whoSideNavIsActive = "custgroup-component";
         this.templateCOService.createCustgroupComponent()
             .then(data => {
                 this.componentData = data;
@@ -269,6 +271,7 @@ export class TemplateComponent implements OnInit {
     }
 
     public createLinhaComponent() {
+        this.holderService.whoSideNavIsActive = "linha-component";
         this.templateCOService.createLinhaComponent()
             .then(data => {
                 this.componentData = data;
@@ -276,6 +279,7 @@ export class TemplateComponent implements OnInit {
     }
 
     public createManobrarLinhaComponent() {
+        this.holderService.whoSideNavIsActive = "manobrar-linha-component";
         this.templateCOService.createManobrarLinhaComponent()
             .then(data => {
                 this.componentData = data;
@@ -283,6 +287,7 @@ export class TemplateComponent implements OnInit {
     }
 
     public createNcosComponent() {
+        this.holderService.whoSideNavIsActive = "ncos-component";
         this.templateCOService.createNcosComponent()
             .then(data => {
                 this.componentData = data;
@@ -290,6 +295,7 @@ export class TemplateComponent implements OnInit {
     }
 
     public createServicoLinhaComponent() {
+        this.holderService.whoSideNavIsActive = "servico-linha-component";
         this.templateCOService.createServicoLinhaComponent()
             .then(data => {
                 this.componentData = data;
@@ -297,6 +303,7 @@ export class TemplateComponent implements OnInit {
     }
 
     public createStatusLinhaComponent() {
+        this.holderService.whoSideNavIsActive = "status-linha-component";
         this.templateCOService.createStatusLinhaComponent()
             .then(data => {
                 this.componentData = data;
@@ -304,6 +311,7 @@ export class TemplateComponent implements OnInit {
     }
 
     public createStatusPortaComponent() {
+        this.holderService.whoSideNavIsActive = "status-porta-component";
         this.templateCOService.createStatusPortaComponent()
             .then(data => {
                 this.componentData = data;
@@ -319,6 +327,8 @@ export class TemplateComponent implements OnInit {
         this.holderService.liberarSubNav = null;
         this.holderService.liberarSideNav = null;
         this.holderService.alertState = null;
+        this.holderService.cadastroLinha = null;
         this.headerTitle = "" //Reseta titulo
+
     }
 }

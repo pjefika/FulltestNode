@@ -18,7 +18,6 @@ export class SidenavComponent implements OnInit {
     @Input() public menus: SideNav[];
     @Input() public ativo: boolean;
 
-
     private howSideNavIsActive: string;
 
     ngOnInit() {

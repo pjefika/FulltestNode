@@ -28,7 +28,10 @@
                 </tr>
                 <tr>
                     <th>Status</th>
-                    <td>{{cadastroLinha.status}}</td>
+                    <td>
+                        <span *ngIf="cadastroLinha.status == 'CREATED'">Criada</span>
+                        <span *ngIf="cadastroLinha.status == 'NOT_CREATED'">Não Criada</span>
+                    </td>
                 </tr>
             </tbody>
         </table>

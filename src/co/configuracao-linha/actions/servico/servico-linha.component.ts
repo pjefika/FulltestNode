@@ -9,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ServicoLinhaComponent implements OnInit {
+
+    private listaDeServicos: string[] = [];
+
     constructor() { }
 
     ngOnInit() { }
