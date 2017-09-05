@@ -1,51 +1,53 @@
 <div>
     <h3>Informações da Linha</h3>
     <div *ngIf="!searching">
-        <table class="table table-vertical table-compact" *ngIf="cadastroLinha">
-            <tbody>
-                <tr>
-                    <th colspan="2" style="text-align: center;">Informações da linha</th>
-                </tr>
-                <tr>
-                    <th>DN</th>
-                    <td>{{cadastroLinha.dn}}</td>
-                </tr>
-                <tr>
-                    <th>Len</th>
-                    <td>{{cadastroLinha.len}}</td>
-                </tr>
-                <tr>
-                    <th>CustGrp</th>
-                    <td>{{cadastroLinha.custGrp}}</td>
-                </tr>
-                <tr>
-                    <th>SubGrp</th>
-                    <td>{{cadastroLinha.subGrp}}</td>
-                </tr>
-                <tr>
-                    <th>Ncos</th>
-                    <td>{{cadastroLinha.ncos}}</td>
-                </tr>
-                <tr>
-                    <th>Status</th>
-                    <td>
-                        <span *ngIf="cadastroLinha.status == 'CREATED'">Criada</span>
-                        <span *ngIf="cadastroLinha.status == 'NOT_CREATED'">Não Criada</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-vertical table-compact" *ngIf="cadastroLinha.servicos">
-            <tbody>
-                <tr>
-                    <th colspan="2" style="text-align: center;">Serviços da Linha</th>
-                </tr>
-                <tr *ngFor="let servico of cadastroLinha.servicos">
-                    <th>{{servico.desc}}</th>
-                    <td>{{servico.key}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div *ngIf="cadastroLinha">
+            <table class="table table-vertical table-compact" *ngIf="cadastroLinha">
+                <tbody>
+                    <tr>
+                        <th colspan="2" style="text-align: center;">Informações da linha</th>
+                    </tr>
+                    <tr>
+                        <th>DN</th>
+                        <td>{{cadastroLinha.dn}}</td>
+                    </tr>
+                    <tr>
+                        <th>Len</th>
+                        <td>{{cadastroLinha.len.len}}</td>
+                    </tr>
+                    <tr>
+                        <th>CustGrp</th>
+                        <td>{{cadastroLinha.custGrp}}</td>
+                    </tr>
+                    <tr>
+                        <th>SubGrp</th>
+                        <td>{{cadastroLinha.subGrp}}</td>
+                    </tr>
+                    <tr>
+                        <th>Ncos</th>
+                        <td>{{cadastroLinha.ncos}}</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>
+                            <span *ngIf="cadastroLinha.status == 'CREATED'">Criada</span>
+                            <span *ngIf="cadastroLinha.status == 'NOT_CREATED'">Não Criada</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-vertical table-compact">
+                <tbody>
+                    <tr>
+                        <th colspan="2" style="text-align: center;">Serviços da Linha</th>
+                    </tr>
+                    <tr *ngFor="let servico of cadastroLinha.servicos">
+                        <th>{{servico.desc}}</th>
+                        <td>{{servico.key}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <button class="btn btn-primary btn-block" (click)="getInformacoes()">Buscar Informações da Linha</button>
     </div>
     <loading-component [searching]="searching" [searchWhat]="searchingWhat"></loading-component>

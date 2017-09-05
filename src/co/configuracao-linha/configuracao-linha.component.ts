@@ -39,7 +39,7 @@ export class ConfiguracaoLinhaComponent implements OnInit {
 
     private getInformacoes() {
         this.searching = true;
-        this.searchingWhat = "Buscando Informações da Instância..."
+        this.searchingWhat = "Buscando Informações de Linha..."
         this.configuracaoLinhaService.getInformacoes(this.holderService.cadastro.linha)
             .then(data => {
                 this.cadastroLinha = data;

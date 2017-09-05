@@ -3,18 +3,19 @@
         <div class="col-md-6">
             <label>Instância Binada: </label>
             <input type="text" style="width: 100%;" [(ngModel)]="instanciaBinada" placeholder="Insira a instância binada">
-            <button type="button" class="btn btn-primary btn-block">Consultar Len's</button>
+            <button type="button" class="btn btn-info-outline btn-block" [clrLoading]="consultarLenLoadingButton" [disabled]="consultarLenDisabledButton"
+                (click)="getLinhaBinada()">{{consultarLenNameButton}}</button>
         </div>
         <div class="col-md-6">
-            <label>LENs Livres</label>
-            <div class="select">
-                <select [(ngModel)]="qualLen">
-                        <option value="op1">op1</option>
-                        <option value="op2">op2</option>
-                        <option value="op3">op3</option>
+            <div *ngIf="listLens">
+                <label>Selecione o LEN Livre:</label>
+                <div class="select">
+                    <select [(ngModel)]="qualLen">
+                        <option [ngValue]="l.len.len" *ngFor="let l of listLens" >{{l.len.len}}</option>
                     </select>
+                </div>
+                <button class="btn btn-primary btn-block" (click)="createLinha()">Criar Linha</button>
             </div>
-            <button class="btn btn-primary btn-block">Criar Linha</button>
         </div>
     </div>
 </div>
