@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'manobrar-linha-component',
     templateUrl: 'manobrar-linha.component.html',
     styleUrls: ['manobrar-linha.component.css'],
-    providers: [ManobraLinhaService]
+    providers: [ManobraLinhaService, ListarLinhaService, ListarLensLivresService]
 })
 
 export class ManobrarLinhaComponent implements OnInit {
