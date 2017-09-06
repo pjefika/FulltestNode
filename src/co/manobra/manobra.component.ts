@@ -59,7 +59,7 @@ export class ManobraComponent implements OnInit {
     ngOnInit() {
         this.util.isLogado().then((result: boolean) => {
             if (!result) {
-                this.router.navigate(['./fulltest/entrar']);
+                this.router.navigate(['./entrar']);
             }
         });
         this.holderAtribuition();

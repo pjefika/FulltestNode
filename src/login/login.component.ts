@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
         this.util.isLogado().then((result: boolean) => {
             if (result) {
-                this.router.navigate(['./fulltest/']);
+                this.router.navigate(['./']);
             }
         })
     }
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
                         .then(data => {
                             this.usuario = data;
                             sessionStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
-                            this.router.navigate(['./fulltest/']);
+                            this.router.navigate(['./']);
                         });
                 } else {
                     this.erroLogar = true;

@@ -15,7 +15,7 @@ export class PrincipalComponent implements OnInit {
     ngOnInit(): void {
         this.util.isLogado().then((result: boolean) => {
             if (!result) {
-                this.router.navigate(['./fulltest/entrar']);
+                this.router.navigate(['./entrar']);
             }
         });
     }
