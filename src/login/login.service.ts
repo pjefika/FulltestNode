@@ -10,7 +10,7 @@ import 'rxjs/Rx';
 export class LoginService {
     private headers = new Headers({ 'Content-Type': 'application/json' });
     private options = new RequestOptions({ headers: this.headers });
-    private efikaWSUrl = 'http://10.40.195.81:8080/efikaAuth/autentica/';  // URL to web api
+    private efikaWSUrl = 'http://10.200.35.67:80/efikaAuth/autentica/';  // URL to web api
 
     constructor(private http: Http) { }
 

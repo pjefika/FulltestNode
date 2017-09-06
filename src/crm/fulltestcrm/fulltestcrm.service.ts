@@ -8,7 +8,7 @@ export class FulltestCrmService {
 
     private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
     private options = new RequestOptions({ headers: this.headersAppJson });
-    private fulltestUrl = 'http://10.40.195.81:8080/fulltestAPI/fulltest/';  // URL to FulltestAPI
+    private fulltestUrl = 'http://10.200.35.67:80/fulltestAPI/fulltest/';  // URL to FulltestAPI
 
     constructor(private http: Http) { }
 
@@ -16,7 +16,7 @@ export class FulltestCrmService {
         const url = `${this.fulltestUrl}` + "corrective/";
         //console.log(url);
         return this.http.post(url, JSON.stringify(cadastro), this.options)
-            .timeout(120000)
+            .timeout(180000)
             .toPromise()
             .then(response => {
                 return response.json() as ObjectValid
