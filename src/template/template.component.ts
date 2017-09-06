@@ -40,7 +40,7 @@ export class TemplateComponent implements OnInit {
     sideNavMenus: SideNav[];
 
     componentData = null;
-    
+
     cadastro: Cadastro;
     objectValid: ObjectValid;
 
@@ -110,6 +110,7 @@ export class TemplateComponent implements OnInit {
     **/
     busca() {
         this.holderReset();
+        this.instancia = this.instancia.trim();
         let usr = JSON.parse(sessionStorage.getItem('user'));
         if (usr.nv === 1 || this.holderService.eachFulltest === "CRM") {
             this.createRealizaFulltestCrmComponent();
@@ -225,7 +226,7 @@ export class TemplateComponent implements OnInit {
     /**
     * Componentes do CRM
     **/
-    
+
     createRealizaFulltestCrmComponent() { // Cadastro / Fullteste CRM
         //this.headerTitle = "Fulltest CRM";
         this.holderService.whoSubNavIsActive = "cadastro-crm-component";
