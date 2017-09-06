@@ -50,6 +50,7 @@ export class ManobrarLinhaComponent implements OnInit {
     }
 
     public getLensLivres() {
+        this.listLens = null;
         this.listarLensLivresService.getLensLivres(this.cadInstanciaBinada)
             .then(data => {
                 this.listLens = data;
