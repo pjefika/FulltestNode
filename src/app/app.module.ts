@@ -7,6 +7,7 @@ import { MomentModule } from 'angular2-moment';
 import { ClarityModule } from 'clarity-angular';
 import { DndModule } from 'ng2-dnd';
 import { ToastyModule } from 'ng2-toasty';
+import { Ng2OrderModule } from 'ng2-order-pipe'
 
 import { AdmComponent } from './../adm/adm.component';
 import { BrancoComponent } from './../branco/branco.component';
@@ -118,7 +119,8 @@ import { AppComponent } from './app.component';
         AppRoutingModule,
         MomentModule,
         ToastyModule.forRoot(),
-        DndModule.forRoot()
+        DndModule.forRoot(),
+        Ng2OrderModule
     ],
     providers: [
         Util,

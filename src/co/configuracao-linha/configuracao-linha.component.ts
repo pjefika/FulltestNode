@@ -41,7 +41,7 @@ export class ConfiguracaoLinhaComponent implements OnInit {
         this.searching = true;
         this.searchingWhat = "Buscando Informações de Linha..."
         this.configuracaoLinhaService.getInformacoes(this.holderService.cadastro.linha)
-            .then(data => {
+            .then(data => {                
                 this.cadastroLinha = data;
                 if (this.cadastroLinha.status == "NOT_CREATED") {
                     this.callToasty("Linha não configurada", "Por favor realize a configuração da linha!", "warning", 0);

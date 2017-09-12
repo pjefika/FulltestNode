@@ -7,7 +7,7 @@
             <p>Relmente deseja deletar a linha?</p>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger" (click)="deletarLinha()">Sim</button>
+            <button type="button" class="btn btn-danger" (click)="deletarLinha()" [disabled]="doActionSearching">{{nameBtnActionModal}}</button>
             <button type="button" class="btn btn-primary" (click)="abrirModal = false">Não</button>
         </div>
     </clr-modal>

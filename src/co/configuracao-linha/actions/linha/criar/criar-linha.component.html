@@ -11,10 +11,10 @@
                 <label>Selecione o LEN Livre:</label>
                 <div class="select">
                     <select [(ngModel)]="qualLen">
-                        <option [ngValue]="l.len.len" *ngFor="let l of listLens" >{{l.len.len}}</option>
+                        <option [ngValue]="l.len" *ngFor="let l of listLens.fac" >{{l.len.len}}</option>
                     </select>
                 </div>
-                <button class="btn btn-primary btn-block" (click)="createLinha()">Criar Linha</button>
+                <button class="btn btn-primary btn-block" (click)="createLinha()" [disabled]="criarLinhaDisableButton">{{criarLinhaNomeButton}}</button>
             </div>
         </div>
     </div>

@@ -1,3 +1,4 @@
+import { Ncos } from './ncos';
 import { Len } from './len';
 import { Servico } from './servicos';
 export class CadastroLinha {
@@ -5,7 +6,7 @@ export class CadastroLinha {
     len: Len;
     custGrp: string;
     subGrp: string;
-    ncos: number;
+    ncos: Ncos;
     status: string;
     servicos: Servico[];
 }

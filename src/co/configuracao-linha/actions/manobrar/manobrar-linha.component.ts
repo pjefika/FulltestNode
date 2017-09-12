@@ -1,3 +1,4 @@
+import { ConfiguracoesLensLivres } from './../../../../viewmodel/cadastro-linha/lens-livres/configuracoes-lens-livres';
 import { ToastyComponent } from './../../../../util/toasty/toasty.component';
 import { ListarLensLivresService } from './../../general-services/listar-lens-livres.service';
 import { ListarLinhaService } from './../../general-services/listar-linha.service';
@@ -23,7 +24,7 @@ export class ManobrarLinhaComponent implements OnInit {
     private consultarLenDisabledButton: boolean = false;
     private consultarLenNameButton: string = "Consultar Len's";
 
-    private listLens: LensLivres[];
+    private listLens: ConfiguracoesLensLivres;
     private qualLen: string;
 
     constructor(

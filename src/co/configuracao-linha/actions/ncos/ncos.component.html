@@ -2,9 +2,9 @@
     <h3>Alterar NCOS</h3>
     <label>Novo NCOS:</label>
     <div class="select">
-        <select [(ngModel)]="newncos">
-            <option value="option1">option1</option>
-            <option value="option2">option2</option>
+        <select [(ngModel)]="ncos">
+            <option selected disabled>Selecione</option>
+            <option value="{{ncos.desc}}" *ngFor="let ncos of ncosList | orderBy: 'desc'" >{{ncos.desc}}</option>
         </select>
     </div>
     <button type="button" class="btn btn-primary btn-block" (click)="setNcos()">Alterar</button>
