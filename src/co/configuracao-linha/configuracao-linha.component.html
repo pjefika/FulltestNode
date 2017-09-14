@@ -30,6 +30,14 @@
                             <span *ngIf="cadastroLinha.status == 'NOT_CREATED'">Não Criada</span>
                         </td>
                     </tr>
+                    <tr>
+                        <th>Estado</th>
+                        <td>
+                            {{cadastroLinha.estado.nome}}
+                            <clr-icon shape="check" *ngIf="cadastroLinha.estado.valid" style="color: green"></clr-icon>
+                            <button class="btn btn-danger btn-sm" *ngIf="!cadastroLinha.estado.valid">Resetar Porta</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <table class="table table-vertical table-compact">
