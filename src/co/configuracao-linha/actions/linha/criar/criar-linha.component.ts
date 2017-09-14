@@ -95,27 +95,32 @@ export class CriarLinhaComponent implements OnInit {
     }
 
     public createLinha() {
-        this.criarLinhaNomeButton = "Criando Linha, Aguarde...";
-        this.criarLinhaDisableButton = true;
-        this.criarLinhaService.setCriarLinha(this.holderService.cadastro.linha, this.qualLen, this.confBinada)
-            .then(data => {
-                this.holderService.cadastroLinha = data;
-                this.criarLinhaNomeButton = "Criar Linha";
-                this.criarLinhaDisableButton = false;
-                this.callToasty("Sucesso", "Linha criada com sucesso.", "success")
-            }, error => {
-                this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
-                this.criarLinhaNomeButton = "Criar Linha";
-                this.criarLinhaDisableButton = false;
-            });
+        if (this.qualLen) {
+            this.criarLinhaNomeButton = "Criando Linha, Aguarde...";
+            this.criarLinhaDisableButton = true;
+            this.criarLinhaService.setCriarLinha(this.holderService.cadastro.linha, this.qualLen, this.confBinada)
+                .then(data => {
+                    this.holderService.cadastroLinha = data;
+                    this.criarLinhaNomeButton = "Criar Linha";
+                    this.criarLinhaDisableButton = false;
+                    this.callToasty("Sucesso", "Linha criada com sucesso.", "success")
+                }, error => {
+                    this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
+                    this.criarLinhaNomeButton = "Criar Linha";
+                    this.criarLinhaDisableButton = false;
+                });
+        } else {
+            this.callToasty("Ops, aconteceu algo.", "Selecione o Len livre", "error", 10000);
+        }
+
     }
 
-    public callToasty(titulo, msg, theme) {
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,
             theme: theme
-        };
+        }
         this.toastyComponent.addToasty();
     }
 

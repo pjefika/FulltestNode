@@ -39,19 +39,23 @@ export class NcosComponent implements OnInit {
     }
 
     public setNcos() {
-        this.nomeButton = "Alterando Ncos, Aguarde...";
-        this.disableButton = true;
-        this.ncosService.setNcos(this.holderService.cadastro.linha, this.ncos)
-            .then(data => {
-                this.holderService.cadastroLinha = data;
-                this.nomeButton = "Alterar";
-                this.disableButton = false;
-                this.callToasty("Sucesso.", "Ncos Alterado com sucesso.", "success", 10000);
-            }, error => {
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
-                this.nomeButton = "Alterar";
-                this.disableButton = false;
-            });
+        if (this.ncos) {
+            this.nomeButton = "Alterando Ncos, Aguarde...";
+            this.disableButton = true;
+            this.ncosService.setNcos(this.holderService.cadastro.linha, this.ncos)
+                .then(data => {
+                    this.holderService.cadastroLinha = data;
+                    this.nomeButton = "Alterar";
+                    this.disableButton = false;
+                    this.callToasty("Sucesso.", "Ncos Alterado com sucesso.", "success", 10000);
+                }, error => {
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                    this.nomeButton = "Alterar";
+                    this.disableButton = false;
+                });
+        } else {
+            this.callToasty("Ops, aconteceu algo.", "Selecione o NCOS", "error", 10000);
+        }
     }
 
     private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {

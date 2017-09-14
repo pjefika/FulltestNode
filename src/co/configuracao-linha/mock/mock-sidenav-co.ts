@@ -4,10 +4,10 @@ export const sideNavConfLinha: SideNav[] = [
         nome: "Informações da Linha",
         component: "configuracao-linha-component"
     },
-    {
-        nome: "Agrupamento",
-        component: "agrupamento-component"
-    },
+    // { // Sprint 2
+    //     nome: "Agrupamento",
+    //     component: "agrupamento-component"
+    // },
     {
         nome: "Alterar CUSTGROUP",
         component: "custgroup-component"

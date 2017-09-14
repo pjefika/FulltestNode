@@ -92,27 +92,31 @@ export class ManobrarLinhaComponent implements OnInit {
     }
 
     public manobrarLinha() {
-        this.manobrarLinhaNomeButton = "Manobrando Linha, Aguarde...";
-        this.manobrarLinhaDisableButton = true;
-        this.manobraLinhaService.setManobrarLinha(this.holderService.cadastro.linha, this.qualLen, this.confBinada)
-            .then(data => {
-                this.holderService.cadastroLinha = data;
-                this.manobrarLinhaNomeButton = "Manobrar Linha";
-                this.manobrarLinhaDisableButton = false;
-                this.callToasty("Sucesso", "Linha manobrada com sucesso.", "success")
-            }, error => {
-                this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
-                this.manobrarLinhaNomeButton = "Manobrar Linha";
-                this.manobrarLinhaDisableButton = false;
-            });
+        if (this.qualLen) {
+            this.manobrarLinhaNomeButton = "Manobrando Linha, Aguarde...";
+            this.manobrarLinhaDisableButton = true;
+            this.manobraLinhaService.setManobrarLinha(this.holderService.cadastro.linha, this.qualLen, this.confBinada)
+                .then(data => {
+                    this.holderService.cadastroLinha = data;
+                    this.manobrarLinhaNomeButton = "Manobrar Linha";
+                    this.manobrarLinhaDisableButton = false;
+                    this.callToasty("Sucesso", "Linha manobrada com sucesso.", "success")
+                }, error => {
+                    this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
+                    this.manobrarLinhaNomeButton = "Manobrar Linha";
+                    this.manobrarLinhaDisableButton = false;
+                });
+        } else {
+            this.callToasty("Ops, aconteceu algo.", "Selecione o Len livre", "error", 10000);
+        }
     }
 
-    public callToasty(titulo, msg, theme) {
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,
-            theme: theme
-        };
+            theme: theme,
+        }
         this.toastyComponent.addToasty();
     }
 }

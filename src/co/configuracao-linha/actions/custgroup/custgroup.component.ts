@@ -25,19 +25,24 @@ export class CustgroupComponent implements OnInit {
     ngOnInit() { }
 
     public setCustgroup() {
-        this.nomeButton = "Alterando custgroup, Agurde...";
-        this.disableButton = true;
-        this.custgroupService.setCustGroup(this.holderService.cadastro.linha, this.custgroup)
-            .then(data => {
-                this.holderService.cadastroLinha = data;
-                this.nomeButton = "Alterar";
-                this.disableButton = false;
-                this.callToasty("Sucesso.", "Custgroup Alterado com sucesso.", "success", 10000);
-            }, error => {
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
-                this.nomeButton = "Alterar";
-                this.disableButton = false;
-            });
+        if (this.custgroup) {
+            this.nomeButton = "Alterando custgroup, Agurde...";
+            this.disableButton = true;
+            this.custgroupService.setCustGroup(this.holderService.cadastro.linha, this.custgroup)
+                .then(data => {
+                    this.holderService.cadastroLinha = data;
+                    this.nomeButton = "Alterar";
+                    this.disableButton = false;
+                    this.callToasty("Sucesso.", "Custgroup Alterado com sucesso.", "success", 10000);
+                }, error => {
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                    this.nomeButton = "Alterar";
+                    this.disableButton = false;
+                });
+        } else {
+            this.callToasty("Ops, aconteceu algo.", "Preencha o campo Custgroup", "error", 10000);
+        }
+
     }
 
     private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {

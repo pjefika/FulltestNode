@@ -13,6 +13,7 @@ export class ToastyComponent implements OnInit {
         titulo: string;
         msg: string;
         theme: string;
+        timeout?: number;
     }
 
     constructor(private toastyService: ToastyService, private toastyConfig: ToastyConfig) {
@@ -27,7 +28,7 @@ export class ToastyComponent implements OnInit {
             msg: this.toastyInfo.msg,
             showClose: true,
             theme: this.toastyInfo.theme,
-            timeout: 5000,
+            timeout: this.toastyInfo.timeout,
             onAdd: (toast: ToastData) => {
                 //console.log('Toast ' + toast.id + ' has been added!');
             },
