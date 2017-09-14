@@ -1,6 +1,6 @@
 <div>
     <h3>Custgroup</h3>
     <label>Novo Custgroup:</label>
-    <input type="text" [(ngModel)]="newcustgroup" style="width: 100%;">
-    <button type="button" class="btn btn-primary btn-block" (click)="setCustgroup()">Alterar</button>
+    <input type="text" [(ngModel)]="custgroup" style="width: 100%;">
+    <button type="button" class="btn btn-primary btn-block" [disabled]="disableButton" (click)="setCustgroup()">{{nomeButton}}</button>
 </div>
