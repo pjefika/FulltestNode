@@ -1,3 +1,5 @@
+import { Servico } from './../../viewmodel/cadastro-linha/servicos';
+import { Ncos } from './../../viewmodel/cadastro-linha/ncos';
 import { CadastroLinha } from './../../viewmodel/cadastro-linha/cadastro-linha';
 import { Linha } from './../../viewmodel/cadastro/linha';
 import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
@@ -31,6 +33,9 @@ export class HolderService {
     }
     public whoSubNavIsActive: string;
     public whoSideNavIsActive: string;
+
+    public listaDeNcos: Ncos[];
+    public listaDeServicos: Servico[];
 
     constructor() { }
 

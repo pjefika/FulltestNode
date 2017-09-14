@@ -4,8 +4,8 @@
     <div class="select">
         <select [(ngModel)]="ncos">
             <option selected disabled>Selecione</option>
-            <option value="{{ncos.desc}}" *ngFor="let ncos of ncosList | orderBy: 'desc'" >{{ncos.desc}}</option>
+            <option value="{{ncos.key}}" *ngFor="let ncos of ncosList | orderBy: 'desc'" >{{ncos.desc}}</option>
         </select>
     </div>
-    <button type="button" class="btn btn-primary btn-block" (click)="setNcos()">Alterar</button>
+    <button type="button" class="btn btn-primary btn-block" [disabled]="disableButton" (click)="setNcos()">{{nomeButton}}</button>
 </div>

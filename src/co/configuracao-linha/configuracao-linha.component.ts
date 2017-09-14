@@ -1,3 +1,5 @@
+import { ServicoLinhaService } from './actions/servico/servico-linha.service';
+import { NcosService } from './actions/ncos/ncos.service';
 import { TemplateComponent } from './../../template/template.component';
 import { CadastroLinha } from './../../viewmodel/cadastro-linha/cadastro-linha';
 import { Linha } from './../../viewmodel/cadastro/linha';
@@ -12,7 +14,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'configuracao-linha-component',
     templateUrl: 'configuracao-linha.component.html',
     styleUrls: ['configuracao-linha.component.css'],
-    providers: [ConfiguracaoLinhaService]
+    providers: [ConfiguracaoLinhaService, NcosService, ServicoLinhaService]
 })
 
 export class ConfiguracaoLinhaComponent implements OnInit {
@@ -27,7 +29,9 @@ export class ConfiguracaoLinhaComponent implements OnInit {
         private configuracaoLinhaService: ConfiguracaoLinhaService,
         private toastyComponent: ToastyComponent,
         public holderService: HolderService,
-        private templateComponent: TemplateComponent) { }
+        private templateComponent: TemplateComponent,
+        private ncosService: NcosService,
+        private servicoLinhaService: ServicoLinhaService) { }
 
     ngOnInit() {
         if (this.holderService.cadastroLinha) {
@@ -35,13 +39,16 @@ export class ConfiguracaoLinhaComponent implements OnInit {
         } else {
             this.getInformacoes();
         }
+
+        this.getNcos();
+        this.getServicos();
     }
 
     private getInformacoes() {
         this.searching = true;
         this.searchingWhat = "Buscando Informações de Linha..."
         this.configuracaoLinhaService.getInformacoes(this.holderService.cadastro.linha)
-            .then(data => {                
+            .then(data => {
                 this.cadastroLinha = data;
                 if (this.cadastroLinha.status == "NOT_CREATED") {
                     this.callToasty("Linha não configurada", "Por favor realize a configuração da linha!", "warning", 0);
@@ -58,6 +65,24 @@ export class ConfiguracaoLinhaComponent implements OnInit {
 
     private goToCreateLinhaComponent() {
         this.templateComponent.createLinhaComponent();
+    }
+
+    public getNcos() {
+        this.ncosService.getNcos()
+            .then(data => {
+                this.holderService.listaDeNcos = data;
+            }, error => {
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+            });
+    }
+
+    public getServicos() {
+        this.servicoLinhaService.getServicos()
+            .then(data => {
+                this.holderService.listaDeServicos = data;
+            }, error => {
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+            });
     }
 
     private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {

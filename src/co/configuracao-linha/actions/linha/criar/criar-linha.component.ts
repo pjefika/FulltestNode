@@ -53,6 +53,7 @@ export class CriarLinhaComponent implements OnInit {
         this.consultarLenLoadingButton = true;
         this.consultarLenDisabledButton = true;
         this.consultarLenNameButton = "Consultando Len's Aguarde..."
+        this.listLens = null;
         this.listarLinhaService.getLinha(this.instanciaBinada)
             .then(data => {
                 this.cadInstanciaBinada = data;

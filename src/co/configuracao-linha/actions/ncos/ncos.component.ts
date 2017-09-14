@@ -14,10 +14,10 @@ import { Component, OnInit } from '@angular/core';
 export class NcosComponent implements OnInit {
 
     private ncosList: Ncos[];
-    //private incos: Ncos = this.holderService.cadastroLinha.ncos;
-    private ncos: string = this.holderService.cadastroLinha.ncos.desc;
+    private ncos: string = this.holderService.cadastroLinha.ncos.key;
 
-    private ncosO: Ncos;
+    private nomeButton: string = "Alterar";
+    private disableButton: boolean = false;
 
     constructor(
         private ncosService: NcosService,
@@ -25,7 +25,8 @@ export class NcosComponent implements OnInit {
         public holderService: HolderService) { }
 
     ngOnInit() {
-        this.getNcos();
+        //this.getNcos();
+        this.ncosList = this.holderService.listaDeNcos;
     }
 
     public getNcos() {
@@ -38,13 +39,19 @@ export class NcosComponent implements OnInit {
     }
 
     public setNcos() {
-        this.ncosList.forEach(element => {
-            if (element.desc === this.ncos) {
-                this.ncosO = element;
-            }
-        });
-
-        console.log(this.ncosO);
+        this.nomeButton = "Alterando Ncos, Aguarde...";
+        this.disableButton = true;
+        this.ncosService.setNcos(this.holderService.cadastro.linha, this.ncos)
+            .then(data => {
+                this.holderService.cadastroLinha = data;
+                this.nomeButton = "Alterar";
+                this.disableButton = false;
+                this.callToasty("Sucesso.", "Ncos Alterado com sucesso.", "success", 10000);
+            }, error => {
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                this.nomeButton = "Alterar";
+                this.disableButton = false;
+            });
     }
 
     private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
