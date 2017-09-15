@@ -33,7 +33,7 @@
                     <tr>
                         <th>Estado</th>
                         <td>
-                            {{cadastroLinha.estado.nome}}
+                            {{cadastroLinha.estado.nome}} ({{cadastroLinha.estado.desc}})
                             <clr-icon shape="check" *ngIf="cadastroLinha.estado.valid" style="color: green"></clr-icon>
                             <button class="btn btn-danger btn-sm" *ngIf="!cadastroLinha.estado.valid">Resetar Porta</button>
                         </td>

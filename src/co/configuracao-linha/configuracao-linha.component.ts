@@ -39,9 +39,14 @@ export class ConfiguracaoLinhaComponent implements OnInit {
         } else {
             this.getInformacoes();
         }
-
-        this.getNcos();
-        this.getServicos();
+        if (!this.holderService.listaDeNcos) {
+            // Se lista de ncos estiver vazia realiza a busca
+            this.getNcos();
+        }
+        if (!this.holderService.listaDeServicos) {
+            // Se lista de serviços estiver vazia realiza busca
+            this.getServicos();
+        }
     }
 
     private getInformacoes() {
