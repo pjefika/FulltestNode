@@ -37,6 +37,8 @@ export class HolderService {
     public listaDeNcos: Ncos[];
     public listaDeServicos: Servico[];
 
+    public modalAdm: boolean = false;
+
     constructor() { }
 
 }

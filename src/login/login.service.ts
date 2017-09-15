@@ -21,7 +21,8 @@ export class LoginService {
             rqst: "post",
             command: this.urlService.pathAuth + "autentica/verificarCredencial",
             otherUrl: "10.40.195.81:8080/",
-            _data: usuario
+            _data: usuario,
+            timeout: 1200000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

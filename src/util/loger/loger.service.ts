@@ -15,7 +15,8 @@ export class LogerService {
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathFulltestAPI + "crm/log",
-            _data: loger
+            _data: loger,
+            timeout: 1200000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

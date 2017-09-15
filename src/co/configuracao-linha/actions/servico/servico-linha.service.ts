@@ -17,6 +17,7 @@ export class ServicoLinhaService {
         this.infoResquest = {
             rqst: "get",
             command: this.urlService.pathDmsAPI + "dms/servicos",
+            timeout: 1200000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

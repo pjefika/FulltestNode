@@ -18,7 +18,8 @@ export class CadastroCrmService {
         this.infoResquest = {
             rqst: "get",
             command: this.urlService.pathStealerAPI + "oss/",
-            _data: instancia
+            _data: instancia,
+            timeout: 1200000
         }
         return this.urlService.request(this.infoResquest)
             .then(response => {

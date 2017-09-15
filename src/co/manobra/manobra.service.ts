@@ -27,7 +27,8 @@ export class ManobraService {
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathFulltestAPI + "fulltest/manobra/",
-            _data: cadastro
+            _data: cadastro,
+            timeout: 1200000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

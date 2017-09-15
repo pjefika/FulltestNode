@@ -35,26 +35,26 @@ import { Component, OnInit } from '@angular/core';
 
 export class TemplateComponent implements OnInit {
 
-    buscaCadastro: boolean = false;
-    nav: boolean = false;
+    public buscaCadastro: boolean = false;
+    public nav: boolean = false;
 
-    subnav: boolean = false;
-    sidenav: boolean = false;
+    public subnav: boolean = false;
+    public sidenav: boolean = false;
 
-    instancia: string;// = "4131543457"
+    public instancia: string;// = "4131543457"
 
-    subNavMenus: SubNav[];
-    sideNavMenus: SideNav[];
+    public subNavMenus: SubNav[];
+    public sideNavMenus: SideNav[];
 
-    componentData = null;
+    public componentData = null;
 
-    cadastro: Cadastro;
-    objectValid: ObjectValid;
+    public cadastro: Cadastro;
+    public objectValid: ObjectValid;
 
-    mostraMenus: boolean = false;
-    mostraToggle: boolean = false;
+    public mostraMenus: boolean = false;
+    public mostraToggle: boolean = false;
 
-    toastyInfo: {
+    public toastyInfo: {
         titulo: string;
         msg: string;
         theme: string;
@@ -62,7 +62,8 @@ export class TemplateComponent implements OnInit {
 
     //signpostState: boolean = false;
 
-    headerTitle: string; // Titulo para a pagina se precisar...
+    public headerTitle: string; // Titulo para a pagina se precisar...
+    public nivelmaiorquedez: boolean = false;
 
     constructor(
         private router: Router,
@@ -82,6 +83,7 @@ export class TemplateComponent implements OnInit {
                 this.router.navigate(['./entrar']);
             }
         });
+        this.nivelmaiorquedez = this.util.getNv(10);
         this.createPrincipalComponent();
         this.validaUsr();
     }

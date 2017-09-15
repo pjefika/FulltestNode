@@ -17,6 +17,7 @@ export class NcosService {
         this.infoResquest = {
             rqst: "get",
             command: this.urlService.pathDmsAPI + "dms/ncos",
+            timeout: 1200000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

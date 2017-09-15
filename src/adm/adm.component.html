@@ -1,0 +1,30 @@
+<clr-modal [(clrModalOpen)]="holderService.modalAdm" [clrModalSize]="'xl'">
+    <h3 class="modal-title">Administração</h3>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Login Central</h5>
+                <br>
+                <label>Selecione um login: </label>
+                <div class="select">
+                    <select [(ngModel)]="loginAtivo">
+                        <option selected disabled>Selecione</option>
+                        <option value="{{login}}" *ngFor="let login of listLogin" >{{login}}</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary btn-block">Executar</button>
+            </div>
+            <div class="col-md-4">
+                <h5>Outra coisa....</h5>
+                <br>
+            </div>
+            <div class="col-md-4">
+                <h5>Outra coisa....</h5>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="holderService.modalAdm = false;">Fechar</button>
+    </div>
+</clr-modal>

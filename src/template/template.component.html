@@ -34,6 +34,7 @@
                 </button>
                 <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
                     <a clrDropdownItem (click)="sair()">Sair</a>
+                    <a clrDropdownItem (click)="holderService.modalAdm = true;" *ngIf="nivelmaiorquedez">Administração</a>
                 </clr-dropdown-menu>
             </clr-dropdown>
         </div>
@@ -46,6 +47,7 @@
             <h3>{{headerTitle}}</h3>
             <dynamic-component [componentData]="componentData"></dynamic-component>
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
+            <adm-component></adm-component>
         </div>
         <nav class="sidenav" *ngIf="sidenav">
             <sidenav-component [menus]="sideNavMenus"></sidenav-component>
