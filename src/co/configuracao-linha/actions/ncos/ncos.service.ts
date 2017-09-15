@@ -1,3 +1,4 @@
+import { InfoRequest } from './../../../../viewmodel/url/infos-url';
 import { CadastroLinha } from './../../../../viewmodel/cadastro-linha/cadastro-linha';
 import { Linha } from './../../../../viewmodel/cadastro/linha';
 import { Ncos } from './../../../../viewmodel/cadastro-linha/ncos';
@@ -7,11 +8,17 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class NcosService {
 
+    private infoResquest: InfoRequest;
+
     constructor(
         private urlService: UrlService) { }
 
     public getNcos(): Promise<Ncos[]> {
-        return this.urlService.request("get", this.urlService.pathDmsAPI + "dms/ncos")
+        this.infoResquest = {
+            rqst: "get",
+            command: this.urlService.pathDmsAPI + "dms/ncos",
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as Ncos[];
             })
@@ -23,7 +30,12 @@ export class NcosService {
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, ncos: string, executor: string };
         _data = { dms: dms, ncos: ncos, executor: usr.user };
-        return this.urlService.request("post", this.urlService.pathDmsAPI + "dms/editarNcos", _data)
+        this.infoResquest = {
+            rqst: "post",
+            command: this.urlService.pathDmsAPI + "dms/editarNcos",
+            _data: _data
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as CadastroLinha;
             })

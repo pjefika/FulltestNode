@@ -1,3 +1,4 @@
+import { InfoRequest } from './../../viewmodel/url/infos-url';
 import { Observable } from 'rxjs/Observable';
 import { Headers, RequestOptions, Http } from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -23,21 +24,21 @@ export class UrlService {
 
     constructor(private http: Http) { }
 
-    //Todo mundo faz a chamada para o request passando os parametros.
-    public request(rqst: string, command: string, _data?: any, otherUrl?: string) {
+    //Todo mundo faz a chamada para o request passando o InfoRequest.
+    public request(infoResquest: InfoRequest) {
         //Verifica se url é outra
-        this.hOtherUrl(otherUrl);
-        switch (rqst) {
+        this.hOtherUrl(infoResquest.otherUrl);
+        switch (infoResquest.rqst) {
             case "get":
-                return this.httpGetRequest(command, _data);
+                return this.httpGetRequest(infoResquest);
             case "post":
-                return this.httpPostRequest(command, _data);
+                return this.httpPostRequest(infoResquest);
         }
     }
 
-    private httpPostRequest(command: string, _data: any) {
-        const url = `${this.url}` + command;
-        return this.http.post(url, JSON.stringify(_data), this.options)
+    private httpPostRequest(infoResquest: InfoRequest) {
+        const url = `${this.url}` + infoResquest.command;
+        return this.http.post(url, JSON.stringify(infoResquest._data), this.options)
             .timeout(120000)
             .toPromise()
             .then(response => {
@@ -46,12 +47,12 @@ export class UrlService {
             .catch(this.handleError);
     }
 
-    private httpGetRequest(command: string, _data?: any) {
+    private httpGetRequest(infoResquest: InfoRequest) {
         let rstlink;
-        if (_data) {
-            rstlink = command + _data;
+        if (infoResquest._data) {
+            rstlink = infoResquest.command + infoResquest._data;
         } else {
-            rstlink = command;
+            rstlink = infoResquest.command;
         }
         const url = `${this.url}` + rstlink;
         return this.http.get(url, this.options)

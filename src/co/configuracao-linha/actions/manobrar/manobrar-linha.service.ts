@@ -1,3 +1,4 @@
+import { InfoRequest } from './../../../../viewmodel/url/infos-url';
 import { Len } from './../../../../viewmodel/cadastro-linha/len';
 import { CadastroLinha } from './../../../../viewmodel/cadastro-linha/cadastro-linha';
 import { Linha } from './../../../../viewmodel/cadastro/linha';
@@ -7,6 +8,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ManobraLinhaService {
 
+    private infoResquest: InfoRequest;
+
     constructor(
         private urlService: UrlService) { }
 
@@ -15,7 +18,12 @@ export class ManobraLinhaService {
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, len: any, confBinada: any, executor: string };
         _data = { dms: dms, len: len, confBinada: cadastroLinhaBinada, executor: usr.user };
-        return this.urlService.request("post", this.urlService.pathDmsAPI + "dms/manobrarLinha", _data)
+        this.infoResquest = {
+            rqst: "post",
+            command: this.urlService.pathDmsAPI + "dms/manobrarLinha",
+            _data: _data
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as CadastroLinha;
             })

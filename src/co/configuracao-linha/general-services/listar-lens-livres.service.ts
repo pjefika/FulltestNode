@@ -1,3 +1,4 @@
+import { InfoRequest } from './../../../viewmodel/url/infos-url';
 import { ConfiguracoesLensLivres } from './../../../viewmodel/cadastro-linha/lens-livres/configuracoes-lens-livres';
 import { LensLivres } from './../../../viewmodel/cadastro-linha/lens-livres/lens-livres';
 import { Linha } from './../../../viewmodel/cadastro/linha';
@@ -7,6 +8,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ListarLensLivresService {
 
+    private infoResquest: InfoRequest;
+
     constructor(
         private urlService: UrlService) { }
 
@@ -15,7 +18,12 @@ export class ListarLensLivresService {
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, executor: string };
         _data = { dms: dms, executor: usr.user };
-        return this.urlService.request("post", this.urlService.pathDmsAPI + "dms/consultarConfiguracoesShelf", _data)
+        this.infoResquest = {
+            rqst: "post",
+            command: this.urlService.pathDmsAPI + "dms/consultarConfiguracoesShelf",
+            _data: _data
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as ConfiguracoesLensLivres;
             })

@@ -1,3 +1,4 @@
+import { InfoRequest } from './../../../../viewmodel/url/infos-url';
 import { CadastroLinha } from './../../../../viewmodel/cadastro-linha/cadastro-linha';
 import { Linha } from './../../../../viewmodel/cadastro/linha';
 import { Servico } from './../../../../viewmodel/cadastro-linha/servicos';
@@ -7,11 +8,17 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ServicoLinhaService {
 
+    private infoResquest: InfoRequest;
+
     constructor(
         private urlService: UrlService) { }
 
     public getServicos(): Promise<Servico[]> {
-        return this.urlService.request("get", this.urlService.pathDmsAPI + "dms/servicos")
+        this.infoResquest = {
+            rqst: "get",
+            command: this.urlService.pathDmsAPI + "dms/servicos",
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as Servico[];
             })
@@ -23,7 +30,12 @@ export class ServicoLinhaService {
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, services: string[], executor: string };
         _data = { dms: dms, services: services, executor: usr.user };
-        return this.urlService.request("post", this.urlService.pathDmsAPI + "dms/editarServicos", _data)
+        this.infoResquest = {
+            rqst: "post",
+            command: this.urlService.pathDmsAPI + "dms/editarServicos",
+            _data: _data
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as CadastroLinha
             })

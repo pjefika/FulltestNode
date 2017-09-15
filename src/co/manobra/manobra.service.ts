@@ -1,3 +1,4 @@
+import { InfoRequest } from './../../viewmodel/url/infos-url';
 import { UrlService } from './../../util/url-service/url.service';
 import { Motivo } from './../../viewmodel/manobra/motivo';
 import { Analitico } from './../../viewmodel/manobra/analitico';
@@ -16,12 +17,19 @@ import 'rxjs/Rx';
 @Injectable()
 export class ManobraService {
 
+    private infoResquest: InfoRequest;
+
     constructor(
         private urlService: UrlService,
         private http: Http) { }
 
     getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
-        return this.urlService.request("post", this.urlService.pathFulltestAPI + "fulltest/manobra/", cadastro)
+        this.infoResquest = {
+            rqst: "post",
+            command: this.urlService.pathFulltestAPI + "fulltest/manobra/",
+            _data: cadastro
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as ObjectValid
             })
@@ -31,7 +39,12 @@ export class ManobraService {
     getAnalitico(cadastro: Cadastro, motivoSelected: string, executor: string): Promise<Analitico> {
         let _data: { cust: Cadastro, motivo: string, executor: string }
         _data = { cust: cadastro, motivo: motivoSelected, executor: executor }
-        return this.urlService.request("post", this.urlService.pathFulltestAPI + "manobra/analitico", _data)
+        this.infoResquest = {
+            rqst: "post",
+            command: this.urlService.pathFulltestAPI + "manobra/analitico",
+            _data: _data
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as Analitico[];
             })
@@ -39,7 +52,11 @@ export class ManobraService {
     }
 
     getListaMotivo(): Promise<Motivo[]> {
-        return this.urlService.request("get", this.urlService.pathFulltestAPI + "manobra/motivos")
+        this.infoResquest = {
+            rqst: "get",
+            command: this.urlService.pathFulltestAPI + "manobra/motivos"
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as Motivo[]
             })

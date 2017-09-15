@@ -1,3 +1,4 @@
+import { InfoRequest } from './../../../../../viewmodel/url/infos-url';
 import { Linha } from './../../../../../viewmodel/cadastro/linha';
 import { CadastroLinha } from './../../../../../viewmodel/cadastro-linha/cadastro-linha';
 import { UrlService } from './../../../../../util/url-service/url.service';
@@ -5,6 +6,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class DeletarLinhaService {
+
+    private infoResquest: InfoRequest;
 
     constructor(
         private urlService: UrlService) { }
@@ -14,7 +17,12 @@ export class DeletarLinhaService {
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, len: any, executor: string };
         _data = { dms: dms, len: cadastroLinha.len, executor: usr.user };
-        return this.urlService.request("post", this.urlService.pathDmsAPI + "dms/deletarLinha", _data)
+        this.infoResquest = {
+            rqst: "post",
+            command: this.urlService.pathDmsAPI + "dms/deletarLinha",
+            _data: _data
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as CadastroLinha;
             })

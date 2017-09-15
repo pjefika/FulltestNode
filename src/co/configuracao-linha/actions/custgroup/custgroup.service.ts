@@ -1,3 +1,4 @@
+import { InfoRequest } from './../../../../viewmodel/url/infos-url';
 import { CadastroLinha } from './../../../../viewmodel/cadastro-linha/cadastro-linha';
 import { Linha } from './../../../../viewmodel/cadastro/linha';
 import { UrlService } from './../../../../util/url-service/url.service';
@@ -5,6 +6,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CustgroupService {
+
+    private infoResquest: InfoRequest;
 
     constructor(
         private urlService: UrlService) { }
@@ -14,7 +17,12 @@ export class CustgroupService {
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, custGrp: string, executor: string };
         _data = { dms: dms, custGrp: custgroup, executor: usr.user };
-        return this.urlService.request("post", this.urlService.pathDmsAPI + "dms/editarCustGrp", _data)
+        this.infoResquest = {
+            rqst: "post",
+            command: this.urlService.pathDmsAPI + "dms/editarCustGrp",
+            _data: _data
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as CadastroLinha;
             })

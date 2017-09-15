@@ -1,3 +1,4 @@
+import { InfoRequest } from './../../viewmodel/url/infos-url';
 import { UrlService } from './../../util/url-service/url.service';
 import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
@@ -9,11 +10,18 @@ import 'rxjs/Rx';
 @Injectable()
 export class FulltestService {
 
+    private infoResquest: InfoRequest;
+
     constructor(
         private urlService: UrlService) { }
 
     getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
-        return this.urlService.request("post", this.urlService.pathFulltestAPI + "fulltest/corrective/", cadastro)
+        this.infoResquest = {
+            rqst: "post",
+            command: this.urlService.pathFulltestAPI + "fulltest/corrective/",
+            _data: cadastro
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as ObjectValid
             })

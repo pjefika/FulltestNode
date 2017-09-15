@@ -1,3 +1,4 @@
+import { InfoRequest } from './../viewmodel/url/infos-url';
 import { UrlService } from './../util/url-service/url.service';
 import { Usuario } from './../viewmodel/usuario';
 import { Injectable } from '@angular/core';
@@ -10,11 +11,19 @@ import 'rxjs/Rx';
 @Injectable()
 export class LoginService {
 
+    private infoResquest: InfoRequest;
+
     constructor(
         private urlService: UrlService) { }
 
     public autentica(usuario: Usuario): Promise<Boolean> {
-        return this.urlService.request("post", this.urlService.pathAuth + "autentica/verificarCredencial", usuario, "10.40.195.81:8080/")
+        this.infoResquest = {
+            rqst: "post",
+            command: this.urlService.pathAuth + "autentica/verificarCredencial",
+            otherUrl: "10.40.195.81:8080/",
+            _data: usuario
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as Boolean
             })
@@ -22,7 +31,13 @@ export class LoginService {
     }
 
     public getUsuario(usuario: Usuario): Promise<Usuario> {
-        return this.urlService.request("get", this.urlService.pathAuth + "autentica/consultar/", usuario.login, "10.40.195.81:8080/")
+        this.infoResquest = {
+            rqst: "get",
+            command: this.urlService.pathAuth + "autentica/consultar/",
+            otherUrl: "10.40.195.81:8080/",
+            _data: usuario.login
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as Usuario
             })

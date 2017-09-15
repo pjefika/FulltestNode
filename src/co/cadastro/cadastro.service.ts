@@ -1,3 +1,4 @@
+import { InfoRequest } from './../../viewmodel/url/infos-url';
 import { UrlService } from './../../util/url-service/url.service';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { Injectable } from '@angular/core';
@@ -8,11 +9,18 @@ import 'rxjs/Rx';
 @Injectable()
 export class CadastroService {
 
+    private infoResquest: InfoRequest;
+
     constructor(
         private urlService: UrlService) { }
 
     getCadastro(instancia: string): Promise<Cadastro> {
-        return this.urlService.request("get", this.urlService.pathStealerAPI + "oss/", instancia)
+        this.infoResquest = {
+            rqst: "get",
+            command: this.urlService.pathStealerAPI + "oss/",
+            _data: instancia
+        }
+        return this.urlService.request(this.infoResquest)
             .then(response => {
                 return response as Cadastro
             })
