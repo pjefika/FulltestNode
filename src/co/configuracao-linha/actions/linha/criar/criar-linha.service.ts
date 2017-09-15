@@ -21,7 +21,8 @@ export class CriarLinhaService {
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathDmsAPI + "dms/criarLinha",
-            _data: _data
+            _data: _data,
+            timeout: 200000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

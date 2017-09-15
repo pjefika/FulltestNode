@@ -39,7 +39,7 @@ export class UrlService {
     private httpPostRequest(infoResquest: InfoRequest) {
         const url = `${this.url}` + infoResquest.command;
         return this.http.post(url, JSON.stringify(infoResquest._data), this.options)
-            .timeout(120000)
+            .timeout(infoResquest.timeout)
             .toPromise()
             .then(response => {
                 return response.json()

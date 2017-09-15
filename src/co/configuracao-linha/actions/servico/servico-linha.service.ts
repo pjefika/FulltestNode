@@ -33,7 +33,8 @@ export class ServicoLinhaService {
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathDmsAPI + "dms/editarServicos",
-            _data: _data
+            _data: _data,
+            timeout: 200000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

@@ -21,7 +21,8 @@ export class ListarLensLivresService {
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathDmsAPI + "dms/consultarConfiguracoesShelf",
-            _data: _data
+            _data: _data,
+            timeout: 200000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {
