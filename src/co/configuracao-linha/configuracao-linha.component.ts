@@ -1,3 +1,4 @@
+import { LinhaResetDePortaService } from './general-services/linha-reset-de-porta.service';
 import { ServicoLinhaService } from './actions/servico/servico-linha.service';
 import { NcosService } from './actions/ncos/ncos.service';
 import { TemplateComponent } from './../../template/template.component';
@@ -14,7 +15,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'configuracao-linha-component',
     templateUrl: 'configuracao-linha.component.html',
     styleUrls: ['configuracao-linha.component.css'],
-    providers: [ConfiguracaoLinhaService, NcosService, ServicoLinhaService]
+    providers: [ConfiguracaoLinhaService, NcosService, ServicoLinhaService, LinhaResetDePortaService]
 })
 
 export class ConfiguracaoLinhaComponent implements OnInit {
@@ -31,7 +32,8 @@ export class ConfiguracaoLinhaComponent implements OnInit {
         public holderService: HolderService,
         private templateComponent: TemplateComponent,
         private ncosService: NcosService,
-        private servicoLinhaService: ServicoLinhaService) { }
+        private servicoLinhaService: ServicoLinhaService,
+        private linhaResetDePortaService: LinhaResetDePortaService) { }
 
     ngOnInit() {
         if (this.holderService.cadastroLinha) {
@@ -85,6 +87,15 @@ export class ConfiguracaoLinhaComponent implements OnInit {
         this.servicoLinhaService.getServicos()
             .then(data => {
                 this.holderService.listaDeServicos = data;
+            }, error => {
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+            });
+    }
+
+    public resetarPorta() {
+        this.linhaResetDePortaService.resetarPorta(this.holderService.cadastro.linha)
+            .then(data => {
+                this.holderService.cadastroLinha = data;
             }, error => {
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             });
