@@ -47,7 +47,7 @@ export class ServicoLinhaComponent implements OnInit {
             if (element.desc === servico.desc) {
                 valid = true;
                 if (this.listaDeServicosSelecionada.length === 0) {
-                    this.atualizaListaDeServicos(servico.key);
+                    this.atualizaListaDeServicos(servico.nome);
                 }
             }
         });
