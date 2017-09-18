@@ -2,6 +2,12 @@
     <h3>Informações da Linha</h3>
     <div *ngIf="!searching">
         <div *ngIf="cadastroLinha">
+            <h4 class="stack-header">
+                <span class="stack-title"></span>
+                <span class="stack-actions">
+                    <button class="btn btn-primary btn-block btn-sm" (click)="editarInfoLinhas = true;">Editar</button>
+                </span>
+            </h4>
             <table class="table table-vertical table-compact" *ngIf="cadastroLinha">
                 <tbody>
                     <tr>
@@ -9,7 +15,9 @@
                     </tr>
                     <tr>
                         <th>DN</th>
-                        <td>{{cadastroLinha.dn}}</td>
+                        <td>{{cadastroLinha.dn}}
+                            <clr-icon *ngIf="holderService.cadastroinstancia != cadastroLinha.dn" shape="exclamation-triangle"></clr-icon>
+                        </td>
                     </tr>
                     <tr>
                         <th>Central</th>
@@ -21,12 +29,18 @@
                     </tr>
                     <tr>
                         <th>CustGrp</th>
-                        <td>{{cadastroLinha.custGrp}}</td>
+                        <td *ngIf="!editarInfoLinhas">{{cadastroLinha.custGrp}}</td>
+                        <td *ngIf="editarInfoLinhas">
+                            <custgroup-component></custgroup-component>
+                        </td>
                     </tr>
                     <tr>
                         <th>NCOS</th>
-                        <td>{{cadastroLinha.ncos.ncos}} - {{cadastroLinha.ncos.desc}}</td>
-                    </tr>                    
+                        <td *ngIf="!editarInfoLinhas">{{cadastroLinha.ncos.ncos}} - {{cadastroLinha.ncos.desc}}</td>
+                        <td *ngIf="editarInfoLinhas">
+                            <ncos-component></ncos-component>
+                        </td>
+                    </tr>
                     <tr>
                         <th>Status</th>
                         <td>

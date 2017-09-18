@@ -16,7 +16,7 @@ export class CriarLinhaService {
     public setCriarLinha(linha: Linha, len: Len, cadastroLinhaBinada: CadastroLinha): Promise<CadastroLinha> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let dms = { dn: linha.dn, central: linha.central }
-        let _data: { dms: any, len: any, confBinada: any, executor: string };
+        let _data: { dms: any, len: any, confBinada: CadastroLinha, executor: string };
         _data = { dms: dms, len: len, confBinada: cadastroLinhaBinada, executor: usr.user };
         this.infoResquest = {
             rqst: "post",

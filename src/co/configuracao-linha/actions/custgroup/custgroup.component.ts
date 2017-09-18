@@ -22,7 +22,9 @@ export class CustgroupComponent implements OnInit {
         private toastyComponent: ToastyComponent,
         public holderService: HolderService) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.custgroup = this.holderService.cadastroLinha.custGrp;
+     }
 
     public setCustgroup() {
         if (this.custgroup) {
@@ -49,7 +51,8 @@ export class CustgroupComponent implements OnInit {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,
-            theme: theme
+            theme: theme,
+            timeout: timeout
         }
         this.toastyComponent.addToasty();
     }

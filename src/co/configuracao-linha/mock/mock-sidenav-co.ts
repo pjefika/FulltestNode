@@ -8,14 +8,14 @@ export const sideNavConfLinha: SideNav[] = [
     //     nome: "Agrupamento",
     //     component: "agrupamento-component"
     // },
-    {
-        nome: "Alterar CUSTGROUP",
-        component: "custgroup-component"
-    },
-    {
-        nome: "Alterar NCOS",
-        component: "ncos-component"
-    },
+    // {
+    //     nome: "Alterar CUSTGROUP",
+    //     component: "custgroup-component"
+    // },
+    // {
+    //     nome: "Alterar NCOS",
+    //     component: "ncos-component"
+    // },
     {
         nome: "Linha",
         component: "linha-component"
@@ -27,11 +27,11 @@ export const sideNavConfLinha: SideNav[] = [
     {
         nome: "Manobrar",
         component: "manobrar-linha-component"
-    },
-    {
-        nome: "Listar Status das Portas",
-        component: "status-porta-component"
     }
+    // {
+    //     nome: "Listar Status das Portas",
+    //     component: "status-porta-component"
+    // },
     // {
     //     nome: "Listar Status da Linha",
     //     component: "status-linha-component"

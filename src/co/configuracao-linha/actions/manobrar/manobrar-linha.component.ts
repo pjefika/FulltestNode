@@ -116,6 +116,7 @@ export class ManobrarLinhaComponent implements OnInit {
             titulo: titulo,
             msg: msg,
             theme: theme,
+            timeout: timeout
         }
         this.toastyComponent.addToasty();
     }

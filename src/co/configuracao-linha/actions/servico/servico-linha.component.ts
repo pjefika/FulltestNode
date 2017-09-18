@@ -83,7 +83,8 @@ export class ServicoLinhaComponent implements OnInit {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,
-            theme: theme
+            theme: theme,
+            timeout: timeout
         }
         this.toastyComponent.addToasty();
     }
