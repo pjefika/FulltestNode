@@ -1,8 +1,8 @@
 <div>
     <h3>Serviço</h3>
     <label>Selecione os serviços a baixo: </label>
-    <clr-checkbox *ngFor="let servico of listaDeServicos" [clrChecked]="validaServicosDoCliente(servico)" (click)="atualizaListaDeServicos(servico.nome)">
+    <clr-checkbox *ngFor="let servico of listaDeServicos" [clrChecked]="validaServicosDoCliente(servico)" (change)="atualizaListaDeServicos(servico.nome)">
         {{servico.desc}}
     </clr-checkbox>
-    <button class="btn btn-primary btn-block" (click)="setServicos()" [disabled]="disableButton">{{nomeButton}}</button>
+    <button class="btn btn-primary btn-block" (click)="setServicoAndRemoveDuplicate()" [disabled]="disableButton">{{nomeButton}}</button>
 </div>

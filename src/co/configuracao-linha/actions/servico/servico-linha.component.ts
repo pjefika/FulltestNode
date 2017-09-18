@@ -46,9 +46,7 @@ export class ServicoLinhaComponent implements OnInit {
         this.holderService.cadastroLinha.servicos.forEach(element => {
             if (element.desc === servico.desc) {
                 valid = true;
-                if (this.listaDeServicosSelecionada.length === 0) {
-                    this.atualizaListaDeServicos(servico.nome);
-                }
+                this.pushservicoinsidelist(servico.nome);
             }
         });
         return valid;
@@ -56,17 +54,22 @@ export class ServicoLinhaComponent implements OnInit {
 
     public atualizaListaDeServicos(servico: string) {
         if (this.listaDeServicosSelecionada.indexOf(servico) === -1) {
-            this.listaDeServicosSelecionada.push(servico);
+            this.pushservicoinsidelist(servico);
         } else {
             let index: number = this.listaDeServicosSelecionada.indexOf(servico);
             this.listaDeServicosSelecionada.splice(index, 1);
         }
     }
 
-    public setServicos() {
+    public pushservicoinsidelist(servico: string) {
+        this.listaDeServicosSelecionada.push(servico);
+    }
+
+    public setServicos() {        
+        //console.log(this.listaDeServicosSelecionada);
         this.nomeButton = "Alterando Serviços, Aguarde...";
         this.disableButton = true;
-        this.servicoLinhaService.setEditarServicos(this.holderService.cadastro.linha, this.listaDeServicosSelecionada)
+        this.servicoLinhaService.setEditarServicos(this.holderService.cadastro, this.listaDeServicosSelecionada)
             .then(data => {
                 this.holderService.cadastroLinha = data;
                 this.nomeButton = "Alterar";
@@ -77,6 +80,28 @@ export class ServicoLinhaComponent implements OnInit {
                 this.nomeButton = "Alterar";
                 this.disableButton = false;
             });
+    }
+
+    public setServicoAndRemoveDuplicate() {
+        let array = Array.from(new Set(this.listaDeServicosSelecionada.map(x => {
+            let obj;
+            try {
+                obj = JSON.stringify(x);
+            } catch (e) {
+                obj = x;
+            }
+            return obj;
+        }))).map(x => {
+            let obj;
+            try {
+                obj = JSON.parse(x);
+            } catch (e) {
+                obj = x;
+            }
+            return obj;
+        });
+        this.listaDeServicosSelecionada = array;
+        this.setServicos();
     }
 
     private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
