@@ -1,3 +1,4 @@
+import { Cadastro } from './../../../../viewmodel/cadastro/cadastro';
 import { InfoRequest } from './../../../../viewmodel/url/infos-url';
 import { CadastroLinha } from './../../../../viewmodel/cadastro-linha/cadastro-linha';
 import { Linha } from './../../../../viewmodel/cadastro/linha';
@@ -26,11 +27,12 @@ export class ServicoLinhaService {
             .catch(this.handleError);
     }
 
-    public setEditarServicos(linha: Linha, services: string[]): Promise<CadastroLinha> {
+    public setEditarServicos(cad: Cadastro, services: string[]): Promise<CadastroLinha> {
+        let linha = cad.linha;
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let dms = { dn: linha.dn, central: linha.central }
-        let _data: { dms: any, services: string[], executor: string };
-        _data = { dms: dms, services: services, executor: usr.user };
+        let _data: { instancia: string, dms: any, services: string[], executor: string };
+        _data = { instancia: cad.instancia, dms: dms, services: services, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathDmsAPI + "dms/editarServicos",
