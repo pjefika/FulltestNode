@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { element } from 'protractor';
 import { HolderService } from './../../../../util/holder/holder.service';
 import { ToastyComponent } from './../../../../util/toasty/toasty.component';
@@ -17,6 +18,8 @@ export class ServicoLinhaComponent implements OnInit {
     private toggleComando: boolean;
 
     private listaDeServicos: Servico[];
+
+    private formServicosSelecionada: FormGroup;
     private listaDeServicosSelecionada: string[] = [];
 
     private nomeButton: string = "Alterar";
@@ -25,51 +28,61 @@ export class ServicoLinhaComponent implements OnInit {
     constructor(
         private servicoLinhaService: ServicoLinhaService,
         private toastyComponent: ToastyComponent,
-        public holderService: HolderService) { }
+        public holderService: HolderService,
+        private fb: FormBuilder) { }
 
     ngOnInit() {
-        //this.getServicos();
         this.listaDeServicos = this.holderService.listaDeServicos;
+        this.formServicosSelecionada = this.fb.group({
+            servicos: this.fb.array([])
+        });
+
+        this.validaServicosDoCliente();
     }
 
-    public getServicos() {
-        this.servicoLinhaService.getServicos()
-            .then(data => {
-                this.listaDeServicos = data;
-            }, error => {
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+    public validaServicosDoCliente() {
+        this.holderService.cadastroLinha.servicos.forEach(elementA => {
+            this.listaDeServicos.forEach(elementB => {
+                if (elementA.nome === elementB.nome) {
+                    this.addandremoveservicefromlist(elementA.nome, true);
+                }
             });
+        });
     }
 
-    public validaServicosDoCliente(servico: Servico): boolean {
-        let valid: boolean = false;
+    public seeifchecked(servico: string): boolean {
+        let valid = false;
         this.holderService.cadastroLinha.servicos.forEach(element => {
-            if (element.desc === servico.desc) {
+            if (servico === element.nome) {
                 valid = true;
-                this.pushservicoinsidelist(servico.nome);
             }
         });
         return valid;
     }
 
-    public atualizaListaDeServicos(servico: string) {
-        if (this.listaDeServicosSelecionada.indexOf(servico) === -1) {
-            this.pushservicoinsidelist(servico);
+    public atualizaListaDeServicos(servico: string, isChecked: boolean) {
+        if (isChecked) {
+            this.addandremoveservicefromlist(servico, true);
         } else {
-            let index: number = this.listaDeServicosSelecionada.indexOf(servico);
-            this.listaDeServicosSelecionada.splice(index, 1);
+            this.addandremoveservicefromlist(servico, false);
         }
     }
 
-    public pushservicoinsidelist(servico: string) {
-        this.listaDeServicosSelecionada.push(servico);
+    public addandremoveservicefromlist(servico: string, action: boolean) {
+        const servicosFormArray = <FormArray>this.formServicosSelecionada.controls.servicos;
+        if (action) {
+            servicosFormArray.push(new FormControl(servico));
+        } else {
+            let index = servicosFormArray.controls.findIndex(x => x.value == servico)
+            servicosFormArray.removeAt(index);
+        }
     }
 
-    public setServicos() {        
-        //console.log(this.listaDeServicosSelecionada);
+    public setServicos() {
+        let lstServSelect = this.formServicosSelecionada.value.servicos;
         this.nomeButton = "Alterando Serviços, Aguarde...";
         this.disableButton = true;
-        this.servicoLinhaService.setEditarServicos(this.holderService.cadastro, this.listaDeServicosSelecionada)
+        this.servicoLinhaService.setEditarServicos(this.holderService.cadastro, lstServSelect)
             .then(data => {
                 this.holderService.cadastroLinha = data;
                 this.nomeButton = "Alterar";
@@ -80,28 +93,6 @@ export class ServicoLinhaComponent implements OnInit {
                 this.nomeButton = "Alterar";
                 this.disableButton = false;
             });
-    }
-
-    public setServicoAndRemoveDuplicate() {
-        let array = Array.from(new Set(this.listaDeServicosSelecionada.map(x => {
-            let obj;
-            try {
-                obj = JSON.stringify(x);
-            } catch (e) {
-                obj = x;
-            }
-            return obj;
-        }))).map(x => {
-            let obj;
-            try {
-                obj = JSON.parse(x);
-            } catch (e) {
-                obj = x;
-            }
-            return obj;
-        });
-        this.listaDeServicosSelecionada = array;
-        this.setServicos();
     }
 
     private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
