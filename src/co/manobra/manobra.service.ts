@@ -43,7 +43,8 @@ export class ManobraService {
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathFulltestAPI + "manobra/analitico",
-            _data: _data
+            _data: _data,
+            timeout: 1200000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {
@@ -55,7 +56,8 @@ export class ManobraService {
     getListaMotivo(): Promise<Motivo[]> {
         this.infoResquest = {
             rqst: "get",
-            command: this.urlService.pathFulltestAPI + "manobra/motivos"
+            command: this.urlService.pathFulltestAPI + "manobra/motivos",
+            timeout: 1200000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

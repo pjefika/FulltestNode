@@ -81,17 +81,17 @@ export class TemplateComponent implements OnInit {
         this.util.isLogado().then((result: boolean) => {
             if (!result) {
                 this.router.navigate(['./entrar']);
+            } else {
+                this.nivelmaiorquedez = this.util.getNv(10);
+                this.createPrincipalComponent();
+                this.validaUsr();
             }
         });
-        this.nivelmaiorquedez = this.util.getNv(10);
-        this.createPrincipalComponent();
-        this.validaUsr();
     }
 
     public validaUsr() {
         if (sessionStorage.getItem('user')) {
             let usr = JSON.parse(sessionStorage.getItem('user'));
-
             if (usr.nv === 1) {
                 this.buscaCadastro = true;
             }

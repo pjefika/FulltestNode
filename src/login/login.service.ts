@@ -36,7 +36,8 @@ export class LoginService {
             rqst: "get",
             command: this.urlService.pathAuth + "autentica/consultar/",
             otherUrl: "10.40.195.81:8080/",
-            _data: usuario.login
+            _data: usuario.login,
+            timeout: 1200000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {
