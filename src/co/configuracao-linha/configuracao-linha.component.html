@@ -15,8 +15,9 @@
                     </tr>
                     <tr>
                         <th>DN</th>
-                        <td>{{cadastroLinha.dn}}
-                            <clr-icon *ngIf="holderService.cadastroinstancia != cadastroLinha.dn" shape="exclamation-triangle"></clr-icon>
+                        <td>
+                            {{cadastroLinha.dn}}
+                            <clr-icon *ngIf="holderService.cadastro.instancia != cadastroLinha.dn" shape="exclamation-triangle"></clr-icon>
                         </td>
                     </tr>
                     <tr>
