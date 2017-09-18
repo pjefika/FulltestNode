@@ -25,7 +25,7 @@
                     </tr>
                     <tr>
                         <th>NCOS</th>
-                        <td>{{cadastroLinha.ncos.desc}}</td>
+                        <td>{{cadastroLinha.ncos.ncos}} - {{cadastroLinha.ncos.desc}}</td>
                     </tr>                    
                     <tr>
                         <th>Status</th>
@@ -37,7 +37,7 @@
                     <tr>
                         <th>Estado</th>
                         <td>
-                            {{cadastroLinha.estado.nome}} ({{cadastroLinha.estado.desc}})
+                            {{cadastroLinha.estado.desc}} ({{cadastroLinha.estado.nome}})
                             <clr-icon shape="check" *ngIf="cadastroLinha.estado.valid" style="color: green"></clr-icon>
                             <button class="btn btn-danger btn-sm" *ngIf="!cadastroLinha.estado.valid" (click)="resetarPorta()">Resetar Porta</button>
                         </td>
