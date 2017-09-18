@@ -57,6 +57,9 @@ export class ServicoLinhaComponent implements OnInit {
     public atualizaListaDeServicos(servico: string) {
         if (this.listaDeServicosSelecionada.indexOf(servico) === -1) {
             this.listaDeServicosSelecionada.push(servico);
+        } else {
+            let index: number = this.listaDeServicosSelecionada.indexOf(servico);
+            this.listaDeServicosSelecionada.splice(index, 1);
         }
     }
 
