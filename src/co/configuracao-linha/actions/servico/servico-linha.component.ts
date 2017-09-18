@@ -66,7 +66,7 @@ export class ServicoLinhaComponent implements OnInit {
     public setServicos() {
         this.nomeButton = "Alterando Serviços, Aguarde...";
         this.disableButton = true;
-        this.servicoLinhaService.setEditarServicos(this.holderService.cadastro.linha, this.listaDeServicosSelecionada)
+        this.servicoLinhaService.setEditarServicos(this.holderService.cadastro, this.listaDeServicosSelecionada)
             .then(data => {
                 this.holderService.cadastroLinha = data;
                 this.nomeButton = "Alterar";

@@ -28,9 +28,8 @@ export class ServicoLinhaService {
     }
 
     public setEditarServicos(cad: Cadastro, services: string[]): Promise<CadastroLinha> {
-        let linha = cad.linha;
         let usr = JSON.parse(sessionStorage.getItem('user'));
-        let dms = { dn: linha.dn, central: linha.central }
+        let dms = { dn: cad.linha.dn, central: cad.linha.central }
         let _data: { instancia: string, dms: any, services: string[], executor: string };
         _data = { instancia: cad.instancia, dms: dms, services: services, executor: usr.user };
         this.infoResquest = {
