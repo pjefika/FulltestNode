@@ -15,18 +15,19 @@ export class LinhaResetDePortaService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, executor: string };
+        _data = { dms: dms, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathDmsAPI + "dms/resetarPorta",
             _data: _data,
             timeout: 200000
         }
+        console.log(this.infoResquest)
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as CadastroLinha;
             })
             .catch(this.handleError);
-
     }
 
     private handleError(error: any): Promise<any> {

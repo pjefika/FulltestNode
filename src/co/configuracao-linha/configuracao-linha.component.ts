@@ -28,6 +28,9 @@ export class ConfiguracaoLinhaComponent implements OnInit {
 
     private editarInfoLinhas: boolean = false;
 
+    private nomebotaoresetar: string = "Resetar porta";
+    private disablebotaoresetar: boolean = false;
+
     constructor(
         private configuracaoLinhaService: ConfiguracaoLinhaService,
         private toastyComponent: ToastyComponent,
@@ -95,10 +98,17 @@ export class ConfiguracaoLinhaComponent implements OnInit {
     }
 
     public resetarPorta() {
+        this.nomebotaoresetar = "Resetando a porta";
+        this.disablebotaoresetar = true;
         this.linhaResetDePortaService.resetarPorta(this.holderService.cadastro.linha)
             .then(data => {
                 this.holderService.cadastroLinha = data;
+                this.cadastroLinha = data;
+                this.nomebotaoresetar = "Resetar porta";
+                this.disablebotaoresetar = false;
             }, error => {
+                this.nomebotaoresetar = "Resetar porta";
+                this.disablebotaoresetar = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             });
     }

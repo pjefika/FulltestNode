@@ -54,7 +54,7 @@
                         <td>
                             {{cadastroLinha.estado.desc}} ({{cadastroLinha.estado.nome}})
                             <clr-icon shape="check" *ngIf="cadastroLinha.estado.valid" style="color: green"></clr-icon>
-                            <button class="btn btn-danger btn-sm" *ngIf="!cadastroLinha.estado.valid" (click)="resetarPorta()">Resetar Porta</button>
+                            <button class="btn btn-danger btn-sm" *ngIf="!cadastroLinha.estado.valid" (click)="resetarPorta()" [disabled]="disablebotaoresetar">{{nomebotaoresetar}}</button>
                         </td>
                     </tr>
                 </tbody>
