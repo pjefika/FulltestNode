@@ -1,39 +1,23 @@
+import { ManobrarLinhaComponent } from './../actions/manobrar/manobrar-linha.component';
+import { ServicoLinhaComponent } from './../actions/servico/servico-linha.component';
+import { LinhaComponent } from './../actions/linha/linha.component';
+import { ConfiguracaoLinhaComponent } from './../configuracao-linha.component';
 import { SideNav } from './../../../viewmodel/menus/sidenav';
 export const sideNavConfLinha: SideNav[] = [
     {
-        nome: "Informações da Linha",
-        component: "configuracao-linha-component"
+        nome: "Informações de linha",
+        component: ConfiguracaoLinhaComponent
     },
-    // { // Sprint 2
-    //     nome: "Agrupamento",
-    //     component: "agrupamento-component"
-    // },
-    // {
-    //     nome: "Alterar CUSTGROUP",
-    //     component: "custgroup-component"
-    // },
-    // {
-    //     nome: "Alterar NCOS",
-    //     component: "ncos-component"
-    // },
+    {
+        nome: "Manobrar",
+        component: ManobrarLinhaComponent
+    },
     {
         nome: "Linha",
-        component: "linha-component"
+        component: LinhaComponent
     },
     {
         nome: "Serviço",
-        component: "servico-linha-component"
-    },    
-    {
-        nome: "Manobrar",
-        component: "manobrar-linha-component"
+        component: ServicoLinhaComponent
     }
-    // {
-    //     nome: "Listar Status das Portas",
-    //     component: "status-porta-component"
-    // },
-    // {
-    //     nome: "Listar Status da Linha",
-    //     component: "status-linha-component"
-    // }
 ]

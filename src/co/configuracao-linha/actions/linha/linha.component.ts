@@ -13,7 +13,7 @@ export class LinhaComponent implements OnInit {
     private instanciaBinada: string;
     private listLens = [];
     private qualLen: string;
-    private qualComando: string;
+    public qualComando: string;
 
     private criarLinha: boolean = false;
     private deletarLinha: boolean = false;

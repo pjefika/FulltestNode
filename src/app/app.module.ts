@@ -1,3 +1,8 @@
+import { TemplateCOService } from './../template/util-service/template-co.service';
+import { TemplateCrmService } from './../template/util-service/tempalte-crm.service';
+import { TemplateService } from './../template/util-service/template.service';
+import { HolderRouterComponent } from './../util/component-holder/holder-router.component';
+import { HolderCompsService } from './../util/component-holder/services/holder-comps.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, FormControl, FormGroup, FormArray, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -109,6 +114,7 @@ import { AppComponent } from './app.component';
         StatusPortaComponent,
         CriarLinhaComponent,
         DeletarLinhaComponent,
+        HolderRouterComponent
     ],
     imports: [
         BrowserModule,
@@ -139,7 +145,11 @@ import { AppComponent } from './app.component';
         AssocontService,
         ManobraService,
         UrlService,
-        ConfiguracaoLinhaService
+        ConfiguracaoLinhaService,
+        HolderCompsService,
+        TemplateService,
+        TemplateCrmService,
+        TemplateCOService
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -159,7 +169,7 @@ import { AppComponent } from './app.component';
         NcosComponent,
         ServicoLinhaComponent,
         StatusLinhaComponent,
-        StatusPortaComponent
+        StatusPortaComponent,
     ]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
+import { HolderCompsService } from './../../util/component-holder/services/holder-comps.service';
 import { LinhaResetDePortaService } from './general-services/linha-reset-de-porta.service';
 import { ServicoLinhaService } from './actions/servico/servico-linha.service';
 import { NcosService } from './actions/ncos/ncos.service';
-import { TemplateComponent } from './../../template/template.component';
 import { CadastroLinha } from './../../viewmodel/cadastro-linha/cadastro-linha';
 import { Linha } from './../../viewmodel/cadastro/linha';
 import { BrancoComponent } from './../../branco/branco.component';
@@ -35,10 +35,10 @@ export class ConfiguracaoLinhaComponent implements OnInit {
         private configuracaoLinhaService: ConfiguracaoLinhaService,
         private toastyComponent: ToastyComponent,
         public holderService: HolderService,
-        private templateComponent: TemplateComponent,
         private ncosService: NcosService,
         private servicoLinhaService: ServicoLinhaService,
-        private linhaResetDePortaService: LinhaResetDePortaService) { }
+        private linhaResetDePortaService: LinhaResetDePortaService,
+        private holderCompsService: HolderCompsService) { }
 
     ngOnInit() {
         if (this.holderService.cadastroLinha) {
@@ -76,7 +76,7 @@ export class ConfiguracaoLinhaComponent implements OnInit {
     }
 
     private goToCreateLinhaComponent() {
-        this.templateComponent.createLinhaComponent();
+        this.holderCompsService.component = ConfiguracaoLinhaComponent;
     }
 
     public getNcos() {

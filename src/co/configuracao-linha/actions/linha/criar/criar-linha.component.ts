@@ -85,7 +85,7 @@ export class CriarLinhaComponent implements OnInit {
         if (this.qualLen) {
             this.criarLinhaNomeButton = "Criando Linha, Aguarde...";
             this.criarLinhaDisableButton = true;
-            this.criarLinhaService.setCriarLinha(this.holderService.cadastro.linha, this.qualLen, this.confBinada)
+            this.criarLinhaService.setCriarLinha(this.holderService.cadastro.linha, this.qualLen, this.listLens.configBinada)
                 .then(data => {
                     this.holderService.cadastroLinha = data;
                     this.criarLinhaNomeButton = "Criar Linha";

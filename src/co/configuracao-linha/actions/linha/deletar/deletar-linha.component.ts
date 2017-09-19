@@ -1,3 +1,4 @@
+import { LinhaComponent } from './../linha.component';
 import { Len } from './../../../../../viewmodel/cadastro-linha/len';
 import { TemplateComponent } from './../../../../../template/template.component';
 import { ToastyComponent } from './../../../../../util/toasty/toasty.component';
@@ -26,7 +27,8 @@ export class DeletarLinhaComponent implements OnInit {
         private deletarLinhaService: DeletarLinhaService,
         private listarLinhaService: ListarLinhaService,
         public holderService: HolderService,
-        private toastyComponent: ToastyComponent) { }
+        private toastyComponent: ToastyComponent,
+        private linhaComponent: LinhaComponent) { }
 
     ngOnInit() { }
 
@@ -39,6 +41,8 @@ export class DeletarLinhaComponent implements OnInit {
                 if (this.cadastroLinha.status == "NOT_CREATED") {
                     this.callToasty("Linha Deletada com sucesso.", "Por favor realize a configuração da linha!", "success", 10000);
                     this.abrirModal = false;
+                    this.linhaComponent.qualComando = "criar";
+                    this.linhaComponent.comandoSelecionado();
                 }
                 this.doActionSearching = false;
                 this.nameBtnActionModal = "Sim";

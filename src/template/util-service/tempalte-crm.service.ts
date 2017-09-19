@@ -13,23 +13,23 @@ export class TemplateCrmService {
 
     constructor() { }
 
-    public createRealizaFulltestCrmComponent(instancia: string): Promise<any> {
+    public createRealizaFulltestCrmComponent(instancia: string): any {
         this.componentData = {
             component: CadastroCrmComponent,
             inputs: {
                 instancia: instancia
             }
         }
-        return Promise.resolve(this.componentData);
+        return this.componentData;
     }
 
-    public createComplementaresComponent(cadastro: Cadastro): Promise<any> {
+    public createComplementaresComponent(cadastro: Cadastro): any {
         this.componentData = {
             component: ComplementaresComponent,
             inputs: {
                 cadastro: cadastro
             }
         }
-        return Promise.resolve(this.componentData);
+        return this.componentData;
     }
 }

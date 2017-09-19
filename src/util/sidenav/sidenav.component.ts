@@ -1,5 +1,11 @@
-import { SideNav } from './../../viewmodel/menus/sidenav';
+import { sideNavConfLinha } from './../../co/configuracao-linha/mock/mock-sidenav-co';
 import { TemplateComponent } from './../../template/template.component';
+import { HolderCompsService } from './../component-holder/services/holder-comps.service';
+import { ManobrarLinhaComponent } from './../../co/configuracao-linha/actions/manobrar/manobrar-linha.component';
+import { LinhaComponent } from './../../co/configuracao-linha/actions/linha/linha.component';
+import { ServicoLinhaComponent } from './../../co/configuracao-linha/actions/servico/servico-linha.component';
+import { ConfiguracaoLinhaComponent } from './../../co/configuracao-linha/configuracao-linha.component';
+import { SideNav } from './../../viewmodel/menus/sidenav';
 import { HolderService } from './../holder/holder.service';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -13,7 +19,7 @@ export class SidenavComponent implements OnInit {
 
     constructor(
         public holderService: HolderService,
-        private templateComponent: TemplateComponent) { }
+        private holderCompsService: HolderCompsService) { }
 
     @Input() public menus: SideNav[];
     @Input() public ativo: boolean;
@@ -26,39 +32,30 @@ export class SidenavComponent implements OnInit {
 
     public abrecomponent(l) {
         if (this.holderService.liberarSideNav) {
-            this.holderService.whoSideNavIsActive = l.component;
             this.configuracaoLinhaComponents(l);
+            this.holderService.whoSideNavIsActive = l.component;
         }
     }
 
     private configuracaoLinhaComponents(l) {
         switch (l.component) {
-            case "configuracao-linha-component":
-                this.templateComponent.createConfiguracaoLinhaComponent();
+            case ConfiguracaoLinhaComponent:
+                this.holderService.sideNavMenus = sideNavConfLinha;
+                this.holderService.whoSubNavIsActive = "configuracao-linha-component";
+                this.holderService.whoSideNavIsActive = "configuracao-linha-component";
+                this.holderCompsService.component = ConfiguracaoLinhaComponent;
                 break;
-            case "agrupamento-component":
-                this.templateComponent.createAgrupamentoComponent();
+            case LinhaComponent:
+                this.holderService.whoSideNavIsActive = "linha-component";
+                this.holderCompsService.component = LinhaComponent;
                 break;
-            case "custgroup-component":
-                this.templateComponent.createCustgroupComponent();
+            case ServicoLinhaComponent:
+                this.holderService.whoSideNavIsActive = "servico-linha-component";
+                this.holderCompsService.component = ServicoLinhaComponent;
                 break;
-            case "ncos-component":
-                this.templateComponent.createNcosComponent();
-                break;
-            case "linha-component":
-                this.templateComponent.createLinhaComponent();
-                break;
-            case "servico-linha-component":
-                this.templateComponent.createServicoLinhaComponent();
-                break;
-            case "status-porta-component":
-                this.templateComponent.createStatusPortaComponent();
-                break;
-            case "manobrar-linha-component":
-                this.templateComponent.createManobrarLinhaComponent();
-                break;
-            case "status-linha-component":
-                this.templateComponent.createStatusLinhaComponent();
+            case ManobrarLinhaComponent:
+                this.holderService.whoSideNavIsActive = "manobrar-linha-component";
+                this.holderCompsService.component = ManobrarLinhaComponent;
                 break;
         }
     }
@@ -66,6 +63,7 @@ export class SidenavComponent implements OnInit {
     public sideNavActive(l): Boolean {
         let active = false;
         if (l.component === this.holderService.whoSideNavIsActive) {
+            console.log(l);
             active = true;
         }
         return active;

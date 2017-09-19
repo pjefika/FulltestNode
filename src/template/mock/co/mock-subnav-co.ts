@@ -3,11 +3,7 @@ export const subNavMockCo: SubNav[] = [
     {
         nome: "Informações de Cadastro",
         component: "cadastro-component"
-    },
-    // { // Desabilitado para lançamento...
-    //     nome: "Realizar Fulltest",
-    //     component: "full-test-component"
-    // },
+    }
     {
         nome: "Validador Manobra",
         component: "manobra-component"
@@ -16,8 +12,4 @@ export const subNavMockCo: SubNav[] = [
         nome: "Configuração Linha",
         component: "configuracao-linha-component"
     }
-    // {
-    //     nome: "Configurações de porta",
-    //     component: ""
-    // }
 ]

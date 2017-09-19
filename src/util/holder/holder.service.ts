@@ -1,3 +1,5 @@
+import { SubNav } from './../../viewmodel/menus/subnav';
+import { SideNav } from './../../viewmodel/menus/sidenav';
 import { Servico } from './../../viewmodel/cadastro-linha/servicos';
 import { Ncos } from './../../viewmodel/cadastro-linha/ncos';
 import { CadastroLinha } from './../../viewmodel/cadastro-linha/cadastro-linha';
@@ -38,6 +40,9 @@ export class HolderService {
     public listaDeServicos: Servico[];
 
     public modalAdm: boolean = false;
+
+    public subNavMenus: SubNav[];
+    public sideNavMenus: SideNav[];
 
     constructor() { }
 

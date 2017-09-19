@@ -1,6 +1,5 @@
-import { TemplateCOService } from './util-service/template-co.service';
-import { TemplateCrmService } from './util-service/tempalte-crm.service';
-import { TemplateService } from './util-service/template.service';
+import { InputHolderRoute } from './../viewmodel/holder-router/input-holder-route';
+import { HolderCompsService } from './../util/component-holder/services/holder-comps.service';
 import { AgrupamentoComponent } from './../co/configuracao-linha/actions/agrupamento/agrupamento.component';
 import { sideNavConfLinha } from './../co/configuracao-linha/mock/mock-sidenav-co';
 import { ConfiguracaoLinhaComponent } from './../co/configuracao-linha/configuracao-linha.component';
@@ -29,8 +28,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'template-full',
     templateUrl: 'template.component.html',
-    styleUrls: ['template.component.css'],
-    providers: [TemplateService, TemplateCrmService, TemplateCOService]
+    styleUrls: ['template.component.css']
 })
 
 export class TemplateComponent implements OnInit {
@@ -46,7 +44,7 @@ export class TemplateComponent implements OnInit {
     public subNavMenus: SubNav[];
     public sideNavMenus: SideNav[];
 
-    public componentData = null;
+    //public componentData = null;
 
     public cadastro: Cadastro;
     public objectValid: ObjectValid;
@@ -70,9 +68,7 @@ export class TemplateComponent implements OnInit {
         private util: Util,
         private toastyComponent: ToastyComponent,
         public holderService: HolderService,
-        private templateService: TemplateService,
-        private templateCrmService: TemplateCrmService,
-        public templateCOService: TemplateCOService) { }
+        public holderCompsService: HolderCompsService) { }
 
     /**
     * Faz ao iniciar o componente 
@@ -117,14 +113,14 @@ export class TemplateComponent implements OnInit {
         this.holderReset();
         let usr = JSON.parse(sessionStorage.getItem('user'));
         if (usr.nv === 1 || this.holderService.eachFulltest === "CRM") {
-            this.createRealizaFulltestCrmComponent();
             this.subNavMenus = subNavMockCrm;
             this.subnav = true;
+            this.createRealizaFulltestCrmComponent();
         } else {
             this.cadastro = this.holderService.cadastro;
-            this.createCadastroComponent();
             this.subNavMenus = subNavMockCo;
             this.subnav = true;
+            this.createCadastroComponent();
         }
     }
 
@@ -153,71 +149,56 @@ export class TemplateComponent implements OnInit {
     /**
     * Insere components no dynamic component
     **/
-    public emptyComponentData() { // Vazio
+    public emptyComponentData() { // Vazio        
         this.sidenav = false;
-        this.templateService.emptyComponentData()
-            .then(data => {
-                this.componentData = data;
-            });
+        this.holderCompsService.component = BrancoComponent;
     }
 
     public createPrincipalComponent() { //Componente Principal
         this.headerTitle = "Bem Vindo ao Efika Fulltest";
         this.sidenav = false;
-        this.templateService.createPrincipalComponent()
-            .then(data => {
-                this.componentData = data;
-            });
+        this.holderCompsService.component = PrincipalComponent;
     }
 
     /**
     * Componentes do CO
     **/
     public createCadastroComponent() { // Cadastro CO
-        //this.headerTitle = "Informações de Cadastro";
         this.sidenav = false;
         this.holderService.whoSubNavIsActive = "cadastro-component";
-        //this.emptyComponentData();
-        this.templateCOService.createCadastroComponent(this.instancia)
-            .then(data => {
-                this.componentData = data;
-            });
+        this.holderCompsService.input = { instancia: this.instancia };
+        console.log(this.holderCompsService.component)        
+        this.holderCompsService.component = CadastroComponent;
     }
 
     public createRealizaFulltestComponent() { //Fullteste CO
-        //this.headerTitle = "Fulltest CO";
         this.sidenav = false;
         this.holderService.whoSubNavIsActive = "full-test-component";
         this.cadastro = this.holderService.cadastro;
         this.objectValid = this.holderService.objectValid;
         if (this.cadastro) {
-            this.templateCOService.createRealizaFulltestComponent(this.cadastro, this.objectValid)
-                .then(data => {
-                    this.componentData = data;
-                });
+            this.holderCompsService.input = { cadastro: this.cadastro, objectValid: this.objectValid }
+            this.holderCompsService.component = FulltestComponent;
         }
     }
 
     public createManobraComponent() { // Manobra CO
-        //this.headerTitle = "Manobra";
         this.sidenav = false;
         this.holderService.whoSubNavIsActive = "manobra-component";
-        this.emptyComponentData();
-        this.templateCOService.createManobraComponent(this.cadastro)
-            .then(data => {
-                this.componentData = data;
-            });
+        //this.emptyComponentData();
+        this.holderCompsService.input = { cadastro: this.cadastro }
+        this.holderCompsService.component = ManobraComponent;
     }
 
+    /**
+   * Componentes de Linha
+   **/
     public createConfiguracaoLinhaComponent() {
         this.holderService.whoSubNavIsActive = "configuracao-linha-component";
         this.holderService.whoSideNavIsActive = "configuracao-linha-component";
         this.sidenav = true;
-        this.sideNavMenus = sideNavConfLinha;
-        this.templateCOService.createConfiguracaoLinhaComponent()
-            .then(data => {
-                this.componentData = data;
-            });
+        this.holderService.sideNavMenus = sideNavConfLinha;
+        this.holderCompsService.component = ConfiguracaoLinhaComponent;
     }
 
     /**
@@ -225,99 +206,25 @@ export class TemplateComponent implements OnInit {
     **/
 
     public createRealizaFulltestCrmComponent() { // Cadastro / Fullteste CRM
-        //this.headerTitle = "Fulltest CRM";
         this.sidenav = false;
         this.holderService.whoSubNavIsActive = "cadastro-crm-component";
         this.emptyComponentData();
-        this.templateCrmService.createRealizaFulltestCrmComponent(this.instancia)
-            .then(data => {
-                this.componentData = data;
-            });
-
+        this.holderCompsService.input = { instancia: this.instancia }
+        this.holderCompsService.component = CadastroCrmComponent;
     }
 
     public createComplementaresComponent() { // Testes Complementares CRM        
-        //this.headerTitle = "Tests Complementares";
         this.sidenav = false;
         this.holderService.whoSubNavIsActive = "complementares-component";
         this.objectValid = this.holderService.objectValid
         if (this.objectValid) {
-            this.templateCrmService.createComplementaresComponent(this.cadastro)
-                .then(data => {
-                    this.componentData = data;
-                });
+            this.holderCompsService.input = { cadastro: this.cadastro }
+            this.holderCompsService.component = ComplementaresComponent;
         }
     }
 
     createGoToAcsLink() {
         var newwindow = window.open('http://10.40.195.81:8080/acs-arris');
-    }
-
-    /*
-    * Create Sidenav Components Linha 
-    */
-    public createAgrupamentoComponent() {
-        this.holderService.whoSideNavIsActive = "agrupamento-component";
-        this.templateCOService.createAgrupamentoComponent()
-            .then(data => {
-                this.componentData = data;
-            });
-    }
-
-    public createCustgroupComponent() {
-        this.holderService.whoSideNavIsActive = "custgroup-component";
-        this.templateCOService.createCustgroupComponent()
-            .then(data => {
-                this.componentData = data;
-            });
-    }
-
-    public createLinhaComponent() {
-        this.holderService.whoSideNavIsActive = "linha-component";
-        this.templateCOService.createLinhaComponent()
-            .then(data => {
-                this.componentData = data;
-            });
-    }
-
-    public createManobrarLinhaComponent() {
-        this.holderService.whoSideNavIsActive = "manobrar-linha-component";
-        this.templateCOService.createManobrarLinhaComponent()
-            .then(data => {
-                this.componentData = data;
-            });
-    }
-
-    public createNcosComponent() {
-        this.holderService.whoSideNavIsActive = "ncos-component";
-        this.templateCOService.createNcosComponent()
-            .then(data => {
-                this.componentData = data;
-            });
-    }
-
-    public createServicoLinhaComponent() {
-        this.holderService.whoSideNavIsActive = "servico-linha-component";
-        this.templateCOService.createServicoLinhaComponent()
-            .then(data => {
-                this.componentData = data;
-            });
-    }
-
-    public createStatusLinhaComponent() {
-        this.holderService.whoSideNavIsActive = "status-linha-component";
-        this.templateCOService.createStatusLinhaComponent()
-            .then(data => {
-                this.componentData = data;
-            });
-    }
-
-    public createStatusPortaComponent() {
-        this.holderService.whoSideNavIsActive = "status-porta-component";
-        this.templateCOService.createStatusPortaComponent()
-            .then(data => {
-                this.componentData = data;
-            });
     }
 
     //Holder Functions
@@ -326,8 +233,8 @@ export class TemplateComponent implements OnInit {
         this.holderService.objectValid = null;
         this.holderService.listAsserts = null;
         this.holderService.listResumo = null;
-        this.holderService.liberarSubNav = null;
-        this.holderService.liberarSideNav = null;
+        this.holderService.liberarSubNav = false;
+        this.holderService.liberarSideNav = false;
         this.holderService.alertState = null;
         this.holderService.cadastroLinha = null;
         this.headerTitle = "" //Reseta titulo

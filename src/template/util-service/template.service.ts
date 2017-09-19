@@ -12,24 +12,24 @@ export class TemplateService {
 
     constructor() { }
 
-    public emptyComponentData(): Promise<any> {
+    public emptyComponentData(): any {
         this.componentData = {
             component: BrancoComponent,
             inputs: {
                 nothing: null
             }
         }
-        return Promise.resolve(this.componentData);
+        return this.componentData;
     }
 
-    public createPrincipalComponent(): Promise<any> {
+    public createPrincipalComponent(): any {
         this.componentData = {
             component: PrincipalComponent,
             inputs: {
                 nothing: null
             }
         }
-        return Promise.resolve(this.componentData);
+        return this.componentData;
     }
 
 }

@@ -27,19 +27,19 @@ export class TemplateCOService {
     /*
     * Components de cadastro...
     */
-    public createCadastroComponent(instancia: string): Promise<any> {
+    public createCadastroComponent(instancia: string): any {
         this.componentData = {
             component: CadastroComponent,
             inputs: {
                 instancia: instancia
             }
         }
-        return Promise.resolve(this.componentData);
+        return this.componentData;
     }
     /*
     * Components do Fulltest...
     */
-    public createRealizaFulltestComponent(cadastro: Cadastro, objectValid: ObjectValid): Promise<any> {
+    public createRealizaFulltestComponent(cadastro: Cadastro, objectValid: ObjectValid): any {
         this.componentData = {
             component: FulltestComponent,
             inputs: {
@@ -47,113 +47,63 @@ export class TemplateCOService {
                 valid: objectValid
             }
         }
-        return Promise.resolve(this.componentData);
+        return this.componentData;
     }
 
     /*
     * Componente de manobra...
     */
-    public createManobraComponent(cadastro: Cadastro): Promise<any> {
+    public createManobraComponent(cadastro: Cadastro): any {
         this.componentData = {
             component: ManobraComponent,
             inputs: {
                 cadastro: cadastro
             }
         }
-        return Promise.resolve(this.componentData);
+        return this.componentData;
     }
 
     /*
     * Componentes de configuração de linha...
     */
-    public createConfiguracaoLinhaComponent(): Promise<any> {
+    public createConfiguracaoLinhaComponent(): any {
         this.componentData = {
             component: ConfiguracaoLinhaComponent,
             inputs: {
                 nothing: null
             }
         }
-        return Promise.resolve(this.componentData);
+        return this.componentData;
     }
 
-    public createAgrupamentoComponent(): Promise<any> {
-        this.componentData = {
-            component: AgrupamentoComponent,
-            inputs: {
-                nothing: null
-            }
-        }
-        return Promise.resolve(this.componentData);
-    }
-
-    public createCustgroupComponent(): Promise<any> {        
-        this.componentData = {
-            component: CustgroupComponent,
-            inputs: {
-                nothing: null
-            }
-        }
-        return Promise.resolve(this.componentData);
-    }
-
-    public createLinhaComponent(): Promise<any> {
+    public createLinhaComponent(): any {
         this.componentData = {
             component: LinhaComponent,
             inputs: {
                 nothing: null
             }
         }
-        return Promise.resolve(this.componentData);
+        return this.componentData;
     }
 
-    public createManobrarLinhaComponent(): Promise<any> {
+    public createManobrarLinhaComponent(): any {
         this.componentData = {
             component: ManobrarLinhaComponent,
             inputs: {
                 nothing: null
             }
         }
-        return Promise.resolve(this.componentData);
+        return this.componentData;
     }
 
-    public createNcosComponent(): Promise<any> {
-        this.componentData = {
-            component: NcosComponent,
-            inputs: {
-                nothing: null
-            }
-        }
-        return Promise.resolve(this.componentData);
-    }
-
-    public createServicoLinhaComponent(): Promise<any> {
+    public createServicoLinhaComponent(): any {
         this.componentData = {
             component: ServicoLinhaComponent,
             inputs: {
                 nothing: null
             }
-        }        
-        return Promise.resolve(this.componentData);
-    }
-
-    public createStatusLinhaComponent(): Promise<any> {
-        this.componentData = {
-            component: StatusLinhaComponent,
-            inputs: {
-                nothing: null
-            }
         }
-        return Promise.resolve(this.componentData);
-    }
-
-    public createStatusPortaComponent(): Promise<any> {
-        this.componentData = {
-            component: StatusPortaComponent,
-            inputs: {
-                nothing: null
-            }
-        }
-        return Promise.resolve(this.componentData);
-    }
+        return this.componentData;
+    }   
 
 }

@@ -45,12 +45,13 @@
     <div class="content-container">
         <div class="content-area">
             <h3>{{headerTitle}}</h3>
-            <dynamic-component [componentData]="componentData"></dynamic-component>
+            <!-- <dynamic-component [componentData]="componentData"></dynamic-component> -->
+            <holder-router-component [component]="holderCompsService.component" [input]="holderCompsService.input"></holder-router-component>
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
             <adm-component></adm-component>
         </div>
         <nav class="sidenav" *ngIf="sidenav">
-            <sidenav-component [menus]="sideNavMenus"></sidenav-component>
+            <sidenav-component [menus]="holderService.sideNavMenus"></sidenav-component>
         </nav>
     </div>
 </clr-main-container>
