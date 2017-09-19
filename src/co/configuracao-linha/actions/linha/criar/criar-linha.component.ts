@@ -57,26 +57,13 @@ export class CriarLinhaComponent implements OnInit {
         this.listarLinhaService.getLinha(this.instanciaBinada)
             .then(data => {
                 this.cadInstanciaBinada = data;
-                this.getConfLinhaBinada();
-            }, error => {
-                this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
-                this.consultarLenLoadingButton = false;
-                this.consultarLenDisabledButton = false;
-                this.consultarLenNameButton = "Consultar Len's"
-            });
-    }
-
-    public getConfLinhaBinada() {
-        this.configuracaoLinhaService.getInformacoes(this.cadInstanciaBinada)
-            .then(data => {
-                this.confBinada = data;
                 this.getLensLivres();
             }, error => {
                 this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
                 this.consultarLenLoadingButton = false;
                 this.consultarLenDisabledButton = false;
                 this.consultarLenNameButton = "Consultar Len's"
-            })
+            });
     }
 
     public getLensLivres() {

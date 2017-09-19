@@ -103,6 +103,15 @@ export class ConfiguracaoLinhaComponent implements OnInit {
             });
     }
 
+    public abilitaEditar() {
+        if (this.editarInfoLinhas) {
+            this.editarInfoLinhas = false;
+            this.cadastroLinha = this.holderService.cadastroLinha;
+        } else {
+            this.editarInfoLinhas = true;
+        }
+    }
+
     private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
