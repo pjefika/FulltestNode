@@ -1,3 +1,7 @@
 .align-text-center {
     text-align: center;
 }
+
+.titulo-da-pagina {
+    margin-top: -12px;
+}

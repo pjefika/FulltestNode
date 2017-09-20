@@ -1,5 +1,5 @@
 <div>
-    <h3>Serviço</h3>
+    <h3 class="titulo-da-pagina">Serviço</h3>
     <label>Selecione os serviços a baixo: </label>
     <clr-checkbox *ngFor="let servico of listaDeServicos" [clrChecked]="seeifchecked(servico.nome)" (change)="atualizaListaDeServicos(servico.nome, $event.target.checked)">
         {{servico.desc}}

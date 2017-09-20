@@ -1,9 +1,28 @@
 <div>
     <!--Informações do cadastro-->
+    <h3 class="titulo-da-pagina">Informações do Cadastro</h3>
     <div *ngIf="cadastro">
-
         <div class="row flex-items-xs-between">
             <div class="col-xs-6">
+                <table class="table table-compact table-vertical">
+                    <tbody>
+                        <tr>
+                            <th colspan="2">Informações de Linha</th>
+                        </tr>
+                        <tr>
+                            <th>DN: </th>
+                            <td>{{cadastro.linha.dn}}</td>
+                        </tr>
+                        <tr>
+                            <th>Tipo: </th>
+                            <td>{{cadastro.linha.tipo}}</td>
+                        </tr>
+                        <tr>
+                            <th>Central: </th>
+                            <td>{{cadastro.linha.central}}</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <table class="table table-compact table-vertical">
                     <tbody>
                         <tr>
@@ -47,8 +66,7 @@
                             <td *ngIf="!cadastro.servicos.isHib">Não</td>
                         </tr>
                     </tbody>
-                </table>
-                <cadastro-wizard-component [cadastro]="cadastro"></cadastro-wizard-component>
+                </table>                
             </div>
             <div class="col-xs-6">
                 <table class="table table-compact table-vertical">
@@ -102,6 +120,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <cadastro-wizard-component [cadastro]="cadastro"></cadastro-wizard-component>
             </div>
         </div>
     </div>
