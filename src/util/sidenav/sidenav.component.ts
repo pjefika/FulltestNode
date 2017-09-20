@@ -24,16 +24,12 @@ export class SidenavComponent implements OnInit {
     @Input() public menus: SideNav[];
     @Input() public ativo: boolean;
 
-    private howSideNavIsActive: string;
 
-    ngOnInit() {
-        this.howSideNavIsActive = this.holderService.whoSideNavIsActive;
-    }
+    ngOnInit() { }
 
     public abrecomponent(l) {
         if (this.holderService.liberarSideNav) {
             this.configuracaoLinhaComponents(l);
-            this.holderService.whoSideNavIsActive = l.component;
         }
     }
 
@@ -41,20 +37,15 @@ export class SidenavComponent implements OnInit {
         switch (l.component) {
             case ConfiguracaoLinhaComponent:
                 this.holderService.sideNavMenus = sideNavConfLinha;
-                this.holderService.whoSubNavIsActive = "configuracao-linha-component";
-                this.holderService.whoSideNavIsActive = "configuracao-linha-component";
                 this.holderCompsService.component = ConfiguracaoLinhaComponent;
                 break;
             case LinhaComponent:
-                this.holderService.whoSideNavIsActive = "linha-component";
                 this.holderCompsService.component = LinhaComponent;
                 break;
             case ServicoLinhaComponent:
-                this.holderService.whoSideNavIsActive = "servico-linha-component";
                 this.holderCompsService.component = ServicoLinhaComponent;
                 break;
             case ManobrarLinhaComponent:
-                this.holderService.whoSideNavIsActive = "manobrar-linha-component";
                 this.holderCompsService.component = ManobrarLinhaComponent;
                 break;
         }
@@ -62,8 +53,7 @@ export class SidenavComponent implements OnInit {
 
     public sideNavActive(l): Boolean {
         let active = false;
-        if (l.component === this.holderService.whoSideNavIsActive) {
-            console.log(l);
+        if (l.component === this.holderCompsService.component) {
             active = true;
         }
         return active;

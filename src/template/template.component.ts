@@ -165,15 +165,12 @@ export class TemplateComponent implements OnInit {
     **/
     public createCadastroComponent() { // Cadastro CO
         this.sidenav = false;
-        this.holderService.whoSubNavIsActive = "cadastro-component";
         this.holderCompsService.input = { instancia: this.instancia };
-        console.log(this.holderCompsService.component)        
         this.holderCompsService.component = CadastroComponent;
     }
 
     public createRealizaFulltestComponent() { //Fullteste CO
         this.sidenav = false;
-        this.holderService.whoSubNavIsActive = "full-test-component";
         this.cadastro = this.holderService.cadastro;
         this.objectValid = this.holderService.objectValid;
         if (this.cadastro) {
@@ -184,7 +181,6 @@ export class TemplateComponent implements OnInit {
 
     public createManobraComponent() { // Manobra CO
         this.sidenav = false;
-        this.holderService.whoSubNavIsActive = "manobra-component";
         //this.emptyComponentData();
         this.holderCompsService.input = { cadastro: this.cadastro }
         this.holderCompsService.component = ManobraComponent;
@@ -194,8 +190,6 @@ export class TemplateComponent implements OnInit {
    * Componentes de Linha
    **/
     public createConfiguracaoLinhaComponent() {
-        this.holderService.whoSubNavIsActive = "configuracao-linha-component";
-        this.holderService.whoSideNavIsActive = "configuracao-linha-component";
         this.sidenav = true;
         this.holderService.sideNavMenus = sideNavConfLinha;
         this.holderCompsService.component = ConfiguracaoLinhaComponent;
@@ -207,7 +201,6 @@ export class TemplateComponent implements OnInit {
 
     public createRealizaFulltestCrmComponent() { // Cadastro / Fullteste CRM
         this.sidenav = false;
-        this.holderService.whoSubNavIsActive = "cadastro-crm-component";
         this.emptyComponentData();
         this.holderCompsService.input = { instancia: this.instancia }
         this.holderCompsService.component = CadastroCrmComponent;
@@ -215,7 +208,6 @@ export class TemplateComponent implements OnInit {
 
     public createComplementaresComponent() { // Testes Complementares CRM        
         this.sidenav = false;
-        this.holderService.whoSubNavIsActive = "complementares-component";
         this.objectValid = this.holderService.objectValid
         if (this.objectValid) {
             this.holderCompsService.input = { cadastro: this.cadastro }

@@ -1,3 +1,5 @@
+import { ConfiguracaoLinhaComponent } from './../../../configuracao-linha.component';
+import { HolderCompsService } from './../../../../../util/component-holder/services/holder-comps.service';
 import { HolderService } from './../../../../../util/holder/holder.service';
 import { ConfiguracaoLinhaService } from './../../../configuracao-linha.service';
 import { CadastroLinha } from './../../../../../viewmodel/cadastro-linha/cadastro-linha';
@@ -45,7 +47,8 @@ export class CriarLinhaComponent implements OnInit {
         private listarLensLivresService: ListarLensLivresService,
         private toastyComponent: ToastyComponent,
         private configuracaoLinhaService: ConfiguracaoLinhaService,
-        public holderService: HolderService) { }
+        public holderService: HolderService,
+        private holderCompsService: HolderCompsService) { }
 
     ngOnInit() { }
 
@@ -90,7 +93,8 @@ export class CriarLinhaComponent implements OnInit {
                     this.holderService.cadastroLinha = data;
                     this.criarLinhaNomeButton = "Criar Linha";
                     this.criarLinhaDisableButton = false;
-                    this.callToasty("Sucesso", "Linha criada com sucesso.", "success")
+                    this.callToasty("Sucesso", "Linha criada com sucesso.", "success");
+                    this.holderCompsService.component = ConfiguracaoLinhaComponent;
                 }, error => {
                     this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
                     this.criarLinhaNomeButton = "Criar Linha";

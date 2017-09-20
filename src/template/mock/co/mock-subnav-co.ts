@@ -1,15 +1,18 @@
+import { ConfiguracaoLinhaComponent } from './../../../co/configuracao-linha/configuracao-linha.component';
+import { ManobraComponent } from './../../../co/manobra/manobra.component';
+import { CadastroComponent } from './../../../co/cadastro/cadastro.component';
 import { SubNav } from './../../../viewmodel/menus/subnav';
 export const subNavMockCo: SubNav[] = [
     {
         nome: "Informações de Cadastro",
-        component: "cadastro-component"
-    }
+        component: CadastroComponent
+    },
     {
         nome: "Validador Manobra",
-        component: "manobra-component"
+        component: ManobraComponent
     },
     {
         nome: "Configuração Linha",
-        component: "configuracao-linha-component"
+        component: ConfiguracaoLinhaComponent
     }
 ]

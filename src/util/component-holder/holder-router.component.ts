@@ -26,18 +26,10 @@ export class HolderRouterComponent implements OnInit, OnChanges {
     public ngOnInit() { }
 
     public ngOnChanges(changes: SimpleChanges) {
-        if (this.holderCompsService.component == CadastroComponent) {
-            this.router(CadastroComponent);
-        } else if (this.holderCompsService.component == CadastroCrmComponent) {
-            this.router(CadastroCrmComponent);
-        } else {
-            if (changes.component.currentValue != changes.component.previousValue) {
-                this.router(changes.component.currentValue);
-            }
-        }
+        this.router();
     }
 
-    public router(component: any) {
+    public router() {
         this.componentData = this.holderRouterService.return(this.component, this.input);
     }
 

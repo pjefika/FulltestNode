@@ -1,3 +1,5 @@
+import { ConfiguracaoLinhaComponent } from './../../configuracao-linha.component';
+import { HolderCompsService } from './../../../../util/component-holder/services/holder-comps.service';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { element } from 'protractor';
 import { HolderService } from './../../../../util/holder/holder.service';
@@ -29,7 +31,8 @@ export class ServicoLinhaComponent implements OnInit {
         private servicoLinhaService: ServicoLinhaService,
         private toastyComponent: ToastyComponent,
         public holderService: HolderService,
-        private fb: FormBuilder) { }
+        private fb: FormBuilder,
+        private holderCompsService: HolderCompsService) { }
 
     ngOnInit() {
         this.listaDeServicos = this.holderService.listaDeServicos;
@@ -88,6 +91,7 @@ export class ServicoLinhaComponent implements OnInit {
                 this.nomeButton = "Alterar";
                 this.disableButton = false;
                 this.callToasty("Sucesso.", "Serviços Alterados com sucesso.", "success", 10000);
+                this.holderCompsService.component = ConfiguracaoLinhaComponent;
             }, error => {
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
                 this.nomeButton = "Alterar";

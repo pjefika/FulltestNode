@@ -33,8 +33,8 @@ export class HolderService {
         alertAtivo: boolean,
         alertCloseable: boolean
     }
-    public whoSubNavIsActive: string;
-    public whoSideNavIsActive: string;
+    public whoSubNavIsActive: any;
+    public whoSideNavIsActive: any;
 
     public listaDeNcos: Ncos[];
     public listaDeServicos: Servico[];
