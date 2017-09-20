@@ -23,7 +23,6 @@ export class LinhaComponent implements OnInit {
         private holderService: HolderService) { }
 
     public ngOnInit() {
-        console.log(this.holderService.cadastroLinha.status)
         if (this.holderService.cadastroLinha.status == "NOT_CREATED") {
             this.qualComando = "criar";
             this.comandoSelecionado();
