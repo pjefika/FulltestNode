@@ -1,3 +1,4 @@
+import { HolderService } from './../../../../util/holder/holder.service';
 import { LinhaService } from './linha.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -18,9 +19,16 @@ export class LinhaComponent implements OnInit {
     private criarLinha: boolean = false;
     private deletarLinha: boolean = false;
 
-    constructor() { }
+    constructor(
+        private holderService: HolderService) { }
 
-    ngOnInit() { }
+    public ngOnInit() {
+        console.log(this.holderService.cadastroLinha.status)
+        if (this.holderService.cadastroLinha.status == "NOT_CREATED") {
+            this.qualComando = "criar";
+            this.comandoSelecionado();
+        }
+    }
 
     public comandoSelecionado() {
         switch (this.qualComando) {

@@ -1,3 +1,4 @@
+import { LinhaComponent } from './actions/linha/linha.component';
 import { HolderCompsService } from './../../util/component-holder/services/holder-comps.service';
 import { LinhaResetDePortaService } from './general-services/linha-reset-de-porta.service';
 import { ServicoLinhaService } from './actions/servico/servico-linha.service';
@@ -62,21 +63,21 @@ export class ConfiguracaoLinhaComponent implements OnInit {
         this.configuracaoLinhaService.getInformacoes(this.holderService.cadastro.linha)
             .then(data => {
                 this.cadastroLinha = data;
+                this.holderService.cadastroLinha = this.cadastroLinha;
+                this.holderService.liberarSideNav = true;
+                this.searching = false;
                 if (this.cadastroLinha.status == "NOT_CREATED") {
                     this.callToasty("Linha não configurada", "Por favor realize a configuração da linha!", "warning", 0);
                     this.goToCreateLinhaComponent();
                 }
-                this.holderService.cadastroLinha = this.cadastroLinha;
-                this.holderService.liberarSideNav = true;
-                this.searching = false;
             }, error => {
                 this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);
             });
     }
 
-    private goToCreateLinhaComponent() {
-        this.holderCompsService.component = ConfiguracaoLinhaComponent;
+    private goToCreateLinhaComponent() {        
+        this.holderCompsService.component = LinhaComponent;
     }
 
     public getNcos() {

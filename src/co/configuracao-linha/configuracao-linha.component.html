@@ -1,7 +1,7 @@
 <div>
     <h3 class="titulo-da-pagina">Informações da Linha</h3>
     <div *ngIf="!searching">
-        <div *ngIf="cadastroLinha">
+        <div *ngIf="cadastroLinha.status == 'CREATED'">
             <h4 class="stack-header">
                 <span class="stack-title"></span>
                 <span class="stack-actions">
