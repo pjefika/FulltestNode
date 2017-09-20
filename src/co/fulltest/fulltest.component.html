@@ -21,31 +21,9 @@
                     </tr>
                 </tbody>
             </table>
-            <fulltest-table-component [objectValid]="objectValid"></fulltest-table-component>
-            <!-- <table class="table table-compact">
-                <thead>
-                    <tr>
-                        <th colspan="3">Informações de Fulltest</th>
-                    </tr>
-                    <tr>
-                        <th class="left">Nome</th>
-                        <th class="left">Mensagem</th>
-                        <th>Resultado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let valid of objectValid.valids">
-                        <td class="left">{{valid.nome}}</td>
-                        <td class="left">{{valid.mensagem}}</td>
-                        <td>
-                            <clr-icon shape="check" *ngIf="valid.resultado" class="is-success"></clr-icon>
-                            <clr-icon shape="times" *ngIf="!valid.resultado" class="is-error"></clr-icon>
-                        </td>
-                    </tr>
-                </tbody>
-            </table> -->
+            <fulltest-table-component [objectValid]="objectValid"></fulltest-table-component>           
         </div>
-        <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" [disabled]="doFulltest">Realizar Fulltest</button>
+        <!-- <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" [disabled]="doFulltest">Realizar Fulltest</button> -->
     </div>
     <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Fulltest...'"></loading-component>
 </div>

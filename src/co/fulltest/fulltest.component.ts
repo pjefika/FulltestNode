@@ -48,7 +48,7 @@ export class FulltestComponent implements OnInit {
             }
         });
         //Inicia o fulltest assim que inicializa o componente
-        //this.realizaFulltest();
+        this.realizaFulltest();
     }
 
     realizaFulltest(): void {

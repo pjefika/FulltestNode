@@ -1,3 +1,4 @@
+import { FulltestComponent } from './../../../co/fulltest/fulltest.component';
 import { ConfiguracaoLinhaComponent } from './../../../co/configuracao-linha/configuracao-linha.component';
 import { ManobraComponent } from './../../../co/manobra/manobra.component';
 import { CadastroComponent } from './../../../co/cadastro/cadastro.component';
@@ -8,9 +9,13 @@ export const subNavMockCo: SubNav[] = [
         component: CadastroComponent
     },
     {
+        nome: "Fulltest",
+        component: FulltestComponent
+    },
+    {
         nome: "Validador Manobra",
         component: ManobraComponent
-    },
+    },    
     {
         nome: "Configuração Linha",
         component: ConfiguracaoLinhaComponent
