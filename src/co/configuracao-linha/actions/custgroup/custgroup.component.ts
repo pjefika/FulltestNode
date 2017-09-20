@@ -35,14 +35,14 @@ export class CustgroupComponent implements OnInit {
                     this.holderService.cadastroLinha = data;
                     this.nomeButton = "Alterar";
                     this.disableButton = false;
-                    this.callToasty("Sucesso.", "Custgroup Alterado com sucesso.", "success", 10000);
+                    this.callToasty("Sucesso.", "Custgroup Alterado com sucesso.", "success", 5000);
                 }, error => {
-                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
                     this.nomeButton = "Alterar";
                     this.disableButton = false;
                 });
         } else {
-            this.callToasty("Ops, aconteceu algo.", "Preencha o campo Custgroup", "error", 10000);
+            this.callToasty("Ops, aconteceu algo.", "Preencha o campo Custgroup", "error", 5000);
         }
 
     }

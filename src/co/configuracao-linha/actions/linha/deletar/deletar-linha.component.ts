@@ -39,7 +39,7 @@ export class DeletarLinhaComponent implements OnInit {
             .then(data => {
                 this.cadastroLinha = data;
                 if (this.cadastroLinha.status == "NOT_CREATED") {
-                    this.callToasty("Linha Deletada com sucesso.", "Por favor realize a configuração da linha!", "success", 10000);
+                    this.callToasty("Linha Deletada com sucesso.", "Por favor realize a configuração da linha!", "success", 5000);
                     this.abrirModal = false;
                     this.linhaComponent.qualComando = "criar";
                     this.linhaComponent.comandoSelecionado();
@@ -47,7 +47,7 @@ export class DeletarLinhaComponent implements OnInit {
                 this.doActionSearching = false;
                 this.nameBtnActionModal = "Sim";
             }, error => {
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
                 this.doActionSearching = false;
                 this.nameBtnActionModal = "Sim";
             });

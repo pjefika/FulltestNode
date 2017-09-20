@@ -99,7 +99,7 @@ export class CadastroCrmComponent implements OnInit {
                 this.cadastro = data;
                 this.holderService.cadastro = this.cadastro;
                 this.searchCadastro = false;
-                this.assert();                
+                this.assert();
             }, error => {
                 this.searchCadastro = false;
                 this.mloger(error.mError);
@@ -107,7 +107,7 @@ export class CadastroCrmComponent implements OnInit {
                     let msgalerterror = "Cliente com erro de cadastro, favor transferir chamada ao CO utilizando o fluxo com o problema/sintoma informado pelo cliente."
                     this.callAlert(msgalerterror, "alert-danger");
                 } else {
-                    this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
+                    this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                 }
             });
     }
@@ -140,13 +140,13 @@ export class CadastroCrmComponent implements OnInit {
     /*
     *  Chamadas para infos na tela Toasty e Alert 
     */
-    callToasty(titulo, msg, theme) {
-        this.toastyInfo = {
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+        this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,
-            theme: theme
+            theme: theme,
+            timeout: timeout
         }
-        this.toastyComponent.toastyInfo = this.toastyInfo;
         this.toastyComponent.addToasty();
     }
 

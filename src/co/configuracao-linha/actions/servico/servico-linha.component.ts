@@ -90,10 +90,10 @@ export class ServicoLinhaComponent implements OnInit {
                 this.holderService.cadastroLinha = data;
                 this.nomeButton = "Alterar";
                 this.disableButton = false;
-                this.callToasty("Sucesso.", "Serviços Alterados com sucesso.", "success", 10000);
+                this.callToasty("Sucesso.", "Serviços Alterados com sucesso.", "success", 5000);
                 this.holderCompsService.component = ConfiguracaoLinhaComponent;
             }, error => {
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
                 this.nomeButton = "Alterar";
                 this.disableButton = false;
             });

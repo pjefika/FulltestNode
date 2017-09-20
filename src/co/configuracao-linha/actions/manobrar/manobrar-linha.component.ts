@@ -59,7 +59,7 @@ export class ManobrarLinhaComponent implements OnInit {
                 this.cadInstanciaBinada = data;
                 this.getLensLivres();
             }, error => {
-                this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
+                this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                 this.consultarLenLoadingButton = false;
                 this.consultarLenDisabledButton = false;
                 this.consultarLenNameButton = "Consultar Len's"
@@ -75,7 +75,7 @@ export class ManobrarLinhaComponent implements OnInit {
                 this.consultarLenDisabledButton = false;
                 this.consultarLenNameButton = "Consultar Len's"
             }, error => {
-                this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
+                this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                 this.consultarLenLoadingButton = false;
                 this.consultarLenDisabledButton = false;
                 this.consultarLenNameButton = "Consultar Len's"
@@ -91,15 +91,15 @@ export class ManobrarLinhaComponent implements OnInit {
                     this.holderService.cadastroLinha = data;
                     this.manobrarLinhaNomeButton = "Manobrar Linha";
                     this.manobrarLinhaDisableButton = false;
-                    this.callToasty("Sucesso", "Linha manobrada com sucesso.", "success");
+                    this.callToasty("Sucesso", "Linha manobrada com sucesso.", "success", 5000);
                     this.holderCompsService.component = ConfiguracaoLinhaComponent;
                 }, error => {
-                    this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
+                    this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                     this.manobrarLinhaNomeButton = "Manobrar Linha";
                     this.manobrarLinhaDisableButton = false;
                 });
         } else {
-            this.callToasty("Ops, aconteceu algo.", "Selecione o Len livre", "error", 10000);
+            this.callToasty("Ops, aconteceu algo.", "Selecione o Len livre", "error", 5000);
         }
     }
 

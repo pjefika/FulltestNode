@@ -72,7 +72,7 @@ export class ConfiguracaoLinhaComponent implements OnInit {
                 }
             }, error => {
                 this.searching = false;
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
             });
     }
 
@@ -85,7 +85,7 @@ export class ConfiguracaoLinhaComponent implements OnInit {
             .then(data => {
                 this.holderService.listaDeNcos = data;
             }, error => {
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
             });
     }
 
@@ -94,7 +94,7 @@ export class ConfiguracaoLinhaComponent implements OnInit {
             .then(data => {
                 this.holderService.listaDeServicos = data;
             }, error => {
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
             });
     }
 
@@ -110,7 +110,7 @@ export class ConfiguracaoLinhaComponent implements OnInit {
             }, error => {
                 this.nomebotaoresetar = "Resetar porta";
                 this.disablebotaoresetar = false;
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
             });
     }
 

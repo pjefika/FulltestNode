@@ -34,7 +34,7 @@ export class NcosComponent implements OnInit {
             .then(data => {
                 this.ncosList = data;
             }, error => {
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
             });
     }
 
@@ -47,14 +47,14 @@ export class NcosComponent implements OnInit {
                     this.holderService.cadastroLinha = data;
                     this.nomeButton = "Alterar";
                     this.disableButton = false;
-                    this.callToasty("Sucesso.", "Ncos Alterado com sucesso.", "success", 10000);
+                    this.callToasty("Sucesso.", "Ncos Alterado com sucesso.", "success", 5000);
                 }, error => {
-                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
                     this.nomeButton = "Alterar";
                     this.disableButton = false;
                 });
         } else {
-            this.callToasty("Ops, aconteceu algo.", "Selecione o NCOS", "error", 10000);
+            this.callToasty("Ops, aconteceu algo.", "Selecione o NCOS", "error", 5000);
         }
     }
 

@@ -61,17 +61,18 @@ export class FulltestComponent implements OnInit {
                 this.holderService.objectValid = this.objectValid;
             }, error => {
                 this.searchFulltest = false;
-                if (error.tError !== "Timeout") {
-                    this.doFulltest = true;
-                }
-                this.toastyInfo = {
-                    titulo: "Ops, ocorreu um erro.",
-                    msg: error.mError,
-                    theme: "error"
-                }
-                this.toastyComponent.toastyInfo = this.toastyInfo;
-                this.toastyComponent.addToasty();
+                this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
             });
 
+    }
+
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+        this.toastyComponent.toastyInfo = {
+            titulo: titulo,
+            msg: msg,
+            theme: theme,
+            timeout: timeout
+        }
+        this.toastyComponent.addToasty();
     }
 }
