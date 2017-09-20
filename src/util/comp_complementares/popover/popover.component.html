@@ -8,6 +8,21 @@
             <table class="table table-compact table-vertical">
                 <tbody>
                     <tr>
+                        <th colspan="2" style="text-align: center;">Informações de Linha</th>
+                    </tr>
+                    <tr>
+                        <th>DN: </th>
+                        <td>{{cadastro.linha.dn}}</td>
+                    </tr>
+                    <tr>
+                        <th>Tipo: </th>
+                        <td>{{cadastro.linha.tipo}}</td>
+                    </tr>
+                    <tr>
+                        <th>Central: </th>
+                        <td>{{cadastro.linha.central}}</td>
+                    </tr>
+                    <tr>
                         <th colspan="2" style="text-align: center;">Informações de Cadastro</th>
                     </tr>
                     <tr>
@@ -41,7 +56,7 @@
                     </tr>
                 </tbody>
             </table>
-            <!-- <fulltest-table-component [objectValid]="objectValid" *ngIf="objectValid"></fulltest-table-component> -->            
+            <!-- <fulltest-table-component [objectValid]="objectValid" *ngIf="objectValid"></fulltest-table-component> -->
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-outline" (click)="ativo = false">Fechar</button>
