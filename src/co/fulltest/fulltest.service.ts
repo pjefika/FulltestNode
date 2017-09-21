@@ -18,7 +18,7 @@ export class FulltestService {
     getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathFulltestAPI + "fulltest/corrective/",
+            command: this.urlService.pathFulltestAPI + "fulltest/fulltest/",
             _data: cadastro,
             timeout: 1200000
         }
