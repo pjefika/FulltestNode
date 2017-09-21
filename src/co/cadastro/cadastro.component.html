@@ -1,7 +1,7 @@
 <div>
     <!--Informações do cadastro-->
-    <h3 class="titulo-da-pagina">Informações do Cadastro</h3>
     <div *ngIf="cadastro">
+        <h3 class="titulo-da-pagina">Informações do Cadastro</h3>
         <div class="row flex-items-xs-between">
             <div class="col-xs-6">
                 <table class="table table-compact table-vertical">
@@ -66,7 +66,7 @@
                             <td *ngIf="!cadastro.servicos.isHib">Não</td>
                         </tr>
                     </tbody>
-                </table>                
+                </table>
             </div>
             <div class="col-xs-6">
                 <table class="table table-compact table-vertical">

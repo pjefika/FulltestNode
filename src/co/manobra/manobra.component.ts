@@ -114,6 +114,7 @@ export class ManobraComponent implements OnInit {
                             this.analitico = data;
                             this.searchingValids = false;
                             this.validedManobra = true;
+                            this.nameBtnValidManobra = "Validar Manobra";
                             if (this.analitico.manobrar) {
                                 let _manobraMotivo = "Liberar manobra - " + this.analitico.conclusao.conclusao.frase + ": " + this.analitico.conclusao.motivo.motivo;
                                 this.callAlert(_manobraMotivo, "alert-success");
@@ -122,6 +123,7 @@ export class ManobraComponent implements OnInit {
                                 this.callAlert(_manobraMotivo, "alert-danger");
                             }
                         }, error => {
+                            this.nameBtnValidManobra = "Validar Manobra";
                             this.btnValidDisable = false;
                             this.searchingValids = false;
                             this.eraseInfoValid();
@@ -132,7 +134,8 @@ export class ManobraComponent implements OnInit {
                     let jError = error.json();
                     this.btnValidDisable = false;
                     this.searchingValids = false;
-                    this.eraseInfoValid();                    
+                    this.eraseInfoValid();
+                    this.nameBtnValidManobra = "Validar Manobra";
                     this.callToasty("Ops, ocorreu um erro.", jError.message, "error", 5000);
                 });
         } else {
