@@ -7,13 +7,16 @@ import { Injectable } from '@angular/core';
 export class UrlService {
 
     //Modificar IPs 
-    private urlIp = "10.40.195.81:8080/"; // QA PeleServ    
-    //private urlIp = "10.200.35.67:80/"; Produção CO
-    //private urlIp = "dprcuradm0111:8080/"; // CREMO
+    private urlIp = "10.200.35.67:80/";  // Produção e restante dos pjs para o path
+    public urlIpForOtherPath = "10.40.195.81:8080/"; // A stealer que ira ficar aqui // PeleServ
+    // IPS: 
+    //  "10.40.195.81:8080/";
+    //  "10.200.35.67:80/";
+    //  "dprcuradm0111:8080/";
 
     //Modificar path names
     public pathFulltestAPI = "fulltestAPI/";
-    public pathStealerAPI = "stealerAPI_qa/"; //stealerAPI_qa
+    public pathStealerAPI = "stealerAPI/"; //stealerAPI_qa
     public pathAuth = "efikaAuth/";
     public pathDmsAPI = "dmsAPI/";
 

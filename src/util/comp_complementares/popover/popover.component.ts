@@ -1,3 +1,4 @@
+import { Util } from './../../util';
 import { ObjectValid } from './../../../viewmodel/fulltest/objectValid';
 import { Cadastro } from './../../../viewmodel/cadastro/cadastro';
 
@@ -15,7 +16,8 @@ export class PopoverComponent implements OnInit {
     @Input() cadastro: Cadastro;
     @Input() objectValid: ObjectValid;
 
-    constructor() { }
+    constructor(
+        public util: Util) { }
 
     ngOnInit() { }
 

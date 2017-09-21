@@ -16,7 +16,8 @@ export class ListarLinhaService {
             rqst: "get",
             command: this.urlService.pathStealerAPI + "linha/",
             _data: instancia,
-            timeout: 1200000
+            otherUrl: this.urlService.urlIpForOtherPath,
+            timeout: 60000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

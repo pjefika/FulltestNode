@@ -125,17 +125,18 @@ export class ManobraComponent implements OnInit {
                             this.btnValidDisable = false;
                             this.searchingValids = false;
                             this.eraseInfoValid();
+                            console.log("Entrou1");
                             this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                         });
                 }, error => {
                     let jError = error.json();
                     this.btnValidDisable = false;
                     this.searchingValids = false;
-                    this.eraseInfoValid();
-                    this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
+                    this.eraseInfoValid();                    
+                    this.callToasty("Ops, ocorreu um erro.", jError.message, "error", 5000);
                 });
         } else {
-            this.callToasty("Ops, ocorreu um erro.", "Por favor preencha os campos", "error", 5000);            
+            this.callToasty("Ops, ocorreu um erro.", "Por favor preencha os campos", "error", 5000);
         }
     }
 

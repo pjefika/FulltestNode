@@ -77,19 +77,18 @@ export class ManobraService {
                 .map(res => res.json()),
             this.http.post(urlFulltest, JSON.stringify(_data), this.urlService.options)
                 .map(res => res.json())
-        ).map(
+        ).map(            
             data => {
                 data[0].forEach(element => {
                     cadastro.asserts.push(element);
                 });
                 data[1].forEach(element => {
                     cadastro.asserts.push(element);
-                });
+                });                
                 return cadastro as Cadastro;
-            }, err => {
-                this.urlService.handleError(err);
-            }
-            )
+            }, error => {
+                this.urlService.handleError(error);
+            });
     }
 
     private handleError(error: any): Promise<any> {

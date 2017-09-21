@@ -20,7 +20,6 @@ export class LoginService {
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathAuth + "autentica/verificarCredencial",
-            otherUrl: "10.40.195.81:8080/",
             _data: usuario,
             timeout: 6000
         }
@@ -35,7 +34,6 @@ export class LoginService {
         this.infoResquest = {
             rqst: "get",
             command: this.urlService.pathAuth + "autentica/consultar/",
-            otherUrl: "10.40.195.81:8080/",
             _data: usuario.login,
             timeout: 6000
         }
