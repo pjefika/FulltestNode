@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
 export class UrlService {
 
     //Modificar IPs 
-    private urlIp = "10.200.35.67:80/";  // Produção e restante dos pjs para o path
-    public urlIpForOtherPath = "10.40.195.81:8080/"; // A stealer que ira ficar aqui // PeleServ
+    public urlIp = "http://10.200.35.67:80/";  // Produção e restante dos pjs para o path
+    public urlIpParaStealer = "http://10.40.195.81:8080/"; // A stealer que ira ficar aqui // PeleServ
     // IPS: 
     //  "10.40.195.81:8080/";
     //  "10.200.35.67:80/";
@@ -23,7 +23,7 @@ export class UrlService {
     //Request Options *Não Mecher*
     private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
     public options = new RequestOptions({ headers: this.headersAppJson });
-    public url = "http://" + this.urlIp;
+    private url;
 
     constructor(private http: Http) { }
 
@@ -69,7 +69,9 @@ export class UrlService {
 
     private hOtherUrl(l) {
         if (l) {
-            this.url = "http://" + l;
+            this.url = l;
+        } else {
+            this.url = this.urlIp;
         }
     }
 
