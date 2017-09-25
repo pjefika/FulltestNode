@@ -71,7 +71,7 @@
                 </tbody>
             </table>
         </div>
-        <button class="btn btn-primary btn-block" (click)="getInformacoes()">Buscar Informações da Linha</button>
+        <button class="btn btn-primary btn-block" (click)="getInformacoes()" [disabled]="disablebtnbuscainformacao">Buscar Informações da Linha</button>
     </div>
     <loading-component [searching]="searching" [searchWhat]="searchingWhat"></loading-component>
 </div>

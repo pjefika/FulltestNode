@@ -1,3 +1,7 @@
+import { CoLinhaRouterService } from './services-routes/co-linha-router.service';
+import { CrmRouterService } from './services-routes/crm-router.service';
+import { CoRouterService } from './services-routes/co-router.service';
+import { IndexRouterService } from './services-routes/index-router.service';
 import { CadastroCrmComponent } from './../../crm/cadastrofulltestcrm/cadastrocrm.component';
 import { CadastroComponent } from './../../co/cadastro/cadastro.component';
 import { PrincipalComponent } from './../../principal/principal.component';
@@ -9,7 +13,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 @Component({
     selector: 'holder-router-component',
     templateUrl: 'holder-router.component.html',
-    providers: [HolderRouterService]
+    providers: [HolderRouterService, IndexRouterService, CoRouterService, CrmRouterService, CoLinhaRouterService]
 })
 
 export class HolderRouterComponent implements OnInit, OnChanges {
@@ -20,8 +24,7 @@ export class HolderRouterComponent implements OnInit, OnChanges {
     private componentData: any;
 
     constructor(
-        private holderRouterService: HolderRouterService,
-        private holderCompsService: HolderCompsService) { }
+        private holderRouterService: HolderRouterService) { }
 
     public ngOnInit() { }
 

@@ -32,6 +32,8 @@ export class ConfiguracaoLinhaComponent implements OnInit {
     private nomebotaoresetar: string = "Resetar porta";
     private disablebotaoresetar: boolean = false;
 
+    private disablebtnbuscainformacao: boolean = false;
+
     constructor(
         private configuracaoLinhaService: ConfiguracaoLinhaService,
         private toastyComponent: ToastyComponent,
@@ -76,7 +78,7 @@ export class ConfiguracaoLinhaComponent implements OnInit {
             });
     }
 
-    private goToCreateLinhaComponent() {        
+    private goToCreateLinhaComponent() {
         this.holderCompsService.component = LinhaComponent;
     }
 

@@ -1,3 +1,4 @@
+import { ToastyComponent } from './../toasty/toasty.component';
 import { HolderCompsService } from './../component-holder/services/holder-comps.service';
 import { FulltestComponent } from './../../co/fulltest/fulltest.component';
 import { CadastroCrmComponent } from './../../crm/cadastrofulltestcrm/cadastrocrm.component';
@@ -20,7 +21,8 @@ export class SubnavComponent implements OnInit {
     constructor(
         private templateComponent: TemplateComponent,
         public holderService: HolderService,
-        private holderCompsService: HolderCompsService) { }
+        private holderCompsService: HolderCompsService,
+        private toastyComponent: ToastyComponent) { }
 
     @Input() menus: SubNav[];
 
@@ -45,7 +47,11 @@ export class SubnavComponent implements OnInit {
                 this.templateComponent.createManobraComponent();
                 break;
             case ConfiguracaoLinhaComponent:
-                this.templateComponent.createConfiguracaoLinhaComponent();
+                if (this.holderService.cadastro.linha.tipo != "TDM") {
+                    this.callToasty("Ops, aconteceu algo.", "Funcionalidade Indisponivel para este tipo de central.", "error", 6000);
+                } else {
+                    this.templateComponent.createConfiguracaoLinhaComponent();
+                }
                 break;
         }
     }
@@ -67,6 +73,17 @@ export class SubnavComponent implements OnInit {
             active = true;
         }
         return active;
+    }
+
+
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+        this.toastyComponent.toastyInfo = {
+            titulo: titulo,
+            msg: msg,
+            theme: theme,
+            timeout: timeout
+        }
+        this.toastyComponent.addToasty();
     }
 
 }
