@@ -1,3 +1,7 @@
+import { ConfiguracoesPortaGponComponent } from './../util/comp_complementares/configuracoesporta/gpon/configuracoes-porta-gpon.component';
+import { ConfiguracoesPortaMetalicoComponent } from './../util/comp_complementares/configuracoesporta/metalico/configuracoes-porta-metalico.component';
+import { ConfiguracoesPortaComponent } from './../util/comp_complementares/configuracoesporta/configuracoesporta.component';
+import { TemplateGeralService } from './../template/util-service/template-geral.service';
 import { TemplateCOService } from './../template/util-service/template-co.service';
 import { TemplateCrmService } from './../template/util-service/tempalte-crm.service';
 import { TemplateService } from './../template/util-service/template.service';
@@ -114,7 +118,10 @@ import { AppComponent } from './app.component';
         StatusPortaComponent,
         CriarLinhaComponent,
         DeletarLinhaComponent,
-        HolderRouterComponent
+        HolderRouterComponent,
+        ConfiguracoesPortaComponent,
+        ConfiguracoesPortaMetalicoComponent,
+        ConfiguracoesPortaGponComponent
     ],
     imports: [
         BrowserModule,
@@ -149,7 +156,8 @@ import { AppComponent } from './app.component';
         HolderCompsService,
         TemplateService,
         TemplateCrmService,
-        TemplateCOService
+        TemplateCOService,
+        TemplateGeralService
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -170,6 +178,7 @@ import { AppComponent } from './app.component';
         ServicoLinhaComponent,
         StatusLinhaComponent,
         StatusPortaComponent,
+        ConfiguracoesPortaComponent
     ]
 })
 export class AppModule { }

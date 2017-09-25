@@ -1,3 +1,4 @@
+import { ConfiguracoesPortaComponent } from './../comp_complementares/configuracoesporta/configuracoesporta.component';
 import { ToastyComponent } from './../toasty/toasty.component';
 import { HolderCompsService } from './../component-holder/services/holder-comps.service';
 import { FulltestComponent } from './../../co/fulltest/fulltest.component';
@@ -32,6 +33,7 @@ export class SubnavComponent implements OnInit {
         if (this.holderService.liberarSubNav) {
             this.switchCO(l);
             this.switchCrm(l);
+            this.swtichGeral(l);
         }
     }
 
@@ -63,6 +65,14 @@ export class SubnavComponent implements OnInit {
                 break;
             case "link-acs":
                 this.templateComponent.createGoToAcsLink();
+                break;
+        }
+    }
+
+    swtichGeral(l) {
+        switch (l.component) {
+            case ConfiguracoesPortaComponent:
+                this.templateComponent.createConfiguracoesPorta();
                 break;
         }
     }

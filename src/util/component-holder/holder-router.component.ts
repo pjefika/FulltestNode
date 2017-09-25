@@ -1,3 +1,4 @@
+import { ConfiguracoesPortaRouterService } from './services-routes/configuracoes-porta-router.service';
 import { CoLinhaRouterService } from './services-routes/co-linha-router.service';
 import { CrmRouterService } from './services-routes/crm-router.service';
 import { CoRouterService } from './services-routes/co-router.service';
@@ -13,7 +14,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 @Component({
     selector: 'holder-router-component',
     templateUrl: 'holder-router.component.html',
-    providers: [HolderRouterService, IndexRouterService, CoRouterService, CrmRouterService, CoLinhaRouterService]
+    providers: [HolderRouterService, IndexRouterService, CoRouterService, CrmRouterService, CoLinhaRouterService, ConfiguracoesPortaRouterService]
 })
 
 export class HolderRouterComponent implements OnInit, OnChanges {

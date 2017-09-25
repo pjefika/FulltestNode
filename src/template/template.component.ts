@@ -1,3 +1,4 @@
+import { ConfiguracoesPortaComponent } from './../util/comp_complementares/configuracoesporta/configuracoesporta.component';
 import { InputHolderRoute } from './../viewmodel/holder-router/input-holder-route';
 import { HolderCompsService } from './../util/component-holder/services/holder-comps.service';
 import { AgrupamentoComponent } from './../co/configuracao-linha/actions/agrupamento/agrupamento.component';
@@ -219,6 +220,14 @@ export class TemplateComponent implements OnInit {
         var newwindow = window.open('http://10.40.195.81:8080/acs-arris');
     }
 
+    /**
+    * Componentes Gerais
+    **/
+    public createConfiguracoesPorta() {
+        this.sidenav = false;
+        this.holderCompsService.component = ConfiguracoesPortaComponent;
+    }
+
     //Holder Functions
     holderReset() { // Reseta as variaveis da Holder
         this.holderService.cadastro = null;
@@ -230,6 +239,5 @@ export class TemplateComponent implements OnInit {
         this.holderService.alertState = null;
         this.holderService.cadastroLinha = null;
         this.headerTitle = "" //Reseta titulo
-
     }
 }

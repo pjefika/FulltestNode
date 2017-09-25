@@ -1,3 +1,4 @@
+import { ConfiguracoesPortaComponent } from './../../../util/comp_complementares/configuracoesporta/configuracoesporta.component';
 import { FulltestComponent } from './../../../co/fulltest/fulltest.component';
 import { ConfiguracaoLinhaComponent } from './../../../co/configuracao-linha/configuracao-linha.component';
 import { ManobraComponent } from './../../../co/manobra/manobra.component';
@@ -19,5 +20,9 @@ export const subNavMockCo: SubNav[] = [
     {
         nome: "Configuração Linha",
         component: ConfiguracaoLinhaComponent
+    },    
+    {
+        nome: "Configuração de Porta",
+        component: ConfiguracoesPortaComponent
     }
 ]

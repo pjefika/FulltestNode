@@ -1,3 +1,5 @@
+import { ConfiguracoesPortaRouterService } from './services-routes/configuracoes-porta-router.service';
+import { ConfiguracoesPortaComponent } from './../comp_complementares/configuracoesporta/configuracoesporta.component';
 import { CoLinhaRouterService } from './services-routes/co-linha-router.service';
 import { CrmRouterService } from './services-routes/crm-router.service';
 import { CoRouterService } from './services-routes/co-router.service';
@@ -32,7 +34,8 @@ export class HolderRouterService {
         private indexRouterService: IndexRouterService,
         private coRouterService: CoRouterService,
         private crmRouterService: CrmRouterService,
-        private coLinhaRouterService: CoLinhaRouterService) { }
+        private coLinhaRouterService: CoLinhaRouterService,
+        private configuracoesPortaRouterService: ConfiguracoesPortaRouterService) { }
 
 
     public return(component: any, input?: InputHolderRoute): any {
@@ -49,12 +52,9 @@ export class HolderRouterService {
             this.component = this.crmRouterService.crmRoute(component, input);
         } else if (component === ConfiguracaoLinhaComponent || component === LinhaComponent || component === ServicoLinhaComponent || component === ManobrarLinhaComponent) {
             this.component = this.coLinhaRouterService.coLinhaRoute(component);
+        } else if (component === ConfiguracoesPortaComponent) {
+            this.component = this.configuracoesPortaRouterService.confPortaRoute(component);
         }
-
-        // this.component = this.indexRouterService.indexRoute(component, input);
-        // this.component = this.coRouterService.coRoute(component, input);
-        // this.component = this.crmRouterService.crmRoute(component, input);
-        // this.component = this.coLinhaRouterService.coLinhaRoute(component);
     }
 
 }
