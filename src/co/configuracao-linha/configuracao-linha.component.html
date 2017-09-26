@@ -52,9 +52,15 @@
                     <tr>
                         <th>Estado</th>
                         <td>
-                            {{cadastroLinha.estado.desc}} ({{cadastroLinha.estado.nome}})
-                            <clr-icon shape="check" *ngIf="cadastroLinha.estado.valid" style="color: green"></clr-icon>
-                            <button class="btn btn-danger btn-sm" *ngIf="!cadastroLinha.estado.valid" (click)="resetarPorta()" [disabled]="disablebotaoresetar">{{nomebotaoresetar}}</button>
+                            <div *ngIf="cadastroLinha.estado">
+                                {{cadastroLinha.estado.desc}} ({{cadastroLinha.estado.nome}})
+                                <clr-icon shape="check" *ngIf="cadastroLinha.estado.valid" style="color: green;"></clr-icon>
+                                <button class="btn btn-danger btn-sm" *ngIf="!cadastroLinha.estado.valid" (click)="resetarPorta()" [disabled]="disablebotaoresetar">{{nomebotaoresetar}}</button>
+                            </div>
+                            <div *ngIf="!cadastroLinha.estado">
+                                <clr-icon shape="warning-standard" style="color: red;"></clr-icon>
+                                Problema ao buscar Estado da Linha
+                            </div>
                         </td>
                     </tr>
                 </tbody>

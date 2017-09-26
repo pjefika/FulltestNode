@@ -49,14 +49,7 @@ export class ConfiguracaoLinhaComponent implements OnInit {
         } else {
             this.getInformacoes();
         }
-        if (!this.holderService.listaDeNcos) {
-            // Se lista de ncos estiver vazia realiza a busca
-            this.getNcos();
-        }
-        if (!this.holderService.listaDeServicos) {
-            // Se lista de serviços estiver vazia realiza busca
-            this.getServicos();
-        }
+        this.getncoseservicos();
     }
 
     private getInformacoes() {
@@ -135,4 +128,14 @@ export class ConfiguracaoLinhaComponent implements OnInit {
         this.toastyComponent.addToasty();
     }
 
+    public getncoseservicos() {
+        if (!this.holderService.listaDeNcos) {
+            // Se lista de ncos estiver vazia realiza a busca
+            this.getNcos();
+        }
+        if (!this.holderService.listaDeServicos) {
+            // Se lista de serviços estiver vazia realiza busca
+            this.getServicos();
+        }
+    }
 }
