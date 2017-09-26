@@ -1,4 +1,5 @@
 <h3 class="titulo-da-pagina">Configurações de Porta</h3>
-
-<configuracoes-porta-metalico-component *ngIf="holderService.cadastro.rede.tipo === 'METALICA'"></configuracoes-porta-metalico-component>
-<configuracoes-porta-gpon-component *ngIf="holderService.cadastro.rede.tipo === 'GPON'"></configuracoes-porta-gpon-component>
+<div>
+    <configuracoes-porta-metalico-component *ngIf="holderService.cadastro.rede.tipo === 'METALICA'"></configuracoes-porta-metalico-component>
+    <configuracoes-porta-gpon-component *ngIf="holderService.cadastro.rede.tipo === 'GPON'"></configuracoes-porta-gpon-component>
+</div>
