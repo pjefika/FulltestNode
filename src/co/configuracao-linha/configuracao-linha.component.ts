@@ -67,7 +67,11 @@ export class ConfiguracaoLinhaComponent implements OnInit {
                 }
             }, error => {
                 this.searching = false;
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
+                if (error.mError === "Linha não pertence a Central." && this.holderService.cadastro.instancia === this.holderService.cadastroLinha.dn) {
+                    this.callToasty("Ops, aconteceu algo.", "Necessário associação de número de equipamento.", "error", 5000);
+                } else {
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
+                }
             });
     }
 
