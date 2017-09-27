@@ -27,6 +27,15 @@ export class ServicoLinhaComponent implements OnInit {
     private nomeButton: string = "Alterar";
     private disableButton: boolean = false;
 
+    public alertMsg: {
+        msg: string;
+        alertType: string;
+    }
+    public alertAtivo: boolean = false;
+    public alertCloseable: boolean = true;
+
+    private showServicos: boolean = true;
+
     constructor(
         private servicoLinhaService: ServicoLinhaService,
         private toastyComponent: ToastyComponent,
@@ -39,8 +48,11 @@ export class ServicoLinhaComponent implements OnInit {
         this.formServicosSelecionada = this.fb.group({
             servicos: this.fb.array([])
         });
-
         this.validaServicosDoCliente();
+        if (this.holderService.cadastroLinha.status === "NOT_CREATED") {
+            this.callAlert("A linha não está criada, realize a criação da mesma no Menu Linha > Criar Linha.", "alert-warning");
+            this.showServicos = false;
+        }
     }
 
     public validaServicosDoCliente() {
@@ -107,6 +119,15 @@ export class ServicoLinhaComponent implements OnInit {
             timeout: timeout
         }
         this.toastyComponent.addToasty();
+    }
+
+    public callAlert(msg, type) {
+        this.alertMsg = {
+            msg: msg,
+            alertType: type
+        }
+        this.alertAtivo = true;
+        this.alertCloseable = false;
     }
 
 }

@@ -62,7 +62,7 @@ export class ConfiguracaoLinhaComponent implements OnInit {
                 this.holderService.liberarSideNav = true;
                 this.searching = false;
                 if (this.cadastroLinha.status == "NOT_CREATED") {
-                    this.callToasty("Linha não configurada", "Por favor realize a configuração da linha!", "warning", 0);
+                    this.callToasty("Linha não configurada", "Por favor realize a configuração da linha!", "warning", 15000);
                     this.goToCreateLinhaComponent();
                 }
             }, error => {

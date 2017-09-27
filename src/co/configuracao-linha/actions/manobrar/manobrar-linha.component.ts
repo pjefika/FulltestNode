@@ -38,6 +38,15 @@ export class ManobrarLinhaComponent implements OnInit {
     private manobrarLinhaNomeButton: string = "Manobrar Linha";
     private manobrarLinhaDisableButton: boolean = false;
 
+    public alertMsg: {
+        msg: string;
+        alertType: string;
+    }
+    public alertAtivo: boolean = false;
+    public alertCloseable: boolean = true;
+
+    private showManobrar: boolean = true;
+
     constructor(
         private manobraLinhaService: ManobraLinhaService,
         private listarLinhaService: ListarLinhaService,
@@ -47,7 +56,12 @@ export class ManobrarLinhaComponent implements OnInit {
         public holderService: HolderService,
         private holderCompsService: HolderCompsService) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        if (this.holderService.cadastroLinha.status === "NOT_CREATED") {
+            this.callAlert("A linha não está criada, realize a criação da mesma no Menu Linha > Criar Linha.", "alert-warning");
+            this.showManobrar = false;
+        }
+    }
 
     public getLinhaBinada() {
         this.consultarLenLoadingButton = true;
@@ -111,5 +125,14 @@ export class ManobrarLinhaComponent implements OnInit {
             timeout: timeout
         }
         this.toastyComponent.addToasty();
+    }
+
+    public callAlert(msg, type) {
+        this.alertMsg = {
+            msg: msg,
+            alertType: type
+        }
+        this.alertAtivo = true;
+        this.alertCloseable = false;
     }
 }

@@ -26,7 +26,11 @@
                     </tr>
                     <tr>
                         <th>Len</th>
-                        <td>{{cadastroLinha.len.len}}</td>
+                        <td>
+                            <div *ngIf="cadastroLinha.len">
+                                {{cadastroLinha.len.len}}
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <th>CustGrp</th>
@@ -37,7 +41,9 @@
                     </tr>
                     <tr>
                         <th>NCOS</th>
-                        <td *ngIf="!editarInfoLinhas">{{cadastroLinha.ncos.ncos}} - {{cadastroLinha.ncos.desc}}</td>
+                        <td *ngIf="!editarInfoLinhas">
+                            <div *ngIf="cadastroLinha.ncos">{{cadastroLinha.ncos.ncos}} - {{cadastroLinha.ncos.desc}}</div>
+                        </td>
                         <td *ngIf="editarInfoLinhas">
                             <ncos-component></ncos-component>
                         </td>
@@ -73,6 +79,9 @@
                     <tr *ngFor="let servico of cadastroLinha.servicos">
                         <th>{{servico.desc}}</th>
                         <td>{{servico.key}}</td>
+                    </tr>
+                    <tr *ngIf="cadastroLinha.servicos.length == 0">
+                        <td style="text-align: center;">Cliente não possui serviços cadastrados.</td>
                     </tr>
                 </tbody>
             </table>

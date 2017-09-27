@@ -1,6 +1,7 @@
 <div>
     <h3 class="titulo-da-pagina">Manobrar Linha</h3>
-    <div class="row">
+    <alert-component [msg]="alertMsg" [ativo]="alertAtivo" [closeable]="alertCloseable"></alert-component>
+    <div class="row" *ngIf="showManobrar">
         <div class="col-md-6">
             <label>Instância Binada: </label>
             <input type="text" style="width: 100%;" [(ngModel)]="instanciaBinada" placeholder="Insira a instância binada">

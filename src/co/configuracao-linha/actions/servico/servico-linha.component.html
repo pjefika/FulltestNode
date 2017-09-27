@@ -1,8 +1,11 @@
 <div>
     <h3 class="titulo-da-pagina">Serviço</h3>
-    <label>Selecione os serviços a baixo: </label>
-    <clr-checkbox *ngFor="let servico of listaDeServicos" [clrChecked]="seeifchecked(servico.nome)" (change)="atualizaListaDeServicos(servico.nome, $event.target.checked)">
-        {{servico.desc}}
-    </clr-checkbox>
-    <button class="btn btn-primary btn-block" (click)="setServicos()" [disabled]="disableButton">{{nomeButton}}</button>
+    <alert-component [msg]="alertMsg" [ativo]="alertAtivo" [closeable]="alertCloseable"></alert-component>
+    <div *ngIf="showServicos">
+        <label>Selecione os serviços a baixo: </label>
+        <clr-checkbox *ngFor="let servico of listaDeServicos" [clrChecked]="seeifchecked(servico.nome)" (change)="atualizaListaDeServicos(servico.nome, $event.target.checked)">
+            {{servico.desc}}
+        </clr-checkbox>
+        <button class="btn btn-primary btn-block" (click)="setServicos()" [disabled]="disableButton">{{nomeButton}}</button>
+    </div>
 </div>
