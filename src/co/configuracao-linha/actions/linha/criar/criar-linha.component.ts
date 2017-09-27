@@ -41,6 +41,13 @@ export class CriarLinhaComponent implements OnInit {
     private criarLinhaNomeButton: string = "Criar Linha";
     private criarLinhaDisableButton: boolean = false;
 
+    public alertMsg: {
+        msg: string;
+        alertType: string;
+    }
+    public alertAtivo: boolean = false;
+    public alertCloseable: boolean = true;
+
     constructor(
         private criarLinhaService: CriarLinhaService,
         private listarLinhaService: ListarLinhaService,
@@ -50,7 +57,12 @@ export class CriarLinhaComponent implements OnInit {
         public holderService: HolderService,
         private holderCompsService: HolderCompsService) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        if (this.holderService.cadastroLinha.status === "CREATED") {
+            this.callAlert("Linha já está criada.", "alert-warning");
+            this.consultarLenDisabledButton = true;
+        }
+    }
 
     public getLinhaBinada() {
         this.consultarLenLoadingButton = true;
@@ -114,6 +126,15 @@ export class CriarLinhaComponent implements OnInit {
             timeout: timeout
         }
         this.toastyComponent.addToasty();
+    }
+
+    public callAlert(msg, type) {
+        this.alertMsg = {
+            msg: msg,
+            alertType: type
+        }
+        this.alertAtivo = true;
+        this.alertCloseable = false;
     }
 
     private resetAllFields() {

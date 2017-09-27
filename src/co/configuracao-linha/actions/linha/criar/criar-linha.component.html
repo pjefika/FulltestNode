@@ -1,5 +1,5 @@
 <div *ngIf="ativo" class="margin-dez">
-    
+    <alert-component [msg]="alertMsg" [ativo]="alertAtivo" [closeable]="alertCloseable"></alert-component>
     <div class="row">
         <div class="col-md-6">
             <label>Instância Binada: </label>
