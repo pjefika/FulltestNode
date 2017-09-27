@@ -25,7 +25,8 @@
             </label>
         </div>
         <div class="header-actions">
-            <popover-component [cadastro]="holderService.cadastro" [objectValid]="holderService.objectValid" *ngIf="holderService.cadastro"></popover-component>
+            <popover-component [cadastro]="holderService.cadastro" [objectValid]="holderService.objectValid" [cadastroLinha]="holderService.cadastroLinha"
+                *ngIf="holderService.cadastro"></popover-component>
             <toggle-component *ngIf="mostraToggle"></toggle-component>
             <clr-dropdown>
                 <button class="nav-icon" clrDropdownTrigger>
