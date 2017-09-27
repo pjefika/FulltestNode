@@ -27,6 +27,10 @@ export class LinhaComponent implements OnInit {
             this.qualComando = "criar";
             this.comandoSelecionado();
         }
+        if (this.holderService.cadastroLinha.status == "CREATED") {
+            this.qualComando = "deletar";
+            this.comandoSelecionado();
+        }
     }
 
     public comandoSelecionado() {

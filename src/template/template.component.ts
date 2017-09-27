@@ -202,7 +202,6 @@ export class TemplateComponent implements OnInit {
     /**
     * Componentes do CRM
     **/
-
     public createRealizaFulltestCrmComponent() { // Cadastro / Fullteste CRM
         this.holderService.sidenav = false;
         this.emptyComponentData();

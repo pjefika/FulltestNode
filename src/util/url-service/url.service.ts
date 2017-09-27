@@ -16,7 +16,7 @@ export class UrlService {
 
     //Modificar path names
     public pathFulltestAPI = "fulltestAPI/";
-    public pathStealerAPI = "stealerAPI/"; //stealerAPI_qa
+    public pathStealerAPI = "stealerAPI/"; // 
     public pathAuth = "efikaAuth/";
     public pathDmsAPI = "dmsAPI/";
 
