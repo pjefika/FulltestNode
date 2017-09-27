@@ -1,11 +1,6 @@
-import { StatusPortaComponent } from './../../co/configuracao-linha/actions/status-porta/status-porta.component';
-import { StatusLinhaComponent } from './../../co/configuracao-linha/actions/status-linha/status-linha.component';
-import { ServicoLinhaComponent } from './../../co/configuracao-linha/actions/servico/servico-linha.component';
-import { NcosComponent } from './../../co/configuracao-linha/actions/ncos/ncos.component';
-import { ManobrarLinhaComponent } from './../../co/configuracao-linha/actions/manobrar/manobrar-linha.component';
-import { LinhaComponent } from './../../co/configuracao-linha/actions/linha/linha.component';
-import { CustgroupComponent } from './../../co/configuracao-linha/actions/custgroup/custgroup.component';
-import { AgrupamentoComponent } from './../../co/configuracao-linha/actions/agrupamento/agrupamento.component';
+import { ServicoLinhaComponent } from './../../co/configuracao-linha/tdm/actions/servico/servico-linha.component';
+import { ManobrarLinhaComponent } from './../../co/configuracao-linha/tdm/actions/manobrar/manobrar-linha.component';
+import { LinhaComponent } from './../../co/configuracao-linha/tdm/actions/linha/linha.component';
 import { ManobraComponent } from './../../co/manobra/manobra.component';
 import { ConfiguracaoLinhaComponent } from './../../co/configuracao-linha/configuracao-linha.component';
 import { FulltestComponent } from './../../co/fulltest/fulltest.component';

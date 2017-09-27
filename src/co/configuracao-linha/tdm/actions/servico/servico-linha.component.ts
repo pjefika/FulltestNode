@@ -1,10 +1,10 @@
-import { ConfiguracaoLinhaComponent } from './../../configuracao-linha.component';
-import { HolderCompsService } from './../../../../util/component-holder/services/holder-comps.service';
+import { ConfiguracaoLinhaComponent } from './../../../configuracao-linha.component';
+import { HolderCompsService } from './../../../../../util/component-holder/services/holder-comps.service';
+import { HolderService } from './../../../../../util/holder/holder.service';
+import { ToastyComponent } from './../../../../../util/toasty/toasty.component';
+import { Servico } from './../../../../../viewmodel/cadastro-linha/servicos';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
-import { element } from 'protractor';
-import { HolderService } from './../../../../util/holder/holder.service';
-import { ToastyComponent } from './../../../../util/toasty/toasty.component';
-import { Servico } from './../../../../viewmodel/cadastro-linha/servicos';
+import { element } from 'protractor';;
 import { ServicoLinhaService } from './servico-linha.service';
 import { Component, OnInit } from '@angular/core';
 

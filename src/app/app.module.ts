@@ -1,3 +1,18 @@
+import { ConfiguracaoLinhaImsComponent } from './../co/configuracao-linha/ims/configuracao-linha-ims.component';
+import { ConfiguracaoLinhaTdmComponent } from './../co/configuracao-linha/tdm/configuracao-linha-tdm.component';
+import { DeletarLinhaComponent } from './../co/configuracao-linha/tdm/actions/linha/deletar/deletar-linha.component';
+import { CriarLinhaComponent } from './../co/configuracao-linha/tdm/actions/linha/criar/criar-linha.component';
+import { StatusPortaComponent } from './../co/configuracao-linha/tdm/actions/status-porta/status-porta.component';
+import { StatusLinhaComponent } from './../co/configuracao-linha/tdm/actions/status-linha/status-linha.component';
+import { ServicoLinhaComponent } from './../co/configuracao-linha/tdm/actions/servico/servico-linha.component';
+import { NcosComponent } from './../co/configuracao-linha/tdm/actions/ncos/ncos.component';
+import { ManobrarLinhaComponent } from './../co/configuracao-linha/tdm/actions/manobrar/manobrar-linha.component';
+import { LinhaComponent } from './../co/configuracao-linha/tdm/actions/linha/linha.component';
+import { CustgroupComponent } from './../co/configuracao-linha/tdm/actions/custgroup/custgroup.component';
+import { DesativarAgrupamentoComponent } from './../co/configuracao-linha/tdm/actions/agrupamento/desativar/desativar-agrupamento.component';
+import { AtivarAgrupamentoComponent } from './../co/configuracao-linha/tdm/actions/agrupamento/ativar/ativar-agrupamento.component';
+import { ConsultarAgrupamentoComponent } from './../co/configuracao-linha/tdm/actions/agrupamento/consultar/consultar-agrupamento.component';
+import { AgrupamentoComponent } from './../co/configuracao-linha/tdm/actions/agrupamento/agrupamento.component';
 import { ConfiguracoesPortaGponComponent } from './../util/comp_complementares/configuracoesporta/gpon/configuracoes-porta-gpon.component';
 import { ConfiguracoesPortaMetalicoComponent } from './../util/comp_complementares/configuracoesporta/metalico/configuracoes-porta-metalico.component';
 import { ConfiguracoesPortaComponent } from './../util/comp_complementares/configuracoesporta/configuracoesporta.component';
@@ -23,19 +38,7 @@ import { BrancoComponent } from './../branco/branco.component';
 import { CadastroComponent } from './../co/cadastro/cadastro.component';
 import { CadastroService } from './../co/cadastro/cadastro.service';
 import { CadastroWizardComponent } from './../co/cadastro/wizard/cadastro-wizard.component';
-import { AgrupamentoComponent } from './../co/configuracao-linha/actions/agrupamento/agrupamento.component';
-import { AtivarAgrupamentoComponent } from './../co/configuracao-linha/actions/agrupamento/ativar/ativar-agrupamento.component';
-import { ConsultarAgrupamentoComponent } from './../co/configuracao-linha/actions/agrupamento/consultar/consultar-agrupamento.component';
-import { DesativarAgrupamentoComponent } from './../co/configuracao-linha/actions/agrupamento/desativar/desativar-agrupamento.component';
-import { CustgroupComponent } from './../co/configuracao-linha/actions/custgroup/custgroup.component';
-import { CriarLinhaComponent } from './../co/configuracao-linha/actions/linha/criar/criar-linha.component';
-import { DeletarLinhaComponent } from './../co/configuracao-linha/actions/linha/deletar/deletar-linha.component';
-import { LinhaComponent } from './../co/configuracao-linha/actions/linha/linha.component';
-import { ManobrarLinhaComponent } from './../co/configuracao-linha/actions/manobrar/manobrar-linha.component';
-import { NcosComponent } from './../co/configuracao-linha/actions/ncos/ncos.component';
-import { ServicoLinhaComponent } from './../co/configuracao-linha/actions/servico/servico-linha.component';
-import { StatusLinhaComponent } from './../co/configuracao-linha/actions/status-linha/status-linha.component';
-import { StatusPortaComponent } from './../co/configuracao-linha/actions/status-porta/status-porta.component';
+
 import { ConfiguracaoLinhaComponent } from './../co/configuracao-linha/configuracao-linha.component';
 import { ConfiguracaoLinhaService } from './../co/configuracao-linha/configuracao-linha.service';
 import { FulltestComponent } from './../co/fulltest/fulltest.component';
@@ -121,7 +124,9 @@ import { AppComponent } from './app.component';
         HolderRouterComponent,
         ConfiguracoesPortaComponent,
         ConfiguracoesPortaMetalicoComponent,
-        ConfiguracoesPortaGponComponent
+        ConfiguracoesPortaGponComponent,
+        ConfiguracaoLinhaTdmComponent,
+        ConfiguracaoLinhaImsComponent
     ],
     imports: [
         BrowserModule,

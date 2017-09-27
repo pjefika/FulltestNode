@@ -1,6 +1,6 @@
-import { ManobrarLinhaComponent } from './../../../co/configuracao-linha/actions/manobrar/manobrar-linha.component';
-import { ServicoLinhaComponent } from './../../../co/configuracao-linha/actions/servico/servico-linha.component';
-import { LinhaComponent } from './../../../co/configuracao-linha/actions/linha/linha.component';
+import { ManobrarLinhaComponent } from './../../../co/configuracao-linha/tdm/actions/manobrar/manobrar-linha.component';
+import { ServicoLinhaComponent } from './../../../co/configuracao-linha/tdm/actions/servico/servico-linha.component';
+import { LinhaComponent } from './../../../co/configuracao-linha/tdm/actions/linha/linha.component';
 import { ConfiguracaoLinhaComponent } from './../../../co/configuracao-linha/configuracao-linha.component';
 import { TemplateCOService } from './../../../template/util-service/template-co.service';
 import { Injectable } from '@angular/core';

@@ -1,17 +1,17 @@
-import { ConfiguracaoLinhaComponent } from './../../../configuracao-linha.component';
-import { HolderCompsService } from './../../../../../util/component-holder/services/holder-comps.service';
-import { HolderService } from './../../../../../util/holder/holder.service';
-import { ConfiguracaoLinhaService } from './../../../configuracao-linha.service';
-import { CadastroLinha } from './../../../../../viewmodel/cadastro-linha/cadastro-linha';
-import { ConfiguracoesLensLivres } from './../../../../../viewmodel/cadastro-linha/lens-livres/configuracoes-lens-livres';
-import { LensLivres } from './../../../../../viewmodel/cadastro-linha/lens-livres/lens-livres';
-import { ToastyComponent } from './../../../../../util/toasty/toasty.component';
-import { Linha } from './../../../../../viewmodel/cadastro/linha';
+import { ConfiguracaoLinhaComponent } from './../../../../configuracao-linha.component';
+import { HolderCompsService } from './../../../../../../util/component-holder/services/holder-comps.service';
+import { HolderService } from './../../../../../../util/holder/holder.service';
+import { ToastyComponent } from './../../../../../../util/toasty/toasty.component';
+import { CadastroLinha } from './../../../../../../viewmodel/cadastro-linha/cadastro-linha';
+import { ConfiguracoesLensLivres } from './../../../../../../viewmodel/cadastro-linha/lens-livres/configuracoes-lens-livres';
+import { Linha } from './../../../../../../viewmodel/cadastro/linha';
+import { ConfiguracaoLinhaService } from './../../../../configuracao-linha.service';
+import { Len } from './../../../../../../viewmodel/cadastro-linha/len';
+
 import { ListarLensLivresService } from './../../../general-services/listar-lens-livres.service';
 import { ListarLinhaService } from './../../../general-services/listar-linha.service';
 import { CriarLinhaService } from './criar-linha.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Len } from './../../../../../viewmodel/cadastro-linha/len';
 
 
 @Component({

@@ -1,7 +1,7 @@
-import { InfoRequest } from './../../../../../viewmodel/url/infos-url';
-import { Linha } from './../../../../../viewmodel/cadastro/linha';
-import { CadastroLinha } from './../../../../../viewmodel/cadastro-linha/cadastro-linha';
-import { UrlService } from './../../../../../util/url-service/url.service';
+import { CadastroLinha } from './../../../../../../viewmodel/cadastro-linha/cadastro-linha';
+import { Linha } from './../../../../../../viewmodel/cadastro/linha';
+import { UrlService } from './../../../../../../util/url-service/url.service';
+import { InfoRequest } from './../../../../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
 
 @Injectable()

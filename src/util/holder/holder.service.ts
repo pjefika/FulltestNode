@@ -41,7 +41,10 @@ export class HolderService {
 
     public modalAdm: boolean = false;
 
+    public subnav: boolean = false;
     public subNavMenus: SubNav[];
+
+    public sidenav: boolean = false;
     public sideNavMenus: SideNav[];
 
     constructor() { }

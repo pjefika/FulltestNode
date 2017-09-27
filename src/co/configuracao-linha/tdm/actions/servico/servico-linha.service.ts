@@ -1,9 +1,8 @@
-import { Cadastro } from './../../../../viewmodel/cadastro/cadastro';
-import { InfoRequest } from './../../../../viewmodel/url/infos-url';
-import { CadastroLinha } from './../../../../viewmodel/cadastro-linha/cadastro-linha';
-import { Linha } from './../../../../viewmodel/cadastro/linha';
-import { Servico } from './../../../../viewmodel/cadastro-linha/servicos';
-import { UrlService } from './../../../../util/url-service/url.service';
+import { CadastroLinha } from './../../../../../viewmodel/cadastro-linha/cadastro-linha';
+import { Cadastro } from './../../../../../viewmodel/cadastro/cadastro';
+import { Servico } from './../../../../../viewmodel/cadastro-linha/servicos';
+import { UrlService } from './../../../../../util/url-service/url.service';
+import { InfoRequest } from './../../../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
 
 @Injectable()

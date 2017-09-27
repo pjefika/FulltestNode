@@ -1,12 +1,12 @@
+import { ManobrarLinhaComponent } from './../../co/configuracao-linha/tdm/actions/manobrar/manobrar-linha.component';
+import { ServicoLinhaComponent } from './../../co/configuracao-linha/tdm/actions/servico/servico-linha.component';
+import { LinhaComponent } from './../../co/configuracao-linha/tdm/actions/linha/linha.component';
 import { ConfiguracoesPortaRouterService } from './services-routes/configuracoes-porta-router.service';
 import { ConfiguracoesPortaComponent } from './../comp_complementares/configuracoesporta/configuracoesporta.component';
 import { CoLinhaRouterService } from './services-routes/co-linha-router.service';
 import { CrmRouterService } from './services-routes/crm-router.service';
 import { CoRouterService } from './services-routes/co-router.service';
 import { IndexRouterService } from './services-routes/index-router.service';
-import { ManobrarLinhaComponent } from './../../co/configuracao-linha/actions/manobrar/manobrar-linha.component';
-import { ServicoLinhaComponent } from './../../co/configuracao-linha/actions/servico/servico-linha.component';
-import { LinhaComponent } from './../../co/configuracao-linha/actions/linha/linha.component';
 import { ComplementaresComponent } from './../../crm/complementares/complementares.component';
 import { CadastroCrmComponent } from './../../crm/cadastrofulltestcrm/cadastrocrm.component';
 import { ConfiguracaoLinhaComponent } from './../../co/configuracao-linha/configuracao-linha.component';

@@ -1,9 +1,9 @@
-import { sideNavConfLinha } from './../../co/configuracao-linha/mock/mock-sidenav-co';
+import { ManobrarLinhaComponent } from './../../co/configuracao-linha/tdm/actions/manobrar/manobrar-linha.component';
+import { ServicoLinhaComponent } from './../../co/configuracao-linha/tdm/actions/servico/servico-linha.component';
+import { LinhaComponent } from './../../co/configuracao-linha/tdm/actions/linha/linha.component';
+import { sideNavConfLinha } from './../../co/configuracao-linha/tdm/mock/mock-sidenav-co';
 import { TemplateComponent } from './../../template/template.component';
 import { HolderCompsService } from './../component-holder/services/holder-comps.service';
-import { ManobrarLinhaComponent } from './../../co/configuracao-linha/actions/manobrar/manobrar-linha.component';
-import { LinhaComponent } from './../../co/configuracao-linha/actions/linha/linha.component';
-import { ServicoLinhaComponent } from './../../co/configuracao-linha/actions/servico/servico-linha.component';
 import { ConfiguracaoLinhaComponent } from './../../co/configuracao-linha/configuracao-linha.component';
 import { SideNav } from './../../viewmodel/menus/sidenav';
 import { HolderService } from './../holder/holder.service';
@@ -36,7 +36,6 @@ export class SidenavComponent implements OnInit {
     private configuracaoLinhaComponents(l) {
         switch (l.component) {
             case ConfiguracaoLinhaComponent:
-                this.holderService.sideNavMenus = sideNavConfLinha;
                 this.holderCompsService.component = ConfiguracaoLinhaComponent;
                 break;
             case LinhaComponent:

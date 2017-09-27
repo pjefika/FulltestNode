@@ -49,11 +49,7 @@ export class SubnavComponent implements OnInit {
                 this.templateComponent.createManobraComponent();
                 break;
             case ConfiguracaoLinhaComponent:
-                if (this.holderService.cadastro.linha.tipo != "TDM") {
-                    this.callToasty("Ops, aconteceu algo.", "Funcionalidade Indisponivel para este tipo de central.", "error", 6000);
-                } else {
-                    this.templateComponent.createConfiguracaoLinhaComponent();
-                }
+                this.templateComponent.createConfiguracaoLinhaComponent();
                 break;
         }
     }

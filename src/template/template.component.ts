@@ -1,8 +1,7 @@
+import { sideNavConfLinha } from './../co/configuracao-linha/tdm/mock/mock-sidenav-co';
 import { ConfiguracoesPortaComponent } from './../util/comp_complementares/configuracoesporta/configuracoesporta.component';
 import { InputHolderRoute } from './../viewmodel/holder-router/input-holder-route';
 import { HolderCompsService } from './../util/component-holder/services/holder-comps.service';
-import { AgrupamentoComponent } from './../co/configuracao-linha/actions/agrupamento/agrupamento.component';
-import { sideNavConfLinha } from './../co/configuracao-linha/mock/mock-sidenav-co';
 import { ConfiguracaoLinhaComponent } from './../co/configuracao-linha/configuracao-linha.component';
 import { subNavMockCo } from './mock/co/mock-subnav-co';
 import { ManobraComponent } from './../co/manobra/manobra.component';
@@ -115,12 +114,12 @@ export class TemplateComponent implements OnInit {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         if (usr.nv === 1 || this.holderService.eachFulltest === "CRM") {
             this.subNavMenus = subNavMockCrm;
-            this.subnav = true;
+            this.holderService.subnav = true;
             this.createRealizaFulltestCrmComponent();
         } else {
             this.cadastro = this.holderService.cadastro;
             this.subNavMenus = subNavMockCo;
-            this.subnav = true;
+            this.holderService.subnav = true;
             this.createCadastroComponent();
         }
     }
@@ -151,13 +150,13 @@ export class TemplateComponent implements OnInit {
     * Insere components no dynamic component
     **/
     public emptyComponentData() { // Vazio        
-        this.sidenav = false;
+        this.holderService.sidenav = false;
         this.holderCompsService.component = BrancoComponent;
     }
 
     public createPrincipalComponent() { //Componente Principal
         this.headerTitle = "Bem Vindo ao Efika Fulltest";
-        this.sidenav = false;
+        this.holderService.sidenav = false;
         this.holderCompsService.component = PrincipalComponent;
     }
 
@@ -165,13 +164,13 @@ export class TemplateComponent implements OnInit {
     * Componentes do CO
     **/
     public createCadastroComponent() { // Cadastro CO
-        this.sidenav = false;
+        this.holderService.sidenav = false;
         this.holderCompsService.input = { instancia: this.instancia };
         this.holderCompsService.component = CadastroComponent;
     }
 
     public createRealizaFulltestComponent() { //Fullteste CO
-        this.sidenav = false;
+        this.holderService.sidenav = false;
         this.cadastro = this.holderService.cadastro;
         this.objectValid = this.holderService.objectValid;
         if (this.cadastro) {
@@ -181,7 +180,7 @@ export class TemplateComponent implements OnInit {
     }
 
     public createManobraComponent() { // Manobra CO
-        this.sidenav = false;
+        this.holderService.sidenav = false;
         //this.emptyComponentData();
         this.holderCompsService.input = { cadastro: this.cadastro }
         this.holderCompsService.component = ManobraComponent;
@@ -191,9 +190,13 @@ export class TemplateComponent implements OnInit {
    * Componentes de Linha
    **/
     public createConfiguracaoLinhaComponent() {
-        this.sidenav = true;
-        this.holderService.sideNavMenus = sideNavConfLinha;
-        this.holderCompsService.component = ConfiguracaoLinhaComponent;
+        if (this.holderService.cadastro.linha.tipo === "TDM") {
+            this.holderService.sidenav = true;
+            this.holderService.sideNavMenus = sideNavConfLinha;
+            this.holderCompsService.component = ConfiguracaoLinhaComponent;
+        } else if (this.holderService.cadastro.linha.tipo === "IMS") {
+            this.holderCompsService.component = ConfiguracaoLinhaComponent;
+        }
     }
 
     /**
@@ -201,14 +204,14 @@ export class TemplateComponent implements OnInit {
     **/
 
     public createRealizaFulltestCrmComponent() { // Cadastro / Fullteste CRM
-        this.sidenav = false;
+        this.holderService.sidenav = false;
         this.emptyComponentData();
         this.holderCompsService.input = { instancia: this.instancia }
         this.holderCompsService.component = CadastroCrmComponent;
     }
 
     public createComplementaresComponent() { // Testes Complementares CRM        
-        this.sidenav = false;
+        this.holderService.sidenav = false;
         this.objectValid = this.holderService.objectValid
         if (this.objectValid) {
             this.holderCompsService.input = { cadastro: this.cadastro }
@@ -224,7 +227,7 @@ export class TemplateComponent implements OnInit {
     * Componentes Gerais
     **/
     public createConfiguracoesPorta() {
-        this.sidenav = false;
+        this.holderService.sidenav = false;
         this.holderCompsService.component = ConfiguracoesPortaComponent;
     }
 

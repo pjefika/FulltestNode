@@ -39,7 +39,7 @@
             </clr-dropdown>
         </div>
     </clr-header>
-    <nav class="subnav" *ngIf="subnav">
+    <nav class="subnav" *ngIf="holderService.subnav">
         <subnav-component [menus]="subNavMenus"></subnav-component>
     </nav>
     <div class="content-container">
@@ -50,7 +50,7 @@
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
             <adm-component></adm-component>
         </div>
-        <nav class="sidenav" *ngIf="sidenav">
+        <nav class="sidenav" *ngIf="holderService.sidenav">
             <sidenav-component [menus]="holderService.sideNavMenus"></sidenav-component>
         </nav>
     </div>

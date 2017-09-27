@@ -1,5 +1,5 @@
-import { HolderService } from './../../../../util/holder/holder.service';
-import { ToastyComponent } from './../../../../util/toasty/toasty.component';
+import { HolderService } from './../../../../../util/holder/holder.service';
+import { ToastyComponent } from './../../../../../util/toasty/toasty.component';
 import { CustgroupService } from './custgroup.service';
 import { Component, OnInit } from '@angular/core';
 

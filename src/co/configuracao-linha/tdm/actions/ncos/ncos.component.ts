@@ -1,6 +1,6 @@
-import { HolderService } from './../../../../util/holder/holder.service';
-import { ToastyComponent } from './../../../../util/toasty/toasty.component';
-import { Ncos } from './../../../../viewmodel/cadastro-linha/ncos';
+import { Ncos } from './../../../../../viewmodel/cadastro-linha/ncos';
+import { HolderService } from './../../../../../util/holder/holder.service';
+import { ToastyComponent } from './../../../../../util/toasty/toasty.component';
 import { NcosService } from './ncos.service';
 import { Component, OnInit } from '@angular/core';
 

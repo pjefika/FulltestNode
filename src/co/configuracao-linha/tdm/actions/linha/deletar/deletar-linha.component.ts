@@ -1,9 +1,7 @@
+import { ToastyComponent } from './../../../../../../util/toasty/toasty.component';
+import { HolderService } from './../../../../../../util/holder/holder.service';
+import { CadastroLinha } from './../../../../../../viewmodel/cadastro-linha/cadastro-linha';
 import { LinhaComponent } from './../linha.component';
-import { Len } from './../../../../../viewmodel/cadastro-linha/len';
-import { TemplateComponent } from './../../../../../template/template.component';
-import { ToastyComponent } from './../../../../../util/toasty/toasty.component';
-import { CadastroLinha } from './../../../../../viewmodel/cadastro-linha/cadastro-linha';
-import { HolderService } from './../../../../../util/holder/holder.service';
 import { ListarLinhaService } from './../../../general-services/listar-linha.service';
 import { DeletarLinhaService } from './deletar-linha.service';
 import { Component, OnInit, Input } from '@angular/core';
