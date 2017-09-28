@@ -20,6 +20,7 @@ export class DeletarLinhaComponent implements OnInit {
     private doActionSearching: boolean = false;
     private cadastroLinha: CadastroLinha;
     private nameBtnActionModal: string = "Sim";
+    private delLinhaDisabled: boolean = false;
 
     constructor(
         private deletarLinhaService: DeletarLinhaService,
@@ -28,7 +29,11 @@ export class DeletarLinhaComponent implements OnInit {
         private toastyComponent: ToastyComponent,
         private linhaComponent: LinhaComponent) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        if (this.holderService.cadastro.linha.tipo === "NOT_CREATED") {
+            this.delLinhaDisabled = true;
+        }
+    }
 
     public deletarLinha() {
         this.doActionSearching = true;
