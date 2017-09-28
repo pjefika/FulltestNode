@@ -40,7 +40,7 @@
             </clr-dropdown>
         </div>
     </clr-header>
-    <nav class="subnav" *ngIf="holderService.subnav">
+    <nav class="subnav" *ngIf="holderService.subnav" [clr-nav-level]="1">
         <subnav-component [menus]="subNavMenus"></subnav-component>
     </nav>
     <div class="content-container">
@@ -54,7 +54,7 @@
         <!-- <nav class="sidenav" *ngIf="holderService.sidenav">
             <sidenav-component [menus]="holderService.sideNavMenus"></sidenav-component>
         </nav> -->
-        <clr-vertical-nav *ngIf="holderService.sidenav" [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="false">
+        <clr-vertical-nav *ngIf="holderService.sidenav" [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="false" [clr-nav-level]="2">
             <sidenav-component [menus]="holderService.sideNavMenus"></sidenav-component>
         </clr-vertical-nav>
     </div>
