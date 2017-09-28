@@ -51,8 +51,11 @@
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
             <adm-component></adm-component>
         </div>
-        <nav class="sidenav" *ngIf="holderService.sidenav">
+        <!-- <nav class="sidenav" *ngIf="holderService.sidenav">
             <sidenav-component [menus]="holderService.sideNavMenus"></sidenav-component>
-        </nav>
+        </nav> -->
+        <clr-vertical-nav *ngIf="holderService.sidenav" [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="false">
+            <sidenav-component [menus]="holderService.sideNavMenus"></sidenav-component>
+        </clr-vertical-nav>
     </div>
 </clr-main-container>

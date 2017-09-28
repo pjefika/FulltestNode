@@ -6,18 +6,22 @@ import { LinhaComponent } from './../actions/linha/linha.component';
 export const sideNavConfLinha: SideNav[] = [
     {
         nome: "Informações de linha",
-        component: ConfiguracaoLinhaComponent
+        component: ConfiguracaoLinhaComponent,
+        icon: "view-list"
     },
     {
         nome: "Manobrar",
-        component: ManobrarLinhaComponent
+        component: ManobrarLinhaComponent,
+        icon: "switch"
     },
     {
         nome: "Linha",
-        component: LinhaComponent
+        component: LinhaComponent,
+        icon: "phone-handset"
     },
     {
         nome: "Serviço",
-        component: ServicoLinhaComponent
+        component: ServicoLinhaComponent,
+        icon: "install"
     }
 ]

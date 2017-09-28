@@ -10,9 +10,9 @@ export class UrlService {
     public urlIp = "http://10.40.195.81:8080/";  // Produção e restante dos pjs para o path
     public urlIpParaStealer = "http://10.40.195.81:8080/"; // A stealer que ira ficar aqui // PeleServ
     // IPS: 
-    //  "http://10.40.195.81:8080/";
-    //  "http://10.200.35.67:80/";
-    //  "http://dprcuradm0111:8080/";
+    //  "http://10.40.195.81:8080/"; QA
+    //  "http://10.200.35.67:80/"; Produção
+    //  "http://dprcuradm0111:8080/"; CRM
 
     //Modificar path names
     public pathFulltestAPI = "fulltestAPI/";
