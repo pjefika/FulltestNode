@@ -24,10 +24,13 @@ export class ManobraService {
         private http: Http) { }
 
     getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let _data: { cust: any, executor: string };
+        _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathFulltestAPI + "fulltest/manobra/",
-            _data: cadastro,
+            _data: _data,
             timeout: 1200000
         }
         return this.urlService.request(this.infoResquest)
@@ -77,14 +80,14 @@ export class ManobraService {
                 .map(res => res.json()),
             this.http.post(urlFulltest, JSON.stringify(_data), this.urlService.options)
                 .map(res => res.json())
-        ).map(            
+        ).map(
             data => {
                 data[0].forEach(element => {
                     cadastro.asserts.push(element);
                 });
                 data[1].forEach(element => {
                     cadastro.asserts.push(element);
-                });                
+                });
                 return cadastro as Cadastro;
             }, error => {
                 this.urlService.handleError(error);

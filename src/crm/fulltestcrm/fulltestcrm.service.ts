@@ -13,10 +13,13 @@ export class FulltestCrmService {
         private urlService: UrlService) { }
 
     getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let _data: { cust: any, executor: string };
+        _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathFulltestAPI + "fulltest/corrective/",
-            _data: cadastro,
+            command: this.urlService.pathFulltestAPI + "fulltest/crm/",
+            _data: _data,
             timeout: 1200000
         }
         return this.urlService.request(this.infoResquest)
