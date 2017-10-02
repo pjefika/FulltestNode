@@ -9,6 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class TableAuxGponSimpleComponent implements OnInit {
 
+    private changeAdminState: boolean = false;
+
     @Input() public estadoPorta: EstadoPorta;
 
     constructor() { }
