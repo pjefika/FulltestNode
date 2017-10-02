@@ -1,0 +1,146 @@
+<div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-compact table-vertical">
+                <tbody>
+                    <tr>
+                        <th colspan="2">{{confPorta.vlanBanda.nome}}</th>
+                    </tr>
+                    <tr>
+                        <th>Mensagem:</th>
+                        <td>{{confPorta.vlanBanda.mensagem}}</td>
+                    </tr>
+                    <tr>
+                        <th>Resultado:</th>
+                        <td>
+                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanBanda.resultado"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="!confPorta.vlanBanda.resultado"></clr-icon>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>State:</th>
+                        <td>
+                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanBanda.result.state === 'UP'"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="confPorta.vlanBanda.result.state === 'DOWN'"></clr-icon>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>CVLAN:</th>
+                        <td>{{confPorta.vlanBanda.result.cvlan}}</td>
+                    </tr>
+                    <tr>
+                        <th>SVLAN:</th>
+                        <td>{{confPorta.vlanBanda.result.svlan}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-compact table-vertical">
+                <tbody>
+                    <tr>
+                        <th colspan="2">{{confPorta.vlanVoip.nome}}</th>
+                    </tr>
+                    <tr>
+                        <th>Mensagem:</th>
+                        <td>{{confPorta.vlanVoip.mensagem}}</td>
+                    </tr>
+                    <tr>
+                        <th>Resultado:</th>
+                        <td>
+                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanVoip.resultado"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="!confPorta.vlanVoip.resultado"></clr-icon>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>State:</th>
+                        <td>
+                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanVoip.result.state === 'UP'"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="confPorta.vlanVoip.result.state === 'DOWN'"></clr-icon>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>CVLAN:</th>
+                        <td>{{confPorta.vlanVoip.result.cvlan}}</td>
+                    </tr>
+                    <tr>
+                        <th>SVLAN:</th>
+                        <td>{{confPorta.vlanVoip.result.svlan}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-compact table-vertical">
+                <tbody>
+                    <tr>
+                        <th colspan="2">{{confPorta.vlanVod.nome}}</th>
+                    </tr>
+                    <tr>
+                        <th>Mensagem:</th>
+                        <td>{{confPorta.vlanVod.mensagem}}</td>
+                    </tr>
+                    <tr>
+                        <th>Resultado:</th>
+                        <td>
+                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanVod.resultado"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="!confPorta.vlanVod.resultado"></clr-icon>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>State:</th>
+                        <td>
+                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanVod.result.state === 'UP'"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="confPorta.vlanVod.result.state === 'DOWN'"></clr-icon>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>CVLAN:</th>
+                        <td>{{confPorta.vlanVod.result.cvlan}}</td>
+                    </tr>
+                    <tr>
+                        <th>SVLAN:</th>
+                        <td>{{confPorta.vlanVod.result.svlan}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-compact table-vertical">
+                <tbody>
+                    <tr>
+                        <th colspan="2">{{confPorta.vlanMulticast.nome}}</th>
+                    </tr>
+                    <tr>
+                        <th>Mensagem:</th>
+                        <td>{{confPorta.vlanMulticast.mensagem}}</td>
+                    </tr>
+                    <tr>
+                        <th>Resultado:</th>
+                        <td>
+                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanMulticast.resultado"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="!confPorta.vlanMulticast.resultado"></clr-icon>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>State:</th>
+                        <td>
+                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanMulticast.result.state === 'UP'"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="confPorta.vlanMulticast.result.state === 'DOWN'"></clr-icon>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>CVLAN:</th>
+                        <td>{{confPorta.vlanMulticast.result.cvlan}}</td>
+                    </tr>
+                    <tr>
+                        <th>SVLAN:</th>
+                        <td>{{confPorta.vlanMulticast.result.svlan}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

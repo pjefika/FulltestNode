@@ -1,3 +1,4 @@
+import { ConfPorta } from './../../../viewmodel/confPorta/confPorta';
 import { CadastroLinha } from './../../../viewmodel/cadastro-linha/cadastro-linha';
 import { Util } from './../../util';
 import { ObjectValid } from './../../../viewmodel/fulltest/objectValid';
@@ -17,6 +18,7 @@ export class PopoverComponent implements OnInit {
     @Input() cadastro: Cadastro;
     @Input() objectValid: ObjectValid;
     @Input() cadastroLinha: CadastroLinha;
+    @Input() confPorta: ConfPorta;
 
     constructor(
         public util: Util) { }

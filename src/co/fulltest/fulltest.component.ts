@@ -30,9 +30,7 @@ export class FulltestComponent implements OnInit {
     }
 
     constructor(
-        private fulltestService: FulltestService,
-        private router: Router,
-        private util: Util,
+        private fulltestService: FulltestService,       
         private injector: Injector,
         private toastyComponent: ToastyComponent,
         private holderService: HolderService) {
@@ -41,12 +39,7 @@ export class FulltestComponent implements OnInit {
         this.objectValid = this.injector.get('valid');
     }
 
-    ngOnInit(): void {
-        this.util.isLogado().then((result: boolean) => {
-            if (!result) {
-                this.router.navigate(['./entrar']);
-            }
-        });
+    ngOnInit(): void {       
         //Inicia o fulltest assim que inicializa o componente
         this.realizaFulltest();
     }

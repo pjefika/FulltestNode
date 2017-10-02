@@ -1,3 +1,8 @@
+import { TableAuxSerialComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-serial/table-aux-serial.component';
+import { TableAuxProfileComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-profile/table-aux-profile.component';
+import { TableAuxParametrosComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-parametros/table-aux-parametros.component';
+import { TableAuxLanComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-lan/table-aux-lan.component';
+import { TableAuxGponSimpleComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-simple/table-aux-gpon-simple.component';
 import { ConfiguracaoLinhaImsComponent } from './../co/configuracao-linha/ims/configuracao-linha-ims.component';
 import { ConfiguracaoLinhaTdmComponent } from './../co/configuracao-linha/tdm/configuracao-linha-tdm.component';
 import { DeletarLinhaComponent } from './../co/configuracao-linha/tdm/actions/linha/deletar/deletar-linha.component';
@@ -126,7 +131,12 @@ import { AppComponent } from './app.component';
         ConfiguracoesPortaMetalicoComponent,
         ConfiguracoesPortaGponComponent,
         ConfiguracaoLinhaTdmComponent,
-        ConfiguracaoLinhaImsComponent
+        ConfiguracaoLinhaImsComponent,
+        TableAuxGponSimpleComponent,
+        TableAuxLanComponent,
+        TableAuxParametrosComponent,
+        TableAuxProfileComponent,
+        TableAuxSerialComponent
     ],
     imports: [
         BrowserModule,

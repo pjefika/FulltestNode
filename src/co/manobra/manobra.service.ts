@@ -23,7 +23,7 @@ export class ManobraService {
         private urlService: UrlService,
         private http: Http) { }
 
-    getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
+    public getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { cust: any, executor: string };
         _data = { cust: cadastro, executor: usr.user };
@@ -40,7 +40,7 @@ export class ManobraService {
             .catch(this.handleError);
     }
 
-    getAnalitico(cadastro: Cadastro, motivoSelected: string, executor: string): Promise<Analitico> {
+    public getAnalitico(cadastro: Cadastro, motivoSelected: string, executor: string): Promise<Analitico> {
         let _data: { cust: Cadastro, motivo: string, executor: string }
         _data = { cust: cadastro, motivo: motivoSelected, executor: executor }
         this.infoResquest = {
@@ -56,7 +56,7 @@ export class ManobraService {
             .catch(this.handleError);
     }
 
-    getListaMotivo(): Promise<Motivo[]> {
+    public getListaMotivo(): Promise<Motivo[]> {
         this.infoResquest = {
             rqst: "get",
             command: this.urlService.pathFulltestAPI + "manobra/motivos",
@@ -70,7 +70,7 @@ export class ManobraService {
     }
 
     //Multiple requests
-    getRn(cadastro: Cadastro, ordem: string, ): Observable<Cadastro> {
+    public getRn(cadastro: Cadastro, ordem: string, ): Observable<Cadastro> {
         const urlStealer = this.urlService.urlIp + this.urlService.pathFulltestAPI + "manobra/asserts";
         const urlFulltest = this.urlService.urlIpParaStealer + this.urlService.pathStealerAPI + "manobra/asserts";
         let _data: { cust: Cadastro, workOrderId: string };

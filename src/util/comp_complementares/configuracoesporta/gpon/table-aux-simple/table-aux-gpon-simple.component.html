@@ -1,0 +1,34 @@
+<div>
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="2">{{estadoPorta.nome}}</th>
+            </tr>
+            <tr>
+                <th>Mensagem:</th>
+                <td>{{estadoPorta.mensagem}}</td>
+            </tr>
+            <tr>
+                <th>Resultado:</th>
+                <td>
+                    <clr-icon style="color: green" shape="check" *ngIf="estadoPorta.resultado"></clr-icon>
+                    <clr-icon style="color: red" shape="times" *ngIf="!estadoPorta.resultado"></clr-icon>
+                </td>
+            </tr>
+            <tr>
+                <th>Admin State:</th>
+                <td>
+                    <clr-icon style="color: green" shape="check" *ngIf="estadoPorta.result.adminState"></clr-icon>
+                    <clr-icon style="color: red" shape="times" *ngIf="!estadoPorta.result.adminState"></clr-icon>
+                </td>
+            </tr>
+            <tr>
+                <th>Oper State:</th>
+                <td>
+                    <clr-icon style="color: green" shape="check" *ngIf="estadoPorta.result.operState"></clr-icon>
+                    <clr-icon style="color: red" shape="times" *ngIf="!estadoPorta.result.operState"></clr-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

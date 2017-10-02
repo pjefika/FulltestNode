@@ -1,0 +1,24 @@
+<div>
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="2">{{serial.nome}}</th>
+            </tr>
+            <tr>
+                <th>Mensagem:</th>
+                <td>{{serial.mensagem}}</td>
+            </tr>
+            <tr>
+                <th>Resultado:</th>
+                <td>
+                    <clr-icon style="color: green" shape="check" *ngIf="serial.resultado"></clr-icon>
+                    <clr-icon style="color: red" shape="times" *ngIf="!serial.resultado"></clr-icon>
+                </td>
+            </tr>
+            <!-- <tr>
+                <th>Serial:</th>
+                <td>{{serial.result.serial}}</td>
+            </tr> -->
+        </tbody>
+    </table>
+</div>

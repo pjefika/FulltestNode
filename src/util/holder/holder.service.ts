@@ -1,3 +1,4 @@
+import { ConfPorta } from './../../viewmodel/confPorta/confPorta';
 import { SubNav } from './../../viewmodel/menus/subnav';
 import { SideNav } from './../../viewmodel/menus/sidenav';
 import { Servico } from './../../viewmodel/cadastro-linha/servicos';
@@ -14,6 +15,7 @@ export class HolderService {
     public cadastro: Cadastro;
     public cadastroLinha: CadastroLinha;
     public objectValid: ObjectValid;
+    public confPorta: ConfPorta;
     public eachFulltest: string;
     public liberarSubNav: boolean = false;
     public liberarSideNav: boolean = false;

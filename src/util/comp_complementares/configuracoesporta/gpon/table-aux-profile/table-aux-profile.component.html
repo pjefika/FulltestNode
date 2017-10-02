@@ -1,0 +1,39 @@
+<div>
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="2">{{profile.atual.nome}}</th>
+            </tr>
+            <tr>
+                <th>Mensagem:</th>
+                <td>{{profile.atual.mensagem}}</td>
+            </tr>
+            <tr>
+                <th>Profile Down:</th>
+                <td *ngIf="!changeProfile">
+                    {{profile.atual.result.profileDown}}
+                </td>
+                <td *ngIf="changeProfile">
+                    <div class="select">
+                        <select>
+                            <option *ngFor="let vel of profile.downValues" value="{{vel}}" >{{vel.desc}}</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Profile Up:</th>
+                <td *ngIf="!changeProfile">
+                    {{profile.atual.result.profileUp}}
+                </td>
+                <td *ngIf="changeProfile">
+                    <div class="select">
+                        <select>
+                            <option *ngFor="let vel of profile.downValues" value="{{vel}}" >{{vel.desc}}</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
