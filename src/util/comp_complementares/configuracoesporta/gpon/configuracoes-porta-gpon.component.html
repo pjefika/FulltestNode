@@ -1,21 +1,33 @@
-<h5>GPON</h5>
-<!-- <div class="alert alert-warning">
-    <div class="alert-items">
-        <div class="alert-item static">
-            <div class="alert-icon-wrapper">
-                <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
-            </div>
-            <div class="alert-text">
-                Comandos ainda não foram implementados.
+<div *ngIf="holderService.confPorta">
+
+    <h5>GPON</h5>
+    <!-- <div class="alert alert-warning">
+        <div class="alert-items">
+            <div class="alert-item static">
+                <div class="alert-icon-wrapper">
+                    <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                </div>
+                <div class="alert-text">
+                    Comandos ainda não foram implementados.
+                </div>
             </div>
         </div>
+    </div> -->
+    <div class="row">
+        <div class="col-md-6">
+            <table-aux-gpon-simple-component [estadoPorta]="holderService.confPorta.estadoPorta"></table-aux-gpon-simple-component>
+        </div>
+        <div class="col-md-6">
+            <table-aux-parametros-component [parametros]="holderService.confPorta.parametros"></table-aux-parametros-component>
+        </div>
     </div>
-</div> -->
-
-<div>
-    <table-aux-gpon-simple-component [estadoPorta]="holderService.confPorta.estadoPorta"></table-aux-gpon-simple-component>
-    <table-aux-parametros-component [parametros]="holderService.confPorta.parametros"></table-aux-parametros-component>
-    <table-aux-profile-component [profile]="holderService.confPorta.profile"></table-aux-profile-component>
-    <table-aux-serial-component [serial]="holderService.confPorta.serial"></table-aux-serial-component>
+    <div class="row">
+        <div class="col-md-6">
+            <table-aux-profile-component [profile]="holderService.confPorta.profile"></table-aux-profile-component>
+        </div>
+        <div class="col-md-6">
+            <table-aux-serial-component [serial]="holderService.confPorta.serial"></table-aux-serial-component>
+        </div>
+    </div>
     <table-aux-lan-component [confPorta]="holderService.confPorta"></table-aux-lan-component>
 </div>

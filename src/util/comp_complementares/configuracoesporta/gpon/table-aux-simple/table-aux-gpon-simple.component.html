@@ -17,11 +17,11 @@
             </tr>
             <tr>
                 <th>Admin State:</th>
-                <td *ngIf="changeAdminState">
+                <td *ngIf="!changeAdminState">
                     <clr-icon style="color: green" shape="check" *ngIf="estadoPorta.result.adminState"></clr-icon>
                     <clr-icon style="color: red" shape="times" *ngIf="!estadoPorta.result.adminState"></clr-icon>
                 </td>
-                <td *ngIf="!changeAdminState"> 
+                <td *ngIf="changeAdminState"> 
                     <div class="select">
                         <select>
                             <option value="true">Up</option>

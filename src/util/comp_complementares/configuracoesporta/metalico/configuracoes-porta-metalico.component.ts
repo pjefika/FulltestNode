@@ -1,3 +1,4 @@
+import { HolderService } from './../../../holder/holder.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ConfiguracoesPortaMetalicoComponent implements OnInit {
-    constructor() { }
 
-    ngOnInit() { }
+    constructor(
+        private holderService: HolderService) { }
+
+    ngOnInit() {
+    }
 }

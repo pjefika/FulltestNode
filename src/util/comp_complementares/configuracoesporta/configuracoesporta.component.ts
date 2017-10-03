@@ -38,7 +38,7 @@ export class ConfiguracoesPortaComponent implements OnInit {
             }, error => {
                 this.searchFulltest = false;
                 this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
-            })
+            });
     }
 
     private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {

@@ -240,6 +240,7 @@ export class TemplateComponent implements OnInit {
         this.holderService.liberarSideNav = false;
         this.holderService.alertState = null;
         this.holderService.cadastroLinha = null;
+        this.holderService.confPorta = null;
         this.headerTitle = "" //Reseta titulo
     }
 }
