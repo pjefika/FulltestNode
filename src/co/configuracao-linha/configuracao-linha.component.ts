@@ -24,7 +24,6 @@ export class ConfiguracaoLinhaComponent implements OnInit {
 
     ngOnInit() {
 
-
     }
 
 }
