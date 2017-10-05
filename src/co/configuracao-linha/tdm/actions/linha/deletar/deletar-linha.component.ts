@@ -41,6 +41,7 @@ export class DeletarLinhaComponent implements OnInit {
         this.deletarLinhaService.setDeletarLinha(this.holderService.cadastro.linha, this.holderService.cadastroLinha)
             .then(data => {
                 this.cadastroLinha = data;
+                this.holderService.cadastroLinha = data;
                 if (this.cadastroLinha.status == "NOT_CREATED") {
                     this.callToasty("Linha Deletada com sucesso.", "Por favor realize a configuração da linha!", "success", 5000);
                     this.abrirModal = false;
