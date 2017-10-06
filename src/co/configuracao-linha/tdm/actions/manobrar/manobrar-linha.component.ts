@@ -70,7 +70,8 @@ export class ManobrarLinhaComponent implements OnInit {
         this.listarLinhaService.getLinha(this.instanciaBinada)
             .then(data => {
                 this.cadInstanciaBinada = data;
-                this.getLensLivres();
+                this.getConfBinada();
+                this.getLensLivres();                
             }, error => {
                 this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                 this.consultarLenLoadingButton = false;
@@ -79,6 +80,15 @@ export class ManobrarLinhaComponent implements OnInit {
             });
     }
 
+    public getConfBinada() {
+        this.configuracaoLinhaService.getInformacoes(this.cadInstanciaBinada)
+            .then(data => {
+                this.confBinada = data;
+            }, error => {
+                let msgerror = error.mError + " / " + "Houve algum problema ao buscar informações da instância binada";
+                this.callToasty("Ops, ocorreu um erro.", msgerror, "error", 5000);
+            });
+    }
 
     public getLensLivres() {
         this.listarLensLivresService.getLensLivres(this.cadInstanciaBinada)

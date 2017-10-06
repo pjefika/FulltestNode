@@ -11,7 +11,7 @@ import { Len } from './../../../../../../viewmodel/cadastro-linha/len';
 import { ListarLensLivresService } from './../../../general-services/listar-lens-livres.service';
 import { ListarLinhaService } from './../../../general-services/listar-linha.service';
 import { CriarLinhaService } from './criar-linha.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 
 @Component({
@@ -21,7 +21,7 @@ import { Component, OnInit, Input } from '@angular/core';
     providers: [CriarLinhaService, ListarLinhaService, ListarLensLivresService, ConfiguracaoLinhaService]
 })
 
-export class CriarLinhaComponent implements OnInit {
+export class CriarLinhaComponent implements OnInit, OnChanges {
 
     @Input() ativo: boolean = false;
 
@@ -57,7 +57,20 @@ export class CriarLinhaComponent implements OnInit {
         public holderService: HolderService,
         private holderCompsService: HolderCompsService) { }
 
-    ngOnInit() {
+    public ngOnInit() {
+        // if (this.holderService.cadastroLinha.status === "CREATED") {
+        //     this.callAlert("Linha já está criada.", "alert-warning");
+        //     this.consultarLenDisabledButton = true;
+        // }
+    }
+
+    public ngOnChanges(changes: SimpleChanges) {
+        if (changes.ativo.currentValue != changes.ativo.previousValue && changes.ativo.currentValue) {
+            this.seeIfChange();
+        }
+    }
+
+    private seeIfChange() {
         if (this.holderService.cadastroLinha.status === "CREATED") {
             this.callAlert("Linha já está criada.", "alert-warning");
             this.consultarLenDisabledButton = true;
@@ -72,12 +85,23 @@ export class CriarLinhaComponent implements OnInit {
         this.listarLinhaService.getLinha(this.instanciaBinada)
             .then(data => {
                 this.cadInstanciaBinada = data;
+                this.getConfBinada();
                 this.getLensLivres();
             }, error => {
                 this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                 this.consultarLenLoadingButton = false;
                 this.consultarLenDisabledButton = false;
                 this.consultarLenNameButton = "Consultar Len's"
+            });
+    }
+
+    public getConfBinada() {
+        this.configuracaoLinhaService.getInformacoes(this.cadInstanciaBinada)
+            .then(data => {
+                this.confBinada = data;
+            }, error => {
+                let msgerror = error.mError + " / " + "Houve algum problema ao buscar informações da instância binada";
+                this.callToasty("Ops, ocorreu um erro.", msgerror, "error", 5000);
             });
     }
 

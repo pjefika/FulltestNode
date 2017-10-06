@@ -1,6 +1,21 @@
 <div>
     <h3 class="titulo-da-pagina">Manobrar Linha</h3>
     <alert-component [msg]="alertMsg" [ativo]="alertAtivo" [closeable]="alertCloseable"></alert-component>
+    <div *ngIf="confBinada">
+        <table class="table table-vertical table-compact">
+            <tr>
+                <th colspan="2">Informações linha binada</th>
+            </tr>
+            <tr>
+                <td>Len</td>
+                <td>{{confBinada.len.len}}</td>
+            </tr>
+            <tr *ngIf="cadInstanciaBinada">
+                <td>Central</td>
+                <td>{{cadInstanciaBinada.central}}</td>
+            </tr>
+        </table>
+    </div>
     <div class="row" *ngIf="showManobrar">
         <div class="col-md-6">
             <label>Instância Binada: </label>

@@ -4,7 +4,7 @@ import { CadastroLinha } from './../../../../../../viewmodel/cadastro-linha/cada
 import { LinhaComponent } from './../linha.component';
 import { ListarLinhaService } from './../../../general-services/listar-linha.service';
 import { DeletarLinhaService } from './deletar-linha.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
     selector: 'deletar-linha-component',
@@ -13,7 +13,7 @@ import { Component, OnInit, Input } from '@angular/core';
     providers: [DeletarLinhaService, ListarLinhaService]
 })
 
-export class DeletarLinhaComponent implements OnInit {
+export class DeletarLinhaComponent implements OnInit, OnChanges {
 
     @Input() ativo: boolean = false;
     private abrirModal: boolean = false;
@@ -29,7 +29,19 @@ export class DeletarLinhaComponent implements OnInit {
         private toastyComponent: ToastyComponent,
         private linhaComponent: LinhaComponent) { }
 
-    ngOnInit() {
+    public ngOnInit() {
+        // if (this.holderService.cadastro.linha.tipo === "NOT_CREATED") {
+        //     this.delLinhaDisabled = true;
+        // }
+    }
+
+    public ngOnChanges(changes: SimpleChanges) {
+        if (changes.ativo.currentValue != changes.ativo.previousValue && changes.ativo.currentValue) {
+            this.seeIfChange();
+        }
+    }
+
+    private seeIfChange() {
         if (this.holderService.cadastro.linha.tipo === "NOT_CREATED") {
             this.delLinhaDisabled = true;
         }
@@ -41,7 +53,7 @@ export class DeletarLinhaComponent implements OnInit {
         this.deletarLinhaService.setDeletarLinha(this.holderService.cadastro.linha, this.holderService.cadastroLinha)
             .then(data => {
                 this.cadastroLinha = data;
-                this.holderService.cadastroLinha = data;
+                this.holderService.cadastroLinha = this.cadastroLinha;
                 if (this.cadastroLinha.status == "NOT_CREATED") {
                     this.callToasty("Linha Deletada com sucesso.", "Por favor realize a configuração da linha!", "success", 5000);
                     this.abrirModal = false;
