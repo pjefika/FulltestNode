@@ -21,7 +21,7 @@ export class ConfiguracaoLinhaService {
             rqst: "post",
             command: this.urlService.pathDmsAPI + "dms/consultar",
             _data: _data,
-            timeout: 200000
+            timeout: 50000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {
