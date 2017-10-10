@@ -167,7 +167,7 @@ export class ManobraComponent implements OnInit {
                 let msg: string;
                 let type: string;
                 if (element.value) {
-                    msg = "Rede confiável. ";
+                    msg = "Rede confiável.";
                     type = "alert-info";
                 } else {
                     msg = "Rede não confiável, necessária revisão.";

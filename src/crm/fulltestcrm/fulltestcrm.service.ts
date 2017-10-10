@@ -20,7 +20,7 @@ export class FulltestCrmService {
             rqst: "post",
             command: this.urlService.pathFulltestAPI + "fulltest/crm/", // crm -- corrective
             _data: _data,
-            timeout: 1200000
+            timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

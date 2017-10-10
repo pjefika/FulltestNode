@@ -17,15 +17,11 @@
             </tr>
             <tr>
                 <th>Admin State:</th>
-                <td *ngIf="!changeAdminState">
-                    <clr-icon style="color: green" shape="check" *ngIf="estadoPorta.result.adminState"></clr-icon>
-                    <clr-icon style="color: red" shape="times" *ngIf="!estadoPorta.result.adminState"></clr-icon>
-                </td>
-                <td *ngIf="changeAdminState"> 
+                <td>
                     <div class="select">
-                        <select>
-                            <option value="true">Up</option>
-                            <option value="false">Down</option>
+                        <select [(ngModel)]="estadoPorta.result.adminState">
+                            <option [ngValue]="true">Ativar</option>
+                            <option [ngValue]="false">Inativar</option>
                         </select>
                     </div>
                 </td>
@@ -35,6 +31,11 @@
                 <td>
                     <clr-icon style="color: green" shape="check" *ngIf="estadoPorta.result.operState"></clr-icon>
                     <clr-icon style="color: red" shape="times" *ngIf="!estadoPorta.result.operState"></clr-icon>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-primary btn-sm btn-block" [disabled]="btnChangeAdminStateDisable" (click)="setAdminState()">{{btnChangeAdminStateName}}</button>
                 </td>
             </tr>
         </tbody>

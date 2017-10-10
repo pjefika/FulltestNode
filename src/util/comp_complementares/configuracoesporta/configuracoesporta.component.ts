@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class ConfiguracoesPortaComponent implements OnInit {
 
-    private searchFulltest: boolean = false;
+    private searchConfPorta: boolean = false;
     private searchWhat: string;
     public confPorta: ConfPorta;
 
@@ -29,14 +29,15 @@ export class ConfiguracoesPortaComponent implements OnInit {
     }
 
     public getConfigPorta() {
-        this.searchFulltest = true;
+        this.holderService.confPorta = null;
+        this.searchConfPorta = true;
         this.searchWhat = "Buscando informações";
         this.configuracoesPortaService.getConfigPorta(this.holderService.cadastro)
             .then(data => {
                 this.holderService.confPorta = data;
-                this.searchFulltest = false;
+                this.searchConfPorta = false;
             }, error => {
-                this.searchFulltest = false;
+                this.searchConfPorta = false;
                 this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
             });
     }

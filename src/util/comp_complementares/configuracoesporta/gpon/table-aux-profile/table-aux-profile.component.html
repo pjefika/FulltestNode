@@ -9,29 +9,35 @@
                 <td>{{profile.atual.mensagem}}</td>
             </tr>
             <tr>
-                <th>Profile Down:</th>
-                <td *ngIf="!changeProfile">
-                    {{profile.atual.result.profileDown}}
+                <th>Resultado:</th>
+                <td>
+                    <clr-icon style="color: green" shape="check" *ngIf="profile.atual.resultado"></clr-icon>
+                    <clr-icon style="color: red" shape="times" *ngIf="!profile.atual.resultado"></clr-icon>
                 </td>
-                <td *ngIf="changeProfile">
+            </tr>
+            <tr>
+                <th>Profile Down:</th>
+                <td>
                     <div class="select">
-                        <select>
-                            <option *ngFor="let vel of profile.downValues" value="{{vel}}" >{{vel.desc}}</option>
+                        <select [(ngModel)]="profile.atual.result.down">
+                            <option *ngFor="let vel of profile.downValues" [ngValue]="vel.vel">{{vel.desc}}</option>
                         </select>
                     </div>
                 </td>
             </tr>
             <tr>
                 <th>Profile Up:</th>
-                <td *ngIf="!changeProfile">
-                    {{profile.atual.result.profileUp}}
-                </td>
-                <td *ngIf="changeProfile">
+                <td>
                     <div class="select">
-                        <select>
-                            <option *ngFor="let vel of profile.downValues" value="{{vel}}" >{{vel.desc}}</option>
+                        <select [(ngModel)]="profile.atual.result.up">
+                            <option *ngFor="let vel of profile.upValues" [ngValue]="vel.vel">{{vel.desc}}</option>
                         </select>
                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetProfileDisable" (click)="setProfile()">{{btnSetProfileName}}</button>
                 </td>
             </tr>
         </tbody>
