@@ -58,16 +58,24 @@ export class TableAuxSerialComponent implements OnInit {
             this.tableAuxSerialService
                 .setOntToOlt(this.holderService.cadastro, this.serialSelected)
                 .then(data => {
-                    this.serial.resultado = data;
-                    this.btnSetOntToOltDisable = false;
-                    this.btnSetOntToOltName = "Associar Ont";
-                    this.serial.mensagem = this.serialSelected;
-                    this.callToasty("Sucesso", "Comando realizado com sucesso.", "success", 5000);
+                    if (data.resultado) {
+                        this.serial.resultado = data;
+                        this.btnSetOntToOltDisable = false;
+                        this.btnSetOntToOltName = "Associar Ont";
+                        this.serial.mensagem = this.serialSelected;
+                        this.callToasty("Sucesso", "Comando realizado com sucesso.", "success", 5000);
+                    } else {
+                        this.btnSetOntToOltDisable = false;
+                        this.btnSetOntToOltName = "Associar Ont";
+                        this.callToasty("Ops, ocorreu um erro.", "Não foi possivel associar Ont, resultado voltou como Negativo.", "error", 5000);
+                    }
                 }, error => {
                     this.btnSetOntToOltDisable = false;
                     this.btnSetOntToOltName = "Associar Ont";
                     this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                 });
+        } else {
+            this.callToasty("Ops, ocorreu um erro.", "Por favor selecione serial.", "error", 5000);
         }
     }
 
