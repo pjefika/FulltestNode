@@ -31,7 +31,7 @@ export class ManobraService {
             rqst: "post",
             command: this.urlService.pathFulltestAPI + "fulltest/manobra/",
             _data: _data,
-            timeout: 1200000
+            timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {
@@ -47,7 +47,7 @@ export class ManobraService {
             rqst: "post",
             command: this.urlService.pathFulltestAPI + "manobra/analitico",
             _data: _data,
-            timeout: 1200000
+            timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {
@@ -60,7 +60,7 @@ export class ManobraService {
         this.infoResquest = {
             rqst: "get",
             command: this.urlService.pathFulltestAPI + "manobra/motivos",
-            timeout: 1200000
+            timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {
@@ -91,7 +91,8 @@ export class ManobraService {
                 return cadastro as Cadastro;
             }, error => {
                 this.urlService.handleError(error);
-            });
+            })
+            .timeout(120000);
     }
 
     private handleError(error: any): Promise<any> {

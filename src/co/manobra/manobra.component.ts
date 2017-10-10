@@ -163,7 +163,7 @@ export class ManobraComponent implements OnInit {
 
     public subAlertMessage() {
         this.holderService.cadastro.asserts.forEach(element => {
-            if (element.asserts === "REDE_CONFIAVEL") {
+            if (element.asserts === "REDE_CONFIAVEL" && this.analitico.manobrar && this.analitico.conclusao.motivo.motivo != "Trocar Modem") {
                 let msg: string;
                 let type: string;
                 if (element.value) {
