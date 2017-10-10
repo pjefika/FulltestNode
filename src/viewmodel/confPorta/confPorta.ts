@@ -1,5 +1,5 @@
+import { SerialReturn } from './return-serial/serial-return';
 import { Parametros } from './parametros';
-import { SerialDisponivel } from './serialDisponivel';
 import { Serial } from './serial';
 import { Profile } from './profiles';
 import { VlanMulticast } from './vlanMulticast';
@@ -15,6 +15,6 @@ export class ConfPorta {
     vlanMulticast: VlanMulticast;
     profile: Profile;
     serial: Serial;
-    serialDisp: SerialDisponivel[];
+    serialDisp: SerialReturn[];
     parametros: Parametros;
 }

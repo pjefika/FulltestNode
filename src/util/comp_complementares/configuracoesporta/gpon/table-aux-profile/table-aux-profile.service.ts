@@ -14,8 +14,8 @@ export class TableAuxProfileService {
 
     public setProfile(cadastro: Cadastro, resultProfile: ResultProfile) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
-        let _data: { cust: any, executor: string, resultProfile: ResultProfile };
-        _data = { cust: cadastro, executor: usr.user, resultProfile: resultProfile };
+        let _data: { cust: any, executor: string, profile: ResultProfile };
+        _data = { cust: cadastro, executor: usr.user, profile: resultProfile };
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathFulltestAPI + "configPorta/setProfile",
@@ -28,7 +28,7 @@ export class TableAuxProfileService {
             })
             .catch(this.handleError);
     }
-    
+
     private handleError(error: any): Promise<any> {
         return Promise.reject(error);
     }

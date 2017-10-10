@@ -15,10 +15,24 @@
                     <clr-icon style="color: red" shape="times" *ngIf="!serial.resultado"></clr-icon>
                 </td>
             </tr>
-            <!-- <tr>
-                <th>Serial:</th>
-                <td>{{serial.result.serial}}</td>
-            </tr> -->
+            <tr *ngIf="!serial.resultado && serialDisp">
+                <th>Lista serial's</th>
+                <td>
+                    <div class="select">
+                        <select [(ngModel)]="serialSelected">
+                            <option *ngFor="let serial of serialDisp" [ngValue]="serial.serial" [disabled]="serial.slot != holderService.cadastro.rede.slot || serial.porta != holderService.cadastro.rede.porta">{{serial.serial + " Slot:" + serial.slot + " Porta:" + serial.porta}}</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" *ngIf="serial.resultado">
+                    <button class="btn btn-primary btn-sm btn-block" [disabled]="btnUnsetOntFromOltDisable" (click)="unsetOntFromOlt()">{{btnUnsetOntFromOltName}}</button>
+                </td>
+                <td colspan="2" *ngIf="!serial.resultado">
+                    <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetOntToOltDisable" (click)="setOntToOlt()">{{btnSetOntToOltName}}</button>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
