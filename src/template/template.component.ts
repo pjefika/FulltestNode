@@ -63,6 +63,8 @@ export class TemplateComponent implements OnInit {
     public headerTitle: string; // Titulo para a pagina se precisar...
     public nivelmaiorquedez: boolean = false;
 
+    private serarching: boolean = false;
+
     constructor(
         private router: Router,
         private util: Util,
@@ -110,6 +112,8 @@ export class TemplateComponent implements OnInit {
     * Ação para busca da instância
     **/
     public busca() {
+        // Enquanto usuário apertar o enter ficará buscando e encavalando as consultas...
+        // utilizar -> serarching <- na holder para bloquear as requisições... 
         this.holderReset();
         let usr = JSON.parse(sessionStorage.getItem('user'));
         if (usr.nv === 1 || this.holderService.eachFulltest === "CRM") {

@@ -32,6 +32,11 @@
                         <th>SVLAN:</th>
                         <td>{{confPorta.vlanBanda.result.svlan}}</td>
                     </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanBandaDisable" (click)="setVlanBanda()">{{btnSetVlanBandaName}}</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -66,6 +71,11 @@
                     <tr>
                         <th>SVLAN:</th>
                         <td>{{confPorta.vlanVoip.result.svlan}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanVoipDisable" (click)="setVlanVoip()">{{btnSetVlanVoipName}}</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -104,6 +114,11 @@
                         <th>SVLAN:</th>
                         <td>{{confPorta.vlanVod.result.svlan}}</td>
                     </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanVodDisable" (click)="setVlanVod()">{{btnSetVlanVodName}}</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -138,6 +153,11 @@
                     <tr>
                         <th>SVLAN:</th>
                         <td>{{confPorta.vlanMulticast.result.svlan}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanMulticastDisable" (click)="setVlanMulticast()">{{btnSetVlanMulticastName}}</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
