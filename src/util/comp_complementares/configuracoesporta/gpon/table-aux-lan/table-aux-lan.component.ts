@@ -93,14 +93,13 @@ export class TableAuxLanComponent implements OnInit {
             .then(data => {
                 this.confPorta.vlanBanda = data;
                 this.btnSetVlanVoipName = "Configurar Vlan Voip";
-                this.btnSetVlanVoipDisable = true;
+                this.btnSetVlanVoipDisable = false;
                 this.callToasty("Sucesso", "Comando realizado com sucesso.", "success", 5000);
             }, error => {
                 this.btnSetVlanVoipName = "Configurar Vlan Voip";
-                this.btnSetVlanVoipDisable = true;
+                this.btnSetVlanVoipDisable = false;
                 this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
             });
-
     }
 
     private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {

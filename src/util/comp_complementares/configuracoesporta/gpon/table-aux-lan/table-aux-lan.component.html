@@ -32,7 +32,7 @@
                         <th>SVLAN:</th>
                         <td>{{confPorta.vlanBanda.result.svlan}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="!confPorta.vlanBanda.resultado">
                         <td colspan="2">
                             <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanBandaDisable" (click)="setVlanBanda()">{{btnSetVlanBandaName}}</button>
                         </td>
@@ -72,7 +72,7 @@
                         <th>SVLAN:</th>
                         <td>{{confPorta.vlanVoip.result.svlan}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="!confPorta.vlanVoip.resultado">
                         <td colspan="2">
                             <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanVoipDisable" (click)="setVlanVoip()">{{btnSetVlanVoipName}}</button>
                         </td>
@@ -114,7 +114,7 @@
                         <th>SVLAN:</th>
                         <td>{{confPorta.vlanVod.result.svlan}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="!confPorta.vlanVod.resultado">
                         <td colspan="2">
                             <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanVodDisable" (click)="setVlanVod()">{{btnSetVlanVodName}}</button>
                         </td>
@@ -154,7 +154,7 @@
                         <th>SVLAN:</th>
                         <td>{{confPorta.vlanMulticast.result.svlan}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="!confPorta.vlanMulticast.resultado">
                         <td colspan="2">
                             <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanMulticastDisable" (click)="setVlanMulticast()">{{btnSetVlanMulticastName}}</button>
                         </td>
