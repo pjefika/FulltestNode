@@ -1,7 +1,9 @@
 <h3 class="titulo-da-pagina">Configurações de Porta</h3>
 <div>
     <loading-component [searching]="searchConfPorta" [searchWhat]="searchWhat"></loading-component>
-    <configuracoes-porta-metalico-component *ngIf="holderService.cadastro.rede.tipo == 'METALICA'"></configuracoes-porta-metalico-component>
-    <configuracoes-porta-gpon-component *ngIf="holderService.cadastro.rede.tipo == 'GPON'"></configuracoes-porta-gpon-component>
-    <button *ngIf="!searchConfPorta" class="btn btn-primary btn-block" (click)="getConfigPorta()">Buscar Configurações de Porta</button>
+    <div *ngIf="!searchConfPorta">
+        <configuracoes-porta-metalico-component *ngIf="holderService.cadastro.rede.tipo == 'METALICA'"></configuracoes-porta-metalico-component>
+        <configuracoes-porta-gpon-component *ngIf="holderService.cadastro.rede.tipo == 'GPON'"></configuracoes-porta-gpon-component>
+        <button *ngIf="!searchConfPorta" class="btn btn-primary btn-block" (click)="getConfigPorta()">Buscar Configurações de Porta</button>
+    </div>
 </div>
