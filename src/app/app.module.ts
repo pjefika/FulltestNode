@@ -1,3 +1,4 @@
+import { ErrorLogComponent } from './../util/error-log/error-log.component';
 import { TableAuxSerialComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-serial/table-aux-serial.component';
 import { TableAuxProfileComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-profile/table-aux-profile.component';
 import { TableAuxParametrosComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-parametros/table-aux-parametros.component';
@@ -136,7 +137,8 @@ import { AppComponent } from './app.component';
         TableAuxLanComponent,
         TableAuxParametrosComponent,
         TableAuxProfileComponent,
-        TableAuxSerialComponent
+        TableAuxSerialComponent,
+        ErrorLogComponent
     ],
     imports: [
         BrowserModule,

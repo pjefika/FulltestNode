@@ -1,3 +1,4 @@
+import { HolderService } from './../holder/holder.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty';
 
@@ -16,9 +17,12 @@ export class ToastyComponent implements OnInit {
         timeout?: number;
     }
 
-    constructor(private toastyService: ToastyService, private toastyConfig: ToastyConfig) {
+    constructor(
+        private toastyService: ToastyService,
+        private toastyConfig: ToastyConfig,
+        public holderService: HolderService) {
         this.toastyConfig.position = "top-right";
-     }
+    }
 
     ngOnInit() { }
 
@@ -56,6 +60,16 @@ export class ToastyComponent implements OnInit {
             case 'warning':
                 this.toastyService.warning(toastOptions);
                 break;
+        }
+
+        this.appendErrorsMessages(this.toastyInfo.msg, this.toastyInfo.theme);
+    }
+
+    private appendErrorsMessages(msg: string, theme: string) {        
+        if (!this.holderService.oldToastyMessages) {
+            this.holderService.oldToastyMessages = [{ msg: msg, type: theme }]
+        } else {
+            this.holderService.oldToastyMessages.push({ msg: msg, type: theme });
         }
     }
 }

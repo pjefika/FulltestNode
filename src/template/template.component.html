@@ -19,7 +19,7 @@
             </a> -->
         </div>
         <div class="search" *ngIf="buscaCadastro">
-            <label for="search_input" for="search_input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-lg tooltip-bottom-right">                
+            <label for="search_input" for="search_input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-lg tooltip-bottom-right">
                 <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..." [(ngModel)]="instancia" (keyup.enter)="busca()">
                 <span class="tooltip-content">Após inserir a instância pressione "Enter"</span>
             </label>
@@ -34,8 +34,9 @@
                     <clr-icon shape="caret down"></clr-icon>
                 </button>
                 <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-                    <a clrDropdownItem (click)="sair()">Sair</a>
                     <a clrDropdownItem (click)="holderService.modalAdm = true;" *ngIf="nivelmaiorquedez">Administração</a>
+                    <a clrDropdownItem (click)="holderService.modalLogError = true;">Log de Ações</a>
+                    <a clrDropdownItem (click)="sair()">Sair</a>
                 </clr-dropdown-menu>
             </clr-dropdown>
         </div>
@@ -49,6 +50,7 @@
             <holder-router-component [component]="holderCompsService.component" [input]="holderCompsService.input"></holder-router-component>
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
             <adm-component></adm-component>
+            <error-log-component></error-log-component>
         </div>
         <!-- <nav class="sidenav" *ngIf="holderService.sidenav">
             <sidenav-component [menus]="holderService.sideNavMenus"></sidenav-component>
