@@ -10,7 +10,7 @@ import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty
 
 export class ToastyComponent implements OnInit {
 
-    @Input() toastyInfo: {
+    @Input() public toastyInfo: {
         titulo: string;
         msg: string;
         theme: string;
@@ -65,11 +65,13 @@ export class ToastyComponent implements OnInit {
         this.appendErrorsMessages(this.toastyInfo.msg, this.toastyInfo.theme);
     }
 
-    private appendErrorsMessages(msg: string, theme: string) {        
+    private appendErrorsMessages(msg: string, theme: string) {
+        let now: number = Date.now();
+
         if (!this.holderService.oldToastyMessages) {
-            this.holderService.oldToastyMessages = [{ msg: msg, type: theme }]
+            this.holderService.oldToastyMessages = [{ msg: msg, type: theme, time: now }]
         } else {
-            this.holderService.oldToastyMessages.push({ msg: msg, type: theme });
+            this.holderService.oldToastyMessages.push({ msg: msg, type: theme, time: now });
         }
     }
 }

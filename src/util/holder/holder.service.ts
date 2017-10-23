@@ -44,7 +44,7 @@ export class HolderService {
     public modalAdm: boolean = false;
 
     public modalLogError: boolean = false;
-    public oldToastyMessages: [{ msg: string; type: string; }];
+    public oldToastyMessages: [{ msg: string; type: string; time: number }];
 
     public subnav: boolean = false;
     public subNavMenus: SubNav[];

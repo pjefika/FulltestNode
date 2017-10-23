@@ -6,10 +6,12 @@
 
             <clr-dg-column>Mensagem</clr-dg-column>
             <clr-dg-column>Tipo</clr-dg-column>
+            <clr-dg-column>Quando</clr-dg-column>
 
             <clr-dg-row *clrDgItems="let msgs of holderService.oldToastyMessages">
                 <clr-dg-cell>{{msgs.msg}}</clr-dg-cell>
                 <clr-dg-cell>{{msgs.type}}</clr-dg-cell>
+                <clr-dg-cell>{{msgs.time | amLocal | amDateFormat: 'DD/MM/YYYY HH:mm:ss'}}</clr-dg-cell>
             </clr-dg-row>
 
             <clr-dg-footer>
