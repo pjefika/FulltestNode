@@ -31,6 +31,10 @@ export class CadastroComponent implements OnInit {
         theme: string;
     }
 
+    private alertDOneAtivo: boolean = false;
+    private alertDOneType: string;
+    private alertDOneMsg: string;
+
     constructor(
         private cadastroService: CadastroService,
         private router: Router,
@@ -56,7 +60,7 @@ export class CadastroComponent implements OnInit {
         }
     }
 
-    getCadastro(): void {
+    public getCadastro(): void {
         this.searching = true;
         this.cadastroService
             .getCadastro(this.instancia)
@@ -65,6 +69,20 @@ export class CadastroComponent implements OnInit {
                 this.searching = false;
                 this.holderService.cadastro = this.cadastro;
                 this.holderService.liberarSubNav = true;
+                if (!this.cadastro.rede.tipo) {
+                    this.cadastroService
+                        .getCadastroDOne(this.instancia)
+                        .then(data => {
+                            this.cadastro.rede = data.rede;
+                            this.alertDOneAtivo = true;
+                            this.alertDOneType = "alert-info";
+                            this.alertDOneMsg = "Atenção cadastro carregado da base do dia anterior por favor realize a validação.";
+                        }, error => {
+                            this.alertDOneAtivo = true;
+                            this.alertDOneType = "alert-danger";
+                            this.alertDOneMsg = "Atenção não existe informações de cadastro em nossas bases.";
+                        });
+                }
             }, error => {
                 this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);

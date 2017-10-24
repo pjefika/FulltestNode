@@ -1,3 +1,4 @@
+import { Rede } from './../../viewmodel/cadastro/rede';
 import { InfoRequest } from './../../viewmodel/url/infos-url';
 import { UrlService } from './../../util/url-service/url.service';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
@@ -14,14 +15,28 @@ export class CadastroService {
     constructor(
         private urlService: UrlService) { }
 
-    getCadastro(instancia: string): Promise<Cadastro> {
+    public getCadastro(instancia: string): Promise<Cadastro> {
         this.infoResquest = {
             rqst: "get",
             command: this.urlService.pathStealerAPI + "oss/",
             _data: instancia,
             otherUrl: this.urlService.urlIpParaStealer,
             timeout: 60000
-        }
+        };
+        return this.urlService.request(this.infoResquest)
+            .then(response => {
+                return response as Cadastro
+            })
+            .catch(this.handleError);
+    }
+
+    public getCadastroDOne(instancia: string) {
+             this.infoResquest = {
+            rqst: "get",
+            command: this.urlService.pathNetworkInventory + "networkInventory/",
+            _data: instancia,
+            timeout: 10000
+        };
         return this.urlService.request(this.infoResquest)
             .then(response => {
                 return response as Cadastro

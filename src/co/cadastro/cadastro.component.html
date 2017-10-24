@@ -2,8 +2,8 @@
     <!--Informações do cadastro-->
     <div *ngIf="cadastro">
         <h3 class="titulo-da-pagina">Informações do Cadastro</h3>
-        <div class="row flex-items-xs-between">
-            <div class="col-xs-6">
+        <div class="row">
+            <div class="col-md-6">
                 <table class="table table-compact table-vertical">
                     <tbody>
                         <tr>
@@ -68,7 +68,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-xs-6">
+            <div class="col-md-6">
                 <table class="table table-compact table-vertical">
                     <tbody>
                         <tr>
@@ -98,7 +98,7 @@
                             <th>Endereço Sequencial da Porta:</th>
                             <td>{{cadastro.rede.sequencial}}</td>
                         </tr>
-                        <tr>
+                        <tr *ngIf="cadastro.rede.logica != null">
                             <th>Porta Lógica:</th>
                             <td>{{cadastro.rede.logica}}</td>
                         </tr>
@@ -120,9 +120,16 @@
                         </tr>
                     </tbody>
                 </table>
-                <cadastro-wizard-component [cadastro]="cadastro"></cadastro-wizard-component>
+                <clr-alert [clrAlertType]="alertDOneType" *ngIf="alertDOneAtivo" [clrAlertClosable]="false">
+                    <div class="alert-item">
+                        <span class="alert-text">
+                            {{alertDOneMsg}}
+                        </span>
+                    </div>
+                </clr-alert>
             </div>
         </div>
+        <cadastro-wizard-component [cadastro]="cadastro"></cadastro-wizard-component>
     </div>
     <loading-component [searching]="searching" [searchWhat]="'Buscando Cadastro...'"></loading-component>
 </div>

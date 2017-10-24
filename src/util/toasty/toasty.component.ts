@@ -24,9 +24,9 @@ export class ToastyComponent implements OnInit {
         this.toastyConfig.position = "top-right";
     }
 
-    ngOnInit() { }
+    public ngOnInit() { }
 
-    addToasty() {
+    public addToasty() {
         let toastOptions: ToastOptions = {
             title: this.toastyInfo.titulo,
             msg: this.toastyInfo.msg,
