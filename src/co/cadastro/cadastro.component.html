@@ -69,7 +69,8 @@
                 </table>
             </div>
             <div class="col-md-6">
-                <table class="table table-compact table-vertical">
+                <loading-component [searching]="searchingRede" [searchWhat]="'Buscando Rede'"></loading-component>
+                <table class="table table-compact table-vertical" *ngIf="!searchingRede">
                     <tbody>
                         <tr>
                             <th colspan="2">Informações de Rede</th>

@@ -35,6 +35,8 @@ export class CadastroComponent implements OnInit {
     private alertDOneType: string;
     private alertDOneMsg: string;
 
+    private searchingRede: boolean = false;   
+    
     constructor(
         private cadastroService: CadastroService,
         private router: Router,
@@ -70,17 +72,20 @@ export class CadastroComponent implements OnInit {
                 this.holderService.cadastro = this.cadastro;
                 this.holderService.liberarSubNav = true;
                 if (!this.cadastro.rede.tipo) {
+                    this.searchingRede = true;
                     this.cadastroService
                         .getCadastroDOne(this.instancia)
                         .then(data => {
                             this.cadastro.rede = data.rede;
                             this.alertDOneAtivo = true;
                             this.alertDOneType = "alert-info";
-                            this.alertDOneMsg = "Atenção cadastro carregado da base do dia anterior por favor realize a validação.";
+                            this.alertDOneMsg = "Atenção cadastro carregado da base do dia anterior.";
+                            this.searchingRede = false;
                         }, error => {
                             this.alertDOneAtivo = true;
                             this.alertDOneType = "alert-danger";
                             this.alertDOneMsg = "Atenção não existe informações de cadastro em nossas bases.";
+                            this.searchingRede = false;
                         });
                 }
             }, error => {
