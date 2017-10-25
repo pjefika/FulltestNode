@@ -99,7 +99,7 @@
                             <th>Endereço Sequencial da Porta:</th>
                             <td>{{cadastro.rede.sequencial}}</td>
                         </tr>
-                        <tr *ngIf="cadastro.rede.logica != null">
+                        <tr *ngIf="cadastro.rede.tipo === 'GPON'">
                             <th>Porta Lógica:</th>
                             <td>{{cadastro.rede.logica}}</td>
                         </tr>
