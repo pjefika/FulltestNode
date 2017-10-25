@@ -39,12 +39,12 @@ export class FulltestComponent implements OnInit {
         this.objectValid = this.injector.get('valid');
     }
 
-    ngOnInit(): void {       
+    public ngOnInit(): void {       
         //Inicia o fulltest assim que inicializa o componente
         this.realizaFulltest();
     }
 
-    realizaFulltest(): void {
+    public realizaFulltest(): void {
         this.searchFulltest = true;
         this.fulltestService
             .getValidacao(this.cadastro)

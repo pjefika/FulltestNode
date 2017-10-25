@@ -35,8 +35,8 @@ export class CadastroComponent implements OnInit {
     private alertDOneType: string;
     private alertDOneMsg: string;
 
-    private searchingRede: boolean = false;   
-    
+    private searchingRede: boolean = false;
+
     constructor(
         private cadastroService: CadastroService,
         private router: Router,
@@ -57,6 +57,9 @@ export class CadastroComponent implements OnInit {
         //Se cadastro já foi consultado e preenchido o mesmo so atribui para a variavel. 
         if (this.holderService.cadastro) {
             this.cadastro = this.holderService.cadastro;
+            if (this.cadastro.rede.origem === "OFFLINE") {
+                this.callAlertRede(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
+            }
         } else {
             this.getCadastro();
         }
@@ -77,14 +80,10 @@ export class CadastroComponent implements OnInit {
                         .getCadastroDOne(this.instancia)
                         .then(data => {
                             this.cadastro.rede = data.rede;
-                            this.alertDOneAtivo = true;
-                            this.alertDOneType = "alert-info";
-                            this.alertDOneMsg = "Atenção cadastro carregado da base do dia anterior.";
+                            this.callAlertRede(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
                             this.searchingRede = false;
                         }, error => {
-                            this.alertDOneAtivo = true;
-                            this.alertDOneType = "alert-danger";
-                            this.alertDOneMsg = "Atenção não existe informações de cadastro em nossas bases.";
+                            this.callAlertRede(true, "alert-danger", "Atenção não existe informações de cadastro em nossas bases.");
                             this.searchingRede = false;
                         });
                 }
@@ -92,6 +91,12 @@ export class CadastroComponent implements OnInit {
                 this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
             });
+    }
+
+    private callAlertRede(alertAtivo: boolean, alertType: string, alertMsg: string) {
+        this.alertDOneAtivo = alertAtivo;
+        this.alertDOneType = alertType;
+        this.alertDOneMsg = alertMsg;
     }
 
     private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {

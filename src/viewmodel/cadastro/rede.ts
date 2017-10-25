@@ -1,5 +1,6 @@
 export class Rede {
     tipo: string;
+    origem: string;
     ipDslam: string;
     vendorDslam: string;
     modeloDslam: string;
