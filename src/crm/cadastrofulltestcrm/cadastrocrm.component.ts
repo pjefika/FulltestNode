@@ -178,13 +178,18 @@ export class CadastroCrmComponent implements OnInit {
                     .then(data => {
                         this.listResumo = data;
                         this.holderService.listResumo = this.listResumo;
+                        let msgalerterror: string;
                         if (this.listResumo.cadastro) {
                             this.getValidacao();
                         } else {
-                            let msgalerterror = "Cliente com erro de cadastro, favor transferir chamada ao CO utilizando o fluxo com o problema/sintoma informado pelo cliente."
-                            this.mloger(msgalerterror);
+                            msgalerterror = "Cliente com erro de cadastro, favor transferir chamada ao CO utilizando o fluxo com o problema/sintoma informado pelo cliente.";
                             this.callAlert(msgalerterror, "alert-danger");
                         }
+                        if (this.listResumo.bloqueio) {
+                            msgalerterror = "Cliente com BLOQUEIO, por favor seguir fluxo GPS relacionado a validação de Bloqueios";
+                            this.callAlert(msgalerterror, "alert-danger");
+                        }
+                        this.mloger(msgalerterror);
                     });
             });
     }

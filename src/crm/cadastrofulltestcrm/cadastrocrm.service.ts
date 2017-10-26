@@ -8,20 +8,23 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class CadastroCrmService {
-    
+
     private infoResquest: InfoRequest;
 
     constructor(
         private urlService: UrlService) { }
 
-    getCadastro(instancia: string): Promise<Cadastro> {
+    public getCadastro(instancia: string): Promise<Cadastro> {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let _data: { instancia: string, executor: string };
+        _data = { instancia: instancia, executor: usr.user };
         this.infoResquest = {
-            rqst: "get",
+            rqst: "post",
             command: this.urlService.pathStealerAPI + "oss/",
-            _data: instancia,
+            _data: _data,
             otherUrl: this.urlService.urlIpParaStealer,
             timeout: 60000
-        }
+        };
         return this.urlService.request(this.infoResquest)
             .then(response => {
                 return response as Cadastro

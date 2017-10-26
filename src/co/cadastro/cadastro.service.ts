@@ -16,10 +16,13 @@ export class CadastroService {
         private urlService: UrlService) { }
 
     public getCadastro(instancia: string): Promise<Cadastro> {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let _data: { instancia: string, executor: string };
+        _data = { instancia: instancia, executor: usr.user };
         this.infoResquest = {
-            rqst: "get",
+            rqst: "post",
             command: this.urlService.pathStealerAPI + "oss/",
-            _data: instancia,
+            _data: _data,
             otherUrl: this.urlService.urlIpParaStealer,
             timeout: 60000
         };
@@ -31,7 +34,7 @@ export class CadastroService {
     }
 
     public getCadastroDOne(instancia: string) {
-             this.infoResquest = {
+        this.infoResquest = {
             rqst: "get",
             command: this.urlService.pathNetworkInventory + "networkInventory/",
             _data: instancia,
