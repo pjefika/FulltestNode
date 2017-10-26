@@ -13,7 +13,7 @@ export class ToggleComponent implements OnInit {
 
     modalToggle: boolean = false;
 
-    eachFulltest: string;
+    eachFulltest: string = "CO";
 
     constructor(
         private router: Router,

@@ -26,6 +26,7 @@ export class TemplateComponent implements OnInit {
 
     private serarching: boolean = false;
 
+
     constructor(
         private router: Router,
         private util: Util,
@@ -72,6 +73,7 @@ export class TemplateComponent implements OnInit {
         sessionStorage.clear();
         this.holderReset();
         this.router.navigate(['./entrar']);
+
     }
 
     public setToDynamicComponent(component: any) {

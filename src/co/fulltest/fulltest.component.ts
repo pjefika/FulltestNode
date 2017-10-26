@@ -38,8 +38,8 @@ export class FulltestComponent implements OnInit {
         this.objectValid = this.holderService.objectValid;
     }
 
-    public ngOnInit(): void {       
-        //Inicia o fulltest assim que inicializa o componente
+    public ngOnInit(): void {
+
         this.realizaFulltest();
     }
 

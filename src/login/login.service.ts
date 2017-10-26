@@ -10,7 +10,6 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class LoginService {
-
     private infoResquest: InfoRequest;
 
     constructor(
@@ -26,6 +25,7 @@ export class LoginService {
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as Boolean
+
             })
             .catch(this.handleError);
     }

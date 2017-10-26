@@ -3,7 +3,7 @@
         <clr-icon shape="info-circle"></clr-icon>
     </a>
     <clr-modal [(clrModalOpen)]="ativo" [clrModalStaticBackdrop]="true" [clrModalSize]="'lg'">
-        <h3 class="modal-title">Resumo Atendimento</h3>
+        <h3 class="modal-title">Resumo Cliente</h3>
         <div class="modal-body">
             <table class="table table-compact table-vertical">
                 <tbody>
@@ -54,6 +54,13 @@
                         <td *ngIf="cadastro.servicos.isHib">Sim</td>
                         <td *ngIf="!cadastro.servicos.isHib">Não</td>
                     </tr>
+                    <tr>
+                        <th colspan="2" style="text-align: center;">Informações de Rede</th>
+                    </tr>
+                    <tr>
+                        <th>Modelo DSLAM: </th>
+                        <td>{{cadastro.rede.vendorDslam}} - {{cadastro.rede.modeloDslam}} </td>
+                    </tr>
                 </tbody>
             </table>
             <div *ngIf="util.getNv(10)">
@@ -79,7 +86,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-outline" (click)="ativo = false">Fechar</button>
