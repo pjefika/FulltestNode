@@ -1,11 +1,11 @@
-import { ConfiguracaoLinhaComponent } from './../../configuracao-linha.component';
-import { SideNav } from './../../../../viewmodel/menus/sidenav';
-import { ManobrarLinhaComponent } from './../actions/manobrar/manobrar-linha.component';
 import { ServicoLinhaComponent } from './../actions/servico/servico-linha.component';
 import { LinhaComponent } from './../actions/linha/linha.component';
-export const sideNavConfLinha: SideNav[] = [
+import { ManobrarLinhaComponent } from './../actions/manobrar/manobrar-linha.component';
+import { ConfiguracaoLinhaComponent } from './../../configuracao-linha.component';
+import { SideNav } from './../../../../viewmodel/menus/sidenav';
+export const mockListSidenavCoTdm: SideNav[] = [
     {
-        nome: "Informações de linha",
+        nome: "Informações de Cadastro",
         component: ConfiguracaoLinhaComponent,
         icon: "view-list"
     },
@@ -24,4 +24,4 @@ export const sideNavConfLinha: SideNav[] = [
         component: ServicoLinhaComponent,
         icon: "install"
     }
-]
+] 

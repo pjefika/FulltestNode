@@ -67,7 +67,7 @@ export class ManobraComponent implements OnInit {
         private holderService: HolderService,
         private manobraService: ManobraService,
         private toastyComponent: ToastyComponent) {
-        this.cadastro = this.injector.get('cadastro');
+        this.cadastro = this.holderService.cadastro;
     }
 
     ngOnInit() {

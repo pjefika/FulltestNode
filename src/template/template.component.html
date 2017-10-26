@@ -7,20 +7,15 @@
             </a>
         </div>
         <div class="header-nav">
-            <a class="nav-link nav-icon" (click)="cadastroClick()" [class.active]="buscaCadastro">
+            <a class="nav-link nav-icon" [class.active]="true">
                 <clr-icon shape="phone-handset" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
                     <span class="tooltip-content">Consultar instância</span>
                 </clr-icon>
             </a>
-            <!-- <a class="nav-link nav-icon" (click)="massivoClick()" [class.disabled]="!mostraMenus">
-                <clr-icon shape="layers" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
-                    <span class="tooltip-content">Massivo</span>
-                </clr-icon>
-            </a> -->
         </div>
-        <div class="search" *ngIf="buscaCadastro">
+        <div class="search">
             <label for="search_input" for="search_input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-lg tooltip-bottom-right">
-                <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..." [(ngModel)]="instancia" (keyup.enter)="busca()">
+                <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..." [(ngModel)]="holderService.instancia" (keyup.enter)="busca()">
                 <span class="tooltip-content">Após inserir a instância pressione "Enter"</span>
             </label>
         </div>
@@ -42,12 +37,13 @@
         </div>
     </clr-header>
     <nav class="subnav" *ngIf="holderService.subnav" [clr-nav-level]="1">
-        <subnav-component [menus]="subNavMenus"></subnav-component>
+        <subnav-component [menus]="holderService.subNavMenus"></subnav-component>
     </nav>
     <div class="content-container">
         <div class="content-area">
-            <h3>{{headerTitle}}</h3>
-            <holder-router-component [component]="holderCompsService.component" [input]="holderCompsService.input"></holder-router-component>
+            <!-- <h3>{{headerTitle}}</h3> -->
+            <!-- <holder-router-component [component]="holderCompsService.component" [input]="holderCompsService.input"></holder-router-component> -->
+            <dynamic-router-component [component]="dynamicRouterHolderService.component"></dynamic-router-component>
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
             <adm-component></adm-component>
             <error-log-component></error-log-component>

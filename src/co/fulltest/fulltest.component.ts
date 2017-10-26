@@ -34,9 +34,8 @@ export class FulltestComponent implements OnInit {
         private injector: Injector,
         private toastyComponent: ToastyComponent,
         private holderService: HolderService) {
-        // Injeta o parametro input/dados passados para a variavel
-        this.cadastro = this.injector.get('cadastro');
-        this.objectValid = this.injector.get('valid');
+        this.cadastro = this.holderService.cadastro;
+        this.objectValid = this.holderService.objectValid;
     }
 
     public ngOnInit(): void {       

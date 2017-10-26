@@ -1,14 +1,6 @@
-import { ConfiguracoesPortaComponent } from './../comp_complementares/configuracoesporta/configuracoesporta.component';
-import { ToastyComponent } from './../toasty/toasty.component';
-import { HolderCompsService } from './../component-holder/services/holder-comps.service';
-import { FulltestComponent } from './../../co/fulltest/fulltest.component';
-import { CadastroCrmComponent } from './../../crm/cadastrofulltestcrm/cadastrocrm.component';
-import { ConfiguracaoLinhaComponent } from './../../co/configuracao-linha/configuracao-linha.component';
-import { ManobraComponent } from './../../co/manobra/manobra.component';
-import { CadastroComponent } from './../../co/cadastro/cadastro.component';
+import { DynamicRouterHolderService } from './../dynamic-router/dynamic-router-holder.service';
 import { SubNav } from './../../viewmodel/menus/subnav';
 import { HolderService } from './../holder/holder.service';
-import { TemplateComponent } from './../../template/template.component';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -20,76 +12,33 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SubnavComponent implements OnInit {
 
     constructor(
-        private templateComponent: TemplateComponent,
         public holderService: HolderService,
-        private holderCompsService: HolderCompsService,
-        private toastyComponent: ToastyComponent) { }
+        public dynamicRouterHolderService: DynamicRouterHolderService) { }
 
-    @Input() menus: SubNav[];
+    @Input() public menus: SubNav[];
 
-    ngOnInit() { }
+    public ngOnInit() {
 
-    abrecomponent(l) {
+    }
+
+    private abrecomponent(l) {
+        // Desativa o sidenav pois pode-ser que seja mudado ao trocar de menu, se precisar ativar sidenav ativar no construtor do component...
+        this.holderService.sidenav = false;
         if (this.holderService.liberarSubNav) {
-            this.switchCO(l);
-            this.switchCrm(l);
-            this.swtichGeral(l);
+            if (l.link) {
+                window.open(l.link);
+            } else {
+                this.dynamicRouterHolderService.component = l.component;
+            }
         }
     }
 
-    switchCO(l) {
-        switch (l.component) {
-            case FulltestComponent:
-                this.templateComponent.createRealizaFulltestComponent();
-                break;
-            case CadastroComponent:
-                this.templateComponent.createCadastroComponent();
-                break;
-            case ManobraComponent:
-                this.templateComponent.createManobraComponent();
-                break;
-            case ConfiguracaoLinhaComponent:
-                this.templateComponent.createConfiguracaoLinhaComponent();
-                break;
-        }
-    }
-
-    switchCrm(l) {
-        switch (l.component) {
-            case CadastroCrmComponent:
-                this.templateComponent.createRealizaFulltestCrmComponent();
-                break;
-            case "link-acs":
-                this.templateComponent.createGoToAcsLink();
-                break;
-        }
-    }
-
-    swtichGeral(l) {
-        switch (l.component) {
-            case ConfiguracoesPortaComponent:
-                this.templateComponent.createConfiguracoesPorta();
-                break;
-        }
-    }
-
-    subNavActive(l): Boolean {
+    private subNavActive(l): Boolean {
         let active = false;
-        if (l.component == this.holderCompsService.component) {
+        if (l.component == this.dynamicRouterHolderService.component) {
             active = true;
         }
         return active;
-    }
-
-
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
     }
 
 }

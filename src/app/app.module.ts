@@ -1,3 +1,5 @@
+import { DynamicRouterComponent } from './../util/dynamic-router/dynamic-router.component';
+import { DynamicRouterHolderService } from './../util/dynamic-router/dynamic-router-holder.service';
 import { ErrorLogComponent } from './../util/error-log/error-log.component';
 import { TableAuxSerialComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-serial/table-aux-serial.component';
 import { TableAuxProfileComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-profile/table-aux-profile.component';
@@ -26,8 +28,6 @@ import { TemplateGeralService } from './../template/util-service/template-geral.
 import { TemplateCOService } from './../template/util-service/template-co.service';
 import { TemplateCrmService } from './../template/util-service/tempalte-crm.service';
 import { TemplateService } from './../template/util-service/template.service';
-import { HolderRouterComponent } from './../util/component-holder/holder-router.component';
-import { HolderCompsService } from './../util/component-holder/services/holder-comps.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, FormControl, FormGroup, FormArray, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -46,7 +46,6 @@ import { CadastroService } from './../co/cadastro/cadastro.service';
 import { CadastroWizardComponent } from './../co/cadastro/wizard/cadastro-wizard.component';
 
 import { ConfiguracaoLinhaComponent } from './../co/configuracao-linha/configuracao-linha.component';
-import { ConfiguracaoLinhaService } from './../co/configuracao-linha/configuracao-linha.service';
 import { FulltestComponent } from './../co/fulltest/fulltest.component';
 import { FulltestService } from './../co/fulltest/fulltest.service';
 import { ManobraComponent } from './../co/manobra/manobra.component';
@@ -127,7 +126,6 @@ import { AppComponent } from './app.component';
         StatusPortaComponent,
         CriarLinhaComponent,
         DeletarLinhaComponent,
-        HolderRouterComponent,
         ConfiguracoesPortaComponent,
         ConfiguracoesPortaMetalicoComponent,
         ConfiguracoesPortaGponComponent,
@@ -138,7 +136,8 @@ import { AppComponent } from './app.component';
         TableAuxParametrosComponent,
         TableAuxProfileComponent,
         TableAuxSerialComponent,
-        ErrorLogComponent
+        ErrorLogComponent,
+        DynamicRouterComponent
     ],
     imports: [
         BrowserModule,
@@ -169,12 +168,11 @@ import { AppComponent } from './app.component';
         AssocontService,
         ManobraService,
         UrlService,
-        ConfiguracaoLinhaService,
-        HolderCompsService,
         TemplateService,
         TemplateCrmService,
         TemplateCOService,
-        TemplateGeralService
+        TemplateGeralService,
+        DynamicRouterHolderService
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -195,7 +193,7 @@ import { AppComponent } from './app.component';
         ServicoLinhaComponent,
         StatusLinhaComponent,
         StatusPortaComponent,
-        ConfiguracoesPortaComponent
+        ConfiguracoesPortaComponent        
     ]
 })
 export class AppModule { }

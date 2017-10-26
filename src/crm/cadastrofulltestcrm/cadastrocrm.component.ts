@@ -71,8 +71,7 @@ export class CadastroCrmComponent implements OnInit {
         private holderService: HolderService,
         private assertService: AssertService,
         private makeLogerService: MakeLogerService) {
-        // Injeta o parametro input/dados passados para a variavel
-        this.instancia = this.injector.get('instancia');
+        this.instancia = this.holderService.instancia;
     }
 
     ngOnInit() {

@@ -1,11 +1,11 @@
+import { ConfiguracaoLinhaTdmService } from './../../../configuracao-linha-tdm.service';
+import { DynamicRouterHolderService } from './../../../../../../util/dynamic-router/dynamic-router-holder.service';
 import { ConfiguracaoLinhaComponent } from './../../../../configuracao-linha.component';
-import { HolderCompsService } from './../../../../../../util/component-holder/services/holder-comps.service';
 import { HolderService } from './../../../../../../util/holder/holder.service';
 import { ToastyComponent } from './../../../../../../util/toasty/toasty.component';
 import { CadastroLinha } from './../../../../../../viewmodel/cadastro-linha/cadastro-linha';
 import { ConfiguracoesLensLivres } from './../../../../../../viewmodel/cadastro-linha/lens-livres/configuracoes-lens-livres';
 import { Linha } from './../../../../../../viewmodel/cadastro/linha';
-import { ConfiguracaoLinhaService } from './../../../../configuracao-linha.service';
 import { Len } from './../../../../../../viewmodel/cadastro-linha/len';
 
 import { ListarLensLivresService } from './../../../general-services/listar-lens-livres.service';
@@ -18,7 +18,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
     selector: 'criar-linha-component',
     templateUrl: 'criar-linha.component.html',
     styleUrls: ['criar-linha.component.css'],
-    providers: [CriarLinhaService, ListarLinhaService, ListarLensLivresService, ConfiguracaoLinhaService]
+    providers: [CriarLinhaService, ListarLinhaService, ListarLensLivresService, ConfiguracaoLinhaTdmService]
 })
 
 export class CriarLinhaComponent implements OnInit, OnChanges {
@@ -53,9 +53,9 @@ export class CriarLinhaComponent implements OnInit, OnChanges {
         private listarLinhaService: ListarLinhaService,
         private listarLensLivresService: ListarLensLivresService,
         private toastyComponent: ToastyComponent,
-        private configuracaoLinhaService: ConfiguracaoLinhaService,
+        private configuracaoLinhaTdmService: ConfiguracaoLinhaTdmService,
         public holderService: HolderService,
-        private holderCompsService: HolderCompsService) { }
+        public dynamicRouterHolderService: DynamicRouterHolderService) { }
 
     public ngOnInit() {
         // if (this.holderService.cadastroLinha.status === "CREATED") {
@@ -96,7 +96,7 @@ export class CriarLinhaComponent implements OnInit, OnChanges {
     }
 
     public getConfBinada() {
-        this.configuracaoLinhaService.getInformacoes(this.cadInstanciaBinada)
+        this.configuracaoLinhaTdmService.getInformacoes(this.cadInstanciaBinada)
             .then(data => {
                 this.confBinada = data;
             }, error => {
@@ -130,7 +130,7 @@ export class CriarLinhaComponent implements OnInit, OnChanges {
                     this.criarLinhaNomeButton = "Criar Linha";
                     this.criarLinhaDisableButton = false;
                     this.callToasty("Sucesso", "Linha criada com sucesso.", "success", 5000);
-                    this.holderCompsService.component = ConfiguracaoLinhaComponent;
+                    this.dynamicRouterHolderService.component = ConfiguracaoLinhaComponent;
                 }, error => {
                     this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                     this.criarLinhaNomeButton = "Criar Linha";

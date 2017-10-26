@@ -1,12 +1,11 @@
-import { InfoRequest } from './../../viewmodel/url/infos-url';
-import { CadastroLinha } from './../../viewmodel/cadastro-linha/cadastro-linha';
-import { UrlService } from './../../util/url-service/url.service';
-import { Linha } from './../../viewmodel/cadastro/linha';
+import { CadastroLinha } from './../../../viewmodel/cadastro-linha/cadastro-linha';
+import { Linha } from './../../../viewmodel/cadastro/linha';
+import { UrlService } from './../../../util/url-service/url.service';
+import { InfoRequest } from './../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class ConfiguracaoLinhaService {
-
+export class ConfiguracaoLinhaTdmService {
     private infoResquest: InfoRequest;
 
     constructor(
@@ -33,5 +32,4 @@ export class ConfiguracaoLinhaService {
     private handleError(error: any): Promise<any> {
         return Promise.reject(error);
     }
-
 }

@@ -1,17 +1,17 @@
-import { ConfPorta } from './../../viewmodel/confPorta/confPorta';
-import { SubNav } from './../../viewmodel/menus/subnav';
 import { SideNav } from './../../viewmodel/menus/sidenav';
+import { SubNav } from './../../viewmodel/menus/subnav';
 import { Servico } from './../../viewmodel/cadastro-linha/servicos';
 import { Ncos } from './../../viewmodel/cadastro-linha/ncos';
-import { CadastroLinha } from './../../viewmodel/cadastro-linha/cadastro-linha';
-import { Linha } from './../../viewmodel/cadastro/linha';
+import { ConfPorta } from './../../viewmodel/confPorta/confPorta';
 import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
+import { CadastroLinha } from './../../viewmodel/cadastro-linha/cadastro-linha';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class HolderService {
 
+    public instancia: string;
     public cadastro: Cadastro;
     public cadastroLinha: CadastroLinha;
     public objectValid: ObjectValid;

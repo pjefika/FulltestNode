@@ -1,9 +1,8 @@
-import { HolderCompsService } from './../../../util/component-holder/services/holder-comps.service';
+import { ConfiguracaoLinhaTdmService } from './configuracao-linha-tdm.service';
 import { HolderService } from './../../../util/holder/holder.service';
 import { ToastyComponent } from './../../../util/toasty/toasty.component';
 import { CadastroLinha } from './../../../viewmodel/cadastro-linha/cadastro-linha';
 import { LinhaComponent } from './actions/linha/linha.component';
-import { ConfiguracaoLinhaService } from './../configuracao-linha.service';
 import { NcosService } from './actions/ncos/ncos.service';
 import { ServicoLinhaService } from './actions/servico/servico-linha.service';
 import { LinhaResetDePortaService } from './general-services/linha-reset-de-porta.service';
@@ -13,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'configuracao-linha-tdm-component',
     templateUrl: 'configuracao-linha-tdm.component.html',
     styleUrls: ['configuracao-linha-tdm.component.css'],
-    providers: [ConfiguracaoLinhaService, NcosService, ServicoLinhaService, LinhaResetDePortaService]
+    providers: [NcosService, ServicoLinhaService, LinhaResetDePortaService, ConfiguracaoLinhaTdmService]
 })
 
 export class ConfiguracaoLinhaTdmComponent implements OnInit {
@@ -31,13 +30,12 @@ export class ConfiguracaoLinhaTdmComponent implements OnInit {
     private disablebtnbuscainformacao: boolean = false;
 
     constructor(
-        private configuracaoLinhaService: ConfiguracaoLinhaService,
+        private configuracaoLinhaTdmService: ConfiguracaoLinhaTdmService,
         private toastyComponent: ToastyComponent,
         public holderService: HolderService,
         private ncosService: NcosService,
         private servicoLinhaService: ServicoLinhaService,
-        private linhaResetDePortaService: LinhaResetDePortaService,
-        private holderCompsService: HolderCompsService) { }
+        private linhaResetDePortaService: LinhaResetDePortaService) { }
 
     ngOnInit() {
         if (this.holderService.cadastroLinha) {
@@ -51,7 +49,7 @@ export class ConfiguracaoLinhaTdmComponent implements OnInit {
     private getInformacoes() {
         this.searching = true;
         this.searchingWhat = "Buscando Informações de Linha..."
-        this.configuracaoLinhaService.getInformacoes(this.holderService.cadastro.linha)
+        this.configuracaoLinhaTdmService.getInformacoes(this.holderService.cadastro.linha)
             .then(data => {
                 this.cadastroLinha = data;
                 this.holderService.cadastroLinha = this.cadastroLinha;
@@ -72,7 +70,7 @@ export class ConfiguracaoLinhaTdmComponent implements OnInit {
     }
 
     private goToCreateLinhaComponent() {
-        this.holderCompsService.component = LinhaComponent;
+        //this.holderCompsService.component = LinhaComponent;
     }
 
     public getNcos() {

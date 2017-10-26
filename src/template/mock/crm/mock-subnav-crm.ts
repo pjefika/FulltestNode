@@ -7,10 +7,6 @@ export const subNavMockCrm: SubNav[] = [
     },
     {
         nome: "Link ACS",
-        component: "link-acs"
+        link: "http://10.40.195.81:8080/acs-arris"
     }
-    // {
-    //     nome: "Testes Complementares",
-    //     component: "complementares-component"
-    // },
 ]
