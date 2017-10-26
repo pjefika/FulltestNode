@@ -1,3 +1,4 @@
+import { HolderService } from './../holder/holder.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty';
 
@@ -9,25 +10,29 @@ import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty
 
 export class ToastyComponent implements OnInit {
 
-    @Input() toastyInfo: {
+    @Input() public toastyInfo: {
         titulo: string;
         msg: string;
         theme: string;
+        timeout?: number;
     }
 
-    constructor(private toastyService: ToastyService, private toastyConfig: ToastyConfig) {
+    constructor(
+        private toastyService: ToastyService,
+        private toastyConfig: ToastyConfig,
+        public holderService: HolderService) {
         this.toastyConfig.position = "top-right";
-     }
+    }
 
-    ngOnInit() { }
+    public ngOnInit() { }
 
-    addToasty() {
+    public addToasty() {
         let toastOptions: ToastOptions = {
             title: this.toastyInfo.titulo,
             msg: this.toastyInfo.msg,
             showClose: true,
             theme: this.toastyInfo.theme,
-            timeout: 5000,
+            timeout: this.toastyInfo.timeout,
             onAdd: (toast: ToastData) => {
                 //console.log('Toast ' + toast.id + ' has been added!');
             },
@@ -55,6 +60,18 @@ export class ToastyComponent implements OnInit {
             case 'warning':
                 this.toastyService.warning(toastOptions);
                 break;
+        }
+
+        this.appendErrorsMessages(this.toastyInfo.msg, this.toastyInfo.theme);
+    }
+
+    private appendErrorsMessages(msg: string, theme: string) {
+        let now: number = Date.now();
+
+        if (!this.holderService.oldToastyMessages) {
+            this.holderService.oldToastyMessages = [{ msg: msg, type: theme, time: now }]
+        } else {
+            this.holderService.oldToastyMessages.push({ msg: msg, type: theme, time: now });
         }
     }
 }

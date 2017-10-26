@@ -7,19 +7,25 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class Util {
 
-    //usuario: Usuario;
-
     constructor(private loginService: LoginService) { }
 
-    isLogado(): Promise<boolean> {
-        // Realizar correção verificação de login
-        // Guardar Login e Senha do usuário e fazer comparação com a autenticação
-        // Usuário pode bugar adicionando informações fake na sessionStorage
+    public isLogado(): Promise<boolean> {
         let sessionObj = JSON.parse(sessionStorage.getItem("user"));
         if (typeof (Storage) !== "undefined" && sessionStorage.getItem('user') && sessionObj.token === Md5.hashStr("fulltest-app")) {
             return Promise.resolve(true);
         }
         return Promise.resolve(false);
+    }
+
+    public getNv(nv: number): boolean {
+        let valid = false;
+        if (this.isLogado()) {
+            let usr = JSON.parse(sessionStorage.getItem('user'));
+            if (usr.nv >= nv) {
+                valid = true;
+            }
+        }
+        return valid;
     }
 
 }

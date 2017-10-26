@@ -30,28 +30,20 @@ export class FulltestComponent implements OnInit {
     }
 
     constructor(
-        private fulltestService: FulltestService,
-        private router: Router,
-        private util: Util,
+        private fulltestService: FulltestService,       
         private injector: Injector,
         private toastyComponent: ToastyComponent,
         private holderService: HolderService) {
-        // Injeta o parametro input/dados passados para a variavel
-        this.cadastro = this.injector.get('cadastro');
-        this.objectValid = this.injector.get('valid');
+        this.cadastro = this.holderService.cadastro;
+        this.objectValid = this.holderService.objectValid;
     }
 
-    ngOnInit(): void {
-        this.util.isLogado().then((result: boolean) => {
-            if (!result) {
-                this.router.navigate(['./entrar']);
-            }
-        });
-        //Inicia o fulltest assim que inicializa o componente
-        //this.realizaFulltest();
+    public ngOnInit(): void {
+
+        this.realizaFulltest();
     }
 
-    realizaFulltest(): void {
+    public realizaFulltest(): void {
         this.searchFulltest = true;
         this.fulltestService
             .getValidacao(this.cadastro)
@@ -61,17 +53,18 @@ export class FulltestComponent implements OnInit {
                 this.holderService.objectValid = this.objectValid;
             }, error => {
                 this.searchFulltest = false;
-                if (error.tError !== "Timeout") {
-                    this.doFulltest = true;
-                }
-                this.toastyInfo = {
-                    titulo: "Ops, ocorreu um erro.",
-                    msg: error.mError,
-                    theme: "error"
-                }
-                this.toastyComponent.toastyInfo = this.toastyInfo;
-                this.toastyComponent.addToasty();
+                this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
             });
 
+    }
+
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+        this.toastyComponent.toastyInfo = {
+            titulo: titulo,
+            msg: msg,
+            theme: theme,
+            timeout: timeout
+        }
+        this.toastyComponent.addToasty();
     }
 }

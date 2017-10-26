@@ -1,4 +1,5 @@
 export class SubNav {
     nome: string;
-    component: string;
+    component?: any;
+    link?: string;
 }

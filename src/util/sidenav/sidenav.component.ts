@@ -1,3 +1,7 @@
+import { mockListSidenavCoTdm } from './../../co/configuracao-linha/tdm/mock/mock-list-sidenav-co';
+import { DynamicRouterHolderService } from './../dynamic-router/dynamic-router-holder.service';
+import { SideNav } from './../../viewmodel/menus/sidenav';
+import { HolderService } from './../holder/holder.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,21 +11,36 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class SidenavComponent implements OnInit {
-    constructor() { }
 
-    @Input() menus: [{ nome: string, component: string }];
+    constructor(
+        public holderService: HolderService,
+        public dynamicRouterHolderService: DynamicRouterHolderService) { }
 
-    @Input() liberarSidNav: boolean = false;
+    @Input() public menus: SideNav[];
+    @Input() public ativo: boolean;
 
-    ngOnInit() { }
 
-    abrecomponent(l) {
-        if (this.liberarSidNav) {
-            switch (l.component) {
-                case "":
-                    
-                    break;
+    public ngOnInit() {
+        if (this.holderService.cadastro.linha.tipo === "TDM") {
+            this.holderService.sideNavMenus = mockListSidenavCoTdm;
+        }
+    }
+
+    public abrecomponent(l) {
+        if (this.holderService.liberarSideNav) {
+            if (l.link) {
+                window.open(l.link);
+            } else {
+                this.dynamicRouterHolderService.component = l.component;
             }
         }
+    }
+
+    public sideNavActive(l): Boolean {
+        let active = false;
+        if (l.component === this.dynamicRouterHolderService.component) {
+            active = true;
+        }
+        return active;
     }
 }

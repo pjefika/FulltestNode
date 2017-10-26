@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { Motivo } from './../../viewmodel/manobra/motivo';
 import { Analitico } from './../../viewmodel/manobra/analitico';
 import { FormsModule } from '@angular/forms';
@@ -18,33 +19,46 @@ import { Component, OnInit, Injector, Input } from '@angular/core';
 
 export class ManobraComponent implements OnInit {
 
-    cadastro: Cadastro;
-    objectValid: ObjectValid;
-    analitico: Analitico;
-    @Input() ordem: string;
-    motivos: Motivo[];
-    motivoSelected: string;
-    btnValidDisable: boolean = true;
-    validManobra: boolean = false;
-    validedManobra: boolean = false;
-    searchingValids: boolean = false;
-    searchFulltest: boolean = false;
-    doFulltest: boolean = false;
+    @Input() public ordem: string;
 
-    nameBtnValidManobra = "Validar Manobra";
+    private cadastro: Cadastro;
+    private objectValid: ObjectValid;
+    private analitico: Analitico;
 
-    toastyInfo: {
+    private motivos: Motivo[];
+    private motivoSelected: string;
+
+    private btnValidDisable: boolean = true;
+
+    private validManobra: boolean = false;
+    private validedManobra: boolean = false;
+
+    private searchingValids: boolean = false;
+    private searchFulltest: boolean = false;
+
+    private doFulltest: boolean = false;
+
+    private nameBtnValidManobra = "Validar Manobra";
+
+    public toastyInfo: {
         titulo: string;
         msg: string;
         theme: string;
     }
 
-    alertMsg: {
+    public alertMsg: {
         msg: string;
         alertType: string;
     }
-    alertAtivo: boolean = false;
-    alertCloseable: boolean = true;
+    public alertAtivo: boolean = false;
+    public alertCloseable: boolean = true;
+
+    public subalertMsg: {
+        msg: string;
+        alertType: string;
+    }
+    public subalertAtivo: boolean = false;
+    public subalertCloseable: boolean = true;
 
     constructor(
         private router: Router,
@@ -53,7 +67,7 @@ export class ManobraComponent implements OnInit {
         private holderService: HolderService,
         private manobraService: ManobraService,
         private toastyComponent: ToastyComponent) {
-        this.cadastro = this.injector.get('cadastro');
+        this.cadastro = this.holderService.cadastro;
     }
 
     ngOnInit() {
@@ -70,7 +84,7 @@ export class ManobraComponent implements OnInit {
     }
 
     //Realiza fulltest ao entrar na pagina...
-    realizaFulltest(): void {
+    public realizaFulltest(): void {
         this.alertAtivo = false;
         this.searchFulltest = true;
         this.manobraService
@@ -80,7 +94,6 @@ export class ManobraComponent implements OnInit {
                 this.searchFulltest = false;
                 if (this.objectValid.resultado) {
                     this.validManobra = true;
-                    //this.callAlert(this.objectValid.mensagem, "alert-success");
                 } else {
                     this.callAlert(this.objectValid.mensagem, "alert-danger");
                 }
@@ -89,17 +102,11 @@ export class ManobraComponent implements OnInit {
                 if (error.tError !== "Timeout") {
                     this.doFulltest = true;
                 }
-                this.toastyInfo = {
-                    titulo: "Ops, ocorreu um erro.",
-                    msg: error.mError,
-                    theme: "error"
-                }
-                this.toastyComponent.toastyInfo = this.toastyInfo;
-                this.toastyComponent.addToasty();
+                this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
             })
     }
 
-    validar() {
+    public validar() {
         if (this.ordem && this.motivoSelected) {
             this.btnValidDisable = true;
             this.searchingValids = true;
@@ -115,54 +122,68 @@ export class ManobraComponent implements OnInit {
                             this.analitico = data;
                             this.searchingValids = false;
                             this.validedManobra = true;
+                            this.nameBtnValidManobra = "Validar Manobra";
                             if (this.analitico.manobrar) {
-                                let _manobraMotivo = "Liberar manobra - " + this.analitico.conclusao.conclusao.frase + ": " + this.analitico.conclusao.motivo.motivo;                         
-                                this.callAlert(_manobraMotivo, "alert-success");                                
+                                let _manobraMotivo = "Liberar manobra - " + this.analitico.conclusao.conclusao.frase + ": " + this.analitico.conclusao.motivo.motivo;
+                                this.callAlert(_manobraMotivo, "alert-success");
                             } else {
                                 let _manobraMotivo = "Manobra negada - Conclusão: " + this.analitico.conclusao.conclusao.frase;
                                 this.callAlert(_manobraMotivo, "alert-danger");
                             }
+                            this.subAlertMessage();
                         }, error => {
-                            if (error.tError !== "Timeout") {
-                                this.doFulltest = true;
-                            }
-                            this.toastyInfo = {
-                                titulo: "Ops, ocorreu um erro.",
-                                msg: error.mError,
-                                theme: "error"
-                            }
-                            this.toastyComponent.toastyInfo = this.toastyInfo;
-                            this.toastyComponent.addToasty();
+                            this.nameBtnValidManobra = "Validar Manobra";
+                            this.btnValidDisable = false;
+                            this.searchingValids = false;
+                            this.eraseInfoValid();
+                            this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                         });
                 }, error => {
-                    this.toastyInfo = {
-                        titulo: "Ops, ocorreu um erro.",
-                        msg: error.mError,
-                        theme: "error"
-                    }
-                    this.toastyComponent.toastyInfo = this.toastyInfo;
-                    this.toastyComponent.addToasty();
+                    let jError = error.json();
+                    this.btnValidDisable = false;
+                    this.searchingValids = false;
+                    this.eraseInfoValid();
+                    this.nameBtnValidManobra = "Validar Manobra";
+                    this.callToasty("Ops, ocorreu um erro.", jError.message, "error", 5000);
                 });
+        } else {
+            this.callToasty("Ops, ocorreu um erro.", "Por favor preencha os campos", "error", 5000);
         }
     }
 
-    getListaMotivo() {
+    public getListaMotivo() {
         this.manobraService
             .getListaMotivo()
             .then(data => {
                 this.motivos = data;
             }, error => {
-                this.toastyInfo = {
-                    titulo: "Ops, ocorreu um erro.",
-                    msg: error.mError,
-                    theme: "error"
-                }
-                this.toastyComponent.toastyInfo = this.toastyInfo;
-                this.toastyComponent.addToasty();
+                this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
             });
     }
 
-    callAlert(msg, type) {
+    public subAlertMessage() {
+        this.holderService.cadastro.asserts.forEach(element => {
+            if (element.asserts === "REDE_CONFIAVEL" && this.analitico.manobrar && this.analitico.conclusao.motivo.motivo != "Trocar Modem") {
+                let msg: string;
+                let type: string;
+                if (element.value) {
+                    msg = "Rede confiável.";
+                    type = "alert-info";
+                } else {
+                    msg = "Rede não confiável, necessária revisão.";
+                    type = "alert-warning";
+                }
+                this.subalertMsg = {
+                    msg: msg,
+                    alertType: type
+                }
+                this.subalertAtivo = true;
+                this.subalertCloseable = false;
+            }
+        });
+    }
+
+    public callAlert(msg, type) {
         this.alertMsg = {
             msg: msg,
             alertType: type
@@ -171,16 +192,31 @@ export class ManobraComponent implements OnInit {
         this.alertCloseable = false;
     }
 
-    holderAtribuition() {
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+        this.toastyComponent.toastyInfo = {
+            titulo: titulo,
+            msg: msg,
+            theme: theme,
+            timeout: timeout
+        }
+        this.toastyComponent.addToasty();
+    }
+
+    public holderAtribuition() {
         this.cadastro = this.holderService.cadastro;
     }
 
-    enterBtnInput() {
+    public enterBtnInput() {
         if (!this.ordem && !this.motivoSelected) {
             this.btnValidDisable = true;
         } else {
             this.btnValidDisable = false;
         }
+    }
+
+    public eraseInfoValid() {
+        this.ordem = null;
+        this.motivoSelected = null;
     }
 
 }

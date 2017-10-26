@@ -1,44 +1,37 @@
+import { InfoRequest } from './../../viewmodel/url/infos-url';
+import { UrlService } from './../../util/url-service/url.service';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
-import { RequestOptions, Headers, Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class FulltestCrmService {
 
-    private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
-    private options = new RequestOptions({ headers: this.headersAppJson });
-    private fulltestUrl = 'http://10.200.35.67:80/fulltestAPI/fulltest/';  // URL to FulltestAPI
 
-    constructor(private http: Http) { }
+    private infoResquest: InfoRequest;
 
-    getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
-        const url = `${this.fulltestUrl}` + "corrective/";
-        //console.log(url);
-        return this.http.post(url, JSON.stringify(cadastro), this.options)
-            .timeout(180000)
-            .toPromise()
-            .then(response => {
-                return response.json() as ObjectValid
-            }).catch(this.handleError);
+    constructor(
+        private urlService: UrlService) { }
+
+    public getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let _data: { cust: any, executor: string };
+        _data = { cust: cadastro, executor: usr.user };
+        this.infoResquest = {
+            rqst: "post",
+            command: this.urlService.pathFulltestAPI + "fulltest/crm/", // crm -- corrective
+            _data: _data,
+            timeout: 120000
+        }
+        return this.urlService.request(this.infoResquest)
+            .then(data => {
+                return data as ObjectValid
+            })
+            .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {
-        //console.error('Ocorreu o seguinte erro: ', error); // for demo purposes only
-        let er: any;
-        if (error.message === "Timeout has occurred") {
-            er = {
-                tError: "Timeout",
-                mError: "Tempo de busca excedido, por favor realize a busca novamente, caso o problema persista informe ao administrador do sistema."
-            }
-        } else {
-            let erJson: any = error.json();
-            er = {
-                tError: "",
-                mError: erJson.message
-            }
-        }
-        return Promise.reject(er);
+        return Promise.reject(error);
     }
 
 }

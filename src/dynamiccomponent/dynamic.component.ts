@@ -10,9 +10,8 @@ export class DynamicComponent {
 
     @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) dynamicComponentContainer: ViewContainerRef;
 
-    @Input() set componentData(data: { component: any, inputs: any }) {
-        //console.log(data);
-        if (!data) {
+    @Input() set componentData(data: { component: any, inputs: any }) {                
+        if (!data.component) {
             return;
         }
         let inputProviders = Object.keys(data.inputs).map((inputName) => { return { provide: inputName, useValue: data.inputs[inputName] }; });

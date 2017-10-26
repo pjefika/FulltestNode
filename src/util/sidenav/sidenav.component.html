@@ -1,3 +1,9 @@
-<section class="sidenav-content">
-    <a class="nav-link" *ngFor="let l of menus" (click)="abrecomponent(l)" [class.disabled]="!liberarSidNav">{{l.nome}}</a>
-</section>
+<!-- <section class="sidenav-content">
+    <a class="nav-link" *ngFor="let l of menus" (click)="abrecomponent(l)" [class.disabled]="!holderService.liberarSideNav" [class.active]="sideNavActive(l)"
+        [style.cursor]="!holderService.liberarSideNav ? 'not-allowed': 'pointer'">{{l.nome}}</a>
+</section> -->
+<a clrVerticalNavLink routerLinkActive="active" [class.active]="sideNavActive(l)" *ngFor="let l of menus" [class.disabled]="!holderService.liberarSideNav"
+    (click)="abrecomponent(l)" [style.cursor]="!holderService.liberarSideNav ? 'not-allowed': 'pointer'">
+    <clr-icon clrVerticalNavIcon [attr.shape]="l.icon"></clr-icon>
+    {{l.nome}}
+</a>

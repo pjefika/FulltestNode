@@ -1,0 +1,45 @@
+<div>
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="2">{{profile.atual.nome}}</th>
+            </tr>
+            <tr>
+                <th>Mensagem:</th>
+                <td>{{profile.atual.mensagem}}</td>
+            </tr>
+            <tr>
+                <th>Resultado:</th>
+                <td>
+                    <clr-icon style="color: green" shape="check" *ngIf="profile.atual.resultado"></clr-icon>
+                    <clr-icon style="color: red" shape="times" *ngIf="!profile.atual.resultado"></clr-icon>
+                </td>
+            </tr>
+            <tr>
+                <th>Profile Down:</th>
+                <td>
+                    <div class="select">
+                        <select [(ngModel)]="profile.atual.result.down">
+                            <option *ngFor="let vel of profile.downValues" [ngValue]="vel.vel">{{vel.desc}}</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Profile Up:</th>
+                <td>
+                    <div class="select">
+                        <select [(ngModel)]="profile.atual.result.up">
+                            <option *ngFor="let vel of profile.upValues" [ngValue]="vel.vel">{{vel.desc}}</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetProfileDisable" (click)="setProfile()">{{btnSetProfileName}}</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

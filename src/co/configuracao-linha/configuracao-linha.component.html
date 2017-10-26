@@ -1,0 +1,4 @@
+<div class="move-pra-cima" *ngIf="holderService.cadastro">
+    <configuracao-linha-tdm-component *ngIf="holderService.cadastro.linha.tipo === 'TDM'"></configuracao-linha-tdm-component>
+    <configuracao-linha-ims-component *ngIf="holderService.cadastro.linha.tipo === 'IMS'"></configuracao-linha-ims-component>
+</div>

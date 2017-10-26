@@ -2,30 +2,26 @@
     <clr-header class="header-4">
         <div class="branding">
             <a class="nav-link">
-                <clr-icon shape="home" class="is-success"></clr-icon>
+                <clr-icon shape="terminal" class="is-inverse"></clr-icon>
                 <span class="title" id="tituloprincipal">CO - Efika Fulltest</span>
             </a>
         </div>
         <div class="header-nav">
-            <a class="nav-link nav-icon" (click)="cadastroClick()" [class.active]="buscaCadastro">
-                <clr-icon shape="headphones" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
+            <a class="nav-link nav-icon" [class.active]="true">
+                <clr-icon shape="phone-handset" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
                     <span class="tooltip-content">Consultar instância</span>
                 </clr-icon>
             </a>
-            <!-- <a class="nav-link nav-icon" (click)="massivoClick()" [class.disabled]="!mostraMenus">
-                <clr-icon shape="layers" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
-                    <span class="tooltip-content">Massivo</span>
-                </clr-icon>
-            </a> -->
         </div>
-        <div class="search" *ngIf="buscaCadastro">
-            <label for="search_input" for="search_input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-lg tooltip-bottom-right">                
-                <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..." [(ngModel)]="instancia" (keyup.enter)="busca()">
+        <div class="search">
+            <label for="search_input" for="search_input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-lg tooltip-bottom-right">
+                <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..." [(ngModel)]="holderService.instancia" (keyup.enter)="busca()">
                 <span class="tooltip-content">Após inserir a instância pressione "Enter"</span>
             </label>
         </div>
         <div class="header-actions">
-            <popover-component [cadastro]="holderService.cadastro" [objectValid]="holderService.objectValid" *ngIf="holderService.cadastro"></popover-component>
+            <popover-component [confPorta]="holderService.confPorta" [cadastro]="holderService.cadastro" [objectValid]="holderService.objectValid"
+                [cadastroLinha]="holderService.cadastroLinha" *ngIf="holderService.cadastro"></popover-component>
             <toggle-component *ngIf="mostraToggle"></toggle-component>
             <clr-dropdown>
                 <button class="nav-icon" clrDropdownTrigger>
@@ -33,22 +29,30 @@
                     <clr-icon shape="caret down"></clr-icon>
                 </button>
                 <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+                    <a clrDropdownItem (click)="holderService.modalAdm = true;" *ngIf="nivelmaiorquedez">Administração</a>
+                    <a clrDropdownItem (click)="holderService.modalLogError = true;">Log de Ações</a>
                     <a clrDropdownItem (click)="sair()">Sair</a>
                 </clr-dropdown-menu>
             </clr-dropdown>
         </div>
     </clr-header>
-    <nav class="subnav" *ngIf="subnav">
-        <subnav-component [menus]="subNavMenus"></subnav-component>
+    <nav class="subnav" *ngIf="holderService.subnav" [clr-nav-level]="1">
+        <subnav-component [menus]="holderService.subNavMenus"></subnav-component>
     </nav>
     <div class="content-container">
         <div class="content-area">
-            <h3>{{headerTitle}}</h3>
-            <dynamic-component [componentData]="componentData"></dynamic-component>
+            <!-- <h3>{{headerTitle}}</h3> -->
+            <!-- <holder-router-component [component]="holderCompsService.component" [input]="holderCompsService.input"></holder-router-component> -->
+            <dynamic-router-component [component]="dynamicRouterHolderService.component"></dynamic-router-component>
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
+            <adm-component></adm-component>
+            <error-log-component></error-log-component>
         </div>
-        <nav class="sidenav" *ngIf="sidenav">
-            <sidenav-component [menus]="sideNavMenus"></sidenav-component>
-        </nav>
+        <!-- <nav class="sidenav" *ngIf="holderService.sidenav">
+            <sidenav-component [menus]="holderService.sideNavMenus"></sidenav-component>
+        </nav> -->
+        <clr-vertical-nav *ngIf="holderService.sidenav" [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="false" [clr-nav-level]="2">
+            <sidenav-component [menus]="holderService.sideNavMenus"></sidenav-component>
+        </clr-vertical-nav>
     </div>
 </clr-main-container>

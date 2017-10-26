@@ -1,0 +1,17 @@
+<div>
+    <h3>Agrupamento</h3>
+    <label>Ações de Agrupamento: </label>
+    <div class="select">
+        <select [(ngModel)]="qualComando" (change)="comandoSelecionado()">
+            <option value="consultar">Consultar Agrupamento</option>
+            <option value="ativar">Ativar Agrupamento</option>
+            <option value="desativar">Desativar Agrupamento</option>
+        </select>
+    </div>
+
+    <div class="set-margin">
+        <consultar-agrupamento-component [ativo]="consultar"></consultar-agrupamento-component>
+        <ativar-agrupamento-component [ativo]="ativar"></ativar-agrupamento-component>
+        <desativar-agrupamento-component [ativo]="desativar"></desativar-agrupamento-component>
+    </div>
+</div>

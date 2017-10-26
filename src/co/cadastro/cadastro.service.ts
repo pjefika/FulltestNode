@@ -1,6 +1,8 @@
+import { Rede } from './../../viewmodel/cadastro/rede';
+import { InfoRequest } from './../../viewmodel/url/infos-url';
+import { UrlService } from './../../util/url-service/url.service';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
@@ -8,43 +10,42 @@ import 'rxjs/Rx';
 @Injectable()
 export class CadastroService {
 
-    private headers = new Headers({ 'Content-Type': 'text/plain' });
-    private stealerAPIUrl = 'http://10.40.195.81:8080/stealerAPI/oss/';  // URL to stealerAPI
+    private infoResquest: InfoRequest;
 
-    // private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
-    // private options = new RequestOptions({ headers: this.headersAppJson });
-    // private fulltestUrl = 'http://10.40.195.81:8080/fulltestAPI/fulltest/';  // URL to FulltestAPI
+    constructor(
+        private urlService: UrlService) { }
 
-    constructor(private http: Http) { }
-
-    getCadastro(instancia: string): Promise<Cadastro> {
-        const url = `${this.stealerAPIUrl}${instancia}`;
-        return this.http.get(url, { headers: this.headers })
-            .timeout(120000)
-            .toPromise()
+    public getCadastro(instancia: string): Promise<Cadastro> {
+        this.infoResquest = {
+            rqst: "get",
+            command: this.urlService.pathStealerAPI + "oss/",
+            _data: instancia,
+            otherUrl: this.urlService.urlIpParaStealer,
+            timeout: 60000
+        };
+        return this.urlService.request(this.infoResquest)
             .then(response => {
-                return response.json() as Cadastro
+                return response as Cadastro
+            })
+            .catch(this.handleError);
+    }
+
+    public getCadastroDOne(instancia: string) {
+             this.infoResquest = {
+            rqst: "get",
+            command: this.urlService.pathNetworkInventory + "networkInventory/",
+            _data: instancia,
+            timeout: 10000
+        };
+        return this.urlService.request(this.infoResquest)
+            .then(response => {
+                return response as Cadastro
             })
             .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {
-        //console.error('Ocorreu o seguinte erro: ', error); // for demo purposes only
-        let er: any;
-        if (error.message === "Timeout has occurred") {
-            er = {
-                tError: "Timeout",
-                mError: "Tempo de busca excedido, por favor realize a busca novamente, caso o problema persista informe ao administrador do sistema."
-            }
-        } else {
-            let erJson: any;
-            erJson = error.json();
-            er = {
-                tError: "",
-                mError: erJson.message
-            }
-        }
-        return Promise.reject(er);
+        return Promise.reject(error);
     }
 
 }

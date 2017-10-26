@@ -1,9 +1,11 @@
+import { InfoRequest } from './../../viewmodel/url/infos-url';
+import { UrlService } from './../../util/url-service/url.service';
 import { Motivo } from './../../viewmodel/manobra/motivo';
 import { Analitico } from './../../viewmodel/manobra/analitico';
 import { element } from 'protractor';
 import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
-import { Http, RequestOptions, Headers } from '@angular/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
@@ -15,34 +17,68 @@ import 'rxjs/Rx';
 @Injectable()
 export class ManobraService {
 
-    private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
-    private options = new RequestOptions({ headers: this.headersAppJson });
-    private fulltestUrl = 'http://10.40.195.81:8080/fulltestAPI_manobra/';  // URL to FulltestAPI **--** Modificar path pois está em outro path....
-    private manobraAssertsUrl = 'http://10.40.195.81:8080/stealerAPI/';
+    private infoResquest: InfoRequest;
 
-    constructor(private http: Http) { }
+    constructor(
+        private urlService: UrlService,
+        private http: Http) { }
 
-    getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
-        const url = `${this.fulltestUrl}` + "fulltest/manobra/";
-        //console.log(url);
-        return this.http.post(url, JSON.stringify(cadastro), this.options)
-            .timeout(120000)
-            .toPromise()
-            .then(response => {
-                return response.json() as ObjectValid
-            }).catch(this.handleError);
+    public getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let _data: { cust: any, executor: string };
+        _data = { cust: cadastro, executor: usr.user };
+        this.infoResquest = {
+            rqst: "post",
+            command: this.urlService.pathFulltestAPI + "fulltest/manobra/",
+            _data: _data,
+            timeout: 120000
+        }
+        return this.urlService.request(this.infoResquest)
+            .then(data => {
+                return data as ObjectValid
+            })
+            .catch(this.handleError);
+    }
+
+    public getAnalitico(cadastro: Cadastro, motivoSelected: string, executor: string): Promise<Analitico> {
+        let _data: { cust: Cadastro, motivo: string, executor: string }
+        _data = { cust: cadastro, motivo: motivoSelected, executor: executor }
+        this.infoResquest = {
+            rqst: "post",
+            command: this.urlService.pathFulltestAPI + "manobra/analitico",
+            _data: _data,
+            timeout: 120000
+        }
+        return this.urlService.request(this.infoResquest)
+            .then(data => {
+                return data as Analitico[];
+            })
+            .catch(this.handleError);
+    }
+
+    public getListaMotivo(): Promise<Motivo[]> {
+        this.infoResquest = {
+            rqst: "get",
+            command: this.urlService.pathFulltestAPI + "manobra/motivos",
+            timeout: 120000
+        }
+        return this.urlService.request(this.infoResquest)
+            .then(data => {
+                return data as Motivo[]
+            })
+            .catch(this.handleError);
     }
 
     //Multiple requests
-    getRn(cadastro: Cadastro, ordem: string, ): Observable<Cadastro> {
-        const urlStealer = `${this.manobraAssertsUrl}` + "manobra/asserts";
-        const urlFulltest = `${this.fulltestUrl}` + "manobra/asserts";    
+    public getRn(cadastro: Cadastro, ordem: string, ): Observable<Cadastro> {
+        const urlStealer = this.urlService.urlIp + this.urlService.pathFulltestAPI + "manobra/asserts";
+        const urlFulltest = this.urlService.urlIpParaStealer + this.urlService.pathStealerAPI + "manobra/asserts";
         let _data: { cust: Cadastro, workOrderId: string };
         _data = { cust: cadastro, workOrderId: ordem };
         return Observable.forkJoin(
-            this.http.post(urlStealer, JSON.stringify(_data), this.options)
+            this.http.post(urlStealer, JSON.stringify(cadastro), this.urlService.options)
                 .map(res => res.json()),
-            this.http.post(urlFulltest, JSON.stringify(cadastro), this.options)
+            this.http.post(urlFulltest, JSON.stringify(_data), this.urlService.options)
                 .map(res => res.json())
         ).map(
             data => {
@@ -51,55 +87,16 @@ export class ManobraService {
                 });
                 data[1].forEach(element => {
                     cadastro.asserts.push(element);
-                });                
+                });
                 return cadastro as Cadastro;
-            }, err => {
-                this.handleError(err);
-            }
-            )
-    }
-
-    getAnalitico(cadastro: Cadastro, motivoSelected: string, executor: string): Promise<Analitico> {
-        const urlFulltest = `${this.fulltestUrl}` + "manobra/analitico";
-        let _data: { cust: Cadastro, motivo: string, executor: string }
-        _data = { cust: cadastro, motivo: motivoSelected, executor: executor }
-        return this.http.post(urlFulltest, JSON.stringify(_data), this.options)
-            .timeout(120000)
-            .toPromise()
-            .then(response => {
-                return response.json() as Analitico[];
+            }, error => {
+                this.urlService.handleError(error);
             })
-            .catch(this.handleError);
-    }
-
-    getListaMotivo(): Promise<Motivo[]> {
-        const urlFulltest = `${this.fulltestUrl}` + "manobra/motivos";
-        return this.http.get(urlFulltest, this.options)
-            .timeout(120000)
-            .toPromise()
-            .then(response => {
-                return response.json() as Motivo[]
-            })
-            .catch(this.handleError);
+            .timeout(120000);
     }
 
     private handleError(error: any): Promise<any> {
-        //console.error('Ocorreu o seguinte erro: ', error); // for demo purposes only
-        let er: any;
-        if (error.message === "Timeout has occurred") {
-            er = {
-                tError: "Timeout",
-                mError: "Tempo de busca excedido, por favor realize a busca novamente, caso o problema persista informe ao administrador do sistema."
-            }
-        } else {
-            let erJson: any;
-            erJson = error.json();
-            er = {
-                tError: "",
-                mError: erJson.message
-            }
-        }
-        return Promise.reject(er);
+        return Promise.reject(error);
     }
 
 }

@@ -1,6 +1,7 @@
 <div>
     <div *ngIf="!searchFulltest">
         <div *ngIf="objectValid">
+            <table-cadastro-component [cadastro]="cadastro"></table-cadastro-component>
             <div class="row">
                 <div class="col-md-6">
                     <fulltest-table-component [objectValid]="objectValid"></fulltest-table-component>
@@ -54,6 +55,8 @@
             </div>
         </div>
     </div>
-    <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Fulltest'"></loading-component>
+    <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Validação'"></loading-component>
     <alert-component [msg]="alertMsg" [ativo]="alertAtivo" [closeable]="alertCloseable"></alert-component>
+    <alert-component [msg]="subalertMsg" [ativo]="subalertAtivo" [closeable]="subalertCloseable"></alert-component>
+
 </div>

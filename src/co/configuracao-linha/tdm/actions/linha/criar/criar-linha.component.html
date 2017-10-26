@@ -1,0 +1,37 @@
+<div *ngIf="ativo" class="margin-dez">
+    <alert-component [msg]="alertMsg" [ativo]="alertAtivo" [closeable]="alertCloseable"></alert-component>
+    <div *ngIf="confBinada">
+        <table class="table table-vertical table-compact">
+            <tr>
+                <th colspan="2">Informações linha binada</th>
+            </tr>
+            <tr>
+                <td>Len</td>
+                <td>{{confBinada.len.len}}</td>
+            </tr>
+            <tr *ngIf="cadInstanciaBinada">
+                <td>Central</td>
+                <td>{{cadInstanciaBinada.central}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>Instância Binada: </label>
+            <input type="text" style="width: 100%;" [(ngModel)]="instanciaBinada" placeholder="Insira a instância binada">
+            <button type="button" class="btn btn-info-outline btn-block" [clrLoading]="consultarLenLoadingButton" [disabled]="consultarLenDisabledButton"
+                (click)="getLinhaBinada()">{{consultarLenNameButton}}</button>
+        </div>
+        <div class="col-md-6">
+            <div *ngIf="listLens">
+                <label>Selecione o LEN Livre:</label>
+                <div class="select">
+                    <select [(ngModel)]="qualLen">
+                        <option [ngValue]="l.len" *ngFor="let l of listLens.fac" >{{l.len.len}}</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary btn-block" (click)="createLinha()" [disabled]="criarLinhaDisableButton">{{criarLinhaNomeButton}}</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
+import { DynamicRouterHolderService } from './../dynamic-router/dynamic-router-holder.service';
 import { SubNav } from './../../viewmodel/menus/subnav';
 import { HolderService } from './../holder/holder.service';
-import { TemplateComponent } from './../../template/template.component';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -10,52 +10,32 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class SubnavComponent implements OnInit {
+
     constructor(
-        private templateComponent: TemplateComponent,
-        public holderService: HolderService) { }
+        public holderService: HolderService,
+        public dynamicRouterHolderService: DynamicRouterHolderService) { }
 
-    @Input() menus: SubNav[];
+    @Input() public menus: SubNav[];
 
-    ngOnInit() { }
+    public ngOnInit() {
 
-    abrecomponent(l) {
+    }
+
+    private abrecomponent(l) {
+        // Desativa o sidenav pois pode-ser que seja mudado ao trocar de menu, se precisar ativar sidenav ativar no construtor do component...
+        this.holderService.sidenav = false;
         if (this.holderService.liberarSubNav) {
-            this.switchCO(l);
-            this.switchCrm(l);
+            if (l.link) {
+                window.open(l.link);
+            } else {
+                this.dynamicRouterHolderService.component = l.component;
+            }
         }
     }
 
-    switchCO(l) {
-        switch (l.component) {
-            case "full-test-component":
-                this.templateComponent.createRealizaFulltestComponent();
-                break;
-            case "cadastro-component":
-                this.templateComponent.createCadastroComponent();
-                break;
-            case "manobra-component":
-                this.templateComponent.createManobraComponent();
-                break;
-        }
-    }
-
-    switchCrm(l) {
-        switch (l.component) {
-            case "cadastro-crm-component":
-                this.templateComponent.createRealizaFulltestCrmComponent();
-                break;
-            case "complementares-component":
-                this.templateComponent.createComplementaresComponent();
-                break;
-            case "link-acs":
-                this.templateComponent.createGoToAcsLink();
-                break;
-        }
-    }
-
-    subNavActive(l): Boolean {
+    private subNavActive(l): Boolean {
         let active = false;
-        if (l.component == this.holderService.whoSubNavIsActive) {
+        if (l.component == this.dynamicRouterHolderService.component) {
             active = true;
         }
         return active;

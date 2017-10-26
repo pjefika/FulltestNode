@@ -84,7 +84,7 @@
                                         <span class="tooltip-content">Este campo precisa ser preenchido</span>
                                     </label>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="cadastro.rede.tipo === 'GPON'">
                         <label>Porta Lógica:</label>
                         <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.logica ? '': 'invalid'">
                                         <input type="text" required [(ngModel)]="cadastro.rede.logica" name="logica" placeholder="Insira a Porta Lógica"/>
