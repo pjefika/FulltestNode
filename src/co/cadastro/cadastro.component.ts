@@ -44,8 +44,7 @@ export class CadastroComponent implements OnInit {
         private injector: Injector,
         private toastyComponent: ToastyComponent,
         private holderService: HolderService) {
-        // Injeta o parametro input/dados passados para a variavel
-        this.instancia = this.injector.get('instancia');
+        this.instancia = this.holderService.instancia;
     }
 
     ngOnInit(): void {

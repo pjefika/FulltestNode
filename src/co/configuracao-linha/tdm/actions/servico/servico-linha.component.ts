@@ -1,5 +1,5 @@
+import { DynamicRouterHolderService } from './../../../../../util/dynamic-router/dynamic-router-holder.service';
 import { ConfiguracaoLinhaComponent } from './../../../configuracao-linha.component';
-import { HolderCompsService } from './../../../../../util/component-holder/services/holder-comps.service';
 import { HolderService } from './../../../../../util/holder/holder.service';
 import { ToastyComponent } from './../../../../../util/toasty/toasty.component';
 import { Servico } from './../../../../../viewmodel/cadastro-linha/servicos';
@@ -41,7 +41,7 @@ export class ServicoLinhaComponent implements OnInit {
         private toastyComponent: ToastyComponent,
         public holderService: HolderService,
         private fb: FormBuilder,
-        private holderCompsService: HolderCompsService) { }
+        public dynamicRouterHolderService: DynamicRouterHolderService) { }
 
     ngOnInit() {
         this.listaDeServicos = this.holderService.listaDeServicos;
@@ -103,7 +103,7 @@ export class ServicoLinhaComponent implements OnInit {
                 this.nomeButton = "Alterar";
                 this.disableButton = false;
                 this.callToasty("Sucesso.", "Serviços Alterados com sucesso.", "success", 5000);
-                this.holderCompsService.component = ConfiguracaoLinhaComponent;
+                this.dynamicRouterHolderService.component = ConfiguracaoLinhaComponent;
             }, error => {
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
                 this.nomeButton = "Alterar";

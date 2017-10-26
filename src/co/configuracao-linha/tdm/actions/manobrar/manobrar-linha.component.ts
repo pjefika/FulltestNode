@@ -1,7 +1,7 @@
+import { ConfiguracaoLinhaTdmService } from './../../configuracao-linha-tdm.service';
+import { DynamicRouterHolderService } from './../../../../../util/dynamic-router/dynamic-router-holder.service';
 import { ConfiguracaoLinhaComponent } from './../../../configuracao-linha.component';
-import { HolderCompsService } from './../../../../../util/component-holder/services/holder-comps.service';
 import { HolderService } from './../../../../../util/holder/holder.service';
-import { ConfiguracaoLinhaService } from './../../../configuracao-linha.service';
 import { ToastyComponent } from './../../../../../util/toasty/toasty.component';
 import { CadastroLinha } from './../../../../../viewmodel/cadastro-linha/cadastro-linha';
 import { ConfiguracoesLensLivres } from './../../../../../viewmodel/cadastro-linha/lens-livres/configuracoes-lens-livres';
@@ -16,7 +16,7 @@ import { Len } from './../../../../../viewmodel/cadastro-linha/len';
     selector: 'manobrar-linha-component',
     templateUrl: 'manobrar-linha.component.html',
     styleUrls: ['manobrar-linha.component.css'],
-    providers: [ManobraLinhaService, ListarLinhaService, ListarLensLivresService]
+    providers: [ManobraLinhaService, ListarLinhaService, ListarLensLivresService, ConfiguracaoLinhaTdmService]
 })
 
 export class ManobrarLinhaComponent implements OnInit {
@@ -51,11 +51,11 @@ export class ManobrarLinhaComponent implements OnInit {
         private listarLinhaService: ListarLinhaService,
         private listarLensLivresService: ListarLensLivresService,
         private toastyComponent: ToastyComponent,
-        private configuracaoLinhaService: ConfiguracaoLinhaService,
+        private configuracaoLinhaTdmService: ConfiguracaoLinhaTdmService,
         public holderService: HolderService,
-        private holderCompsService: HolderCompsService) { }
+        public dynamicRouterHolderService: DynamicRouterHolderService) { }
 
-    ngOnInit() {
+    public ngOnInit() {
         if (this.holderService.cadastroLinha.status === "NOT_CREATED") {
             this.callAlert("A linha não está criada, realize a criação da mesma no Menu Linha > Criar Linha.", "alert-warning");
             this.showManobrar = false;
@@ -81,7 +81,7 @@ export class ManobrarLinhaComponent implements OnInit {
     }
 
     public getConfBinada() {
-        this.configuracaoLinhaService.getInformacoes(this.cadInstanciaBinada)
+        this.configuracaoLinhaTdmService.getInformacoes(this.cadInstanciaBinada)
             .then(data => {
                 this.confBinada = data;
             }, error => {
@@ -115,7 +115,8 @@ export class ManobrarLinhaComponent implements OnInit {
                     this.manobrarLinhaNomeButton = "Manobrar Linha";
                     this.manobrarLinhaDisableButton = false;
                     this.callToasty("Sucesso", "Linha manobrada com sucesso.", "success", 5000);
-                    this.holderCompsService.component = ConfiguracaoLinhaComponent;
+                    this.dynamicRouterHolderService.component = ConfiguracaoLinhaComponent;
+
                 }, error => {
                     this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                     this.manobrarLinhaNomeButton = "Manobrar Linha";
