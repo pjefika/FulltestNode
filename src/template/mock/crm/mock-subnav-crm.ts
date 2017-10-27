@@ -7,6 +7,6 @@ export const subNavMockCrm: SubNav[] = [
     },
     {
         nome: "Link ACS",
-        link: "http://10.40.195.81:8080/acs-arris"
+        link: "http://10.200.35.67/acs-arris/"
     }
 ]
