@@ -1,7 +1,7 @@
 <div>
     <button type="button" class="btn btn-primary btn-block" (click)="modalOpen = true">Alterar informações do cadastro</button>
 
-    <clr-wizard #wizardmd [(clrWizardOpen)]="modalOpen" clrWizardSize="lg">
+    <clr-wizard #wizardmd [(clrWizardOpen)]="modalOpen" clrWizardSize="lg" [clrWizardClosable]="false">
         <clr-wizard-title>Informações de cadastro</clr-wizard-title>
 
         <clr-wizard-button [type]="'cancel'">Sair</clr-wizard-button>

@@ -47,7 +47,7 @@ export class CadastroComponent implements OnInit {
         this.instancia = this.holderService.instancia;
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.util.isLogado().then((result: boolean) => {
             if (!result) {
                 this.router.navigate(['./entrar']);

@@ -1,7 +1,7 @@
 import { Cadastro } from './../../../viewmodel/cadastro/cadastro';
 
 import { Wizard } from 'clarity-angular';
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, OnInit } from '@angular/core';
 
 @Component({
     selector: 'cadastro-wizard-component',
@@ -9,7 +9,7 @@ import { Component, Input, ViewChild } from '@angular/core';
     styleUrls: ['cadastro-wizard.component.css']
 })
 
-export class CadastroWizardComponent {
+export class CadastroWizardComponent implements OnInit {
 
     @ViewChild("wizardmodal") wizardmodal: Wizard;
 
@@ -17,5 +17,11 @@ export class CadastroWizardComponent {
 
     @Input() cadastro: Cadastro;
 
+
+    public ngOnInit(): void {
+        if (!this.cadastro.rede) {
+            this.modalOpen = true;
+        }
+    }
 
 }
