@@ -11,17 +11,18 @@ import { Component, Input, ViewChild, OnInit } from '@angular/core';
 
 export class CadastroWizardComponent implements OnInit {
 
-    @ViewChild("wizardmodal") wizardmodal: Wizard;
+    @ViewChild("wizardmodal") public wizardmodal: Wizard;
 
-    modalOpen: boolean = false;
+    private modalOpen: boolean = false;
 
-    @Input() cadastro: Cadastro;
-
+    @Input() public cadastro: Cadastro;
 
     public ngOnInit(): void {
-        if (!this.cadastro.rede) {
+        if (!this.cadastro.rede || !this.cadastro.servicos) {
             this.modalOpen = true;
         }
     }
+
+
 
 }

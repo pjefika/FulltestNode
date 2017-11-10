@@ -99,23 +99,8 @@ export class CadastroCrmComponent implements OnInit {
             .then(data => {
                 this.cadastro = data;
                 this.holderService.cadastro = this.cadastro;
-                if (this.cadastro.rede.tipo) {
-                    this.searchCadastro = false;
-                    this.assert();
-                } else {
-                    this.searchCadastro = true;
-                    this.cadastroCrmService
-                        .getCadastroDOne(this.instancia)
-                        .then(data => {
-                            this.cadastro.rede = data.rede;
-                            this.callAlert("Atenção cadastro carregado da base do dia anterior.", "alert-danger");
-                            this.searchCadastro = false;
-                            this.assert();
-                        }, error => {
-                            this.callAlert("Atenção não existe informações de cadastro em nossas bases.", "alert-danger");
-                            this.searchCadastro = false;
-                        });
-                }
+                this.searchCadastro = false;
+                this.assert();                
                 this.holderService.liberarSubNav = true;
             }, error => {
                 this.searchCadastro = false;

@@ -4,7 +4,7 @@
     <clr-wizard #wizardmd [(clrWizardOpen)]="modalOpen" clrWizardSize="lg" [clrWizardClosable]="false">
         <clr-wizard-title>Informações de cadastro</clr-wizard-title>
 
-        <clr-wizard-button [type]="'cancel'">Sair</clr-wizard-button>
+        <clr-wizard-button [type]="'cancel'" *ngIf="formpageone.valid">Sair</clr-wizard-button>
         <clr-wizard-button [type]="'previous'">Voltar</clr-wizard-button>
         <clr-wizard-button [type]="'next'">Proximo</clr-wizard-button>
         <clr-wizard-button [type]="'finish'">Concluido</clr-wizard-button>
