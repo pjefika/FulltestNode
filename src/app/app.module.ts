@@ -1,3 +1,4 @@
+import { AppLevelAlertComponent } from './../util/applevelalert/applevelalert.component';
 import { DynamicRouterComponent } from './../util/dynamic-router/dynamic-router.component';
 import { DynamicRouterHolderService } from './../util/dynamic-router/dynamic-router-holder.service';
 import { ErrorLogComponent } from './../util/error-log/error-log.component';
@@ -137,7 +138,8 @@ import { AppComponent } from './app.component';
         TableAuxProfileComponent,
         TableAuxSerialComponent,
         ErrorLogComponent,
-        DynamicRouterComponent
+        DynamicRouterComponent,
+        AppLevelAlertComponent
     ],
     imports: [
         BrowserModule,

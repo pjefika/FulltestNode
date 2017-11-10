@@ -23,6 +23,4 @@ export class CadastroWizardComponent implements OnInit {
         }
     }
 
-
-
 }
