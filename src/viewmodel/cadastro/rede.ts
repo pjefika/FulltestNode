@@ -13,4 +13,8 @@ export class Rede {
     vlanVod: number;
     vlanMulticast: number;
     cvLan: number;
+    bhs?: boolean;
+    planta?: string;
+    idOnt?: string;
+    terminal?: string;
 }

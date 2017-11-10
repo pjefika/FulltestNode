@@ -1,6 +1,6 @@
 export class Servicos {
     velDown: number;
     velUp: number;
-    isSip: boolean;
-    isHib: boolean;
+    tipoTv: string;
+    tipoLinha: string;
 }

@@ -230,23 +230,6 @@ export class CadastroCrmComponent implements OnInit {
     }
 
     private holderAtribuition() {
-        // console.log(this.holderService.listAsserts);
-        // console.log(this.holderService.listResumo);
-        // console.log(this.holderService.objectValid);
-
-
-        // this.listAsserts = this.holderService.listAsserts;
-        // this.listResumo = this.holderService.listResumo;
-        // this.objectValid = this.holderService.objectValid;
-
-        // if (this.holderService.listAsserts || this.holderService.listResumo || this.holderService.objectValid) {
-        //     this.listAsserts = this.holderService.listAsserts;
-        //     this.listResumo = this.holderService.listResumo;
-        //     this.objectValid = this.holderService.objectValid;
-        // } else {
-        //     this.assert();
-        // }
-
         if (this.holderService.listAsserts && this.holderService.listResumo) {
             this.listAsserts = this.holderService.listAsserts;
             this.listResumo = this.holderService.listResumo;

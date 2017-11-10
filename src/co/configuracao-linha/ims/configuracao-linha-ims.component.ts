@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HolderService } from 'util/holder/holder.service';
 
 @Component({
     selector: 'configuracao-linha-ims-component',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ConfiguracaoLinhaImsComponent implements OnInit {
-    constructor() { }
+    constructor(public holderService: HolderService) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.holderService.sidenav = false;
+    }
 }
