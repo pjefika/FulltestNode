@@ -14,6 +14,7 @@ import { element } from 'protractor';
 import { CadastroCrmService } from './cadastrocrm.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, Injector } from '@angular/core';
+import { log } from 'util';
 
 @Component({
     selector: 'cadastro-crm-component',
@@ -81,6 +82,7 @@ export class CadastroCrmComponent implements OnInit {
             }
         });
         if (this.holderService.cadastro) {
+            this.cadastro = this.holderService.cadastro;
             this.holderAtribuition();
         } else {
             //Inicia o fulltest assim que inicializa o componente
@@ -89,7 +91,7 @@ export class CadastroCrmComponent implements OnInit {
     }
 
     //Busca instancia retornando cadastro.
-    getCadastro() {
+    public getCadastro() {
         //this.holderService.liberarSubNav = true;
         this.searchCadastro = true;
         this.cadastroCrmService
@@ -97,8 +99,23 @@ export class CadastroCrmComponent implements OnInit {
             .then(data => {
                 this.cadastro = data;
                 this.holderService.cadastro = this.cadastro;
-                this.searchCadastro = false;
-                this.assert();
+                if (this.cadastro.rede.tipo) {
+                    this.searchCadastro = false;
+                    this.assert();
+                } else {
+                    this.searchCadastro = true;
+                    this.cadastroCrmService
+                        .getCadastroDOne(this.instancia)
+                        .then(data => {
+                            this.cadastro.rede = data.rede;
+                            this.callAlert("Atenção cadastro carregado da base do dia anterior.", "alert-danger");
+                            this.searchCadastro = false;
+                            this.assert();
+                        }, error => {
+                            this.callAlert("Atenção não existe informações de cadastro em nossas bases.", "alert-danger");
+                            this.searchCadastro = false;
+                        });
+                }
                 this.holderService.liberarSubNav = true;
             }, error => {
                 this.searchCadastro = false;
@@ -113,7 +130,7 @@ export class CadastroCrmComponent implements OnInit {
     }
 
     //Faz validações com o cadastro buscado.
-    getValidacao() {
+    public getValidacao() {
         this.searchFulltest = true;
         this.fulltestCrmService
             .getValidacao(this.cadastro)
@@ -128,7 +145,6 @@ export class CadastroCrmComponent implements OnInit {
                     this.callAlert(this.objectValid.mensagem, "alert-danger");
                 }
                 this.mloger(this.objectValid.mensagem);
-                //this.holderService.liberarSubNav = true; // apos termino do fulltest libera a lista de subnav
             }, error => {
                 this.callAlert(error.mError, "alert-danger");
                 this.listResumo.fulltest = false;
@@ -150,7 +166,7 @@ export class CadastroCrmComponent implements OnInit {
         this.toastyComponent.addToasty();
     }
 
-    callAlert(msg, type) {
+    private callAlert(msg, type) {
         this.alertMsg = {
             msg: msg,
             alertType: type
@@ -169,13 +185,14 @@ export class CadastroCrmComponent implements OnInit {
     /**
     * Validações dos Asserts para a lista de resumo.
     */
-    assert() {
+    public assert() {
         this.assertService
             .rnAsserts(this.cadastro)
             .then(data => {
                 this.listAsserts = data;
                 this.holderService.listAsserts = this.listAsserts;
-                this.assertService.validaAsserts(this.listAsserts)
+                this.assertService
+                    .validaAsserts(this.listAsserts)
                     .then(data => {
                         this.listResumo = data;
                         this.holderService.listResumo = this.listResumo;
@@ -198,7 +215,7 @@ export class CadastroCrmComponent implements OnInit {
     /*
     * Loger... 
     */
-    mloger(msgConclusao) {
+    private mloger(msgConclusao) {
         this.makeLogerService
             .makeLoger(msgConclusao, this.instancia, this.cadastro, this.objectValid, this.listResumo)
             .then(data => {
@@ -212,17 +229,42 @@ export class CadastroCrmComponent implements OnInit {
             })
     }
 
-    holderAtribuition() {
-        this.cadastro = this.holderService.cadastro;
-        this.objectValid = this.holderService.objectValid;
-        this.listAsserts = this.holderService.listAsserts;
-        this.listResumo = this.holderService.listResumo;
+    private holderAtribuition() {
+        // console.log(this.holderService.listAsserts);
+        // console.log(this.holderService.listResumo);
+        // console.log(this.holderService.objectValid);
 
-        this.alertMsg = {
-            msg: this.holderService.alertState.msg,
-            alertType: this.holderService.alertState.alertType
+
+        // this.listAsserts = this.holderService.listAsserts;
+        // this.listResumo = this.holderService.listResumo;
+        // this.objectValid = this.holderService.objectValid;
+
+        // if (this.holderService.listAsserts || this.holderService.listResumo || this.holderService.objectValid) {
+        //     this.listAsserts = this.holderService.listAsserts;
+        //     this.listResumo = this.holderService.listResumo;
+        //     this.objectValid = this.holderService.objectValid;
+        // } else {
+        //     this.assert();
+        // }
+
+        if (this.holderService.listAsserts && this.holderService.listResumo) {
+            this.listAsserts = this.holderService.listAsserts;
+            this.listResumo = this.holderService.listResumo;
+        } else {
+            this.assert();
         }
-        this.alertAtivo = this.holderService.alertState.alertAtivo;
-        this.alertCloseable = this.holderService.alertState.alertCloseable;
+        if (this.holderService.objectValid) {
+            this.objectValid = this.holderService.objectValid;
+        } else {
+            this.assert();
+        }
+        if (this.holderService.alertState) {
+            this.alertMsg = {
+                msg: this.holderService.alertState.msg,
+                alertType: this.holderService.alertState.alertType
+            }
+            this.alertAtivo = this.holderService.alertState.alertAtivo;
+            this.alertCloseable = this.holderService.alertState.alertCloseable;
+        }
     }
 }

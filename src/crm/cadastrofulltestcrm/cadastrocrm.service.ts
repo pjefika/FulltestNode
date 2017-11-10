@@ -32,6 +32,20 @@ export class CadastroCrmService {
             .catch(this.handleError);
     }
 
+    public getCadastroDOne(instancia: string) {
+        this.infoResquest = {
+            rqst: "get",
+            command: this.urlService.pathNetworkInventory + "networkInventory/",
+            _data: instancia,
+            timeout: 10000
+        };
+        return this.urlService.request(this.infoResquest)
+            .then(response => {
+                return response as Cadastro
+            })
+            .catch(this.handleError);
+    }
+
     private handleError(error: any): Promise<any> {
         return Promise.reject(error);
     }
