@@ -12,10 +12,13 @@ export class ListarLinhaService {
         private urlService: UrlService) { }
 
     public getLinha(instancia: string) {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let _data: { instancia: string, executor: string };
+        _data = { instancia: instancia, executor: usr.user };
         this.infoResquest = {
-            rqst: "get",
+            rqst: "post",
             command: this.urlService.pathStealerAPI + "linha/",
-            _data: instancia,
+            _data: _data,
             otherUrl: this.urlService.urlIpParaStealer,
             timeout: 60000
         }

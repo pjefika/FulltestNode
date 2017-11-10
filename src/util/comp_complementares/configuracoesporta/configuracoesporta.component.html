@@ -1,5 +1,5 @@
 <h3 class="titulo-da-pagina">Configurações de Porta</h3>
-<div>
+<div *ngIf="holderService.cadastro">
     <loading-component [searching]="searchConfPorta" [searchWhat]="searchWhat"></loading-component>
     <div *ngIf="!searchConfPorta">
         <configuracoes-porta-metalico-component *ngIf="holderService.cadastro.rede.tipo == 'METALICA'"></configuracoes-porta-metalico-component>

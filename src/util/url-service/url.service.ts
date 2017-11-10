@@ -1,4 +1,4 @@
-import { InfoRequest } from './../../viewmodel/url/infos-url';
+﻿import { InfoRequest } from './../../viewmodel/url/infos-url';
 import { Observable } from 'rxjs/Observable';
 import { Headers, RequestOptions, Http } from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -16,7 +16,7 @@ export class UrlService {
 
     //Modificar path names
     public pathFulltestAPI = "fulltestAPI/";
-    public pathStealerAPI = "stealerAPI_qa/"; // 
+    public pathStealerAPI = "stealerAPI/"; // 
     public pathAuth = "efikaAuth/";
     public pathDmsAPI = "dmsAPI/";
     public pathNetworkInventory = "networkInventoryAPI/";
