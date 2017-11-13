@@ -83,7 +83,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <table class="table table-compact table-vertical" *ngIf="confPorta.vlanMulticast.mensagem != 'Cliente sem TV Híbrida.'">
+            <table class="table table-compact table-vertical" *ngIf="validSeExiste(confPorta.vlanVod.mensagem)">
                 <tbody>
                     <tr>
                         <th colspan="2">{{confPorta.vlanVod.nome}}</th>
@@ -123,7 +123,7 @@
             </table>
         </div>
         <div class="col-md-6">
-            <table class="table table-compact table-vertical" *ngIf="confPorta.vlanMulticast.mensagem != 'Cliente sem TV Híbrida.'">
+            <table class="table table-compact table-vertical" *ngIf="validSeExiste(confPorta.vlanMulticast.mensagem)">
                 <tbody>
                     <tr>
                         <th colspan="2">{{confPorta.vlanMulticast.nome}}</th>
