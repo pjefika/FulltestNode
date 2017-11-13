@@ -114,7 +114,6 @@ export class TableAuxLanComponent implements OnInit {
     }
 
     private validSeExiste(frase: string): Boolean {
-        console.log(frase);        
         let valid: Boolean = true;
         if (frase.indexOf("Cliente sem") !== -1) {
             valid = false;
