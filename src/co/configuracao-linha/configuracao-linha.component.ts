@@ -13,7 +13,7 @@ export class ConfiguracaoLinhaComponent implements OnInit {
         public holderService: HolderService) { }
 
     public ngOnInit() {
-        this.holderService.sidenav = true;
+        
     }
 
 }

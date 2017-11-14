@@ -1,4 +1,4 @@
-﻿import { InfoRequest } from './../../viewmodel/url/infos-url';
+import { InfoRequest } from './../../viewmodel/url/infos-url';
 import { Observable } from 'rxjs/Observable';
 import { Headers, RequestOptions, Http } from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class UrlService {
 
     //Modificar IPs 
-    public urlIp = "http://10.200.35.67:80/";  // Produção e restante dos pjs para o path
+    public urlIp = "http://10.40.195.81:8080/";  // Produção e restante dos pjs para o path
     public urlIpParaStealer = "http://10.40.195.81:8080/"; // A stealer que ira ficar aqui // PeleServ
     // IPS: 
     //  "http://10.40.195.81:8080/"; QA
@@ -16,7 +16,7 @@ export class UrlService {
 
     //Modificar path names
     public pathFulltestAPI = "fulltestAPI/";
-    public pathStealerAPI = "stealerAPI/"; // 
+    public pathStealerAPI = "stealerAPI_qa/"; // stealerAPI_qa
     public pathAuth = "efikaAuth/";
     public pathDmsAPI = "dmsAPI/";
     public pathNetworkInventory = "networkInventoryAPI/";

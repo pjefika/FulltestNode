@@ -4,7 +4,7 @@
         <h3 class="titulo-da-pagina">Informações do Cadastro</h3>
         <div class="row">
             <div class="col-md-6">
-                <table class="table table-compact table-vertical">
+                <table class="table table-compact table-vertical" *ngIf="cadastro.linha.tipo">
                     <tbody>
                         <tr>
                             <th colspan="2">Informações de Linha</th>

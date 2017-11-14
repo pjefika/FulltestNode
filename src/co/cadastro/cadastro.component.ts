@@ -77,7 +77,7 @@ export class CadastroComponent implements OnInit {
                     this.holderService.liberarSubNav = false;
                     this.searchingRede = true;
                     this.cadastroService
-                        .getCadastroDOne(this.instancia)
+                        .getCadastroDOne(this.cadastro.instancia)
                         .then(data => {
                             this.cadastro.rede = data.rede;
                             this.callAlertRede(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");

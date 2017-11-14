@@ -20,3 +20,10 @@
         </tr>
     </tbody>
 </table>
+<clr-alert [clrAlertType]="objectValid.resultado ? 'alert-success': 'alert-danger'">
+    <div class="alert-item">
+        <span class="alert-text">
+            {{objectValid.mensagem}}
+        </span>
+    </div>
+</clr-alert>

@@ -38,6 +38,7 @@ export class ConfiguracaoLinhaTdmComponent implements OnInit {
         private linhaResetDePortaService: LinhaResetDePortaService) { }
 
     ngOnInit() {
+        this.holderService.sidenav = true;
         if (this.holderService.cadastroLinha) {
             this.cadastroLinha = this.holderService.cadastroLinha
         } else {
