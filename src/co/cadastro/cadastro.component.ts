@@ -86,6 +86,7 @@ export class CadastroComponent implements OnInit {
                         }, error => {
                             this.callAlertRede(true, "alert-danger", "Atenção não existe informações de cadastro em nossas bases.");
                             this.searchingRede = false;
+                            this.holderService.liberarSubNav = true;
                         });
                 }
             }, error => {
