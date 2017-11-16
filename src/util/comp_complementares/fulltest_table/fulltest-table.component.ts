@@ -11,8 +11,18 @@ export class FulltestTableComponent implements OnInit {
 
     @Input() objectValid: ObjectValid;
 
+    private msg: {
+        alertType: string,
+        msg: string
+    }
+
     constructor() { }
 
-    ngOnInit() { }
+    public ngOnInit() {
+        this.msg = {
+            alertType: this.objectValid.resultado ? 'alert-success' : 'alert-danger',
+            msg: this.objectValid.mensagem
+        }
+    }
 
 }
