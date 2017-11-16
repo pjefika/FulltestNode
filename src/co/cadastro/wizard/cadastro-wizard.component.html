@@ -4,7 +4,6 @@
     <clr-wizard #wizardmodal [(clrWizardOpen)]="modalOpen" clrWizardSize="lg" [clrWizardClosable]="false">
         <clr-wizard-title>Informações de cadastro</clr-wizard-title>
 
-        <!-- <clr-wizard-button [type]="'cancel'" *ngIf="formpageone.valid && formpagetwo.valid && formpagethree.valid">Sair</clr-wizard-button> -->
         <clr-wizard-button [type]="'previous'">Voltar</clr-wizard-button>
         <clr-wizard-button [type]="'next'">Proximo</clr-wizard-button>
         <clr-wizard-button [type]="'finish'">Concluido</clr-wizard-button>
@@ -128,7 +127,7 @@
             </form>
         </clr-wizard-page>
 
-        <clr-wizard-page #paginaservico [clrWizardPageNextDisabled]="name.pristine || !formpagethree.valid">
+        <clr-wizard-page #paginaservico (clrWizardPageOnCommit)="onCommit()" clrWizardPagePreventDefault="true">
             <ng-template clrPageTitle>Informações de Serviço</ng-template>
             <form #formpagethree="ngForm">
                 <section class="form-block">
@@ -173,6 +172,7 @@
                     </div>
                 </section>
             </form>
+            <alert-component [msg]="msg" [ativo]="alertMsg"></alert-component>
         </clr-wizard-page>
     </clr-wizard>
 </div>

@@ -33,7 +33,7 @@ export class CadastroService {
             .catch(this.handleError);
     }
 
-    public getCadastroDOne(instancia: string) {
+    public getCadastroDOne(instancia: string): Promise<Cadastro> {
         this.infoResquest = {
             rqst: "get",
             command: this.urlService.pathNetworkInventory + "networkInventory/",

@@ -1,3 +1,4 @@
+import { HolderService } from './../../../util/holder/holder.service';
 import { Cadastro } from './../../../viewmodel/cadastro/cadastro';
 
 import { Wizard, WizardPage } from 'clarity-angular';
@@ -19,7 +20,7 @@ export class CadastroWizardComponent implements OnInit {
     @ViewChild("paginarede") public paginarede: WizardPage;
     @ViewChild("paginaservico") public paginaservico: WizardPage;
 
-    private modalOpen: boolean = false;
+    private modalOpen: Boolean = false;
 
     @Input() public cadastro: Cadastro;
 
@@ -27,8 +28,16 @@ export class CadastroWizardComponent implements OnInit {
     private listEnumVoz: String[];
     private listEnumVelocidades: String[];
 
+    private msg: {
+        alertType: string,
+        msg: string
+    }
+
+    private alertMsg: Boolean = false;
+
     constructor(
-        private enumService: EnumService) { }
+        private enumService: EnumService,
+        private holderService: HolderService) { }
 
     public ngOnInit(): void {
         this.validaCadastroFull();
@@ -36,6 +45,14 @@ export class CadastroWizardComponent implements OnInit {
         this.getEnumVoz();
         this.getEnumVelocidades();
         this.getEnumTv();
+        this.allwizardpagewassee();
+    }
+
+    private allwizardpagewassee() {
+        // Deixa todas as clr-wizard-page completas para navegação.
+        this.paginacadastro.completed = true;
+        this.paginarede.completed = true;
+        this.paginaservico.completed = true;
     }
 
     private validaCadastroFull() {
@@ -90,6 +107,28 @@ export class CadastroWizardComponent implements OnInit {
             }, error => {
                 console.log("Erro ao buscar enum Velocidades");
             });
+    }
+
+    private validCadastroRedeEServico(): Boolean {
+        if (!this.cadastro.rede.tipo || !this.cadastro.servicos.velDown && !this.cadastro.servicos.velUp) {
+            this.holderService.liberarSubNav = false;
+            return false;
+        } else {
+            this.holderService.liberarSubNav = true;
+            return true;
+        }
+    }
+
+    private onCommit() {
+        if (this.validCadastroRedeEServico()) {
+            this.wizardmodal.forceFinish();
+        } else {
+            this.alertMsg = true;
+            this.msg = {
+                alertType: "alert-danger",
+                msg: "Por favor preencha todas as informaçoes."
+            }
+        }
     }
 
 }

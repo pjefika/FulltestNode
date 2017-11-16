@@ -19,13 +19,13 @@ import { CadastroService } from './cadastro.service';
 
 export class CadastroComponent implements OnInit {
 
-    cadastro: Cadastro;
+    private cadastro: Cadastro;
 
-    instancia: string;
-    searching: boolean = false;
-    modalOpen: boolean = false;
+    private instancia: string;
+    private searching: boolean = false;
+    private modalOpen: boolean = false;
 
-    toastyInfo: {
+    private toastyInfo: {
         titulo: string;
         msg: string;
         theme: string;
@@ -72,9 +72,7 @@ export class CadastroComponent implements OnInit {
                 this.cadastro = data;
                 this.searching = false;
                 this.holderService.cadastro = this.cadastro;
-                this.holderService.liberarSubNav = true;
                 if (!this.cadastro.rede.tipo) {
-                    this.holderService.liberarSubNav = false;
                     this.searchingRede = true;
                     this.cadastroService
                         .getCadastroDOne(this.cadastro.instancia)
@@ -82,17 +80,29 @@ export class CadastroComponent implements OnInit {
                             this.cadastro.rede = data.rede;
                             this.callAlertRede(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
                             this.searchingRede = false;
-                            this.holderService.liberarSubNav = true;
                         }, error => {
                             this.callAlertRede(true, "alert-danger", "Atenção não existe informações de cadastro em nossas bases.");
                             this.searchingRede = false;
-                            this.holderService.liberarSubNav = true;
                         });
                 }
             }, error => {
                 this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
+            })
+            .then(() => {
+                this.validCadastroRedeEServico();
             });
+    }
+
+    private validCadastroRedeEServico() {
+        if (this.cadastro) {
+            //Valida Rede or Valida Servico
+            if (!this.cadastro.rede.tipo || !this.cadastro.servicos.velDown && !this.cadastro.servicos.velUp) {
+                this.holderService.liberarSubNav = false;
+            } else {
+                this.holderService.liberarSubNav = true;
+            }
+        }
     }
 
     private callAlertRede(alertAtivo: boolean, alertType: string, alertMsg: string) {
