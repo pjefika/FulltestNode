@@ -33,9 +33,9 @@ export class AdmComponent implements OnInit {
     }
 
     public mocklogins() {
-        this.listLogin.push("LOGIN1");
-        this.listLogin.push("LOGIN2");
-        this.listLogin.push("LOGIN3");
+        this.listLogin.push("UM");
+        this.listLogin.push("DOIS");
+        this.listLogin.push("TRES");
     }
 
     public getSingleton() {

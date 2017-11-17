@@ -27,8 +27,7 @@ export class PopoverComponent implements OnInit {
         public util: Util,
         private toastyComponent: ToastyComponent) { }
 
-    public ngOnInit() {
-    }
+    public ngOnInit() { }
 
     private copyTextToClipboard() {
         let id = "mycustom-clipboard-textarea-hidden-id";
@@ -95,7 +94,6 @@ export class PopoverComponent implements OnInit {
         }
         return infos;
     }
-
 
     private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
