@@ -80,17 +80,17 @@ export class CadastroComponent implements OnInit {
                             this.cadastro.rede = data.rede;
                             this.callAlertRede(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
                             this.searchingRede = false;
+                            this.validCadastroRedeEServico();
                         }, error => {
                             this.callAlertRede(true, "alert-danger", "Atenção não existe informações de cadastro em nossas bases.");
                             this.searchingRede = false;
                         });
+                } else {
+                    this.validCadastroRedeEServico();
                 }
             }, error => {
                 this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
-            })
-            .then(() => {
-                this.validCadastroRedeEServico();
             });
     }
 
@@ -98,6 +98,7 @@ export class CadastroComponent implements OnInit {
         if (this.cadastro) {
             //Valida Rede or Valida Servico
             if (!this.cadastro.rede.tipo || !this.cadastro.servicos.velDown && !this.cadastro.servicos.velUp) {
+                console.log(this.cadastro.rede.tipo);
                 this.holderService.liberarSubNav = false;
             } else {
                 this.holderService.liberarSubNav = true;

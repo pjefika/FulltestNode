@@ -195,7 +195,7 @@ import { AppComponent } from './app.component';
         ServicoLinhaComponent,
         StatusLinhaComponent,
         StatusPortaComponent,
-        ConfiguracoesPortaComponent        
+        ConfiguracoesPortaComponent
     ]
 })
 export class AppModule { }

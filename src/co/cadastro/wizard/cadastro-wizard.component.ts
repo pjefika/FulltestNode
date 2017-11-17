@@ -57,7 +57,7 @@ export class CadastroWizardComponent implements OnInit {
 
     private validaCadastroFull() {
         if (!this.cadastro.rede) {
-            this.jumpToPaginaCadastro();
+            this.jumpToPaginaRede();
             this.modalOpen = true;
         } else if (!this.cadastro.servicos.velDown && !this.cadastro.servicos.velDown) {
             this.jumpToPaginaServico();
