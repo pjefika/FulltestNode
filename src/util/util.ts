@@ -28,4 +28,14 @@ export class Util {
         return valid;
     }
 
+    public isAtualizado(): boolean {
+        const { version: appVersion } = require('../../package.json'); // Versão da aplicação na package.json
+        let version: string = appVersion;
+        let backVersion: string = "v1.0.0"; // Pegar versão do backend
+        if (version != backVersion) { // Comparar
+            return true;
+        }
+        return false;
+    }
+
 }
