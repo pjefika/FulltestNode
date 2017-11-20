@@ -22,6 +22,6 @@
         </tbody>
     </table>
 </div>
-<div>
+<div *ngIf="msgAtivo">
     <alert-component [msg]="msg" [ativo]="true"></alert-component>
 </div>

@@ -1,7 +1,7 @@
 <div>    
     <div *ngIf="!searchFulltest">
         <div *ngIf="objectValid">            
-            <fulltest-table-component [objectValid]="objectValid"></fulltest-table-component>
+            <fulltest-table-component [objectValid]="objectValid" [msgAtivo]="false"></fulltest-table-component>
         </div>
         <!-- <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" [disabled]="doFulltest">Realizar Fulltest</button> -->
     </div>

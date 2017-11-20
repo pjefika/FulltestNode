@@ -9,7 +9,9 @@ import { Component, OnInit, Input } from '@angular/core';
 //So passar ObjectValid que ira montar a tabela com as validações Fulltest
 export class FulltestTableComponent implements OnInit {
 
-    @Input() objectValid: ObjectValid;
+    @Input() public objectValid: ObjectValid;
+
+    @Input() public msgAtivo?: boolean = true;
 
     private msg: {
         alertType: string,
