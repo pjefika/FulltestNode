@@ -55,6 +55,9 @@ export class HolderService {
     public appLevelAlertAtivo: boolean = false;
     public appLevelAlert: { type: string, msg: string, buttonAction?: string, buttonName?: string; };
 
+    // Vivo1 True // Vivo2 False
+    public origenPlanta: boolean = false;
+
     constructor() { }
 
 }

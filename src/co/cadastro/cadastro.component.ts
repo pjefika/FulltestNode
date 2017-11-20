@@ -91,7 +91,14 @@ export class CadastroComponent implements OnInit {
             }, error => {
                 this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
-            });
+            })
+            .then(() => {
+                // if (this.cadastro.rede.planta === "VIVO1") {
+                //     this.holderService.origenPlanta = true;
+                // } else {
+                //     this.holderService.origenPlanta = false;
+                // }
+            })
     }
 
     private validCadastroRedeEServico() {

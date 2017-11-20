@@ -1,6 +1,6 @@
 <clr-main-container>
     <app-level-alert-component></app-level-alert-component>
-    <clr-header class="header-4">
+    <clr-header [ngClass]="holderService.origenPlanta ? 'header-3' : 'header-4'">
         <div class="branding">
             <a class="nav-link">
                 <clr-icon shape="terminal" class="is-inverse"></clr-icon>
@@ -16,7 +16,8 @@
         </div>
         <div class="search">
             <label for="search_input" for="search_input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-lg tooltip-bottom-right">
-                <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..." [(ngModel)]="holderService.instancia" (keyup.enter)="busca()">
+                <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..." [(ngModel)]="holderService.instancia"
+                    (keyup.enter)="busca()">
                 <span class="tooltip-content">Após inserir a instância pressione "Enter"</span>
             </label>
         </div>
