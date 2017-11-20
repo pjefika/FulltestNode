@@ -110,7 +110,7 @@ export class CadastroWizardComponent implements OnInit {
     }
 
     private validCadastroRedeEServico(): Boolean {
-        if (!this.cadastro.rede.tipo || !this.cadastro.servicos.velDown && !this.cadastro.servicos.velUp) {
+        if (!this.cadastro.rede.vendorDslam || !this.cadastro.servicos.velDown && !this.cadastro.servicos.velUp) {
             this.holderService.liberarSubNav = false;
             return false;
         } else {

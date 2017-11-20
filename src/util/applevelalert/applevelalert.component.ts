@@ -1,3 +1,4 @@
+import { HolderService } from 'util/holder/holder.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,10 +9,22 @@ import { Component, OnInit } from '@angular/core';
 
 export class AppLevelAlertComponent implements OnInit {
 
-    private alertType: string;
-    private alertAtivo: boolean = false;
-
-    constructor() { }
+    constructor(
+        public holderService: HolderService) { }
 
     public ngOnInit() { }
+
+
+    private actionButton() {
+        if (this.holderService.appLevelAlert.buttonAction === "refresh") {
+            this.pageRefresh();
+        }
+    }
+
+
+    private pageRefresh() {
+        window.location.reload();
+    }
+
+
 }

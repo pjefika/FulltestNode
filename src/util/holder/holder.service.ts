@@ -52,6 +52,9 @@ export class HolderService {
     public sidenav: boolean = false;
     public sideNavMenus: SideNav[];
 
+    public appLevelAlertAtivo: boolean = false;
+    public appLevelAlert: { type: string, msg: string, buttonAction?: string, buttonName?: string; };
+
     constructor() { }
 
 }

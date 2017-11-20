@@ -26,7 +26,6 @@ export class TemplateComponent implements OnInit {
 
     private serarching: boolean = false;
 
-
     constructor(
         private router: Router,
         private util: Util,
@@ -47,6 +46,7 @@ export class TemplateComponent implements OnInit {
                 this.showToggle();
             }
         });
+        //this.buildEstaAtualizado();
     }
 
     private showToggle() {
@@ -94,13 +94,22 @@ export class TemplateComponent implements OnInit {
     * Ação para busca da instância
     **/
     public busca() {
-        this.holderReset();        
+        this.holderReset();
         if (this.validUser()) {
             this.mostraSubNav(true, subNavMockCrm);
             this.setToDynamicComponent(CadastroCrmComponent);
         } else {
             this.mostraSubNav(true, subNavMockCo);
             this.setToDynamicComponent(CadastroComponent);
+        }
+    }
+
+    private buildEstaAtualizado() {
+        this.holderService.appLevelAlert = {
+            type: "alert-info",
+            msg: "Atualize a sua pagina...",
+            buttonAction: "refresh",
+            buttonName: "Atualizar"
         }
     }
 

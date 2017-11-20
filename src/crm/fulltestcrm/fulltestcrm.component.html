@@ -1,34 +1,6 @@
 <div>    
     <div *ngIf="!searchFulltest">
-        <div *ngIf="objectValid">
-            <!-- <table class="table table-compact" style="margin: 7px 0 0 0;">
-                <thead>
-                    <tr>
-                        <th colspan="2">Informações gerais Fulltest</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="left">Data Início</td>
-                        <td>{{objectValid.dataInicio | amDateFormat: 'DD/MM/YYYY HH:mm:ss'}}</td>
-                    </tr>
-                    <tr>
-                        <td class="left">Data Fim</td>
-                        <td>{{objectValid.dataFim | amDateFormat: 'DD/MM/YYYY HH:mm:ss'}}</td>
-                    </tr>
-                    <tr>
-                        <td class="left">Duração do Fulltest</td>
-                        <td>{{objectValid.dataFim | amDifference: objectValid.dataInicio: 'seconds'}} Segundos</td>
-                    </tr>
-                    <tr>
-                        <td class="left">Resultado</td>
-                        <td>
-                            <clr-icon shape="check" *ngIf="objectValid.resultado" class="is-success"></clr-icon>
-                            <clr-icon shape="times" *ngIf="!objectValid.resultado" class="is-error"></clr-icon>
-                        </td>
-                    </tr>
-                </tbody>
-            </table> -->
+        <div *ngIf="objectValid">            
             <fulltest-table-component [objectValid]="objectValid"></fulltest-table-component>
         </div>
         <!-- <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" [disabled]="doFulltest">Realizar Fulltest</button> -->

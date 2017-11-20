@@ -1,10 +1,10 @@
-<clr-alert [clrAlertType]="alertType" [clrAlertAppLevel]="true" *ngIf="alertAtivo">
+<clr-alert [clrAlertType]="holderService.appLevelAlert.type" [clrAlertAppLevel]="true" *ngIf="holderService.appLevelAlertAtivo">
     <clr-alert-item>
         <span class="alert-text">
-            This is an app level alert.
+            {{holderService.appLevelAlert.msg}}
         </span>
-        <div class="alert-actions">
-            <button class="btn alert-action">Fix</button>
+        <div class="alert-actions" *ngIf="holderService.appLevelAlert.buttonAction">
+            <button class="btn alert-action" (click)="actionButton()">{{holderService.appLevelAlert.buttonName}}</button>
         </div>
     </clr-alert-item>
 </clr-alert>
