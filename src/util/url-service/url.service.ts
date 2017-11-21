@@ -2,9 +2,12 @@ import { InfoRequest } from './../../viewmodel/url/infos-url';
 import { Observable } from 'rxjs/Observable';
 import { Headers, RequestOptions, Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { RequestAction } from 'util/url-service/url-service.interface';
+import { SuperService } from 'util/superservice/super.service';
+
 
 @Injectable()
-export class UrlService {
+export class UrlService extends SuperService implements RequestAction {
 
     //Modificar IPs 
     public urlIp = "http://10.40.195.81:8080/";  // Produção e restante dos pjs para o path
@@ -27,7 +30,9 @@ export class UrlService {
     public options = new RequestOptions({ headers: this.headersAppJson });
     private url;
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) {
+        super();
+    }
 
     //Todo mundo faz a chamada para o request passando o InfoRequest.
     public request(infoResquest: InfoRequest) {
@@ -35,13 +40,21 @@ export class UrlService {
         this.hOtherUrl(infoResquest.otherUrl);
         switch (infoResquest.rqst) {
             case "get":
-                return this.httpGetRequest(infoResquest);
+                return this.get(infoResquest);
             case "post":
-                return this.httpPostRequest(infoResquest);
+                return this.post(infoResquest);
         }
     }
 
-    private httpPostRequest(infoResquest: InfoRequest) {
+    private hOtherUrl(l) {
+        if (l) {
+            this.url = l;
+        } else {
+            this.url = this.urlIp;
+        }
+    }
+
+    public post(infoResquest: InfoRequest) {
         const url = `${this.url}` + infoResquest.command;
         return this.http.post(url, JSON.stringify(infoResquest._data), this.options)
             .timeout(infoResquest.timeout)
@@ -49,10 +62,10 @@ export class UrlService {
             .then(response => {
                 return response.json()
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
-    private httpGetRequest(infoResquest: InfoRequest) {
+    public get(infoResquest: InfoRequest) {
         let rstlink;
         if (infoResquest._data) {
             rstlink = infoResquest.command + infoResquest._data;
@@ -66,32 +79,24 @@ export class UrlService {
             .then(response => {
                 return response.json()
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
-    private hOtherUrl(l) {
-        if (l) {
-            this.url = l;
-        } else {
-            this.url = this.urlIp;
-        }
-    }
-
-    public handleError(error: any): Promise<any> {
-        let er: any;
-        if (error.message === "Timeout has occurred") {
-            er = {
-                tError: "Timeout",
-                mError: "Tempo de busca excedido, por favor realize a busca novamente, caso o problema persista informe ao administrador do sistema."
-            }
-        } else {
-            let erJson: any;
-            erJson = error.json();
-            er = {
-                tError: "",
-                mError: erJson.message
-            }
-        }
-        return Promise.reject(er);
-    }
+    // public handleError(error: any): Promise<any> {
+    //     let er: any;
+    //     if (error.message === "Timeout has occurred") {
+    //         er = {
+    //             tError: "Timeout",
+    //             mError: "Tempo de busca excedido, por favor realize a busca novamente, caso o problema persista informe ao administrador do sistema."
+    //         }
+    //     } else {
+    //         let erJson: any;
+    //         erJson = error.json();
+    //         er = {
+    //             tError: "",
+    //             mError: erJson.message
+    //         }
+    //     }
+    //     return Promise.reject(er);
+    // }
 }
