@@ -1,5 +1,6 @@
 <div>
     <div *ngIf="!searchFulltest">
+        <h3 class="titulo-da-pagina">Informações de Manobra</h3>
         <div *ngIf="objectValid">
             <table-cadastro-component [cadastro]="cadastro"></table-cadastro-component>
             <div class="row">
@@ -17,17 +18,17 @@
                                         <label>Ordem: </label>
                                         <label for="idordem" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left"
                                             [class.invalid]="ordemInput.invalid && (ordemInput.dirty || ordemInput.touched)">
-                                        <input ngModel name="ordem" type="text" id="idordem" [(ngModel)]="ordem" #ordemInput="ngModel" required placeholder="Insira a ordem" 
-                                        (change)="enterBtnInput()">
-                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
-                                    </label>
+                                            <input ngModel name="ordem" type="text" id="idordem" [(ngModel)]="ordem" #ordemInput="ngModel" required placeholder="Insira a ordem"
+                                                (change)="enterBtnInput()">
+                                            <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                        </label>
                                     </div>
                                     <div class="form-group">
                                         <label for="selecMotivo">Motivo Informado: </label>
                                         <div class="select" id="selecMotivo">
                                             <select [(ngModel)]="motivoSelected" name="motivoSelected">
-                                            <option *ngFor="let value of motivos" [ngValue]="value.name">{{value.motivo}}</option>
-                                        </select>
+                                                <option *ngFor="let value of motivos" [ngValue]="value.name">{{value.motivo}}</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </section>

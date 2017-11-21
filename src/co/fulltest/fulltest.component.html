@@ -1,5 +1,6 @@
 <div>
     <div *ngIf="!searchFulltest">
+        <h3 class="titulo-da-pagina">Informações de Fulltest</h3>
         <div *ngIf="objectValid">
             <table class="table table-compact " style="margin: 7px 0 0 0;">
                 <thead>
@@ -21,7 +22,7 @@
                     </tr>
                 </tbody>
             </table>
-            <fulltest-table-component [objectValid]="objectValid"></fulltest-table-component>           
+            <fulltest-table-component [objectValid]="objectValid"></fulltest-table-component>
         </div>
         <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" [disabled]="doFulltest">Realizar Fulltest</button>
     </div>
