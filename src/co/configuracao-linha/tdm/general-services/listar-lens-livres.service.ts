@@ -3,14 +3,17 @@ import { InfoRequest } from './../../../../viewmodel/url/infos-url';
 import { UrlService } from './../../../../util/url-service/url.service';
 import { ConfiguracoesLensLivres } from './../../../../viewmodel/cadastro-linha/lens-livres/configuracoes-lens-livres';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class ListarLensLivresService {
+export class ListarLensLivresService extends SuperService {
 
     private infoResquest: InfoRequest;
 
     constructor(
-        private urlService: UrlService) { }
+        private urlService: UrlService) {
+        super();
+    }
 
     public getLensLivres(linha: Linha): Promise<ConfiguracoesLensLivres> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -27,10 +30,7 @@ export class ListarLensLivresService {
             .then(data => {
                 return data as ConfiguracoesLensLivres;
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
-    }
 }

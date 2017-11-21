@@ -5,14 +5,17 @@ import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class CadastroCrmService {
+export class CadastroCrmService extends SuperService {
 
     private infoResquest: InfoRequest;
 
     constructor(
-        private urlService: UrlService) { }
+        private urlService: UrlService) {
+        super();
+    }
 
     public getCadastro(instancia: string): Promise<Cadastro> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -43,11 +46,7 @@ export class CadastroCrmService {
             .then(response => {
                 return response as Cadastro
             })
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+            .catch(super.handleError);
     }
 
 }

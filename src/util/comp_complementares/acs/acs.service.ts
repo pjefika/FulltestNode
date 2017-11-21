@@ -2,14 +2,17 @@ import { Injectable } from '@angular/core';
 import { UrlService } from 'util/url-service/url.service';
 import { InfoRequest } from 'viewmodel/url/infos-url';
 import { Equipamento } from 'viewmodel/acs/equipamento';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class AcsService {
+export class AcsService extends SuperService {
 
     private infoResquest: InfoRequest;
 
     constructor(
-        private urlService: UrlService) { }
+        private urlService: UrlService) {
+        super();
+    }
 
     public getEquipamentoAssoc(input: string) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -25,11 +28,7 @@ export class AcsService {
             .then(response => {
                 return response as Equipamento[]
             })
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+            .catch(super.handleError);
     }
 
 }

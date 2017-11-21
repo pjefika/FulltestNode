@@ -1,14 +1,13 @@
 import { UrlService } from './../../util/url-service/url.service';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class ComplementaresService {
+export class ComplementaresService extends SuperService {
 
     constructor(
-        private urlService: UrlService) { }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+        private urlService: UrlService) {
+        super();
     }
 }

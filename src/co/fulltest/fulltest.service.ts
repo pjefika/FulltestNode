@@ -6,14 +6,17 @@ import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class FulltestService {
+export class FulltestService extends SuperService {
 
     private infoResquest: InfoRequest;
 
     constructor(
-        private urlService: UrlService) { }
+        private urlService: UrlService) {
+        super();
+    }
 
     public getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -29,11 +32,7 @@ export class FulltestService {
             .then(data => {
                 return data as ObjectValid
             })
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+            .catch(super.handleError);
     }
 
 }

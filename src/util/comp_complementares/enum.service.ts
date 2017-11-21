@@ -1,14 +1,17 @@
 import { UrlService } from './../url-service/url.service';
 import { InfoRequest } from './../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class EnumService {
+export class EnumService extends SuperService {
 
     private infoResquest: InfoRequest;
 
     constructor(
-        private urlService: UrlService) { }
+        private urlService: UrlService) {
+        super();
+    }
 
     public getEnumTv(): Promise<String[]> {
         this.infoResquest = {
@@ -21,7 +24,7 @@ export class EnumService {
             .then(data => {
                 return data as String[];
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
     public getEnumVoz(): Promise<String[]> {
@@ -35,7 +38,7 @@ export class EnumService {
             .then(data => {
                 return data as String[];
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
     public getEnumVelocidades(): Promise<String[]> {
@@ -49,11 +52,7 @@ export class EnumService {
             .then(data => {
                 return data as String[];
             })
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+            .catch(super.handleError);
     }
 
 }

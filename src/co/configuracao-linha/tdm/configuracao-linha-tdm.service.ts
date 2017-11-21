@@ -3,13 +3,17 @@ import { Linha } from './../../../viewmodel/cadastro/linha';
 import { UrlService } from './../../../util/url-service/url.service';
 import { InfoRequest } from './../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class ConfiguracaoLinhaTdmService {
+export class ConfiguracaoLinhaTdmService extends SuperService {
+
     private infoResquest: InfoRequest;
 
     constructor(
-        private urlService: UrlService) { }
+        private urlService: UrlService) {
+        super();
+    }
 
     public getInformacoes(linha: Linha) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -26,10 +30,7 @@ export class ConfiguracaoLinhaTdmService {
             .then(data => {
                 return data as CadastroLinha
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
-    }
 }

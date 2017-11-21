@@ -3,14 +3,17 @@ import { Cadastro } from './../../../../../viewmodel/cadastro/cadastro';
 import { UrlService } from './../../../../url-service/url.service';
 import { InfoRequest } from './../../../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class TableAuxLanService {
+export class TableAuxLanService extends SuperService {
 
     private infoResquest: InfoRequest;
 
     constructor(
-        private urlService: UrlService) { }
+        private urlService: UrlService) {
+        super();
+    }
 
     public setVlanGeneric(cadastro: Cadastro, whatSet: string) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -26,10 +29,6 @@ export class TableAuxLanService {
             .then(data => {
                 return data as VlanBanda
             })
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+            .catch(super.handleError);
     }
 }

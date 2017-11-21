@@ -7,13 +7,17 @@ import { Headers, Http, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import 'rxjs/Rx';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class LoginService {
+export class LoginService extends SuperService {
+
     private infoResquest: InfoRequest;
 
     constructor(
-        private urlService: UrlService) { }
+        private urlService: UrlService) {
+        super();
+    }
 
     public autentica(usuario: Usuario): Promise<Boolean> {
         this.infoResquest = {
@@ -27,7 +31,7 @@ export class LoginService {
                 return data as Boolean
 
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
     public getUsuario(usuario: Usuario): Promise<Usuario> {
@@ -41,10 +45,6 @@ export class LoginService {
             .then(data => {
                 return data as Usuario
             })
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+            .catch(super.handleError);
     }
 }

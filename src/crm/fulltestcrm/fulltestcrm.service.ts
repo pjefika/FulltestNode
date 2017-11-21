@@ -3,15 +3,17 @@ import { UrlService } from './../../util/url-service/url.service';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class FulltestCrmService {
-
+export class FulltestCrmService extends SuperService {
 
     private infoResquest: InfoRequest;
 
     constructor(
-        private urlService: UrlService) { }
+        private urlService: UrlService) {
+        super();
+    }
 
     public getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -27,11 +29,7 @@ export class FulltestCrmService {
             .then(data => {
                 return data as ObjectValid
             })
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+            .catch(super.handleError);
     }
 
 }

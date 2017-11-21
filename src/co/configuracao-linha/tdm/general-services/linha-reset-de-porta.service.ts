@@ -3,13 +3,17 @@ import { Linha } from './../../../../viewmodel/cadastro/linha';
 import { UrlService } from './../../../../util/url-service/url.service';
 import { InfoRequest } from './../../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class LinhaResetDePortaService {
+export class LinhaResetDePortaService extends SuperService {
+
     private infoResquest: InfoRequest;
 
     constructor(
-        private urlService: UrlService) { }
+        private urlService: UrlService) {
+        super();
+    }
 
     public resetarPorta(linha: Linha): Promise<CadastroLinha> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -27,10 +31,6 @@ export class LinhaResetDePortaService {
             .then(data => {
                 return data as CadastroLinha;
             })
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+            .catch(super.handleError);
     }
 }

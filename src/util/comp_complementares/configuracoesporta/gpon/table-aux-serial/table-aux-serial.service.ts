@@ -4,14 +4,17 @@ import { Cadastro } from './../../../../../viewmodel/cadastro/cadastro';
 import { UrlService } from './../../../../url-service/url.service';
 import { InfoRequest } from './../../../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class TableAuxSerialService {
+export class TableAuxSerialService extends SuperService {
 
     private infoResquest: InfoRequest;
 
     constructor(
-        private urlService: UrlService) { }
+        private urlService: UrlService) {
+        super();
+    }
 
     public unsetOntFromOlt(cadastro: Cadastro) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -27,7 +30,7 @@ export class TableAuxSerialService {
             .then(data => {
                 return data as SerialReturn[]
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
     public setOntToOlt(cadastro: Cadastro, serial: string) {
@@ -44,12 +47,7 @@ export class TableAuxSerialService {
             .then(data => {
                 return data as ResultSerial
             })
-            .catch(this.handleError);
-    }
-
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+            .catch(super.handleError);
     }
 
 }

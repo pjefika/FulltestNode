@@ -3,14 +3,17 @@ import { Cadastro } from './../../../../../viewmodel/cadastro/cadastro';
 import { UrlService } from './../../../../url-service/url.service';
 import { InfoRequest } from './../../../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class TableAuxProfileService {
+export class TableAuxProfileService extends SuperService {
 
     private infoResquest: InfoRequest;
 
     constructor(
-        private urlService: UrlService) { }
+        private urlService: UrlService) {
+        super();
+    }
 
     public setProfile(cadastro: Cadastro, resultProfile: ResultProfile) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -27,10 +30,6 @@ export class TableAuxProfileService {
                 return data as ResultProfile
             })
             .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
     }
 
 }
