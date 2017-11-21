@@ -1,16 +1,12 @@
 import { InfoNortelConection } from './../../../viewmodel/nortel-conections/infos-nortel-conection';
 import { UrlService } from './../../url-service/url.service';
-import { InfoRequest } from './../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
 import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
 export class NortelConectionsService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) {
+    constructor(private urlService: UrlService) {
         super();
     }
 

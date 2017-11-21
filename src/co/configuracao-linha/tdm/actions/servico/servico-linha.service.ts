@@ -2,17 +2,13 @@ import { CadastroLinha } from './../../../../../viewmodel/cadastro-linha/cadastr
 import { Cadastro } from './../../../../../viewmodel/cadastro/cadastro';
 import { Servico } from './../../../../../viewmodel/cadastro-linha/servicos';
 import { UrlService } from './../../../../../util/url-service/url.service';
-import { InfoRequest } from './../../../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
 import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
 export class ServicoLinhaService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) {
+    constructor(private urlService: UrlService) {
         super();
     }
 

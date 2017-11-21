@@ -1,4 +1,3 @@
-import { InfoRequest } from './../../viewmodel/url/infos-url';
 import { UrlService } from './../url-service/url.service';
 import { Loger } from './../../viewmodel/loger/loger';
 import { Injectable } from '@angular/core';
@@ -7,10 +6,7 @@ import { SuperService } from 'util/superservice/super.service';
 @Injectable()
 export class LogerService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) {
+    constructor(private urlService: UrlService) {
         super();
     }
 

@@ -6,8 +6,7 @@ import { SuperService } from 'util/superservice/super.service';
 @Injectable()
 export class ComplementaresService extends SuperService {
 
-    constructor(
-        private urlService: UrlService) {
+    constructor() {
         super();
     }
 }

@@ -6,15 +6,11 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
 import { SuperService } from 'util/superservice/super.service';
-import { InfoRequest } from 'viewmodel/url/infos-url';
 
 @Injectable()
 export class ResetService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) {
+    constructor() {
         super();
     }
 

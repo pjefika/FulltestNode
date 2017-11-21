@@ -1,4 +1,3 @@
-import { InfoRequest } from './../viewmodel/url/infos-url';
 import { UrlService } from './../util/url-service/url.service';
 import { Usuario } from './../viewmodel/usuario';
 import { Injectable } from '@angular/core';
@@ -12,10 +11,7 @@ import { SuperService } from 'util/superservice/super.service';
 @Injectable()
 export class LoginService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) {
+    constructor(private urlService: UrlService) {
         super();
     }
 

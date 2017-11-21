@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
 import { UrlService } from 'util/url-service/url.service';
-import { InfoRequest } from 'viewmodel/url/infos-url';
 import { Equipamento } from 'viewmodel/acs/equipamento';
 import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
 export class AcsService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) {
+    constructor(private urlService: UrlService) {
         super();
     }
 

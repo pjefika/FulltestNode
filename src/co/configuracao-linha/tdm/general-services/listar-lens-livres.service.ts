@@ -1,5 +1,4 @@
 import { Linha } from './../../../../viewmodel/cadastro/linha';
-import { InfoRequest } from './../../../../viewmodel/url/infos-url';
 import { UrlService } from './../../../../util/url-service/url.service';
 import { ConfiguracoesLensLivres } from './../../../../viewmodel/cadastro-linha/lens-livres/configuracoes-lens-livres';
 import { Injectable } from '@angular/core';
@@ -8,10 +7,7 @@ import { SuperService } from 'util/superservice/super.service';
 @Injectable()
 export class ListarLensLivresService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) {
+    constructor(private urlService: UrlService) {
         super();
     }
 

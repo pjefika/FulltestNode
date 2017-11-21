@@ -18,11 +18,8 @@ import { SuperService } from 'util/superservice/super.service';
 @Injectable()
 export class ManobraService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService,
-        private http: Http) {
+    constructor(private http: Http,
+        private urlService: UrlService) {
         super();
     }
 

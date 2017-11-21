@@ -1,4 +1,3 @@
-import { InfoRequest } from './../../viewmodel/url/infos-url';
 import { UrlService } from './../../util/url-service/url.service';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
@@ -8,10 +7,7 @@ import { SuperService } from 'util/superservice/super.service';
 @Injectable()
 export class FulltestCrmService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) {
+    constructor(private urlService: UrlService) {
         super();
     }
 

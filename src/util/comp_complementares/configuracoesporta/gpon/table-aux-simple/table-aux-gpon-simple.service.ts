@@ -2,17 +2,13 @@ import { ResultNormal } from './../../../../../viewmodel/confPorta/viewhold/resu
 import { EstadoPorta } from './../../../../../viewmodel/confPorta/estadoPorta';
 import { Cadastro } from './../../../../../viewmodel/cadastro/cadastro';
 import { UrlService } from './../../../../url-service/url.service';
-import { InfoRequest } from './../../../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
 import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
 export class TableAuxGponSimpleService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) {
+    constructor(private urlService: UrlService) {
         super();
     }
 
