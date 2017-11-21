@@ -1,0 +1,26 @@
+<div>
+    <table class="table table-vertical table-compact" *ngIf="equipamentos">
+        <tbody>
+            <tr>
+                <th colspan="4" style="text-align: center;">Equipamentos Associados ao Designador</th>
+            </tr>
+            <tr>
+                <!-- <th>Subscriber</th> -->
+                <th>Serial</th>
+                <th>IP</th>
+                <th>MAC</th>
+                <th>Fábricante</th>
+            </tr>
+            <tr *ngFor="let eqp of equipamentos">
+                <!-- <td>{{eqp.subscriberID}}</td> -->
+                <td>{{eqp.deviceId.serialNumber}}</td>
+                <td>{{eqp.IPAddress}}</td>
+                <td>{{eqp.macAddress}}</td>
+                <td>{{eqp.manufacturer}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <loading-component [searching]="searching" [searchWhat]="'Buscando Equipamentos...'"></loading-component>
+</div>

@@ -83,6 +83,7 @@ import { UrlService } from './../util/url-service/url.service';
 import { Util } from './../util/util';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AcsComponent } from 'util/comp_complementares/acs/acs.component';
 
 @NgModule({
     declarations: [
@@ -139,7 +140,8 @@ import { AppComponent } from './app.component';
         TableAuxSerialComponent,
         ErrorLogComponent,
         DynamicRouterComponent,
-        AppLevelAlertComponent
+        AppLevelAlertComponent,
+        AcsComponent
     ],
     imports: [
         BrowserModule,
