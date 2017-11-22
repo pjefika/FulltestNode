@@ -119,6 +119,14 @@ export class TemplateComponent implements OnInit {
         }, 60000); // Timeout para verificação; definir tempo;
     }
 
+    public hoResumo() {
+        if (this.holderService.resumoInfosAtivo) {
+            this.holderService.resumoInfosAtivo = false;
+        } else {
+            this.holderService.resumoInfosAtivo = true;
+        }
+    }
+
     //Holder Functions
     private holderReset() { // Reseta as variaveis da Holder
         this.mostraSubNav(false, null);

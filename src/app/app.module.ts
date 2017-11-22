@@ -85,6 +85,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AcsComponent } from 'util/comp_complementares/acs/acs.component';
 import { TableValidacoesComponent } from 'util/table-validacoes/table-validacoes.component';
+import { ResumoInfosComponent } from 'util/resumoinfos/resumo-infos.component';
 
 @NgModule({
     declarations: [
@@ -143,7 +144,8 @@ import { TableValidacoesComponent } from 'util/table-validacoes/table-validacoes
         DynamicRouterComponent,
         AppLevelAlertComponent,
         AcsComponent,
-        TableValidacoesComponent
+        TableValidacoesComponent,
+        ResumoInfosComponent
     ],
     imports: [
         BrowserModule,

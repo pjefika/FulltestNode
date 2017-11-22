@@ -43,16 +43,25 @@
     </nav>
     <div class="content-container">
         <div class="content-area">
-            <!-- <h3>{{headerTitle}}</h3> -->
-            <!-- <holder-router-component [component]="holderCompsService.component" [input]="holderCompsService.input"></holder-router-component> -->
-            <dynamic-router-component [component]="dynamicRouterHolderService.component"></dynamic-router-component>
+            <div class="row">
+                <div class="col-md">
+                    <dynamic-router-component [component]="dynamicRouterHolderService.component"></dynamic-router-component>
+                </div>
+                <div class="col-md-4" *ngIf="holderService.cadastro && holderService.resumoInfosAtivo">
+                    <resumo-infos-component></resumo-infos-component>
+                </div>
+            </div>
+
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
             <adm-component></adm-component>
             <error-log-component></error-log-component>
+
+            <div class="ir-para-direita" *ngIf="holderService.btnResumoInfosAtivo">
+                <button type="button" class="btn btn-icon btn-primary btn-sm" (click)="hoResumo()">
+                    <clr-icon shape="arrow"></clr-icon>
+                </button>
+            </div>
         </div>
-        <!-- <nav class="sidenav" *ngIf="holderService.sidenav">
-            <sidenav-component [menus]="holderService.sideNavMenus"></sidenav-component>
-        </nav> -->
         <clr-vertical-nav *ngIf="holderService.sidenav" [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="false" [clr-nav-level]="2">
             <sidenav-component [menus]="holderService.sideNavMenus"></sidenav-component>
         </clr-vertical-nav>

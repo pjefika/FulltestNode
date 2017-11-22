@@ -57,6 +57,8 @@ export class CadastroComponent extends CallAlertService implements OnInit {
         } else {
             this.getCadastro();
         }
+        this.holderService.resumoInfosAtivo = false;
+        this.holderService.btnResumoInfosAtivo = false;
     }
 
     public getCadastro(): void {

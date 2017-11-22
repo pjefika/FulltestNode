@@ -58,6 +58,10 @@ export class HolderService {
     // Vivo1 True // Vivo2 False
     public origenPlanta: boolean = false;
 
+    public btnResumoInfosAtivo: boolean = false;
+    
+    public resumoInfosAtivo: boolean = false;
+
     constructor() { }
 
 }

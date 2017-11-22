@@ -1,7 +1,12 @@
 .mouseclick {
     cursor: pointer;
 }
+
 a.disabled {
     cursor: not-allowed;
     color: gray !important; /*Descomentar quando adicionar funcionalidade*/
+}
+
+.ir-para-direita {
+    float: right;    
 }

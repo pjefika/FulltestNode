@@ -1,0 +1,63 @@
+<!-- <div class="ir-para-direita">
+    <button type="button" class="btn btn-icon btn-primary btn-sm" (click)="hoResumo()">
+        <clr-icon shape="arrow"></clr-icon>
+    </button>
+</div> -->
+<div>
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="2" style="text-align: center;">Informações de Linha</th>
+            </tr>
+            <tr>
+                <th>DN: </th>
+                <td>{{holderService.cadastro.linha.dn}}</td>
+            </tr>
+            <tr>
+                <th>Tipo: </th>
+                <td>{{holderService.cadastro.linha.tipo}}</td>
+            </tr>
+            <tr>
+                <th>Central: </th>
+                <td>{{holderService.cadastro.linha.central}}</td>
+            </tr>
+            <tr>
+                <th colspan="2" style="text-align: center;">Informações de Cadastro</th>
+            </tr>
+            <tr>
+                <th>Instância: </th>
+                <td>{{holderService.cadastro.instancia}}</td>
+            </tr>
+            <tr>
+                <th>Designador: </th>
+                <td>{{holderService.cadastro.designador}}</td>
+            </tr>
+            <tr>
+                <th>Designador de Acesso: </th>
+                <td>{{holderService.cadastro.designadorAcesso}}</td>
+            </tr>
+            <tr>
+                <th colspan="2" style="text-align: center;">Informações de Serviço</th>
+            </tr>
+            <tr>
+                <th>Velocidade contratada:</th>
+                <td>{{holderService.cadastro.servicos.velDown}} / {{holderService.cadastro.servicos.velUp}}</td>
+            </tr>
+            <tr>
+                <th>Tipo da Linha:</th>
+                <td>{{holderService.cadastro.servicos.tipoLinha}}</td>
+            </tr>
+            <tr>
+                <th>Tipo da TV:</th>
+                <td>{{holderService.cadastro.servicos.tipoTv}}</td>
+            </tr>
+            <tr>
+                <th colspan="2" style="text-align: center;">Informações de Rede</th>
+            </tr>
+            <tr>
+                <th>Modelo DSLAM: </th>
+                <td>{{holderService.cadastro.rede.vendorDslam}} - {{holderService.cadastro.rede.modeloDslam}} </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
