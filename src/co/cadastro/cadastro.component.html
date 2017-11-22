@@ -123,13 +123,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <clr-alert [clrAlertType]="alertDOneType" *ngIf="alertDOneAtivo" [clrAlertClosable]="false">
-                    <div class="alert-item">
-                        <span class="alert-text">
-                            {{alertDOneMsg}}
-                        </span>
-                    </div>
-                </clr-alert>
+                <alert-component [msg]="msg" [ativo]="alertAtivo"></alert-component>
             </div>
         </div>
         <cadastro-wizard-component [cadastro]="cadastro"></cadastro-wizard-component>

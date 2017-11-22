@@ -2,6 +2,7 @@ import { HolderService } from './../../../../../util/holder/holder.service';
 import { ToastyComponent } from './../../../../../util/toasty/toasty.component';
 import { CustgroupService } from './custgroup.service';
 import { Component, OnInit } from '@angular/core';
+import { CallAlertService } from 'util/callalerts/call-alert.service';
 
 @Component({
     selector: 'custgroup-component',
@@ -10,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
     providers: [CustgroupService]
 })
 
-export class CustgroupComponent implements OnInit {
+export class CustgroupComponent extends CallAlertService implements OnInit {
 
     private custgroup: string;
 
@@ -19,12 +20,12 @@ export class CustgroupComponent implements OnInit {
 
     constructor(
         private custgroupService: CustgroupService,
-        private toastyComponent: ToastyComponent,
-        public holderService: HolderService) { }
+        public toastyComponent: ToastyComponent,
+        public holderService: HolderService) { super(toastyComponent); }
 
     ngOnInit() {
         this.custgroup = this.holderService.cadastroLinha.custGrp;
-     }
+    }
 
     public setCustgroup() {
         if (this.custgroup) {
@@ -35,25 +36,15 @@ export class CustgroupComponent implements OnInit {
                     this.holderService.cadastroLinha = data;
                     this.nomeButton = "Alterar";
                     this.disableButton = false;
-                    this.callToasty("Sucesso.", "Custgroup Alterado com sucesso.", "success", 5000);
+                    super.callToasty("Sucesso.", "Custgroup Alterado com sucesso.", "success", 5000);
                 }, error => {
-                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
+                    super.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
                     this.nomeButton = "Alterar";
                     this.disableButton = false;
                 });
         } else {
-            this.callToasty("Ops, aconteceu algo.", "Preencha o campo Custgroup", "error", 5000);
+            super.callToasty("Ops, aconteceu algo.", "Preencha o campo Custgroup", "error", 5000);
         }
 
-    }
-
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
     }
 }

@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { element } from 'protractor';;
 import { ServicoLinhaService } from './servico-linha.service';
 import { Component, OnInit } from '@angular/core';
+import { CallAlertService } from 'util/callalerts/call-alert.service';
 
 @Component({
     selector: 'servico-linha-component',
@@ -15,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
     providers: [ServicoLinhaService]
 })
 
-export class ServicoLinhaComponent implements OnInit {
+export class ServicoLinhaComponent extends CallAlertService implements OnInit {
 
     private toggleComando: boolean;
 
@@ -27,21 +28,17 @@ export class ServicoLinhaComponent implements OnInit {
     private nomeButton: string = "Alterar";
     private disableButton: boolean = false;
 
-    public alertMsg: {
-        msg: string;
-        alertType: string;
-    }
-    public alertAtivo: boolean = false;
+        public alertAtivo: boolean = false;
     public alertCloseable: boolean = true;
 
     private showServicos: boolean = true;
 
     constructor(
         private servicoLinhaService: ServicoLinhaService,
-        private toastyComponent: ToastyComponent,
+        public toastyComponent: ToastyComponent,
         public holderService: HolderService,
         private fb: FormBuilder,
-        public dynamicRouterHolderService: DynamicRouterHolderService) { }
+        public dynamicRouterHolderService: DynamicRouterHolderService) { super(toastyComponent); }
 
     ngOnInit() {
         this.listaDeServicos = this.holderService.listaDeServicos;
@@ -50,7 +47,7 @@ export class ServicoLinhaComponent implements OnInit {
         });
         this.validaServicosDoCliente();
         if (this.holderService.cadastroLinha.status === "NOT_CREATED") {
-            this.callAlert("A linha não está criada, realize a criação da mesma no Menu Linha > Criar Linha.", "alert-warning");
+            super.callAlert(true, "alert-warning", "A linha não está criada, realize a criação da mesma no Menu Linha > Criar Linha.");
             this.showServicos = false;
         }
     }
@@ -102,32 +99,13 @@ export class ServicoLinhaComponent implements OnInit {
                 this.holderService.cadastroLinha = data;
                 this.nomeButton = "Alterar";
                 this.disableButton = false;
-                this.callToasty("Sucesso.", "Serviços Alterados com sucesso.", "success", 5000);
+                super.callToasty("Sucesso.", "Serviços Alterados com sucesso.", "success", 5000);
                 this.dynamicRouterHolderService.component = ConfiguracaoLinhaComponent;
             }, error => {
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
+                super.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
                 this.nomeButton = "Alterar";
                 this.disableButton = false;
             });
-    }
-
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
-    }
-
-    public callAlert(msg, type) {
-        this.alertMsg = {
-            msg: msg,
-            alertType: type
-        }
-        this.alertAtivo = true;
-        this.alertCloseable = false;
     }
 
 }

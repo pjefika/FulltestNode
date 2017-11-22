@@ -11,6 +11,7 @@ import { ListarLinhaService } from './../../general-services/listar-linha.servic
 import { ManobraLinhaService } from './manobrar-linha.service';
 import { Component, OnInit } from '@angular/core';
 import { Len } from './../../../../../viewmodel/cadastro-linha/len';
+import { CallAlertService } from 'util/callalerts/call-alert.service';
 
 @Component({
     selector: 'manobrar-linha-component',
@@ -19,7 +20,7 @@ import { Len } from './../../../../../viewmodel/cadastro-linha/len';
     providers: [ManobraLinhaService, ListarLinhaService, ListarLensLivresService, ConfiguracaoLinhaTdmService]
 })
 
-export class ManobrarLinhaComponent implements OnInit {
+export class ManobrarLinhaComponent extends CallAlertService implements OnInit {
 
     private instanciaBinada: string;
     private cadInstanciaBinada: Linha;
@@ -50,14 +51,14 @@ export class ManobrarLinhaComponent implements OnInit {
         private manobraLinhaService: ManobraLinhaService,
         private listarLinhaService: ListarLinhaService,
         private listarLensLivresService: ListarLensLivresService,
-        private toastyComponent: ToastyComponent,
+        public toastyComponent: ToastyComponent,
         private configuracaoLinhaTdmService: ConfiguracaoLinhaTdmService,
         public holderService: HolderService,
-        public dynamicRouterHolderService: DynamicRouterHolderService) { }
+        public dynamicRouterHolderService: DynamicRouterHolderService) { super(toastyComponent); }
 
     public ngOnInit() {
         if (this.holderService.cadastroLinha.status === "NOT_CREATED") {
-            this.callAlert("A linha não está criada, realize a criação da mesma no Menu Linha > Criar Linha.", "alert-warning");
+            super.callAlert(true, "alert-warning", "A linha não está criada, realize a criação da mesma no Menu Linha > Criar Linha.");
             this.showManobrar = false;
         }
     }
@@ -71,9 +72,9 @@ export class ManobrarLinhaComponent implements OnInit {
             .then(data => {
                 this.cadInstanciaBinada = data;
                 this.getConfBinada();
-                this.getLensLivres();                
+                this.getLensLivres();
             }, error => {
-                this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
+                super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                 this.consultarLenLoadingButton = false;
                 this.consultarLenDisabledButton = false;
                 this.consultarLenNameButton = "Consultar Len's"
@@ -86,7 +87,7 @@ export class ManobrarLinhaComponent implements OnInit {
                 this.confBinada = data;
             }, error => {
                 let msgerror = error.mError + " / " + "Houve algum problema ao buscar informações da instância binada";
-                this.callToasty("Ops, ocorreu um erro.", msgerror, "error", 5000);
+                super.callToasty("Ops, ocorreu um erro.", msgerror, "error", 5000);
             });
     }
 
@@ -98,7 +99,7 @@ export class ManobrarLinhaComponent implements OnInit {
                 this.consultarLenDisabledButton = false;
                 this.consultarLenNameButton = "Consultar Len's"
             }, error => {
-                this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
+                super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                 this.consultarLenLoadingButton = false;
                 this.consultarLenDisabledButton = false;
                 this.consultarLenNameButton = "Consultar Len's"
@@ -114,35 +115,16 @@ export class ManobrarLinhaComponent implements OnInit {
                     this.holderService.cadastroLinha = data;
                     this.manobrarLinhaNomeButton = "Manobrar Linha";
                     this.manobrarLinhaDisableButton = false;
-                    this.callToasty("Sucesso", "Linha manobrada com sucesso.", "success", 5000);
+                    super.callToasty("Sucesso", "Linha manobrada com sucesso.", "success", 5000);
                     this.dynamicRouterHolderService.component = ConfiguracaoLinhaComponent;
 
                 }, error => {
-                    this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
+                    super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                     this.manobrarLinhaNomeButton = "Manobrar Linha";
                     this.manobrarLinhaDisableButton = false;
                 });
         } else {
-            this.callToasty("Ops, aconteceu algo.", "Selecione o Len livre", "error", 5000);
+            super.callToasty("Ops, aconteceu algo.", "Selecione o Len livre", "error", 5000);
         }
-    }
-
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
-    }
-
-    public callAlert(msg, type) {
-        this.alertMsg = {
-            msg: msg,
-            alertType: type
-        }
-        this.alertAtivo = true;
-        this.alertCloseable = false;
     }
 }

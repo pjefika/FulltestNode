@@ -5,6 +5,7 @@ import { LinhaComponent } from './../linha.component';
 import { ListarLinhaService } from './../../../general-services/listar-linha.service';
 import { DeletarLinhaService } from './deletar-linha.service';
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { CallAlertService } from 'util/callalerts/call-alert.service';
 
 @Component({
     selector: 'deletar-linha-component',
@@ -13,7 +14,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
     providers: [DeletarLinhaService, ListarLinhaService]
 })
 
-export class DeletarLinhaComponent implements OnInit, OnChanges {
+export class DeletarLinhaComponent extends CallAlertService implements OnInit, OnChanges {
 
     @Input() ativo: boolean = false;
     private abrirModal: boolean = false;
@@ -26,8 +27,8 @@ export class DeletarLinhaComponent implements OnInit, OnChanges {
         private deletarLinhaService: DeletarLinhaService,
         private listarLinhaService: ListarLinhaService,
         public holderService: HolderService,
-        private toastyComponent: ToastyComponent,
-        private linhaComponent: LinhaComponent) { }
+        public toastyComponent: ToastyComponent,
+        private linhaComponent: LinhaComponent) { super(toastyComponent); }
 
     public ngOnInit() {
         // if (this.holderService.cadastro.linha.tipo === "NOT_CREATED") {
@@ -43,6 +44,7 @@ export class DeletarLinhaComponent implements OnInit, OnChanges {
 
     private seeIfChange() {
         if (this.holderService.cadastro.linha.tipo === "NOT_CREATED") {
+            super.callAlert(true, "alert-warning", "Linha já está deletada.");
             this.delLinhaDisabled = true;
         }
     }
@@ -55,7 +57,7 @@ export class DeletarLinhaComponent implements OnInit, OnChanges {
                 this.cadastroLinha = data;
                 this.holderService.cadastroLinha = this.cadastroLinha;
                 if (this.cadastroLinha.status == "NOT_CREATED") {
-                    this.callToasty("Linha Deletada com sucesso.", "Por favor realize a configuração da linha!", "success", 5000);
+                    super.callToasty("Linha Deletada com sucesso.", "Por favor realize a configuração da linha!", "success", 5000);
                     this.abrirModal = false;
                     this.linhaComponent.qualComando = "criar";
                     this.linhaComponent.comandoSelecionado();
@@ -63,20 +65,10 @@ export class DeletarLinhaComponent implements OnInit, OnChanges {
                 this.doActionSearching = false;
                 this.nameBtnActionModal = "Sim";
             }, error => {
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
+                super.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
                 this.doActionSearching = false;
                 this.nameBtnActionModal = "Sim";
             });
-    }
-
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
     }
 
 }

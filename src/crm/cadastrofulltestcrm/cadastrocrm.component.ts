@@ -15,6 +15,7 @@ import { CadastroCrmService } from './cadastrocrm.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, Injector } from '@angular/core';
 import { log } from 'util';
+import { CallAlertService } from 'util/callalerts/call-alert.service';
 
 @Component({
     selector: 'cadastro-crm-component',
@@ -23,7 +24,7 @@ import { log } from 'util';
     providers: [AssertService, MakeLogerService]
 })
 
-export class CadastroCrmComponent implements OnInit {
+export class CadastroCrmComponent extends CallAlertService implements OnInit {
 
     cadastro: Cadastro;
     objectValid: ObjectValid;
@@ -33,12 +34,6 @@ export class CadastroCrmComponent implements OnInit {
     searchCadastro: boolean = false;
     searchFulltest: boolean = false;
     doFulltest: boolean = false;
-
-    toastyInfo: {
-        titulo: string;
-        msg: string;
-        theme: string;
-    }
 
     listAsserts: {
         tbsradius: boolean;
@@ -52,18 +47,11 @@ export class CadastroCrmComponent implements OnInit {
         fulltest: boolean;
     }
 
-    alertMsg: {
-        msg: string;
-        alertType: string;
-    }
-    alertAtivo: boolean = false;
-    alertCloseable: boolean = true;
-
     loger: Loger;
 
     constructor(
         private cadastroCrmService: CadastroCrmService,
-        private toastyComponent: ToastyComponent,
+        public toastyComponent: ToastyComponent,
         private util: Util,
         private router: Router,
         private injector: Injector,
@@ -72,6 +60,7 @@ export class CadastroCrmComponent implements OnInit {
         private holderService: HolderService,
         private assertService: AssertService,
         private makeLogerService: MakeLogerService) {
+        super(toastyComponent);
         this.instancia = this.holderService.instancia;
     }
 
@@ -100,14 +89,15 @@ export class CadastroCrmComponent implements OnInit {
                 this.cadastro = data;
                 this.holderService.cadastro = this.cadastro;
                 this.searchCadastro = false;
-                this.assert();                
+                this.assert();
                 this.holderService.liberarSubNav = true;
             }, error => {
                 this.searchCadastro = false;
                 this.mloger(error.mError);
                 if (error.mError == "Erro de Cadastro - Circuito não assinalado no TBS.") {
                     let msgalerterror = "Cliente com erro de cadastro, favor transferir chamada ao CO utilizando o fluxo com o problema/sintoma informado pelo cliente."
-                    this.callAlert(msgalerterror, "alert-danger");
+                    super.callAlert(true, "alert-danger", msgalerterror);
+                    this.setmsginholder(msgalerterror, "alert-danger");
                 } else {
                     this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
                 }
@@ -125,40 +115,24 @@ export class CadastroCrmComponent implements OnInit {
                 this.searchFulltest = false;
                 this.listResumo.fulltest = this.objectValid.resultado;
                 if (this.listResumo.fulltest) {
-                    this.callAlert(this.objectValid.mensagem, "alert-success");
+                    super.callAlert(true, "alert-success", this.objectValid.mensagem);
+                    this.setmsginholder(this.objectValid.mensagem, "alert-success");
                 } else {
-                    this.callAlert(this.objectValid.mensagem, "alert-danger");
+                    super.callAlert(true, "alert-danger", this.objectValid.mensagem);
+                    this.setmsginholder(this.objectValid.mensagem, "alert-danger");
                 }
                 this.mloger(this.objectValid.mensagem);
             }, error => {
-                this.callAlert(error.mError, "alert-danger");
+                super.callAlert(true, "alert-danger", error.mError);
+                this.setmsginholder(error.mError, "alert-danger");
                 this.listResumo.fulltest = false;
                 this.searchFulltest = false;
                 this.mloger(error.mError);
                 //this.callToasty("Ops, ocorreu um erro.", error.mError, "error");
             });
     }
-    /*
-    *  Chamadas para infos na tela Toasty e Alert 
-    */
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
-    }
 
-    private callAlert(msg, type) {
-        this.alertMsg = {
-            msg: msg,
-            alertType: type
-        }
-        this.alertAtivo = true;
-        this.alertCloseable = false;
-
+    private setmsginholder(msg, type) {
         this.holderService.alertState = {
             msg: msg,
             alertType: type,
@@ -186,11 +160,13 @@ export class CadastroCrmComponent implements OnInit {
                             this.getValidacao();
                         } else {
                             msgalerterror = "Cliente com erro de cadastro, favor transferir chamada ao CO utilizando o fluxo com o problema/sintoma informado pelo cliente.";
-                            this.callAlert(msgalerterror, "alert-danger");
+                            super.callAlert(true, "alert-danger", msgalerterror);
+                            this.setmsginholder(msgalerterror, "alert-danger");
                         }
                         if (this.listResumo.bloqueio) {
                             msgalerterror = "Cliente com BLOQUEIO, por favor seguir fluxo GPS relacionado a validação de Bloqueios";
-                            this.callAlert(msgalerterror, "alert-danger");
+                            super.callAlert(true, "alert-danger", msgalerterror);
+                            this.setmsginholder(msgalerterror, "alert-danger");
                         }
                         this.mloger(msgalerterror);
                     });
@@ -227,12 +203,11 @@ export class CadastroCrmComponent implements OnInit {
             this.assert();
         }
         if (this.holderService.alertState) {
-            this.alertMsg = {
-                msg: this.holderService.alertState.msg,
-                alertType: this.holderService.alertState.alertType
+            this.msg = {
+                alertType: this.holderService.alertState.alertType,
+                msg: this.holderService.alertState.msg
             }
             this.alertAtivo = this.holderService.alertState.alertAtivo;
-            this.alertCloseable = this.holderService.alertState.alertCloseable;
         }
     }
 }

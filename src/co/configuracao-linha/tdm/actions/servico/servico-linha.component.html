@@ -1,6 +1,6 @@
 <div>
     <h3 class="titulo-da-pagina">Serviço</h3>
-    <alert-component [msg]="alertMsg" [ativo]="alertAtivo" [closeable]="alertCloseable"></alert-component>
+    <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
     <div *ngIf="showServicos">
         <label>Selecione os serviços a baixo: </label>
         <clr-checkbox *ngFor="let servico of listaDeServicos" [clrChecked]="seeifchecked(servico.nome)" (change)="atualizaListaDeServicos(servico.nome, $event.target.checked)">

@@ -7,6 +7,7 @@ import { NcosService } from './actions/ncos/ncos.service';
 import { ServicoLinhaService } from './actions/servico/servico-linha.service';
 import { LinhaResetDePortaService } from './general-services/linha-reset-de-porta.service';
 import { Component, OnInit } from '@angular/core';
+import { CallAlertService } from 'util/callalerts/call-alert.service';
 
 @Component({
     selector: 'configuracao-linha-tdm-component',
@@ -15,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
     providers: [NcosService, ServicoLinhaService, LinhaResetDePortaService, ConfiguracaoLinhaTdmService]
 })
 
-export class ConfiguracaoLinhaTdmComponent implements OnInit {
+export class ConfiguracaoLinhaTdmComponent extends CallAlertService implements OnInit {
     public cadastroLinha: CadastroLinha;
     public searching: boolean = false;
     public searchingWhat: string;
@@ -31,11 +32,11 @@ export class ConfiguracaoLinhaTdmComponent implements OnInit {
 
     constructor(
         private configuracaoLinhaTdmService: ConfiguracaoLinhaTdmService,
-        private toastyComponent: ToastyComponent,
+        public toastyComponent: ToastyComponent,
         public holderService: HolderService,
         private ncosService: NcosService,
         private servicoLinhaService: ServicoLinhaService,
-        private linhaResetDePortaService: LinhaResetDePortaService) { }
+        private linhaResetDePortaService: LinhaResetDePortaService) { super(toastyComponent); }
 
     ngOnInit() {
         this.holderService.sidenav = true;
@@ -57,15 +58,15 @@ export class ConfiguracaoLinhaTdmComponent implements OnInit {
                 this.holderService.liberarSideNav = true;
                 this.searching = false;
                 if (this.cadastroLinha.status == "NOT_CREATED") {
-                    this.callToasty("Linha não configurada", "Por favor realize a configuração da linha!", "warning", 15000);
+                    super.callToasty("Linha não configurada", "Por favor realize a configuração da linha!", "warning", 15000);
                     this.goToCreateLinhaComponent();
                 }
             }, error => {
                 this.searching = false;
                 if (error.mError === "Linha não pertence a Central." && this.holderService.cadastro.instancia === this.holderService.cadastroLinha.dn) {
-                    this.callToasty("Ops, aconteceu algo.", "Necessário associação de número de equipamento.", "error", 5000);
+                    super.callToasty("Ops, aconteceu algo.", "Necessário associação de número de equipamento.", "error", 5000);
                 } else {
-                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
+                    super.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
                 }
             });
     }
@@ -79,7 +80,7 @@ export class ConfiguracaoLinhaTdmComponent implements OnInit {
             .then(data => {
                 this.holderService.listaDeNcos = data;
             }, error => {
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
+                super.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
             });
     }
 
@@ -88,7 +89,7 @@ export class ConfiguracaoLinhaTdmComponent implements OnInit {
             .then(data => {
                 this.holderService.listaDeServicos = data;
             }, error => {
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
+                super.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
             });
     }
 
@@ -104,7 +105,7 @@ export class ConfiguracaoLinhaTdmComponent implements OnInit {
             }, error => {
                 this.nomebotaoresetar = "Resetar porta";
                 this.disablebotaoresetar = false;
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
+                super.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
             });
     }
 
@@ -115,16 +116,6 @@ export class ConfiguracaoLinhaTdmComponent implements OnInit {
         } else {
             this.editarInfoLinhas = true;
         }
-    }
-
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
     }
 
     public getncoseservicos() {

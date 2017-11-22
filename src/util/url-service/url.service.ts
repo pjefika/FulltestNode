@@ -10,7 +10,7 @@ import { SuperService } from 'util/superservice/super.service';
 export class UrlService extends SuperService implements RequestAction {
 
     //Modificar IPs 
-    public urlIp = "http://10.40.195.81:8080/";  // Produção e restante dos pjs para o path
+    public urlIp = "http://10.200.35.67:80/";  // Produção e restante dos pjs para o path
     public urlIpParaStealer = "http://10.40.195.81:8080/"; // A stealer que ira ficar aqui // PeleServ
     // IPS: 
     //  "http://10.40.195.81:8080/"; QA
@@ -19,7 +19,7 @@ export class UrlService extends SuperService implements RequestAction {
 
     //Modificar path names
     public pathFulltestAPI = "fulltestAPI/";
-    public pathStealerAPI = "stealerAPI_qa/"; // stealerAPI_qa
+    public pathStealerAPI = "stealerAPI/"; // stealerAPI_qa
     public pathAuth = "efikaAuth/";
     public pathDmsAPI = "dmsAPI/";
     public pathNetworkInventory = "networkInventoryAPI/";
@@ -30,9 +30,7 @@ export class UrlService extends SuperService implements RequestAction {
     public options = new RequestOptions({ headers: this.headersAppJson });
     private url;
 
-    constructor(private http: Http) {
-        super();
-    }
+    constructor(private http: Http) { super(); }
 
     //Todo mundo faz a chamada para o request passando o InfoRequest.
     public request(infoResquest: InfoRequest) {

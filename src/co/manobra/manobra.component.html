@@ -35,29 +35,24 @@
                             </form>
                             <button class="btn btn-primary btn-block" [disabled]="btnValidDisable" [clrLoading]="searchingValids" (click)="validar()">{{nameBtnValidManobra}}</button>
                         </div>
-                        <table class="table table-compact table-vertical marginspace" *ngIf="analitico">
+                        <!-- Colocar em componente com alert especifico... -->
+                        <!-- <table class="table table-compact table-vertical marginspace" *ngIf="analitico">
                             <tbody>
                                 <tr>
                                     <th colspan="2" style="text-align: center;">Validações Manobra</th>
                                 </tr>
                                 <tr *ngFor="let value of analitico.analises">
-
                                     <th>{{value.motivo.motivo}}</th>
                                     <th>{{value.conclusao.frase}}</th>
-                                    <!-- <th>
-                                        <clr-icon shape="check" *ngIf="valid.conclusao.includes('OK')" class="is-success"></clr-icon>
-                                        <clr-icon shape="times" *ngIf="!valid.conclusao.includes('OK')" class="is-error"></clr-icon>
-                                    </th> -->
                                 </tr>
                             </tbody>
-                        </table>
+                        </table> -->
+                        <table-validacoes-component [analitico]="analitico"></table-validacoes-component>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Validação'"></loading-component>
-    <alert-component [msg]="alertMsg" [ativo]="alertAtivo" [closeable]="alertCloseable"></alert-component>
-    <alert-component [msg]="subalertMsg" [ativo]="subalertAtivo" [closeable]="subalertCloseable"></alert-component>
-
+    <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
 </div>

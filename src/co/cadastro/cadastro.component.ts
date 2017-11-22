@@ -10,6 +10,7 @@ import 'rxjs/add/operator/toPromise';
 import { Wizard } from "clarity-angular";
 
 import { CadastroService } from './cadastro.service';
+import { CallAlertService } from 'util/callalerts/call-alert.service';
 
 @Component({
     selector: 'cadastro-component',
@@ -17,7 +18,7 @@ import { CadastroService } from './cadastro.service';
     styleUrls: ['cadastro.component.css']
 })
 
-export class CadastroComponent implements OnInit {
+export class CadastroComponent extends CallAlertService implements OnInit {
 
     private cadastro: Cadastro;
 
@@ -37,13 +38,13 @@ export class CadastroComponent implements OnInit {
 
     private searchingRede: boolean = false;
 
-    constructor(
+    constructor(public toastyComponent: ToastyComponent,
         private cadastroService: CadastroService,
         private router: Router,
         private util: Util,
         private injector: Injector,
-        private toastyComponent: ToastyComponent,
         private holderService: HolderService) {
+        super(toastyComponent);
         this.instancia = this.holderService.instancia;
     }
 
@@ -57,7 +58,7 @@ export class CadastroComponent implements OnInit {
         if (this.holderService.cadastro) {
             this.cadastro = this.holderService.cadastro;
             if (this.cadastro.rede.origem === "OFFLINE") {
-                this.callAlertRede(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
+                this.callAlert(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
             }
         } else {
             this.getCadastro();
@@ -78,11 +79,11 @@ export class CadastroComponent implements OnInit {
                         .getCadastroDOne(this.cadastro.instancia)
                         .then(data => {
                             this.cadastro.rede = data.rede;
-                            this.callAlertRede(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
+                            this.callAlert(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
                             this.searchingRede = false;
                             this.validCadastroRedeEServico();
                         }, error => {
-                            this.callAlertRede(true, "alert-danger", "Atenção não existe informações de cadastro em nossas bases.");
+                            this.callAlert(true, "alert-danger", "Atenção não existe informações de cadastro em nossas bases.");
                             this.searchingRede = false;
                         });
                 } else {
@@ -111,22 +112,6 @@ export class CadastroComponent implements OnInit {
                 this.holderService.liberarSubNav = true;
             }
         }
-    }
-
-    private callAlertRede(alertAtivo: boolean, alertType: string, alertMsg: string) {
-        this.alertDOneAtivo = alertAtivo;
-        this.alertDOneType = alertType;
-        this.alertDOneMsg = alertMsg;
-    }
-
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
     }
 
 }

@@ -5,17 +5,6 @@
     </div>
     <div *ngIf="!holderService.cadastro.linha.tipo">
         <!-- Retirar isto daqui quando for implementar VIVO_1 GPON -->
-        <div class="alert alert-warning">
-            <div class="alert-items">
-                <div class="alert-item static">
-                    <div class="alert-icon-wrapper">
-                        <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
-                    </div>
-                    <div class="alert-text">
-                        Funcionalidade indisponivel para este tipo de Central.
-                    </div>
-                </div>
-            </div>
-        </div>
+        <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
     </div>
 </div>
