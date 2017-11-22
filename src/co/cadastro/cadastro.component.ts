@@ -26,12 +26,6 @@ export class CadastroComponent extends CallAlertService implements OnInit {
     private searching: boolean = false;
     private modalOpen: boolean = false;
 
-    private toastyInfo: {
-        titulo: string;
-        msg: string;
-        theme: string;
-    }
-
     private alertDOneAtivo: boolean = false;
     private alertDOneType: string;
     private alertDOneMsg: string;
