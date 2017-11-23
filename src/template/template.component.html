@@ -47,7 +47,7 @@
                 <div class="col-md">
                     <dynamic-router-component [component]="dynamicRouterHolderService.component"></dynamic-router-component>
                 </div>
-                <div class="col-md-4" *ngIf="holderService.cadastro && holderService.resumoInfosAtivo">
+                <div class="col-md-4" *ngIf="holderService.cadastro && holderService.resumoInfosAtivo" [@flyInOut]="'in'">
                     <resumo-infos-component></resumo-infos-component>
                 </div>
             </div>

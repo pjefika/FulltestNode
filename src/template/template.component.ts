@@ -8,11 +8,24 @@ import { DynamicRouterHolderService } from './../util/dynamic-router/dynamic-rou
 import { HolderService } from './../util/holder/holder.service';
 import { Util } from './../util/util';
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
     selector: 'template-full',
     templateUrl: 'template.component.html',
     styleUrls: ['template.component.css'],
+    animations: [
+        trigger('flyInOut', [
+            state('in', style({ transform: 'translateX(0)' })),
+            transition('void => *', [
+                style({ transform: 'translateX(100%)' }),
+                animate(100)
+            ]),
+            transition('* => void', [
+                animate(100, style({ transform: 'translateX(100%)' }))
+            ])
+        ])
+    ]
 })
 
 export class TemplateComponent implements OnInit {
