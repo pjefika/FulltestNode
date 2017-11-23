@@ -21,6 +21,8 @@ export class ConfiguracaoLinhaComponent extends CallAlertService implements OnIn
         if (!this.holderService.cadastro.linha.tipo) {
             this.notimplemented();
         }
+        this.holderService.resumoInfosAtivo = true;
+        this.holderService.btnResumoInfosAtivo = true;
     }
 
     public notimplemented() {

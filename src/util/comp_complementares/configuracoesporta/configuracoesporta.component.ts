@@ -26,6 +26,8 @@ export class ConfiguracoesPortaComponent implements OnInit {
         if (!this.holderService.confPorta) {
             this.getConfigPorta();
         }
+        this.holderService.resumoInfosAtivo = true;
+        this.holderService.btnResumoInfosAtivo = true;
     }
 
     public getConfigPorta() {
