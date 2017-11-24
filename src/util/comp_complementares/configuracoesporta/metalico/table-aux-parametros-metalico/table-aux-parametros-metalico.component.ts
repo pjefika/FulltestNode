@@ -9,10 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class TableAuxParametrosMetalicoComponent implements OnInit {
 
-    @Input() public parametros: Parametros;
+    @Input() public parametros: any;
 
     constructor() { }
 
     ngOnInit() {
+        console.log(this.parametros)
     }
 }
