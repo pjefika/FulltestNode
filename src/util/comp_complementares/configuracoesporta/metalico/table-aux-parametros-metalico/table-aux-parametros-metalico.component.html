@@ -1,0 +1,55 @@
+<div>
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="3">{{parametros.nome}}</th>
+            </tr>
+            <tr>
+                <th>Mensagem:</th>
+                <td colspan="2">{{parametros.mensagem}}</td>
+            </tr>
+            <tr>
+                <th>Resultado:</th>
+                <td colspan="2">
+                    <clr-icon style="color: green" shape="check" *ngIf="parametros.resultado"></clr-icon>
+                    <clr-icon style="color: red" shape="times" *ngIf="!parametros.resultado"></clr-icon>
+                </td>
+            </tr>
+            <tr>
+                <th>Velocidade Sincronizada (Mbps):</th>
+                <td>{{parametros.result.velSincDown}}</td>
+                <td>{{parametros.result.velSincUp}}</td>
+            </tr>
+            <tr>
+                <th>Sinal Ruído (dB):</th>
+                <td>{{parametros.result.snrDown}}</td>
+                <td>{{parametros.result.snrUp}}</td>
+            </tr>
+            <tr *ngIf="parametros.parametros.result.snrDown1">
+                <th></th>
+                <td>{{parametros.result.snrDown1}}</td>
+                <td>{{parametros.result.snrUp1}}</td>
+            </tr>
+            <tr *ngIf="parametros.parametros.result.snrDown2">
+                <th></th>
+                <td>{{parametros.result.snrDown2}}</td>
+                <td>{{parametros.result.snrUp2}}</td>
+            </tr>
+            <tr>
+                <th>Atenuação (dB):</th>
+                <td>{{parametros.result.atnDown}}</td>
+                <td>{{parametros.result.atnUp}}</td>
+            </tr>
+            <tr *ngIf="parametros.parametros.result.atnDown1">
+                <th></th>
+                <td>{{parametros.result.atnDown1}}</td>
+                <td>{{parametros.result.atnUp1}}</td>
+            </tr>
+            <tr *ngIf="parametros.parametros.result.atnDown2">
+                <th></th>
+                <td>{{parametros.result.atnDown2}}</td>
+                <td>{{parametros.result.atnUp2}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

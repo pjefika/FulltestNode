@@ -1,10 +1,10 @@
+import { TableAuxParametrosMetalicoComponent } from './../util/comp_complementares/configuracoesporta/metalico/table-aux-parametros-metalico/table-aux-parametros-metalico.component';
 import { AppLevelAlertComponent } from './../util/applevelalert/applevelalert.component';
 import { DynamicRouterComponent } from './../util/dynamic-router/dynamic-router.component';
 import { DynamicRouterHolderService } from './../util/dynamic-router/dynamic-router-holder.service';
 import { ErrorLogComponent } from './../util/error-log/error-log.component';
 import { TableAuxSerialComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-serial/table-aux-serial.component';
 import { TableAuxProfileComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-profile/table-aux-profile.component';
-import { TableAuxParametrosComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-parametros/table-aux-parametros.component';
 import { TableAuxLanComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-lan/table-aux-lan.component';
 import { TableAuxGponSimpleComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-simple/table-aux-gpon-simple.component';
 import { ConfiguracaoLinhaImsComponent } from './../co/configuracao-linha/ims/configuracao-linha-ims.component';
@@ -86,6 +86,7 @@ import { AppComponent } from './app.component';
 import { AcsComponent } from 'util/comp_complementares/acs/acs.component';
 import { TableValidacoesComponent } from 'util/table-validacoes/table-validacoes.component';
 import { ResumoInfosComponent } from 'util/resumoinfos/resumo-infos.component';
+import { TableAuxParametrosGponComponent } from 'util/comp_complementares/configuracoesporta/gpon/table-aux-parametros-gpon/table-aux-parametros-gpon.component';
 
 @NgModule({
     declarations: [
@@ -137,7 +138,8 @@ import { ResumoInfosComponent } from 'util/resumoinfos/resumo-infos.component';
         ConfiguracaoLinhaImsComponent,
         TableAuxGponSimpleComponent,
         TableAuxLanComponent,
-        TableAuxParametrosComponent,
+        TableAuxParametrosMetalicoComponent,
+        TableAuxParametrosGponComponent,
         TableAuxProfileComponent,
         TableAuxSerialComponent,
         ErrorLogComponent,

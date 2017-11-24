@@ -24,7 +24,7 @@ export class ConfiguracoesPortaGponComponent implements OnInit {
 
     public getConfigPorta() {
         this.searchConfPorta = true;
-        this.searchWhat = "Buscando informações";
+        this.searchWhat = "Buscando Informações...";
         this.configuracoesPortaService.getConfigPorta(this.holderService.cadastro)
             .then(data => {
                 this.holderService.confPorta = data;

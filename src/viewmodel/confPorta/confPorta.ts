@@ -16,5 +16,5 @@ export class ConfPorta {
     profile: Profile;
     serial: Serial;
     serialDisp: SerialReturn[];
-    parametros: Parametros;
+    parametros: any;
 }
