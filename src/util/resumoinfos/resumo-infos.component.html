@@ -16,6 +16,11 @@
                 <th>Central: </th>
                 <td>{{holderService.cadastro.linha.central}}</td>
             </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-compact table-vertical">
+        <tbody>
             <tr>
                 <th colspan="2" style="text-align: center;">Informações de Cadastro</th>
             </tr>
@@ -31,23 +36,21 @@
                 <th>Designador de Acesso: </th>
                 <td>{{holderService.cadastro.designadorAcesso}}</td>
             </tr>
-            <tr>
-                <th colspan="2" style="text-align: center;">Informações de Serviço</th>
-            </tr>
-            <tr>
-                <th>Velocidade contratada:</th>
-                <td>{{holderService.cadastro.servicos.velDown}} / {{holderService.cadastro.servicos.velUp}}</td>
-            </tr>
-            <tr>
-                <th>Tipo da Linha:</th>
-                <td>{{holderService.cadastro.servicos.tipoLinha}}</td>
-            </tr>
-            <tr>
-                <th>Tipo da TV:</th>
-                <td>{{holderService.cadastro.servicos.tipoTv}}</td>
-            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-compact table-vertical">
+        <tbody>
             <tr>
                 <th colspan="2" style="text-align: center;">Informações de Rede</th>
+            </tr>
+            <tr>
+                <th>Planta: </th>
+                <td>{{holderService.cadastro.rede.planta}}</td>
+            </tr>
+            <tr>
+                <th>Tipo: </th>
+                <td>{{holderService.cadastro.rede.tipo}}</td>
             </tr>
             <tr>
                 <th>Modelo DSLAM: </th>
@@ -55,4 +58,5 @@
             </tr>
         </tbody>
     </table>
+
 </div>
