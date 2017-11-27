@@ -48,7 +48,7 @@ export class AdmComponent implements OnInit {
                 this.btnNameSearchInfoNortel = "Buscar";
                 this.btnDisableSearchInfoNortel = false;
             }, error => {
-                console.log("Erro ao buscar Singletons");
+                //console.log("Erro ao buscar Singletons");
                 this.btnNameSearchInfoNortel = "Buscar";
                 this.btnDisableSearchInfoNortel = false;
             })

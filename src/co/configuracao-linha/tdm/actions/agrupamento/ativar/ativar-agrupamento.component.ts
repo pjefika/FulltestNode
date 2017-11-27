@@ -32,7 +32,7 @@ export class AtivarAgrupamentoComponent implements OnInit {
     }
 
     public criarAgrupamento() {
-        console.log(this.instancias)
+        //console.log(this.instancias)
     }
 
 }

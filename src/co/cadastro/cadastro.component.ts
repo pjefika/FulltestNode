@@ -102,7 +102,7 @@ export class CadastroComponent extends CallAlertService implements OnInit {
         if (this.cadastro) {
             //Valida Rede or Valida Servico
             if (!this.cadastro.rede.tipo || !this.cadastro.servicos.velDown && !this.cadastro.servicos.velUp) {
-                console.log(this.cadastro.rede.tipo);
+                //console.log(this.cadastro.rede.tipo);
                 this.holderService.liberarSubNav = false;
             } else {
                 this.holderService.liberarSubNav = true;

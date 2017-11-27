@@ -14,6 +14,6 @@ export class TableAuxParametrosMetalicoComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        console.log(this.parametros)
+        //console.log(this.parametros)
     }
 }

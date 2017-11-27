@@ -24,7 +24,7 @@ export class CadastroService extends SuperService {
             command: this.urlService.pathStealerAPI + "oss/",
             _data: _data,
             otherUrl: this.urlService.urlIpParaStealer,
-            timeout: 60000
+            timeout: 63000
         };
         return this.urlService.request(this.infoResquest)
             .then(response => {

@@ -85,7 +85,7 @@ export class CadastroWizardComponent implements OnInit {
             .then(data => {
                 this.listEnumTv = data;
             }, error => {
-                console.log("Erro ao buscar enum TV");
+                //console.log("Erro ao buscar enum TV");
             });
     }
 
@@ -95,7 +95,7 @@ export class CadastroWizardComponent implements OnInit {
             .then(data => {
                 this.listEnumVoz = data;
             }, error => {
-                console.log("Erro ao buscar enum Voz");
+                //console.log("Erro ao buscar enum Voz");
             });
     }
 
@@ -105,7 +105,7 @@ export class CadastroWizardComponent implements OnInit {
             .then(data => {
                 this.listEnumVelocidades = data;
             }, error => {
-                console.log("Erro ao buscar enum Velocidades");
+                //console.log("Erro ao buscar enum Velocidades");
             });
     }
 

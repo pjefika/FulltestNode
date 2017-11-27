@@ -21,7 +21,7 @@ export class TableValidacoesComponent extends CallAlertService implements OnInit
     public ngOnInit() { }
 
     public ngOnChanges(changes: SimpleChanges) {
-        console.log(changes.analitico);
+        //console.log(changes.analitico);
         if (changes.analitico.currentValue) {
             this.mountAlert();
         }

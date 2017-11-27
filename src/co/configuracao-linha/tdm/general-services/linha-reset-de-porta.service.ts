@@ -22,7 +22,7 @@ export class LinhaResetDePortaService extends SuperService {
             _data: _data,
             timeout: 200000
         }
-        console.log(this.infoResquest)
+        //(this.infoResquest)
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as CadastroLinha;
