@@ -1,4 +1,4 @@
-<div>
+﻿<div>
     <table class="table table-compact table-vertical">
         <tbody>
             <tr>
@@ -55,6 +55,26 @@
             <tr>
                 <th>Modelo DSLAM: </th>
                 <td>{{holderService.cadastro.rede.vendorDslam}} - {{holderService.cadastro.rede.modeloDslam}} </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="2" style="text-align: center;">Informações de Serviço</th>
+            </tr>
+            <tr>
+                <th>Planta: </th>
+                <td>{{holderService.cadastro.servicos.velDown}} / {{holderService.cadastro.servicos.velUp}}</td>
+            </tr>
+            <tr>
+                <th>Tipo da Linha: </th>
+                <td>{{holderService.cadastro.servicos.tipoLinha}}</td>
+            </tr>
+            <tr>
+                <th>Tipo da TV: </th>
+                <td>{{holderService.cadastro.servicos.tipoTv}} </td>
             </tr>
         </tbody>
     </table>
