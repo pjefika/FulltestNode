@@ -1,20 +1,7 @@
 <div *ngIf="holderService.confPorta">
-    <h5>DSLAM</h5>
-    <div class="row">
-        <div class="col-md-6">
-            <table-aux-gpon-simple-component [estadoPorta]="holderService.confPorta.estadoPorta"></table-aux-gpon-simple-component>
-        </div>
-        <div class="col-md-6">
-            <table-aux-parametros-metalico [parametros]="holderService.confPorta.parametros"></table-aux-parametros-metalico>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <table-aux-profile-component [profile]="holderService.confPorta.profile"></table-aux-profile-component>
-        </div>
-        <div class="col-md-6">
-            <table-aux-serial-component [serial]="holderService.confPorta.serial" [serialDisp]="holderService.confPorta.serialDisp"></table-aux-serial-component>
-        </div>
-    </div>
-    <table-aux-lan-component [confPorta]="holderService.confPorta"></table-aux-lan-component>
+    <table-parametros-cp-component [parametros]="holderService.confPorta.parametros"></table-parametros-cp-component>
+    <table-estado-porta-cp-component [estadoPorta]="holderService.confPorta.estadoPorta"></table-estado-porta-cp-component>
+    <table-lan-cp-component [vlanBanda]="holderService.confPorta.vlanBanda" [vlanVoip]="holderService.confPorta.vlanVoip" [vlanVod]="holderService.confPorta.vlanVod"
+        [vlanMulticast]="holderService.confPorta.vlanMulticast"></table-lan-cp-component>
+
 </div>

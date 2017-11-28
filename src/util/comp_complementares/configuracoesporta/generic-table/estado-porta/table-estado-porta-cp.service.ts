@@ -1,12 +1,12 @@
-import { ResultNormal } from './../../../../../viewmodel/confPorta/viewhold/resultNormal';
-import { EstadoPorta } from './../../../../../viewmodel/confPorta/estadoPorta';
-import { Cadastro } from './../../../../../viewmodel/cadastro/cadastro';
-import { UrlService } from './../../../../url-service/url.service';
 import { Injectable } from '@angular/core';
 import { SuperService } from 'util/superservice/super.service';
+import { UrlService } from 'util/url-service/url.service';
+import { Cadastro } from 'viewmodel/cadastro/cadastro';
+import { ResultNormal } from 'viewmodel/confPorta/viewhold/resultNormal';
+import { EstadoPorta } from 'viewmodel/confPorta/estadoPorta';
 
 @Injectable()
-export class TableAuxGponSimpleService extends SuperService {
+export class TableEstadoPortaCpService extends SuperService {
 
     constructor(private urlService: UrlService) {
         super();
@@ -28,5 +28,6 @@ export class TableAuxGponSimpleService extends SuperService {
             })
             .catch(super.handleError);
     }
+
 
 }

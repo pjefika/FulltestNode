@@ -1,11 +1,11 @@
-import { VlanBanda } from './../../../../../viewmodel/confPorta/vlanBanda';
-import { Cadastro } from './../../../../../viewmodel/cadastro/cadastro';
-import { UrlService } from './../../../../url-service/url.service';
 import { Injectable } from '@angular/core';
 import { SuperService } from 'util/superservice/super.service';
+import { Cadastro } from 'viewmodel/cadastro/cadastro';
+import { UrlService } from 'util/url-service/url.service';
+import { VlanBanda } from 'viewmodel/confPorta/vlanBanda';
 
 @Injectable()
-export class TableAuxLanService extends SuperService {
+export class TableLanCpService extends SuperService {
 
     constructor(private urlService: UrlService) {
         super();
@@ -27,4 +27,5 @@ export class TableAuxLanService extends SuperService {
             })
             .catch(super.handleError);
     }
+
 }

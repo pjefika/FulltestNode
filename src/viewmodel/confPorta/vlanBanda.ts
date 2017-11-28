@@ -4,4 +4,5 @@ export class VlanBanda {
     mensagem: string;
     resultado: boolean;
     result: ResultLan;
+    foiCorrigido: string;
 }
