@@ -20,7 +20,21 @@ export class NortelConectionsService extends SuperService {
             .then(data => {
                 return data as InfoNortelConection[]
             })
-            .catch(super.handleError)
+            .catch(super.handleError);
+    }
+
+    public setSingleton(singleton: string) {
+        this.infoResquest = {
+            rqst: "get",
+            command: this.urlService.pathDmsAPI + "dms/singleton/connection/",
+            timeout: 1200000,
+            _data: singleton
+        }
+        return this.urlService.request(this.infoResquest)
+            .then(data => {
+                return data as InfoNortelConection[]
+            })
+            .catch(super.handleError);
     }
 
 }

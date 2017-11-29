@@ -22,6 +22,9 @@ export class AdmComponent implements OnInit {
     private btnNameSearchInfoNortel: string = "Buscar";
     private btnDisableSearchInfoNortel: boolean = false;
 
+    private btnNameSearchSetInfoNortel: string = "Singleton False/True";
+    private btnDisableSearchSetInfoNortel: boolean = false;
+
     constructor(
         public holderService: HolderService,
         private toastyComponent: ToastyComponent,
@@ -52,6 +55,29 @@ export class AdmComponent implements OnInit {
                 this.btnNameSearchInfoNortel = "Buscar";
                 this.btnDisableSearchInfoNortel = false;
             })
+    }
+
+    public setSingleton() {
+        this.btnNameSearchSetInfoNortel = "Setando True/False...";
+        this.btnDisableSearchSetInfoNortel = true;
+        this.nortelConectionsService
+            .setSingleton("false")
+            .then(data => {
+                this.infoNortelConection = data;
+                this.nortelConectionsService
+                    .setSingleton("true")
+                    .then(data => {
+                        this.infoNortelConection = data;
+                        this.btnNameSearchSetInfoNortel = "Singleton False/True";
+                        this.btnDisableSearchSetInfoNortel = false;
+                    }, error => {
+                        this.btnNameSearchSetInfoNortel = "Singleton False/True";
+                        this.btnDisableSearchSetInfoNortel = false;
+                    });
+            }, error => {
+                this.btnNameSearchSetInfoNortel = "Singleton False/True";
+                this.btnDisableSearchSetInfoNortel = false;
+            });
     }
 
     public addinfos() {
