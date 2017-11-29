@@ -77,6 +77,8 @@ export class CadastroCrmComponent extends CallAlertService implements OnInit {
             //Inicia o fulltest assim que inicializa o componente
             this.getCadastro();
         }
+        this.holderService.resumoInfosAtivo = false;
+        this.holderService.btnResumoInfosAtivo = false;
     }
 
     //Busca instancia retornando cadastro.
