@@ -15,6 +15,8 @@ export class TableAuxProfileComponent implements OnInit {
 
     private btnSetProfileName: string = "Executar";
     private btnSetProfileDisable: boolean = false;
+    private isMetalico: boolean = false;
+    private thDown: string = "Profile Down:";
 
     private changeProfile: boolean = false;
 
@@ -25,7 +27,12 @@ export class TableAuxProfileComponent implements OnInit {
         private holderService: HolderService,
         private toastyComponent: ToastyComponent) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        if(!this.profile.upValues){
+            this.isMetalico = true;
+            this.thDown = "Profile:";
+        }
+     }
 
     public setProfile() {
         this.btnSetProfileName = "Aguarde...";

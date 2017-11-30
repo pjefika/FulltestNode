@@ -1,6 +1,7 @@
 <div *ngIf="holderService.confPorta">
     <table-parametros-cp-component [parametros]="holderService.confPorta.parametros"></table-parametros-cp-component>
     <table-estado-porta-cp-component [estadoPorta]="holderService.confPorta.estadoPorta"></table-estado-porta-cp-component>
+    <table-aux-profile-component [profile]="holderService.confPorta.profile"></table-aux-profile-component>
     <table-lan-cp-component [vlanBanda]="holderService.confPorta.vlanBanda" [vlanVoip]="holderService.confPorta.vlanVoip" [vlanVod]="holderService.confPorta.vlanVod"
         [vlanMulticast]="holderService.confPorta.vlanMulticast"></table-lan-cp-component>
 
