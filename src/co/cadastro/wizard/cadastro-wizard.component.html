@@ -172,6 +172,7 @@
                     </div>
                 </section>
             </form>
+            <infos-dm-component *ngIf="cadastro.rede.planta === 'VIVO1'"></infos-dm-component>
             <alert-component [msg]="msg" [ativo]="alertMsg"></alert-component>
         </clr-wizard-page>
     </clr-wizard>

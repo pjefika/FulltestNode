@@ -86,6 +86,7 @@ import { TableParametrosCpComponent } from 'util/comp_complementares/configuraco
 import { TableEstadoPortaCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/estado-porta/table-estado-porta-cp.component';
 import { TableLanCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/lan/table-lan-cp.component';
 import { TableProfileCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/profile/table-profile-cp.component';
+import { InfosDmComponent } from 'util/comp_complementares/infos-dm/infos-dm.component';
 
 @NgModule({
     declarations: [
@@ -145,7 +146,8 @@ import { TableProfileCpComponent } from 'util/comp_complementares/configuracoesp
         TableParametrosCpComponent,
         TableEstadoPortaCpComponent,
         TableLanCpComponent,
-        TableProfileCpComponent
+        TableProfileCpComponent,
+        InfosDmComponent
     ],
     imports: [
         BrowserModule,
