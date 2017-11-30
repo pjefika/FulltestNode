@@ -3,7 +3,6 @@ import { DynamicRouterComponent } from './../util/dynamic-router/dynamic-router.
 import { DynamicRouterHolderService } from './../util/dynamic-router/dynamic-router-holder.service';
 import { ErrorLogComponent } from './../util/error-log/error-log.component';
 import { TableAuxSerialComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-serial/table-aux-serial.component';
-import { TableAuxProfileComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-profile/table-aux-profile.component';
 import { ConfiguracaoLinhaImsComponent } from './../co/configuracao-linha/ims/configuracao-linha-ims.component';
 import { ConfiguracaoLinhaTdmComponent } from './../co/configuracao-linha/tdm/configuracao-linha-tdm.component';
 import { DeletarLinhaComponent } from './../co/configuracao-linha/tdm/actions/linha/deletar/deletar-linha.component';
@@ -86,6 +85,7 @@ import { ResumoInfosComponent } from 'util/resumoinfos/resumo-infos.component';
 import { TableParametrosCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/parametros/table-parametros-cp.component';
 import { TableEstadoPortaCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/estado-porta/table-estado-porta-cp.component';
 import { TableLanCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/lan/table-lan-cp.component';
+import { TableProfileCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/profile/table-profile-cp.component';
 
 @NgModule({
     declarations: [
@@ -135,7 +135,6 @@ import { TableLanCpComponent } from 'util/comp_complementares/configuracoesporta
         ConfiguracoesPortaGponComponent,
         ConfiguracaoLinhaTdmComponent,
         ConfiguracaoLinhaImsComponent,
-        TableAuxProfileComponent,
         TableAuxSerialComponent,
         ErrorLogComponent,
         DynamicRouterComponent,
@@ -145,7 +144,8 @@ import { TableLanCpComponent } from 'util/comp_complementares/configuracoesporta
         ResumoInfosComponent,
         TableParametrosCpComponent,
         TableEstadoPortaCpComponent,
-        TableLanCpComponent
+        TableLanCpComponent,
+        TableProfileCpComponent
     ],
     imports: [
         BrowserModule,

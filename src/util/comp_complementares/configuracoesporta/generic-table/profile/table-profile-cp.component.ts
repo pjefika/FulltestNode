@@ -1,17 +1,18 @@
-import { HolderService } from './../../../../holder/holder.service';
-import { ToastyComponent } from './../../../../toasty/toasty.component';
-import { TableAuxProfileService } from './table-aux-profile.service';
-import { Profile } from './../../../../../viewmodel/confPorta/profiles';
 import { Component, OnInit, Input } from '@angular/core';
+import { Profile } from 'viewmodel/confPorta/profiles';
+import { TableProfileCpService } from 'util/comp_complementares/configuracoesporta/generic-table/profile/table-profile-cp.service';
+import { CallAlertService } from 'util/callalerts/call-alert.service';
+import { ToastyComponent } from 'util/toasty/toasty.component';
+import { HolderService } from 'util/holder/holder.service';
 
 @Component({
-    selector: 'table-aux-profile-component',
-    templateUrl: 'table-aux-profile.component.html',
-    styleUrls: ['table-aux-profile.component.css'],
-    providers: [TableAuxProfileService]
+    selector: 'table-profile-cp-component',
+    templateUrl: 'table-profile-cp.component.html',
+    styleUrls: ['table-profile-cp.component.css'],
+    providers: [TableProfileCpService]
 })
 
-export class TableAuxProfileComponent implements OnInit {
+export class TableProfileCpComponent extends CallAlertService implements OnInit {
 
     private btnSetProfileName: string = "Executar";
     private btnSetProfileDisable: boolean = false;
@@ -23,21 +24,23 @@ export class TableAuxProfileComponent implements OnInit {
     @Input() public profile: Profile;
 
     constructor(
-        private tableAuxProfileService: TableAuxProfileService,
-        private holderService: HolderService,
-        private toastyComponent: ToastyComponent) { }
+        public toastyComponent: ToastyComponent,
+        private tableProfileCpService: TableProfileCpService,
+        public holderService: HolderService) {
+        super(toastyComponent);
+    }
 
-    ngOnInit() {
-        if(!this.profile.upValues){
+    public ngOnInit() {
+        if (this.holderService.cadastro.rede.tipo === "METALICA") {
             this.isMetalico = true;
             this.thDown = "Profile:";
         }
-     }
+    }
 
     public setProfile() {
         this.btnSetProfileName = "Aguarde...";
         this.btnSetProfileDisable = true;
-        this.tableAuxProfileService
+        this.tableProfileCpService
             .setProfile(this.holderService.cadastro, this.profile.atual.result)
             .then(data => {
                 this.profile.atual.resultado = data;
@@ -51,13 +54,4 @@ export class TableAuxProfileComponent implements OnInit {
             });
     }
 
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
-    }
 }

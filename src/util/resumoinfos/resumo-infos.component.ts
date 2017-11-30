@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Cadastro } from 'viewmodel/cadastro/cadastro';
-import { HolderService } from 'util/holder/holder.service';
 
 @Component({
     selector: 'resumo-infos-component',
@@ -10,7 +9,9 @@ import { HolderService } from 'util/holder/holder.service';
 
 export class ResumoInfosComponent implements OnInit {
 
-    constructor(public holderService: HolderService) { }
+    @Input() public cadastro: Cadastro;
+
+    constructor() { }
 
     public ngOnInit() { }
 
