@@ -124,7 +124,7 @@ export class TemplateComponent implements OnInit {
                 this.holderService.appLevelAlertAtivo = true;
                 this.holderService.appLevelAlert = {
                     type: "alert-warning",
-                    msg: "Esta versão do sistema pode estar desatualizada, ocasionando conflitos atualize sua página.",
+                    msg: "Esta versão do sistema pode estar desatualizada, ocasionando conflitos, atualize sua página.",
                     buttonAction: "refresh",
                     buttonName: "Atualizar"
                 }
