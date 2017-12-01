@@ -71,8 +71,8 @@ export class InfosDmComponent implements OnInit {
                 bhs: true
             },
             servicos: {
-                velDown: 0,
-                velUp: 0,
+                velDown: Number(this.findNextIndex("Velocidade Down/Up:").split("/").shift()),
+                velUp: Number(this.findNextIndex("Velocidade Down/Up:").split("/").pop()),
                 tipoLinha: "SIP",
                 tipoTv: ""
             },
