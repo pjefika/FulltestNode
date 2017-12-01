@@ -46,8 +46,6 @@ export class InfosDmComponent extends CallAlertService implements OnInit {
         } else {
             super.callToasty("Ops aconteceu algo", "Funcionalidade não implementada, para este tipo de DSLAM", "error", 6000);
         }
-
-        //this.modalInfoDm = false;
     }
 
     private findOltCad() {
@@ -86,8 +84,9 @@ export class InfosDmComponent extends CallAlertService implements OnInit {
             asserts: this.holderService.cadastro.asserts,
             linha: this.holderService.cadastro.linha
         }
-
-        console.log(this.cadastro);
+        this.holderService.cadastro = this.cadastro;
+        this.modalInfoDm = false;
+        //console.log(this.cadastro);
     }
 
     private findDlsamCad() {
