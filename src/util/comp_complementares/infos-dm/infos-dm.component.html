@@ -7,10 +7,10 @@
 <clr-modal [(clrModalOpen)]="modalInfoDm">
     <h3 class="modal-title">Informações DM</h3>
     <div class="modal-body">
-        <textarea class="margin-center" rows="15"></textarea>
+        <textarea class="margin-center" rows="15" [(ngModel)]="infoDm" name="infoDm"></textarea>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline" (click)="modalInfoDm = false;">Fechar</button>
-        <button type="button" class="btn btn-primary">Concluir</button>
+        <button type="button" class="btn btn-primary" (click)="setInfosDm()">Concluir</button>
     </div>
 </clr-modal>
