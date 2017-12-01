@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
     constructor(private router: Router, private util: Util, private loginService: LoginService) { }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.util.isLogado().then((result: boolean) => {
             if (result) {
                 this.router.navigate(['./']);
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         })
     }
 
-    entrar(): void {
+    public entrar(): void {
         this.logando = true;
         this.loginService
             .autentica(this.usuario)

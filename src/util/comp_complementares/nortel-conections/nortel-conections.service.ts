@@ -1,15 +1,14 @@
 import { InfoNortelConection } from './../../../viewmodel/nortel-conections/infos-nortel-conection';
 import { UrlService } from './../../url-service/url.service';
-import { InfoRequest } from './../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class NortelConectionsService {
+export class NortelConectionsService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) { }
+    constructor(private urlService: UrlService) {
+        super();
+    }
 
     public getSingleton(): Promise<InfoNortelConection[]> {
         this.infoResquest = {
@@ -21,11 +20,21 @@ export class NortelConectionsService {
             .then(data => {
                 return data as InfoNortelConection[]
             })
-            .catch(this.handleError)
+            .catch(super.handleError);
     }
 
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+    public setSingleton(singleton: string) {
+        this.infoResquest = {
+            rqst: "get",
+            command: this.urlService.pathDmsAPI + "dms/singleton/connection/",
+            timeout: 1200000,
+            _data: singleton
+        }
+        return this.urlService.request(this.infoResquest)
+            .then(data => {
+                return data as InfoNortelConection[]
+            })
+            .catch(super.handleError);
     }
 
 }

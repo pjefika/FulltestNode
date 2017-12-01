@@ -12,6 +12,8 @@ export class ConfiguracoesPortaMetalicoComponent implements OnInit {
     constructor(
         private holderService: HolderService) { }
 
-    ngOnInit() {
+    public ngOnInit() {
+        // console.log(this.holderService.confPorta);
+        
     }
 }

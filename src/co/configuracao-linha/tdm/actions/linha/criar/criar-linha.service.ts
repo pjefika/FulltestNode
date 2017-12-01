@@ -2,16 +2,15 @@ import { CadastroLinha } from './../../../../../../viewmodel/cadastro-linha/cada
 import { Len } from './../../../../../../viewmodel/cadastro-linha/len';
 import { Linha } from './../../../../../../viewmodel/cadastro/linha';
 import { UrlService } from './../../../../../../util/url-service/url.service';
-import { InfoRequest } from './../../../../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class CriarLinhaService {
+export class CriarLinhaService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) { }
+    constructor(private urlService: UrlService) {
+        super();
+    }
 
     public setCriarLinha(linha: Linha, len: Len, cadastroLinhaBinada: CadastroLinha): Promise<CadastroLinha> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -28,11 +27,7 @@ export class CriarLinhaService {
             .then(data => {
                 return data as CadastroLinha;
             })
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+            .catch(super.handleError);
     }
 
 

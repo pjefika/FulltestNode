@@ -2,16 +2,15 @@ import { CadastroLinha } from './../../../../../viewmodel/cadastro-linha/cadastr
 import { Cadastro } from './../../../../../viewmodel/cadastro/cadastro';
 import { Servico } from './../../../../../viewmodel/cadastro-linha/servicos';
 import { UrlService } from './../../../../../util/url-service/url.service';
-import { InfoRequest } from './../../../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class ServicoLinhaService {
+export class ServicoLinhaService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) { }
+    constructor(private urlService: UrlService) {
+        super();
+    }
 
     public getServicos(): Promise<Servico[]> {
         this.infoResquest = {
@@ -23,7 +22,7 @@ export class ServicoLinhaService {
             .then(data => {
                 return data as Servico[];
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
     public setEditarServicos(cad: Cadastro, services: string[]): Promise<CadastroLinha> {
@@ -41,11 +40,7 @@ export class ServicoLinhaService {
             .then(data => {
                 return data as CadastroLinha
             })
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+            .catch(super.handleError);
     }
 
 }

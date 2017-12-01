@@ -1,36 +1,36 @@
 <div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6" *ngIf="vlanBanda">
             <table class="table table-compact table-vertical">
                 <tbody>
                     <tr>
-                        <th colspan="2">{{confPorta.vlanBanda.nome}}</th>
+                        <th colspan="2">{{vlanBanda.nome}}</th>
                     </tr>
                     <tr>
                         <th>Mensagem:</th>
-                        <td>{{confPorta.vlanBanda.mensagem}}</td>
+                        <td>{{vlanBanda.mensagem}}</td>
                     </tr>
                     <tr>
                         <th>Resultado:</th>
                         <td>
-                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanBanda.resultado"></clr-icon>
-                            <clr-icon style="color: red" shape="times" *ngIf="!confPorta.vlanBanda.resultado"></clr-icon>
+                            <clr-icon style="color: green" shape="check" *ngIf="vlanBanda.resultado"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="!vlanBanda.resultado"></clr-icon>
                         </td>
                     </tr>
                     <tr>
                         <th>State:</th>
                         <td>
-                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanBanda.result.state === 'UP'"></clr-icon>
-                            <clr-icon style="color: red" shape="times" *ngIf="confPorta.vlanBanda.result.state === 'DOWN'"></clr-icon>
+                            <clr-icon style="color: green" shape="check" *ngIf="vlanBanda.result.state === 'UP'"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="vlanBanda.result.state === 'DOWN'"></clr-icon>
                         </td>
                     </tr>
                     <tr>
                         <th>CVLAN:</th>
-                        <td>{{confPorta.vlanBanda.result.cvlan}}</td>
+                        <td>{{vlanBanda.result.cvlan}}</td>
                     </tr>
                     <tr>
                         <th>SVLAN:</th>
-                        <td>{{confPorta.vlanBanda.result.svlan}}</td>
+                        <td>{{vlanBanda.result.svlan}}</td>
                     </tr>
                     <tr>
                         <td colspan="2">
@@ -40,37 +40,37 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" *ngIf="vlanVoip">
             <table class="table table-compact table-vertical">
                 <tbody>
                     <tr>
-                        <th colspan="2">{{confPorta.vlanVoip.nome}}</th>
+                        <th colspan="2">{{vlanVoip.nome}}</th>
                     </tr>
                     <tr>
                         <th>Mensagem:</th>
-                        <td>{{confPorta.vlanVoip.mensagem}}</td>
+                        <td>{{vlanVoip.mensagem}}</td>
                     </tr>
                     <tr>
                         <th>Resultado:</th>
                         <td>
-                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanVoip.resultado"></clr-icon>
-                            <clr-icon style="color: red" shape="times" *ngIf="!confPorta.vlanVoip.resultado"></clr-icon>
+                            <clr-icon style="color: green" shape="check" *ngIf="vlanVoip.resultado"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="!vlanVoip.resultado"></clr-icon>
                         </td>
                     </tr>
                     <tr>
                         <th>State:</th>
                         <td>
-                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanVoip.result.state === 'UP'"></clr-icon>
-                            <clr-icon style="color: red" shape="times" *ngIf="confPorta.vlanVoip.result.state === 'DOWN'"></clr-icon>
+                            <clr-icon style="color: green" shape="check" *ngIf="vlanVoip.result.state === 'UP'"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="vlanVoip.result.state === 'DOWN'"></clr-icon>
                         </td>
                     </tr>
                     <tr>
                         <th>CVLAN:</th>
-                        <td>{{confPorta.vlanVoip.result.cvlan}}</td>
+                        <td>{{vlanVoip.result.cvlan}}</td>
                     </tr>
                     <tr>
                         <th>SVLAN:</th>
-                        <td>{{confPorta.vlanVoip.result.svlan}}</td>
+                        <td>{{vlanVoip.result.svlan}}</td>
                     </tr>
                     <tr>
                         <td colspan="2">
@@ -82,39 +82,39 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <table class="table table-compact table-vertical" *ngIf="confPorta.vlanMulticast.mensagem != 'Cliente sem TV Híbrida.'">
+        <div class="col-md-6" *ngIf="vlanVod">
+            <table class="table table-compact table-vertical" *ngIf="validSeExiste(vlanVod.mensagem)">
                 <tbody>
                     <tr>
-                        <th colspan="2">{{confPorta.vlanVod.nome}}</th>
+                        <th colspan="2">{{vlanVod.nome}}</th>
                     </tr>
                     <tr>
                         <th>Mensagem:</th>
-                        <td>{{confPorta.vlanVod.mensagem}}</td>
+                        <td>{{vlanVod.mensagem}}</td>
                     </tr>
                     <tr>
                         <th>Resultado:</th>
                         <td>
-                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanVod.resultado"></clr-icon>
-                            <clr-icon style="color: red" shape="times" *ngIf="!confPorta.vlanVod.resultado"></clr-icon>
+                            <clr-icon style="color: green" shape="check" *ngIf="vlanVod.resultado"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="!vlanVod.resultado"></clr-icon>
                         </td>
                     </tr>
                     <tr>
                         <th>State:</th>
                         <td>
-                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanVod.result.state === 'UP'"></clr-icon>
-                            <clr-icon style="color: red" shape="times" *ngIf="confPorta.vlanVod.result.state === 'DOWN'"></clr-icon>
+                            <clr-icon style="color: green" shape="check" *ngIf="vlanVod.result.state === 'UP'"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="vlanVod.result.state === 'DOWN'"></clr-icon>
                         </td>
                     </tr>
                     <tr>
                         <th>CVLAN:</th>
-                        <td>{{confPorta.vlanVod.result.cvlan}}</td>
+                        <td>{{vlanVod.result.cvlan}}</td>
                     </tr>
                     <tr>
                         <th>SVLAN:</th>
-                        <td>{{confPorta.vlanVod.result.svlan}}</td>
+                        <td>{{vlanVod.result.svlan}}</td>
                     </tr>
-                    <tr *ngIf="confPorta.vlanVod.mensagem != 'Cliente sem TV Híbrida.'">
+                    <tr *ngIf="vlanVod.mensagem != 'Cliente sem TV Híbrida.'">
                         <td colspan="2">
                             <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanVodDisable" (click)="setVlanVod()">{{btnSetVlanVodName}}</button>
                         </td>
@@ -122,37 +122,37 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-md-6">
-            <table class="table table-compact table-vertical" *ngIf="confPorta.vlanMulticast.mensagem != 'Cliente sem TV Híbrida.'">
+        <div class="col-md-6" *ngIf="vlanMulticast">
+            <table class="table table-compact table-vertical" *ngIf="validSeExiste(vlanMulticast.mensagem)">
                 <tbody>
                     <tr>
-                        <th colspan="2">{{confPorta.vlanMulticast.nome}}</th>
+                        <th colspan="2">{{vlanMulticast.nome}}</th>
                     </tr>
                     <tr>
                         <th>Mensagem:</th>
-                        <td>{{confPorta.vlanMulticast.mensagem}}</td>
+                        <td>{{vlanMulticast.mensagem}}</td>
                     </tr>
                     <tr>
                         <th>Resultado:</th>
                         <td>
-                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanMulticast.resultado"></clr-icon>
-                            <clr-icon style="color: red" shape="times" *ngIf="!confPorta.vlanMulticast.resultado"></clr-icon>
+                            <clr-icon style="color: green" shape="check" *ngIf="vlanMulticast.resultado"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="!vlanMulticast.resultado"></clr-icon>
                         </td>
                     </tr>
                     <tr>
                         <th>State:</th>
                         <td>
-                            <clr-icon style="color: green" shape="check" *ngIf="confPorta.vlanMulticast.result.state === 'UP'"></clr-icon>
-                            <clr-icon style="color: red" shape="times" *ngIf="confPorta.vlanMulticast.result.state === 'DOWN'"></clr-icon>
+                            <clr-icon style="color: green" shape="check" *ngIf="vlanMulticast.result.state === 'UP'"></clr-icon>
+                            <clr-icon style="color: red" shape="times" *ngIf="vlanMulticast.result.state === 'DOWN'"></clr-icon>
                         </td>
                     </tr>
                     <tr>
                         <th>CVLAN:</th>
-                        <td>{{confPorta.vlanMulticast.result.cvlan}}</td>
+                        <td>{{vlanMulticast.result.cvlan}}</td>
                     </tr>
                     <tr>
                         <th>SVLAN:</th>
-                        <td>{{confPorta.vlanMulticast.result.svlan}}</td>
+                        <td>{{vlanMulticast.result.svlan}}</td>
                     </tr>
                     <tr>
                         <td colspan="2">

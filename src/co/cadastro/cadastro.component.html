@@ -4,7 +4,7 @@
         <h3 class="titulo-da-pagina">Informações do Cadastro</h3>
         <div class="row">
             <div class="col-md-6">
-                <table class="table table-compact table-vertical">
+                <table class="table table-compact table-vertical" *ngIf="cadastro.linha.tipo">
                     <tbody>
                         <tr>
                             <th colspan="2">Informações de Linha</th>
@@ -56,14 +56,12 @@
                             <td>{{cadastro.servicos.velUp}}</td>
                         </tr>
                         <tr>
-                            <th>SIP:</th>
-                            <td *ngIf="cadastro.servicos.isSip">Sim</td>
-                            <td *ngIf="!cadastro.servicos.isSip">Não</td>
+                            <th>Tipo da Linha:</th>
+                            <td>{{cadastro.servicos.tipoLinha}}</td>
                         </tr>
                         <tr>
-                            <th>Híbrido:</th>
-                            <td *ngIf="cadastro.servicos.isHib">Sim</td>
-                            <td *ngIf="!cadastro.servicos.isHib">Não</td>
+                            <th>Tipo da TV:</th>
+                            <td>{{cadastro.servicos.tipoTv}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -74,6 +72,10 @@
                     <tbody>
                         <tr>
                             <th colspan="2">Informações de Rede</th>
+                        </tr>
+                        <tr>
+                            <th>Planta:</th>
+                            <td>{{cadastro.rede.planta}}</td>
                         </tr>
                         <tr>
                             <th>Ip DSLAM:</th>
@@ -121,13 +123,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <clr-alert [clrAlertType]="alertDOneType" *ngIf="alertDOneAtivo" [clrAlertClosable]="false">
-                    <div class="alert-item">
-                        <span class="alert-text">
-                            {{alertDOneMsg}}
-                        </span>
-                    </div>
-                </clr-alert>
+                <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
             </div>
         </div>
         <cadastro-wizard-component [cadastro]="cadastro"></cadastro-wizard-component>

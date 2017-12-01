@@ -8,9 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class AlertComponent implements OnInit {
 
-    @Input() msg: any;
-    @Input() ativo: boolean = false;
-    @Input() closeable: boolean = true;
+    @Input() public msg: any;
+    @Input() public ativo: boolean = false;
+    @Input() public closeable: boolean = true;
 
     constructor() { }
 

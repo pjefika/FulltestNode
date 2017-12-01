@@ -2,16 +2,15 @@ import { CadastroLinha } from './../../../../../viewmodel/cadastro-linha/cadastr
 import { Linha } from './../../../../../viewmodel/cadastro/linha';
 import { Ncos } from './../../../../../viewmodel/cadastro-linha/ncos';
 import { UrlService } from './../../../../../util/url-service/url.service';
-import { InfoRequest } from './../../../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class NcosService {
+export class NcosService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) { }
+    constructor(private urlService: UrlService) {
+        super();
+    }
 
     public getNcos(): Promise<Ncos[]> {
         this.infoResquest = {
@@ -23,7 +22,7 @@ export class NcosService {
             .then(data => {
                 return data as Ncos[];
             })
-            .catch(this.handleError)
+            .catch(super.handleError)
     }
 
     public setNcos(linha: Linha, ncos: string): Promise<CadastroLinha> {
@@ -41,11 +40,6 @@ export class NcosService {
             .then(data => {
                 return data as CadastroLinha;
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
-    }
-
 }

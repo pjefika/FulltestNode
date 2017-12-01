@@ -16,7 +16,7 @@
                 </td>
             </tr>
             <tr>
-                <th>Profile Down:</th>
+                <th>{{thDown}}</th>
                 <td>
                     <div class="select">
                         <select [(ngModel)]="profile.atual.result.down">
@@ -25,7 +25,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr *ngIf="!isMetalico">
                 <th>Profile Up:</th>
                 <td>
                     <div class="select">

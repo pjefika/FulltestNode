@@ -1,5 +1,7 @@
 import { ObjectValid } from './../../../viewmodel/fulltest/objectValid';
 import { Component, OnInit, Input } from '@angular/core';
+import { CallAlertService } from 'util/callalerts/call-alert.service';
+import { ToastyComponent } from 'util/toasty/toasty.component';
 
 @Component({
     selector: 'fulltest-table-component',
@@ -7,12 +9,18 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['fulltest-table.component.css']
 })
 //So passar ObjectValid que ira montar a tabela com as validações Fulltest
-export class FulltestTableComponent implements OnInit {
+export class FulltestTableComponent extends CallAlertService implements OnInit {
 
-    @Input() objectValid: ObjectValid;
+    @Input() public objectValid: ObjectValid;
 
-    constructor() { }
+    @Input() public msgAtivo?: boolean = true;  
 
-    ngOnInit() { }
+    constructor(public toastyComponent: ToastyComponent) {
+        super(toastyComponent);
+    }
+
+    public ngOnInit() {
+        super.callAlert(true, this.objectValid.resultado ? 'alert-success' : 'alert-danger', this.objectValid.mensagem);        
+    }
 
 }

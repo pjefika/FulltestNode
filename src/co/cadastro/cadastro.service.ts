@@ -6,32 +6,35 @@ import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class CadastroService {
+export class CadastroService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) { }
+    constructor(private urlService: UrlService) {
+        super();
+    }
 
     public getCadastro(instancia: string): Promise<Cadastro> {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let _data: { instancia: string, executor: string };
+        _data = { instancia: instancia, executor: usr.user };
         this.infoResquest = {
-            rqst: "get",
+            rqst: "post",
             command: this.urlService.pathStealerAPI + "oss/",
-            _data: instancia,
+            _data: _data,
             otherUrl: this.urlService.urlIpParaStealer,
-            timeout: 60000
+            timeout: 63000
         };
         return this.urlService.request(this.infoResquest)
             .then(response => {
                 return response as Cadastro
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
-    public getCadastroDOne(instancia: string) {
-             this.infoResquest = {
+    public getCadastroDOne(instancia: string): Promise<Cadastro> {
+        this.infoResquest = {
             rqst: "get",
             command: this.urlService.pathNetworkInventory + "networkInventory/",
             _data: instancia,
@@ -41,11 +44,7 @@ export class CadastroService {
             .then(response => {
                 return response as Cadastro
             })
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+            .catch(super.handleError);
     }
 
 }

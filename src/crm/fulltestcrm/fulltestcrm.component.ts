@@ -3,6 +3,7 @@ import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { FulltestCrmService } from './fulltestcrm.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { CallAlertService } from 'util/callalerts/call-alert.service';
 
 @Component({
     selector: 'fulltest-crm-component',
@@ -10,7 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['fulltestcrm.component.css']
 })
 
-export class FullltestCrmComponent implements OnInit {
+export class FullltestCrmComponent extends CallAlertService implements OnInit {
 
     cadastro: Cadastro;
 
@@ -20,17 +21,11 @@ export class FullltestCrmComponent implements OnInit {
 
     searchFulltest: boolean = false;
 
-    toastyInfo: {
-        titulo: string;
-        msg: string;
-        theme: string;
-    }
-
     constructor(
         private fulltestCrmService: FulltestCrmService,
-        private toastyComponent: ToastyComponent) { }
+        public toastyComponent: ToastyComponent) { super(toastyComponent); }
 
-    ngOnInit() { }
+    public ngOnInit() { }
 
     realizaFulltest(): void {
         this.searchFulltest = true;
@@ -41,18 +36,8 @@ export class FullltestCrmComponent implements OnInit {
                 this.searchFulltest = false;
             }, error => {
                 this.searchFulltest = false;
-                this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
+                super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
             })
-    }
-
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
     }
 
 }

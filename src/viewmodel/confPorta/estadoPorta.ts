@@ -4,4 +4,5 @@ export class EstadoPorta {
     mensagem: string;
     resultado: boolean;
     result: ResultNormal;
+    foiCorrigido: string;
 }

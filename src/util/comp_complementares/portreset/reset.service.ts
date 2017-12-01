@@ -5,15 +5,13 @@ import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class ResetService {
+export class ResetService extends SuperService {
 
-    constructor(
-        private urlService: UrlService) { }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+    constructor() {
+        super();
     }
 
 }

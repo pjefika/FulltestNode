@@ -1,16 +1,15 @@
 import { CadastroLinha } from './../../../../../../viewmodel/cadastro-linha/cadastro-linha';
 import { Linha } from './../../../../../../viewmodel/cadastro/linha';
 import { UrlService } from './../../../../../../util/url-service/url.service';
-import { InfoRequest } from './../../../../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class DeletarLinhaService {
+export class DeletarLinhaService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) { }
+    constructor(private urlService: UrlService) {
+        super();
+    }
 
     public setDeletarLinha(linha: Linha, cadastroLinha: CadastroLinha): Promise<CadastroLinha> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -27,11 +26,6 @@ export class DeletarLinhaService {
             .then(data => {
                 return data as CadastroLinha;
             })
-            .catch(this.handleError)
+            .catch(super.handleError)
     }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
-    }
-
 }

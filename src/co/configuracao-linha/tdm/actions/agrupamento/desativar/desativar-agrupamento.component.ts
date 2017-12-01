@@ -33,6 +33,6 @@ export class DesativarAgrupamentoComponent implements OnInit {
     }
 
     public desativarAgrupamento() {
-        console.log(this.instancias)        
+        //console.log(this.instancias)        
     }
 }

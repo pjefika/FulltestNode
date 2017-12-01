@@ -4,4 +4,5 @@ export class VlanVod {
     mensagem: string;
     resultado: boolean;
     result: ResultLan;
+    foiCorrigido: string;
 }

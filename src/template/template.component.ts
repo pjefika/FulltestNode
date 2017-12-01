@@ -8,11 +8,24 @@ import { DynamicRouterHolderService } from './../util/dynamic-router/dynamic-rou
 import { HolderService } from './../util/holder/holder.service';
 import { Util } from './../util/util';
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
     selector: 'template-full',
     templateUrl: 'template.component.html',
     styleUrls: ['template.component.css'],
+    animations: [
+        trigger('flyInOut', [
+            state('in', style({ transform: 'translateX(0)' })),
+            transition('void => *', [
+                style({ transform: 'translateX(100%)' }),
+                animate(300)
+            ]),
+            transition('* => void', [
+                animate(300, style({ transform: 'translateX(100%)' }))
+            ])
+        ])
+    ]
 })
 
 export class TemplateComponent implements OnInit {
@@ -25,7 +38,6 @@ export class TemplateComponent implements OnInit {
     public nivelmaiorquedez: boolean = false;
 
     private serarching: boolean = false;
-
 
     constructor(
         private router: Router,
@@ -47,6 +59,7 @@ export class TemplateComponent implements OnInit {
                 this.showToggle();
             }
         });
+        this.buildEstaAtualizado();
     }
 
     private showToggle() {
@@ -94,13 +107,36 @@ export class TemplateComponent implements OnInit {
     * Ação para busca da instância
     **/
     public busca() {
-        this.holderReset();        
+        this.holderReset();
         if (this.validUser()) {
             this.mostraSubNav(true, subNavMockCrm);
             this.setToDynamicComponent(CadastroCrmComponent);
         } else {
             this.mostraSubNav(true, subNavMockCo);
             this.setToDynamicComponent(CadastroComponent);
+        }
+    }
+
+    private buildEstaAtualizado() {
+        setInterval(() => {
+            //console.log("Verifica atualização.");            
+            if (this.util.isAtualizado()) {
+                this.holderService.appLevelAlertAtivo = true;
+                this.holderService.appLevelAlert = {
+                    type: "alert-warning",
+                    msg: "Esta versão do sistema pode estar desatualizada, ocasionando conflitos, atualize sua página.",
+                    buttonAction: "refresh",
+                    buttonName: "Atualizar"
+                }
+            }
+        }, 60000); // Timeout para verificação; definir tempo;
+    }
+
+    public hoResumo() {
+        if (this.holderService.resumoInfosAtivo) {
+            this.holderService.resumoInfosAtivo = false;
+        } else {
+            this.holderService.resumoInfosAtivo = true;
         }
     }
 

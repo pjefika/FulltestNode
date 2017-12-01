@@ -26,12 +26,14 @@ export class ConfiguracoesPortaComponent implements OnInit {
         if (!this.holderService.confPorta) {
             this.getConfigPorta();
         }
+        this.holderService.resumoInfosAtivo = true;
+        this.holderService.btnResumoInfosAtivo = true;
     }
 
     public getConfigPorta() {
         this.holderService.confPorta = null;
         this.searchConfPorta = true;
-        this.searchWhat = "Buscando informações";
+        this.searchWhat = "Buscando Informações...";
         this.configuracoesPortaService.getConfigPorta(this.holderService.cadastro)
             .then(data => {
                 this.holderService.confPorta = data;

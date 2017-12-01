@@ -1,16 +1,15 @@
-import { VlanBanda } from './../../../../../viewmodel/confPorta/vlanBanda';
-import { Cadastro } from './../../../../../viewmodel/cadastro/cadastro';
-import { UrlService } from './../../../../url-service/url.service';
-import { InfoRequest } from './../../../../../viewmodel/url/infos-url';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
+import { Cadastro } from 'viewmodel/cadastro/cadastro';
+import { UrlService } from 'util/url-service/url.service';
+import { VlanBanda } from 'viewmodel/confPorta/vlanBanda';
 
 @Injectable()
-export class TableAuxLanService {
+export class TableLanCpService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) { }
+    constructor(private urlService: UrlService) {
+        super();
+    }
 
     public setVlanGeneric(cadastro: Cadastro, whatSet: string) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -26,10 +25,7 @@ export class TableAuxLanService {
             .then(data => {
                 return data as VlanBanda
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
-    }
 }

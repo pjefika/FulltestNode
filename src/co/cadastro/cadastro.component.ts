@@ -10,6 +10,7 @@ import 'rxjs/add/operator/toPromise';
 import { Wizard } from "clarity-angular";
 
 import { CadastroService } from './cadastro.service';
+import { CallAlertService } from 'util/callalerts/call-alert.service';
 
 @Component({
     selector: 'cadastro-component',
@@ -17,19 +18,13 @@ import { CadastroService } from './cadastro.service';
     styleUrls: ['cadastro.component.css']
 })
 
-export class CadastroComponent implements OnInit {
+export class CadastroComponent extends CallAlertService implements OnInit {
 
-    cadastro: Cadastro;
+    private cadastro: Cadastro;
 
-    instancia: string;
-    searching: boolean = false;
-    modalOpen: boolean = false;
-
-    toastyInfo: {
-        titulo: string;
-        msg: string;
-        theme: string;
-    }
+    private instancia: string;
+    private searching: boolean = false;
+    private modalOpen: boolean = false;
 
     private alertDOneAtivo: boolean = false;
     private alertDOneType: string;
@@ -37,17 +32,17 @@ export class CadastroComponent implements OnInit {
 
     private searchingRede: boolean = false;
 
-    constructor(
+    constructor(public toastyComponent: ToastyComponent,
         private cadastroService: CadastroService,
         private router: Router,
         private util: Util,
         private injector: Injector,
-        private toastyComponent: ToastyComponent,
         private holderService: HolderService) {
+        super(toastyComponent);
         this.instancia = this.holderService.instancia;
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.util.isLogado().then((result: boolean) => {
             if (!result) {
                 this.router.navigate(['./entrar']);
@@ -57,11 +52,13 @@ export class CadastroComponent implements OnInit {
         if (this.holderService.cadastro) {
             this.cadastro = this.holderService.cadastro;
             if (this.cadastro.rede.origem === "OFFLINE") {
-                this.callAlertRede(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
+                this.callAlert(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
             }
         } else {
             this.getCadastro();
         }
+        this.holderService.resumoInfosAtivo = false;
+        this.holderService.btnResumoInfosAtivo = false;
     }
 
     public getCadastro(): void {
@@ -72,40 +69,45 @@ export class CadastroComponent implements OnInit {
                 this.cadastro = data;
                 this.searching = false;
                 this.holderService.cadastro = this.cadastro;
-                this.holderService.liberarSubNav = true;
                 if (!this.cadastro.rede.tipo) {
                     this.searchingRede = true;
                     this.cadastroService
-                        .getCadastroDOne(this.instancia)
+                        .getCadastroDOne(this.cadastro.instancia)
                         .then(data => {
                             this.cadastro.rede = data.rede;
-                            this.callAlertRede(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
+                            this.callAlert(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
                             this.searchingRede = false;
+                            this.validCadastroRedeEServico();
                         }, error => {
-                            this.callAlertRede(true, "alert-danger", "Atenção não existe informações de cadastro em nossas bases.");
+                            this.callAlert(true, "alert-danger", "Atenção não existe informações de cadastro em nossas bases.");
                             this.searchingRede = false;
                         });
+                } else {
+                    this.validCadastroRedeEServico();
                 }
             }, error => {
                 this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
-            });
+            })
+            .then(() => {
+                // if (this.cadastro.rede.planta === "VIVO1") {
+                //     this.holderService.origenPlanta = true;
+                // } else {
+                //     this.holderService.origenPlanta = false;
+                // }
+            })
     }
 
-    private callAlertRede(alertAtivo: boolean, alertType: string, alertMsg: string) {
-        this.alertDOneAtivo = alertAtivo;
-        this.alertDOneType = alertType;
-        this.alertDOneMsg = alertMsg;
-    }
-
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
+    private validCadastroRedeEServico() {
+        if (this.cadastro) {
+            //Valida Rede or Valida Servico
+            if (!this.cadastro.rede.tipo || !this.cadastro.servicos.velDown && !this.cadastro.servicos.velUp) {
+                //console.log(this.cadastro.rede.tipo);
+                this.holderService.liberarSubNav = false;
+            } else {
+                this.holderService.liberarSubNav = true;
+            }
         }
-        this.toastyComponent.addToasty();
     }
 
 }

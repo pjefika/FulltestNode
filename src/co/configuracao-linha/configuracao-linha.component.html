@@ -1,4 +1,10 @@
 <div class="move-pra-cima" *ngIf="holderService.cadastro">
-    <configuracao-linha-tdm-component *ngIf="holderService.cadastro.linha.tipo === 'TDM'"></configuracao-linha-tdm-component>
-    <configuracao-linha-ims-component *ngIf="holderService.cadastro.linha.tipo === 'IMS'"></configuracao-linha-ims-component>
+    <div *ngIf="holderService.cadastro.linha.tipo">
+        <configuracao-linha-tdm-component *ngIf="holderService.cadastro.linha.tipo === 'TDM'"></configuracao-linha-tdm-component>
+        <configuracao-linha-ims-component *ngIf="holderService.cadastro.linha.tipo === 'IMS'"></configuracao-linha-ims-component>
+    </div>
+    <div *ngIf="!holderService.cadastro.linha.tipo">
+        <!-- Retirar isto daqui quando for implementar VIVO_1 GPON -->
+        <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
+    </div>
 </div>

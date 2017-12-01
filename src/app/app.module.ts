@@ -1,11 +1,8 @@
+import { AppLevelAlertComponent } from './../util/applevelalert/applevelalert.component';
 import { DynamicRouterComponent } from './../util/dynamic-router/dynamic-router.component';
 import { DynamicRouterHolderService } from './../util/dynamic-router/dynamic-router-holder.service';
 import { ErrorLogComponent } from './../util/error-log/error-log.component';
 import { TableAuxSerialComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-serial/table-aux-serial.component';
-import { TableAuxProfileComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-profile/table-aux-profile.component';
-import { TableAuxParametrosComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-parametros/table-aux-parametros.component';
-import { TableAuxLanComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-lan/table-aux-lan.component';
-import { TableAuxGponSimpleComponent } from './../util/comp_complementares/configuracoesporta/gpon/table-aux-simple/table-aux-gpon-simple.component';
 import { ConfiguracaoLinhaImsComponent } from './../co/configuracao-linha/ims/configuracao-linha-ims.component';
 import { ConfiguracaoLinhaTdmComponent } from './../co/configuracao-linha/tdm/configuracao-linha-tdm.component';
 import { DeletarLinhaComponent } from './../co/configuracao-linha/tdm/actions/linha/deletar/deletar-linha.component';
@@ -82,6 +79,14 @@ import { UrlService } from './../util/url-service/url.service';
 import { Util } from './../util/util';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AcsComponent } from 'util/comp_complementares/acs/acs.component';
+import { TableValidacoesComponent } from 'util/table-validacoes/table-validacoes.component';
+import { ResumoInfosComponent } from 'util/resumoinfos/resumo-infos.component';
+import { TableParametrosCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/parametros/table-parametros-cp.component';
+import { TableEstadoPortaCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/estado-porta/table-estado-porta-cp.component';
+import { TableLanCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/lan/table-lan-cp.component';
+import { TableProfileCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/profile/table-profile-cp.component';
+import { InfosDmComponent } from 'util/comp_complementares/infos-dm/infos-dm.component';
 
 @NgModule({
     declarations: [
@@ -131,13 +136,18 @@ import { AppComponent } from './app.component';
         ConfiguracoesPortaGponComponent,
         ConfiguracaoLinhaTdmComponent,
         ConfiguracaoLinhaImsComponent,
-        TableAuxGponSimpleComponent,
-        TableAuxLanComponent,
-        TableAuxParametrosComponent,
-        TableAuxProfileComponent,
         TableAuxSerialComponent,
         ErrorLogComponent,
-        DynamicRouterComponent
+        DynamicRouterComponent,
+        AppLevelAlertComponent,
+        AcsComponent,
+        TableValidacoesComponent,
+        ResumoInfosComponent,
+        TableParametrosCpComponent,
+        TableEstadoPortaCpComponent,
+        TableLanCpComponent,
+        TableProfileCpComponent,
+        InfosDmComponent
     ],
     imports: [
         BrowserModule,
@@ -193,7 +203,7 @@ import { AppComponent } from './app.component';
         ServicoLinhaComponent,
         StatusLinhaComponent,
         StatusPortaComponent,
-        ConfiguracoesPortaComponent        
+        ConfiguracoesPortaComponent
     ]
 })
 export class AppModule { }

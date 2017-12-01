@@ -1,0 +1,82 @@
+﻿<div>
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="2" style="text-align: center;">Informações de Linha</th>
+            </tr>
+            <tr>
+                <th>DN: </th>
+                <td>{{cadastro.linha.dn}}</td>
+            </tr>
+            <tr>
+                <th>Tipo: </th>
+                <td>{{cadastro.linha.tipo}}</td>
+            </tr>
+            <tr>
+                <th>Central: </th>
+                <td>{{cadastro.linha.central}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="2" style="text-align: center;">Informações de Cadastro</th>
+            </tr>
+            <tr>
+                <th>Instância: </th>
+                <td>{{cadastro.instancia}}</td>
+            </tr>
+            <tr>
+                <th>Designador: </th>
+                <td>{{cadastro.designador}}</td>
+            </tr>
+            <tr>
+                <th>Designador de Acesso: </th>
+                <td>{{cadastro.designadorAcesso}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="2" style="text-align: center;">Informações de Rede</th>
+            </tr>
+            <tr>
+                <th>Planta: </th>
+                <td>{{cadastro.rede.planta}}</td>
+            </tr>
+            <tr>
+                <th>Tipo: </th>
+                <td>{{cadastro.rede.tipo}}</td>
+            </tr>
+            <tr>
+                <th>Modelo DSLAM: </th>
+                <td>{{cadastro.rede.vendorDslam}} - {{cadastro.rede.modeloDslam}} </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="2" style="text-align: center;">Informações de Serviço</th>
+            </tr>
+            <tr>
+                <th>Planta: </th>
+                <td>{{cadastro.servicos.velDown}} / {{cadastro.servicos.velUp}}</td>
+            </tr>
+            <tr>
+                <th>Tipo da Linha: </th>
+                <td>{{cadastro.servicos.tipoLinha}}</td>
+            </tr>
+            <tr>
+                <th>Tipo da TV: </th>
+                <td>{{cadastro.servicos.tipoTv}} </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

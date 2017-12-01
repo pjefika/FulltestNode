@@ -30,7 +30,7 @@ export class FulltestComponent implements OnInit {
     }
 
     constructor(
-        private fulltestService: FulltestService,       
+        private fulltestService: FulltestService,
         private injector: Injector,
         private toastyComponent: ToastyComponent,
         private holderService: HolderService) {
@@ -39,8 +39,11 @@ export class FulltestComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-
-        this.realizaFulltest();
+        if (!this.objectValid) {
+            this.realizaFulltest();
+        }
+        this.holderService.resumoInfosAtivo = true;
+        this.holderService.btnResumoInfosAtivo = true;
     }
 
     public realizaFulltest(): void {

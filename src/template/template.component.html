@@ -1,5 +1,6 @@
 <clr-main-container>
-    <clr-header class="header-4">
+    <app-level-alert-component></app-level-alert-component>
+    <clr-header [ngClass]="holderService.origenPlanta ? 'header-3' : 'header-4'">
         <div class="branding">
             <a class="nav-link">
                 <clr-icon shape="terminal" class="is-inverse"></clr-icon>
@@ -15,7 +16,8 @@
         </div>
         <div class="search">
             <label for="search_input" for="search_input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-lg tooltip-bottom-right">
-                <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..." [(ngModel)]="holderService.instancia" (keyup.enter)="busca()">
+                <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..." [(ngModel)]="holderService.instancia"
+                    (keyup.enter)="busca()">
                 <span class="tooltip-content">Após inserir a instância pressione "Enter"</span>
             </label>
         </div>
@@ -41,16 +43,25 @@
     </nav>
     <div class="content-container">
         <div class="content-area">
-            <!-- <h3>{{headerTitle}}</h3> -->
-            <!-- <holder-router-component [component]="holderCompsService.component" [input]="holderCompsService.input"></holder-router-component> -->
-            <dynamic-router-component [component]="dynamicRouterHolderService.component"></dynamic-router-component>
+            <div class="row">
+                <div class="col-md">
+                    <dynamic-router-component [component]="dynamicRouterHolderService.component"></dynamic-router-component>
+                </div>
+                <div class="col-md-4" *ngIf="holderService.cadastro && holderService.resumoInfosAtivo" [@flyInOut]="'in'">
+                    <resumo-infos-component [cadastro]="holderService.cadastro"></resumo-infos-component>
+                </div>
+            </div>
+
             <toasty-component [toastyInfo]="toastyInfo"></toasty-component>
             <adm-component></adm-component>
             <error-log-component></error-log-component>
+
+            <div class="ir-para-direita" *ngIf="holderService.btnResumoInfosAtivo">
+                <button type="button" class="btn btn-icon btn-primary btn-sm" (click)="hoResumo()">
+                    <clr-icon shape="arrow"></clr-icon>
+                </button>
+            </div>
         </div>
-        <!-- <nav class="sidenav" *ngIf="holderService.sidenav">
-            <sidenav-component [menus]="holderService.sideNavMenus"></sidenav-component>
-        </nav> -->
         <clr-vertical-nav *ngIf="holderService.sidenav" [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="false" [clr-nav-level]="2">
             <sidenav-component [menus]="holderService.sideNavMenus"></sidenav-component>
         </clr-vertical-nav>

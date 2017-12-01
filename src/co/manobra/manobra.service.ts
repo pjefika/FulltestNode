@@ -13,15 +13,15 @@ import 'rxjs/add/observable/forkJoin';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class ManobraService {
+export class ManobraService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService,
-        private http: Http) { }
+    constructor(private http: Http,
+        private urlService: UrlService) {
+        super();
+    }
 
     public getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
@@ -37,7 +37,7 @@ export class ManobraService {
             .then(data => {
                 return data as ObjectValid
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
     public getAnalitico(cadastro: Cadastro, motivoSelected: string, executor: string): Promise<Analitico> {
@@ -53,7 +53,7 @@ export class ManobraService {
             .then(data => {
                 return data as Analitico[];
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
     public getListaMotivo(): Promise<Motivo[]> {
@@ -66,7 +66,7 @@ export class ManobraService {
             .then(data => {
                 return data as Motivo[]
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
     //Multiple requests
@@ -90,13 +90,9 @@ export class ManobraService {
                 });
                 return cadastro as Cadastro;
             }, error => {
-                this.urlService.handleError(error);
+                super.handleError(error);
             })
             .timeout(120000);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
     }
 
 }

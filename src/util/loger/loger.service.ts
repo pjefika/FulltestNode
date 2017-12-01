@@ -1,15 +1,14 @@
-import { InfoRequest } from './../../viewmodel/url/infos-url';
 import { UrlService } from './../url-service/url.service';
 import { Loger } from './../../viewmodel/loger/loger';
 import { Injectable } from '@angular/core';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class LogerService {
+export class LogerService extends SuperService {
 
-    private infoResquest: InfoRequest;
-
-    constructor(
-        private urlService: UrlService) { }
+    constructor(private urlService: UrlService) {
+        super();
+    }
 
     public makeLog(loger: Loger): Promise<Boolean> {
         this.infoResquest = {
@@ -22,10 +21,6 @@ export class LogerService {
             .then(data => {
                 return true
             })
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+            .catch(super.handleError);
     }
 }

@@ -31,14 +31,12 @@
                     <td>{{cadastro.servicos.velDown}} / {{cadastro.servicos.velUp}}</td>
                 </tr>
                 <tr>
-                    <th>SIP:</th>
-                    <td *ngIf="cadastro.servicos.isSip">Sim</td>
-                    <td *ngIf="!cadastro.servicos.isSip">Não</td>
+                    <th>Tipo da Linha:</th>
+                    <td>{{cadastro.servicos.tipoLinha}}</td>
                 </tr>
                 <tr>
-                    <th>Híbrido:</th>
-                    <td *ngIf="cadastro.servicos.isHib">Sim</td>
-                    <td *ngIf="!cadastro.servicos.isHib">Não</td>
+                    <th>Tipo da TV:</th>
+                    <td>{{cadastro.servicos.tipoTv}}</td>
                 </tr>
             </tbody>
         </table>

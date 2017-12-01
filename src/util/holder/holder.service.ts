@@ -52,6 +52,16 @@ export class HolderService {
     public sidenav: boolean = false;
     public sideNavMenus: SideNav[];
 
+    public appLevelAlertAtivo: boolean = false;
+    public appLevelAlert: { type: string, msg: string, buttonAction?: string, buttonName?: string; };
+
+    // Vivo1 True // Vivo2 False
+    public origenPlanta: boolean = false;
+
+    public btnResumoInfosAtivo: boolean = false;
+    
+    public resumoInfosAtivo: boolean = false;
+
     constructor() { }
 
 }

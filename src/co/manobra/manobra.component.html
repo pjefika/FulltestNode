@@ -1,5 +1,6 @@
 <div>
     <div *ngIf="!searchFulltest">
+        <h3 class="titulo-da-pagina">Informações de Manobra</h3>
         <div *ngIf="objectValid">
             <table-cadastro-component [cadastro]="cadastro"></table-cadastro-component>
             <div class="row">
@@ -17,46 +18,41 @@
                                         <label>Ordem: </label>
                                         <label for="idordem" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left"
                                             [class.invalid]="ordemInput.invalid && (ordemInput.dirty || ordemInput.touched)">
-                                        <input ngModel name="ordem" type="text" id="idordem" [(ngModel)]="ordem" #ordemInput="ngModel" required placeholder="Insira a ordem" 
-                                        (change)="enterBtnInput()">
-                                        <span class="tooltip-content">Este campo precisa ser preenchido</span>
-                                    </label>
+                                            <input ngModel name="ordem" type="text" id="idordem" [(ngModel)]="ordem" #ordemInput="ngModel" required placeholder="Insira a ordem"
+                                                (change)="enterBtnInput()">
+                                            <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                                        </label>
                                     </div>
                                     <div class="form-group">
                                         <label for="selecMotivo">Motivo Informado: </label>
                                         <div class="select" id="selecMotivo">
                                             <select [(ngModel)]="motivoSelected" name="motivoSelected">
-                                            <option *ngFor="let value of motivos" [ngValue]="value.name">{{value.motivo}}</option>
-                                        </select>
+                                                <option *ngFor="let value of motivos" [ngValue]="value.name">{{value.motivo}}</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </section>
                             </form>
                             <button class="btn btn-primary btn-block" [disabled]="btnValidDisable" [clrLoading]="searchingValids" (click)="validar()">{{nameBtnValidManobra}}</button>
                         </div>
-                        <table class="table table-compact table-vertical marginspace" *ngIf="analitico">
+                        <!-- Colocar em componente com alert especifico... -->
+                        <!-- <table class="table table-compact table-vertical marginspace" *ngIf="analitico">
                             <tbody>
                                 <tr>
                                     <th colspan="2" style="text-align: center;">Validações Manobra</th>
                                 </tr>
                                 <tr *ngFor="let value of analitico.analises">
-
                                     <th>{{value.motivo.motivo}}</th>
                                     <th>{{value.conclusao.frase}}</th>
-                                    <!-- <th>
-                                        <clr-icon shape="check" *ngIf="valid.conclusao.includes('OK')" class="is-success"></clr-icon>
-                                        <clr-icon shape="times" *ngIf="!valid.conclusao.includes('OK')" class="is-error"></clr-icon>
-                                    </th> -->
                                 </tr>
                             </tbody>
-                        </table>
+                        </table> -->
+                        <table-validacoes-component [analitico]="analitico"></table-validacoes-component>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Validação'"></loading-component>
-    <alert-component [msg]="alertMsg" [ativo]="alertAtivo" [closeable]="alertCloseable"></alert-component>
-    <alert-component [msg]="subalertMsg" [ativo]="subalertAtivo" [closeable]="subalertCloseable"></alert-component>
-
+    <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
 </div>
