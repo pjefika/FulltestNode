@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cadastro } from 'viewmodel/cadastro/cadastro';
+import { HolderService } from 'util/holder/holder.service';
 
 @Component({
     selector: 'infos-dm-component',
@@ -17,7 +18,7 @@ export class InfosDmComponent implements OnInit {
 
     private cadastro: Cadastro;
 
-    constructor() { }
+    constructor(public holderService: HolderService) { }
 
     public ngOnInit() { }
 
@@ -48,8 +49,8 @@ export class InfosDmComponent implements OnInit {
         //console.log(this.arrayInfo);
         this.cadastro = {
             instancia: this.findNextIndex("Terminal/Id Fibra:"),
-            designador: "",
-            designadorAcesso: "",
+            designador: this.holderService.cadastro.designador,
+            designadorAcesso: this.holderService.cadastro.designadorAcesso,
             rede: {
                 tipo: "Gpon",
                 origem: "Manual",
@@ -76,8 +77,8 @@ export class InfosDmComponent implements OnInit {
                 tipoLinha: "SIP",
                 tipoTv: ""
             },
-            asserts: null,
-            linha: null
+            asserts: this.holderService.cadastro.asserts,
+            linha: this.holderService.cadastro.linha
         }
 
         console.log(this.cadastro);
