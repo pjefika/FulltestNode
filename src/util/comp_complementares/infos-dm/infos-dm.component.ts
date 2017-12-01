@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Cadastro } from 'viewmodel/cadastro/cadastro';
 import { HolderService } from 'util/holder/holder.service';
+import { CallAlertService } from 'util/callalerts/call-alert.service';
+import { ToastyComponent } from 'util/toasty/toasty.component';
 
 @Component({
     selector: 'infos-dm-component',
@@ -8,7 +10,7 @@ import { HolderService } from 'util/holder/holder.service';
     styleUrls: ['infos-dm.component.css']
 })
 
-export class InfosDmComponent implements OnInit {
+export class InfosDmComponent extends CallAlertService implements OnInit {
 
     private modalInfoDm: boolean = false;
 
@@ -18,7 +20,10 @@ export class InfosDmComponent implements OnInit {
 
     private cadastro: Cadastro;
 
-    constructor(public holderService: HolderService) { }
+    constructor(public holderService: HolderService,
+        public toastyComponent: ToastyComponent) {
+        super(toastyComponent);
+    }
 
     public ngOnInit() { }
 
@@ -36,9 +41,10 @@ export class InfosDmComponent implements OnInit {
 
         if (caminho === "olt") {
             this.findOltCad();
-        }
-        if (caminho === "dslam") {
+        } else if (caminho === "dslam") {
             this.findDlsamCad();
+        } else {
+            super.callToasty("Ops aconteceu algo", "Funcionalidade não implementada, para este tipo de DSLAM", "error", 6000);
         }
 
         //this.modalInfoDm = false;
@@ -86,7 +92,8 @@ export class InfosDmComponent implements OnInit {
 
     private findDlsamCad() {
         console.log("Entrou Dslam");
-        console.log(this.arrayInfo);
+        // console.log(this.arrayInfo);
+        super.callToasty("Ops aconteceu algo", "Funcionalidade não implementada, para este tipo de DSLAM", "error", 6000);
     }
 
 
