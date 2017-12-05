@@ -28,4 +28,21 @@ export class TableLanCpService extends SuperService {
             .catch(super.handleError);
     }
 
+    public resetIptvStatistics(cadastro: Cadastro) {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let _data: { cust: any, executor: string };
+        _data = { cust: cadastro, executor: usr.user };
+        this.infoResquest = {
+            rqst: "post",
+            command: this.urlService.pathFulltestAPI + "configPorta/resetIptvStatistics",
+            _data: _data,
+            timeout: 120000
+        }
+        return this.urlService.request(this.infoResquest)
+            .then(data => {
+                return data as any[]
+            })
+            .catch(super.handleError);
+    }
+
 }

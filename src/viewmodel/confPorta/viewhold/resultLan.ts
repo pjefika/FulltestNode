@@ -3,4 +3,7 @@ export class ResultLan {
     svlan: number;
     state: string;
     nome: string;
+    ipIgmp?: string;
+    pctDown?: number;
+    pctUp?: number;
 }

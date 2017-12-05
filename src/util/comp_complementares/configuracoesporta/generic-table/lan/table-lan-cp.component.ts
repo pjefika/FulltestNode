@@ -34,6 +34,9 @@ export class TableLanCpComponent extends CallAlertService implements OnInit {
     private btnSetVlanVoipName: string = "Configurar Vlan Voip";
     private btnSetVlanVoipDisable: boolean = false;
 
+    private btnResetVlanMultiEVodName: string = "Resetar Vlan";
+    private btnResetVlanMultiEVodDisable: boolean = false;
+
     constructor(private holderService: HolderService,
         public toastyComponent: ToastyComponent,
         private tableLanCpService: TableLanCpService) {
@@ -106,6 +109,29 @@ export class TableLanCpComponent extends CallAlertService implements OnInit {
             }, error => {
                 this.btnSetVlanVoipName = "Configurar Vlan Voip";
                 this.btnSetVlanVoipDisable = false;
+                super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
+            });
+    }
+
+    private resetIptvStatistics() {
+        this.btnResetVlanMultiEVodName = "Resetando Vlan de MultiCast e VOD..."
+        this.btnResetVlanMultiEVodDisable = true;
+        this.tableLanCpService
+            .resetIptvStatistics(this.holderService.cadastro)
+            .then(data => {
+                data.forEach(element => {
+                    if (element.nome === "Vlan VoD/IPTV") {
+                        this.vlanVod = element;
+                    } else if (element.nome === "Vlan Multicast") {
+                        this.vlanMulticast = element;
+                    }
+                    this.btnResetVlanMultiEVodName = "Resetar Vlan"
+                    this.btnResetVlanMultiEVodDisable = false;
+                    super.callToasty("Sucesso", "Comando realizado com sucesso.", "success", 5000);
+                });
+            }, error => {
+                this.btnResetVlanMultiEVodName = "Resetar Vlan"
+                this.btnResetVlanMultiEVodDisable = false;
                 super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
             });
     }

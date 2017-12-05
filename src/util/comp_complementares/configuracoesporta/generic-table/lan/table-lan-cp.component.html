@@ -114,9 +114,15 @@
                         <th>SVLAN:</th>
                         <td>{{vlanVod.result.svlan}}</td>
                     </tr>
+                    <tr *ngIf="vlanVod.result.pctDown && vlanVod.result.pctUp">
+                        <th>Pacotes Down/Up:</th>
+                        <td>{{vlanVod.result.pctDown}} / {{vlanVod.result.pctUp}} </td>
+                    </tr>
                     <tr *ngIf="vlanVod.mensagem != 'Cliente sem TV Híbrida.'">
                         <td colspan="2">
                             <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanVodDisable" (click)="setVlanVod()">{{btnSetVlanVodName}}</button>
+                            <button class="btn btn-primary btn-sm btn-block" *ngIf="vlanVod.result.pctDown && vlanVod.result.pctUp" [disabled]="btnResetVlanMultiEVodDisable"
+                                (click)="resetIptvStatistics()">{{btnResetVlanMultiEVodName}}</button>
                         </td>
                     </tr>
                 </tbody>
@@ -154,9 +160,19 @@
                         <th>SVLAN:</th>
                         <td>{{vlanMulticast.result.svlan}}</td>
                     </tr>
+                    <tr *ngIf="vlanMulticast.result.pctDown && vlanMulticast.result.pctUp">
+                        <th>Pacotes Down/Up:</th>
+                        <td>{{vlanMulticast.result.pctDown}} / {{vlanMulticast.result.pctUp}} </td>
+                    </tr>
+                    <tr *ngIf="vlanMulticast.result.ipIgmp">
+                        <th>SVLAN:</th>
+                        <td>{{vlanMulticast.result.ipIgmp}}</td>
+                    </tr>
                     <tr>
                         <td colspan="2">
                             <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanMulticastDisable" (click)="setVlanMulticast()">{{btnSetVlanMulticastName}}</button>
+                            <button class="btn btn-primary btn-sm btn-block" *ngIf="vlanMulticast.result.pctDown && vlanMulticast.result.pctUp" [disabled]="btnResetVlanMultiEVodDisable"
+                                (click)="resetIptvStatistics()">{{btnResetVlanMultiEVodName}}</button>
                         </td>
                     </tr>
                 </tbody>
