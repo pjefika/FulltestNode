@@ -110,4 +110,8 @@ export class CadastroComponent extends CallAlertService implements OnInit {
         }
     }
 
+    public setInfoCadastro() {
+        this.cadastro = this.holderService.cadastro;
+    }
+
 }

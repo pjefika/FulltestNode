@@ -59,8 +59,12 @@ export class HolderService {
     public origenPlanta: boolean = false;
 
     public btnResumoInfosAtivo: boolean = false;
-    
+
     public resumoInfosAtivo: boolean = false;
+
+    public modalWizardOpen: boolean = false;
+
+    public modalInfoDMOpen: boolean = false;
 
     constructor() { }
 

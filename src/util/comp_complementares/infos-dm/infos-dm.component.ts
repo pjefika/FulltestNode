@@ -12,8 +12,6 @@ import { ToastyComponent } from 'util/toasty/toasty.component';
 
 export class InfosDmComponent extends CallAlertService implements OnInit {
 
-    private modalInfoDm: boolean = false;
-
     private infoDm: string;
 
     private arrayInfo: string[] = [];
@@ -85,8 +83,8 @@ export class InfosDmComponent extends CallAlertService implements OnInit {
             linha: this.holderService.cadastro.linha
         }
         this.holderService.cadastro = this.cadastro;
-        this.modalInfoDm = false;
-        //console.log(this.cadastro);
+        this.holderService.modalInfoDMOpen = false;
+        this.holderService.modalWizardOpen = true;
     }
 
     private findDlsamCad() {
@@ -95,13 +93,11 @@ export class InfosDmComponent extends CallAlertService implements OnInit {
         super.callToasty("Ops aconteceu algo", "Funcionalidade não implementada, para este tipo de DSLAM", "error", 6000);
     }
 
-
     private findNextIndex(campo: string): string {
         let index = this.arrayInfo.indexOf(campo);
         if (index >= 0 && index < this.arrayInfo.length - 1) {
             return this.arrayInfo[index + 1];
         }
     }
-
 
 }

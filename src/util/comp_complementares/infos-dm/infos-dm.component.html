@@ -1,13 +1,13 @@
-<div>
-    <button type="button" class="btn btn-icon btn-primary" (click)="modalInfoDm = true;">
+<!-- <div>
+    <button type="button" class="btn btn-icon btn-primary" (click)="abrirModal();">
         <clr-icon shape="cog"></clr-icon>
     </button>
-</div>
+</div> -->
 
-<clr-modal [(clrModalOpen)]="modalInfoDm">
+<clr-modal [(clrModalOpen)]="holderService.modalInfoDMOpen">
     <h3 class="modal-title">Informações DM</h3>
     <div class="modal-body">
-        <textarea class="margin-center" rows="15" [(ngModel)]="infoDm" name="infoDm"></textarea>
+        <textarea class="margin-center" rows="15" [(ngModel)]="infoDm" name="infoDm" placeholder="Insira o CTRL+A do DM com a aba OLT/DSLAM aberta."></textarea>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline" (click)="modalInfoDm = false;">Fechar</button>

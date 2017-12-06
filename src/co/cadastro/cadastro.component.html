@@ -126,7 +126,8 @@
                 <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
             </div>
         </div>
-        <cadastro-wizard-component [cadastro]="cadastro"></cadastro-wizard-component>
+        <cadastro-wizard-component [cadastro]="holderService.cadastro"></cadastro-wizard-component>
+        <infos-dm-component *ngIf="cadastro.rede.planta === 'VIVO1'"></infos-dm-component>
     </div>
     <loading-component [searching]="searching" [searchWhat]="'Buscando Cadastro...'"></loading-component>
 </div>
