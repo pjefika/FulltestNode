@@ -70,7 +70,7 @@ export class ManobraComponent extends CallAlertService implements OnInit {
             this.realizaFulltest();
             this.getListaMotivo();
         }
-        this.holderService.resumoInfosAtivo = true;
+        // this.holderService.resumoInfosAtivo = true;
         this.holderService.btnResumoInfosAtivo = true;
     }
 

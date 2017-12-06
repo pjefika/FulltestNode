@@ -42,7 +42,7 @@ export class FulltestComponent implements OnInit {
         if (!this.objectValid) {
             this.realizaFulltest();
         }
-        this.holderService.resumoInfosAtivo = true;
+        // this.holderService.resumoInfosAtivo = true;
         this.holderService.btnResumoInfosAtivo = true;
     }
 
