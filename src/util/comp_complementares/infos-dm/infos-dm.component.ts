@@ -3,6 +3,7 @@ import { Cadastro } from 'viewmodel/cadastro/cadastro';
 import { HolderService } from 'util/holder/holder.service';
 import { CallAlertService } from 'util/callalerts/call-alert.service';
 import { ToastyComponent } from 'util/toasty/toasty.component';
+import { CadastroComponent } from 'co/cadastro/cadastro.component';
 
 @Component({
     selector: 'infos-dm-component',
@@ -15,8 +16,6 @@ export class InfosDmComponent extends CallAlertService implements OnInit {
     private infoDm: string;
 
     private arrayInfo: string[] = [];
-
-    private cadastro: Cadastro;
 
     constructor(public holderService: HolderService,
         public toastyComponent: ToastyComponent) {
@@ -49,7 +48,7 @@ export class InfosDmComponent extends CallAlertService implements OnInit {
     private findOltCad() {
         console.log("Entrou Olt");
         //console.log(this.arrayInfo);
-        this.cadastro = {
+        this.holderService.cadastro = {
             instancia: this.findNextIndex("Terminal/Id Fibra:"),
             designador: this.holderService.cadastro.designador,
             designadorAcesso: this.holderService.cadastro.designadorAcesso,
@@ -82,7 +81,6 @@ export class InfosDmComponent extends CallAlertService implements OnInit {
             asserts: this.holderService.cadastro.asserts,
             linha: this.holderService.cadastro.linha
         }
-        this.holderService.cadastro = this.cadastro;
         this.holderService.modalInfoDMOpen = false;
         this.holderService.modalWizardOpen = true;
     }

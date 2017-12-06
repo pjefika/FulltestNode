@@ -66,6 +66,8 @@ export class HolderService {
 
     public modalInfoDMOpen: boolean = false;
 
+    public showWizardComponent: boolean = false;
+
     constructor() { }
 
 }

@@ -3,7 +3,7 @@ import { HolderService } from './../../util/holder/holder.service';
 import { ToastyComponent } from './../../util/toasty/toasty.component';
 import { Util } from './../../util/util';
 
-import { Component, OnInit, Injector, ViewChild } from '@angular/core';
+import { Component, OnInit, Injector, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
 import 'rxjs/add/operator/toPromise';
@@ -11,6 +11,7 @@ import { Wizard } from "clarity-angular";
 
 import { CadastroService } from './cadastro.service';
 import { CallAlertService } from 'util/callalerts/call-alert.service';
+import { CadastroWizardComponent } from 'co/cadastro/wizard/cadastro-wizard.component';
 
 @Component({
     selector: 'cadastro-component',
@@ -18,7 +19,7 @@ import { CallAlertService } from 'util/callalerts/call-alert.service';
     styleUrls: ['cadastro.component.css']
 })
 
-export class CadastroComponent extends CallAlertService implements OnInit {
+export class CadastroComponent extends CallAlertService implements OnInit, OnChanges {
 
     private cadastro: Cadastro;
 
@@ -32,12 +33,14 @@ export class CadastroComponent extends CallAlertService implements OnInit {
 
     private searchingRede: boolean = false;
 
+    private showWizardComponent: boolean = false;
+
     constructor(public toastyComponent: ToastyComponent,
         private cadastroService: CadastroService,
         private router: Router,
         private util: Util,
         private injector: Injector,
-        private holderService: HolderService) {
+        public holderService: HolderService) {
         super(toastyComponent);
         this.instancia = this.holderService.instancia;
     }
@@ -61,14 +64,18 @@ export class CadastroComponent extends CallAlertService implements OnInit {
         this.holderService.btnResumoInfosAtivo = false;
     }
 
+    public ngOnChanges(changes: SimpleChanges) {        
+    }
+
     public getCadastro(): void {
-        this.searching = true;
+        this.searching = true;               
         this.cadastroService
             .getCadastro(this.instancia)
             .then(data => {
                 this.cadastro = data;
                 this.searching = false;
                 this.holderService.cadastro = this.cadastro;
+                this.holderService.showWizardComponent = true;
                 if (!this.cadastro.rede.tipo) {
                     this.searchingRede = true;
                     this.cadastroService
@@ -89,7 +96,7 @@ export class CadastroComponent extends CallAlertService implements OnInit {
                 this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
             })
-            .then(() => {
+            .then(() => {                
                 // if (this.cadastro.rede.planta === "VIVO1") {
                 //     this.holderService.origenPlanta = true;
                 // } else {

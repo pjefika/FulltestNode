@@ -87,6 +87,7 @@ import { TableEstadoPortaCpComponent } from 'util/comp_complementares/configurac
 import { TableLanCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/lan/table-lan-cp.component';
 import { TableProfileCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/profile/table-profile-cp.component';
 import { InfosDmComponent } from 'util/comp_complementares/infos-dm/infos-dm.component';
+import { EnumService } from 'util/comp_complementares/enum.service';
 
 @NgModule({
     declarations: [

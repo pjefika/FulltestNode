@@ -37,7 +37,9 @@ export class CadastroWizardComponent implements OnInit {
     constructor(
         private enumService: EnumService,
         public holderService: HolderService,
-        private cadastroComponent: CadastroComponent) { }
+        public cadastroComponent: CadastroComponent) {
+        this.cadastro = this.holderService.cadastro;
+    }
 
 
     private abrirModal() {
@@ -128,7 +130,7 @@ export class CadastroWizardComponent implements OnInit {
     private onCommit() {
         if (this.validCadastroRedeEServico()) {
             this.wizardmodal.forceFinish();
-            this.setinfoincadastrocomponent();
+            this.cadastroComponent.setInfoCadastro();
         } else {
             this.alertMsg = true;
             this.msg = {
@@ -138,8 +140,6 @@ export class CadastroWizardComponent implements OnInit {
         }
     }
 
-    public setinfoincadastrocomponent() {
-        this.cadastroComponent.setInfoCadastro();
-    }
+
 
 }
