@@ -26,22 +26,26 @@ export class InfosDmComponent extends CallAlertService implements OnInit {
 
     private setInfosDm() {
         let caminho: string;
-        this.arrayInfo = this.infoDm.split("\n").map(function (item) {
-            if (item === "OLT") {
-                caminho = "olt";
-            }
-            if (item === "DSLAM") {
-                caminho = "dslam";
-            }
-            return item.trim();
-        });
+        if (this.infoDm) {
+            this.arrayInfo = this.infoDm.split("\n").map(function (item) {
+                if (item === "OLT") {
+                    caminho = "olt";
+                }
+                if (item === "DSLAM") {
+                    caminho = "dslam";
+                }
+                return item.trim();
+            });
 
-        if (caminho === "olt") {
-            this.findOltCad();
-        } else if (caminho === "dslam") {
-            this.findDlsamCad();
+            if (caminho === "olt") {
+                this.findOltCad();
+            } else if (caminho === "dslam") {
+                this.findDlsamCad();
+            } else {
+                super.callToasty("Ops aconteceu algo", "Funcionalidade não implementada, para este tipo de DSLAM", "error", 6000);
+            }
         } else {
-            super.callToasty("Ops aconteceu algo", "Funcionalidade não implementada, para este tipo de DSLAM", "error", 6000);
+            super.callToasty("Ops aconteceu algo", "Por favor preencha o campo de texto com as informações necessárias", "error", 6000);
         }
     }
 
