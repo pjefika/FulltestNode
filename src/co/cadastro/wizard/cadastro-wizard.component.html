@@ -164,6 +164,7 @@
                         <label>Tipo TV: </label>
                         <div class="select">
                             <select [(ngModel)]="cadastro.servicos.tipoTv" name="tipotv">
+                                <option [ngValue]="SemTV">Sem TV</option>
                                 <option *ngFor="let tv of listEnumTv" [ngValue]="tv">{{tv}}</option>
                             </select>
                         </div>
