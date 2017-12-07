@@ -67,8 +67,8 @@ export class ManobraComponent extends CallAlertService implements OnInit {
         });
         this.holderAtribuition();
         if (this.cadastro) {
-            if (this.holderService.objectValid) {
-                this.objectValid = this.holderService.objectValid;
+            if (this.holderService.objectValidManobra) {
+                this.objectValid = this.holderService.objectValidManobra;
                 this.infoOVResult();
             } else {
                 this.realizaFulltest();
@@ -88,7 +88,7 @@ export class ManobraComponent extends CallAlertService implements OnInit {
             .getValidacao(this.cadastro)
             .then(data => {
                 this.objectValid = data;
-                this.holderService.objectValid = this.objectValid;
+                this.holderService.objectValidManobra = this.objectValid;
                 this.searchFulltest = false;
                 this.infoOVResult();
             }, error => {

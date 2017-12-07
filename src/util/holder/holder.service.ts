@@ -15,6 +15,7 @@ export class HolderService {
     public cadastro: Cadastro;
     public cadastroLinha: CadastroLinha;
     public objectValid: ObjectValid;
+    public objectValidManobra: ObjectValid;
     public confPorta: ConfPorta;
     public eachFulltest: string;
     public liberarSubNav: boolean = false;
