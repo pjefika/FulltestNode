@@ -1,5 +1,25 @@
 <div>
-    <table class="table table-compact setmargen">
+    <table class="table table-compact setmargen" style="margin: 7px 0 0 0;">
+        <thead>
+            <tr class="left">
+                <th colspan="2">Informações gerais Fulltest</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="left">
+                <td class="left">Duração do Fulltest</td>
+                <td>{{objectValid.dataFim | amDifference: objectValid.dataInicio: 'seconds'}} Segundos</td>
+            </tr>
+            <tr class="left">
+                <td class="left">Resultado</td>
+                <td>
+                    <clr-icon shape="check" *ngIf="objectValid.resultado" class="is-success"></clr-icon>
+                    <clr-icon shape="times" *ngIf="!objectValid.resultado" class="is-error"></clr-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-compact">
         <thead>
             <tr>
                 <th colspan="3">Informações de Fulltest</th>
