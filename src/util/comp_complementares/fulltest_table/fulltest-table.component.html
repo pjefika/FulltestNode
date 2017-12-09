@@ -25,3 +25,37 @@
 <div *ngIf="msgAtivo">
     <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
 </div>
+<div>
+    <clr-stack-view>
+        <clr-stack-header>
+            Validações
+        </clr-stack-header>
+
+        <clr-stack-block *ngFor="let valid of objectValid.valids">
+            <clr-stack-label>
+                {{valid.nome}}
+            </clr-stack-label>
+            <clr-stack-content>
+                <div class="row">
+                    <div class="col-xs-9">
+                        {{valid.mensagem}}
+                    </div>
+                    <div class="col-xs-2">
+                        <clr-icon shape="check" *ngIf="valid.resultado" class="is-success"></clr-icon>
+                        <clr-icon shape="times" *ngIf="!valid.resultado" class="is-error"></clr-icon>
+                    </div>
+                </div>
+            </clr-stack-content>
+
+            <clr-stack-block *ngIf="valid.resultado && valid.nome=='Confiabilidade de Rede'">
+                <clr-stack-label>CRC</clr-stack-label>
+                <clr-stack-content>{{valid.result.crcOk}}</clr-stack-content>
+            </clr-stack-block>
+            <clr-stack-block *ngIf="valid.resultado && valid.nome=='Confiabilidade de Rede'">
+                <clr-stack-label>Pacotes Suficientes</clr-stack-label>
+                <clr-stack-content>{{valid.result.pctSuficiente}}</clr-stack-content>
+            </clr-stack-block>
+
+        </clr-stack-block>
+    </clr-stack-view>
+</div>
