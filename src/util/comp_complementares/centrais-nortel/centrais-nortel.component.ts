@@ -14,6 +14,12 @@ class CentralConnectedFilter implements StringFilter<InfoNortelConection> {
     }
 }
 
+class CentralNameFilter implements StringFilter<InfoNortelConection> {
+    accepts(info: InfoNortelConection, search: string): boolean {
+        return "" + info.central.toLowerCase() == search;
+    }
+}
+
 @Component({
     selector: 'centrais-nortel-component',
     templateUrl: 'centrais-nortel.component.html',
@@ -24,6 +30,8 @@ class CentralConnectedFilter implements StringFilter<InfoNortelConection> {
 export class CentraisNortelComponent extends CallAlertService implements OnInit {
 
     private centralConnectedFilter = new CentralConnectedFilter();
+
+    private centralNameFilter = new CentralNameFilter();
 
     private infosNC: InfoNC;
 

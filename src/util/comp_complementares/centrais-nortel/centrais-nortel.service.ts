@@ -26,7 +26,7 @@ export class CentraisNortelService extends SuperService {
     public connection(conection: string): Promise<InfoNortelConection[]> {
         this.infoResquest = {
             rqst: "get",
-            command: this.urlService.pathDmsAPI + "contextDMS/connection",
+            command: this.urlService.pathDmsAPI + "contextDMS/connection/",
             _data: conection,
             timeout: 1200000
         }

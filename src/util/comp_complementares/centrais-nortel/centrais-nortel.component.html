@@ -1,5 +1,5 @@
 <clr-modal [(clrModalOpen)]="holderService.centraisNortelModal" [clrModalSize]="'lg'">
-    <h3 class="modal-title">Administração centrais Nortel</h3>
+    <h3 class="modal-title">Administração Centrais Nortel</h3>
     <div class="modal-body">
         <loading-component [searching]="searchingNortelInfos" [searchWhat]="'Buscando Conexões Nortel...'"></loading-component>
         <div *ngIf="infosNC">
@@ -9,11 +9,11 @@
                     <td>{{infosNC.credencial}}</td>
                 </tr>
                 <tr>
-                    <th>Quantidade True</th>
+                    <th>Quantidade Conectadas</th>
                     <td>{{infosNC.quantiadeTrue}}</td>
                 </tr>
                 <tr>
-                    <th>Quantidade False</th>
+                    <th>Quantidade Não Conectadas</th>
                     <td>{{infosNC.quantidadeFalse}}</td>
                 </tr>
             </table>
@@ -29,7 +29,10 @@
                 <progress></progress>
             </div>
             <clr-datagrid>
-                <clr-dg-column>Central</clr-dg-column>
+                <clr-dg-column>
+                    Central
+                    <clr-dg-string-filter [clrDgStringFilter]="centralNameFilter"></clr-dg-string-filter>
+                </clr-dg-column>
                 <clr-dg-column>
                     Conectado
                     <clr-dg-string-filter [clrDgStringFilter]="centralConnectedFilter"></clr-dg-string-filter>
