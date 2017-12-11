@@ -88,6 +88,7 @@ import { TableLanCpComponent } from 'util/comp_complementares/configuracoesporta
 import { TableProfileCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/profile/table-profile-cp.component';
 import { InfosDmComponent } from 'util/comp_complementares/infos-dm/infos-dm.component';
 import { EnumService } from 'util/comp_complementares/enum.service';
+import { CentraisNortelComponent } from 'util/comp_complementares/centrais-nortel/centrais-nortel.component';
 
 @NgModule({
     declarations: [
@@ -148,7 +149,8 @@ import { EnumService } from 'util/comp_complementares/enum.service';
         TableEstadoPortaCpComponent,
         TableLanCpComponent,
         TableProfileCpComponent,
-        InfosDmComponent
+        InfosDmComponent,
+        CentraisNortelComponent
     ],
     imports: [
         BrowserModule,

@@ -69,6 +69,8 @@ export class HolderService {
 
     public showWizardComponent: boolean = false;
 
+    public centraisNortelModal: boolean = false;
+
     constructor() { }
 
 }

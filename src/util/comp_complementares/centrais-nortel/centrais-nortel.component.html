@@ -1,0 +1,66 @@
+<clr-modal [(clrModalOpen)]="holderService.centraisNortelModal" [clrModalSize]="'lg'">
+    <h3 class="modal-title">Administração centrais Nortel</h3>
+    <div class="modal-body">
+        <loading-component [searching]="searchingNortelInfos" [searchWhat]="'Buscando Conexões Nortel...'"></loading-component>
+        <div *ngIf="infosNC">
+            <table class="table table-compact table-vertical">
+                <tr>
+                    <th>Credencial</th>
+                    <td>{{infosNC.credencial}}</td>
+                </tr>
+                <tr>
+                    <th>Quantidade True</th>
+                    <td>{{infosNC.quantiadeTrue}}</td>
+                </tr>
+                <tr>
+                    <th>Quantidade False</th>
+                    <td>{{infosNC.quantidadeFalse}}</td>
+                </tr>
+            </table>
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-sm btn-primary btn-block" [disabled]="btnSetConnection" (click)="connection('true')">{{btnSetNameTrueConection}}</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-sm btn-primary btn-block" [disabled]="btnSetConnection" (click)="connection('false')">{{btnSetNameFalseConection}}</button>
+                </div>
+            </div>
+            <div class="progress loop" *ngIf="progressBarConnectDesconectSingle">
+                <progress></progress>
+            </div>
+            <clr-datagrid>
+                <clr-dg-column>Central</clr-dg-column>
+                <clr-dg-column>
+                    Conectado
+                    <clr-dg-string-filter [clrDgStringFilter]="centralConnectedFilter"></clr-dg-string-filter>
+                </clr-dg-column>
+                <clr-dg-column>Ocupado</clr-dg-column>
+                <clr-dg-column>IP</clr-dg-column>
+
+                <clr-dg-row *clrDgItems="let info of listInfoNortelConection">
+                    <clr-dg-action-overflow>
+                        <button class="action-item" *ngIf="!info.connected" (click)="connectSwitch(info.ip)">Conectar</button>
+                        <button class="action-item" *ngIf="info.connected" (click)="disconnectSwitch(info.ip)">Desconectar</button>
+                    </clr-dg-action-overflow>
+                    <clr-dg-cell>{{info.central}}</clr-dg-cell>
+                    <clr-dg-cell>
+                        <span [ngClass]="info.connected ? 'greenSuccess' : 'redFalse'">{{info.connected}}</span>
+                    </clr-dg-cell>
+                    <clr-dg-cell>
+                        <span [ngClass]="info.busy ? 'greenSuccess' : 'redFalse'">{{info.busy}}</span>
+                    </clr-dg-cell>
+                    <clr-dg-cell>{{info.ip}}</clr-dg-cell>
+                </clr-dg-row>
+
+                <clr-dg-footer>
+                    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} de {{pagination.totalItems}} Centrais
+                    <clr-dg-pagination #pagination [clrDgPageSize]="10"></clr-dg-pagination>
+                </clr-dg-footer>
+            </clr-datagrid>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="holderService.centraisNortelModal = false">Fechar</button>
+    </div>
+</clr-modal>
