@@ -1,29 +1,35 @@
-<clr-modal [(clrModalOpen)]="holderService.centraisNortelModal" [clrModalSize]="'lg'">
+<clr-modal [(clrModalOpen)]="holderService.centraisNortelModal" [clrModalSize]="'xl'">
     <h3 class="modal-title">Administração Centrais Nortel</h3>
     <div class="modal-body">
         <loading-component [searching]="searchingNortelInfos" [searchWhat]="'Buscando Conexões Nortel...'"></loading-component>
         <div *ngIf="infosNC">
-            <table class="table table-compact table-vertical">
-                <tr>
-                    <th>Credencial</th>
-                    <td>{{infosNC.credencial}}</td>
-                </tr>
-                <tr>
-                    <th>Quantidade Conectadas</th>
-                    <td>{{infosNC.quantiadeTrue}}</td>
-                </tr>
-                <tr>
-                    <th>Quantidade Não Conectadas</th>
-                    <td>{{infosNC.quantidadeFalse}}</td>
-                </tr>
-            </table>
-            <button type="button" class="btn btn-sm btn-primary btn-block" (click)="getContextDMS()">Buscar Context DMS</button>
             <div class="row">
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-sm btn-primary btn-block" [disabled]="btnSetConnection" (click)="connection('true')">{{btnSetNameTrueConection}}</button>
+                     <table class="table table-compact table-vertical margin-pra-cima">
+                        <tr>
+                            <th>Credencial</th>
+                            <td>{{infosNC.credencial}}</td>
+                        </tr>
+                        <tr>
+                            <th>Quantidade Conectadas</th>
+                            <td>{{infosNC.quantiadeTrue}}</td>
+                        </tr>
+                        <tr>
+                            <th>Quantidade Não Conectadas</th>
+                            <td>{{infosNC.quantidadeFalse}}</td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-sm btn-primary btn-block" [disabled]="btnSetConnection" (click)="connection('false')">{{btnSetNameFalseConection}}</button>
+                    <button type="button" class="btn btn-sm btn-primary btn-block" (click)="getContextDMS()">Buscar Context DMS</button>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-sm btn-primary btn-block" [disabled]="btnSetConnection" (click)="connection('true')">{{btnSetNameTrueConection}}</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-sm btn-primary btn-block" [disabled]="btnSetConnection" (click)="connection('false')">{{btnSetNameFalseConection}}</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="progress loop" *ngIf="progressBarConnectDesconectSingle">
