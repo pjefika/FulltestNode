@@ -44,10 +44,16 @@
                     </clr-dg-action-overflow>
                     <clr-dg-cell>{{info.central}}</clr-dg-cell>
                     <clr-dg-cell>
-                        <span [ngClass]="info.connected ? 'greenSuccess' : 'redFalse'">{{info.connected}}</span>
+                        <span [ngClass]="info.connected ? 'greenSuccess' : 'redFalse'">
+                            <span *ngIf="info.connected">Sim</span>
+                            <span *ngIf="!info.connected">Não</span>
+                        </span>
                     </clr-dg-cell>
                     <clr-dg-cell>
-                        <span [ngClass]="info.busy ? 'greenSuccess' : 'redFalse'">{{info.busy}}</span>
+                        <span [ngClass]="info.busy ? 'redFalse' : 'greenSuccess'">
+                            <span *ngIf="info.busy">Sim</span>
+                            <span *ngIf="!info.busy">Não</span>
+                        </span>
                     </clr-dg-cell>
                     <clr-dg-cell>{{info.ip}}</clr-dg-cell>
                 </clr-dg-row>
