@@ -39,7 +39,10 @@
                     <clr-dg-string-filter [clrDgStringFilter]="centralConnectedFilter"></clr-dg-string-filter>
                 </clr-dg-column>
                 <clr-dg-column>Ocupado</clr-dg-column>
-                <clr-dg-column>IP</clr-dg-column>
+                <clr-dg-column>
+                    IP
+                    <clr-dg-string-filter [clrDgStringFilter]="centralIPFilter"></clr-dg-string-filter>
+                </clr-dg-column>
 
                 <clr-dg-row *clrDgItems="let info of listInfoNortelConection">
                     <clr-dg-action-overflow>
