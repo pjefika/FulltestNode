@@ -42,18 +42,13 @@
                     </div>
                     <div class="col-xs-2">
                         <clr-icon shape="check" *ngIf="valid.resultado" class="is-success"></clr-icon>
-                        <clr-icon shape="times" *ngIf="!valid.resultado" class="is-error"></clr-icon>
+                        <clr-icon shape="times" *ngIf="!valid.resultado && !valid.foiCorrigido" class="is-error"></clr-icon>
+                        <clr-icon shape="exclamation-triangle" *ngIf="!valid.resultado && valid.foiCorrigido" class="is-warning is-solid"></clr-icon>
                     </div>
                 </div>
             </clr-stack-content>
-
-            <clr-stack-block *ngIf="valid.resultado && valid.nome=='Confiabilidade de Rede'">
-                <clr-stack-label>CRC</clr-stack-label>
-                <clr-stack-content>{{valid.result.crcOk}}</clr-stack-content>
-            </clr-stack-block>
-            <clr-stack-block *ngIf="valid.resultado && valid.nome=='Confiabilidade de Rede'">
-                <clr-stack-label>Pacotes Suficientes</clr-stack-label>
-                <clr-stack-content>{{valid.result.pctSuficiente}}</clr-stack-content>
+            <clr-stack-block *ngIf="!valid.resultado && valid.nome=='Confiabilidade de Rede'">
+                <confiab-rede-stackblock-cp [confRede]="valid"></confiab-rede-stackblock-cp>
             </clr-stack-block>
 
         </clr-stack-block>
