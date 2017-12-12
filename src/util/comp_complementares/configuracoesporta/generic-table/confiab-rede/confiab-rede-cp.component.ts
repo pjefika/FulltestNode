@@ -16,8 +16,9 @@ export class ConfiabRedeCpComponent extends CallAlertService implements OnInit {
 
     @Input() public confRede: ConfiabilidadeRede;
 
-    private btnChangeAdminStateDisable: boolean = false;
-    private btnChangeAdminStateName: string = "Executar";
+    private actionBtn: boolean = false;
+    private actionBtnName: string = "Consultar Novamente";
+
 
     constructor(public toastyComponent: ToastyComponent,
         private confiabilidadeRedeCpService: ConfiabilidadeRedeCpService,
@@ -26,23 +27,23 @@ export class ConfiabRedeCpComponent extends CallAlertService implements OnInit {
     }
 
     public ngOnInit() {
-        //console.log(this.estadoPorta);
+        
     }
 
-    // public setAdminState() {
-    //     this.btnChangeAdminStateDisable = true;
-    //     this.btnChangeAdminStateName = "Aguarde...";
-    //     this.confiabilidadeRedeCpService
-    //         .setAdminState(this.holderService.cadastro, this.confRede.result)
-    //         .then(data => {
-    //             this.confRede = data;
-    //             this.btnChangeAdminStateDisable = false;
-    //             this.btnChangeAdminStateName = "Executar";
-    //             super.callToasty("Sucesso", "Comando realizado com sucesso.", "success", 5000)
-    //         }, error => {
-    //             this.btnChangeAdminStateDisable = false;
-    //             this.btnChangeAdminStateName = "Executar";
-    //             super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
-    //         });
-    // }
+    public consultar() {
+        this.actionBtn = true;
+        this.actionBtnName = "Aguarde...";
+        this.confiabilidadeRedeCpService
+            .consultar(this.holderService.cadastro)
+            .then(data => {
+                this.confRede = data;
+                this.actionBtn = false;
+                this.actionBtnName = "Consultar Novamente";
+                super.callToasty("Sucesso", "Comando realizado com sucesso.", "success", 5000)
+            }, error => {
+                this.actionBtn = false;
+                this.actionBtnName = "Consultar Novamente";
+                super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
+            });
+    }
 }

@@ -22,7 +22,7 @@ export class GenericValidComponent extends CallAlertService implements OnInit {
     }
 
     public ngOnInit() {
-        //console.log(this.estadoPorta);
+        
     }
 
     // public setAdminState() {

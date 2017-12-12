@@ -4,6 +4,7 @@ import { UrlService } from 'util/url-service/url.service';
 import { Cadastro } from 'viewmodel/cadastro/cadastro';
 import { ResultNormal } from 'viewmodel/confPorta/viewhold/resultNormal';
 import { EstadoPorta } from 'viewmodel/confPorta/estadoPorta';
+import { ConfiabilidadeRede } from 'viewmodel/confPorta/ConfiabilidadeRede';
 
 @Injectable()
 export class ConfiabilidadeRedeCpService extends SuperService {
@@ -12,19 +13,19 @@ export class ConfiabilidadeRedeCpService extends SuperService {
         super();
     }
 
-    public setAdminState(cadastro: Cadastro, estadoPorta: ResultNormal) {
+    public consultar(cadastro: Cadastro) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
-        let _data: { cust: any, executor: string, estadoPorta: ResultNormal };
-        _data = { cust: cadastro, executor: usr.user, estadoPorta: estadoPorta };
+        let _data: { cust: any, executor: string};
+        _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathFulltestAPI + "configPorta/setAdminState",
+            command: this.urlService.pathFulltestAPI + "configPorta/getConfiabilidadeRede",
             _data: _data,
             timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {
-                return data as EstadoPorta
+                return data as ConfiabilidadeRede
             })
             .catch(super.handleError);
     }

@@ -41,7 +41,7 @@
                 <clr-icon shape="times" *ngIf="!valid.resultado && !valid.foiCorrigido" class="is-error"></clr-icon>
                 <clr-icon shape="exclamation-triangle" *ngIf="!valid.resultado && valid.foiCorrigido" class="is-warning is-solid"></clr-icon>
             </clr-dg-cell>
-            <generic-valid *clrIfExpanded [valid]="valid" ngProjectAs="clr-dg-row-detail" [clrDgReplace]="true"></generic-valid>
+            <generic-valid *clrIfExpanded [valid]="valid" ngProjectAs="clr-dg-row-detail"></generic-valid>
         </clr-dg-row>
 
     </clr-datagrid>
