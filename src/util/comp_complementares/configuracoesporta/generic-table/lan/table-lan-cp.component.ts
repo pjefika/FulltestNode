@@ -119,21 +119,26 @@ export class TableLanCpComponent extends CallAlertService implements OnInit {
         this.tableLanCpService
             .resetIptvStatistics(this.holderService.cadastro)
             .then(data => {
-                data.forEach(element => {
-                    if (element.nome === "Vlan VoD/IPTV") {
-                        this.vlanVod = element;
-                    } else if (element.nome === "Vlan Multicast") {
-                        this.vlanMulticast = element;
-                    }
-                    this.btnResetVlanMultiEVodName = "Resetar Vlan"
-                    this.btnResetVlanMultiEVodDisable = false;
-                    super.callToasty("Sucesso", "Comando realizado com sucesso.", "success", 5000);
-                });
+                this.setInfosVlanMultiCastEVOD(data);
+                this.btnResetVlanMultiEVodName = "Resetar Vlan"
+                this.btnResetVlanMultiEVodDisable = false;
+                super.callToasty("Sucesso", "Comando realizado com sucesso.", "success", 5000);
             }, error => {
                 this.btnResetVlanMultiEVodName = "Resetar Vlan"
                 this.btnResetVlanMultiEVodDisable = false;
                 super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
             });
+    }
+
+    private setInfosVlanMultiCastEVOD(data: any[]) {
+        data.forEach(element => {
+            if (element.nome === "Vlan VoD/IPTV") {
+                this.vlanVod = element;
+            }
+            if (element.nome === "Vlan Multicast") {
+                this.vlanMulticast = element;
+            }
+        });
     }
 
     private validSeExiste(frase: string): Boolean {

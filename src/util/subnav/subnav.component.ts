@@ -21,8 +21,7 @@ export class SubnavComponent implements OnInit {
 
     }
 
-    private abrecomponent(l) {
-        // Desativa o sidenav pois pode-ser que seja mudado ao trocar de menu, se precisar ativar sidenav ativar no construtor do component...
+    private abrecomponent(l) {       
         this.holderService.sidenav = false;
         if (this.holderService.liberarSubNav) {
             if (l.link) {
