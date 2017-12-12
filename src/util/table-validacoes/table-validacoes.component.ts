@@ -28,8 +28,6 @@ export class TableValidacoesComponent extends CallAlertService implements OnInit
     }
 
     public mountAlert() {
-        console.log("mountAlert");
-
         this.holderService.cadastro.asserts.forEach(element => {
             if (element.asserts === "REDE_CONFIAVEL" && this.analitico.manobrar && this.analitico.conclusao.motivo.motivo != "Trocar Modem") {
                 let msg: string;
