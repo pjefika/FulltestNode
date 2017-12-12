@@ -126,7 +126,7 @@
                 <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
             </div>
         </div>
-        <acs-component></acs-component>
+        <acs-component [equipamentos]="holderService.equipamentos" [searching]="_searchingAcs"></acs-component>
         <cadastro-wizard-component [cadastro]="holderService.cadastro" *ngIf="holderService.showWizardComponent"></cadastro-wizard-component>
         <infos-dm-component *ngIf="cadastro.rede.planta === 'VIVO1'"></infos-dm-component>
     </div>

@@ -154,5 +154,6 @@ export class TemplateComponent implements OnInit {
         this.holderService.alertState = null;
         this.holderService.cadastroLinha = null;
         this.holderService.confPorta = null;
+        this.holderService.equipamentos = null;
     }
 }

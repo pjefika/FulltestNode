@@ -7,6 +7,7 @@ import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
 import { CadastroLinha } from './../../viewmodel/cadastro-linha/cadastro-linha';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { Injectable } from '@angular/core';
+import { Equipamento } from 'viewmodel/acs/equipamento';
 
 @Injectable()
 export class HolderService {
@@ -70,6 +71,8 @@ export class HolderService {
     public showWizardComponent: boolean = false;
 
     public centraisNortelModal: boolean = false;
+
+    public equipamentos: Equipamento[];
 
     constructor() { }
 
