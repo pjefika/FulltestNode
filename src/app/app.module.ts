@@ -87,6 +87,8 @@ import { TableEstadoPortaCpComponent } from 'util/comp_complementares/configurac
 import { TableLanCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/lan/table-lan-cp.component';
 import { TableProfileCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/profile/table-profile-cp.component';
 import { InfosDmComponent } from 'util/comp_complementares/infos-dm/infos-dm.component';
+import { ConfiabRedeCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/confiab-rede/confiab-rede-cp.component';
+import { GenericValidComponent } from 'util/comp_complementares/configuracoesporta/generic-table/generic-valid/generic-valid.component';
 
 @NgModule({
     declarations: [
@@ -147,7 +149,9 @@ import { InfosDmComponent } from 'util/comp_complementares/infos-dm/infos-dm.com
         TableEstadoPortaCpComponent,
         TableLanCpComponent,
         TableProfileCpComponent,
-        InfosDmComponent
+        InfosDmComponent,
+        ConfiabRedeCpComponent,
+        GenericValidComponent
     ],
     imports: [
         BrowserModule,

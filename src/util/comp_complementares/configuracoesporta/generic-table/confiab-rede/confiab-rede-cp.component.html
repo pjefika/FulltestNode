@@ -1,0 +1,19 @@
+<table class="table table-compact" *ngIf="confRede">
+    <tr *ngIf="confRede.result.pctSuficiente">
+        <td>CRC</td>
+        <td>
+            <clr-icon shape="check" *ngIf="confRede.result.crcOk" class="is-success"></clr-icon>
+            <clr-icon shape="times" *ngIf="!confRede.result.crcOk" class="is-error"></clr-icon>
+        </td>
+        <td></td>
+    </tr>
+    <tr *ngIf="!confRede.result.pctSuficiente">
+        <td>Quantidade de Pacotes Insuficiente</td>
+        <td>
+            <clr-icon shape="exclamation-triangle" *ngIf="!confRede.result.pctSuficiente" class="is-warning is-solid">
+            </clr-icon>
+        </td>
+        <td><button class="btn btn-sm">Consultar Novamente</button></td>
+    </tr>
+
+</table>

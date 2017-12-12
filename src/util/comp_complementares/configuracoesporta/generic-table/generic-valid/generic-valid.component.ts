@@ -1,26 +1,22 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ConfiabilidadeRede } from 'viewmodel/confPorta/confiabilidadeRede';
 import { CallAlertService } from 'util/callalerts/call-alert.service';
 import { ToastyComponent } from 'util/toasty/toasty.component';
-import { ConfiabilidadeRedeCpService } from 'util/comp_complementares/configuracoesporta/generic-table/confiab-rede/confiab-rede-cp.service';
 import { HolderService } from 'util/holder/holder.service';
+import { GenericValidService } from 'util/comp_complementares/configuracoesporta/generic-table/generic-valid/generic-valid.service';
 
 @Component({
-    selector: 'confiab-rede',
-    templateUrl: 'confiab-rede-cp.component.html',
-    styleUrls: ['confiab-rede-cp.component.css'],
-    providers: [ConfiabilidadeRedeCpService]
+    selector: 'generic-valid',
+    templateUrl: 'generic-valid.component.html',
+    styleUrls: ['generic-valid.component.css'],
+    providers: [GenericValidService]
 })
 
-export class ConfiabRedeCpComponent extends CallAlertService implements OnInit {
+export class GenericValidComponent extends CallAlertService implements OnInit {
 
-    @Input() public confRede: ConfiabilidadeRede;
-
-    private btnChangeAdminStateDisable: boolean = false;
-    private btnChangeAdminStateName: string = "Executar";
+    @Input() public valid: any;
 
     constructor(public toastyComponent: ToastyComponent,
-        private confiabilidadeRedeCpService: ConfiabilidadeRedeCpService,
+        private genericValidService: GenericValidService,
         private holderService: HolderService) {
         super(toastyComponent);
     }
