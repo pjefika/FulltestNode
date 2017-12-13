@@ -35,8 +35,6 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
 
     private showWizardComponent: boolean = false;
 
-    private _searchingAcs: boolean = false;
-
     constructor(public toastyComponent: ToastyComponent,
         private cadastroService: CadastroService,
         public holderService: HolderService,
@@ -102,7 +100,6 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
     }
 
     private buscaEqpInAcs() {
-        this._searchingAcs = true;
         this.acsService
             .getEquipamentoAssoc(this.holderService.cadastro.designador)
             .then(data => {
@@ -111,7 +108,6 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
                 //super.callToasty("Informação", "Não foram encontrados equiapementos na ACS - Motive", "info", 5000);
             })
             .then(() => {
-                this._searchingAcs = false;
             });
     }
 
