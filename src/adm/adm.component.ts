@@ -15,6 +15,8 @@ import { CallAlertService } from 'util/callalerts/call-alert.service';
 
 export class AdmComponent extends CallAlertService implements OnInit {
 
+    private user: { user: string, nv: number, token: string };
+
     constructor(
         public holderService: HolderService,
         public toastyComponent: ToastyComponent,
@@ -23,7 +25,8 @@ export class AdmComponent extends CallAlertService implements OnInit {
     }
 
     public ngOnInit() {
-
+        this.user = JSON.parse(sessionStorage.getItem("user"));
+        //console.log(this.user);
     }
 
 }

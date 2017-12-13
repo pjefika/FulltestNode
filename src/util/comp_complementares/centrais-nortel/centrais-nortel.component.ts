@@ -10,6 +10,11 @@ import { StringFilter } from "clarity-angular";
 
 class CentralConnectedFilter implements StringFilter<InfoNortelConection> {
     accepts(info: InfoNortelConection, search: string): boolean {
+        if (search == "sim") {
+            search = "true";
+        } else if (search == "não") {
+            search = "false";
+        }
         return "" + info.connected == search;
     }
 }
