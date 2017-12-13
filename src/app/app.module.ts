@@ -90,6 +90,9 @@ import { InfosDmComponent } from 'util/comp_complementares/infos-dm/infos-dm.com
 import { EnumService } from 'util/comp_complementares/enum.service';
 import { CentraisNortelComponent } from 'util/comp_complementares/centrais-nortel/centrais-nortel.component';
 
+import { ChartsModule } from 'ng2-charts';
+import { ChartsComponent } from 'util/comp_complementares/charts/charts.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -150,7 +153,8 @@ import { CentraisNortelComponent } from 'util/comp_complementares/centrais-norte
         TableLanCpComponent,
         TableProfileCpComponent,
         InfosDmComponent,
-        CentraisNortelComponent
+        CentraisNortelComponent,
+        ChartsComponent
     ],
     imports: [
         BrowserModule,
@@ -163,7 +167,8 @@ import { CentraisNortelComponent } from 'util/comp_complementares/centrais-norte
         MomentModule,
         ToastyModule.forRoot(),
         DndModule.forRoot(),
-        Ng2OrderModule
+        Ng2OrderModule,
+        ChartsModule
     ],
     providers: [
         Util,
