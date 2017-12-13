@@ -1,0 +1,70 @@
+<div *ngIf="deviceMac">
+    <div class="row" *ngIf="authBanda">
+        <table class="table table-compact">
+            <tr *ngIf="authBanda.mensagem">
+                <td>Mensagem</td>
+                <td>{{authBanda.mensagem}}</td>
+            </tr>
+            <tr *ngIf="authBanda.status">
+                <td>Estado</td>
+                <td>{{authBanda.status}}</td>
+            </tr>
+            <tr *ngIf="authBanda.data">
+                <td>Data</td>
+                <td>{{authBanda.data}}</td>
+            </tr>
+            <tr *ngIf="authBanda.ip_address_v4">
+                <td>Endereço Ipv4</td>
+                <td>{{authBanda.ip_address_v4}}</td>
+            </tr>
+            <tr *ngIf="authBanda.ip_address_v6">
+                <td>Endereço Ipv6</td>
+                <td>{{authBanda.ip_address_v6}}</td>
+            </tr>
+            <tr *ngIf="authBanda.ipv6_network">
+                <td>Rede Ipv6</td>
+                <td>{{authBanda.ipv6_network}}</td>
+            </tr>
+            <tr *ngIf="authBanda.cabinet">
+                <td>Armário</td>
+                <td>{{authBanda.cabinet}}</td>
+            </tr>
+            <tr *ngIf="authBanda.rin">
+                <td>RIN</td>
+                <td>{{authBanda.rin}}</td>
+            </tr>
+            <tr *ngIf="authBanda.porta">
+                <td>Porta</td>
+                <td>{{authBanda.porta}}</td>
+            </tr>
+            <tr *ngIf="authBanda.bras">
+                <td>BRAS</td>
+                <td>{{authBanda.bras}}</td>
+            </tr>
+            <tr *ngIf="authBanda.userName">
+                <td>Usuário</td>
+                <td>{{authBanda.userName}}</td>
+            </tr>
+            <tr *ngIf="authBanda.profile">
+                <td>Perfil de Velocidade</td>
+                <td>{{authBanda.profile}}</td>
+            </tr>
+            <tr *ngIf="authBanda.designador">
+                <td>Designador</td>
+                <td>{{authBanda.designador}}</td>
+            </tr>
+            <tr *ngIf="authBanda.cgnat.status.descricao">
+                <td>CGNAT</td>
+                <td>{{authBanda.cgnat.status.descricao}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+            <button class="btn btn-sm" [disabled]="actionBtn" (click)="consultar()">{{actionBtnName}}</button>
+        </div>
+    </div>
+
+</div>

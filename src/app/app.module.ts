@@ -89,6 +89,7 @@ import { TableProfileCpComponent } from 'util/comp_complementares/configuracoesp
 import { InfosDmComponent } from 'util/comp_complementares/infos-dm/infos-dm.component';
 import { ConfiabRedeCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/confiab-rede/confiab-rede-cp.component';
 import { GenericValidComponent } from 'util/comp_complementares/configuracoesporta/generic-table/generic-valid/generic-valid.component';
+import { AuthBandaComponent } from 'util/comp_complementares/configuracoesporta/generic-table/auth-banda/auth-banda-cp.component';
 
 @NgModule({
     declarations: [
@@ -151,7 +152,8 @@ import { GenericValidComponent } from 'util/comp_complementares/configuracoespor
         TableProfileCpComponent,
         InfosDmComponent,
         ConfiabRedeCpComponent,
-        GenericValidComponent
+        GenericValidComponent,
+        AuthBandaComponent
     ],
     imports: [
         BrowserModule,

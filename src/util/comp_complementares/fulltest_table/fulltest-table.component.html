@@ -1,76 +1,22 @@
 <div>
-    <table class="table table-compact setmargen">
-        <thead>
-            <tr>
-                <th colspan="3">Informações de Fulltest</th>
-            </tr>
-            <tr>
-                <th class="left">Nome</th>
-                <th class="left">Mensagem</th>
-                <th>Resultado</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let valid of objectValid.valids">
-                <td class="left">{{valid.nome}}</td>
-                <td class="left">{{valid.mensagem}}</td>
-                <td>
+    <div *ngIf="msgAtivo">
+        <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
+    </div>
+    <div>
+        <clr-datagrid>
+            <clr-dg-column>Validação</clr-dg-column>
+            <clr-dg-column>Resultado</clr-dg-column>
+            <clr-dg-row *ngFor="let valid of objectValid.valids">
+                <clr-dg-cell>
+                    {{valid.mensagem}}
+                </clr-dg-cell>
+                <clr-dg-cell>
                     <clr-icon shape="check" *ngIf="valid.resultado" class="is-success"></clr-icon>
-                    <clr-icon shape="times" *ngIf="!valid.resultado" class="is-error"></clr-icon>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<div *ngIf="msgAtivo">
-    <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
-</div>
-<div>
-
-    <clr-datagrid>
-        <clr-dg-column>Validação</clr-dg-column>
-        <clr-dg-column>Resultado</clr-dg-column>
-        <clr-dg-row *ngFor="let valid of objectValid.valids">
-
-            <clr-dg-cell>
-                {{valid.mensagem}}
-            </clr-dg-cell>
-
-            <clr-dg-cell>
-                <clr-icon shape="check" *ngIf="valid.resultado" class="is-success"></clr-icon>
-                <clr-icon shape="times" *ngIf="!valid.resultado && !valid.foiCorrigido" class="is-error"></clr-icon>
-                <clr-icon shape="exclamation-triangle" *ngIf="!valid.resultado && valid.foiCorrigido" class="is-warning is-solid"></clr-icon>
-            </clr-dg-cell>
-            <generic-valid *clrIfExpanded [valid]="valid" ngProjectAs="clr-dg-row-detail"></generic-valid>
-        </clr-dg-row>
-
-    </clr-datagrid>
-    <!-- <clr-stack-view>
-        <clr-stack-header>
-            Validações
-        </clr-stack-header>
-
-        <clr-stack-block *ngFor="let valid of objectValid.valids">
-            <clr-stack-label>
-                {{valid.nome}}
-            </clr-stack-label>
-            <clr-stack-content>
-
-                <div class="row">
-                    <div class="col-xs-9">
-                        {{valid.mensagem}}
-                    </div>
-                    <div class="col-xs-2">
-                        <clr-icon shape="check" *ngIf="valid.resultado" class="is-success"></clr-icon>
-                        <clr-icon shape="times" *ngIf="!valid.resultado && !valid.foiCorrigido" class="is-error"></clr-icon>
-                        <clr-icon shape="exclamation-triangle" *ngIf="!valid.resultado && valid.foiCorrigido" class="is-warning is-solid"></clr-icon>
-                    </div>
-                </div>
-            </clr-stack-content>
-            <clr-stack-block *ngIf="!valid.resultado && valid.nome=='Confiabilidade de Rede'">
-                <confiab-rede-stackblock-cp [confRede]="valid"></confiab-rede-stackblock-cp>
-            </clr-stack-block>
-
-        </clr-stack-block>
-    </clr-stack-view> -->
+                    <clr-icon shape="times" *ngIf="!valid.resultado && !valid.foiCorrigido" class="is-error"></clr-icon>
+                    <clr-icon shape="exclamation-triangle" *ngIf="!valid.resultado && valid.foiCorrigido" class="is-warning is-solid"></clr-icon>
+                </clr-dg-cell>
+                <generic-valid *clrIfExpanded [valid]="valid" ngProjectAs="clr-dg-row-detail"></generic-valid>
+            </clr-dg-row>
+        </clr-datagrid>
+    </div>
 </div>
