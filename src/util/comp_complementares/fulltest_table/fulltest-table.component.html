@@ -5,8 +5,12 @@
     <div>
         <clr-datagrid>
             <clr-dg-column>Validação</clr-dg-column>
+            <clr-dg-column>Mensagem</clr-dg-column>
             <clr-dg-column>Resultado</clr-dg-column>
             <clr-dg-row *ngFor="let valid of objectValid.valids">
+                <clr-dg-cell>
+                    {{valid.nome}}
+                </clr-dg-cell>
                 <clr-dg-cell>
                     {{valid.mensagem}}
                 </clr-dg-cell>

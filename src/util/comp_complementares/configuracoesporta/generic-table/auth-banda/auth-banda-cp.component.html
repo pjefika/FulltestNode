@@ -11,7 +11,7 @@
             </tr>
             <tr *ngIf="authBanda.data">
                 <td>Data</td>
-                <td>{{authBanda.data}}</td>
+                <td>{{((authBanda.data/1000)| amFromUnix) | amDateFormat:'DD/MM/YYYY hh:mm:ss'}}</td>
             </tr>
             <tr *ngIf="authBanda.ip_address_v4">
                 <td>Endereço Ipv4</td>
@@ -53,9 +53,9 @@
                 <td>Designador</td>
                 <td>{{authBanda.designador}}</td>
             </tr>
-            <tr *ngIf="authBanda.cgnat.status.descricao">
+            <tr *ngIf="authBanda.cgnat.status.descricao.value">
                 <td>CGNAT</td>
-                <td>{{authBanda.cgnat.status.descricao}}</td>
+                <td>{{authBanda.cgnat.status.descricao.value}}</td>
             </tr>
         </table>
     </div>
