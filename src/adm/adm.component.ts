@@ -25,8 +25,7 @@ export class AdmComponent extends CallAlertService implements OnInit {
     }
 
     public ngOnInit() {
-        this.user = JSON.parse(sessionStorage.getItem("user"));
-        //console.log(this.user);
+        
     }
 
 }
