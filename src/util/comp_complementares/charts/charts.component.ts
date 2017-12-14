@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChartService } from 'util/comp_complementares/charts/charts.service';
 
 @Component({
@@ -10,22 +10,14 @@ import { ChartService } from 'util/comp_complementares/charts/charts.service';
 
 export class ChartsComponent implements OnInit {
 
-    constructor(
-        private chartService: ChartService) { }
-
-    public ngOnInit() { }
-
     // lineChart
     // Adicionar informações de valores e a label Top para filtro.
-    public lineChartData: Array<any> = [
-        { data: [0, 50, 80, 100, 120, 150, 150], label: 'Pacotes Up' },
-        { data: [5, 12, 50, 300, 301, 320, 321], label: 'Pacotes Down' }
-    ];
+    private lineChartData: Array<any> = [];
 
     // Aqui é a Label Bottom 
-    public lineChartLabels: Array<any> = ['09:00:00', '10:00:00', '11:00:00', '12:00:00', '13:00:00', '14:00:00', '15:00:00'];
+    private lineChartLabels: Array<any>;
 
-    public lineChartColors: Array<any> = [
+    private lineChartColors: Array<any> = [
         { // grey
             backgroundColor: 'rgba(148,159,177,0.2)',
             borderColor: 'rgba(148,159,177,1)',
@@ -44,11 +36,24 @@ export class ChartsComponent implements OnInit {
         }
     ];
 
-    public lineChartOptions: any = {
-        responsive: true
-    };
+    private lineChartOptions: any = { responsive: true };
 
-    public lineChartLegend: boolean = true;
+    @Input() public chartType: string;
+
+    constructor(
+        private chartService: ChartService) { }
+
+    public ngOnInit() {
+        this.putDataInVariables();
+    }
+
+    private putDataInVariables() {
+        this.lineChartData = [
+            { data: [0, 50, 80, 100, 120, 150, 150], label: 'Pacotes Up' },
+            { data: [5, 12, 50, 300, 301, 320, 321], label: 'Pacotes Down' }
+        ];
+        this.lineChartLabels = ['09:00:00', '10:00:00', '11:00:00', '12:00:00', '13:00:00', '14:00:00', '15:00:00'];
+    }
 
     // events
     public chartClicked(e: any): void {

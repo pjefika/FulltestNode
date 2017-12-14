@@ -2,7 +2,7 @@
     <!--Informações do cadastro-->
     <div *ngIf="cadastro">
         <h3 class="titulo-da-pagina">Informações do Cadastro</h3>
-        <charts-component></charts-component>
+        <charts-component [chartType]="'line'"></charts-component>
         <div class="row">
             <div class="col-md-6">
                 <table class="table table-compact table-vertical" *ngIf="cadastro.linha.tipo">
