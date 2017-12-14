@@ -2,7 +2,7 @@
     <div class="col-md">
         <div style="display: block;">
             <canvas baseChart width="600" height="150" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
-                [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+                [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="'line'" (chartHover)="chartHovered($event)"
                 (chartClick)="chartClicked($event)"></canvas>
         </div>
     </div>

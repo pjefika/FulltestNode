@@ -100,15 +100,17 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
     }
 
     private buscaEqpInAcs() {
-        this.acsService
-            .getEquipamentoAssoc(this.holderService.cadastro.designador)
-            .then(data => {
-                this.holderService.equipamentos = data;
-            }, error => {
-                //super.callToasty("Informação", "Não foram encontrados equiapementos na ACS - Motive", "info", 5000);
-            })
-            .then(() => {
-            });
+        if (this.holderService.cadastro) {
+            this.acsService
+                .getEquipamentoAssoc(this.holderService.cadastro.designador)
+                .then(data => {
+                    this.holderService.equipamentos = data;
+                }, error => {
+                    //super.callToasty("Informação", "Não foram encontrados equiapementos na ACS - Motive", "info", 5000);
+                })
+                .then(() => {
+                });
+        }
     }
 
     private validCadastroRedeEServico() {
