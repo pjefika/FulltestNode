@@ -18,7 +18,7 @@ export class AuthBandaComponent extends CallAlertService implements OnInit {
     @Input() public deviceMac: DeviceMac;
 
     private actionBtn: boolean = false;
-    private actionBtnName: string = "Consultar Novamente";
+    private actionBtnName: string = "Consultar Autenticação";
     private authBanda: AuthBanda;
 
 
@@ -29,22 +29,22 @@ export class AuthBandaComponent extends CallAlertService implements OnInit {
     }
 
     public ngOnInit() {
-        
+        this.consultar();
     }
 
     public consultar() {
         this.actionBtn = true;
-        this.actionBtnName = "Aguarde...";
+        this.actionBtnName = "Consultando Autenticação...";
         this.authBandaService
             .consultar(this.deviceMac.result)
             .then(data => {
                 this.authBanda = data;
                 this.actionBtn = false;
-                this.actionBtnName = "Consultar Novamente";
+                this.actionBtnName = "Consultar Autenticação";
                 super.callToasty("Sucesso", "Comando realizado com sucesso.", "success", 5000)
             }, error => {
                 this.actionBtn = false;
-                this.actionBtnName = "Consultar Novamente";
+                this.actionBtnName = "Consultar Autenticação";
                 super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
             });
     }
