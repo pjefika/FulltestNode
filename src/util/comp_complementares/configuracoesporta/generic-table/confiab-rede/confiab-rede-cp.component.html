@@ -40,9 +40,12 @@
         </table>
     </div>
     <div class="col-xs-2">
-        <button class="btn btn-sm btn-link" [disabled]="actionBtn" (click)="consultar()">
-            <clr-icon shape="sync" *ngIf="!actionBtn"></clr-icon>
-            <span class="spinner" *ngIf="actionBtn"></span>
-        </button>
+        <clr-tooltip>
+            <button clrTooltipTrigger class="btn btn-sm btn-link" [disabled]="actionBtn" (click)="consultar()">
+                <clr-icon shape="sync" *ngIf="!actionBtn"></clr-icon>
+                <span class="spinner spinner-sm" *ngIf="actionBtn"></span>
+                <clr-tooltip-content clrPosition="top-left">{{actionBtnName}}</clr-tooltip-content>
+            </button>
+        </clr-tooltip>
     </div>
 </div>

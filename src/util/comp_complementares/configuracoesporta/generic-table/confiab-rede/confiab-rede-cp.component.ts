@@ -17,7 +17,7 @@ export class ConfiabRedeCpComponent extends CallAlertService implements OnInit {
     @Input() public confRede: ConfiabilidadeRede;
 
     private actionBtn: boolean = false;
-    private actionBtnName: string = "Consultar Novamente";
+    private actionBtnName: string = "Consultar";
 
 
     constructor(public toastyComponent: ToastyComponent,
@@ -38,11 +38,11 @@ export class ConfiabRedeCpComponent extends CallAlertService implements OnInit {
             .then(data => {
                 this.confRede = data;
                 this.actionBtn = false;
-                this.actionBtnName = "Consultar Novamente";
+                this.actionBtnName = "Consultar";
                 super.callToasty("Sucesso", "Comando realizado com sucesso.", "success", 5000)
             }, error => {
                 this.actionBtn = false;
-                this.actionBtnName = "Consultar Novamente";
+                this.actionBtnName = "Consultar";
                 super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
             });
     }
