@@ -22,9 +22,9 @@
                     </tr>
                 </tbody>
             </table>
+            <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" [disabled]="doFulltest">Realizar Fulltest</button>
             <fulltest-table-component [objectValid]="objectValid"></fulltest-table-component>
         </div>
-        <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" [disabled]="doFulltest">Realizar Fulltest</button>
     </div>
     <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Fulltest...'"></loading-component>
 </div>

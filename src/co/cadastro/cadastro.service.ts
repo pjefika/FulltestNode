@@ -47,4 +47,8 @@ export class CadastroService extends SuperService {
             .catch(super.handleError);
     }
 
+    public getMock(): Cadastro {
+        return { "designador": "CTA-81AFTMOU6-013", "instancia": "4133335556", "designadorAcesso": "CTA-03247925-069", "rede": { "tipo": "METALICA", "origem": "ONLINE", "planta": "VIVO2", "ipDslam": "10.141.249.194", "vendorDslam": "KEYMILE", "modeloDslam": "SUVD3", "slot": 17, "porta": 15, "sequencial": 1015, "logica": 1015, "rin": 478, "vlanVoip": 1478, "vlanVod": 3478, "vlanMulticast": 4000, "cvLan": 1115 }, "servicos": { "velDown": 51200, "velUp": 5120, "tipoLinha": "TDM" }, "linha": { "tipo": "TDM", "dn": "4160435534", "central": "PRCTA_LPS01" }, "radius": { "status": "ATIVO", "armario": "PRCTA_O1A71", "rin": "478", "velocidade": "51200 - 5120", "ipFixo": "NAO ENCONTROU", "profile": "r5120pb51200p", "porta": "1015", "isIpFixo": true }, "asserts": [{ "asserts": "DIVERGENCIA_TBS_RADIUS", "value": false }, { "asserts": "CIRCUITO_ATIVO", "value": true }, { "asserts": "HAS_BLOQUEIO_RADIUS", "value": false }] } as Cadastro;
+    }
+
 }

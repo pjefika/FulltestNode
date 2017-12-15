@@ -1,63 +1,96 @@
 <div *ngIf="deviceMac">
     <div class="row" *ngIf="authBanda">
-        <table class="table table-compact">
-            <tr *ngIf="authBanda.mensagem">
-                <td>Mensagem</td>
-                <td>{{authBanda.mensagem}}</td>
-            </tr>
-            <tr *ngIf="authBanda.status">
-                <td>Estado</td>
-                <td>{{authBanda.status}}</td>
-            </tr>
-            <tr *ngIf="authBanda.data">
-                <td>Data</td>
-                <td>{{((authBanda.data/1000)| amFromUnix) | amDateFormat:'DD/MM/YYYY hh:mm:ss'}}</td>
-            </tr>
-            <tr *ngIf="authBanda.ip_address_v4">
-                <td>Endereço Ipv4</td>
-                <td>{{authBanda.ip_address_v4}}</td>
-            </tr>
-            <tr *ngIf="authBanda.ip_address_v6">
-                <td>Endereço Ipv6</td>
-                <td>{{authBanda.ip_address_v6}}</td>
-            </tr>
-            <tr *ngIf="authBanda.ipv6_network">
-                <td>Rede Ipv6</td>
-                <td>{{authBanda.ipv6_network}}</td>
-            </tr>
-            <tr *ngIf="authBanda.cabinet">
-                <td>Armário</td>
-                <td>{{authBanda.cabinet}}</td>
-            </tr>
-            <tr *ngIf="authBanda.rin">
-                <td>RIN</td>
-                <td>{{authBanda.rin}}</td>
-            </tr>
-            <tr *ngIf="authBanda.porta">
-                <td>Porta</td>
-                <td>{{authBanda.porta}}</td>
-            </tr>
-            <tr *ngIf="authBanda.bras">
-                <td>BRAS</td>
-                <td>{{authBanda.bras}}</td>
-            </tr>
-            <tr *ngIf="authBanda.userName">
-                <td>Usuário</td>
-                <td>{{authBanda.userName}}</td>
-            </tr>
-            <tr *ngIf="authBanda.profile">
-                <td>Perfil de Velocidade</td>
-                <td>{{authBanda.profile}}</td>
-            </tr>
-            <tr *ngIf="authBanda.designador">
-                <td>Designador</td>
-                <td>{{authBanda.designador}}</td>
-            </tr>
-            <tr *ngIf="authBanda.cgnat.status.descricao.value">
-                <td>CGNAT</td>
-                <td>{{authBanda.cgnat.status.descricao.value}}</td>
-            </tr>
-        </table>
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-9">
+            <table class="table table-compact">
+                <thead>
+                    <tr>
+                        <th colspan=2>
+                            Informações Autenticação
+                        </th>
+                    </tr>
+                </thead>
+                <tr *ngIf="authBanda.mensagem">
+                    <td class="left">Mensagem</td>
+                    <td>{{authBanda.mensagem}}</td>
+                </tr>
+                <tr *ngIf="authBanda.status">
+                    <td class="left">Estado</td>
+                    <td>
+                        {{authBanda.status}}
+                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="authBanda.status=='Start'||authBanda.status=='Alive'"></clr-icon>
+                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="authBanda.status!='Start'&&authBanda.status!='Alive'"></clr-icon>
+                    </td>
+                </tr>
+                <tr *ngIf="authBanda.data">
+                    <td class="left">Data</td>
+                    <td>{{((authBanda.data/1000)| amFromUnix) | amDateFormat:'DD/MM/YYYY hh:mm:ss'}}</td>
+                </tr>
+                <tr *ngIf="authBanda.ip_address_v4">
+                    <td class="left">Endereço Ipv4</td>
+                    <td>{{authBanda.ip_address_v4}}</td>
+                </tr>
+                <tr *ngIf="authBanda.ip_address_v6">
+                    <td class="left">Endereço Ipv6</td>
+                    <td>{{authBanda.ip_address_v6}}</td>
+                </tr>
+                <tr *ngIf="authBanda.ipv6_network">
+                    <td class="left">Rede Ipv6</td>
+                    <td>{{authBanda.ipv6_network}}</td>
+                </tr>
+                <tr *ngIf="authBanda.cabinet">
+                    <td class="left">Armário</td>
+                    <td>{{authBanda.cabinet}}</td>
+                </tr>
+                <tr *ngIf="authBanda.rin">
+                    <td class="left">RIN</td>
+                    <td>
+                        {{authBanda.rin}}
+                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="authBanda.rin==holderService.cadastro.radius.rin"></clr-icon>
+                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="authBanda.rin!=holderService.cadastro.radius.rin"></clr-icon>
+                    </td>
+                </tr>
+                <tr *ngIf="authBanda.porta">
+                    <td class="left">Porta</td>
+                    <td>{{authBanda.porta}}
+                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="authBanda.toString()==holderService.cadastro.radius.porta"></clr-icon>
+                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="authBanda.porta.toString()!=holderService.cadastro.radius.porta"></clr-icon>
+                    </td>
+                </tr>
+                <tr *ngIf="authBanda.bras">
+                    <td class="left">BRAS</td>
+                    <td>{{authBanda.bras}}</td>
+                </tr>
+                <tr *ngIf="authBanda.userName">
+                    <td class="left">Usuário</td>
+                    <td>
+                        {{authBanda.userName}}
+                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="(authBanda.userName.includes('pro')&&holderService.cadastro.radius.isIpFixo)||(!authBanda.userName.includes('pro')&&!holderService.cadastro.radius.isIpFixo)"></clr-icon>
+                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="(authBanda.userName.includes('pro')&&!holderService.cadastro.radius.isIpFixo)||(!authBanda.userName.includes('pro')&&holderService.cadastro.radius.isIpFixo)"></clr-icon>
+                    </td>
+                </tr>
+                <tr *ngIf="authBanda.profile">
+                    <td class="left">Perfil de Velocidade</td>
+                    <td>{{authBanda.profile}}
+                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="authBanda.profile==holderService.cadastro.radius.profile"></clr-icon>
+                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="authBanda.profile!=holderService.cadastro.radius.profile"></clr-icon>
+                    </td>
+                </tr>
+                <tr *ngIf="authBanda.designador">
+                    <td class="left">Designador</td>
+                    <td>{{authBanda.designador}}
+                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="authBanda.designador==holderService.cadastro.rede.designador"></clr-icon>
+                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="authBanda.designador!=holderService.cadastro.rede.designador"></clr-icon>
+                    </td>
+                </tr>
+                <tr *ngIf="authBanda.cgnat.status.descricao.value">
+                    <td class="left">CGNAT</td>
+                    <td>{{authBanda.cgnat.status.descricao.value}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-xs-2"></div>
     </div>
 
     <div class="row">
@@ -66,7 +99,6 @@
             <button class="btn btn-sm" [disabled]="actionBtn" (click)="consultar()">{{actionBtnName}}</button>
         </div>
         <div class="col-xs-3"></div>
-        <!-- <div class="col-xs-3"></div> -->
     </div>
 
 </div>
