@@ -89,6 +89,7 @@ import { TableProfileCpComponent } from 'util/comp_complementares/configuracoesp
 import { InfosDmComponent } from 'util/comp_complementares/infos-dm/infos-dm.component';
 import { EnumService } from 'util/comp_complementares/enum.service';
 import { CentraisNortelComponent } from 'util/comp_complementares/centrais-nortel/centrais-nortel.component';
+import { InfoTecnicasComponent } from 'co/info-tecnicas/info-tecnicas.component';
 
 @NgModule({
     declarations: [
@@ -150,7 +151,8 @@ import { CentraisNortelComponent } from 'util/comp_complementares/centrais-norte
         TableLanCpComponent,
         TableProfileCpComponent,
         InfosDmComponent,
-        CentraisNortelComponent
+        CentraisNortelComponent,
+        InfoTecnicasComponent
     ],
     imports: [
         BrowserModule,
@@ -193,6 +195,7 @@ import { CentraisNortelComponent } from 'util/comp_complementares/centrais-norte
         PrincipalComponent,
         FulltestComponent,
         CadastroComponent,
+        InfoTecnicasComponent,
         BrancoComponent,
         CadastroCrmComponent,
         ComplementaresComponent,

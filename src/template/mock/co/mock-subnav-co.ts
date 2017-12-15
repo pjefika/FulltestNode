@@ -4,11 +4,12 @@ import { ManobraComponent } from './../../../co/manobra/manobra.component';
 import { FulltestComponent } from './../../../co/fulltest/fulltest.component';
 import { CadastroComponent } from './../../../co/cadastro/cadastro.component';
 import { SubNav } from './../../../viewmodel/menus/subnav';
+import { InfoTecnicasComponent } from 'co/info-tecnicas/info-tecnicas.component';
 
 export const subNavMockCo: SubNav[] = [
     {
-        nome: "Informações de Cadastro",
-        component: CadastroComponent
+        nome: "Informações Técnicas",
+        component: InfoTecnicasComponent
     },
     {
         nome: "Fulltest",
