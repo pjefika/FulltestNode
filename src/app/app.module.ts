@@ -90,6 +90,7 @@ import { InfosDmComponent } from 'util/comp_complementares/infos-dm/infos-dm.com
 import { EnumService } from 'util/comp_complementares/enum.service';
 import { CentraisNortelComponent } from 'util/comp_complementares/centrais-nortel/centrais-nortel.component';
 import { InfoTecnicasComponent } from 'co/info-tecnicas/info-tecnicas.component';
+import { EventoMassivoComponent } from 'util/comp_complementares/evento-massivo/evento-massivo.component';
 
 @NgModule({
     declarations: [
@@ -152,7 +153,8 @@ import { InfoTecnicasComponent } from 'co/info-tecnicas/info-tecnicas.component'
         TableProfileCpComponent,
         InfosDmComponent,
         CentraisNortelComponent,
-        InfoTecnicasComponent
+        InfoTecnicasComponent,
+        EventoMassivoComponent
     ],
     imports: [
         BrowserModule,
