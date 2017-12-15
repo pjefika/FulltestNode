@@ -5,12 +5,16 @@
                 <th colspan="3">{{parametros.nome}}</th>
             </tr>
             <tr>
-                <th>Mensagem:</th>
+                <th rowspan="2">Mensagem:</th>
                 <td colspan="2">
                     {{parametros.mensagem}}
                     <clr-icon style="color: green; text-align: center;" shape="check" *ngIf="parametros.resultado"></clr-icon>
                     <clr-icon style="color: red; text-align: center;" shape="times" *ngIf="!parametros.resultado"></clr-icon>
                 </td>
+            </tr>
+            <tr>
+                <th>Valocidade de Download</th>
+                <th>Valocidade de Upload</th>
             </tr>
             <tr>
                 <th>Velocidade Sincronizada (Mbps):</th>
