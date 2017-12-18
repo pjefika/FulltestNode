@@ -5,6 +5,6 @@
 
     <acs-component [equipamentos]="holderService.equipamentos"></acs-component>
 
-    <evento-massivo-component></evento-massivo-component>
+    <evento-massivo-component *ngIf="holderService.cadastro"></evento-massivo-component>
 
 </div>
