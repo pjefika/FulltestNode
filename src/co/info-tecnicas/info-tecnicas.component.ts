@@ -13,7 +13,8 @@ import { HolderService } from 'util/holder/holder.service';
 
 export class InfoTecnicasComponent extends CallAlertService implements OnInit {
 
-    constructor(public toastyComponent: ToastyComponent,
+    constructor(
+        public toastyComponent: ToastyComponent,
         public holderService: HolderService) {
         super(toastyComponent);
     }
