@@ -2,4 +2,6 @@
     <confiab-rede [confRede]="valid" *ngIf="valid.nome=='Confiabilidade de Rede'"></confiab-rede>
     <auth-banda [deviceMac]="valid" *ngIf="valid.nome=='MAC do Equipamento'"></auth-banda>
     <table-parametros-cp-component [parametros]="valid" *ngIf="valid.nome=='Parâmetros'"></table-parametros-cp-component>
+    <table-modulacao-cp-component [modulacao]="valid" *ngIf="valid.nome=='Modulação'"></table-modulacao-cp-component>
+    <profile-view-cp [profile]="valid" *ngIf="valid.nome=='Profile'"></profile-view-cp>
 </div>

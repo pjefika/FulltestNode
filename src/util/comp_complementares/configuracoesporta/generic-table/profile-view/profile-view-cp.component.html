@@ -1,24 +1,24 @@
-<div class="row" *ngIf="modulacao">
+<div class="row" *ngIf="profile">
     <div class="col-xs-1"></div>
     <div class="col-xs-9">
         <table class="table table-compact">
             <thead>
                 <tr>
-                    <th colspan="2" style="text-align: center;">Modulação</th>
+                    <th colspan="2" style="text-align: center;">Profile</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Estado</td>
-                    <td>{{modulacao.mensagem}}
-                        <clr-icon class="is-success" shape="check" *ngIf="modulacao.resultado"></clr-icon>
-                        <clr-icon class="is-error" shape="times" *ngIf="!modulacao.resultado"></clr-icon>
+                    <td>{{profile.mensagem}}
+                        <clr-icon class="is-success" shape="check" *ngIf="profile.resultado"></clr-icon>
+                        <clr-icon class="is-error" shape="times" *ngIf="!profile.resultado"></clr-icon>
                     </td>
                 </tr>
                 <tr>
-                    <td>Configurada</td>
+                    <td>Configurado (Down/Up)</td>
                     <td>
-                        {{modulacao.result.modulEnum}}
+                        {{profile.result.profileDown}}/{{profile.result.profileUp}}
                     </td>
                 </tr>
             </tbody>
