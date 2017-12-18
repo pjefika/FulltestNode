@@ -2,11 +2,7 @@
     <h3 class="titulo-da-pagina">Informações Técnicas</h3>
 
     <charts-component [chartType]="'line'" *ngIf="holderService.cadastro"></charts-component>
-
     <evento-massivo-component *ngIf="holderService.cadastro"></evento-massivo-component>
-
+    <acs-component [equipamentos]="holderService.equipamentos"></acs-component> 
     <cadastro-component></cadastro-component>
-
-    <acs-component [equipamentos]="holderService.equipamentos"></acs-component>    
-
 </div>
