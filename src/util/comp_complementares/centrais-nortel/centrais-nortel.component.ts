@@ -32,12 +32,18 @@ class CentralOcupadoFilter implements StringFilter<InfoNortelConection> {
 
 class CentralNameFilter implements StringFilter<InfoNortelConection> {
     accepts(info: InfoNortelConection, search: string): boolean {
+        if (info.central.toLowerCase().includes(search)) {
+            return info.central.toLowerCase().includes(search);
+        }
         return "" + info.central.toLowerCase() == search;
     }
 }
 
 class CentralIPFilter implements StringFilter<InfoNortelConection> {
     accepts(info: InfoNortelConection, search: string): boolean {
+        if (info.ip.toLowerCase().includes(search)) {
+            return info.ip.toLowerCase().includes(search);
+        }
         return "" + info.ip.toLowerCase() == search;
     }
 }
