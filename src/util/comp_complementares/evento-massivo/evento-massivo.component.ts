@@ -22,6 +22,6 @@ export class EventoMassivoComponent implements OnInit {
         this.searching = true;
         setTimeout(() => {
             this.searching = false;
-        }, 5000);
+        }, 1000);
     }
 }

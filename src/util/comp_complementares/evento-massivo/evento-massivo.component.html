@@ -1,38 +1,17 @@
 <div>
     <loading-component [searching]="searching" [searchWhat]="'Buscando Eventos Massivos...'"></loading-component>
-    <table class="table" *ngIf="!searching">
-        <thead>
-            <tr>
-                <th>Decimal</th>
-                <th>Hexadecimal</th>
-                <th>Binary</th>
-                <th>Roman Numeral</th>
-            </tr>
-        </thead>
+    <table class="table table-vertical table-compact" *ngIf="!searching">
         <tbody>
             <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>I</td>
+                <th colspan="2" style="text-align: center;">Eventos Massivos</th>
             </tr>
             <tr>
-                <td>5</td>
-                <td>5</td>
-                <td>101</td>
-                <td>V</td>
+                <th>Validação 1</th>
+                <td>criticidade</td>
             </tr>
             <tr>
-                <td>10</td>
-                <td>A</td>
-                <td>1010</td>
-                <td>X</td>
-            </tr>
-            <tr>
-                <td>15</td>
-                <td>F</td>
-                <td>1111</td>
-                <td>XV</td>
+                <th>Validação 2</th>
+                <td>criticidade</td>
             </tr>
         </tbody>
     </table>

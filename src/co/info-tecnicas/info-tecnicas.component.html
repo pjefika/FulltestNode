@@ -3,10 +3,12 @@
 
     <charts-component [chartType]="'line'" *ngIf="holderService.cadastro"></charts-component>
 
+    <evento-massivo-component *ngIf="holderService.cadastro"></evento-massivo-component>
+
     <cadastro-component></cadastro-component>
 
     <acs-component [equipamentos]="holderService.equipamentos"></acs-component>
 
-    <evento-massivo-component *ngIf="holderService.cadastro"></evento-massivo-component>
+    
 
 </div>
