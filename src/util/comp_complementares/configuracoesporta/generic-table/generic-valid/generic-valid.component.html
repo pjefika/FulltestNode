@@ -4,4 +4,5 @@
     <table-parametros-cp-component [parametros]="valid" *ngIf="valid.nome=='Parâmetros'"></table-parametros-cp-component>
     <table-modulacao-cp-component [modulacao]="valid" *ngIf="valid.nome=='Modulação'"></table-modulacao-cp-component>
     <profile-view-cp [profile]="valid" *ngIf="valid.nome=='Profile'"></profile-view-cp>
+    <vlan-view-cp [vlan]="valid" *ngIf="valid.nome.includes('Vlan')"></vlan-view-cp>
 </div>
