@@ -29,14 +29,14 @@ export class EventoMassivoComponent extends CallAlertService implements OnInit {
     private contagemRegressivaParaMostrarTabela() {
         this.searching = true;
         setTimeout(() => {
-            this.eventoMassivo = [{
-                validacao: "Wisetool fora...",
-                criticidade: "Critico"
-            },
-            {
-                validacao: "SAS fora....",
-                criticidade: "Baixo"
-            }];
+            // this.eventoMassivo = [{
+            //     validacao: "Massivo 1",
+            //     criticidade: "Critico"
+            // },
+            // {
+            //     validacao: "Massivo 2",
+            //     criticidade: "Baixo"
+            // }];
             this.searching = false;
         }, 1000);
     }

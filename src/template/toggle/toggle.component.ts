@@ -11,9 +11,9 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class ToggleComponent implements OnInit {
 
-    modalToggle: boolean = false;
+    private modalToggle: boolean = false;
 
-    eachFulltest: string = "CO";
+    private eachFulltest: string = "CO";
 
     constructor(
         private router: Router,
@@ -28,8 +28,15 @@ export class ToggleComponent implements OnInit {
         });
     }
 
-    hitclose() {
+    private hitclose() {
         this.modalToggle = false;
         this.holderService.eachFulltest = this.eachFulltest;
+    }
+
+    private hitCloseDirect() {
+        setTimeout(() => {
+            this.modalToggle = false;
+            this.holderService.eachFulltest = this.eachFulltest;
+        }, 1);
     }
 }

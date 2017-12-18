@@ -8,11 +8,11 @@
             <div class="form-group">
                 <label>Selecione qual teste irá realizar:</label>
                 <div class="radio-inline">
-                    <input type="radio" name="gridRadios1" id="checkrads_11" [(ngModel)]="eachFulltest" value="CO">
+                    <input type="radio" name="gridRadios1" id="checkrads_11" [(ngModel)]="eachFulltest" value="CO" (click)="hitCloseDirect()">
                     <label for="checkrads_11">CO</label>
                 </div>
                 <div class="radio-inline">
-                    <input type="radio" name="gridRadios1" id="checkrads_12" [(ngModel)]="eachFulltest" value="CRM">
+                    <input type="radio" name="gridRadios1" id="checkrads_12" [(ngModel)]="eachFulltest" value="CRM" (click)="hitCloseDirect()">
                     <label for="checkrads_12">CRM</label>
                 </div>
             </div>
