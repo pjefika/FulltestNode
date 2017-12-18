@@ -1,6 +1,8 @@
 <div>
     <h3 class="titulo-da-pagina">Informações Técnicas</h3>
 
+    <charts-component [chartType]="'line'" *ngIf="holderService.cadastro"></charts-component>
+
     <cadastro-component></cadastro-component>
 
     <acs-component [equipamentos]="holderService.equipamentos"></acs-component>
