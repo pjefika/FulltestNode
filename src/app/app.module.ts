@@ -166,7 +166,7 @@ import { AuthBandaComponent } from 'util/comp_complementares/configuracoesporta/
         ChartsComponent,
         InfoTecnicasComponent,
         EventoMassivoComponent,
-        TableModulacaoCpComponent
+        TableModulacaoCpComponent,
         ConfiabRedeCpComponent,
         GenericValidComponent,
         AuthBandaComponent

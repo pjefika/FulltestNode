@@ -22,7 +22,7 @@ export class FulltestComponent extends CallAlertService implements OnInit {
 
     private searchFulltest: boolean = false;
     private alertTypeOn: boolean = false;
-    private  doFulltest: boolean = false;
+    private doFulltest: boolean = false;
 
     constructor(
         private fulltestService: FulltestService,
@@ -37,23 +37,10 @@ export class FulltestComponent extends CallAlertService implements OnInit {
         if (!this.objectValid) {
             this.realizaFulltest();
         }
-        // this.holderService.resumoInfosAtivo = true;
         this.holderService.btnResumoInfosAtivo = true;
     }
 
     public realizaFulltest(): void {
-
-        this.searchFulltest = true;
-        this.fulltestService
-            .getValidacao(this.cadastro)
-            .then(data => {
-                this.objectValid = data;
-                this.searchFulltest = false;
-                this.holderService.objectValid = this.objectValid;
-            }, error => {
-                this.searchFulltest = false;
-                this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
-            });
 
         // this.searchFulltest = true;
         // this.fulltestService
@@ -67,21 +54,20 @@ export class FulltestComponent extends CallAlertService implements OnInit {
         //         this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
         //     });
 
-
         //for testing purposes
         this.objectValid = this.fulltestService.getValidacaoMock();
         this.searchFulltest = false;
 
     }
 
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
+    // private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    //     this.toastyComponent.toastyInfo = {
+    //         titulo: titulo,
+    //         msg: msg,
+    //         theme: theme,
+    //         timeout: timeout
+    //     }
+    //     this.toastyComponent.addToasty();
 
-    }
+    // }
 }
