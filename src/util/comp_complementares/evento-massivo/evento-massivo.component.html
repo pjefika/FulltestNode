@@ -1,26 +1,18 @@
 <div>
     <loading-component [searching]="searching" [searchWhat]="'Buscando Eventos Massivos...'"></loading-component>
-    <table class="table table-vertical table-compact" *ngIf="!searching">
+    <table class="table table-vertical table-compact" *ngIf="eventoMassivo">
         <tbody>
             <tr>
                 <th colspan="2" style="text-align: center;">Eventos Massivos</th>
             </tr>
-            <tr>
-                <th>Validação 1</th>
+            <tr *ngFor="let evento of eventoMassivo">
+                <th>{{evento.validacao}}</th>
                 <td>
-                    Criticidade
-                    <clr-icon shape="check" style="color: green;"></clr-icon>
-                    <clr-icon shape="times" style="color: red;"></clr-icon>
+                    {{evento.criticidade}}
+                    <!-- <clr-icon shape="check" style="color: green;"></clr-icon>
+                    <clr-icon shape="times" style="color: red;"></clr-icon> -->
                 </td>
-            </tr>
-            <tr>
-                <th>Validação 2</th>
-                <td>
-                    Criticidade
-                    <clr-icon shape="check" style="color: green;"></clr-icon>
-                    <clr-icon shape="times" style="color: red;"></clr-icon>
-                </td>
-            </tr>
+            </tr>            
         </tbody>
     </table>
 </div>
