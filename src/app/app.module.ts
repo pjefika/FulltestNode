@@ -94,6 +94,7 @@ import { EventoMassivoComponent } from 'util/comp_complementares/evento-massivo/
 
 import { ChartsModule } from 'ng2-charts';
 import { ChartsComponent } from 'util/comp_complementares/charts/charts.component';
+import { TableModulacaoCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/modulacao/table-modulacao-cp.component';
 
 @NgModule({
     declarations: [
@@ -158,7 +159,8 @@ import { ChartsComponent } from 'util/comp_complementares/charts/charts.componen
         CentraisNortelComponent,
         ChartsComponent,
         InfoTecnicasComponent,
-        EventoMassivoComponent
+        EventoMassivoComponent,
+        TableModulacaoCpComponent
     ],
     imports: [
         BrowserModule,
