@@ -15,7 +15,6 @@ import { CallAlertService } from 'util/callalerts/call-alert.service';
 
 export class AdmComponent extends CallAlertService implements OnInit {
 
-    private user: { user: string, nv: number, token: string };
 
     constructor(
         public holderService: HolderService,

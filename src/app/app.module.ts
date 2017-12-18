@@ -89,6 +89,8 @@ import { TableProfileCpComponent } from 'util/comp_complementares/configuracoesp
 import { InfosDmComponent } from 'util/comp_complementares/infos-dm/infos-dm.component';
 import { EnumService } from 'util/comp_complementares/enum.service';
 import { CentraisNortelComponent } from 'util/comp_complementares/centrais-nortel/centrais-nortel.component';
+import { InfoTecnicasComponent } from 'co/info-tecnicas/info-tecnicas.component';
+import { EventoMassivoComponent } from 'util/comp_complementares/evento-massivo/evento-massivo.component';
 
 import { ChartsModule } from 'ng2-charts';
 import { ChartsComponent } from 'util/comp_complementares/charts/charts.component';
@@ -154,7 +156,9 @@ import { ChartsComponent } from 'util/comp_complementares/charts/charts.componen
         TableProfileCpComponent,
         InfosDmComponent,
         CentraisNortelComponent,
-        ChartsComponent
+        ChartsComponent,
+        InfoTecnicasComponent,
+        EventoMassivoComponent
     ],
     imports: [
         BrowserModule,
@@ -198,6 +202,7 @@ import { ChartsComponent } from 'util/comp_complementares/charts/charts.componen
         PrincipalComponent,
         FulltestComponent,
         CadastroComponent,
+        InfoTecnicasComponent,
         BrancoComponent,
         CadastroCrmComponent,
         ComplementaresComponent,

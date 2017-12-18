@@ -9,6 +9,7 @@ import { HolderService } from './../util/holder/holder.service';
 import { Util } from './../util/util';
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { InfoTecnicasComponent } from 'co/info-tecnicas/info-tecnicas.component';
 
 @Component({
     selector: 'template-full',
@@ -113,7 +114,7 @@ export class TemplateComponent implements OnInit {
             this.setToDynamicComponent(CadastroCrmComponent);
         } else {
             this.mostraSubNav(true, subNavMockCo);
-            this.setToDynamicComponent(CadastroComponent);
+            this.setToDynamicComponent(InfoTecnicasComponent);
         }
     }
 
