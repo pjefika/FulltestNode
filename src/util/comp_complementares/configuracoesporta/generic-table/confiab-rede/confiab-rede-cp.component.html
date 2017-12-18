@@ -1,0 +1,52 @@
+<div class="row" *ngIf="confRede">
+    <div class="col-xs-1">
+    </div>
+    <div class="col-xs-9">
+        <table class="table table-compact">
+            <thead>
+                <tr>
+                    <th colspan=2>Informações de Rede</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">
+                        Confiabilidade de Rede
+                    </td>
+                    <td>
+                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="confRede.resultado"></clr-icon>
+                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="!confRede.resultado && confRede.result.pctSuficiente"></clr-icon>
+                        <clr-icon shape="exclamation-triangle" *ngIf="!confRede.resultado && !confRede.result.pctSuficiente" class="is-warning is-solid"></clr-icon>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">Pacotes Trafegados (Down/Up)</td>
+                    <td>{{confRede.result.pctDown}} / {{confRede.result.pctUp}}</td>
+                </tr>
+                <tr>
+                    <td class="left">CRC (Down/Up)</td>
+                    <td>{{confRede.result.crcDown}} / {{confRede.result.crcUp}}</td>
+                </tr>
+                <tr>
+                    <td class="left">FEC (Down/Up)</td>
+                    <td>{{confRede.result.fecDown}} / {{confRede.result.fecUp}}</td>
+                </tr>
+                <tr>
+                    <td class="left">Ressincronismo</td>
+                    <td>{{confRede.result.resync}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div class="col-xs-2">
+        <clr-tooltip>
+            <button clrTooltipTrigger class="btn btn-sm btn-link" [disabled]="actionBtn" (click)="consultar()">
+                <clr-icon shape="sync" *ngIf="!actionBtn"></clr-icon>
+                <span class="spinner spinner-sm" *ngIf="actionBtn"></span>
+                <clr-tooltip-content clrPosition="top-left">{{actionBtnName}}</clr-tooltip-content>
+            </button>
+        </clr-tooltip>
+    </div>
+    <div class="row"></div>
+</div>

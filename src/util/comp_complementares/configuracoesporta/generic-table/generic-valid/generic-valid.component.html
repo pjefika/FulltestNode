@@ -1,0 +1,8 @@
+<div *ngIf="valid">
+    <div *ngIf="valid.nome=='Confiabilidade de Rede'">
+        <confiab-rede [confRede]="valid"></confiab-rede>
+    </div>
+    <div *ngIf="valid.nome=='MAC do Equipamento'">
+        <auth-banda [deviceMac]="valid"></auth-banda>
+    </div>
+</div>

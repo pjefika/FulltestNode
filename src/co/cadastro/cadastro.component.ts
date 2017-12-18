@@ -47,7 +47,12 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
                 this.callAlert(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
             }
         } else {
-            this.getCadastro();
+            // this.getCadastro();
+            // for test purposes
+            this.cadastro = this.cadastroService.getMock();;
+            this.searching = false;
+            this.holderService.cadastro = this.cadastro;
+            this.holderService.liberarSubNav = true;
         }
         this.holderService.resumoInfosAtivo = false;
         this.holderService.btnResumoInfosAtivo = false;
