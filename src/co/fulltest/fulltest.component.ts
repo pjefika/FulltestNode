@@ -74,14 +74,14 @@ export class FulltestComponent extends CallAlertService implements OnInit {
 
     }
 
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
+    // private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    //     this.toastyComponent.toastyInfo = {
+    //         titulo: titulo,
+    //         msg: msg,
+    //         theme: theme,
+    //         timeout: timeout
+    //     }
+    //     this.toastyComponent.addToasty();
 
-    }
+    // }
 }
