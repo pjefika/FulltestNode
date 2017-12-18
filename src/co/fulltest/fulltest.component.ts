@@ -42,21 +42,21 @@ export class FulltestComponent extends CallAlertService implements OnInit {
 
     public realizaFulltest(): void {
 
-        // this.searchFulltest = true;
-        // this.fulltestService
-        //     .getValidacao(this.cadastro)
-        //     .then(data => {
-        //         this.objectValid = data;
-        //         this.searchFulltest = false;
-        //         this.holderService.objectValid = this.objectValid;
-        //     }, error => {
-        //         this.searchFulltest = false;
-        //         this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
-        //     });
+        this.searchFulltest = true;
+        this.fulltestService
+            .getValidacao(this.cadastro)
+            .then(data => {
+                this.objectValid = data;
+                this.searchFulltest = false;
+                this.holderService.objectValid = this.objectValid;
+            }, error => {
+                this.searchFulltest = false;
+                this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
+            });
 
         //for testing purposes
-        this.objectValid = this.fulltestService.getValidacaoMock();
-        this.searchFulltest = false;
+        // this.objectValid = this.fulltestService.getValidacaoMock();
+        // this.searchFulltest = false;
 
     }
 

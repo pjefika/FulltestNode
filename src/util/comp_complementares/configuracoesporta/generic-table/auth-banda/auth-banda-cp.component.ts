@@ -29,10 +29,9 @@ export class AuthBandaComponent extends CallAlertService implements OnInit {
     }
 
     public ngOnInit() {
-        // this.consultar();
+        this.consultar();
         // for test purposes
-        // this.holderService.cadastro.rede.rin
-        this.authBanda = this.authBandaService.getMock();
+        // this.authBanda = this.authBandaService.getMock();
     }
 
     public consultar() {

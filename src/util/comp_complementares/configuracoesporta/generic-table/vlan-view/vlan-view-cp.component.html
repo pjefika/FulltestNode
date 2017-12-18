@@ -15,16 +15,28 @@
                         <clr-icon class="is-error" shape="times" *ngIf="!vlan.resultado"></clr-icon>
                     </td>
                 </tr>
-                <tr *ngIf="vlan.result.svlan">
+                <tr *ngIf="vlan.result.cvlan">
                     <td>Vlan Usuário (cVlan)</td>
                     <td>
                         {{vlan.result.cvlan}}
                     </td>
                 </tr>
                 <tr *ngIf="vlan.result.svlan">
-                    <td>Vlan Rede (sVlan)</td>
+                    <td>Vlan Serviço (sVlan)</td>
                     <td>
                         {{vlan.result.svlan}}
+                    </td>
+                </tr>
+                <tr *ngIf="vlan.result.ipIgmp">
+                    <td>Ip IGMP</td>
+                    <td>
+                        {{vlan.result.ipIgmp}}
+                    </td>
+                </tr>
+                <tr *ngIf="vlan.result.pctDown && vlan.result.pctUp">
+                    <td>Pacotes Trafegados (Down/Up)</td>
+                    <td>
+                        {{vlan.result.pctDown}}/{{vlan.result.pctUp}}
                     </td>
                 </tr>
             </tbody>
