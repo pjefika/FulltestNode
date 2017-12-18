@@ -9,7 +9,7 @@ export class Cadastro {
     instancia: string;
     designadorAcesso: string;
     rede: Rede;
-    radius: Radius;
+    radius?: Radius;
     servicos: Servicos;
     asserts: Asserts[];
     linha: Linha;

@@ -75,7 +75,6 @@ export class InfosDmComponent extends CallAlertService implements OnInit {
                 cvLan: Number(this.findNextIndex("Vlan de Usuário:")),
                 bhs: true
             },
-            radius: null,
             servicos: {
                 velDown: Number(this.findNextIndex("Velocidade Down/Up:").split("/").shift()),
                 velUp: Number(this.findNextIndex("Velocidade Down/Up:").split("/").pop()),
