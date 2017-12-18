@@ -19,6 +19,17 @@ class CentralConnectedFilter implements StringFilter<InfoNortelConection> {
     }
 }
 
+class CentralOcupadoFilter implements StringFilter<InfoNortelConection> {
+    accepts(info: InfoNortelConection, search: string): boolean {
+        if (search == "sim") {
+            search = "true";
+        } else if (search == "não") {
+            search = "false";
+        }
+        return "" + info.busy == search;
+    }
+}
+
 class CentralNameFilter implements StringFilter<InfoNortelConection> {
     accepts(info: InfoNortelConection, search: string): boolean {
         return "" + info.central.toLowerCase() == search;
@@ -41,6 +52,7 @@ class CentralIPFilter implements StringFilter<InfoNortelConection> {
 export class CentraisNortelComponent extends CallAlertService implements OnInit {
 
     private centralConnectedFilter = new CentralConnectedFilter();
+    private centralOcupadoFilter = new CentralOcupadoFilter();
     private centralNameFilter = new CentralNameFilter();
     private centralIPFilter = new CentralIPFilter();
 
