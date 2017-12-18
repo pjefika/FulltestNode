@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)="hitclose()">Voltar</button>
+            <button type="button" class="btn btn-primary" (click)="hitclose()" [disabled]="disableButton">{{nameButton}}</button>
         </div>
     </clr-modal>
 </div>
