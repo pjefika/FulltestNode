@@ -92,6 +92,9 @@ import { CentraisNortelComponent } from 'util/comp_complementares/centrais-norte
 import { InfoTecnicasComponent } from 'co/info-tecnicas/info-tecnicas.component';
 import { EventoMassivoComponent } from 'util/comp_complementares/evento-massivo/evento-massivo.component';
 
+import { ChartsModule } from 'ng2-charts';
+import { ChartsComponent } from 'util/comp_complementares/charts/charts.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -153,6 +156,7 @@ import { EventoMassivoComponent } from 'util/comp_complementares/evento-massivo/
         TableProfileCpComponent,
         InfosDmComponent,
         CentraisNortelComponent,
+        ChartsComponent,
         InfoTecnicasComponent,
         EventoMassivoComponent
     ],
@@ -167,7 +171,8 @@ import { EventoMassivoComponent } from 'util/comp_complementares/evento-massivo/
         MomentModule,
         ToastyModule.forRoot(),
         DndModule.forRoot(),
-        Ng2OrderModule
+        Ng2OrderModule,
+        ChartsModule
     ],
     providers: [
         Util,
