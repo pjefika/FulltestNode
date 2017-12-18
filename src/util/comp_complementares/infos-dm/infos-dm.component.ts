@@ -3,6 +3,7 @@ import { Cadastro } from 'viewmodel/cadastro/cadastro';
 import { HolderService } from 'util/holder/holder.service';
 import { CallAlertService } from 'util/callalerts/call-alert.service';
 import { ToastyComponent } from 'util/toasty/toasty.component';
+import { CadastroComponent } from 'co/cadastro/cadastro.component';
 
 @Component({
     selector: 'infos-dm-component',
@@ -12,13 +13,9 @@ import { ToastyComponent } from 'util/toasty/toasty.component';
 
 export class InfosDmComponent extends CallAlertService implements OnInit {
 
-    private modalInfoDm: boolean = false;
-
     private infoDm: string;
 
     private arrayInfo: string[] = [];
-
-    private cadastro: Cadastro;
 
     constructor(public holderService: HolderService,
         public toastyComponent: ToastyComponent) {
@@ -29,29 +26,33 @@ export class InfosDmComponent extends CallAlertService implements OnInit {
 
     private setInfosDm() {
         let caminho: string;
-        this.arrayInfo = this.infoDm.split("\n").map(function (item) {
-            if (item === "OLT") {
-                caminho = "olt";
-            }
-            if (item === "DSLAM") {
-                caminho = "dslam";
-            }
-            return item.trim();
-        });
+        if (this.infoDm) {
+            this.arrayInfo = this.infoDm.split("\n").map(function (item) {
+                if (item === "OLT") {
+                    caminho = "olt";
+                }
+                if (item === "DSLAM") {
+                    caminho = "dslam";
+                }
+                return item.trim();
+            });
 
-        if (caminho === "olt") {
-            this.findOltCad();
-        } else if (caminho === "dslam") {
-            this.findDlsamCad();
+            if (caminho === "olt") {
+                this.findOltCad();
+            } else if (caminho === "dslam") {
+                this.findDlsamCad();
+            } else {
+                super.callToasty("Ops aconteceu algo", "Funcionalidade não implementada, para este tipo de DSLAM", "error", 6000);
+            }
         } else {
-            super.callToasty("Ops aconteceu algo", "Funcionalidade não implementada, para este tipo de DSLAM", "error", 6000);
+            super.callToasty("Ops aconteceu algo", "Por favor preencha o campo de texto com as informações necessárias", "error", 6000);
         }
     }
 
     private findOltCad() {
         console.log("Entrou Olt");
         //console.log(this.arrayInfo);
-        this.cadastro = {
+        this.holderService.cadastro = {
             instancia: this.findNextIndex("Terminal/Id Fibra:"),
             designador: this.holderService.cadastro.designador,
             designadorAcesso: this.holderService.cadastro.designadorAcesso,
@@ -84,9 +85,8 @@ export class InfosDmComponent extends CallAlertService implements OnInit {
             asserts: this.holderService.cadastro.asserts,
             linha: this.holderService.cadastro.linha
         }
-        this.holderService.cadastro = this.cadastro;
-        this.modalInfoDm = false;
-        //console.log(this.cadastro);
+        this.holderService.modalInfoDMOpen = false;
+        this.holderService.modalWizardOpen = true;
     }
 
     private findDlsamCad() {
@@ -95,13 +95,11 @@ export class InfosDmComponent extends CallAlertService implements OnInit {
         super.callToasty("Ops aconteceu algo", "Funcionalidade não implementada, para este tipo de DSLAM", "error", 6000);
     }
 
-
     private findNextIndex(campo: string): string {
         let index = this.arrayInfo.indexOf(campo);
         if (index >= 0 && index < this.arrayInfo.length - 1) {
             return this.arrayInfo[index + 1];
         }
     }
-
 
 }

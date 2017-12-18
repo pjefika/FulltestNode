@@ -1,5 +1,5 @@
 import { HolderService } from 'util/holder/holder.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AcsService } from 'util/comp_complementares/acs/acs.service';
 import { Equipamento } from 'viewmodel/acs/equipamento';
 import { ToastyComponent } from 'util/toasty/toasty.component';
@@ -13,27 +13,24 @@ import { ToastyComponent } from 'util/toasty/toasty.component';
 
 export class AcsComponent implements OnInit {
 
-    private designador: string;
+    @Input() public equipamentos: Equipamento[];
 
-    private equipamentos: Equipamento[];
-
-    private searching: boolean;
+    @Input() public searching?: boolean = false;
 
     constructor(
         private acsService: AcsService,
         private toastyComponent: ToastyComponent,
-        private holderService: HolderService) {
-        this.designador = this.holderService.cadastro.designador;
+        public holderService: HolderService) {
     }
 
     public ngOnInit() {
-        this.getEquipamentoAssoc();
+        //this.getEquipamentoAssoc();
     }
 
     private getEquipamentoAssoc() {
         this.searching = true;
         this.acsService
-            .getEquipamentoAssoc(this.designador)
+            .getEquipamentoAssoc(this.holderService.cadastro.designador)
             .then(data => {
                 this.equipamentos = data;
                 this.searching = false;

@@ -4,6 +4,7 @@
         <h3 class="titulo-da-pagina">Configurações de Porta - {{holderService.cadastro.rede.tipo}}</h3>
         <configuracoes-porta-metalico-component *ngIf="holderService.cadastro.rede.tipo == 'METALICA'"></configuracoes-porta-metalico-component>
         <configuracoes-porta-gpon-component *ngIf="holderService.cadastro.rede.tipo == 'GPON'"></configuracoes-porta-gpon-component>
+        <!-- <table-modulacao-cp-component></table-modulacao-cp-component> -->
         <button *ngIf="!searchConfPorta" class="btn btn-primary btn-block" (click)="getConfigPorta()">Buscar Configurações de Porta</button>
     </div>
 </div>

@@ -12,6 +12,6 @@ export class ErrorLogComponent implements OnInit {
     constructor(
         public holderService: HolderService) { }
 
-    ngOnInit() { }
+    public ngOnInit() { }
 
 }

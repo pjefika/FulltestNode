@@ -67,10 +67,15 @@ export class ManobraComponent extends CallAlertService implements OnInit {
         });
         this.holderAtribuition();
         if (this.cadastro) {
-            this.realizaFulltest();
+            if (this.holderService.objectValidManobra) {
+                this.objectValid = this.holderService.objectValidManobra;
+                this.infoOVResult();
+            } else {
+                this.realizaFulltest();
+            }
             this.getListaMotivo();
         }
-        this.holderService.resumoInfosAtivo = true;
+        // this.holderService.resumoInfosAtivo = true;
         this.holderService.btnResumoInfosAtivo = true;
     }
 
@@ -78,16 +83,14 @@ export class ManobraComponent extends CallAlertService implements OnInit {
     public realizaFulltest(): void {
         this.alertAtivo = false;
         this.searchFulltest = true;
+        this.validManobra = false;
         this.manobraService
             .getValidacao(this.cadastro)
             .then(data => {
                 this.objectValid = data;
+                this.holderService.objectValidManobra = this.objectValid;
                 this.searchFulltest = false;
-                if (this.objectValid.resultado) {
-                    this.validManobra = true;
-                } else {
-                    super.callAlert(true, "alert-danger", this.objectValid.mensagem);
-                }
+                this.infoOVResult();
             }, error => {
                 this.searchFulltest = false;
                 if (error.tError !== "Timeout") {
@@ -95,6 +98,14 @@ export class ManobraComponent extends CallAlertService implements OnInit {
                 }
                 super.callToasty("Ops, ocorreu um erro.", error.mError, "error");
             })
+    }
+
+    private infoOVResult() {
+        if (this.objectValid.resultado) {
+            this.validManobra = true;
+        } else {
+            super.callAlert(true, "alert-danger", this.objectValid.mensagem);
+        }
     }
 
     public validar() {

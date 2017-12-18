@@ -1,7 +1,7 @@
 <div>
-    <button type="button" class="btn btn-primary btn-block" (click)="modalOpen = true">Alterar informações do cadastro</button>
+    <button type="button" class="btn btn-primary btn-block btn-sm" (click)="holderService.modalWizardOpen = true">Alterar informações do cadastro</button>
 
-    <clr-wizard #wizardmodal [(clrWizardOpen)]="modalOpen" clrWizardSize="lg" [clrWizardClosable]="false">
+    <clr-wizard #wizardmodal [(clrWizardOpen)]="holderService.modalWizardOpen" clrWizardSize="lg" [clrWizardClosable]="false">
         <clr-wizard-title>Informações de cadastro</clr-wizard-title>
 
         <clr-wizard-button [type]="'previous'">Voltar</clr-wizard-button>
@@ -36,7 +36,12 @@
                     </div>
                 </section>
             </form>
-            <infos-dm-component *ngIf="cadastro.rede.planta === 'VIVO1'"></infos-dm-component>
+
+            <div>
+                <button type="button" class="btn btn-icon btn-primary" (click)="abrirModal();" *ngIf="cadastro.rede.planta === 'VIVO1'">
+                    Inserir cadastro DM
+                </button>
+            </div>
         </clr-wizard-page>
 
         <clr-wizard-page #paginarede [clrWizardPageNextDisabled]="!formpagetwo.valid">
@@ -159,6 +164,7 @@
                         <label>Tipo TV: </label>
                         <div class="select">
                             <select [(ngModel)]="cadastro.servicos.tipoTv" name="tipotv">
+                                <option [ngValue]="SemTV">Sem TV</option>
                                 <option *ngFor="let tv of listEnumTv" [ngValue]="tv">{{tv}}</option>
                             </select>
                         </div>
@@ -172,7 +178,7 @@
                         </div>
                     </div>
                 </section>
-            </form>            
+            </form>
             <alert-component [msg]="msg" [ativo]="alertMsg"></alert-component>
         </clr-wizard-page>
     </clr-wizard>

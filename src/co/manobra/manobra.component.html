@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <fulltest-table-component [objectValid]="objectValid"></fulltest-table-component>
-                    <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()" *ngIf="!objectValid.resultado">Realizar Fulltest</button>
+                    <button type="button" class="btn btn-primary btn-block" (click)="realizaFulltest()">Realizar Fulltest</button>
                 </div>
                 <div class="col-md-6">
                     <div *ngIf="validManobra">
@@ -16,16 +16,16 @@
                                 <section class="form-block">
                                     <div class="form-group">
                                         <label>Ordem: </label>
-                                        <label for="idordem" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left"
+                                        <label for="idordem" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left ahundredpercent"
                                             [class.invalid]="ordemInput.invalid && (ordemInput.dirty || ordemInput.touched)">
                                             <input ngModel name="ordem" type="text" id="idordem" [(ngModel)]="ordem" #ordemInput="ngModel" required placeholder="Insira a ordem"
-                                                (change)="enterBtnInput()">
+                                                (change)="enterBtnInput()" class="ahundredpercent">
                                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                                         </label>
                                     </div>
                                     <div class="form-group">
                                         <label for="selecMotivo">Motivo Informado: </label>
-                                        <div class="select" id="selecMotivo">
+                                        <div class="select ahundredpercent" id="selecMotivo">
                                             <select [(ngModel)]="motivoSelected" name="motivoSelected">
                                                 <option *ngFor="let value of motivos" [ngValue]="value.name">{{value.motivo}}</option>
                                             </select>

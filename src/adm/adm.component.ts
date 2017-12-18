@@ -4,6 +4,7 @@ import { NortelConectionsService } from './../util/comp_complementares/nortel-co
 import { ToastyComponent } from './../util/toasty/toasty.component';
 import { HolderService } from './../util/holder/holder.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { CallAlertService } from 'util/callalerts/call-alert.service';
 
 @Component({
     selector: 'adm-component',
@@ -12,102 +13,18 @@ import { Component, OnInit, Input } from '@angular/core';
     providers: [NortelConectionsService]
 })
 
-export class AdmComponent implements OnInit {
+export class AdmComponent extends CallAlertService implements OnInit {
 
-    private listLogin: string[] = [];
-    private loginAtivo: string = "LOGIN2";
-    private infoNortelConection: InfoNortelConection[];
-    private infosNC: InfoNC;
-
-    private btnNameSearchInfoNortel: string = "Buscar";
-    private btnDisableSearchInfoNortel: boolean = false;
-
-    private btnNameSearchSetInfoNortel: string = "Singleton False/True";
-    private btnDisableSearchSetInfoNortel: boolean = false;
 
     constructor(
         public holderService: HolderService,
-        private toastyComponent: ToastyComponent,
-        private nortelConectionsService: NortelConectionsService) { }
-
-    ngOnInit() {
-        this.mocklogins();
-        this.getSingleton();
+        public toastyComponent: ToastyComponent,
+        private nortelConectionsService: NortelConectionsService) {
+        super(toastyComponent);
     }
 
-    public mocklogins() {
-        this.listLogin.push("UM");
-        this.listLogin.push("DOIS");
-        this.listLogin.push("TRES");
+    public ngOnInit() {
+        
     }
-
-    public getSingleton() {
-        this.btnNameSearchInfoNortel = "Buscando";
-        this.btnDisableSearchInfoNortel = true;
-        this.nortelConectionsService.getSingleton()
-            .then(data => {
-                this.infoNortelConection = data;
-                this.addinfos();
-                this.btnNameSearchInfoNortel = "Buscar";
-                this.btnDisableSearchInfoNortel = false;
-            }, error => {
-                //console.log("Erro ao buscar Singletons");
-                this.btnNameSearchInfoNortel = "Buscar";
-                this.btnDisableSearchInfoNortel = false;
-            })
-    }
-
-    public setSingleton() {
-        this.btnNameSearchSetInfoNortel = "Setando True/False...";
-        this.btnDisableSearchSetInfoNortel = true;
-        this.nortelConectionsService
-            .setSingleton("false")
-            .then(data => {
-                this.infoNortelConection = data;
-                this.nortelConectionsService
-                    .setSingleton("true")
-                    .then(data => {
-                        this.infoNortelConection = data;
-                        this.btnNameSearchSetInfoNortel = "Singleton False/True";
-                        this.btnDisableSearchSetInfoNortel = false;
-                    }, error => {
-                        this.btnNameSearchSetInfoNortel = "Singleton False/True";
-                        this.btnDisableSearchSetInfoNortel = false;
-                    });
-            }, error => {
-                this.btnNameSearchSetInfoNortel = "Singleton False/True";
-                this.btnDisableSearchSetInfoNortel = false;
-            });
-    }
-
-    public addinfos() {
-        this.infosNC = null;
-        let qtdetrue = 0;
-        let qtdefalse = 0;
-        let cred;
-        this.infoNortelConection.forEach(element => {
-            cred = element.credencial;
-            if (element.connected) {
-                qtdetrue++;
-            } else {
-                qtdefalse++;
-            }
-        });
-        this.infosNC = {
-            credencial: cred,
-            quantiadeTrue: qtdetrue,
-            quantidadeFalse: qtdefalse
-        }
-    }
-
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-        }
-        this.toastyComponent.addToasty();
-    }
-
 
 }

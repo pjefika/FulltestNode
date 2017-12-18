@@ -6,6 +6,7 @@ import { Cadastro } from './../../../viewmodel/cadastro/cadastro';
 
 import { Component, OnInit, Input } from '@angular/core';
 import { ToastyComponent } from 'util/toasty/toasty.component';
+import { HolderService } from 'util/holder/holder.service';
 
 @Component({
     selector: 'popover-component',
@@ -25,7 +26,8 @@ export class PopoverComponent implements OnInit {
 
     constructor(
         public util: Util,
-        private toastyComponent: ToastyComponent) { }
+        private toastyComponent: ToastyComponent,
+        public holderService: HolderService) { }
 
     public ngOnInit() { }
 

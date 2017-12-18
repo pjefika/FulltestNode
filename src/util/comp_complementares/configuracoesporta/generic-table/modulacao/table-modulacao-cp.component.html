@@ -1,0 +1,35 @@
+<div>
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="2" style="text-align: center;">Modulação</th>
+            </tr>
+            <tr>
+                <th>Mensagem</th>
+                <td>Mensagem para ser exibida....</td>
+            </tr>
+            <tr>
+                <th>Resultado:</th>
+                <td>
+                    <!-- <clr-icon style="color: green" shape="check" *ngIf="resultado"></clr-icon>
+                    <clr-icon style="color: red" shape="times" *ngIf="!resultado"></clr-icon> -->
+                </td>
+            </tr>
+            <tr>
+                <th>Modulações</th>
+                <td>
+                    <div class="select">
+                        <select [(ngModel)]="variavel">
+                            <option *ngFor="let item of list" [ngValue]="value">{{option.name}}</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-primary btn-block btn-sm">Nome para o botão</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

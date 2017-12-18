@@ -62,10 +62,10 @@ export class ToastyComponent implements OnInit {
                 break;
         }
 
-        this.appendErrorsMessages(this.toastyInfo.msg, this.toastyInfo.theme);
+        this.appendMessages(this.toastyInfo.msg, this.toastyInfo.theme);
     }
 
-    private appendErrorsMessages(msg: string, theme: string) {
+    private appendMessages(msg: string, theme: string) {
         let now: number = Date.now();
 
         if (!this.holderService.oldToastyMessages) {

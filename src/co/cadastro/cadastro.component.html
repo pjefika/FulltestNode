@@ -1,13 +1,12 @@
 <div>
     <!--Informações do cadastro-->
     <div *ngIf="cadastro">
-        <h3 class="titulo-da-pagina">Informações do Cadastro</h3>
         <div class="row">
             <div class="col-md-6">
                 <table class="table table-compact table-vertical" *ngIf="cadastro.linha.tipo">
                     <tbody>
                         <tr>
-                            <th colspan="2">Informações de Linha</th>
+                            <th colspan="2" style="text-align: center;">Informações de Linha</th>
                         </tr>
                         <tr>
                             <th>DN: </th>
@@ -26,7 +25,7 @@
                 <table class="table table-compact table-vertical">
                     <tbody>
                         <tr>
-                            <th colspan="2">Informações de Cadastro</th>
+                            <th colspan="2" style="text-align: center;">Informações de Cadastro</th>
                         </tr>
                         <tr>
                             <th>Instância: </th>
@@ -45,7 +44,7 @@
                 <table class="table table-compact table-vertical">
                     <tbody>
                         <tr>
-                            <th colspan="2">Informações de Serviço</th>
+                            <th colspan="2" style="text-align: center;">Informações de Serviço</th>
                         </tr>
                         <tr>
                             <th>Velocidade de Download:</th>
@@ -71,7 +70,7 @@
                 <table class="table table-compact table-vertical" *ngIf="!searchingRede">
                     <tbody>
                         <tr>
-                            <th colspan="2">Informações de Rede</th>
+                            <th colspan="2" style="text-align: center;">Informações de Rede</th>
                         </tr>
                         <tr>
                             <th>Planta:</th>
@@ -126,7 +125,8 @@
                 <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
             </div>
         </div>
-        <cadastro-wizard-component [cadastro]="cadastro"></cadastro-wizard-component>
+        <cadastro-wizard-component [cadastro]="holderService.cadastro" *ngIf="holderService.showWizardComponent"></cadastro-wizard-component>
+        <infos-dm-component *ngIf="cadastro.rede.planta === 'VIVO1'"></infos-dm-component>
     </div>
     <loading-component [searching]="searching" [searchWhat]="'Buscando Cadastro...'"></loading-component>
 </div>

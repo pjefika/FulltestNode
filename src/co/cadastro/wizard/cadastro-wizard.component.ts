@@ -4,6 +4,7 @@ import { Cadastro } from './../../../viewmodel/cadastro/cadastro';
 import { Wizard, WizardPage } from 'clarity-angular';
 import { Component, Input, ViewChild, OnInit } from '@angular/core';
 import { EnumService } from 'util/comp_complementares/enum.service';
+import { CadastroComponent } from 'co/cadastro/cadastro.component';
 
 @Component({
     selector: 'cadastro-wizard-component',
@@ -20,8 +21,6 @@ export class CadastroWizardComponent implements OnInit {
     @ViewChild("paginarede") public paginarede: WizardPage;
     @ViewChild("paginaservico") public paginaservico: WizardPage;
 
-    private modalOpen: Boolean = false;
-
     @Input() public cadastro: Cadastro;
 
     private listEnumTv: String[];
@@ -37,7 +36,16 @@ export class CadastroWizardComponent implements OnInit {
 
     constructor(
         private enumService: EnumService,
-        private holderService: HolderService) { }
+        public holderService: HolderService,
+        public cadastroComponent: CadastroComponent) {
+        this.cadastro = this.holderService.cadastro;
+    }
+
+
+    private abrirModal() {
+        this.holderService.modalInfoDMOpen = true;
+        this.holderService.modalWizardOpen = false;
+    }
 
     public ngOnInit(): void {
         this.validaCadastroFull();
@@ -58,10 +66,10 @@ export class CadastroWizardComponent implements OnInit {
     private validaCadastroFull() {
         if (!this.cadastro.rede.tipo) {
             this.jumpToPaginaRede();
-            this.modalOpen = true;
+            this.holderService.modalWizardOpen = true;
         } else if (!this.cadastro.servicos.velDown && !this.cadastro.servicos.velDown) {
             this.jumpToPaginaServico();
-            this.modalOpen = true;
+            this.holderService.modalWizardOpen = true;
         }
     }
 
@@ -122,6 +130,7 @@ export class CadastroWizardComponent implements OnInit {
     private onCommit() {
         if (this.validCadastroRedeEServico()) {
             this.wizardmodal.forceFinish();
+            this.cadastroComponent.setInfoCadastro();
         } else {
             this.alertMsg = true;
             this.msg = {
@@ -130,5 +139,7 @@ export class CadastroWizardComponent implements OnInit {
             }
         }
     }
+
+
 
 }

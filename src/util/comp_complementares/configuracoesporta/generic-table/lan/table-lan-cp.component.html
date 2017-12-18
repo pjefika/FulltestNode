@@ -1,10 +1,10 @@
 <div>
     <div class="row">
-        <div class="col-md-6" *ngIf="vlanBanda">
+        <div class="col-md" *ngIf="vlanBanda">
             <table class="table table-compact table-vertical">
                 <tbody>
                     <tr>
-                        <th colspan="2">{{vlanBanda.nome}}</th>
+                        <th colspan="2" style="text-align: center;">{{vlanBanda.nome}}</th>
                     </tr>
                     <tr>
                         <th>Mensagem:</th>
@@ -40,11 +40,11 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-md-6" *ngIf="vlanVoip">
+        <div class="col-md" *ngIf="vlanVoip">
             <table class="table table-compact table-vertical">
                 <tbody>
                     <tr>
-                        <th colspan="2">{{vlanVoip.nome}}</th>
+                        <th colspan="2" style="text-align: center;">{{vlanVoip.nome}}</th>
                     </tr>
                     <tr>
                         <th>Mensagem:</th>
@@ -86,7 +86,7 @@
             <table class="table table-compact table-vertical" *ngIf="validSeExiste(vlanVod.mensagem)">
                 <tbody>
                     <tr>
-                        <th colspan="2">{{vlanVod.nome}}</th>
+                        <th colspan="2" style="text-align: center;">{{vlanVod.nome}}</th>
                     </tr>
                     <tr>
                         <th>Mensagem:</th>
@@ -114,9 +114,15 @@
                         <th>SVLAN:</th>
                         <td>{{vlanVod.result.svlan}}</td>
                     </tr>
+                    <tr *ngIf="vlanVod.result.pctDown && vlanVod.result.pctUp">
+                        <th>Pacotes Down/Up:</th>
+                        <td>{{vlanVod.result.pctDown}} / {{vlanVod.result.pctUp}} </td>
+                    </tr>
                     <tr *ngIf="vlanVod.mensagem != 'Cliente sem TV Híbrida.'">
                         <td colspan="2">
                             <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanVodDisable" (click)="setVlanVod()">{{btnSetVlanVodName}}</button>
+                            <button class="btn btn-primary btn-sm btn-block" *ngIf="vlanVod.result.pctDown && vlanVod.result.pctUp" [disabled]="btnResetVlanMultiEVodDisable"
+                                (click)="resetIptvStatistics()">{{btnResetVlanMultiEVodName}}</button>
                         </td>
                     </tr>
                 </tbody>
@@ -126,7 +132,7 @@
             <table class="table table-compact table-vertical" *ngIf="validSeExiste(vlanMulticast.mensagem)">
                 <tbody>
                     <tr>
-                        <th colspan="2">{{vlanMulticast.nome}}</th>
+                        <th colspan="2" style="text-align: center;">{{vlanMulticast.nome}}</th>
                     </tr>
                     <tr>
                         <th>Mensagem:</th>
@@ -154,9 +160,19 @@
                         <th>SVLAN:</th>
                         <td>{{vlanMulticast.result.svlan}}</td>
                     </tr>
+                    <tr *ngIf="vlanMulticast.result.pctDown && vlanMulticast.result.pctUp">
+                        <th>Pacotes Down/Up:</th>
+                        <td>{{vlanMulticast.result.pctDown}} / {{vlanMulticast.result.pctUp}} </td>
+                    </tr>
+                    <tr *ngIf="vlanMulticast.result.ipIgmp">
+                        <th>Ip Multicast:</th>
+                        <td>{{vlanMulticast.result.ipIgmp}}</td>
+                    </tr>
                     <tr>
                         <td colspan="2">
                             <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanMulticastDisable" (click)="setVlanMulticast()">{{btnSetVlanMulticastName}}</button>
+                            <button class="btn btn-primary btn-sm btn-block" *ngIf="vlanMulticast.result.pctDown && vlanMulticast.result.pctUp" [disabled]="btnResetVlanMultiEVodDisable"
+                                (click)="resetIptvStatistics()">{{btnResetVlanMultiEVodName}}</button>
                         </td>
                     </tr>
                 </tbody>

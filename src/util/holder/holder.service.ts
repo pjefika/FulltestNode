@@ -7,6 +7,7 @@ import { ObjectValid } from './../../viewmodel/fulltest/objectValid';
 import { CadastroLinha } from './../../viewmodel/cadastro-linha/cadastro-linha';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { Injectable } from '@angular/core';
+import { Equipamento } from 'viewmodel/acs/equipamento';
 
 @Injectable()
 export class HolderService {
@@ -15,6 +16,7 @@ export class HolderService {
     public cadastro: Cadastro;
     public cadastroLinha: CadastroLinha;
     public objectValid: ObjectValid;
+    public objectValidManobra: ObjectValid;
     public confPorta: ConfPorta;
     public eachFulltest: string;
     public liberarSubNav: boolean = false;
@@ -59,8 +61,18 @@ export class HolderService {
     public origenPlanta: boolean = false;
 
     public btnResumoInfosAtivo: boolean = false;
-    
+
     public resumoInfosAtivo: boolean = false;
+
+    public modalWizardOpen: boolean = false;
+
+    public modalInfoDMOpen: boolean = false;
+
+    public showWizardComponent: boolean = false;
+
+    public centraisNortelModal: boolean = false;
+
+    public equipamentos: Equipamento[];
 
     constructor() { }
 

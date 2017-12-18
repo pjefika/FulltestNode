@@ -87,9 +87,20 @@ import { TableEstadoPortaCpComponent } from 'util/comp_complementares/configurac
 import { TableLanCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/lan/table-lan-cp.component';
 import { TableProfileCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/profile/table-profile-cp.component';
 import { InfosDmComponent } from 'util/comp_complementares/infos-dm/infos-dm.component';
+
+import { EnumService } from 'util/comp_complementares/enum.service';
+import { CentraisNortelComponent } from 'util/comp_complementares/centrais-nortel/centrais-nortel.component';
+import { InfoTecnicasComponent } from 'co/info-tecnicas/info-tecnicas.component';
+import { EventoMassivoComponent } from 'util/comp_complementares/evento-massivo/evento-massivo.component';
+
+import { ChartsModule } from 'ng2-charts';
+import { ChartsComponent } from 'util/comp_complementares/charts/charts.component';
+import { TableModulacaoCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/modulacao/table-modulacao-cp.component';
+
 import { ConfiabRedeCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/confiab-rede/confiab-rede-cp.component';
 import { GenericValidComponent } from 'util/comp_complementares/configuracoesporta/generic-table/generic-valid/generic-valid.component';
 import { AuthBandaComponent } from 'util/comp_complementares/configuracoesporta/generic-table/auth-banda/auth-banda-cp.component';
+
 
 @NgModule({
     declarations: [
@@ -151,6 +162,11 @@ import { AuthBandaComponent } from 'util/comp_complementares/configuracoesporta/
         TableLanCpComponent,
         TableProfileCpComponent,
         InfosDmComponent,
+        CentraisNortelComponent,
+        ChartsComponent,
+        InfoTecnicasComponent,
+        EventoMassivoComponent,
+        TableModulacaoCpComponent
         ConfiabRedeCpComponent,
         GenericValidComponent,
         AuthBandaComponent
@@ -166,7 +182,8 @@ import { AuthBandaComponent } from 'util/comp_complementares/configuracoesporta/
         MomentModule,
         ToastyModule.forRoot(),
         DndModule.forRoot(),
-        Ng2OrderModule
+        Ng2OrderModule,
+        ChartsModule
     ],
     providers: [
         Util,
@@ -196,6 +213,7 @@ import { AuthBandaComponent } from 'util/comp_complementares/configuracoesporta/
         PrincipalComponent,
         FulltestComponent,
         CadastroComponent,
+        InfoTecnicasComponent,
         BrancoComponent,
         CadastroCrmComponent,
         ComplementaresComponent,
