@@ -125,6 +125,45 @@
                 <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
             </div>
         </div>
+        <table class="table table-compact table-vertical">
+            <tbody>
+                <tr>
+                    <th colspan="2" style="text-align: center;">Informações de Radius</th>
+                </tr>
+                <tr>
+                    <th>Status: </th>
+                    <td>{{cadastro.radius.status}}</td>
+                </tr>
+                <tr>
+                    <th>Armario: </th>
+                    <td>{{cadastro.radius.armario}}</td>
+                </tr>
+                <tr>
+                    <th>Porta: </th>
+                    <td>{{cadastro.radius.porta}} </td>
+                </tr>
+                <tr>
+                    <th>Rin: </th>
+                    <td>{{cadastro.radius.rin}} </td>
+                </tr>
+                <tr>
+                    <th>Velocidade: </th>
+                    <td>{{cadastro.radius.velocidade}} </td>
+                </tr>
+                <tr>
+                    <th>É Ip Fixo: </th>
+                    <td>{{cadastro.radius.isIpFixo}} </td>
+                </tr>
+                <tr>
+                    <th>Ip Fixo: </th>
+                    <td>{{cadastro.radius.ipFixo}} </td>
+                </tr>
+                <tr>
+                    <th>Profile: </th>
+                    <td>{{cadastro.radius.profile}} </td>
+                </tr>
+            </tbody>
+        </table>
         <cadastro-wizard-component [cadastro]="holderService.cadastro" *ngIf="holderService.showWizardComponent"></cadastro-wizard-component>
         <infos-dm-component *ngIf="cadastro.rede.planta === 'VIVO1'"></infos-dm-component>
     </div>
