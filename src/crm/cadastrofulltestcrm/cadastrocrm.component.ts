@@ -51,6 +51,9 @@ export class CadastroCrmComponent extends CallAlertService implements OnInit {
 
     private abreModal: boolean = false;
 
+    private msgEventoMassivo: any;
+    private alertAtivoEventoMassivo: boolean = false;
+
     constructor(
         private cadastroCrmService: CadastroCrmService,
         public toastyComponent: ToastyComponent,
@@ -110,6 +113,10 @@ export class CadastroCrmComponent extends CallAlertService implements OnInit {
 
     //Faz validações com o cadastro buscado.
     public getValidacao() {
+        this.abreModal = false; // Desliga modal de pergunta massivo...
+        //Retirar quando tiver em produção....
+        delete this.cadastro.radius;
+        delete this.cadastro.eventos;
         this.searchFulltest = true;
         this.fulltestCrmService
             .getValidacao(this.cadastro)
@@ -164,10 +171,11 @@ export class CadastroCrmComponent extends CallAlertService implements OnInit {
                             if (this.cadastro.eventos) {
                                 // Validação se continua ou não o fulltest...
                                 this.abreModal = true;
+                                this.alertAtivoEventoMassivo = true;
+                                this.msgEventoMassivo = { alertType: "alert-warning", msg: "Cliente com evento massivo, algumas correções e validações podem ocorrer erros." };
                             } else {
                                 this.getValidacao();
                             }
-                            this.getValidacao();
                         } else {
                             msgalerterror = "Cliente com erro de cadastro, favor transferir chamada ao CO utilizando o fluxo com o problema/sintoma informado pelo cliente.";
                             super.callAlert(true, "alert-danger", msgalerterror);
