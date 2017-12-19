@@ -26,28 +26,30 @@ import { CallAlertService } from 'util/callalerts/call-alert.service';
 
 export class CadastroCrmComponent extends CallAlertService implements OnInit {
 
-    cadastro: Cadastro;
-    objectValid: ObjectValid;
-    instancia: string;
-    resumo: Resumo;
+    private cadastro: Cadastro;
+    private objectValid: ObjectValid;
+    private instancia: string;
+    private resumo: Resumo;
 
-    searchCadastro: boolean = false;
-    searchFulltest: boolean = false;
-    doFulltest: boolean = false;
+    private searchCadastro: boolean = false;
+    private searchFulltest: boolean = false;
+    private doFulltest: boolean = false;
 
-    listAsserts: {
+    private listAsserts: {
         tbsradius: boolean;
         circuito: boolean;
         bloqueio: boolean;
     }
 
-    listResumo: {
+    private listResumo: {
         cadastro: boolean;
         bloqueio: boolean;
         fulltest: boolean;
     }
 
-    loger: Loger;
+    private loger: Loger;
+
+    private abreModal: boolean = false;
 
     constructor(
         private cadastroCrmService: CadastroCrmService,
@@ -159,7 +161,12 @@ export class CadastroCrmComponent extends CallAlertService implements OnInit {
                         this.holderService.listResumo = this.listResumo;
                         let msgalerterror: string;
                         if (this.listResumo.cadastro) {
-                            this.getValidacao();
+                            if (this.cadastro.eventos) {
+                                // Validação se continua ou não o fulltest...
+                                this.abreModal = true;
+                            } else {
+                                this.getValidacao();
+                            }
                         } else {
                             msgalerterror = "Cliente com erro de cadastro, favor transferir chamada ao CO utilizando o fluxo com o problema/sintoma informado pelo cliente.";
                             super.callAlert(true, "alert-danger", msgalerterror);
