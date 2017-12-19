@@ -1,6 +1,7 @@
 <div>
+    <h3 class="titulo-da-pagina">Informações de Fulltest</h3>
+    <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
     <div *ngIf="!searchFulltest">
-        <h3 class="titulo-da-pagina">Informações de Fulltest</h3>
         <div *ngIf="objectValid">
             <table class="table table-compact " style="margin: 7px 0 0 0;">
                 <thead>
@@ -27,4 +28,15 @@
         </div>
     </div>
     <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Fulltest...'"></loading-component>
+    <clr-modal [(clrModalOpen)]="abreModal" [clrModalClosable]="false">
+        <h3 class="modal-title">Cliente com Evento Massivo</h3>
+        <div class="modal-body">
+            <p>O cliente possui um evento massivo, deseja relmente continuar com o testes e validações?</p>
+            <evento-massivo-component *ngIf="holderService.cadastro" [eventos]="cadastro.eventos"></evento-massivo-component>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="realizaFulltest()">Continuar</button>
+            <button type="button" class="btn btn-primary" (click)="abreModal = false">Não seguir</button>
+        </div>
+    </clr-modal>
 </div>
