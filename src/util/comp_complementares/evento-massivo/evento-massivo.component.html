@@ -3,15 +3,18 @@
     <table class="table table-compact" *ngIf="eventos">
         <tbody>
             <tr>
-                <th colspan="6">Data da consulta: {{((eventos.dataConsulta/1000) | amFromUnix) | amDateFormat:'DD/MM/YYYY hh:mm:ss'}}</th>
+                <th colspan="5">Data da consulta: {{((eventos.dataConsulta/1000) | amFromUnix) | amDateFormat:'DD/MM/YYYY hh:mm:ss'}}</th>
+                <th>
+                    <clr-icon shape="refresh" (click)="getAfetaCliente()"></clr-icon>
+                </th>
             </tr>
             <tr>
-                <th>tipoAfetacao</th>
-                <th>tipoFalha</th>
-                <th>tipoAlarme</th>
-                <th>desc</th>
-                <th>dataAbertura</th>
-                <th>dataPrevista</th>
+                <th>Tipo Afetacão</th>
+                <th>Tipo Falha</th>
+                <th>Tipo Alarme</th>
+                <th>Descrição</th>
+                <th>Data Abertura</th>
+                <th>Data Prevista</th>
             </tr>
             <tr *ngFor="let evento of eventos.eventos">
                 <td>

@@ -25,6 +25,7 @@ export class UrlService extends SuperService implements RequestAction {
     public pathDmsAPI = "dmsAPI/";
     public pathNetworkInventory = "networkInventoryAPI/";
     public pathAcs = "acs/";
+    public pathPlRestAPI = "plrestAPI/";
 
     //Request Options *Não Mecher*
     private headersAppJson = new Headers({ 'Content-Type': 'application/json' });

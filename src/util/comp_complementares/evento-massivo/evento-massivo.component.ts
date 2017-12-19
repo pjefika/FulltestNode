@@ -3,6 +3,7 @@ import { EventoMAssivoService } from 'util/comp_complementares/evento-massivo/ev
 import { CallAlertService } from 'util/callalerts/call-alert.service';
 import { ToastyComponent } from 'util/toasty/toasty.component';
 import { Evento } from 'viewmodel/evento-massivo/eventos';
+import { HolderService } from 'util/holder/holder.service';
 
 @Component({
     selector: 'evento-massivo-component',
@@ -18,17 +19,18 @@ export class EventoMassivoComponent extends CallAlertService implements OnInit {
     @Input() public eventos: Evento;
 
     constructor(
-        public toastyComponent: ToastyComponent) {
+        public toastyComponent: ToastyComponent,
+        private eventoMAssivoService: EventoMAssivoService,
+        private holderService: HolderService) {
         super(toastyComponent);
     }
 
     public ngOnInit() {
-        this.contagemRegressivaParaMostrarTabela();
+        // this.contagemRegressivaParaMostrarTabela();
     }
 
+    //Mock
     private contagemRegressivaParaMostrarTabela() {
-        this.searching = true;
-
         this.eventos = {
             eventos: [
                 {
@@ -42,9 +44,21 @@ export class EventoMassivoComponent extends CallAlertService implements OnInit {
             ],
             dataConsulta: 1513630092022
         }
-
-        setTimeout(() => {
-            this.searching = false;
-        }, 1000);
     }
+
+
+    private getAfetaCliente() {
+        this.searching = true;
+        this.eventoMAssivoService
+            .getAfetaCliente(this.holderService.cadastro)
+            .then(data => {
+                this.eventos = data;
+            }, error => {
+                
+            })
+            .then(() => {
+                this.searching = false;
+            })
+    }
+
 }
