@@ -167,6 +167,7 @@ export class CadastroCrmComponent extends CallAlertService implements OnInit {
                             } else {
                                 this.getValidacao();
                             }
+                            this.getValidacao();
                         } else {
                             msgalerterror = "Cliente com erro de cadastro, favor transferir chamada ao CO utilizando o fluxo com o problema/sintoma informado pelo cliente.";
                             super.callAlert(true, "alert-danger", msgalerterror);

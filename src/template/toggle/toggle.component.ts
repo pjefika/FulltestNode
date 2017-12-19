@@ -21,7 +21,7 @@ export class ToggleComponent implements OnInit {
         private util: Util,
         private holderService: HolderService) { }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.util.isLogado().then((result: boolean) => {
             if (!result) {
                 this.router.navigate(['./entrar']);

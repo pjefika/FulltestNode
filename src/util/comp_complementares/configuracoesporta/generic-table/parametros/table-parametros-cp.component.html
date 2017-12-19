@@ -1,62 +1,65 @@
-<div class="row" *ngIf="parametros">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-9">
-        <table class="table table-compact table-vertical">
-            <tbody>
-                <tr>
-                    <th colspan="3" style="text-align: center;">{{parametros.nome}}</th>
-                </tr>
-                <tr>
-                    <th>Mensagem:</th>
-                    <td colspan="2">
-                        {{parametros.mensagem}}
-                        <clr-icon style="color: green; text-align: center;" shape="check" *ngIf="parametros.resultado"></clr-icon>
-                        <clr-icon style="color: red; text-align: center;" shape="times" *ngIf="!parametros.resultado"></clr-icon>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Informações</th>
-                    <th>Valocidade de Download</th>
-                    <th>Valocidade de Upload</th>
-                </tr>
-                <tr>
-                    <th>Velocidade Sincronizada (Mbps):</th>
-                    <td>{{parametros.result.velSincDown}}</td>
-                    <td>{{parametros.result.velSincUp}}</td>
-                </tr>
-                <tr>
-                    <th>Sinal Ruído (dB):</th>
-                    <td>{{parametros.result.snrDown}}</td>
-                    <td>{{parametros.result.snrUp}}</td>
-                </tr>
-                <tr *ngIf="parametros.result.snrDown1">
-                    <th>Sinal Ruído (dB):</th>
-                    <td>{{parametros.result.snrDown1}}</td>
-                    <td>{{parametros.result.snrUp1}}</td>
-                </tr>
-                <tr *ngIf="parametros.result.snrDown2">
-                    <th>Sinal Ruído (dB):</th>
-                    <td>{{parametros.result.snrDown2}}</td>
-                    <td>{{parametros.result.snrUp2}}</td>
-                </tr>
-                <tr>
-                    <th>Atenuação (dB):</th>
-                    <td>{{parametros.result.atnDown}}</td>
-                    <td>{{parametros.result.atnUp}}</td>
-                </tr>
-                <tr *ngIf="parametros.result.atnDown1">
-                    <th>Atenuação (dB):</th>
-                    <td>{{parametros.result.atnDown1}}</td>
-                    <td>{{parametros.result.atnUp1}}</td>
-                </tr>
-                <tr *ngIf="parametros.result.atnDown2">
-                    <th>Atenuação (dB):</th>
-                    <td>{{parametros.result.atnDown2}}</td>
-                    <td>{{parametros.result.atnUp2}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col-xs-2"></div>
-    <div class="row"></div>
+<div *ngIf="parametros">
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="3" style="text-align: center;">{{parametros.nome}}</th>
+            </tr>
+            <tr>
+                <th>Mensagem:</th>
+                <td colspan="2">
+                    {{parametros.mensagem}}
+                    <clr-icon style="color: green; text-align: center;" shape="check" *ngIf="parametros.resultado"></clr-icon>
+                    <clr-icon style="color: red; text-align: center;" shape="times" *ngIf="!parametros.resultado"></clr-icon>
+                </td>
+            </tr>
+            <tr *ngIf="holderService.cadastro.rede.tipo === 'METALICA'">
+                <th>Informações:</th>
+                <th>Valocidade de Download</th>
+                <th>Valocidade de Upload</th>
+            </tr>
+            <tr *ngIf="holderService.cadastro.rede.tipo === 'METALICA'">
+                <th>Velocidade Sincronizada (Mbps):</th>
+                <td>{{parametros.result.velSincDown}}</td>
+                <td>{{parametros.result.velSincUp}}</td>
+            </tr>
+            <tr *ngIf="holderService.cadastro.rede.tipo === 'METALICA'">
+                <th>Sinal Ruído (dB):</th>
+                <td>{{parametros.result.snrDown}}</td>
+                <td>{{parametros.result.snrUp}}</td>
+            </tr>
+            <tr *ngIf="holderService.cadastro.rede.tipo === 'GPON'">
+                <th>Potência ONT: </th>
+                <td colspan="2">{{parametros.result.potOnt}}</td>
+            </tr>
+            <tr *ngIf="holderService.cadastro.rede.tipo === 'GPON'">
+                <th>Potência OLT: </th>
+                <td colspan="2">{{parametros.result.potOlt}}</td>
+            </tr>
+            <tr *ngIf="parametros.result.snrDown1">
+                <th>Sinal Ruído (dB):</th>
+                <td>{{parametros.result.snrDown1}}</td>
+                <td>{{parametros.result.snrUp1}}</td>
+            </tr>
+            <tr *ngIf="parametros.result.snrDown2">
+                <th>Sinal Ruído (dB):</th>
+                <td>{{parametros.result.snrDown2}}</td>
+                <td>{{parametros.result.snrUp2}}</td>
+            </tr>
+            <tr *ngIf="holderService.cadastro.rede.tipo === 'METALICA'">
+                <th>Atenuação (dB):</th>
+                <td>{{parametros.result.atnDown}}</td>
+                <td>{{parametros.result.atnUp}}</td>
+            </tr>
+            <tr *ngIf="parametros.result.atnDown1">
+                <th>Atenuação (dB):</th>
+                <td>{{parametros.result.atnDown1}}</td>
+                <td>{{parametros.result.atnUp1}}</td>
+            </tr>
+            <tr *ngIf="parametros.result.atnDown2">
+                <th>Atenuação (dB):</th>
+                <td>{{parametros.result.atnDown2}}</td>
+                <td>{{parametros.result.atnUp2}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
