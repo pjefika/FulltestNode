@@ -3,7 +3,7 @@
         <div class="col-xs-1">
         </div>
         <div class="col-xs-9">
-            <table class="table table-compact">
+            <table class="table table-compact table-striped">
                 <thead>
                     <tr>
                         <th colspan=2>
@@ -54,7 +54,7 @@
                 <tr *ngIf="authBanda.porta">
                     <td class="left">Porta</td>
                     <td>{{authBanda.porta}}
-                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="authBanda.toString()==holderService.cadastro.radius.porta"></clr-icon>
+                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="authBanda.porta.toString()==holderService.cadastro.radius.porta"></clr-icon>
                         <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="authBanda.porta.toString()!=holderService.cadastro.radius.porta"></clr-icon>
                     </td>
                 </tr>
@@ -73,15 +73,15 @@
                 <tr *ngIf="authBanda.profile">
                     <td class="left">Perfil de Velocidade</td>
                     <td>{{authBanda.profile}}
-                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="authBanda.profile==holderService.cadastro.radius.profile"></clr-icon>
-                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="authBanda.profile!=holderService.cadastro.radius.profile"></clr-icon>
+                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="matchProfile(authBanda.profile, holderService.cadastro.radius.profile)"></clr-icon>
+                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="!matchProfile(authBanda.profile, holderService.cadastro.radius.profile)"></clr-icon>
                     </td>
                 </tr>
                 <tr *ngIf="authBanda.designador">
                     <td class="left">Designador</td>
                     <td>{{authBanda.designador}}
-                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="authBanda.designador==holderService.cadastro.rede.designador"></clr-icon>
-                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="authBanda.designador!=holderService.cadastro.rede.designador"></clr-icon>
+                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="holderService.cadastro.designador.includes(authBanda.designador)"></clr-icon>
+                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="!holderService.cadastro.designador.includes(authBanda.designador)"></clr-icon>
                     </td>
                 </tr>
                 <tr *ngIf="authBanda.cgnat.status.descricao.value">

@@ -24,7 +24,7 @@ export class AuthBandaComponent extends CallAlertService implements OnInit {
 
     constructor(public toastyComponent: ToastyComponent,
         private authBandaService: AuthBandaCpService,
-        private holderService: HolderService) {
+        public holderService: HolderService) {
         super(toastyComponent);
     }
 
@@ -49,5 +49,13 @@ export class AuthBandaComponent extends CallAlertService implements OnInit {
                 this.actionBtnName = "Consultar Autenticação";
                 super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
             });
+    }
+
+    public matchProfile(prof1: string, prof2: string) {
+        let profile1 = prof1.match("\d+");
+        let profile2 = prof2.match("\d+");
+
+        return profile1 === profile2;
+
     }
 }

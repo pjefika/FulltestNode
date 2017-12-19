@@ -18,8 +18,10 @@
                 </tr>
                 <tr>
                     <th>Informações</th>
-                    <th>Valocidade de Download</th>
-                    <th>Valocidade de Upload</th>
+                    <th *ngIf="parametros.result.velSincDown">Download</th>
+                    <th *ngIf="!parametros.result.velSincDown"></th>
+                    <th *ngIf="parametros.result.velSincUp">Upload</th>
+                    <th *ngIf="!parametros.result.velSincUp"></th>
                 </tr>
                 <tr *ngIf="parametros.result.velSincDown">
                     <th>Velocidade Sincronizada (Mbps):</th>
