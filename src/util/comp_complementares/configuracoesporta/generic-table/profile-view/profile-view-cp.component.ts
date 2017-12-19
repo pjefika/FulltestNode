@@ -21,4 +21,9 @@ export class ProfileViewCpComponent extends CallAlertService implements OnInit {
         
     }
 
+    public stringVelocidade(vel:string){
+        let vels = vel.match("[^a-z_ ]\\ *([.0-9])*\\d");
+        return vels[0];
+    }
+
 }

@@ -31,23 +31,30 @@ export class TableAuxSerialComponent implements OnInit {
         public holderService: HolderService,
         private toastyComponent: ToastyComponent) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        if (!this.serial.resultado && !this.serialDisp) {
+            this.unsetOntFromOlt();
+        }
+    }
 
     public unsetOntFromOlt() {
         this.btnUnsetOntFromOltDisable = true;
         this.btnUnsetOntFromOltName = "Aguarde...";
+        this.btnSetOntToOltDisable = true;
+        this.btnSetOntToOltName = "Aguarde...";
         this.tableAuxSerialService
             .unsetOntFromOlt(this.holderService.cadastro)
             .then(data => {
                 this.serialDisp = data;
                 this.serial.resultado = false;
-                this.btnUnsetOntFromOltDisable = false;
-                this.btnUnsetOntFromOltName = "Desassociar Ont";
                 this.callToasty("Sucesso", "Comando realizado com sucesso.", "success", 5000);
             }, error => {
+                this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
+            }).then(() => {
                 this.btnUnsetOntFromOltDisable = false;
                 this.btnUnsetOntFromOltName = "Desassociar Ont";
-                this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
+                this.btnSetOntToOltDisable = false;
+                this.btnSetOntToOltName = "Associar Ont";
             })
     }
 

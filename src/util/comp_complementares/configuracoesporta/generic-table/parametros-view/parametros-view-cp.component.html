@@ -16,12 +16,10 @@
                         <clr-icon style="color: red; text-align: center;" shape="times" *ngIf="!parametros.resultado"></clr-icon>
                     </td>
                 </tr>
-                <tr>
+                <tr *ngIf="parametros.result.velSincDown">
                     <th>Informações</th>
-                    <th *ngIf="parametros.result.velSincDown">Download</th>
-                    <th *ngIf="!parametros.result.velSincDown"></th>
-                    <th *ngIf="parametros.result.velSincUp">Upload</th>
-                    <th *ngIf="!parametros.result.velSincUp"></th>
+                    <th>Download</th>
+                    <th>Upload</th>
                 </tr>
                 <tr *ngIf="parametros.result.velSincDown">
                     <th>Velocidade Sincronizada (Mbps):</th>

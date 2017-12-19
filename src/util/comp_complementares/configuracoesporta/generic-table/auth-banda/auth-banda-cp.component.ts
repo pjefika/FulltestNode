@@ -52,10 +52,11 @@ export class AuthBandaComponent extends CallAlertService implements OnInit {
     }
 
     public matchProfile(prof1: string, prof2: string) {
-        let profile1 = prof1.match("\d+");
-        let profile2 = prof2.match("\d+");
-
-        return profile1 === profile2;
+        let profile1 = prof1.match(/[^a-z ]\ *([.0-9])*\d/g);
+        let profile2 = prof2.match(/[^a-z ]\ *([.0-9])*\d/g);
+        console.log(profile1);
+        console.log(profile2);
+        return profile1[0] == profile2[0] && profile1[1] == profile2[1];
 
     }
 }
