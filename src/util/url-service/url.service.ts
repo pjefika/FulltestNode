@@ -10,8 +10,10 @@ import { SuperService } from 'util/superservice/super.service';
 export class UrlService extends SuperService implements RequestAction {
 
     //Modificar IPs 
-    public urlIp = "http://10.200.35.67:80/";  // Produção e restante dos pjs para o path
+    // public urlIp = "http://10.200.35.67:80/";  // Produção e restante dos pjs para o path
+
     public urlIpParaStealer = "http://10.40.195.81:8080/"; // A stealer que ira ficar aqui // PeleServ
+    public urlIp = this.urlIpParaStealer;
     // IPS: 
     //  "http://10.40.195.81:8080/"  QA
     //  "http://10.40.198.168:8080/"; Produção CO

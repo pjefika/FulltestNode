@@ -102,6 +102,7 @@ import { GenericValidComponent } from 'util/comp_complementares/configuracoespor
 import { AuthBandaComponent } from 'util/comp_complementares/configuracoesporta/generic-table/auth-banda/auth-banda-cp.component';
 import { ProfileViewCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/profile-view/profile-view-cp.component';
 import { VlanViewCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/vlan-view/vlan-view-cp.component';
+import { ParametrosViewCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/parametros-view/parametros-view-cp.component';
 
 
 @NgModule({
@@ -173,7 +174,8 @@ import { VlanViewCpComponent } from 'util/comp_complementares/configuracoesporta
         GenericValidComponent,
         AuthBandaComponent,
         ProfileViewCpComponent,
-        VlanViewCpComponent
+        VlanViewCpComponent,
+        ParametrosViewCpComponent
     ],
     imports: [
         BrowserModule,

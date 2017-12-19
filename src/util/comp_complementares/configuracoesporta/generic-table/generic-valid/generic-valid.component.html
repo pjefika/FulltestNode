@@ -1,7 +1,7 @@
-<div *ngIf="valid">
+<div *ngIf="valid" style="padding-bottom:1%">
     <confiab-rede [confRede]="valid" *ngIf="valid.nome=='Confiabilidade de Rede'"></confiab-rede>
     <auth-banda [deviceMac]="valid" *ngIf="valid.nome=='MAC do Equipamento'"></auth-banda>
-    <table-parametros-cp-component [parametros]="valid" *ngIf="valid.nome=='Parâmetros'"></table-parametros-cp-component>
+    <parametros-view [parametros]="valid" *ngIf="valid.nome.includes('Parâmetros')"></parametros-view>
     <table-modulacao-cp-component [modulacao]="valid" *ngIf="valid.nome=='Modulação'"></table-modulacao-cp-component>
     <profile-view-cp [profile]="valid" *ngIf="valid.nome=='Profile'"></profile-view-cp>
     <vlan-view-cp [vlan]="valid" *ngIf="valid.nome.includes('Vlan')"></vlan-view-cp>
