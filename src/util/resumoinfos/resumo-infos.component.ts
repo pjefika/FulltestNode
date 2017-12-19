@@ -14,7 +14,6 @@ export class ResumoInfosComponent implements OnInit {
     constructor() { }
 
     public ngOnInit() {
-        console.log(this.cadastro);
 
     }
 
