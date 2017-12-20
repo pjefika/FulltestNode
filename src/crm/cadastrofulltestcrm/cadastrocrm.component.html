@@ -1,4 +1,5 @@
 <div>
+    <h3 class="titulo-da-pagina">Informações Técnicas</h3>
     <loading-component [searching]="searchCadastro" [searchWhat]="'Buscando Cadastro...'"></loading-component>
     <div *ngIf="cadastro">
         <table-cadastro-component [cadastro]="cadastro"></table-cadastro-component>
@@ -6,6 +7,10 @@
             <tbody>
                 <tr>
                     <th colspan="2">Tabela Resumo</th>
+                </tr>
+                <tr>
+                    <th>Planta:</th>
+                    <td>{{cadastro.rede.planta}}</td>
                 </tr>
                 <tr>
                     <th>Cadastro</th>
