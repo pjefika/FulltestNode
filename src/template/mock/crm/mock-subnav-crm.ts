@@ -7,10 +7,6 @@ export const subNavMockCrm: SubNav[] = [
         component: CadastroCrmComponent
     },
     {
-        nome: "Configurações de Porta",
-        component: ConfiguracoesPortaComponent
-    },
-    {
         nome: "Link ACS",
         link: "http://10.200.35.67/acs-arris/"
     }
