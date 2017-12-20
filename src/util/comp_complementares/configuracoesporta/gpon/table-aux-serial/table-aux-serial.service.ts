@@ -13,7 +13,7 @@ export class TableAuxSerialService extends SuperService {
     }
 
     public unsetOntFromOlt(cadastro: Cadastro) {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { cust: any, executor: string };
         _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
@@ -30,7 +30,7 @@ export class TableAuxSerialService extends SuperService {
     }
 
     public setOntToOlt(cadastro: Cadastro, serial: string) {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { cust: any, executor: string, serial: { serial: string } };
         _data = { cust: cadastro, executor: usr.user, serial: { serial: serial } };
         this.infoResquest = {

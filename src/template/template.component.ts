@@ -71,8 +71,8 @@ export class TemplateComponent implements OnInit {
 
     private validUser(): Boolean {
         let valid: boolean = false;
-        if (sessionStorage.getItem('user')) {
-            let usr = JSON.parse(sessionStorage.getItem('user'));
+        if (localStorage.getItem('user')) {
+            let usr = JSON.parse(localStorage.getItem('user'));
             if (usr.nv === 1 || this.holderService.eachFulltest === "CRM") {
                 valid = true;
             }
@@ -84,7 +84,7 @@ export class TemplateComponent implements OnInit {
     * Sair do sistema
     **/
     public sair() {
-        sessionStorage.clear();
+        localStorage.clear();
         this.holderReset();
         this.router.navigate(['./entrar']);
 

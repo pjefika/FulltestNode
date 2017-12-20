@@ -10,7 +10,7 @@ export class TableProfileCpService extends SuperService {
     constructor(private urlService: UrlService) { super(); }
 
     public setProfile(cadastro: Cadastro, resultProfile: ResultProfile) {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { cust: any, executor: string, profile: ResultProfile };
         _data = { cust: cadastro, executor: usr.user, profile: resultProfile };
         this.infoResquest = {

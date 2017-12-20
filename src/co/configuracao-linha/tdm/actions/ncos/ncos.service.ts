@@ -26,7 +26,7 @@ export class NcosService extends SuperService {
     }
 
     public setNcos(linha: Linha, ncos: string): Promise<CadastroLinha> {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, ncos: string, executor: string };
         _data = { dms: dms, ncos: ncos, executor: usr.user };
