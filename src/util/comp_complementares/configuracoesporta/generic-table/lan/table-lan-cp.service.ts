@@ -12,7 +12,7 @@ export class TableLanCpService extends SuperService {
     }
 
     public setVlanGeneric(cadastro: Cadastro, whatSet: string) {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { cust: any, executor: string };
         _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
@@ -29,7 +29,7 @@ export class TableLanCpService extends SuperService {
     }
 
     public resetIptvStatistics(cadastro: Cadastro) {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { cust: any, executor: string };
         _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {

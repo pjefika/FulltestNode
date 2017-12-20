@@ -24,7 +24,7 @@ export class ManobraService extends SuperService {
     }
 
     public getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { cust: any, executor: string };
         _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {

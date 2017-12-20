@@ -12,7 +12,7 @@ export class AuthBandaCpService extends SuperService {
     }
 
     public consultar(deviceMac: ResultDeviceMac) {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { macOrIp: string, executor: string};
         _data = { macOrIp: deviceMac.mac, executor: usr.user };
         this.infoResquest = {

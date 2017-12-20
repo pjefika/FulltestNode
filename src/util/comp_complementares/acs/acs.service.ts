@@ -11,7 +11,7 @@ export class AcsService extends SuperService {
     }
 
     public getEquipamentoAssoc(input: string) {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { criterio: string, input: string, executor: string };
         _data = { criterio: "SUBSCRIBER", input: input, executor: usr.user };
         this.infoResquest = {
@@ -25,6 +25,17 @@ export class AcsService extends SuperService {
                 return response as Equipamento[]
             })
             .catch(super.handleError);
+    }
+
+    public abreSearchDevice(deviceId: number) {
+        this.infoResquest = {
+            rqst: "",
+            command: "",
+            _data: deviceId,
+            otherUrl: "http://10.40.195.81/acs/searchEqp/", // Trocar link para produção quando for lançado...
+            timeout: 60000
+        };
+        this.urlService.linkurl(this.infoResquest);
     }
 
 }

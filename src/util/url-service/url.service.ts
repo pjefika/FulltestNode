@@ -83,4 +83,9 @@ export class UrlService extends SuperService implements RequestAction {
             })
             .catch(super.handleErrorKing);
     }
+
+    public linkurl(infoResquest: InfoRequest) {
+        const url = infoResquest.otherUrl + infoResquest._data;
+        window.open(url);
+    }
 }
