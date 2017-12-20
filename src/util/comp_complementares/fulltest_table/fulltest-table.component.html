@@ -15,11 +15,11 @@
                     {{valid.mensagem}}
                 </clr-dg-cell>
                 <clr-dg-cell>
-                    <clr-icon shape="check" *ngIf="valid.resultado && !valid.nome.includes('MAC')" class="is-success"></clr-icon>
-                    <clr-icon shape="times" *ngIf="!valid.resultado && !valid.foiCorrigido" class="is-error"></clr-icon>
-                    <clr-icon shape="exclamation-triangle" *ngIf="(!valid.resultado && valid.foiCorrigido) || (valid.resultado && valid.nome.includes('MAC'))" class="is-warning is-solid"></clr-icon>
+                    <clr-icon shape="check" *ngIf="hasCheck(valid)" class="is-success"></clr-icon>
+                    <clr-icon shape="times" *ngIf="hasTimes(valid)" class="is-error"></clr-icon>
+                    <clr-icon shape="exclamation-triangle" *ngIf="hasExclamationSign(valid)" class="is-warning is-solid"></clr-icon>
                 </clr-dg-cell>
-                <ng-container *ngIf="!valid.nome.includes('Porta')&&!valid.mensagem.includes('Cliente sem')" ngProjectAs="clr-dg-row-detail">
+                <ng-container *ngIf="hasRowDetail(valid)" ngProjectAs="clr-dg-row-detail">
                     <generic-valid *clrIfExpanded [valid]="valid" ngProjectAs="clr-dg-row-detail"></generic-valid>
                 </ng-container>
             </clr-dg-row>

@@ -39,10 +39,15 @@ export class FulltestComponent extends CallAlertService implements OnInit {
         if (!this.objectValid) {
             if (this.cadastro.eventos.length > 0) {
                 this.abreModal = true;
-                this.msg = { msg: "Cliente com evento massivo, algumas correções e validações podem ocorrer erros.", alertType: "alert-warning" }
+                this.msg = { msg: "Cliente com evento massivo, podem ocorrer erros em algumas correções e/ou validações.", alertType: "alert-warning" }
                 this.alertAtivo = true;
             } else {
                 this.realizaFulltest();
+                if (this.cadastro.rede.planta == "VIVO1") {
+                    this.msg = { msg: "Não há evento massivo para este cliente.", alertType: "alert-info" }
+                    this.alertAtivo = true;
+                }
+
             }
         }
 

@@ -3,6 +3,7 @@
     <div *ngIf="cadastro">
         <h3 class="titulo-da-pagina">Fulltest CRM</h3>
         <table-cadastro-component [cadastro]="cadastro"></table-cadastro-component>
+        <alert-component [msg]="msgEventoMassivo" [ativo]="alertAtivoEventoMassivo" [closeable]="false"></alert-component>
         <table class="table table-compact table-vertical" style="margin: 7px 0 0 0;" *ngIf="listResumo">
             <tbody>
                 <tr>
@@ -47,7 +48,7 @@
                 </tr>
             </tbody>
         </table>
-        <alert-component [msg]="msgEventoMassivo" [ativo]="alertAtivoEventoMassivo" [closeable]="false"></alert-component>
+
         <fulltest-crm-component [objectValid]="objectValid"></fulltest-crm-component>
     </div>
     <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
