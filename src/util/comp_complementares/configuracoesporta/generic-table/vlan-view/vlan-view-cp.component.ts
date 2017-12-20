@@ -1,17 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ToastyComponent } from 'util/toasty/toasty.component';
 import { CallAlertService } from 'util/callalerts/call-alert.service';
-import { Modulacao } from 'viewmodel/confPorta/modulacao';
+import { VlanAbstract } from 'viewmodel/confPorta/vlanAbstract';
 
 @Component({
-    selector: 'table-modulacao-cp-component',
-    templateUrl: 'table-modulacao-cp.component.html',
-    styleUrls: ['table-modulacao-cp.component.css']
+    selector: 'vlan-view-cp',
+    templateUrl: 'vlan-view-cp.component.html',
+    styleUrls: ['vlan-view-cp.component.css']
 })
 
-export class TableModulacaoCpComponent extends CallAlertService implements OnInit {
+export class VlanViewCpComponent extends CallAlertService implements OnInit {
 
-    @Input() public modulacao: Modulacao;
+    @Input() public vlan: VlanAbstract;
 
     constructor(public toastyComponent: ToastyComponent) {
         super(toastyComponent);

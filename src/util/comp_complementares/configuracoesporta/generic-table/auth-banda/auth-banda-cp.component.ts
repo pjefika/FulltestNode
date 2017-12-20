@@ -24,15 +24,14 @@ export class AuthBandaComponent extends CallAlertService implements OnInit {
 
     constructor(public toastyComponent: ToastyComponent,
         private authBandaService: AuthBandaCpService,
-        private holderService: HolderService) {
+        public holderService: HolderService) {
         super(toastyComponent);
     }
 
     public ngOnInit() {
-        // this.consultar();
+        this.consultar();
         // for test purposes
-        // this.holderService.cadastro.rede.rin
-        this.authBanda = this.authBandaService.getMock();
+        // this.authBanda = this.authBandaService.getMock();
     }
 
     public consultar() {
@@ -50,5 +49,14 @@ export class AuthBandaComponent extends CallAlertService implements OnInit {
                 this.actionBtnName = "Consultar Autenticação";
                 super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
             });
+    }
+
+    public matchProfile(prof1: string, prof2: string) {
+        let profile1 = prof1.match(/[^a-z ]\ *([.0-9])*\d/g);
+        let profile2 = prof2.match(/[^a-z ]\ *([.0-9])*\d/g);
+        console.log(profile1);
+        console.log(profile2);
+        return profile1[0] == profile2[0] && profile1[1] == profile2[1];
+
     }
 }

@@ -1,35 +1,29 @@
-<div>
-    <table class="table table-compact table-vertical">
-        <tbody>
-            <tr>
-                <th colspan="2" style="text-align: center;">Modulação</th>
-            </tr>
-            <tr>
-                <th>Mensagem</th>
-                <td>Mensagem para ser exibida....</td>
-            </tr>
-            <tr>
-                <th>Resultado:</th>
-                <td>
-                    <!-- <clr-icon style="color: green" shape="check" *ngIf="resultado"></clr-icon>
-                    <clr-icon style="color: red" shape="times" *ngIf="!resultado"></clr-icon> -->
-                </td>
-            </tr>
-            <tr>
-                <th>Modulações</th>
-                <td>
-                    <div class="select">
-                        <select [(ngModel)]="variavel">
-                            <option *ngFor="let item of list" [ngValue]="value">{{option.name}}</option>
-                        </select>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <button class="btn btn-primary btn-block btn-sm">Nome para o botão</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<div class="row" *ngIf="modulacao">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-9">
+        <table class="table table-compact">
+            <thead>
+                <tr>
+                    <th colspan="2" style="text-align: center;">Modulação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Estado</td>
+                    <td>{{modulacao.mensagem}}
+                        <clr-icon class="is-success" shape="check" *ngIf="modulacao.resultado"></clr-icon>
+                        <clr-icon class="is-error" shape="times" *ngIf="!modulacao.resultado"></clr-icon>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Configurada</td>
+                    <td>
+                        {{modulacao.result.modulEnum}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-2"></div>
+    <div class="row"></div>
 </div>
