@@ -22,7 +22,9 @@ export class FulltestComponent extends CallAlertService implements OnInit {
 
     private searchFulltest: boolean = false;
     private alertTypeOn: boolean = false;
-    private  doFulltest: boolean = false;
+    private doFulltest: boolean = false;
+
+    private abreModal: boolean = false;
 
     constructor(
         private fulltestService: FulltestService,
@@ -35,30 +37,39 @@ export class FulltestComponent extends CallAlertService implements OnInit {
 
     public ngOnInit(): void {
         if (!this.objectValid) {
-            this.realizaFulltest();
+            if (this.cadastro.eventos) {
+                this.abreModal = true;
+                this.msg = { msg: "Cliente com evento massivo, algumas correções e validações podem ocorrer erros.", alertType: "alert-warning" }
+                this.alertAtivo = true;
+            } else {
+                this.realizaFulltest();
+            }
         }
 
         this.holderService.btnResumoInfosAtivo = true;
     }
 
     public realizaFulltest(): void {
+        this.abreModal = false; // fecha modal de validação massivo se aberto.
 
-        // this.searchFulltest = true;
-        // this.fulltestService
-        //     .getValidacao(this.cadastro)
-        //     .then(data => {
-        //         this.objectValid = data;
-        //         this.searchFulltest = false;
-        //         this.holderService.objectValid = this.objectValid;
-        //     }, error => {
-        //         this.searchFulltest = false;
-        //         this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
-        //     });
-        
+        // Retirar quando for para produção...
+        delete this.cadastro.radius;
+        delete this.cadastro.eventos;
 
+        this.searchFulltest = true;
+        this.fulltestService
+            .getValidacao(this.cadastro)
+            .then(data => {
+                this.objectValid = data;
+                this.searchFulltest = false;
+                this.holderService.objectValid = this.objectValid;
+            }, error => {
+                this.searchFulltest = false;
+                this.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
+            });
         //for testing purposes
-        this.objectValid = this.fulltestService.getValidacaoMock();
-        this.searchFulltest = false;
+        // this.objectValid = this.fulltestService.getValidacaoMock();
+        // this.searchFulltest = false;
 
     }
 

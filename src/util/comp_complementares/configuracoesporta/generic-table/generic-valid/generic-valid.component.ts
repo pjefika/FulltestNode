@@ -24,21 +24,5 @@ export class GenericValidComponent extends CallAlertService implements OnInit {
     public ngOnInit() {
         
     }
-
-    // public setAdminState() {
-    //     this.btnChangeAdminStateDisable = true;
-    //     this.btnChangeAdminStateName = "Aguarde...";
-    //     this.confiabilidadeRedeCpService
-    //         .setAdminState(this.holderService.cadastro, this.confRede.result)
-    //         .then(data => {
-    //             this.confRede = data;
-    //             this.btnChangeAdminStateDisable = false;
-    //             this.btnChangeAdminStateName = "Executar";
-    //             super.callToasty("Sucesso", "Comando realizado com sucesso.", "success", 5000)
-    //         }, error => {
-    //             this.btnChangeAdminStateDisable = false;
-    //             this.btnChangeAdminStateName = "Executar";
-    //             super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
-    //         });
-    // }
+   
 }

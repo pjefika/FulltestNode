@@ -1,5 +1,4 @@
 <div>
-
     <div *ngIf="msgAtivo">
         <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
     </div>
@@ -20,7 +19,9 @@
                     <clr-icon shape="times" *ngIf="!valid.resultado && !valid.foiCorrigido" class="is-error"></clr-icon>
                     <clr-icon shape="exclamation-triangle" *ngIf="!valid.resultado && valid.foiCorrigido" class="is-warning is-solid"></clr-icon>
                 </clr-dg-cell>
-                <generic-valid *clrIfExpanded [valid]="valid" ngProjectAs="clr-dg-row-detail"></generic-valid>
+                <ng-container *ngIf="!valid.nome.includes('Porta')" ngProjectAs="clr-dg-row-detail">
+                    <generic-valid *clrIfExpanded [valid]="valid" ngProjectAs="clr-dg-row-detail"></generic-valid>
+                </ng-container>
             </clr-dg-row>
         </clr-datagrid>
     </div>

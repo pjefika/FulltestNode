@@ -35,7 +35,21 @@
                 </tr>
             </tbody>
         </table>
+        <alert-component [msg]="msgEventoMassivo" [ativo]="alertAtivoEventoMassivo" [closeable]="false"></alert-component>
         <fulltest-crm-component [objectValid]="objectValid"></fulltest-crm-component>
     </div>
     <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
+
+    <clr-modal [(clrModalOpen)]="abreModal" [clrModalClosable]="false">
+        <h3 class="modal-title">Cliente com Evento Massivo</h3>
+        <div class="modal-body">
+            <p>O cliente possui um evento massivo, deseja relmente continuar com o testes e validações?</p>
+            <evento-massivo-component *ngIf="holderService.cadastro" [eventos]="cadastro.eventos"></evento-massivo-component>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="getValidacao()">Continuar</button>
+            <button type="button" class="btn btn-primary" (click)="abreModal = false">Não seguir</button>
+        </div>
+    </clr-modal>
+
 </div>

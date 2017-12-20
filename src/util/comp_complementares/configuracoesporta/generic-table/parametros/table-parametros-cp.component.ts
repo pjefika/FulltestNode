@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { HolderService } from 'util/holder/holder.service';
 
 @Component({
     selector: 'table-parametros-cp-component',
@@ -10,8 +11,12 @@ export class TableParametrosCpComponent implements OnInit {
 
     @Input() public parametros: any;
 
-    constructor() { }
+    constructor(public holderService: HolderService) { }
 
-    public ngOnInit() { }
+    public ngOnInit() {        
+
+    }
+
+
 
 }

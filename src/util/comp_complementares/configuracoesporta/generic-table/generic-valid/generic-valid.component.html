@@ -1,8 +1,5 @@
 <div *ngIf="valid">
-    <div *ngIf="valid.nome=='Confiabilidade de Rede'">
-        <confiab-rede [confRede]="valid"></confiab-rede>
-    </div>
-    <div *ngIf="valid.nome=='MAC do Equipamento'">
-        <auth-banda [deviceMac]="valid"></auth-banda>
-    </div>
+    <confiab-rede [confRede]="valid" *ngIf="valid.nome=='Confiabilidade de Rede'"></confiab-rede>
+    <auth-banda [deviceMac]="valid" *ngIf="valid.nome=='MAC do Equipamento'"></auth-banda>
+    <table-parametros-cp-component [parametros]="valid" *ngIf="valid.nome=='Parâmetros'"></table-parametros-cp-component>
 </div>
