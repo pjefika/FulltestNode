@@ -8,7 +8,7 @@ export class MakeLogerService {
     constructor() { }
 
     makeLoger(msgConclusao, instancia, cadastro: Cadastro, objectValid: ObjectValid, listResumo): Promise<any> {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let inst: string = instancia;
         let desA: string = "-1";
         let des: string = "-1";
