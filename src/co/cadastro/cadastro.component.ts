@@ -51,6 +51,7 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
             // for test purposes
             // this.cadastro = this.cadastroService.getMock();
             // this.searching = false;
+
             this.holderService.cadastro = this.cadastro;
             this.holderService.liberarSubNav = true;
         }
