@@ -1,9 +1,9 @@
 <div>
     <loading-component [searching]="searching" [searchWhat]="'Buscando Eventos Massivos...'"></loading-component>
-    <table class="table table-compact" *ngIf="eventos.lenght > 0">
+    <table class="table table-compact" *ngIf="eventos.length > 0">
         <tbody>
             <tr>
-                <th colspan="5">Data da consulta: {{((eventos.dataConsulta/1000) | amFromUnix) | amDateFormat:'DD/MM/YYYY hh:mm:ss'}}</th>
+                <th colspan="4"></th>
                 <th>
                     <clr-icon shape="refresh" (click)="getAfetaCliente()"></clr-icon>
                 </th>
@@ -12,11 +12,11 @@
                 <th>Tipo Afetacão</th>
                 <th>Tipo Falha</th>
                 <th>Tipo Alarme</th>
-                <th>Descrição</th>
+                <!-- <th>Descrição</th> -->
                 <th>Data Abertura</th>
                 <th>Data Prevista</th>
             </tr>
-            <tr *ngFor="let evento of eventos.eventos">
+            <tr *ngFor="let evento of eventos">
                 <td>
                     {{evento.tipoAfetacao}}
                 </td>
@@ -26,14 +26,14 @@
                 <td>
                     {{evento.tipoAlarme}}
                 </td>
-                <td>
+                <!-- <td>
                     {{evento.desc}}
+                </td> -->
+                <td>
+                    {{((evento.dataAbertura/1000) | amFromUnix) | amDateFormat:'DD/MM/YYYY HH:mm:ss'}}
                 </td>
                 <td>
-                    {{((evento.dataAbertura/1000) | amFromUnix) | amDateFormat:'DD/MM/YYYY hh:mm:ss'}}
-                </td>
-                <td>
-                    {{((evento.dataPrevista/1000) | amFromUnix) | amDateFormat:'DD/MM/YYYY hh:mm:ss'}}
+                    {{((evento.dataPrevista/1000) | amFromUnix) | amDateFormat:'DD/MM/YYYY HH:mm:ss'}}
                 </td>
             </tr>
         </tbody>

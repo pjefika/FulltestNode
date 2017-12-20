@@ -4,6 +4,7 @@ import { CallAlertService } from 'util/callalerts/call-alert.service';
 import { ToastyComponent } from 'util/toasty/toasty.component';
 import { Evento } from 'viewmodel/evento-massivo/eventos';
 import { HolderService } from 'util/holder/holder.service';
+import { EventoMassivo } from 'viewmodel/evento-massivo/evento-massivo';
 
 @Component({
     selector: 'evento-massivo-component',
@@ -16,7 +17,7 @@ export class EventoMassivoComponent extends CallAlertService implements OnInit {
 
     private searching: boolean = false;
 
-    @Input() public eventos: Evento;
+    @Input() public eventos: EventoMassivo[];
 
     constructor(
         public toastyComponent: ToastyComponent,

@@ -3,6 +3,7 @@ import { SuperService } from 'util/superservice/super.service';
 import { UrlService } from 'util/url-service/url.service';
 import { Cadastro } from 'viewmodel/cadastro/cadastro';
 import { Evento } from 'viewmodel/evento-massivo/eventos';
+import { EventoMassivo } from 'viewmodel/evento-massivo/evento-massivo';
 
 @Injectable()
 export class EventoMAssivoService extends SuperService {
@@ -23,7 +24,7 @@ export class EventoMAssivoService extends SuperService {
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {
-                return data as Evento
+                return data as EventoMassivo[];
             })
             .catch(super.handleError);
     }

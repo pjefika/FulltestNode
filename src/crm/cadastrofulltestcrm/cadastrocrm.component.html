@@ -1,7 +1,7 @@
 <div>
-    <h3 class="titulo-da-pagina">Fulltest CRM</h3>
     <loading-component [searching]="searchCadastro" [searchWhat]="'Buscando Cadastro...'"></loading-component>
     <div *ngIf="cadastro">
+        <h3 class="titulo-da-pagina">Fulltest CRM</h3>
         <table-cadastro-component [cadastro]="cadastro"></table-cadastro-component>
         <table class="table table-compact table-vertical" style="margin: 7px 0 0 0;" *ngIf="listResumo">
             <tbody>
@@ -12,11 +12,11 @@
                     <th>Origem</th>
                     <td>{{cadastro.rede.planta === 'VIVO1' ? 'VIVO1 - Sophia' : 'VIVO2'}}</td>
                 </tr>
-                <tr>
+                <tr *ngIf="cadastro.rede.planta=='VIVO1'">
                     <th>Eventos Massivos</th>
                     <td>
-                        <clr-icon shape="check" class="is-success" *ngIf="!cadastro.eventos"></clr-icon>
-                        <clr-icon shape="times" class="is-error" *ngIf="cadastro.eventos"></clr-icon>
+                        <clr-icon shape="check" class="is-success" *ngIf="cadastro.eventos.length==0"></clr-icon>
+                        <clr-icon shape="times" class="is-error" *ngIf="cadastro.eventos.length>0"></clr-icon>
                     </td>
                 </tr>
                 <tr>
