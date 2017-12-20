@@ -129,5 +129,4 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
     public setInfoCadastro() {
         this.cadastro = this.holderService.cadastro;
     }
-
 }

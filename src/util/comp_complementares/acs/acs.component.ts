@@ -49,5 +49,9 @@ export class AcsComponent implements OnInit {
         }
         this.toastyComponent.addToasty();
     }
+    
+    private abreAbaSearchDeviceInfo(deviceId: number) {
+
+    }
 
 }

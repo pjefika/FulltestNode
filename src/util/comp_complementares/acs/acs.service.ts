@@ -27,4 +27,13 @@ export class AcsService extends SuperService {
             .catch(super.handleError);
     }
 
+    public abreSearchDevice() {
+        this.infoResquest = {
+            rqst: "",
+            command: this.urlService.pathAcs + "search/search",
+            _data: "",
+            timeout: 60000
+        };
+    }
+
 }

@@ -10,6 +10,7 @@
                 <th>IP</th>
                 <th>MAC</th>
                 <th>Fábricante</th>
+                <th>Ação</th>
             </tr>
             <tr *ngFor="let eqp of equipamentos">
                 <!-- <td>{{eqp.subscriberID}}</td> -->
@@ -17,6 +18,11 @@
                 <td>{{eqp.IPAddress}}</td>
                 <td>{{eqp.macAddress}}</td>
                 <td>{{eqp.manufacturer}}</td>
+                <td>
+                    <button type="button" class="btn btn-icon" (click)="abreAbaSearchDeviceInfo(eqp.deviceId)">
+                        <clr-icon shape="search"></clr-icon>
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>
