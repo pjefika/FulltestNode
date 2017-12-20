@@ -98,8 +98,9 @@ import { ChartsComponent } from 'util/comp_complementares/charts/charts.componen
 import { TableModulacaoCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/modulacao/table-modulacao-cp.component';
 
 import { ConfiabRedeCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/confiab-rede/confiab-rede-cp.component';
-import { GenericValidComponent } from 'util/comp_complementares/configuracoesporta/generic-table/generic-valid/generic-valid.component';
+
 import { AuthBandaComponent } from 'util/comp_complementares/configuracoesporta/generic-table/auth-banda/auth-banda-cp.component';
+import { GenericValidComponent } from 'util/comp_complementares/configuracoesporta/generic-table/generic-valid/generic-valid.component';
 
 
 @NgModule({

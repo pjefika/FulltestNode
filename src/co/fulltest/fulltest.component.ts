@@ -45,6 +45,7 @@ export class FulltestComponent extends CallAlertService implements OnInit {
                 this.realizaFulltest();
             }
         }
+
         this.holderService.btnResumoInfosAtivo = true;
     }
 
@@ -71,4 +72,5 @@ export class FulltestComponent extends CallAlertService implements OnInit {
         // this.searchFulltest = false;
 
     }
+
 }
