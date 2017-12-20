@@ -1,6 +1,6 @@
 <div>
     <loading-component [searching]="searching" [searchWhat]="'Buscando Eventos Massivos...'"></loading-component>
-    <table class="table table-compact" *ngIf="eventos">
+    <table class="table table-compact" *ngIf="eventos.lenght > 0">
         <tbody>
             <tr>
                 <th colspan="5">Data da consulta: {{((eventos.dataConsulta/1000) | amFromUnix) | amDateFormat:'DD/MM/YYYY hh:mm:ss'}}</th>

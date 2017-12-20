@@ -29,24 +29,6 @@ export class EventoMassivoComponent extends CallAlertService implements OnInit {
         // this.contagemRegressivaParaMostrarTabela();
     }
 
-    //Mock
-    private contagemRegressivaParaMostrarTabela() {
-        this.eventos = {
-            eventos: [
-                {
-                    tipoAlarme: "INTERROMPIDO",
-                    tipoFalha: "FTTx",
-                    tipoAfetacao: "SEM AFETACAO COM RISCO",
-                    desc: "PON DOWN: PON 1/1/3/3 Dying Gasp = [0] ::PON LOSS | LOSS= 26",
-                    dataAbertura: 1513627226000,
-                    dataPrevista: 1513640984000
-                }
-            ],
-            dataConsulta: 1513630092022
-        }
-    }
-
-
     private getAfetaCliente() {
         this.searching = true;
         this.eventoMAssivoService
