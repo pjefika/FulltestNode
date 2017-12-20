@@ -37,7 +37,7 @@ export class FulltestComponent extends CallAlertService implements OnInit {
 
     public ngOnInit(): void {
         if (!this.objectValid) {
-            if (this.cadastro.eventos) {
+            if (this.cadastro.eventos.length > 0) {
                 this.abreModal = true;
                 this.msg = { msg: "Cliente com evento massivo, algumas correções e validações podem ocorrer erros.", alertType: "alert-warning" }
                 this.alertAtivo = true;

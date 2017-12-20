@@ -168,7 +168,7 @@ export class CadastroCrmComponent extends CallAlertService implements OnInit {
                         this.holderService.listResumo = this.listResumo;
                         let msgalerterror: string;
                         if (this.listResumo.cadastro) {
-                            if (this.cadastro.eventos) {
+                            if (this.cadastro.eventos.length > 0) {
                                 // Validação se continua ou não o fulltest...
                                 this.abreModal = true;
                                 this.alertAtivoEventoMassivo = true;
