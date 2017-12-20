@@ -51,7 +51,12 @@ export class FulltestTableComponent extends CallAlertService implements OnInit {
 
     public hasCheck(valid: Valids) {
         if (this.holderService.cadastro) {
-            if (valid.resultado && (!valid.nome.includes('MAC') && this.holderService.cadastro.rede.planta != 'VIVO2')) {
+            if (valid.resultado && 
+                (
+                    !valid.nome.includes('MAC') ||
+                    (valid.nome.includes('MAC') && this.holderService.cadastro.rede.planta != 'VIVO2')
+                )
+            ) {
                 return true;
             }
             return false;
