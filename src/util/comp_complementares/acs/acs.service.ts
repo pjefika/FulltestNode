@@ -27,13 +27,15 @@ export class AcsService extends SuperService {
             .catch(super.handleError);
     }
 
-    public abreSearchDevice() {
+    public abreSearchDevice(deviceId: number) {
         this.infoResquest = {
             rqst: "",
-            command: this.urlService.pathAcs + "search/search",
-            _data: "",
+            command: "",
+            _data: deviceId,
+            otherUrl: "http://10.40.195.81/acs/searchEqp/", // Trocar link para produção quando for lançado...
             timeout: 60000
         };
+        this.urlService.linkurl(this.infoResquest);
     }
 
 }

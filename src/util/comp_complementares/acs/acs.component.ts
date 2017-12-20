@@ -51,7 +51,7 @@ export class AcsComponent implements OnInit {
     }
     
     private abreAbaSearchDeviceInfo(deviceId: number) {
-
+        this.acsService.abreSearchDevice(deviceId);
     }
 
 }

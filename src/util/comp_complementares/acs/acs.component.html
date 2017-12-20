@@ -2,7 +2,7 @@
     <table class="table table-vertical table-compact" *ngIf="equipamentos">
         <tbody>
             <tr>
-                <th colspan="4" style="text-align: center;">Equipamentos Associados ao Designador ACS - Motive</th>
+                <th colspan="5" style="text-align: center;">Equipamentos Associados ao Designador ACS - Motive</th>
             </tr>
             <tr>
                 <!-- <th>Subscriber</th> -->
@@ -18,8 +18,8 @@
                 <td>{{eqp.IPAddress}}</td>
                 <td>{{eqp.macAddress}}</td>
                 <td>{{eqp.manufacturer}}</td>
-                <td>
-                    <button type="button" class="btn btn-icon" (click)="abreAbaSearchDeviceInfo(eqp.deviceId)">
+                <td style="text-align: center;">
+                    <button type="button" class="btn btn-icon btn-sm" (click)="abreAbaSearchDeviceInfo(eqp.deviceGUID)">
                         <clr-icon shape="search"></clr-icon>
                     </button>
                 </td>
