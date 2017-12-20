@@ -1,0 +1,47 @@
+<div class="row" *ngIf="vlan">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-9">
+        <table class="table table-compact">
+            <thead>
+                <tr>
+                    <th colspan="2" style="text-align: center;">{{vlan.nome}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Estado</td>
+                    <td>{{vlan.mensagem}}
+                        <clr-icon class="is-success" shape="check" *ngIf="vlan.resultado"></clr-icon>
+                        <clr-icon class="is-error" shape="times" *ngIf="!vlan.resultado"></clr-icon>
+                    </td>
+                </tr>
+                <tr *ngIf="vlan.result.cvlan">
+                    <td>Vlan Usuário (cVlan)</td>
+                    <td>
+                        {{vlan.result.cvlan}}
+                    </td>
+                </tr>
+                <tr *ngIf="vlan.result.svlan">
+                    <td>Vlan Serviço (sVlan)</td>
+                    <td>
+                        {{vlan.result.svlan}}
+                    </td>
+                </tr>
+                <tr *ngIf="vlan.result.ipIgmp">
+                    <td>Ip IGMP</td>
+                    <td>
+                        {{vlan.result.ipIgmp}}
+                    </td>
+                </tr>
+                <tr *ngIf="vlan.result.pctDown && vlan.result.pctUp">
+                    <td>Pacotes Trafegados (Down/Up)</td>
+                    <td>
+                        {{vlan.result.pctDown}}/{{vlan.result.pctUp}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-2"></div>
+    <div class="row"></div>
+</div>

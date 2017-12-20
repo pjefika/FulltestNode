@@ -20,6 +20,7 @@ export class ConfiabilidadeRedeCpService extends SuperService {
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathFulltestAPI + "configPorta/getConfiabilidadeRede",
+            
             _data: _data,
             timeout: 120000
         }
