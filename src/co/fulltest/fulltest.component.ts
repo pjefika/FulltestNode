@@ -52,10 +52,9 @@ export class FulltestComponent extends CallAlertService implements OnInit {
     public realizaFulltest(): void {
         this.abreModal = false; // fecha modal de validação massivo se aberto.
 
-
         // Retirar quando for para produção...
-        delete this.cadastro.radius;
-        delete this.cadastro.eventos;
+        // delete this.cadastro.radius;
+        // delete this.cadastro.eventos;
 
         this.searchFulltest = true;
         this.fulltestService

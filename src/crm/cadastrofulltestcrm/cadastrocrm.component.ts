@@ -115,8 +115,8 @@ export class CadastroCrmComponent extends CallAlertService implements OnInit {
     public getValidacao() {
         this.abreModal = false; // Desliga modal de pergunta massivo...
         //Retirar quando tiver em produção....
-        delete this.cadastro.radius;
-        delete this.cadastro.eventos;
+        // delete this.cadastro.radius;
+        // delete this.cadastro.eventos;
         this.searchFulltest = true;
         this.fulltestCrmService
             .getValidacao(this.cadastro)
