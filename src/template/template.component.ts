@@ -146,7 +146,7 @@ export class TemplateComponent implements OnInit {
         this.mostraSubNav(false, null);
         this.holderService.sidenav = false;
         this.holderService.cadastro = null;
-        this.holderService.showWizardComponent = false; 
+        this.holderService.showWizardComponent = false;
         this.holderService.objectValid = null;
         this.holderService.listAsserts = null;
         this.holderService.listResumo = null;
@@ -156,5 +156,6 @@ export class TemplateComponent implements OnInit {
         this.holderService.cadastroLinha = null;
         this.holderService.confPorta = null;
         this.holderService.equipamentos = null;
+        this.holderService.objectValidManobra = null;
     }
 }
