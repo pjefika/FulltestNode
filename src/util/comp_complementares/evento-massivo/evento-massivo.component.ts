@@ -37,11 +37,17 @@ export class EventoMassivoComponent extends CallAlertService implements OnInit {
             .then(data => {
                 this.eventos = data;
             }, error => {
-                
+
             })
             .then(() => {
                 this.searching = false;
             })
+    }
+
+    public isVencido(dateInMs: number) {
+        console.log(new Date());
+        console.log(new Date(dateInMs))
+        return new Date() > new Date(dateInMs) ? "red" : "";
     }
 
 }
