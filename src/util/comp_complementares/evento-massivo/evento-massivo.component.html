@@ -1,13 +1,7 @@
 <div>
     <loading-component [searching]="searching" [searchWhat]="'Buscando Eventos Massivos...'"></loading-component>
     <table class="table table-compact" *ngIf="eventos.length > 0">
-        <tbody>
-            <tr>
-                <th colspan="4"></th>
-                <th>
-                    <clr-icon shape="refresh" (click)="getAfetaCliente()"></clr-icon>
-                </th>
-            </tr>
+        <tbody>            
             <tr>
                 <th>Tipo Afetacão</th>
                 <th>Tipo Falha</th>
