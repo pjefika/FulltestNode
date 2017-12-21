@@ -45,8 +45,6 @@ export class EventoMassivoComponent extends CallAlertService implements OnInit {
     }
 
     public isVencido(dateInMs: number) {
-        console.log(new Date());
-        console.log(new Date(dateInMs))
         return new Date() > new Date(dateInMs) ? "red" : "";
     }
 

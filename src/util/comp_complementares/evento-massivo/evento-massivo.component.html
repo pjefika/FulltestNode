@@ -3,14 +3,17 @@
     <table class="table table-compact" *ngIf="eventos.length > 0">
         <tbody>            
             <tr>
+                <th>Tipo - Número Evento</th>
                 <th>Tipo Afetacão</th>
                 <th>Tipo Falha</th>
                 <th>Tipo Alarme</th>
-                <!-- <th>Descrição</th> -->
                 <th>Data Abertura</th>
                 <th>Data Prevista</th>
             </tr>
             <tr *ngFor="let evento of eventos">
+                <td>
+                    {{evento.tipoEvento}} - {{evento.numeroEvento}}
+                </td>
                 <td>
                     {{evento.tipoAfetacao}}
                 </td>
@@ -20,9 +23,6 @@
                 <td>
                     {{evento.tipoAlarme}}
                 </td>
-                <!-- <td>
-                    {{evento.desc}}
-                </td> -->
                 <td >
                     {{((evento.dataAbertura/1000) | amFromUnix) | amDateFormat:'DD/MM/YYYY HH:mm:ss'}}
                 </td>
