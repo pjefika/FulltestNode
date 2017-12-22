@@ -37,12 +37,17 @@ export class FulltestComponent extends CallAlertService implements OnInit {
 
     public ngOnInit(): void {
         if (!this.objectValid) {
-            if (this.cadastro.eventos) {
+            if (this.cadastro.eventos.length > 0) {
                 this.abreModal = true;
-                this.msg = { msg: "Cliente com evento massivo, algumas correções e validações podem ocorrer erros.", alertType: "alert-warning" }
+                this.msg = { msg: "Cliente com evento massivo, podem ocorrer erros em algumas correções e/ou validações.", alertType: "alert-warning" }
                 this.alertAtivo = true;
             } else {
                 this.realizaFulltest();
+                if (this.cadastro.rede.planta == "VIVO1") {
+                    this.msg = { msg: "Não há evento massivo para este cliente.", alertType: "alert-info" }
+                    this.alertAtivo = true;
+                }
+
             }
         }
 
@@ -52,10 +57,9 @@ export class FulltestComponent extends CallAlertService implements OnInit {
     public realizaFulltest(): void {
         this.abreModal = false; // fecha modal de validação massivo se aberto.
 
-
         // Retirar quando for para produção...
-        delete this.cadastro.radius;
-        delete this.cadastro.eventos;
+        // delete this.cadastro.radius;
+        // delete this.cadastro.eventos;
 
         this.searchFulltest = true;
         this.fulltestService

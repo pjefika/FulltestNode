@@ -36,8 +36,8 @@ export class ConfiguracoesPortaComponent implements OnInit {
         this.searchWhat = "Buscando Informações...";
 
         //Deletado arvore... retirar depois...
-        delete this.holderService.cadastro.radius;
-        delete this.holderService.cadastro.eventos;
+        // delete this.holderService.cadastro.radius;
+        // delete this.holderService.cadastro.eventos;
 
         this.configuracoesPortaService.getConfigPorta(this.holderService.cadastro)
             .then(data => {

@@ -22,7 +22,6 @@ export class FulltestService extends SuperService {
             rqst: "post",
             command: this.urlService.pathFulltestAPI + "fulltest/co/", // co -- corrective
             _data: _data,
-            otherUrl: this.urlService.urlIpParaStealer, //apontamento QA
             timeout: 1200000
         }
         return this.urlService.request(this.infoResquest)

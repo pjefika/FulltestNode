@@ -5,4 +5,6 @@ export class EventoMassivo {
     desc: string;
     dataAbertura: number;
     dataPrevista: number;
+    numeroEvento: number;
+    tipoEvento: string;
 }

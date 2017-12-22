@@ -115,8 +115,8 @@ export class CadastroCrmComponent extends CallAlertService implements OnInit {
     public getValidacao() {
         this.abreModal = false; // Desliga modal de pergunta massivo...
         //Retirar quando tiver em produção....
-        delete this.cadastro.radius;
-        delete this.cadastro.eventos;
+        // delete this.cadastro.radius;
+        // delete this.cadastro.eventos;
         this.searchFulltest = true;
         this.fulltestCrmService
             .getValidacao(this.cadastro)
@@ -168,13 +168,17 @@ export class CadastroCrmComponent extends CallAlertService implements OnInit {
                         this.holderService.listResumo = this.listResumo;
                         let msgalerterror: string;
                         if (this.listResumo.cadastro) {
-                            if (this.cadastro.eventos) {
+                            if (this.cadastro.eventos.length > 0) {
                                 // Validação se continua ou não o fulltest...
                                 this.abreModal = true;
                                 this.alertAtivoEventoMassivo = true;
-                                this.msgEventoMassivo = { alertType: "alert-warning", msg: "Cliente com evento massivo, algumas correções e validações podem ocorrer erros." };
+                                this.msgEventoMassivo = { alertType: "alert-warning", msg: "Cliente com evento massivo, podem ocorrer erros em algumas correções e/ou validações." };
                             } else {
                                 this.getValidacao();
+                                if (this.cadastro.rede.planta == "VIVO1") {
+                                    this.msgEventoMassivo = { msg: "Não há evento massivo para este cliente.", alertType: "alert-info" }
+                                    this.alertAtivoEventoMassivo = true;
+                                }
                             }
                         } else {
                             msgalerterror = "Cliente com erro de cadastro, favor transferir chamada ao CO utilizando o fluxo com o problema/sintoma informado pelo cliente.";

@@ -28,10 +28,10 @@
         </div>
     </div>
     <loading-component [searching]="searchFulltest" [searchWhat]="'Realizando Fulltest...'"></loading-component>
-    <clr-modal [(clrModalOpen)]="abreModal" [clrModalClosable]="false">
+    <clr-modal [(clrModalOpen)]="abreModal" [clrModalClosable]="false" [clrModalSize]="'lg'">
         <h3 class="modal-title">Cliente com Evento Massivo</h3>
         <div class="modal-body">
-            <p>O cliente possui um evento massivo, deseja relmente continuar com o testes e validações?</p>
+            <p>O cliente possui um evento massivo, deseja relmente continuar com os testes e validações?</p>
             <evento-massivo-component *ngIf="holderService.cadastro" [eventos]="cadastro.eventos"></evento-massivo-component>
         </div>
         <div class="modal-footer">

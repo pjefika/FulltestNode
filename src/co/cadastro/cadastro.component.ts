@@ -21,8 +21,6 @@ import { AcsService } from 'util/comp_complementares/acs/acs.service';
 
 export class CadastroComponent extends CallAlertService implements OnInit, OnChanges {
 
-    private cadastro: Cadastro;
-
     private instancia: string;
     private searching: boolean = false;
     private modalOpen: boolean = false;
@@ -42,18 +40,15 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
     public ngOnInit(): void {
         //Se cadastro já foi consultado e preenchido o mesmo so atribui para a variavel. 
         if (this.holderService.cadastro) {
-            this.cadastro = this.holderService.cadastro;
-            if (this.cadastro.rede.origem === "OFFLINE") {
+            if (this.holderService.cadastro.rede.origem === "OFFLINE") {
                 this.callAlert(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
             }
         } else {
+            this.searching = true;
             this.getCadastro();
             // for test purposes
             // this.cadastro = this.cadastroService.getMock();
-            // this.searching = false;
-
-
-            this.holderService.cadastro = this.cadastro;
+            
             this.holderService.liberarSubNav = true;
         }
         this.holderService.resumoInfosAtivo = false;
@@ -68,16 +63,16 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
         this.cadastroService
             .getCadastro(this.instancia)
             .then(data => {
-                this.cadastro = data;
-                this.searching = false;
-                this.holderService.cadastro = this.cadastro;
+                // this.cadastro = data;
+                this.holderService.cadastro = data;
+                this.buscaEqpInAcs();
                 this.holderService.showWizardComponent = true;
-                if (!this.cadastro.rede.tipo) {
+                if (!this.holderService.cadastro.rede.tipo) {
                     this.searchingRede = true;
                     this.cadastroService
-                        .getCadastroDOne(this.cadastro.instancia)
+                        .getCadastroDOne(this.holderService.cadastro.instancia)
                         .then(data => {
-                            this.cadastro.rede = data.rede;
+                            this.holderService.cadastro.rede = data.rede;
                             this.callAlert(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
                             this.searchingRede = false;
                             this.validCadastroRedeEServico();
@@ -89,8 +84,8 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
                     this.validCadastroRedeEServico();
                 }
             }, error => {
-                this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
+                this.searching = false;
             })
             .then(() => {
                 // if (this.cadastro.rede.planta === "VIVO1") {
@@ -98,7 +93,7 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
                 // } else {
                 //     this.holderService.origenPlanta = false;
                 // }
-                this.buscaEqpInAcs();
+                
             });
     }
 
@@ -112,14 +107,15 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
                     //super.callToasty("Informação", "Não foram encontrados equiapementos na ACS - Motive", "info", 5000);
                 })
                 .then(() => {
+                    this.searching = false;
                 });
         }
     }
 
     private validCadastroRedeEServico() {
-        if (this.cadastro) {
+        if (this.holderService.cadastro) {
             //Valida Rede or Valida Servico
-            if (!this.cadastro.rede.tipo || !this.cadastro.servicos.velDown && !this.cadastro.servicos.velUp) {
+            if (!this.holderService.cadastro.rede.tipo || (!this.holderService.cadastro.servicos.velDown && !this.holderService.cadastro.servicos.velUp)) {
                 //console.log(this.cadastro.rede.tipo);
                 this.holderService.liberarSubNav = false;
             } else {
@@ -128,7 +124,4 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
         }
     }
 
-    public setInfoCadastro() {
-        this.cadastro = this.holderService.cadastro;
-    }
 }

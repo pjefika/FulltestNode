@@ -4,6 +4,7 @@ import { CallAlertService } from 'util/callalerts/call-alert.service';
 import { ToastyComponent } from 'util/toasty/toasty.component';
 import { Evento } from 'viewmodel/evento-massivo/eventos';
 import { HolderService } from 'util/holder/holder.service';
+import { EventoMassivo } from 'viewmodel/evento-massivo/evento-massivo';
 
 @Component({
     selector: 'evento-massivo-component',
@@ -16,7 +17,7 @@ export class EventoMassivoComponent extends CallAlertService implements OnInit {
 
     private searching: boolean = false;
 
-    @Input() public eventos: Evento;
+    @Input() public eventos: EventoMassivo[];
 
     constructor(
         public toastyComponent: ToastyComponent,
@@ -29,24 +30,6 @@ export class EventoMassivoComponent extends CallAlertService implements OnInit {
         // this.contagemRegressivaParaMostrarTabela();
     }
 
-    //Mock
-    private contagemRegressivaParaMostrarTabela() {
-        this.eventos = {
-            eventos: [
-                {
-                    tipoAlarme: "INTERROMPIDO",
-                    tipoFalha: "FTTx",
-                    tipoAfetacao: "SEM AFETACAO COM RISCO",
-                    desc: "PON DOWN: PON 1/1/3/3 Dying Gasp = [0] ::PON LOSS | LOSS= 26",
-                    dataAbertura: 1513627226000,
-                    dataPrevista: 1513640984000
-                }
-            ],
-            dataConsulta: 1513630092022
-        }
-    }
-
-
     private getAfetaCliente() {
         this.searching = true;
         this.eventoMAssivoService
@@ -54,11 +37,15 @@ export class EventoMassivoComponent extends CallAlertService implements OnInit {
             .then(data => {
                 this.eventos = data;
             }, error => {
-                
+
             })
             .then(() => {
                 this.searching = false;
             })
+    }
+
+    public isVencido(dateInMs: number) {
+        return new Date() > new Date(dateInMs) ? "red" : "";
     }
 
 }
