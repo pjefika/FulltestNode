@@ -36,8 +36,7 @@ export class CadastroWizardComponent implements OnInit {
 
     constructor(
         private enumService: EnumService,
-        public holderService: HolderService,
-        public cadastroComponent: CadastroComponent) {
+        public holderService: HolderService) {
         this.cadastro = this.holderService.cadastro;
     }
 
@@ -118,7 +117,7 @@ export class CadastroWizardComponent implements OnInit {
     }
 
     private validCadastroRedeEServico(): Boolean {
-        if (!this.cadastro.rede.vendorDslam || !this.cadastro.servicos.velDown && !this.cadastro.servicos.velUp) {
+        if (!this.cadastro.rede.vendorDslam || (!this.cadastro.servicos.velDown && !this.cadastro.servicos.velUp)) {
             this.holderService.liberarSubNav = false;
             return false;
         } else {
@@ -130,7 +129,7 @@ export class CadastroWizardComponent implements OnInit {
     private onCommit() {
         if (this.validCadastroRedeEServico()) {
             this.wizardmodal.forceFinish();
-            this.cadastroComponent.setInfoCadastro();
+            this.holderService.cadastro = this.cadastro;
         } else {
             this.alertMsg = true;
             this.msg = {
