@@ -31,7 +31,8 @@ export class FulltestTableComponent extends CallAlertService implements OnInit {
             if ((valid.nome.includes("Porta")) ||
                 (valid.mensagem.includes("Cliente sem")) ||
                 (valid.nome == 'MAC do Equipamento' && (!valid.resultado || this.holderService.cadastro.rede.planta != 'VIVO2')) ||
-                (valid.nome == 'Associação Serial ONT' && (valid.resultado || this.holderService.cadastro.rede.planta != 'VIVO2'))) {
+                (valid.nome == 'Associação Serial ONT' && (valid.resultado || this.holderService.cadastro.rede.planta != 'VIVO2')) ||
+                (valid.nome == 'Afetação Vizinhança')) {
                 return false;
             }
             return true;
@@ -51,7 +52,7 @@ export class FulltestTableComponent extends CallAlertService implements OnInit {
 
     public hasCheck(valid: Valids) {
         if (this.holderService.cadastro) {
-            if (valid.resultado && 
+            if (valid.resultado &&
                 (
                     !valid.nome.includes('MAC') ||
                     (valid.nome.includes('MAC') && this.holderService.cadastro.rede.planta != 'VIVO2')
