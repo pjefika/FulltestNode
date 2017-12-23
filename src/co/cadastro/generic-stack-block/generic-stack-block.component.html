@@ -1,8 +1,11 @@
+<!-- [clrSbExpanded]="true" -->
 <clr-stack-block>
-    <clr-stack-label>{{masterLabel}}</clr-stack-label>
-    <clr-stack-content>{{holderService.cadastro.instancia}}</clr-stack-content>
-    <!-- <clr-stack-block *ngIf="">
-        <clr-stack-label></clr-stack-label>
-        <clr-stack-content>Sub-content 1</clr-stack-content>
-    </clr-stack-block> -->
+    <clr-stack-label>{{obj.key | beautifying}}</clr-stack-label>
+    <clr-stack-content>{{obj.value.tipo | beautifying}}</clr-stack-content>
+    <ng-container *ngFor="let entry of obj.value | objkeys" ngProjectAs="clr-stack-block">
+        <clr-stack-block *ngIf="entry.key!='tipo' && entry.value">
+            <clr-stack-label>{{entry.key | capitalize}}</clr-stack-label>
+            <clr-stack-content> {{entry.value}}</clr-stack-content>
+        </clr-stack-block>
+    </ng-container>
 </clr-stack-block>

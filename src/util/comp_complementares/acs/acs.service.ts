@@ -32,7 +32,7 @@ export class AcsService extends SuperService {
             rqst: "",
             command: "",
             _data: deviceId,
-            otherUrl: "http://efika/acs/searchEqp/", // Trocar link para produção quando for lançado...
+            otherUrl: "http://10.40.195.81/acs/searchEqp/", // Trocar link para produção quando for lançado...
             timeout: 60000
         };
         this.urlService.linkurl(this.infoResquest);

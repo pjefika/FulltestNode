@@ -4,12 +4,16 @@ import { ToastyComponent } from 'util/toasty/toasty.component';
 import { HolderService } from 'util/holder/holder.service';
 import { GenericStackBlockService } from 'co/cadastro/generic-stack-block/generic-stack-block.service';
 import { Linha } from 'viewmodel/cadastro/linha';
+import { ObjKeysPipe } from 'util/obj-pipe/obj-pipe-service';
+import { Rede } from 'viewmodel/cadastro/rede';
+import { Radius } from 'viewmodel/cadastro/radius';
+import { Servicos } from 'viewmodel/cadastro/servicos';
 
 @Component({
     selector: 'generic-stack-block',
     templateUrl: 'generic-stack-block.component.html',
     styleUrls: ['generic-stack-block.component.css'],
-    providers: [GenericStackBlockService]
+    providers: [GenericStackBlockService],
 })
 
 export class GenericStackBlockComponent extends CallAlertService implements OnInit {
@@ -18,6 +22,7 @@ export class GenericStackBlockComponent extends CallAlertService implements OnIn
 
     private masterLabel: string;
     private masterContent: string;
+    private genericObject: any;
 
     constructor(public toastyComponent: ToastyComponent,
         private genericStackBlockService: GenericStackBlockService,
@@ -26,18 +31,8 @@ export class GenericStackBlockComponent extends CallAlertService implements OnIn
     }
 
     public ngOnInit() {
-        this.setMasterLabel();
+
     }
 
-    private setMasterLabel() {
-        try{
-            console.log("try start")
-            this.obj as Linha
-            console.log(this.obj)
-            this.masterLabel = "Linha Telefônica";
-        }catch(Error){
-            console.log(Error)
-        }
-    }
 
 }

@@ -105,6 +105,7 @@ import { VlanViewCpComponent } from 'util/comp_complementares/configuracoesporta
 import { ParametrosViewCpComponent } from 'util/comp_complementares/configuracoesporta/generic-table/parametros-view/parametros-view-cp.component';
 import { GenericValidComponent } from 'util/comp_complementares/configuracoesporta/generic-table/generic-valid/generic-valid.component';
 import { GenericStackBlockComponent } from 'co/cadastro/generic-stack-block/generic-stack-block.component';
+import { ObjKeysPipe, KeyBeautifyingPipe, Capitalize } from 'util/obj-pipe/obj-pipe-service';
 
 
 @NgModule({
@@ -178,7 +179,10 @@ import { GenericStackBlockComponent } from 'co/cadastro/generic-stack-block/gene
         ProfileViewCpComponent,
         VlanViewCpComponent,
         ParametrosViewCpComponent,
-        GenericStackBlockComponent
+        GenericStackBlockComponent,
+        ObjKeysPipe,
+        KeyBeautifyingPipe,
+        Capitalize
     ],
     imports: [
         BrowserModule,

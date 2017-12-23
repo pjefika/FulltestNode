@@ -40,8 +40,8 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
     public ngOnInit(): void {
         //Se cadastro já foi consultado e preenchido o mesmo so atribui para a variavel. 
         // for test purposes
-        this.holderService.cadastro = this.cadastroService.getMock();
-        this.holderService.equipamentos =  this.acsService.getMock();
+        // this.holderService.cadastro = this.cadastroService.getMock();
+        // this.holderService.equipamentos = this.acsService.getMock();
         if (this.holderService.cadastro) {
             if (this.holderService.cadastro.rede.origem === "OFFLINE") {
                 this.callAlert(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
@@ -124,6 +124,24 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
                 this.holderService.liberarSubNav = true;
             }
         }
+    }
+
+    public hasStackBlockDetail(obj: any) {
+        if (obj.key == "rede" ||
+            obj.key == "linha" ||
+            obj.key == "radius" ||
+            obj.key == "servicos") {
+            return true
+        }
+        return false
+    }
+    public hasStackBlockAtAll(obj: any){
+        if (obj.key == "redeExterna" ||
+        obj.key == "asserts" ||
+        obj.key == "eventos" ) {
+        return false
+    }
+    return true
     }
 
 }
