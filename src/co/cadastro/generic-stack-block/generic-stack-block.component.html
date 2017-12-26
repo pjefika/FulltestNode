@@ -1,0 +1,11 @@
+<!-- [clrSbExpanded]="true" -->
+<clr-stack-block>
+    <clr-stack-label>{{obj.key | beautifying}}</clr-stack-label>
+    <clr-stack-content>{{obj.value.tipo | beautifying}}</clr-stack-content>
+    <ng-container *ngFor="let entry of obj.value | objkeys" ngProjectAs="clr-stack-block">
+        <clr-stack-block *ngIf="entry.key!='tipo' && entry.value">
+            <clr-stack-label>{{entry.key | capitalize}}</clr-stack-label>
+            <clr-stack-content> {{entry.value}}</clr-stack-content>
+        </clr-stack-block>
+    </ng-container>
+</clr-stack-block>

@@ -1,28 +1,19 @@
-<table class="table table-vertical table-compact" *ngIf="equipamentos">
-    <tbody>
-        <tr>
-            <th colspan="5" style="text-align: center;">Equipamentos Associados ao Designador ACS - Motive</th>
-        </tr>
-        <tr>
-            <!-- <th>Subscriber</th> -->
-            <th>Serial</th>
-            <th>IP</th>
-            <th>MAC</th>
-            <th>Fábricante</th>
-            <th>Ação</th>
-        </tr>
-        <tr *ngFor="let eqp of equipamentos">
-            <!-- <td>{{eqp.subscriberID}}</td> -->
-            <td>{{eqp.deviceId.serialNumber}}</td>
-            <td>{{eqp.IPAddress}}</td>
-            <td>{{eqp.macAddress}}</td>
-            <td>{{eqp.manufacturer}}</td>
-            <td>
+<clr-stack-view *ngIf="equipamentos">
+    <clr-stack-header>Informações ACS</clr-stack-header>
+    <clr-stack-block *ngFor="let eqp of equipamentos">
+        <clr-stack-label>{{eqp.manufacturer | capitalize}} - {{eqp.deviceId.serialNumber | uppercase}}</clr-stack-label>
+        <clr-stack-content>
+            Ativo desde:
+            <b>{{eqp.firstContactTime | date:'dd/MM/yyyy HH:mm'}}</b>
+        </clr-stack-content>
+        <clr-stack-block>
+            <clr-stack-label>
                 <button type="button" class="btn btn-icon btn-sm btn-link" (click)="abreAbaSearchDeviceInfo(eqp.deviceGUID)">
+                    Visualizar na ACS
                     <clr-icon shape="search"></clr-icon>
                 </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            </clr-stack-label>
+        </clr-stack-block>
+    </clr-stack-block>
+</clr-stack-view>
 <loading-component [searching]="searching" [searchWhat]="'Buscando Equipamentos ACS - Motive...'"></loading-component>
