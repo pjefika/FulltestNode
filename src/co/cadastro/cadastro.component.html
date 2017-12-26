@@ -1,6 +1,6 @@
 <div *ngIf="holderService.cadastro && !searching" class="row">
     <!-- <acs-component [equipamentos]="holderService.equipamentos"></acs-component> -->
-    <clr-stack-view class="col-xs-6">
+    <clr-stack-view class="col-xs-12">
 
         <clr-stack-header>Informações do Cliente</clr-stack-header>
         <ng-container *ngFor="let entry of holderService.cadastro | objkeys" ngProjectAs="clr-stack-block">
@@ -13,10 +13,8 @@
             </ng-container>
         </ng-container>
     </clr-stack-view>
-
-    <acs-component [equipamentos]="holderService.equipamentos" class="col-xs-6"></acs-component>
-
-    <cadastro-wizard-component [cadastro]="holderService.cadastro" *ngIf="holderService.showWizardComponent"></cadastro-wizard-component>
+    <div class="col-xs-8"></div>
+    <cadastro-wizard-component class="col-xs-4" [cadastro]="holderService.cadastro"></cadastro-wizard-component>
     <infos-dm-component *ngIf="holderService.cadastro.rede.planta === 'VIVO1'"></infos-dm-component>
 </div>
 <loading-component [searching]="searching" [searchWhat]="'Buscando Cadastro...'"></loading-component>

@@ -27,8 +27,6 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
 
     private searchingRede: boolean = false;
 
-    private showWizardComponent: boolean = false;
-
     constructor(public toastyComponent: ToastyComponent,
         private cadastroService: CadastroService,
         public holderService: HolderService,
@@ -38,10 +36,10 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
     }
 
     public ngOnInit(): void {
-        //Se cadastro já foi consultado e preenchido o mesmo so atribui para a variavel. 
         // for test purposes
-        // this.holderService.cadastro = this.cadastroService.getMock();
-        // this.holderService.equipamentos = this.acsService.getMock();
+        this.holderService.cadastro = this.cadastroService.getMock();
+        this.holderService.equipamentos = this.acsService.getMock();
+        //Se cadastro já foi consultado e preenchido o mesmo so atribui para a variavel. 
         if (this.holderService.cadastro) {
             if (this.holderService.cadastro.rede.origem === "OFFLINE") {
                 this.callAlert(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
@@ -68,7 +66,6 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
                 // this.cadastro = data;
                 this.holderService.cadastro = data;
                 this.buscaEqpInAcs();
-                this.holderService.showWizardComponent = true;
                 if (!this.holderService.cadastro.rede.tipo) {
                     this.searchingRede = true;
                     this.cadastroService
