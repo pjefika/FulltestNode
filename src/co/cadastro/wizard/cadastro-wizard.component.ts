@@ -17,7 +17,7 @@ export class CadastroWizardComponent implements OnInit {
 
     @ViewChild("wizardmodal") public wizardmodal: Wizard;
 
-    @ViewChild("paginacadastro") public paginacadastro: WizardPage;
+    // @ViewChild("paginacadastro") public paginacadastro: WizardPage;
     @ViewChild("paginarede") public paginarede: WizardPage;
     @ViewChild("paginaservico") public paginaservico: WizardPage;
 
@@ -57,7 +57,7 @@ export class CadastroWizardComponent implements OnInit {
 
     private allwizardpagewassee() {
         // Deixa todas as clr-wizard-page completas para navegação.
-        this.paginacadastro.completed = true;
+        // this.paginacadastro.completed = true;
         this.paginarede.completed = true;
         this.paginaservico.completed = true;
     }
@@ -72,9 +72,9 @@ export class CadastroWizardComponent implements OnInit {
         }
     }
 
-    private jumpToPaginaCadastro() {
-        this.jumpTo(this.paginacadastro);
-    }
+    // private jumpToPaginaCadastro() {
+    //     this.jumpTo(this.paginacadastro);
+    // }
     private jumpToPaginaRede() {
         this.jumpTo(this.paginarede);
     }

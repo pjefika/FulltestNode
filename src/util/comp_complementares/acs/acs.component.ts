@@ -25,11 +25,12 @@ export class AcsComponent implements OnInit {
 
     public ngOnInit() {
 
-        // this.holderService.equipamentos = this.acsService.getMock();
-        this.getEquipamentoAssoc();
+        this.holderService.equipamentos = this.acsService.getMock();
+        // this.getEquipamentoAssoc();
     }
 
     private getEquipamentoAssoc() {
+        this.holderService.equipamentos=null;
         this.searching = true;
         this.acsService
             .getEquipamentoAssoc(this.designador)
@@ -39,9 +40,7 @@ export class AcsComponent implements OnInit {
                 //this.callToasty("Ops, aconteceu algo.", error.mError, "warning", 5000);
             })
             .then(() => {
-               
-                this.holderService.loadingComponents.push("acs");
-                this.searching = false;
+               this.searching = false;
             });
     }
 

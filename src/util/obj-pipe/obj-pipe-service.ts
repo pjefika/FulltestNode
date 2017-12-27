@@ -29,7 +29,17 @@ export class KeyBeautifyingPipe implements PipeTransform {
         }
 
         if (value) {
-            return value.charAt(0).toUpperCase() + value.slice(1);
+            let arr: string[] = [];
+            value.split('').forEach(element => {
+                if (element == element.toUpperCase() && isNaN(Number(element))) {
+                    element = " " + element
+                }
+                arr.push(element);
+            });
+
+
+
+            return arr.join("").charAt(0).toUpperCase() + arr.join("").slice(1);
         }
         return value;
     }
@@ -39,7 +49,7 @@ export class KeyBeautifyingPipe implements PipeTransform {
 @Pipe({ name: 'capitalize' })
 export class Capitalize implements PipeTransform {
 
-    transform(value: any) {
+    transform(value: string) {
         if (value) {
             return value.charAt(0).toUpperCase() + value.slice(1);
         }

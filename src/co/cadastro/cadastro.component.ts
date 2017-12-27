@@ -37,8 +37,8 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
 
     public ngOnInit(): void {
         // for test purposes
-        // this.holderService.cadastro = this.cadastroService.getMock();
-        // this.holderService.liberarSubNav = true;
+        this.holderService.cadastro = this.cadastroService.getMock();
+        this.holderService.liberarSubNav = true;
 
         //Se cadastro já foi consultado e preenchido o mesmo so atribui para a variavel. 
         if (this.holderService.cadastro) {
@@ -92,7 +92,6 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
                 // } else {
                 //     this.holderService.origenPlanta = false;
                 // }
-                this.holderService.loadingComponents.push("cadastro");
                 this.searching = false;
             });
     }
