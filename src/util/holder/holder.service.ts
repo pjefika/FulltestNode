@@ -74,6 +74,8 @@ export class HolderService {
 
     public equipamentos: Equipamento[];
 
+    public loadingComponents: string[];
+
     constructor() { }
 
 }

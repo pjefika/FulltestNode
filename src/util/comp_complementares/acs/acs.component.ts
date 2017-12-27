@@ -13,7 +13,7 @@ import { ToastyComponent } from 'util/toasty/toasty.component';
 
 export class AcsComponent implements OnInit {
 
-    @Input() public equipamentos: Equipamento[];
+    @Input() public designador: string;
 
     @Input() public searching?: boolean = false;
 
@@ -24,20 +24,25 @@ export class AcsComponent implements OnInit {
     }
 
     public ngOnInit() {
-        //this.getEquipamentoAssoc();
+
+        // this.holderService.equipamentos = this.acsService.getMock();
+        this.getEquipamentoAssoc();
     }
 
     private getEquipamentoAssoc() {
         this.searching = true;
         this.acsService
-            .getEquipamentoAssoc(this.holderService.cadastro.designador)
+            .getEquipamentoAssoc(this.designador)
             .then(data => {
-                this.equipamentos = data;
-                this.searching = false;
+                this.holderService.equipamentos = data;
             }, error => {
-                this.searching = false;
                 //this.callToasty("Ops, aconteceu algo.", error.mError, "warning", 5000);
             })
+            .then(() => {
+               
+                this.holderService.loadingComponents.push("acs");
+                this.searching = false;
+            });
     }
 
     private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
@@ -49,7 +54,7 @@ export class AcsComponent implements OnInit {
         }
         this.toastyComponent.addToasty();
     }
-    
+
     private abreAbaSearchDeviceInfo(deviceId: number) {
         this.acsService.abreSearchDevice(deviceId);
     }

@@ -3,6 +3,6 @@
     <!-- <charts-component [chartType]="'line'" *ngIf="holderService.cadastro"></charts-component> -->
     <evento-massivo-component *ngIf="holderService.cadastro" [eventos]="holderService.cadastro.eventos"></evento-massivo-component>
     <cadastro-component class="col-xs-6"></cadastro-component>
-    <acs-component [equipamentos]="holderService.equipamentos" class="col-xs-6"></acs-component>
-
+    <acs-component *ngIf="holderService.cadastro" [designador]="holderService.cadastro.designador" class="col-xs-6"></acs-component>
+    <loading-component [searching]="" [searchWhat]="'Buscando Cadastro...'"></loading-component>
 </div>

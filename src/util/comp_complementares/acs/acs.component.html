@@ -1,6 +1,6 @@
-<clr-stack-view *ngIf="equipamentos">
+<clr-stack-view *ngIf="holderService.equipamentos">
     <clr-stack-header>Informações ACS</clr-stack-header>
-    <clr-stack-block *ngFor="let eqp of equipamentos">
+    <clr-stack-block *ngFor="let eqp of holderService.equipamentos">
         <clr-stack-label>{{eqp.manufacturer | capitalize}} - {{eqp.deviceId.serialNumber | uppercase}}</clr-stack-label>
         <clr-stack-content>
             Ativo desde:
