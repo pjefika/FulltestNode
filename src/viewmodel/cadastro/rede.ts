@@ -12,7 +12,7 @@ export class Rede {
     vlanVoip: number;
     vlanVod: number;
     vlanMulticast: number;
-    cvLan: number;
+    cvlan: number;
     bhs?: boolean;
     planta?: string;
     idOnt?: string;

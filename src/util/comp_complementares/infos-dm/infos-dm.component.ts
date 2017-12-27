@@ -73,7 +73,7 @@ export class InfosDmComponent extends CallAlertService implements OnInit {
                 vlanVoip: Number(this.findNextIndex("Vlan de Voz:")),
                 vlanMulticast: Number(this.findNextIndex("Vlan de Multicast:")),
                 vlanVod: Number(this.findNextIndex("Vlan de Multicast:")),
-                cvLan: Number(this.findNextIndex("Vlan de Usuário:")),
+                cvlan: Number(this.findNextIndex("Vlan de Usuário:")),
                 bhs: true
             },
             servicos: {

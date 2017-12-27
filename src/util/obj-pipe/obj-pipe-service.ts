@@ -29,6 +29,11 @@ export class KeyBeautifyingPipe implements PipeTransform {
         }
 
         if (value) {
+
+            if(value.length<4){
+                return value.toUpperCase()
+            }
+
             let arr: string[] = [];
             value.split('').forEach(element => {
                 if (element == element.toUpperCase() && isNaN(Number(element))) {
@@ -36,9 +41,6 @@ export class KeyBeautifyingPipe implements PipeTransform {
                 }
                 arr.push(element);
             });
-
-
-
             return arr.join("").charAt(0).toUpperCase() + arr.join("").slice(1);
         }
         return value;
