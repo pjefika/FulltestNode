@@ -41,7 +41,7 @@
             </table>
         </div>
         <div class="col-md" *ngIf="vlanVoip">
-            <table class="table table-compact table-vertical">
+            <table class="table table-compact table-vertical" *ngIf="validSeExiste(vlanVoip.mensagem)">
                 <tbody>
                     <tr>
                         <th colspan="2" style="text-align: center;">{{vlanVoip.nome}}</th>
