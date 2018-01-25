@@ -74,7 +74,7 @@ export class HolderService {
 
     public equipamentos: Equipamento[];
 
-    public loadingComponents: string[];
+    public searchingCadastro: boolean = false;
 
     constructor() { }
 

@@ -13,7 +13,7 @@ import { HolderService } from 'util/holder/holder.service';
 
 export class InfoTecnicasComponent extends CallAlertService implements OnInit {
 
-    constructor(
+      constructor(
         public toastyComponent: ToastyComponent,
         public holderService: HolderService) {
         super(toastyComponent);
@@ -21,14 +21,6 @@ export class InfoTecnicasComponent extends CallAlertService implements OnInit {
 
     public ngOnInit() {
 
-    }
-
-    private loadingChildren(children: string[]): boolean {
-        children.forEach(element => {
-            this.holderService.loadingComponents.indexOf(element);
-        });
-
-        return false;
     }
 
 }
