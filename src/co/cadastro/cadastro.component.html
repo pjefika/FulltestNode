@@ -1,170 +1,25 @@
-<div *ngIf="holderService.cadastro && !searching">
-    <div class="row">
-        <div class="col-md">
-            <table class="table table-compact table-vertical" *ngIf="holderService.cadastro.linha.tipo">
-                <tbody>
-                    <tr>
-                        <th colspan="2" style="text-align: center;">Informações de Linha</th>
-                    </tr>
-                    <tr>
-                        <th>DN: </th>
-                        <td>{{holderService.cadastro.linha.dn}}</td>
-                    </tr>
-                    <tr>
-                        <th>Tipo: </th>
-                        <td>{{holderService.cadastro.linha.tipo}}</td>
-                    </tr>
-                    <tr>
-                        <th>Central: </th>
-                        <td>{{holderService.cadastro.linha.central}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-compact table-vertical">
-                <tbody>
-                    <tr>
-                        <th colspan="2" style="text-align: center;">Informações de Cadastro</th>
-                    </tr>
-                    <tr>
-                        <th>Instância: </th>
-                        <td>{{holderService.cadastro.instancia}}</td>
-                    </tr>
-                    <tr>
-                        <th>Designador: </th>
-                        <td>{{holderService.cadastro.designador}}</td>
-                    </tr>
-                    <tr>
-                        <th>Designador de Acesso: </th>
-                        <td>{{holderService.cadastro.designadorAcesso}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-compact table-vertical">
-                <tbody>
-                    <tr>
-                        <th colspan="2" style="text-align: center;">Informações de Serviço</th>
-                    </tr>
-                    <tr>
-                        <th>Velocidade de Download:</th>
-                        <td>{{holderService.cadastro.servicos.velDown}}</td>
-                    </tr>
-                    <tr>
-                        <th>Velocidade de Upload:</th>
-                        <td>{{holderService.cadastro.servicos.velUp}}</td>
-                    </tr>
-                    <tr>
-                        <th>Tipo da Linha:</th>
-                        <td>{{holderService.cadastro.servicos.tipoLinha}}</td>
-                    </tr>
-                    <tr>
-                        <th>Tipo da TV:</th>
-                        <td>{{holderService.cadastro.servicos.tipoTv}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-md">
-            <loading-component [searching]="searchingRede" [searchWhat]="'Buscando Rede'"></loading-component>
-            <table class="table table-compact table-vertical" *ngIf="!searchingRede">
-                <tbody>
-                    <tr>
-                        <th colspan="2" style="text-align: center;">Informações de Rede</th>
-                    </tr>
-                    <tr>
-                        <th>Planta:</th>
-                        <td>{{holderService.cadastro.rede.planta}}</td>
-                    </tr>
-                    <tr>
-                        <th>Ip DSLAM:</th>
-                        <td>{{holderService.cadastro.rede.ipDslam}}</td>
-                    </tr>
-                    <tr>
-                        <th>Vendor DSLAM:</th>
-                        <td>{{holderService.cadastro.rede.vendorDslam}}</td>
-                    </tr>
-                    <tr>
-                        <th>Modelo DSLAM:</th>
-                        <td>{{holderService.cadastro.rede.modeloDslam}}</td>
-                    </tr>
-                    <tr>
-                        <th>Slot:</th>
-                        <td>{{holderService.cadastro.rede.slot}}</td>
-                    </tr>
-                    <tr>
-                        <th>Porta:</th>
-                        <td>{{holderService.cadastro.rede.porta}}</td>
-                    </tr>
-                    <tr>
-                        <th>Endereço Sequencial da Porta:</th>
-                        <td>{{holderService.cadastro.rede.sequencial}}</td>
-                    </tr>
-                    <tr *ngIf="holderService.cadastro.rede.tipo === 'GPON'">
-                        <th>Porta Lógica:</th>
-                        <td>{{holderService.cadastro.rede.logica}}</td>
-                    </tr>
-                    <tr>
-                        <th>RIN:</th>
-                        <td>{{holderService.cadastro.rede.rin}}</td>
-                    </tr>
-                    <tr>
-                        <th>Vlan VoIP:</th>
-                        <td>{{holderService.cadastro.rede.vlanVoip}}</td>
-                    </tr>
-                    <tr>
-                        <th>Vlan VoD:</th>
-                        <td>{{holderService.cadastro.rede.vlanVod}}</td>
-                    </tr>
-                    <tr>
-                        <th>Vlan Multicast:</th>
-                        <td>{{holderService.cadastro.rede.vlanMulticast}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
-        </div>
-        <div class="col-md">
-            <table class="table table-compact table-vertical">
-                <tbody>
-                    <tr>
-                        <th colspan="2" style="text-align: center;">Informações de Radius</th>
-                    </tr>
-                    <tr>
-                        <th>Status: </th>
-                        <td>{{holderService.cadastro.radius.status}}</td>
-                    </tr>
-                    <tr>
-                        <th>Armario: </th>
-                        <td>{{holderService.cadastro.radius.armario}}</td>
-                    </tr>
-                    <tr>
-                        <th>Porta: </th>
-                        <td>{{holderService.cadastro.radius.porta}} </td>
-                    </tr>
-                    <tr>
-                        <th>Rin: </th>
-                        <td>{{holderService.cadastro.radius.rin}} </td>
-                    </tr>
-                    <tr>
-                        <th>Velocidade: </th>
-                        <td>{{holderService.cadastro.radius.velocidade}} </td>
-                    </tr>
-                    <tr>
-                        <th>É Ip Fixo: </th>
-                        <td>{{holderService.cadastro.radius.isIpFixo}} </td>
-                    </tr>
-                    <tr>
-                        <th>Ip Fixo: </th>
-                        <td>{{holderService.cadastro.radius.ipFixo}} </td>
-                    </tr>
-                    <tr>
-                        <th>Profile: </th>
-                        <td>{{holderService.cadastro.radius.profile}} </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <cadastro-wizard-component [cadastro]="holderService.cadastro" *ngIf="holderService.showWizardComponent"></cadastro-wizard-component>
+<div *ngIf="holderService.cadastro && !searching" class="row">
+    <!-- <acs-component [equipamentos]="holderService.equipamentos"></acs-component> -->
+    <clr-stack-view class="col-xs-12">
+
+        <clr-stack-header>Informações do Cliente
+            <button class="stack-action btn btn-sm btn-link" (click)="holderService.modalWizardOpen = true" type="button">
+                <clr-icon shape="pencil"></clr-icon>
+                Editar Cadastro
+            </button>
+        </clr-stack-header>
+        <ng-container *ngFor="let entry of holderService.cadastro | objkeys" ngProjectAs="clr-stack-block">
+            <ng-container *ngIf="hasStackBlockAtAll(entry)" ngProjectAs="clr-stack-block">
+                <generic-stack-block *ngIf="hasStackBlockDetail(entry)" [obj]="entry" ngProjectAs="clr-stack-block"></generic-stack-block>
+                <clr-stack-block *ngIf="!hasStackBlockDetail(entry)">
+                    <clr-stack-label>{{entry.key | beautifying}}</clr-stack-label>
+                    <clr-stack-content>{{entry.value | capitalize}}</clr-stack-content>
+                </clr-stack-block>
+            </ng-container>
+        </ng-container>
+    </clr-stack-view>
+    <div class="col-xs-8"></div>
+    <cadastro-wizard-component class="col-xs-4" [cadastro]="holderService.cadastro"></cadastro-wizard-component>
     <infos-dm-component *ngIf="holderService.cadastro.rede.planta === 'VIVO1'"></infos-dm-component>
 </div>
 <loading-component [searching]="searching" [searchWhat]="'Buscando Cadastro...'"></loading-component>
