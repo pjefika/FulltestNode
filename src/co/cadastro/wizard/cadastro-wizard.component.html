@@ -1,5 +1,5 @@
 <div>
-    <button type="button" class="btn btn-primary btn-block btn-sm" (click)="holderService.modalWizardOpen = true">Alterar Cadastro</button>
+    <!-- <button type="button" class="btn btn-primary btn-block btn-sm" (click)="holderService.modalWizardOpen = true">Alterar Cadastro</button> -->
 
     <clr-wizard #wizardmodal [(clrWizardOpen)]="holderService.modalWizardOpen" clrWizardSize="lg" [clrWizardClosable]="false">
         <clr-wizard-title>Informações de cadastro</clr-wizard-title>
@@ -8,9 +8,9 @@
         <clr-wizard-button [type]="'next'">Proximo</clr-wizard-button>
         <clr-wizard-button [type]="'finish'">Concluido</clr-wizard-button>
 
-        <clr-wizard-page #paginacadastro [clrWizardPageNextDisabled]="!formpageone.valid">
+        <!-- <clr-wizard-page #paginacadastro [clrWizardPageNextDisabled]="!formpageone.valid">
             <ng-template clrPageTitle>Informações de Cadastro</ng-template>
-            <form #formpageone="ngForm">
+            <form #formpageone="ngForm" class="compact">
                 <section class="form-block">
                     <div class="form-group">
                         <label>Instância: </label>
@@ -37,16 +37,12 @@
                 </section>
             </form>
 
-            <div>
-                <button type="button" class="btn btn-icon btn-primary" (click)="abrirModal();" *ngIf="cadastro.rede.planta === 'VIVO1'">
-                    Inserir cadastro DM
-                </button>
-            </div>
-        </clr-wizard-page>
+            
+        </clr-wizard-page> -->
 
         <clr-wizard-page #paginarede [clrWizardPageNextDisabled]="!formpagetwo.valid">
             <ng-template clrPageTitle>Informações de Rede</ng-template>
-            <form #formpagetwo="ngForm">
+            <form #formpagetwo="ngForm" class="compact">
                 <section class="form-block">
                     <div class="form-group">
                         <label>Ip DSLAM:</label>
@@ -131,11 +127,16 @@
                     </div>
                 </section>
             </form>
+            <div>
+                <button type="button" class="btn btn-icon btn-primary" (click)="abrirModal();" *ngIf="cadastro.rede.planta === 'VIVO1'">
+                    Inserir cadastro DM
+                </button>
+            </div>
         </clr-wizard-page>
 
-        <clr-wizard-page #paginaservico (clrWizardPageOnCommit)="onCommit()" clrWizardPagePreventDefault="true">
+        <clr-wizard-page #paginaservico (clrWizardPageOnCommit)="onCommit()">
             <ng-template clrPageTitle>Informações de Serviço</ng-template>
-            <form #formpagethree="ngForm">
+            <form #formpagethree="ngForm" class="compact">
                 <section class="form-block">
                     <div class="form-group">
                         <label>Velocidade de Download:</label>

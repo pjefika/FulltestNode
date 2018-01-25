@@ -19,6 +19,16 @@ export class InfoTecnicasComponent extends CallAlertService implements OnInit {
         super(toastyComponent);
     }
 
-    public ngOnInit() { }
+    public ngOnInit() {
+
+    }
+
+    private loadingChildren(children: string[]): boolean {
+        children.forEach(element => {
+            this.holderService.loadingComponents.indexOf(element);
+        });
+
+        return false;
+    }
 
 }

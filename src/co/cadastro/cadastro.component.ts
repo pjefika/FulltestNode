@@ -38,7 +38,8 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
     public ngOnInit(): void {
         // for test purposes
         this.holderService.cadastro = this.cadastroService.getMock();
-        this.holderService.equipamentos = this.acsService.getMock();
+        this.holderService.liberarSubNav = true;
+
         //Se cadastro já foi consultado e preenchido o mesmo so atribui para a variavel. 
         if (this.holderService.cadastro) {
             if (this.holderService.cadastro.rede.origem === "OFFLINE") {
@@ -65,7 +66,6 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
             .then(data => {
                 // this.cadastro = data;
                 this.holderService.cadastro = data;
-                this.buscaEqpInAcs();
                 if (!this.holderService.cadastro.rede.tipo) {
                     this.searchingRede = true;
                     this.cadastroService
@@ -84,7 +84,7 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
                 }
             }, error => {
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
-                this.searching = false;
+
             })
             .then(() => {
                 // if (this.cadastro.rede.planta === "VIVO1") {
@@ -92,23 +92,8 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
                 // } else {
                 //     this.holderService.origenPlanta = false;
                 // }
-
+                this.searching = false;
             });
-    }
-
-    private buscaEqpInAcs() {
-        if (this.holderService.cadastro) {
-            this.acsService
-                .getEquipamentoAssoc(this.holderService.cadastro.designador)
-                .then(data => {
-                    this.holderService.equipamentos = data;
-                }, error => {
-                    //super.callToasty("Informação", "Não foram encontrados equiapementos na ACS - Motive", "info", 5000);
-                })
-                .then(() => {
-                    this.searching = false;
-                });
-        }
     }
 
     private validCadastroRedeEServico() {
@@ -132,13 +117,13 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
         }
         return false
     }
-    public hasStackBlockAtAll(obj: any){
+    public hasStackBlockAtAll(obj: any) {
         if (obj.key == "redeExterna" ||
-        obj.key == "asserts" ||
-        obj.key == "eventos" ) {
-        return false
-    }
-    return true
+            obj.key == "asserts" ||
+            obj.key == "eventos") {
+            return false
+        }
+        return true
     }
 
 }

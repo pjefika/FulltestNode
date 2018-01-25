@@ -1,6 +1,11 @@
-<clr-stack-view *ngIf="equipamentos">
-    <clr-stack-header>Informações ACS</clr-stack-header>
-    <clr-stack-block *ngFor="let eqp of equipamentos">
+<clr-stack-view *ngIf="holderService.equipamentos">
+    <clr-stack-header>Informações ACS
+        <button class="stack-action btn btn-sm btn-link" (click)="getEquipamentoAssoc()" type="button">
+            <clr-icon shape="refresh"></clr-icon>
+            Atualizar
+        </button>
+    </clr-stack-header>
+    <clr-stack-block *ngFor="let eqp of holderService.equipamentos">
         <clr-stack-label>{{eqp.manufacturer | capitalize}} - {{eqp.deviceId.serialNumber | uppercase}}</clr-stack-label>
         <clr-stack-content>
             Ativo desde:
