@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AcsService } from 'util/comp_complementares/acs/acs.service';
 import { Equipamento } from 'viewmodel/acs/equipamento';
 import { ToastyComponent } from 'util/toasty/toasty.component';
+import { CallAlertService } from 'util/callalerts/call-alert.service';
 
 @Component({
     selector: 'acs-component',
@@ -11,7 +12,7 @@ import { ToastyComponent } from 'util/toasty/toasty.component';
     providers: [AcsService]
 })
 
-export class AcsComponent implements OnInit {
+export class AcsComponent extends CallAlertService implements OnInit {
 
     @Input() public designador: string;
 
@@ -19,39 +20,29 @@ export class AcsComponent implements OnInit {
 
     constructor(
         private acsService: AcsService,
-        private toastyComponent: ToastyComponent,
+        public toastyComponent: ToastyComponent,
         public holderService: HolderService) {
+        super(toastyComponent);
     }
 
     public ngOnInit() {
-
-        this.holderService.equipamentos = this.acsService.getMock();
-        // this.getEquipamentoAssoc();
+        //this.holderService.equipamentos = this.acsService.getMock();
+        this.getEquipamentoAssoc();
     }
 
     private getEquipamentoAssoc() {
-        this.holderService.equipamentos=null;
+        this.holderService.equipamentos = null;
         this.searching = true;
         this.acsService
             .getEquipamentoAssoc(this.designador)
             .then(data => {
                 this.holderService.equipamentos = data;
             }, error => {
-                //this.callToasty("Ops, aconteceu algo.", error.mError, "warning", 5000);
+                super.callAlert(true, "alert-warning", "Cliente não possui equipamento associado na motive.");
             })
             .then(() => {
-               this.searching = false;
+                this.searching = false;
             });
-    }
-
-    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
     }
 
     private abreAbaSearchDeviceInfo(deviceId: number) {
