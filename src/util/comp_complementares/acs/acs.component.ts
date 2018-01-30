@@ -33,10 +33,11 @@ export class AcsComponent extends CallAlertService implements OnInit {
     private getEquipamentoAssoc() {
         this.holderService.equipamentos = null;
         this.searching = true;
+        super.setFalseAlert();
         this.acsService
             .getEquipamentoAssoc(this.designador)
             .then(data => {
-                this.holderService.equipamentos = data;
+                this.holderService.equipamentos = data;                
             }, error => {
                 super.callAlert(true, "alert-warning", "Cliente não possui equipamento associado na motive.");
             })

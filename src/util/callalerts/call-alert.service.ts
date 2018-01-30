@@ -17,6 +17,10 @@ export class CallAlertService {
         this.alertAtivo = alertAtivo;
     }
 
+    public setFalseAlert() {
+        this.alertAtivo = false;
+    }
+
     public callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,

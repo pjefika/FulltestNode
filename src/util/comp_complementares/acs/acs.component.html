@@ -27,7 +27,7 @@
             <h4>Informações ACS Motive</h4>
         </div>
         <div class="col-xs-3">
-            <button class="stack-action btn btn-sm btn-link btn-align" (click)="getEquipamentoAssoc()" type="button">
+            <button class="stack-action btn btn-sm btn-link btn-align" (click)="getEquipamentoAssoc()" type="button" [disabled]="searching">
                 <clr-icon shape="refresh"></clr-icon>
                 Atualizar
             </button>
