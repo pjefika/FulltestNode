@@ -1,5 +1,5 @@
 <loading-component [searching]="searching" [searchWhat]="'Buscando Eventos Massivos...'"></loading-component>
-<table class="table table-compact" *ngIf="eventos.length > 0">
+<table class="table table-compact" *ngIf="eventos && eventos.length > 0">
     <tbody>
         <tr>
             <th>Tipo - Número Evento</th>
