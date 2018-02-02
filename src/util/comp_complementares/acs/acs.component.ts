@@ -26,7 +26,6 @@ export class AcsComponent extends CallAlertService implements OnInit {
     }
 
     public ngOnInit() {
-        //this.holderService.equipamentos = this.acsService.getMock();
         this.getEquipamentoAssoc();
     }
 

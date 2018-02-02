@@ -36,10 +36,6 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
     }
 
     public ngOnInit(): void {
-        // for test purposes
-        // this.holderService.cadastro = this.cadastroService.getMock();
-        // this.holderService.liberarSubNav = true;
-
         //Se cadastro já foi consultado e preenchido o mesmo so atribui para a variavel. 
         if (this.holderService.cadastro) {
             if (this.holderService.cadastro.rede.origem === "OFFLINE") {
@@ -48,7 +44,6 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
         } else {
             this.searching = true;
             this.getCadastro();
-            // this.holderService.liberarSubNav = true;
         }
         this.holderService.resumoInfosAtivo = false;
         this.holderService.btnResumoInfosAtivo = false;

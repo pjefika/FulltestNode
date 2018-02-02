@@ -1,7 +1,5 @@
 <div *ngIf="holderService.cadastro && !holderService.searchingCadastro" class="row">
-    <!-- <acs-component [equipamentos]="holderService.equipamentos"></acs-component> -->
     <clr-stack-view class="col-xs-12">
-
         <clr-stack-header>Informações do Cliente
             <button class="stack-action btn btn-sm btn-link" (click)="holderService.modalWizardOpen = true" type="button">
                 <clr-icon shape="pencil"></clr-icon>
@@ -22,4 +20,3 @@
     <cadastro-wizard-component class="col-xs-4" [cadastro]="holderService.cadastro"></cadastro-wizard-component>
     <infos-dm-component *ngIf="holderService.cadastro.rede.planta === 'VIVO1'"></infos-dm-component>
 </div>
-<!-- <loading-component [searching]="searching" [searchWhat]="'Buscando Cadastro...'"></loading-component> -->
