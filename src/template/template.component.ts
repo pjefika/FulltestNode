@@ -101,7 +101,7 @@ export class TemplateComponent implements OnInit {
 
     private mostraSubNav(ativo: boolean, whatSubNav?: any) {
         this.holderService.subNavMenus = whatSubNav;
-        this.holderService.subnav = ativo;
+        // this.holderService.subnav = ativo;
     }
 
     /**
@@ -114,8 +114,17 @@ export class TemplateComponent implements OnInit {
             this.setToDynamicComponent(CadastroCrmComponent);
         } else {
             this.mostraSubNav(true, subNavMockCo);
-            this.setToDynamicComponent(InfoTecnicasComponent);
+            this.setToDynamicComponent(InfoTecnicasComponent);           
+            this.setfalsesubsnavs();
         }
+    }
+
+    private setfalsesubsnavs() {
+        this.holderService.subNavMenus[0].ativo = false;
+        this.holderService.subNavMenus[1].ativo = false;
+        this.holderService.subNavMenus[2].ativo = false;
+        this.holderService.subNavMenus[3].ativo = false;
+        this.holderService.subNavMenus[4].ativo = false;
     }
 
     private buildEstaAtualizado() {
@@ -144,6 +153,8 @@ export class TemplateComponent implements OnInit {
     //Holder Functions
     private holderReset() { // Reseta as variaveis da Holder
         this.mostraSubNav(false, null);
+        this.holderService.subnav = false;
+        this.holderService.clienteSoLinha = false;
         this.holderService.sidenav = false;
         this.holderService.cadastro = null;
         this.holderService.showWizardComponent = false;
@@ -157,5 +168,7 @@ export class TemplateComponent implements OnInit {
         this.holderService.confPorta = null;
         this.holderService.equipamentos = null;
         this.holderService.objectValidManobra = null;
+        this.holderService.resumoInfosAtivo = false;
+
     }
 }

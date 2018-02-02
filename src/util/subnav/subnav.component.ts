@@ -21,9 +21,9 @@ export class SubnavComponent implements OnInit {
 
     }
 
-    private abrecomponent(l) {       
+    private abrecomponent(l) {
         this.holderService.sidenav = false;
-        if (this.holderService.liberarSubNav) {
+        if (this.holderService.liberarSubNav || l.ativo) {
             if (l.link) {
                 window.open(l.link);
             } else {

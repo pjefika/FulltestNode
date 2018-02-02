@@ -26,7 +26,9 @@ export class AcsComponent extends CallAlertService implements OnInit {
     }
 
     public ngOnInit() {
-        this.getEquipamentoAssoc();
+        if (!this.holderService.jaFoiPesquisadoAcs) {
+            this.getEquipamentoAssoc();
+        }
     }
 
     private getEquipamentoAssoc() {
@@ -36,12 +38,13 @@ export class AcsComponent extends CallAlertService implements OnInit {
         this.acsService
             .getEquipamentoAssoc(this.designador)
             .then(data => {
-                this.holderService.equipamentos = data;                
+                this.holderService.equipamentos = data;
             }, error => {
                 super.callAlert(true, "alert-warning", "Cliente não possui equipamento associado na motive.");
             })
             .then(() => {
                 this.searching = false;
+                this.holderService.jaFoiPesquisadoAcs = true;
             });
     }
 

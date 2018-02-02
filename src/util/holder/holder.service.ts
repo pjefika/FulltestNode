@@ -76,6 +76,10 @@ export class HolderService {
 
     public searchingCadastro: boolean = false;
 
+    public clienteSoLinha: boolean = false;
+
+    public jaFoiPesquisadoAcs: boolean = false;
+
     constructor() { }
 
 }
