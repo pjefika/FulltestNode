@@ -11,7 +11,7 @@ export class Util {
 
     public isLogado(): Promise<boolean> {
         let localObj = JSON.parse(sessionStorage.getItem("user"));
-        if (typeof (Storage) !== "undefined" && sessionStorage.getItem('user') && localObj.token === Md5.hashStr("fulltest-app")) {
+        if (typeof (Storage) !== "undefined" && localObj && localObj.token === Md5.hashStr("fulltest-app")) {
             return Promise.resolve(true);
         }
         return Promise.resolve(false);
