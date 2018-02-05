@@ -17,9 +17,7 @@ export class SubnavComponent implements OnInit {
 
     @Input() public menus: SubNav[];
 
-    public ngOnInit() {
-
-    }
+    public ngOnInit() { }
 
     private abrecomponent(l) {
         this.holderService.sidenav = false;

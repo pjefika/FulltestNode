@@ -72,7 +72,7 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
                     this.cadastroService
                         .getCadastroDOne(this.holderService.cadastro.instancia)
                         .then(data => {
-                            this.holderService.liberarSubNav = true;
+                            //this.holderService.liberarSubNav = true;
                             this.holderService.cadastro.rede = data.rede;
                             this.callAlert(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
                             this.searchingRede = false;
