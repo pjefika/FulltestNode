@@ -11,7 +11,7 @@ export class ListarLinhaService extends SuperService {
     }
 
     public getLinha(instancia: string) {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { instancia: string, executor: string };
         _data = { instancia: instancia, executor: usr.user };
         this.infoResquest = {

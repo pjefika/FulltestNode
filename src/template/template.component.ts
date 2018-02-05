@@ -51,15 +51,17 @@ export class TemplateComponent implements OnInit {
     * Faz ao iniciar o componente 
     **/
     public ngOnInit(): void {
-        this.util.isLogado().then((result: boolean) => {
-            if (!result) {
-                this.router.navigate(['./entrar']);
-            } else {
-                this.nivelmaiorquedez = this.util.getNv(10);
-                this.setToDynamicComponent(PrincipalComponent);
-                this.showToggle();
-            }
-        });
+        this.util
+            .isLogado()
+            .then((result => {
+                if (!result) {
+                    this.router.navigate(['./entrar']);
+                } else {
+                    this.nivelmaiorquedez = this.util.getNv(10);
+                    this.setToDynamicComponent(PrincipalComponent);
+                    this.showToggle();
+                }
+            }));
         this.buildEstaAtualizado();
     }
 
@@ -71,8 +73,8 @@ export class TemplateComponent implements OnInit {
 
     private validUser(): Boolean {
         let valid: boolean = false;
-        if (localStorage.getItem('user')) {
-            let usr = JSON.parse(localStorage.getItem('user'));
+        if (sessionStorage.getItem('user')) {
+            let usr = JSON.parse(sessionStorage.getItem('user'));
             if (usr.nv === 1 || this.holderService.eachFulltest === "CRM") {
                 valid = true;
             }
@@ -84,7 +86,7 @@ export class TemplateComponent implements OnInit {
     * Sair do sistema
     **/
     public sair() {
-        localStorage.clear();
+        sessionStorage.clear();
         this.holderReset();
         this.router.navigate(['./entrar']);
 
@@ -114,7 +116,7 @@ export class TemplateComponent implements OnInit {
             this.setToDynamicComponent(CadastroCrmComponent);
         } else {
             this.mostraSubNav(true, subNavMockCo);
-            this.setToDynamicComponent(InfoTecnicasComponent);           
+            this.setToDynamicComponent(InfoTecnicasComponent);
             this.setfalsesubsnavs();
         }
     }

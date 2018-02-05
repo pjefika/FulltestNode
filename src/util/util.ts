@@ -10,8 +10,8 @@ export class Util {
     constructor(private loginService: LoginService) { }
 
     public isLogado(): Promise<boolean> {
-        let localObj = JSON.parse(localStorage.getItem("user"));
-        if (typeof (Storage) !== "undefined" && localStorage.getItem('user') && localObj.token === Md5.hashStr("fulltest-app")) {
+        let localObj = JSON.parse(sessionStorage.getItem("user"));
+        if (typeof (Storage) !== "undefined" && sessionStorage.getItem('user') && localObj.token === Md5.hashStr("fulltest-app")) {
             return Promise.resolve(true);
         }
         return Promise.resolve(false);
@@ -20,7 +20,7 @@ export class Util {
     public getNv(nv: number): boolean {
         let valid = false;
         if (this.isLogado()) {
-            let usr = JSON.parse(localStorage.getItem('user'));
+            let usr = JSON.parse(sessionStorage.getItem('user'));
             if (usr.nv >= nv) {
                 valid = true;
             }

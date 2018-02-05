@@ -11,7 +11,7 @@ export class AcsService extends SuperService {
     }
 
     public getEquipamentoAssoc(input: string) {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { criterio: string, input: string, executor: string };
         _data = { criterio: "SUBSCRIBER", input: input, executor: usr.user };
         this.infoResquest = {

@@ -12,7 +12,7 @@ export class CustgroupService extends SuperService {
     }
 
     public setCustGroup(linha: Linha, custgroup: string): Promise<CadastroLinha> {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, custGrp: string, executor: string };
         _data = { dms: dms, custGrp: custgroup, executor: usr.user };
