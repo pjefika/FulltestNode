@@ -8,6 +8,7 @@ import { CadastroLinha } from './../../viewmodel/cadastro-linha/cadastro-linha';
 import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { Injectable } from '@angular/core';
 import { Equipamento } from 'viewmodel/acs/equipamento';
+import { Certification } from 'viewmodel/certification/certification';
 
 @Injectable()
 export class HolderService {
@@ -79,6 +80,8 @@ export class HolderService {
     public clienteSoLinha: boolean = false;
 
     public jaFoiPesquisadoAcs: boolean = false;
+
+    public certifications: Certification[];
 
     constructor() { }
 

@@ -106,6 +106,7 @@ import { ParametrosViewCpComponent } from 'util/comp_complementares/configuracoe
 import { GenericValidComponent } from 'util/comp_complementares/configuracoesporta/generic-table/generic-valid/generic-valid.component';
 import { GenericStackBlockComponent } from 'co/cadastro/generic-stack-block/generic-stack-block.component';
 import { ObjKeysPipe, KeyBeautifyingPipe, Capitalize } from 'util/obj-pipe/obj-pipe-service';
+import { ListCertificationComponentComponent } from 'util/list-certification/list-certification.component';
 
 @NgModule({
     declarations: [
@@ -181,7 +182,8 @@ import { ObjKeysPipe, KeyBeautifyingPipe, Capitalize } from 'util/obj-pipe/obj-p
         GenericStackBlockComponent,
         ObjKeysPipe,
         KeyBeautifyingPipe,
-        Capitalize
+        Capitalize,
+        ListCertificationComponentComponent
     ],
     imports: [
         BrowserModule,

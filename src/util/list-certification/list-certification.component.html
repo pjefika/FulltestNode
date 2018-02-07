@@ -1,0 +1,24 @@
+<loading-component [searching]="isLoading" [searchWhat]="'Buscando Logs...'"></loading-component>
+<div *ngIf="holderService.certifications && !searchCadastro">
+    <button class="btn btn-primary" (click)="getCertificationByCustomer()">Reconsultar</button>
+    <table class="table table-compact">
+        <thead>
+            <tr>
+                <th>Resultado</th>
+                <th>Mensagem</th>
+                <th>Data Inicio</th>
+                <th>Data Fim</th>
+                <th>Executor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let certification of holderService.certifications">
+                <td>{{certification.fulltest.resultado}}</td>
+                <td>{{certification.fulltest.mensagem}}</td>
+                <td>{{certification.fulltest.dataInicio}}</td>
+                <td>{{certification.fulltest.dataFim}}</td>
+                <td>{{certification.executor}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
