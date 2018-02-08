@@ -1,8 +1,3 @@
-<loading-component [searching]="isLoading" [searchWhat]="'Buscando Logs Certification...'"></loading-component>
-<div *ngIf="alertAtivo">
-    <h4>Lista de certifications</h4>
-    <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
-</div>
 <div *ngIf="holderService.certifications && !isLoading">
     <clr-stack-view>
         <clr-stack-header>
@@ -35,4 +30,19 @@
             </clr-stack-block>
         </clr-stack-block>
     </clr-stack-view>
+</div>
+<loading-component [searching]="isLoading" [searchWhat]="'Buscando Logs Certification...'"></loading-component>
+<div *ngIf="alertAtivo">
+    <div class="row">
+        <div class="col-xs-9">
+            <h4>Lista de certifications</h4>
+        </div>
+        <div class="col-xs-3">
+            <button class="stack-action btn btn-sm btn-link btn-align" (click)="getCertificationByCustomerMock();" type="button">
+                <clr-icon shape="refresh"></clr-icon>
+                Atualizar
+            </button>
+        </div>
+    </div>
+    <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
 </div>

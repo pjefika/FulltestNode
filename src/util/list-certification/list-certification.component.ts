@@ -8,6 +8,7 @@ import { Certification } from 'viewmodel/certification/certification';
 @Component({
     selector: 'list-certification-component',
     templateUrl: 'list-certification.component.html',
+    styleUrls: ['list-certification.component.css'],
     providers: [ListCertificationService]
 })
 
