@@ -10,11 +10,13 @@
         <clr-stack-block *ngFor="let certification of holderService.certifications">
             <clr-stack-label>
                 Resultado
-                <clr-icon shape="check" *ngIf="certification.fulltest.resultado" style="color: green;"></clr-icon>
-                <clr-icon shape="times" *ngIf="!certification.fulltest.resultado" style="color: red;"></clr-icon>
             </clr-stack-label>
             <clr-stack-content>
-                Usuário: {{certification.executor | uppercase}}
+                {{certification.resultado}}
+                <clr-icon shape="check" *ngIf="certification.resultado === 'OK'" style="color: green;"></clr-icon>
+                <clr-icon shape="times" *ngIf="certification.resultado === 'FISICAL' || certification.resultado === 'FORWARDED_CO' || certification.resultado === 'TO_FIX'"
+                    style="color: red;"></clr-icon>
+                <clr-icon shape="exclamation-triangle" *ngIf="certification.resultado === 'FIXED'" style="color: orange"></clr-icon>
             </clr-stack-content>
             <clr-stack-block>
                 <clr-stack-label>Mensagem</clr-stack-label>
