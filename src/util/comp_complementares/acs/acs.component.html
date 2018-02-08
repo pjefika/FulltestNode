@@ -1,5 +1,5 @@
 <clr-stack-view *ngIf="holderService.equipamentos">
-    <clr-stack-header>Informações ACS
+    <clr-stack-header>Informações ACS Motive
         <button class="stack-action btn btn-sm btn-link" (click)="getEquipamentoAssoc()" type="button">
             <clr-icon shape="refresh"></clr-icon>
             Atualizar
@@ -21,4 +21,18 @@
         </clr-stack-block>
     </clr-stack-block>
 </clr-stack-view>
+<div *ngIf="!holderService.equipamentos">
+    <div class="row">
+        <div class="col-xs-9">
+            <h4>Informações ACS Motive</h4>
+        </div>
+        <div class="col-xs-3">
+            <button class="stack-action btn btn-sm btn-link btn-align" (click)="getEquipamentoAssoc()" type="button" [disabled]="searching">
+                <clr-icon shape="refresh"></clr-icon>
+                Atualizar
+            </button>
+        </div>
+    </div>
+</div>
+<alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
 <loading-component [searching]="searching" [searchWhat]="'Buscando Equipamentos ACS - Motive...'"></loading-component>

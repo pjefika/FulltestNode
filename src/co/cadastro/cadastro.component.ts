@@ -11,6 +11,7 @@ import { CadastroService } from './cadastro.service';
 import { CallAlertService } from 'util/callalerts/call-alert.service';
 import { CadastroWizardComponent } from 'co/cadastro/wizard/cadastro-wizard.component';
 import { AcsService } from 'util/comp_complementares/acs/acs.service';
+import { ConfiguracaoLinhaComponent } from 'co/configuracao-linha/configuracao-linha.component';
 
 @Component({
     selector: 'cadastro-component',
@@ -27,6 +28,8 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
 
     private searchingRede: boolean = false;
 
+    private clienteLinha: boolean = false;
+
     constructor(public toastyComponent: ToastyComponent,
         private cadastroService: CadastroService,
         public holderService: HolderService,
@@ -36,10 +39,6 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
     }
 
     public ngOnInit(): void {
-        // for test purposes
-        this.holderService.cadastro = this.cadastroService.getMock();
-        this.holderService.liberarSubNav = true;
-
         //Se cadastro já foi consultado e preenchido o mesmo so atribui para a variavel. 
         if (this.holderService.cadastro) {
             if (this.holderService.cadastro.rede.origem === "OFFLINE") {
@@ -48,9 +47,6 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
         } else {
             this.searching = true;
             this.getCadastro();
-
-
-            this.holderService.liberarSubNav = true;
         }
         this.holderService.resumoInfosAtivo = false;
         this.holderService.btnResumoInfosAtivo = false;
@@ -60,17 +56,23 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
     }
 
     public getCadastro(): void {
-        this.searching = true;
+        this.holderService.searchingCadastro = true;
         this.cadastroService
             .getCadastro(this.instancia)
             .then(data => {
                 // this.cadastro = data;
+                this.holderService.subnav = true;
                 this.holderService.cadastro = data;
-                if (!this.holderService.cadastro.rede.tipo) {
+                if (this.holderService.cadastro.linha.dn && !this.holderService.cadastro.designador) {
+                    this.holderService.clienteSoLinha = true;
+                    this.holderService.subNavMenus[0].ativo = true;
+                    this.holderService.subNavMenus[3].ativo = true;
+                } else if (!this.holderService.cadastro.rede.tipo) {
                     this.searchingRede = true;
                     this.cadastroService
                         .getCadastroDOne(this.holderService.cadastro.instancia)
                         .then(data => {
+                            //this.holderService.liberarSubNav = true;
                             this.holderService.cadastro.rede = data.rede;
                             this.callAlert(true, "alert-info", "Atenção cadastro carregado da base do dia anterior.");
                             this.searchingRede = false;
@@ -84,7 +86,6 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
                 }
             }, error => {
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 5000);
-
             })
             .then(() => {
                 // if (this.cadastro.rede.planta === "VIVO1") {
@@ -92,7 +93,7 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
                 // } else {
                 //     this.holderService.origenPlanta = false;
                 // }
-                this.searching = false;
+                this.holderService.searchingCadastro = false;
             });
     }
 
@@ -101,9 +102,14 @@ export class CadastroComponent extends CallAlertService implements OnInit, OnCha
             //Valida Rede or Valida Servico
             if (!this.holderService.cadastro.rede.tipo || (!this.holderService.cadastro.servicos.velDown && !this.holderService.cadastro.servicos.velUp)) {
                 //console.log(this.cadastro.rede.tipo);
-                this.holderService.liberarSubNav = false;
+                this.holderService.liberarSubNav = false;                
             } else {
                 this.holderService.liberarSubNav = true;
+                this.holderService.subNavMenus[0].ativo = true;
+                this.holderService.subNavMenus[1].ativo = true;
+                this.holderService.subNavMenus[2].ativo = true;
+                this.holderService.subNavMenus[3].ativo = true;
+                this.holderService.subNavMenus[4].ativo = true;
             }
         }
     }

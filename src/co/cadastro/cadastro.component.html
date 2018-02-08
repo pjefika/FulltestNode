@@ -1,25 +1,43 @@
-<div *ngIf="holderService.cadastro && !searching" class="row">
-    <!-- <acs-component [equipamentos]="holderService.equipamentos"></acs-component> -->
-    <clr-stack-view class="col-xs-12">
+<div *ngIf="holderService.cadastro && !holderService.searchingCadastro" class="row">
 
-        <clr-stack-header>Informações do Cliente
-            <button class="stack-action btn btn-sm btn-link" (click)="holderService.modalWizardOpen = true" type="button">
-                <clr-icon shape="pencil"></clr-icon>
-                Editar Cadastro
-            </button>
-        </clr-stack-header>
-        <ng-container *ngFor="let entry of holderService.cadastro | objkeys" ngProjectAs="clr-stack-block">
-            <ng-container *ngIf="hasStackBlockAtAll(entry)" ngProjectAs="clr-stack-block">
-                <generic-stack-block *ngIf="hasStackBlockDetail(entry)" [obj]="entry" ngProjectAs="clr-stack-block"></generic-stack-block>
-                <clr-stack-block *ngIf="!hasStackBlockDetail(entry)">
-                    <clr-stack-label>{{entry.key | beautifying}}</clr-stack-label>
-                    <clr-stack-content>{{entry.value | capitalize}}</clr-stack-content>
+    <div *ngIf="holderService.clienteSoLinha">
+        <clr-stack-view class="col-xs-12">
+            <clr-stack-header>Informações do Cliente </clr-stack-header>
+            <clr-stack-block [clrSbExpanded]="true">
+                <clr-stack-label>Informações de Linha</clr-stack-label>
+                <clr-stack-content>{{holderService.cadastro.linha.tipo}}</clr-stack-content>
+                <clr-stack-block>
+                    <clr-stack-label>DN</clr-stack-label>
+                    <clr-stack-content>{{holderService.cadastro.linha.dn}}</clr-stack-content>
                 </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Central</clr-stack-label>
+                    <clr-stack-content>{{holderService.cadastro.linha.central}}</clr-stack-content>
+                </clr-stack-block>
+            </clr-stack-block>
+        </clr-stack-view>
+    </div>
+    <div *ngIf="!holderService.clienteSoLinha">
+        <clr-stack-view class="col-xs-12">
+            <clr-stack-header>Informações do Cliente
+                <button class="stack-action btn btn-sm btn-link" (click)="holderService.modalWizardOpen = true" type="button">
+                    <clr-icon shape="pencil"></clr-icon>
+                    Editar Cadastro
+                </button>
+            </clr-stack-header>
+            <ng-container *ngFor="let entry of holderService.cadastro | objkeys" ngProjectAs="clr-stack-block">
+                <ng-container *ngIf="hasStackBlockAtAll(entry)" ngProjectAs="clr-stack-block">
+                    <generic-stack-block *ngIf="hasStackBlockDetail(entry)" [obj]="entry" ngProjectAs="clr-stack-block"></generic-stack-block>
+                    <clr-stack-block *ngIf="!hasStackBlockDetail(entry)">
+                        <clr-stack-label>{{entry.key | beautifying}}</clr-stack-label>
+                        <clr-stack-content>{{entry.value | capitalize}}</clr-stack-content>
+                    </clr-stack-block>
+                </ng-container>
             </ng-container>
-        </ng-container>
-    </clr-stack-view>
-    <div class="col-xs-8"></div>
-    <cadastro-wizard-component class="col-xs-4" [cadastro]="holderService.cadastro"></cadastro-wizard-component>
-    <infos-dm-component *ngIf="holderService.cadastro.rede.planta === 'VIVO1'"></infos-dm-component>
+        </clr-stack-view>
+        <div class="col-xs-8"></div>
+        <cadastro-wizard-component class="col-xs-4" [cadastro]="holderService.cadastro"></cadastro-wizard-component>
+        <infos-dm-component *ngIf="holderService.cadastro.rede.planta === 'VIVO1'"></infos-dm-component>
+    </div>
+
 </div>
-<loading-component [searching]="searching" [searchWhat]="'Buscando Cadastro...'"></loading-component>

@@ -12,7 +12,7 @@ export class LinhaResetDePortaService extends SuperService {
     }
 
     public resetarPorta(linha: Linha): Promise<CadastroLinha> {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, executor: string };
         _data = { dms: dms, executor: usr.user };

@@ -12,7 +12,7 @@ export class ListarLensLivresService extends SuperService {
     }
 
     public getLensLivres(linha: Linha): Promise<ConfiguracoesLensLivres> {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, executor: string };
         _data = { dms: dms, executor: usr.user };

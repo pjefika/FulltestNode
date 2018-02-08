@@ -113,7 +113,7 @@ export class ManobraComponent extends CallAlertService implements OnInit {
             this.btnValidDisable = true;
             this.searchingValids = true;
             this.nameBtnValidManobra = "Validando Manobra";
-            let usr = JSON.parse(localStorage.getItem('user'));
+            let usr = JSON.parse(sessionStorage.getItem('user'));
             this.manobraService
                 .getRn(this.cadastro, this.ordem)
                 .subscribe(data => {

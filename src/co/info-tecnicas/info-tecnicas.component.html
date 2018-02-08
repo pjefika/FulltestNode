@@ -1,8 +1,15 @@
-<div class="row">
+<div>
     <!-- <h3 class="titulo-da-pagina">Informações Técnicas</h3> -->
     <!-- <charts-component [chartType]="'line'" *ngIf="holderService.cadastro"></charts-component> -->
-    <evento-massivo-component *ngIf="holderService.cadastro" [eventos]="holderService.cadastro.eventos"></evento-massivo-component>
-    <cadastro-component class="col-xs-6"></cadastro-component>
-    <acs-component *ngIf="holderService.cadastro" [designador]="holderService.cadastro.designador" class="col-xs-6"></acs-component>
-    <!-- <loading-component [searching]="" [searchWhat]="'Buscando Cadastro...'"></loading-component> -->
+    <div class="row">
+        <div class="col-xs">
+            <cadastro-component></cadastro-component>
+        </div>
+        <div class="col-xs" *ngIf="!holderService.clienteSoLinha">
+            <acs-component *ngIf="holderService.cadastro" [designador]="holderService.cadastro.designador"></acs-component>
+            <list-certification-component *ngIf="holderService.cadastro"></list-certification-component>
+        </div>
+        <evento-massivo-component *ngIf="holderService.cadastro" [eventos]="holderService.cadastro.eventos"></evento-massivo-component>
+    </div>
+    <loading-component [searching]="holderService.searchingCadastro" [searchWhat]="'Buscando Informações Técnicas...'"></loading-component>
 </div>

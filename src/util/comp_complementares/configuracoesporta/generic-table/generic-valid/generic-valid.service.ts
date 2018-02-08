@@ -13,7 +13,7 @@ export class GenericValidService extends SuperService {
     }
 
     // public setAdminState(cadastro: Cadastro, estadoPorta: ResultNormal) {
-    //     let usr = JSON.parse(localStorage.getItem('user'));
+    //     let usr = JSON.parse(sessionStorage.getItem('user'));
     //     let _data: { cust: any, executor: string, estadoPorta: ResultNormal };
     //     _data = { cust: cadastro, executor: usr.user, estadoPorta: estadoPorta };
     //     this.infoResquest = {

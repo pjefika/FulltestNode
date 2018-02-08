@@ -24,7 +24,7 @@ export class ManobraService extends SuperService {
     }
 
     public getValidacao(cadastro: Cadastro): Promise<ObjectValid> {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { cust: any, executor: string };
         _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
@@ -71,10 +71,11 @@ export class ManobraService extends SuperService {
 
     //Multiple requests
     public getRn(cadastro: Cadastro, ordem: string, ): Observable<Cadastro> {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         const urlStealer = this.urlService.urlIp + this.urlService.pathFulltestAPI + "manobra/asserts";
         const urlFulltest = this.urlService.urlIpParaStealer + this.urlService.pathStealerAPI + "manobra/asserts";
-        let _data: { cust: Cadastro, workOrderId: string };
-        _data = { cust: cadastro, workOrderId: ordem };
+        let _data: { cust: Cadastro, workOrderId: string, executor: string  };
+        _data = { cust: cadastro, workOrderId: ordem, executor: usr.user };
         return Observable.forkJoin(
             this.http.post(urlStealer, JSON.stringify(cadastro), this.urlService.options)
                 .map(res => res.json()),
