@@ -3,6 +3,7 @@ import { ListCertificationService } from 'util/list-certification/list-certifica
 import { CallAlertService } from 'util/callalerts/call-alert.service';
 import { ToastyComponent } from 'util/toasty/toasty.component';
 import { HolderService } from 'util/holder/holder.service';
+import { Certification } from 'viewmodel/certification/certification';
 
 @Component({
     selector: 'list-certification-component',
@@ -21,6 +22,12 @@ export class ListCertificationComponentComponent extends CallAlertService implem
     }
 
     public ngOnInit() {
+        if (!this.holderService.certifications) {
+            this.getCertification();
+        }
+    }
+
+    public getCertification() {
         // --Prod
         this.getCertificationByCustomer();
         // --QA
@@ -32,14 +39,14 @@ export class ListCertificationComponentComponent extends CallAlertService implem
         this.listCertificationService
             .getCertificationByCustomer(this.holderService.cadastro.instancia)
             .then(response => {
-                if (response) {
+                if (response.length > 0) {
                     this.holderService.certifications = response;
                 } else {
-                    super.callToasty("Ops, Aconteceu algo.", "Lista de Fulltest vazia.", "warning", 5000);
+                    super.callAlert(true, "warning", "Nenhum Fulltest foi realizado até o momento.");
                 }
             }, error => {
-                // super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 5000);
-                super.callToasty("Ops, Aconteceu algo.", "Lista de certificações nao implatadas", "error", 5000);
+                super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 5000);
+                // super.callToasty("Ops, Aconteceu algo.", "Lista de certificações nao implatadas", "error", 5000);
             })
             .then(() => {
                 this.isLoading = false;
@@ -49,7 +56,14 @@ export class ListCertificationComponentComponent extends CallAlertService implem
     public getCertificationByCustomerMock() {
         this.isLoading = true;
         setTimeout(() => {
-            this.holderService.certifications = this.listCertificationService.getCertificationByCustomerMock();
+            let certification: Certification[];
+            certification = this.listCertificationService.getCertificationByCustomerMock();
+            // certification = [];
+            if (certification.length > 0) {
+                this.holderService.certifications = certification;
+            } else {
+                super.callAlert(true, "warning", "Nenhum Fulltest foi realizado até o momento.");
+            }
             this.isLoading = false;
         }, 1000);
     }

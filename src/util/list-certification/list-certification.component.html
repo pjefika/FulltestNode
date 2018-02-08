@@ -1,30 +1,38 @@
-<loading-component [searching]="isLoading" [searchWhat]="'Buscando Logs...'"></loading-component>
-<div *ngIf="holderService.certifications && !searchCadastro">
-    <button class="btn btn-primary" (click)="getCertificationByCustomer()">Reconsultar</button>
-    <table class="table table-compact">
-        <thead>
-            <tr>
-                <th>Resultado</th>
-                <th>Mensagem</th>
-                <th>Data Inicio</th>
-                <th>Data Fim</th>
-                <th>Executor</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let certification of holderService.certifications">
-                <td>
-                    <clr-icon shape="check" *ngIf="certification.fulltest.resultado" style="color: green;"></clr-icon>
-                    <clr-icon shape="times" *ngIf="!certification.fulltest.resultado" style="color: red;"></clr-icon>
-                </td>
-                <td>
-
-                    {{certification.fulltest.resultado ? 'Não foram identificados problemas' : certification.fulltest.mensagem }}
-                </td>
-                <td>{{((certification.fulltest.dataInicio / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY hh:mm'}}</td>
-                <td>{{((certification.fulltest.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY hh:mm'}}</td>
-                <td>{{certification.executor | uppercase}}</td>
-            </tr>
-        </tbody>
-    </table>
+<loading-component [searching]="isLoading" [searchWhat]="'Buscando Logs Certification...'"></loading-component>
+<div *ngIf="alertAtivo">
+    <h4>Lista de certifications</h4>
+    <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
+</div>
+<div *ngIf="holderService.certifications && !isLoading">
+    <clr-stack-view>
+        <clr-stack-header>
+            Lista de certifications
+            <button class="stack-action btn btn-sm btn-link" (click)="getCertificationByCustomerMock();" type="button">
+                <clr-icon shape="refresh"></clr-icon>
+                Atualizar
+            </button>
+        </clr-stack-header>
+        <clr-stack-block *ngFor="let certification of holderService.certifications">
+            <clr-stack-label>
+                Resultado
+                <clr-icon shape="check" *ngIf="certification.fulltest.resultado" style="color: green;"></clr-icon>
+                <clr-icon shape="times" *ngIf="!certification.fulltest.resultado" style="color: red;"></clr-icon>
+            </clr-stack-label>
+            <clr-stack-content>
+                Usuário: {{certification.executor | uppercase}}
+            </clr-stack-content>
+            <clr-stack-block>
+                <clr-stack-label>Mensagem</clr-stack-label>
+                <clr-stack-content>{{certification.fulltest.mensagem}}</clr-stack-content>
+            </clr-stack-block>
+            <clr-stack-block>
+                <clr-stack-label>Data Inicio</clr-stack-label>
+                <clr-stack-content>{{((certification.fulltest.dataInicio / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY hh:mm'}}</clr-stack-content>
+            </clr-stack-block>
+            <clr-stack-block>
+                <clr-stack-label>Data Fim</clr-stack-label>
+                <clr-stack-content>{{((certification.fulltest.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY hh:mm'}}</clr-stack-content>
+            </clr-stack-block>
+        </clr-stack-block>
+    </clr-stack-view>
 </div>
