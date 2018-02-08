@@ -13,11 +13,17 @@
         </thead>
         <tbody>
             <tr *ngFor="let certification of holderService.certifications">
-                <td>{{certification.fulltest.resultado}}</td>
-                <td>{{certification.fulltest.mensagem}}</td>
-                <td>{{certification.fulltest.dataInicio}}</td>
-                <td>{{certification.fulltest.dataFim}}</td>
-                <td>{{certification.executor}}</td>
+                <td>
+                    <clr-icon shape="check" *ngIf="certification.fulltest.resultado" style="color: green;"></clr-icon>
+                    <clr-icon shape="times" *ngIf="!certification.fulltest.resultado" style="color: red;"></clr-icon>
+                </td>
+                <td>
+
+                    {{certification.fulltest.resultado ? 'Não foram identificados problemas' : certification.fulltest.mensagem }}
+                </td>
+                <td>{{((certification.fulltest.dataInicio / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY hh:mm'}}</td>
+                <td>{{((certification.fulltest.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY hh:mm'}}</td>
+                <td>{{certification.executor | uppercase}}</td>
             </tr>
         </tbody>
     </table>

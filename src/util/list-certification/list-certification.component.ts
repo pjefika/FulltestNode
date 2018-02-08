@@ -21,7 +21,10 @@ export class ListCertificationComponentComponent extends CallAlertService implem
     }
 
     public ngOnInit() {
+        // --Prod
         this.getCertificationByCustomer();
+        // --QA
+        // this.getCertificationByCustomerMock();
     }
 
     public getCertificationByCustomer() {
@@ -35,11 +38,20 @@ export class ListCertificationComponentComponent extends CallAlertService implem
                     super.callToasty("Ops, Aconteceu algo.", "Lista de Fulltest vazia.", "warning", 5000);
                 }
             }, error => {
-                super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 5000);
+                // super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 5000);
+                super.callToasty("Ops, Aconteceu algo.", "Lista de certificações nao implatadas", "error", 5000);
             })
             .then(() => {
                 this.isLoading = false;
             });
+    }
+
+    public getCertificationByCustomerMock() {
+        this.isLoading = true;
+        setTimeout(() => {
+            this.holderService.certifications = this.listCertificationService.getCertificationByCustomerMock();
+            this.isLoading = false;
+        }, 1000);
     }
 
 }

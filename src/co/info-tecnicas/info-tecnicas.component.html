@@ -7,6 +7,7 @@
         </div>
         <div class="col-xs" *ngIf="!holderService.clienteSoLinha">
             <acs-component *ngIf="holderService.cadastro" [designador]="holderService.cadastro.designador"></acs-component>
+            <list-certification-component *ngIf="holderService.cadastro"></list-certification-component>
         </div>
         <evento-massivo-component *ngIf="holderService.cadastro" [eventos]="holderService.cadastro.eventos"></evento-massivo-component>
     </div>
