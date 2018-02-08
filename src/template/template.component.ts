@@ -171,6 +171,7 @@ export class TemplateComponent implements OnInit {
         this.holderService.equipamentos = null;
         this.holderService.objectValidManobra = null;
         this.holderService.resumoInfosAtivo = false;
-
+        this.holderService.certifications = null;
+        this.holderService.jaFoiPesquisadoAcs = false;
     }
 }

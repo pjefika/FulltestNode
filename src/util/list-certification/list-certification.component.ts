@@ -43,7 +43,7 @@ export class ListCertificationComponentComponent extends CallAlertService implem
                 if (response.length > 0) {
                     this.holderService.certifications = response;
                 } else {
-                    super.callAlert(true, "warning", "Nenhum Fulltest foi realizado até o momento.");
+                    super.callAlert(true, "alert-warning", "Nenhum Fulltest foi realizado até o momento.");
                 }
             }, error => {
                 super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 5000);
