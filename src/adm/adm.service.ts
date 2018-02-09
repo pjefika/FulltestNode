@@ -26,5 +26,4 @@ export class AdmService extends SuperService {
             })
             .catch(super.handleError);
     }
-
 }

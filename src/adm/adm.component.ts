@@ -79,6 +79,5 @@ export class AdmComponent extends CallAlertService implements OnInit {
                 }
                 this.isLoading = false;
             });
-    }
-
+    } 
 }

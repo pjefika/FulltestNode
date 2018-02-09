@@ -1,11 +1,10 @@
 <clr-modal [(clrModalOpen)]="holderService.modalAdm" [clrModalSize]="'xl'">
     <h3 class="modal-title">Administração</h3>
     <div class="modal-body">
-
         <div class="row">
             <div class="col-md-6">
                 <div *ngIf="holderService.testeStealer && !isLoading">
-                    <h4>Medição Resposta Stealer</h4>
+                    <h5>Medição Resposta Stealer</h5>
                     <table class="table table-compact table-vertical" style="width: 60%;">
                         <tbody>
                             <tr>
@@ -27,10 +26,9 @@
                 </div>
             </div>
             <div class="col-md-6">
-
+                <!-- Colocar outra coisa aqui ira mostrar do lado direito -->
             </div>
         </div>
-
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline" (click)="holderService.modalAdm = false;">Fechar</button>
