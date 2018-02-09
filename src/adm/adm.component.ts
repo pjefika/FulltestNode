@@ -32,7 +32,7 @@ export class AdmComponent extends CallAlertService implements OnInit {
         this.isLoading = true;
         setInterval(() => {
             if (!this.testing) {
-                // this.isLoading = true;
+                this.isLoading = true;
                 this.testStealer();
             }
         }, 20000);
