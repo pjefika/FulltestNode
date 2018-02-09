@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 import { RequestAction } from 'util/url-service/url-service.interface';
 import { SuperService } from 'util/superservice/super.service';
 
-
 @Injectable()
 export class UrlService extends SuperService implements RequestAction {
 
@@ -81,7 +80,7 @@ export class UrlService extends SuperService implements RequestAction {
                 return response.json()
             })
             .catch(super.handleErrorKing);
-    }
+    }    
 
     public linkurl(infoResquest: InfoRequest) {
         const url = infoResquest.otherUrl + infoResquest._data;

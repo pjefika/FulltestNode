@@ -83,6 +83,8 @@ export class HolderService {
 
     public certifications: Certification[];
 
+    public testeStealer: { isOk: boolean, time: number };
+
     constructor() { }
 
 }

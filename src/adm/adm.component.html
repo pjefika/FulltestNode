@@ -2,6 +2,35 @@
     <h3 class="modal-title">Administração</h3>
     <div class="modal-body">
 
+        <div class="row">
+            <div class="col-md-6">
+                <div *ngIf="holderService.testeStealer && !isLoading">
+                    <h4>Medição Resposta Stealer</h4>
+                    <table class="table table-compact table-vertical" style="width: 60%;">
+                        <tbody>
+                            <tr>
+                                <th>Status</th>
+                                <td>
+                                    <clr-icon shape="check" *ngIf="holderService.testeStealer.isOk" style="color: green;"></clr-icon>
+                                    <clr-icon shape="times" *ngIf="!holderService.testeStealer.isOk" style="color: red;"></clr-icon>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Tempo de busca</th>
+                                <td>{{holderService.testeStealer.time}} Segundos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="isLoading">
+                    <loading-component [searching]="isLoading" [searchWhat]="'Realizando medição, Aguarde....'"></loading-component>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+            </div>
+        </div>
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline" (click)="holderService.modalAdm = false;">Fechar</button>
