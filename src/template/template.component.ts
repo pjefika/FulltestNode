@@ -62,7 +62,6 @@ export class TemplateComponent implements OnInit {
                     this.showToggle();
                 }
             }));
-        this.buildEstaAtualizado();
     }
 
     private showToggle() {
@@ -127,21 +126,6 @@ export class TemplateComponent implements OnInit {
         this.holderService.subNavMenus[2].ativo = false;
         this.holderService.subNavMenus[3].ativo = false;
         this.holderService.subNavMenus[4].ativo = false;
-    }
-
-    private buildEstaAtualizado() {
-        setInterval(() => {
-            //console.log("Verifica atualização.");            
-            if (this.util.isAtualizado()) {
-                this.holderService.appLevelAlertAtivo = true;
-                this.holderService.appLevelAlert = {
-                    type: "alert-warning",
-                    msg: "Esta versão do sistema pode estar desatualizada, ocasionando conflitos, atualize sua página.",
-                    buttonAction: "refresh",
-                    buttonName: "Atualizar"
-                }
-            }
-        }, 60000); // Timeout para verificação; definir tempo;
     }
 
     public hoResumo() {
