@@ -5,7 +5,7 @@
                 {{appLevelAlert.msg}}
             </span>
             <div class="alert-actions" *ngIf="appLevelAlert.btn">
-                <button class="btn alert-action" (click)="actionButton(appLevelAlert.btn.btnAction)">{{appLevelAlert.btn.btnName}}</button>
+                <button class="btn alert-action" (click)="actionButton(appLevelAlert)">{{appLevelAlert.btn.btnName}}</button>
             </div>
         </clr-alert-item>
     </clr-alert>

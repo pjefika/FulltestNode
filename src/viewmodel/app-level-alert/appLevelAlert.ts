@@ -4,5 +4,7 @@ export class AppLevelAlert {
     btn?: {
         btnName: string;
         btnAction: string;
+        link?: string;
+        component?: any; // Não há necessidade, quando tiver pensar como fazer... =)
     }
 }

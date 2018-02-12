@@ -41,13 +41,16 @@ export class AppLevelAlertComponent extends CallAlertService implements OnInit {
         window.location.reload();
     }
 
-    private actionButton(action: string) {
-        switch (action) {
+    private actionButton(appLevelAlert: AppLevelAlert) {
+        switch (appLevelAlert.btn.btnAction) {
             case "refresh":
                 this.pageRefresh();
                 break;
-            case "action":
-
+            case "action-new-link":
+                window.open(appLevelAlert.btn.link, '_blank');
+                break;
+            case "action-component":
+                
                 break;
         }
     }
