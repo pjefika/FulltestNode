@@ -38,7 +38,7 @@ export class ConfiguracaoLinhaTdmComponent extends CallAlertService implements O
         private servicoLinhaService: ServicoLinhaService,
         private linhaResetDePortaService: LinhaResetDePortaService) { super(toastyComponent); }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.holderService.sidenav = true;
         if (this.holderService.cadastroLinha) {
             this.cadastroLinha = this.holderService.cadastroLinha

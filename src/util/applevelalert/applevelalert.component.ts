@@ -31,10 +31,10 @@ export class AppLevelAlertComponent extends CallAlertService implements OnInit {
         setInterval(() => {
             if (!this.testing) {
                 this.isLoading = true;
-                this.testStealer();
-                this.testVersion();
+                this.testStealer(); // Testa a Stealer de acordo com o link.
+                this.testVersion(); // Teste de versão de acordo com o package JSON e Back.
             }
-        }, 20000);
+        }, 20000); // Timeout dando check.
     }
 
     private pageRefresh() {
@@ -50,7 +50,7 @@ export class AppLevelAlertComponent extends CallAlertService implements OnInit {
                 window.open(appLevelAlert.btn.link, '_blank');
                 break;
             case "action-component":
-                
+                // Chama Component 
                 break;
         }
     }

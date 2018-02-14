@@ -5,7 +5,7 @@ import { ConfiguracaoLinhaComponent } from './../../configuracao-linha.component
 import { SideNav } from './../../../../viewmodel/menus/sidenav';
 export const mockListSidenavCoTdm: SideNav[] = [
     {
-        nome: "Informações de Cadastro",
+        nome: "Informações da Linha",
         component: ConfiguracaoLinhaComponent,
         icon: "view-list"
     },

@@ -88,7 +88,6 @@ export class TemplateComponent implements OnInit {
         sessionStorage.clear();
         this.holderReset();
         this.router.navigate(['./entrar']);
-
     }
 
     public setToDynamicComponent(component: any) {
