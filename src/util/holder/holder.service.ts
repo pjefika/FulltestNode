@@ -9,6 +9,7 @@ import { Cadastro } from './../../viewmodel/cadastro/cadastro';
 import { Injectable } from '@angular/core';
 import { Equipamento } from 'viewmodel/acs/equipamento';
 import { Certification } from 'viewmodel/certification/certification';
+import { AppLevelAlert } from 'viewmodel/app-level-alert/appLevelAlert';
 
 @Injectable()
 export class HolderService {
@@ -56,7 +57,8 @@ export class HolderService {
     public sideNavMenus: SideNav[];
 
     public appLevelAlertAtivo: boolean = false;
-    public appLevelAlert: { type: string, msg: string, buttonAction?: string, buttonName?: string; };
+
+    public appLevelAlert: AppLevelAlert[];
 
     // Vivo1 True // Vivo2 False
     public origenPlanta: boolean = false;

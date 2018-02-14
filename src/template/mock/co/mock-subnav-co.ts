@@ -21,7 +21,8 @@ export const subNavMockCo: SubNav[] = [
     },
     {
         nome: "Configuração Linha",
-        component: ConfiguracaoLinhaComponent
+        component: ConfiguracaoLinhaComponent,
+        haveSideNav: true
     },
     {
         nome: "Configurações de Porta",

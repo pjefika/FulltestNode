@@ -33,9 +33,9 @@ export class Util {
         let version: string = appVersion;
         let backVersion: string = "v2.0.0"; // Pegar versão do backend
         if (version != backVersion) { // Comparar
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
 }

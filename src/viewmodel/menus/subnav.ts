@@ -3,4 +3,5 @@ export class SubNav {
     component?: any;
     link?: string;
     ativo?: boolean = false;
+    haveSideNav?: boolean = false;
 }
