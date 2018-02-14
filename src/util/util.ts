@@ -10,8 +10,8 @@ export class Util {
     constructor(private loginService: LoginService) { }
 
     public isLogado(): Promise<boolean> {
-        let localObj = JSON.parse(localStorage.getItem("user"));
-        if (typeof (Storage) !== "undefined" && localStorage.getItem('user') && localObj.token === Md5.hashStr("fulltest-app")) {
+        let localObj = JSON.parse(sessionStorage.getItem("user"));
+        if (typeof (Storage) !== "undefined" && localObj && localObj.token === Md5.hashStr("fulltest-app")) {
             return Promise.resolve(true);
         }
         return Promise.resolve(false);
@@ -20,7 +20,7 @@ export class Util {
     public getNv(nv: number): boolean {
         let valid = false;
         if (this.isLogado()) {
-            let usr = JSON.parse(localStorage.getItem('user'));
+            let usr = JSON.parse(sessionStorage.getItem('user'));
             if (usr.nv >= nv) {
                 valid = true;
             }
@@ -31,11 +31,11 @@ export class Util {
     public isAtualizado(): boolean {
         const { version: appVersion } = require('../../package.json'); // Versão da aplicação na package.json
         let version: string = appVersion;
-        let backVersion: string = "v1.0.0"; // Pegar versão do backend
+        let backVersion: string = "v2.0.0"; // Pegar versão do backend
         if (version != backVersion) { // Comparar
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
 }

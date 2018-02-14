@@ -40,8 +40,7 @@ export class LoginComponent implements OnInit {
                         .getUsuario(this.usuario)
                         .then(data => {
                             this.usuario = data;
-                            localStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
-                            localStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
+                            sessionStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
                             this.router.navigate(['./']);
                         });
                 } else {

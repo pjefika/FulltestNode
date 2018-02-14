@@ -1,29 +1,28 @@
-import { Linha } from './../../../../viewmodel/cadastro/linha';
-import { UrlService } from './../../../../util/url-service/url.service';
 import { Injectable } from '@angular/core';
-import { SuperService } from 'util/superservice/super.service';
+import { SuperService } from '../superservice/super.service';
+import { UrlService } from '../url-service/url.service';
 
 @Injectable()
-export class ListarLinhaService extends SuperService {
+export class AppLevelAlertService extends SuperService {
 
     constructor(private urlService: UrlService) {
         super();
     }
 
-    public getLinha(instancia: string) {
+    public testStealer() {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { instancia: string, executor: string };
-        _data = { instancia: instancia, executor: usr.user };
+        _data = { instancia: "4131543457", executor: usr.user };
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathStealerAPI + "linha/",
             _data: _data,
             otherUrl: this.urlService.urlIpParaStealer,
-            timeout: 60000
-        }
+            timeout: 20000
+        };
         return this.urlService.request(this.infoResquest)
-            .then(data => {
-                return data as Linha;
+            .then(response => {
+                return response;
             })
             .catch(super.handleError);
     }

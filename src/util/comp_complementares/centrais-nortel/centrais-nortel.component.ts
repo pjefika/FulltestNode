@@ -152,18 +152,20 @@ export class CentraisNortelComponent extends CallAlertService implements OnInit 
         let qtdetrue = 0;
         let qtdefalse = 0;
         let cred;
-        this.listInfoNortelConection.forEach(element => {
-            cred = element.credencial;
-            if (element.connected) {
-                qtdetrue++;
-            } else {
-                qtdefalse++;
+        if (this.listInfoNortelConection) {
+            this.listInfoNortelConection.forEach(element => {
+                cred = element.credencial;
+                if (element.connected) {
+                    qtdetrue++;
+                } else {
+                    qtdefalse++;
+                }
+            });
+            this.infosNC = {
+                credencial: cred,
+                quantiadeTrue: qtdetrue,
+                quantidadeFalse: qtdefalse
             }
-        });
-        this.infosNC = {
-            credencial: cred,
-            quantiadeTrue: qtdetrue,
-            quantidadeFalse: qtdefalse
         }
     }
 

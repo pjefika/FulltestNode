@@ -51,16 +51,17 @@ export class TemplateComponent implements OnInit {
     * Faz ao iniciar o componente 
     **/
     public ngOnInit(): void {
-        this.util.isLogado().then((result: boolean) => {
-            if (!result) {
-                this.router.navigate(['./entrar']);
-            } else {
-                this.nivelmaiorquedez = this.util.getNv(10);
-                this.setToDynamicComponent(PrincipalComponent);
-                this.showToggle();
-            }
-        });
-        this.buildEstaAtualizado();
+        this.util
+            .isLogado()
+            .then((result => {
+                if (!result) {
+                    this.router.navigate(['./entrar']);
+                } else {
+                    this.nivelmaiorquedez = this.util.getNv(10);
+                    this.setToDynamicComponent(PrincipalComponent);
+                    this.showToggle();
+                }
+            }));
     }
 
     private showToggle() {
@@ -71,8 +72,8 @@ export class TemplateComponent implements OnInit {
 
     private validUser(): Boolean {
         let valid: boolean = false;
-        if (localStorage.getItem('user')) {
-            let usr = JSON.parse(localStorage.getItem('user'));
+        if (sessionStorage.getItem('user')) {
+            let usr = JSON.parse(sessionStorage.getItem('user'));
             if (usr.nv === 1 || this.holderService.eachFulltest === "CRM") {
                 valid = true;
             }
@@ -84,10 +85,9 @@ export class TemplateComponent implements OnInit {
     * Sair do sistema
     **/
     public sair() {
-        localStorage.clear();
+        sessionStorage.clear();
         this.holderReset();
         this.router.navigate(['./entrar']);
-
     }
 
     public setToDynamicComponent(component: any) {
@@ -101,7 +101,7 @@ export class TemplateComponent implements OnInit {
 
     private mostraSubNav(ativo: boolean, whatSubNav?: any) {
         this.holderService.subNavMenus = whatSubNav;
-        this.holderService.subnav = ativo;
+        // this.holderService.subnav = ativo;
     }
 
     /**
@@ -115,22 +115,16 @@ export class TemplateComponent implements OnInit {
         } else {
             this.mostraSubNav(true, subNavMockCo);
             this.setToDynamicComponent(InfoTecnicasComponent);
+            this.setfalsesubsnavs();
         }
     }
 
-    private buildEstaAtualizado() {
-        setInterval(() => {
-            //console.log("Verifica atualização.");            
-            if (this.util.isAtualizado()) {
-                this.holderService.appLevelAlertAtivo = true;
-                this.holderService.appLevelAlert = {
-                    type: "alert-warning",
-                    msg: "Esta versão do sistema pode estar desatualizada, ocasionando conflitos, atualize sua página.",
-                    buttonAction: "refresh",
-                    buttonName: "Atualizar"
-                }
-            }
-        }, 60000); // Timeout para verificação; definir tempo;
+    private setfalsesubsnavs() {
+        this.holderService.subNavMenus[0].ativo = false;
+        this.holderService.subNavMenus[1].ativo = false;
+        this.holderService.subNavMenus[2].ativo = false;
+        this.holderService.subNavMenus[3].ativo = false;
+        this.holderService.subNavMenus[4].ativo = false;
     }
 
     public hoResumo() {
@@ -144,6 +138,8 @@ export class TemplateComponent implements OnInit {
     //Holder Functions
     private holderReset() { // Reseta as variaveis da Holder
         this.mostraSubNav(false, null);
+        this.holderService.subnav = false;
+        this.holderService.clienteSoLinha = false;
         this.holderService.sidenav = false;
         this.holderService.cadastro = null;
         this.holderService.showWizardComponent = false;
@@ -157,5 +153,8 @@ export class TemplateComponent implements OnInit {
         this.holderService.confPorta = null;
         this.holderService.equipamentos = null;
         this.holderService.objectValidManobra = null;
+        this.holderService.resumoInfosAtivo = false;
+        this.holderService.certifications = null;
+        this.holderService.jaFoiPesquisadoAcs = false;
     }
 }

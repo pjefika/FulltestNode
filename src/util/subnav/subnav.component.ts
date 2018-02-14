@@ -2,6 +2,7 @@ import { DynamicRouterHolderService } from './../dynamic-router/dynamic-router-h
 import { SubNav } from './../../viewmodel/menus/subnav';
 import { HolderService } from './../holder/holder.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { ConfiguracaoLinhaComponent } from 'co/configuracao-linha/configuracao-linha.component';
 
 @Component({
     selector: 'subnav-component',
@@ -17,13 +18,11 @@ export class SubnavComponent implements OnInit {
 
     @Input() public menus: SubNav[];
 
-    public ngOnInit() {
+    public ngOnInit() { }
 
-    }
-
-    private abrecomponent(l) {       
-        this.holderService.sidenav = false;
-        if (this.holderService.liberarSubNav) {
+    private abrecomponent(l: SubNav) {        
+        this.holderService.sidenav = l.haveSideNav;
+        if (this.holderService.liberarSubNav || l.ativo) {
             if (l.link) {
                 window.open(l.link);
             } else {
@@ -32,7 +31,7 @@ export class SubnavComponent implements OnInit {
         }
     }
 
-    private subNavActive(l): Boolean {
+    private subNavActive(l: SubNav): Boolean {
         let active = false;
         if (l.component == this.dynamicRouterHolderService.component) {
             active = true;

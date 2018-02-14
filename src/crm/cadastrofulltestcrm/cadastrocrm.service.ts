@@ -14,7 +14,7 @@ export class CadastroCrmService extends SuperService {
     }
 
     public getCadastro(instancia: string): Promise<Cadastro> {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { instancia: string, executor: string };
         _data = { instancia: instancia, executor: usr.user };
         this.infoResquest = {

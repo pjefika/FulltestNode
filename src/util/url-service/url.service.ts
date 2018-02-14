@@ -5,13 +5,12 @@ import { Injectable } from '@angular/core';
 import { RequestAction } from 'util/url-service/url-service.interface';
 import { SuperService } from 'util/superservice/super.service';
 
-
 @Injectable()
 export class UrlService extends SuperService implements RequestAction {
 
     //Modificar IPs 
-    public urlIp = "http://10.200.35.67:80/";  // Produção e restante dos pjs para o path
-    public urlIpParaStealer = "http://10.40.198.168:8080/"; // A stealer que ira ficar aqui // PeleServ
+    public urlIp = "http://10.40.195.81:8080/";  // Produção e restante dos pjs para o path
+    public urlIpParaStealer = "http://10.40.195.81:8080/"; // A stealer que ira ficar aqui // PeleServ
     // IPS: 
     //  "http://10.40.195.81:8080/"  QA
     //  "http://10.40.198.168:8080/"; Produção CO
@@ -26,6 +25,7 @@ export class UrlService extends SuperService implements RequestAction {
     public pathNetworkInventory = "networkInventoryAPI/";
     public pathAcs = "acs/";
     public pathPlRestAPI = "plrestAPI/";
+    public pathCustomerAPI = "customerAPI/";
 
     //Request Options *Não Mecher*
     private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
@@ -80,7 +80,7 @@ export class UrlService extends SuperService implements RequestAction {
                 return response.json()
             })
             .catch(super.handleErrorKing);
-    }
+    }    
 
     public linkurl(infoResquest: InfoRequest) {
         const url = infoResquest.otherUrl + infoResquest._data;
