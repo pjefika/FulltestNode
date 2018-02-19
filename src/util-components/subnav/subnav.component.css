@@ -1,0 +1,7 @@
+a.disabled {
+    cursor: not-allowed;
+}
+
+.mouse-pointer {
+    cursor: pointer;
+}

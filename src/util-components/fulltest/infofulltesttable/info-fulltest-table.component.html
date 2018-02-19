@@ -1,0 +1,26 @@
+<div *ngIf="certification.fulltest">
+    <alert-component [mensagem]="mensagem" [ativo]="ativo" [closeable]="false"></alert-component>
+    <div>
+        <clr-datagrid>
+            <clr-dg-column>Validação</clr-dg-column>
+            <clr-dg-column>Mensagem</clr-dg-column>
+            <clr-dg-column>Resultado</clr-dg-column>
+            <clr-dg-row *ngFor="let valid of certification.fulltest.valids">
+                <clr-dg-cell>
+                    {{valid.nome}}
+                </clr-dg-cell>
+                <clr-dg-cell>
+                    {{valid.mensagem}}
+                </clr-dg-cell>
+                <clr-dg-cell>
+                    <clr-icon shape="check" *ngIf="hasCheck(valid)" class="is-success"></clr-icon>
+                    <clr-icon shape="times" *ngIf="hasTimes(valid)" class="is-error"></clr-icon>
+                    <clr-icon shape="exclamation-triangle" *ngIf="hasExclamationSign(valid)" class="is-warning is-solid"></clr-icon>
+                </clr-dg-cell>
+                <ng-container *ngIf="hasRowDetail(valid)" ngProjectAs="clr-dg-row-detail">
+                    <fulltest-valids-component *clrIfExpanded [valid]="valid" ngProjectAs="clr-dg-row-detail"></fulltest-valids-component>
+                </ng-container>
+            </clr-dg-row>
+        </clr-datagrid>
+    </div>
+</div>

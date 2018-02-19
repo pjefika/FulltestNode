@@ -1,0 +1,6 @@
+<div>
+
+    <fulltest-confiabilidade-rede-component [confRedeValid]="valid" *ngIf="valid.nome === 'Confiabilidade de Rede'"></fulltest-confiabilidade-rede-component>
+    <fulltest-autenticacao-banda-component [autenticacao]="valid" *ngIf="valid.nome === 'MAC do Equipamento' && valid.resultado && variavelHolderService.cadastro.rede.planta == 'VIVO2'"></fulltest-autenticacao-banda-component>
+
+</div>

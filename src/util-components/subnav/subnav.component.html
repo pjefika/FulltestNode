@@ -1,0 +1,7 @@
+<ul class="nav">
+    <div *ngFor="let l of menus">
+        <li class="nav-item mouse-pointer" *ngIf="l.ativo">
+            <a class="nav-link" (click)="abrecomponent(l)" [class.active]="subNavActive(l)">{{l.nome}}</a>
+        </li>
+    </div>
+</ul>

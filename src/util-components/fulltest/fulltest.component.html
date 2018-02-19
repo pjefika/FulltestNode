@@ -1,0 +1,21 @@
+<div>
+    <h3 class="titulo-da-pagina">Informações de Fulltest</h3>
+    <div *ngIf="variavelHolderService.certification && !isLoading">
+        <info-geral-fulltest-component [certification]="variavelHolderService.certification"></info-geral-fulltest-component>
+        <info-fulltest-table-component [certification]="variavelHolderService.certification"></info-fulltest-table-component>
+
+        <button type="button" class="btn btn-primary btn-block" (click)="doCertification()" [disabled]="btnFulltestDisable">Realizar Fulltest</button>
+    </div>
+    <loading-component [searching]="isLoading" [searchWhat]="'Realizando Fulltest...'"></loading-component>
+    <!-- <clr-modal [(clrModalOpen)]="abreModal" [clrModalClosable]="false" [clrModalSize]="'lg'">
+        <h3 class="modal-title">Cliente com Evento Massivo</h3>
+        <div class="modal-body">
+            <p>O cliente possui um evento massivo, deseja relmente continuar com os testes e validações?</p>
+            <evento-massivo-component *ngIf="holderService.cadastro" [eventos]="cadastro.eventos"></evento-massivo-component>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="realizaFulltest()">Continuar</button>
+            <button type="button" class="btn btn-primary" (click)="abreModal = false">Não seguir</button>
+        </div>
+    </clr-modal> -->
+</div>

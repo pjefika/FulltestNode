@@ -1,0 +1,18 @@
+<div class="login-wrapper" (keyup.enter)="entrar()">
+    <form class="login" (ngSubmit)="entrar()">
+        <label class="title">
+            <h3 class="welcome">Bem-Vindo ao</h3>
+            Efika Fulltest
+            <h5 class="hint">Utilize seu login e senha para entrar</h5>
+        </label>
+        <div class="login-group">
+            <input [(ngModel)]="usuario.login" class="username" type="text" id="login_username" placeholder="Usuário" name="login">
+            <input [(ngModel)]="usuario.senha" class="password" type="password" id="login_password" placeholder="Senha" name="senha">
+            <div class="error active" *ngIf="ativo">
+                {{mensagem.msg}}
+            </div>
+            <!-- <alert-component [ativo]="ativo" [closeable]="closeable" [mensagem]="mensagem"></alert-component> -->
+            <button type="submit" class="btn btn-primary" [clrLoading]="logando" [disabled]="logando">Entrar</button>
+        </div>
+    </form>
+</div>

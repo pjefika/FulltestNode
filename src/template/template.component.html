@@ -1,0 +1,72 @@
+<clr-main-container>
+    <clr-header class="header-4">
+        <div class="branding">
+            <a class="nav-link">
+                <clr-icon shape="terminal" class="is-inverse"></clr-icon>
+                <span class="title" id="tituloprincipal">CO - Efika Fulltest</span>
+            </a>
+        </div>
+        <div class="header-nav">
+            <a class="nav-link nav-icon" [class.active]="true">
+                <clr-icon shape="phone-handset" aria-haspopup="true" role="tooltip" class="tooltip tooltip-md tooltip-bottom-right">
+                    <span class="tooltip-content">Consultar instância</span>
+                </clr-icon>
+            </a>
+        </div>
+        <div class="search">
+            <label for="search_input" for="search_input" aria-haspopup="true" role="tooltip" class="tooltip tooltip-lg tooltip-bottom-right">
+                <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..." [(ngModel)]="variavelHolderService.instancia"
+                    (keyup.enter)="busca()">
+                <span class="tooltip-content">Após inserir a instância pressione "Enter"</span>
+            </label>
+        </div>
+
+        <div class="header-actions">
+            <!-- <popover-component [confPorta]="holderService.confPorta" [cadastro]="holderService.cadastro" [objectValid]="holderService.objectValid"
+                [cadastroLinha]="holderService.cadastroLinha" *ngIf="holderService.cadastro"></popover-component>-->
+            <toggle-component *ngIf="systemHolderService.mostraToggle"></toggle-component>
+            <clr-dropdown>
+                <button class="nav-icon" clrDropdownTrigger>
+                    <clr-icon shape="user"></clr-icon>
+                    <clr-icon shape="caret down"></clr-icon>
+                </button>
+                <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+                    <!-- <a clrDropdownItem (click)="holderService.modalAdm = true;" *ngIf="nivelmaiorquedez">Administração</a>
+                    <a clrDropdownItem (click)="holderService.centraisNortelModal = true;" *ngIf="nivelmaiorquedez">Centrais Nortel</a>
+                    <a clrDropdownItem (click)="holderService.modalLogError = true;">Log de Ações</a> -->
+                    <a clrDropdownItem (click)="sair()">Sair</a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
+    </clr-header>
+    <nav class="subnav" *ngIf="systemHolderService.subnavAtivo" [clr-nav-level]="1">
+        <subnav-component [menus]="systemHolderService.subNavMenus"></subnav-component>
+    </nav>
+    <div class="content-container">
+        <div class="content-area">
+            <div class="row">
+                <div class="col-md">
+                    <dynamic-router-component [component]="dynamicRouterService.component"></dynamic-router-component>
+                </div>
+                <!-- <div class="col-md-4" *ngIf="holderService.cadastro && holderService.resumoInfosAtivo" [@flyInOut]="'in'">
+                    <resumo-infos-component [cadastro]="holderService.cadastro"></resumo-infos-component>
+                </div> -->
+            </div>
+
+            <toasty-component></toasty-component>
+            <!-- <adm-component></adm-component>
+            <centrais-nortel-component></centrais-nortel-component>
+            <error-log-component></error-log-component> -->
+
+            <!-- <div class="ir-para-direita" *ngIf="holderService.btnResumoInfosAtivo">
+                <button type="button" class="btn btn-icon btn-primary btn-sm" (click)="hoResumo()">
+                    <clr-icon shape="arrow"></clr-icon>
+                </button>
+            </div> -->
+
+        </div>
+        <!-- <clr-vertical-nav *ngIf="holderService.sidenav" [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="false" [clr-nav-level]="2">
+            <sidenav-component [menus]="holderService.sideNavMenus"></sidenav-component>
+        </clr-vertical-nav> -->
+    </div>
+</clr-main-container>

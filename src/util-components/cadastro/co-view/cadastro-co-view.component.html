@@ -1,0 +1,19 @@
+<div *ngIf="cadastro">
+    <clr-stack-view class="col-xs-12">
+        <clr-stack-header>Informações do Cliente
+            <button class="stack-action btn btn-sm btn-link" (click)="systemHolderService.modalWizardCadastroIsOpen = true" type="button">
+                <clr-icon shape="pencil"></clr-icon>
+                Editar Cadastro
+            </button>
+        </clr-stack-header>
+        <ng-container *ngFor="let entry of cadastro | objkeys" ngProjectAs="clr-stack-block">
+            <ng-container *ngIf="hasStackBlockAtAll(entry)" ngProjectAs="clr-stack-block">
+                <generic-stack-block *ngIf="hasStackBlockDetail(entry)" [obj]="entry" ngProjectAs="clr-stack-block"></generic-stack-block>
+                <clr-stack-block *ngIf="!hasStackBlockDetail(entry)">
+                    <clr-stack-label>{{entry.key | beautifying}}</clr-stack-label>
+                    <clr-stack-content>{{entry.value | capitalize}}</clr-stack-content>
+                </clr-stack-block>
+            </ng-container>
+        </ng-container>
+    </clr-stack-view>
+</div>
