@@ -30,7 +30,7 @@ export class ListCertificationComponentComponent extends CallAlertService implem
 
     public getCertification() {
         // --Prod
-        this.getCertificationByCustomer();
+        // this.getCertificationByCustomer();
         // --QA
         // this.getCertificationByCustomerMock();
     }

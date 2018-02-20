@@ -34,7 +34,7 @@ export class AppLevelAlertComponent extends CallAlertService implements OnInit {
                 this.testStealer(); // Testa a Stealer de acordo com o link.
                 this.testVersion(); // Teste de versão de acordo com o package JSON e Back.
             }
-        }, 20000); // Timeout dando check.
+        }, 50000); // Timeout dando check.
     }
 
     private pageRefresh() {
