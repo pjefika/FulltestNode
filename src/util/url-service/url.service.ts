@@ -9,8 +9,8 @@ import { SuperService } from 'util/superservice/super.service';
 export class UrlService extends SuperService implements RequestAction {
 
     //Modificar IPs 
-    public urlIp = "http://10.40.195.81:8080/";  // Produção e restante dos pjs para o path
-    public urlIpParaStealer = "http://10.40.195.81:8080/"; // A stealer que ira ficar aqui // PeleServ
+    public urlIp = "http://10.200.35.67:80/";  // Produção e restante dos pjs para o path
+    public urlIpParaStealer = "http://10.40.198.168:8080/"; // A stealer que ira ficar aqui // PeleServ
     // IPS: 
     //  "http://10.40.195.81:8080/"  QA
     //  "http://10.40.198.168:8080/"; Produção CO
@@ -80,7 +80,7 @@ export class UrlService extends SuperService implements RequestAction {
                 return response.json()
             })
             .catch(super.handleErrorKing);
-    }    
+    }
 
     public linkurl(infoResquest: InfoRequest) {
         const url = infoResquest.otherUrl + infoResquest._data;

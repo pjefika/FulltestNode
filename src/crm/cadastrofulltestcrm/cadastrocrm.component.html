@@ -2,53 +2,59 @@
     <loading-component [searching]="searchCadastro" [searchWhat]="'Buscando Cadastro...'"></loading-component>
     <div *ngIf="cadastro">
         <h3 class="titulo-da-pagina">Fulltest CRM</h3>
-        <table-cadastro-component [cadastro]="cadastro"></table-cadastro-component>
-        <alert-component [msg]="msgEventoMassivo" [ativo]="alertAtivoEventoMassivo" [closeable]="false"></alert-component>
-        <table class="table table-compact table-vertical" style="margin: 7px 0 0 0;" *ngIf="listResumo">
-            <tbody>
-                <tr>
-                    <th colspan="2">Tabela Resumo</th>
-                </tr>
-                <tr>
-                    <th>Origem</th>
-                    <td>{{cadastro.rede.planta === 'VIVO1' ? 'VIVO1 - Sophia' : 'VIVO2'}}</td>
-                </tr>
-                <tr *ngIf="cadastro.rede.planta=='VIVO1'">
-                    <th>Eventos Massivos</th>
-                    <td>
-                        <clr-icon shape="check" class="is-success" *ngIf="cadastro.eventos.length==0"></clr-icon>
-                        <clr-icon shape="times" class="is-error" *ngIf="cadastro.eventos.length>0"></clr-icon>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Cadastro</th>
-                    <td>
-                        <clr-icon shape="check" class="is-success" *ngIf="listResumo.cadastro"></clr-icon>
-                        <clr-icon shape="times" class="is-error" *ngIf="!listResumo.cadastro"></clr-icon>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Sem Bloqueio</th>
-                    <td>
-                        <clr-icon shape="check" class="is-success" *ngIf="!listResumo.bloqueio"></clr-icon>
-                        <clr-icon shape="times" class="is-error" *ngIf="listResumo.bloqueio"></clr-icon>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Fulltest</th>
-                    <td>
-                        <span class="spinner spinner-sm" *ngIf="searchFulltest">
-                            Loading...
-                        </span>
-                        <div *ngIf="!searchFulltest">
-                            <clr-icon shape="check" class="is-success" *ngIf="listResumo.fulltest"></clr-icon>
-                            <clr-icon shape="times" class="is-error" *ngIf="!listResumo.fulltest"></clr-icon>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
+        <div class="row">
+            <div class="col-md">
+                <table-cadastro-component [cadastro]="cadastro"></table-cadastro-component>
+                <alert-component [msg]="msgEventoMassivo" [ativo]="alertAtivoEventoMassivo" [closeable]="false"></alert-component>
+                <table class="table table-compact table-vertical" style="margin: 7px 0 0 0;" *ngIf="listResumo">
+                    <tbody>
+                        <tr>
+                            <th colspan="2">Tabela Resumo</th>
+                        </tr>
+                        <tr>
+                            <th>Origem</th>
+                            <td>{{cadastro.rede.planta === 'VIVO1' ? 'VIVO1 - Sophia' : 'VIVO2'}}</td>
+                        </tr>
+                        <tr *ngIf="cadastro.rede.planta=='VIVO1'">
+                            <th>Eventos Massivos</th>
+                            <td>
+                                <clr-icon shape="check" class="is-success" *ngIf="cadastro.eventos.length==0"></clr-icon>
+                                <clr-icon shape="times" class="is-error" *ngIf="cadastro.eventos.length>0"></clr-icon>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Cadastro</th>
+                            <td>
+                                <clr-icon shape="check" class="is-success" *ngIf="listResumo.cadastro"></clr-icon>
+                                <clr-icon shape="times" class="is-error" *ngIf="!listResumo.cadastro"></clr-icon>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Sem Bloqueio</th>
+                            <td>
+                                <clr-icon shape="check" class="is-success" *ngIf="!listResumo.bloqueio"></clr-icon>
+                                <clr-icon shape="times" class="is-error" *ngIf="listResumo.bloqueio"></clr-icon>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Fulltest</th>
+                            <td>
+                                <span class="spinner spinner-sm" *ngIf="searchFulltest">
+                                    Loading...
+                                </span>
+                                <div *ngIf="!searchFulltest">
+                                    <clr-icon shape="check" class="is-success" *ngIf="listResumo.fulltest"></clr-icon>
+                                    <clr-icon shape="times" class="is-error" *ngIf="!listResumo.fulltest"></clr-icon>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md">
+                <acs-component *ngIf="holderService.cadastro" [designador]="cadastro.designador"></acs-component>
+            </div>
+        </div>
         <fulltest-crm-component [objectValid]="objectValid"></fulltest-crm-component>
     </div>
     <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>

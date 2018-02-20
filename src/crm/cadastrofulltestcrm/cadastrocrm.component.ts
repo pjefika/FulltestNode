@@ -100,6 +100,7 @@ export class CadastroCrmComponent extends CallAlertService implements OnInit {
                 //this.holderService.liberarSubNav = true;
                 this.holderService.subNavMenus[0].ativo = true;
                 this.holderService.subNavMenus[1].ativo = true;
+                this.holderService.subNavMenus[2].ativo = true;
                 this.holderService.subnav = true;
 
             }, error => {
