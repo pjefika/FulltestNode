@@ -48,9 +48,9 @@
                 <div class="col-md">
                     <dynamic-router-component [component]="dynamicRouterService.component"></dynamic-router-component>
                 </div>
-                <!-- <div class="col-md-4" *ngIf="holderService.cadastro && holderService.resumoInfosAtivo" [@flyInOut]="'in'">
-                    <resumo-infos-component [cadastro]="holderService.cadastro"></resumo-infos-component>
-                </div> -->
+                <div class="col-md-4" *ngIf="variavelHolderService.cadastro && systemHolderService.resumoInfosAtivo" [@flyInOut]="'in'">
+                    <resumo-infos-component [cadastro]="variavelHolderService.cadastro"></resumo-infos-component>
+                </div>
             </div>
 
             <toasty-component></toasty-component>
@@ -58,11 +58,11 @@
             <centrais-nortel-component></centrais-nortel-component>
             <error-log-component></error-log-component> -->
 
-            <!-- <div class="ir-para-direita" *ngIf="holderService.btnResumoInfosAtivo">
+            <div class="ir-para-direita" *ngIf="systemHolderService.btnResumoInfosAtivo">
                 <button type="button" class="btn btn-icon btn-primary btn-sm" (click)="hoResumo()">
                     <clr-icon shape="arrow"></clr-icon>
                 </button>
-            </div> -->
+            </div>
 
         </div>
         <!-- <clr-vertical-nav *ngIf="holderService.sidenav" [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="false" [clr-nav-level]="2">

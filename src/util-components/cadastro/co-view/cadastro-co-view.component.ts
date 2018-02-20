@@ -4,7 +4,8 @@ import { SystemHolderService } from '../../../util/holder/systemHolder.service';
 
 @Component({
     selector: 'cadastro-co-view-component',
-    templateUrl: 'cadastro-co-view.component.html'
+    templateUrl: 'cadastro-co-view.component.html',
+    styleUrls: ['cadastro-co-view.component.css']
 })
 
 export class CadastroCoViewComponent implements OnInit {

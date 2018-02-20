@@ -9,12 +9,26 @@ import { CadastroComponent } from '../util-components/cadastro/cadastro.componen
 import { SubNavMockCo } from '../util/mocks/subsnav/subNavMockCo';
 import { SuperComponentService } from '../util/supercomponent/supercomponent.service';
 import { ToastyComponent } from '../util-components/toasty/toasty.component';
+import { HolderResetService } from '../util/holder/holderreset.service';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
     selector: 'template-component',
     templateUrl: 'template.component.html',
     styleUrls: ['template.component.css'],
-    providers: [TemplateService]
+    providers: [TemplateService, HolderResetService],
+    animations: [
+        trigger('flyInOut', [
+            state('in', style({ transform: 'translateX(0)' })),
+            transition('void => *', [
+                style({ transform: 'translateX(100%)' }),
+                animate(300)
+            ]),
+            transition('* => void', [
+                animate(300, style({ transform: 'translateX(100%)' }))
+            ])
+        ])
+    ]
 })
 
 export class TemplateComponent extends SuperComponentService implements OnInit {
@@ -24,7 +38,8 @@ export class TemplateComponent extends SuperComponentService implements OnInit {
         public variavelHolderService: VariavelHolderService,
         public dynamicRouterService: DynamicRouterService,
         private templateService: TemplateService,
-        public toastyComponent: ToastyComponent) {
+        public toastyComponent: ToastyComponent,
+        private holderResetService: HolderResetService) {
         super(toastyComponent, systemHolderService);
     }
 
@@ -76,8 +91,15 @@ export class TemplateComponent extends SuperComponentService implements OnInit {
         }
     }
 
+    public hoResumo() {
+        if (this.systemHolderService.resumoInfosAtivo) {
+            this.systemHolderService.resumoInfosAtivo = false;
+        } else {
+            this.systemHolderService.resumoInfosAtivo = true;
+        }
+    }
+
     private holderReset() {
-        this.variavelHolderService = new VariavelHolderService();
-        this.systemHolderService = new SystemHolderService();
+        this.holderResetService.reset();
     }
 }

@@ -1,0 +1,54 @@
+<div class="col-md" *ngIf="vlan">
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="2" style="text-align: center;">{{vlan.nome}}</th>
+            </tr>
+            <tr>
+                <th>Mensagem:</th>
+                <td>{{vlan.mensagem}}</td>
+            </tr>
+            <tr>
+                <th>Resultado:</th>
+                <td>
+                    <clr-icon style="color: green" shape="check" *ngIf="vlan.resultado"></clr-icon>
+                    <clr-icon style="color: red" shape="times" *ngIf="!vlan.resultado"></clr-icon>
+                </td>
+            </tr>
+            <tr>
+                <th>State:</th>
+                <td>
+                    <clr-icon style="color: green" shape="check" *ngIf="vlan.result.state === 'UP'"></clr-icon>
+                    <clr-icon style="color: red" shape="times" *ngIf="vlan.result.state === 'DOWN'"></clr-icon>
+                </td>
+            </tr>
+            <tr>
+                <th>CVLAN:</th>
+                <td>{{vlan.result.cvlan}}</td>
+            </tr>
+            <tr>
+                <th>SVLAN:</th>
+                <td>{{vlan.result.svlan}}</td>
+            </tr>
+            <tr *ngIf="vlan.result && vlan.result.pctDown && vlan.result.pctUp">
+                <th>Pacotes Down/Up:</th>
+                <td>{{vlan.result.pctDown}} / {{vlan.result.pctUp}} </td>
+            </tr>
+            <tr *ngIf="vlan.result && vlan.result.ipIgmp">
+                <th>Ip Multicast:</th>
+                <td>{{vlan.result.ipIgmp}}</td>
+            </tr>
+            <tr *ngIf="vlan.result && vlan.result.pctDown && vlan.result.pctUp">
+                <th>Pacotes Down/Up:</th>
+                <td>{{vlan.result.pctDown}} / {{vlan.result.pctUp}} </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanDisabled" (click)="qualVlan(vlan.nome)">{{btnSetVlanName}}</button>
+                    <button class="btn btn-primary btn-sm btn-block" *ngIf="vlan.result && vlan.result.pctDown && vlan.result.pctUp && vlan.mensagem != 'Cliente sem TV Híbrida.'"
+                        [disabled]="btnResetVlanDisabled" (click)="resetIptvStatistics()">{{btnResetVlanName}}</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

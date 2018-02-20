@@ -1,6 +1,9 @@
 <div>
-
     <fulltest-confiabilidade-rede-component [confRedeValid]="valid" *ngIf="valid.nome === 'Confiabilidade de Rede'"></fulltest-confiabilidade-rede-component>
     <fulltest-autenticacao-banda-component [autenticacao]="valid" *ngIf="valid.nome === 'MAC do Equipamento' && valid.resultado && variavelHolderService.cadastro.rede.planta == 'VIVO2'"></fulltest-autenticacao-banda-component>
-
+    <fulltest-parametros-component [parametros]="valid" *ngIf="valid.nome.includes('Parâmetros')"></fulltest-parametros-component>
+    <fulltest-modulacao-component [modulacao]="valid" *ngIf="valid.nome === 'Modulação'"></fulltest-modulacao-component>
+    <fulltest-profile-component [profile]="valid" *ngIf="valid.nome === 'Profile'"></fulltest-profile-component>
+    <fulltest-vlan-component [vlan]="valid" *ngIf="valid.nome.includes('Vlan')"></fulltest-vlan-component>
+    <fulltest-serial-ont-olt-component [serial]="valid" *ngIf="valid.nome === 'Associação Serial ONT' && !valid.resultado && variavelHolderService.cadastro.rede.planta=='VIVO2'"></fulltest-serial-ont-olt-component>
 </div>

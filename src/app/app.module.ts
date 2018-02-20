@@ -44,6 +44,12 @@ import { FulltestValidsComponent } from '../util-components/fulltest/validscompo
 import { FulltestConfiabilidadeRedeComponent } from '../util-components/fulltest/validscomponentes/confiabilidade-rede/fulltest-confiabilidade-rede.component';
 import { AlertComponent } from '../util-components/alert/alert.component';
 import { FulltestAutenticacaoBandaComponent } from '../util-components/fulltest/validscomponentes/autenticacao-banda/fulltest-autenticacao-banda.component';
+import { FulltestParametrosComponent } from '../util-components/fulltest/validscomponentes/parametros/fulltest-parametros.component';
+import { FulltestModulacaoComponent } from '../util-components/fulltest/validscomponentes/modulacao/fulltest-modulacao.component';
+import { FulltestProfileComponent } from '../util-components/fulltest/validscomponentes/profile/fulltest-profile.component';
+import { FulltestVlanComponent } from '../util-components/fulltest/validscomponentes/vlan/fulltest-vlan.component';
+import { FulltestSerialOntOltComponent } from '../util-components/fulltest/validscomponentes/serialontolt/fulltest-serial-ont-olt.component';
+import { ResumoInfosComponent } from '../util-components/resumoinfos/resumo-infos.component';
 
 
 @NgModule({
@@ -56,7 +62,6 @@ import { FulltestAutenticacaoBandaComponent } from '../util-components/fulltest/
 		AppComponent,
 		TemplateComponent,
 		LoginComponent,
-
 		/**
 		 * Pipes
 		 */
@@ -74,6 +79,7 @@ import { FulltestAutenticacaoBandaComponent } from '../util-components/fulltest/
 		GenericStackBlockComponent,
 		ToastyComponent,
 		CadastroComponent,
+		ResumoInfosComponent,
 		CadastroWizardComponent,
 		LoadingComponent,
 		SubnavComponent,
@@ -82,7 +88,12 @@ import { FulltestAutenticacaoBandaComponent } from '../util-components/fulltest/
 		InfoFulltestTableComponent,
 		FulltestValidsComponent,
 		FulltestConfiabilidadeRedeComponent,
-		FulltestAutenticacaoBandaComponent
+		FulltestAutenticacaoBandaComponent,
+		FulltestParametrosComponent,
+		FulltestModulacaoComponent,
+		FulltestProfileComponent,
+		FulltestVlanComponent,
+		FulltestSerialOntOltComponent
 	],
 	imports: [
 		/**
@@ -132,8 +143,13 @@ import { FulltestAutenticacaoBandaComponent } from '../util-components/fulltest/
 		InfoFulltestTableComponent,
 		FulltestValidsComponent,
 		FulltestConfiabilidadeRedeComponent,
-		FulltestAutenticacaoBandaComponent
-		
+		FulltestAutenticacaoBandaComponent,
+		FulltestParametrosComponent,
+		FulltestModulacaoComponent,
+		FulltestProfileComponent,
+		FulltestVlanComponent,
+		FulltestSerialOntOltComponent,
+		ResumoInfosComponent
 	]
 })
 

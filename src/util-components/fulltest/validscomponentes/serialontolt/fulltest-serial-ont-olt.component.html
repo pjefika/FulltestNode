@@ -1,0 +1,38 @@
+<div>
+    <table class="table table-compact table-vertical">
+        <tbody>
+            <tr>
+                <th colspan="2">{{serial.nome}}</th>
+            </tr>
+            <tr>
+                <th>Mensagem:</th>
+                <td>{{serial.mensagem}}</td>
+            </tr>
+            <tr>
+                <th>Resultado:</th>
+                <td>
+                    <clr-icon style="color: green" shape="check" *ngIf="serial.resultado"></clr-icon>
+                    <clr-icon style="color: red" shape="times" *ngIf="!serial.resultado"></clr-icon>
+                </td>
+            </tr>
+            <tr *ngIf="!serial.resultado && returnResultSerial">
+                <th>Lista serial's</th>
+                <td>
+                    <div class="select">
+                        <select [(ngModel)]="serialSelecionado">
+                            <option *ngFor="let serial of returnResultSerial" [ngValue]="serial.serial" [disabled]="serial.slot != variavelHolderService.cadastro.rede.slot || serial.porta != variavelHolderService.cadastro.rede.porta">{{serial.serial + " Slot:" + serial.slot + " Porta:" + serial.porta}}</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" *ngIf="serial.resultado">
+                    <button class="btn btn-primary btn-sm btn-block" [disabled]="btnUnSetDisabled" (click)="unsetOntFromOlt()">{{btnUnSetName}}</button>
+                </td>
+                <td colspan="2" *ngIf="!serial.resultado">
+                    <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetDisabled" (click)="setOntToOlt()">{{btnSetName}}</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,29 @@
+<div class="row" *ngIf="modulacao">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-9">
+        <table class="table table-compact">
+            <thead>
+                <tr>
+                    <th colspan="2" style="text-align: center;">Modulação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Estado</td>
+                    <td>{{modulacao.mensagem}}
+                        <clr-icon class="is-success" shape="check" *ngIf="modulacao.resultado"></clr-icon>
+                        <clr-icon class="is-error" shape="times" *ngIf="!modulacao.resultado"></clr-icon>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Configurada</td>
+                    <td>
+                        {{modulacao.result.modulEnum}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-2"></div>
+    <div class="row"></div>
+</div>

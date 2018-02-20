@@ -9,6 +9,7 @@ import { SystemHolderService } from '../../util/holder/systemHolder.service';
 @Component({
     selector: 'cadastro-component',
     templateUrl: 'cadastro.component.html',
+    styleUrls: ['cadastro.component.css'],
     providers: [CadastroService]
 })
 
@@ -26,17 +27,17 @@ export class CadastroComponent extends SuperComponentService implements OnInit {
     }
 
     public ngOnInit() {
-        this.systemHolderService.resumoInfosAtivo = false;
-        this.systemHolderService.btnResumoInfosAtivo = false;
+        setTimeout(() => {
+            // Deixar no time out pois informa exception pois muda muito rapido e a tela não entende.
+            this.systemHolderService.resumoInfosAtivo = false;
+            this.systemHolderService.btnResumoInfosAtivo = false;
+        }, 1);
         // Se cadastro não existe faz consulta -- Se existe pega da holder..
         this.doCadastro();
     }
 
     private doCadastro() {
-        console.log(this.variavelHolderService.instancia);
-
         if (this.variavelHolderService.instancia) {
-
             this.variavelHolderService.instancia = this.variavelHolderService.instancia.trim();
             if (this.variavelHolderService.cadastro) {
                 this.cadastro = this.variavelHolderService.cadastro;
