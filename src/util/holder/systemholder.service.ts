@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Mensagem } from '../../viewmodel/alertmessage/mensagem';
 import { SubNav } from '../../viewmodel/subnav/subnav';
+import { SideNav } from '../../viewmodel/sidenav/sidenav';
 
 @Injectable()
 export class SystemHolderService {
@@ -23,10 +24,13 @@ export class SystemHolderService {
 
     public subnavAtivo: boolean = false; // Aqui ativa e inativa subnav
     public subNavMenus: SubNav[]; // Aqui vai o enum de subnavs
+    public liberarSubNav: boolean = false; // Libera a subnav
+
+    public sideNavAtivo: boolean = false;
+    public sideNavMenus: SideNav[];
+    public liberarSideNav: boolean = false;
 
     public oldToastyMessages: [{ msg: string, type: string, time: number }]; // Toasty & Mensagem passadas pelo sistema.
-
-    public liberarSubNav: boolean = false; // Libera a side nav
 
     public resumoInfosAtivo: boolean = false; // Mostra ou esconde as informações de resumo.
     public btnResumoInfosAtivo: boolean = false; // Mostra e esconde botão de informações de resumo.

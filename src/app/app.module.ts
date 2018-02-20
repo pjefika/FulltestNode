@@ -50,6 +50,7 @@ import { FulltestProfileComponent } from '../util-components/fulltest/validscomp
 import { FulltestVlanComponent } from '../util-components/fulltest/validscomponentes/vlan/fulltest-vlan.component';
 import { FulltestSerialOntOltComponent } from '../util-components/fulltest/validscomponentes/serialontolt/fulltest-serial-ont-olt.component';
 import { ResumoInfosComponent } from '../util-components/resumoinfos/resumo-infos.component';
+import { ConfiguracaoLinhaComponent } from '../util-components/configuracaolinha/configuracao-linha.component';
 
 
 @NgModule({
@@ -93,7 +94,8 @@ import { ResumoInfosComponent } from '../util-components/resumoinfos/resumo-info
 		FulltestModulacaoComponent,
 		FulltestProfileComponent,
 		FulltestVlanComponent,
-		FulltestSerialOntOltComponent
+		FulltestSerialOntOltComponent,
+		ConfiguracaoLinhaComponent
 	],
 	imports: [
 		/**
@@ -121,9 +123,8 @@ import { ResumoInfosComponent } from '../util-components/resumoinfos/resumo-info
 		DynamicRouterService,
 		AlertService,
 		EnumService,
-		SuperComponentService, ,
+		SuperComponentService,
 		ToastyComponent
-
 	],
 	bootstrap: [AppComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -149,7 +150,8 @@ import { ResumoInfosComponent } from '../util-components/resumoinfos/resumo-info
 		FulltestProfileComponent,
 		FulltestVlanComponent,
 		FulltestSerialOntOltComponent,
-		ResumoInfosComponent
+		ResumoInfosComponent,
+		ConfiguracaoLinhaComponent
 	]
 })
 

@@ -1,0 +1,5 @@
+<a clrVerticalNavLink routerLinkActive="active" [class.active]="sideNavActive(l)" *ngFor="let l of menus" [class.disabled]="!systemHolderService.liberarSideNav"
+    (click)="abrecomponent(l)" [style.cursor]="!systemHolderService.liberarSideNav ? 'not-allowed': 'pointer'">
+    <clr-icon clrVerticalNavIcon [attr.shape]="l.icon"></clr-icon>
+    {{l.nome}}
+</a>
