@@ -19,7 +19,7 @@
                 </clr-dg-row>
                 <clr-dg-row *ngIf="autenticacaoBanda.data">
                     <clr-dg-cell>Data</clr-dg-cell>
-                    <clr-dg-cell>{{((autenticacaoBanda.data/1000)| amFromUnix) | amDateFormat:'DD/MM/YYYY hh:mm:ss'}}</clr-dg-cell>
+                    <clr-dg-cell>{{((autenticacaoBanda.data/1000)| amFromUnix) | amDateFormat:'DD/MM/YYYY HH:mm:ss'}}</clr-dg-cell>
                 </clr-dg-row>
                 <clr-dg-row *ngIf="autenticacaoBanda.ip_address_v4">
                     <clr-dg-cell>Endereço Ipv4</clr-dg-cell>

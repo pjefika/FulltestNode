@@ -8,6 +8,12 @@ import { SystemHolderService } from '../holder/systemHolder.service';
 
 import 'rxjs/add/operator/timeout'
 
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/Rx';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin';
+
 @Injectable()
 export class UrlService extends SuperService implements RequestActionInterface {
 
@@ -89,6 +95,25 @@ export class UrlService extends SuperService implements RequestActionInterface {
             })
             .catch(super.handleErrorKing);
     }
+
+    /**
+     * Fork Join limitado somente para 2 inforequest.
+     */
+    public postJoin(infoResquests: InfoRequest[]) {
+        return Observable.forkJoin(
+            this.http.post(`${this.url}` + infoResquests[0].command, JSON.stringify(infoResquests[0]._data), this.options)
+                .map(resposta => resposta.json()),
+            this.http.post(`${this.url}` + infoResquests[1].command, JSON.stringify(infoResquests[1]._data), this.options)
+                .map(resposta => resposta.json())
+        )
+            .map(resposta => {
+                return resposta;
+            }, erro => {
+                super.handleErrorKing;
+            })
+            .timeout(infoResquests[0].timeout);
+    }
+
 
     public linkurl(infoResquest: InfoRequest) {
         const url = infoResquest.otherUrl + infoResquest._data;
