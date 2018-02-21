@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="select">
+            <select [(ngModel)]="ncos" [disabled]="!ncosList && selectDisabled">
+                <option selected disabled>Selecione</option>
+                <option value="{{ncos.key}}" *ngFor="let ncos of ncosList | orderBy: 'desc'">{{ncos.ncos}} - {{ncos.desc}} </option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <button type="button" class="btn btn-primary btn-sm btn-block" [disabled]="btnSetNcosDisabled" (click)="setNcos()">{{btnSetNcosName}}</button>
+    </div>
+</div>

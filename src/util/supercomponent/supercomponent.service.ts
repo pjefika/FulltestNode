@@ -45,4 +45,25 @@ export class SuperComponentService extends AlertService {
         return valid;
     }
 
+    public enablebtnresumoinfo() {
+        setTimeout(() => {
+            // Deixar no time out pois informa exception pois muda muito rapido e a tela não entende.
+            this.systemHolderService.btnResumoInfosAtivo = true;
+        }, 1);
+    }
+
+    public disableresumoinfo() {
+        setTimeout(() => {
+            // Deixar no time out pois informa exception pois muda muito rapido e a tela não entende.
+            this.systemHolderService.resumoInfosAtivo = false;
+            this.systemHolderService.btnResumoInfosAtivo = false;
+        }, 1);
+    }
+
+    public enabledisablesidenav(enable: boolean) {
+        setTimeout(() => {
+            this.systemHolderService.sideNavAtivo = enable;
+        }, 1);
+    }
+
 }

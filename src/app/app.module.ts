@@ -15,6 +15,7 @@ import { ToastyModule } from 'ng2-toasty';
 import { VariavelHolderService } from '../util/holder/variavelholder.service';
 import { SystemHolderService } from '../util/holder/systemHolder.service';
 import { ObjKeysPipe, KeyBeautifyingPipe, Capitalize } from '../util/objpipe/objpipe.service';
+import { Ng2OrderModule } from 'ng2-order-pipe'
 //Componentes
 import { TemplateComponent } from '../template/template.component';
 import { LoginComponent } from '../login/login.component';
@@ -51,6 +52,10 @@ import { FulltestVlanComponent } from '../util-components/fulltest/validscompone
 import { FulltestSerialOntOltComponent } from '../util-components/fulltest/validscomponentes/serialontolt/fulltest-serial-ont-olt.component';
 import { ResumoInfosComponent } from '../util-components/resumoinfos/resumo-infos.component';
 import { ConfiguracaoLinhaComponent } from '../util-components/configuracaolinha/configuracao-linha.component';
+import { SidenavComponent } from '../util-components/sidenav/sidenav.component';
+import { ConfiguracaoLinhaTdmComponent } from '../util-components/configuracaolinha/linha-tdm/configuracao-linha-tdm.component';
+import { ConfiguracaoLinhaCustgroupComponent } from '../util-components/configuracaolinha/linha-tdm/acao/custgroup/configuracao-linha-custgroup.component';
+import { ConfiguracaoLinhaNcosComponent } from '../util-components/configuracaolinha/linha-tdm/acao/ncos/configuracao-linha-ncos.component';
 
 
 @NgModule({
@@ -84,6 +89,7 @@ import { ConfiguracaoLinhaComponent } from '../util-components/configuracaolinha
 		CadastroWizardComponent,
 		LoadingComponent,
 		SubnavComponent,
+		SidenavComponent,
 		FulltestComponent,
 		InfoGeralFulltestComponent,
 		InfoFulltestTableComponent,
@@ -95,7 +101,10 @@ import { ConfiguracaoLinhaComponent } from '../util-components/configuracaolinha
 		FulltestProfileComponent,
 		FulltestVlanComponent,
 		FulltestSerialOntOltComponent,
-		ConfiguracaoLinhaComponent
+		ConfiguracaoLinhaComponent,
+		ConfiguracaoLinhaTdmComponent,
+		ConfiguracaoLinhaCustgroupComponent,
+		ConfiguracaoLinhaNcosComponent
 	],
 	imports: [
 		/**
@@ -110,6 +119,7 @@ import { ConfiguracaoLinhaComponent } from '../util-components/configuracaolinha
 		AppRoutingModule,
 		MomentModule,
 		ToastyModule.forRoot(),
+		Ng2OrderModule
 	],
 	providers: [
 		/**
@@ -139,6 +149,7 @@ import { ConfiguracaoLinhaComponent } from '../util-components/configuracaolinha
 		GenericStackBlockComponent,
 		LoadingComponent,
 		SubnavComponent,
+		SidenavComponent,
 		FulltestComponent,
 		InfoGeralFulltestComponent,
 		InfoFulltestTableComponent,

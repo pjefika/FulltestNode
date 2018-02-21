@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { VariavelHolderService } from '../../util/holder/variavelholder.service';
 import { DynamicRouterService } from '../dynamicrouter/dynamic-router.service';
 import { SystemHolderService } from '../../util/holder/systemHolder.service';
@@ -6,6 +6,7 @@ import { SideNavMockLinhaCO } from '../../util/mocks/sidenav/sideNavMockLinhaCo'
 import { SubNav } from '../../viewmodel/subnav/subnav';
 import { SubNavMockCo } from '../../util/mocks/subsnav/subNavMockCo';
 import { ConfiguracaoLinhaComponent } from '../configuracaolinha/configuracao-linha.component';
+import { SideNav } from '../../viewmodel/sidenav/sidenav';
 
 @Component({
     selector: 'sidenav-component',
@@ -15,12 +16,16 @@ import { ConfiguracaoLinhaComponent } from '../configuracaolinha/configuracao-li
 
 export class SidenavComponent implements OnInit {
 
+    @Input() public menus: SideNav[];
+
     constructor(public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,
         public dynamicRouterHolderService: DynamicRouterService) { }
 
     public ngOnInit() {
-        this.validaComponenteParaMontarSideNavMock(this.systemHolderService.subNavMenus);
+        setTimeout(() => {
+            this.validaComponenteParaMontarSideNavMock(this.systemHolderService.subNavMenus);
+        }, 1);
     }
 
     public validaComponenteParaMontarSideNavMock(subnavs: SubNav[]) {

@@ -1,0 +1,90 @@
+<div>
+    <h3 class="titulo-da-pagina">Informações da Linha</h3>
+
+    <div *ngIf="cadastroLinha && !isLoading">
+        <h4 class="stack-header titulo-da-pagina-10">
+            <span class="stack-title"></span>
+            <span class="stack-actions">
+                <button class="btn btn-primary btn-block btn-sm" (click)="abilitaEditar();">Editar</button>
+            </span>
+        </h4>
+        <table class="table table-vertical table-compact margin-geral-table" *ngIf="cadastroLinha">
+            <tbody>
+                <tr>
+                    <th colspan="2" style="text-align: center;">Informações da linha</th>
+                </tr>
+                <tr>
+                    <th>DN</th>
+                    <td>
+                        {{cadastroLinha.dn}}
+                        <clr-icon *ngIf="variavelHolderService.cadastro.instancia != cadastroLinha.dn" shape="exclamation-triangle"></clr-icon>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Central</th>
+                    <td>{{variavelHolderService.cadastro.linha.central}}</td>
+                </tr>
+                <tr>
+                    <th>Len</th>
+                    <td>
+                        <div *ngIf="cadastroLinha.len">
+                            {{cadastroLinha.len.len}}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>CustGrp</th>
+                    <td *ngIf="!editarInfoLinhas">{{cadastroLinha.custGrp}}</td>
+                    <td *ngIf="editarInfoLinhas">
+                        <configuracao-linha-custgroup-component></configuracao-linha-custgroup-component>
+                    </td>
+                </tr>
+                <tr>
+                    <th>NCOS</th>
+                    <td *ngIf="!editarInfoLinhas">
+                        <div *ngIf="cadastroLinha.ncos">{{cadastroLinha.ncos.ncos}} - {{cadastroLinha.ncos.desc}}</div>
+                    </td>
+                    <td *ngIf="editarInfoLinhas">
+                        <configuracao-linha-ncos-component></configuracao-linha-ncos-component>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>
+                        <span *ngIf="cadastroLinha.status == 'CREATED'">Criada</span>
+                        <span *ngIf="cadastroLinha.status == 'NOT_CREATED'">Não Criada</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Estado</th>
+                    <td>
+                        <div *ngIf="cadastroLinha.estado">
+                            {{cadastroLinha.estado.desc}} ({{cadastroLinha.estado.nome}})
+                            <clr-icon shape="check" *ngIf="cadastroLinha.estado.valid" style="color: green;"></clr-icon>
+                            <!-- <button class="btn btn-danger btn-sm" *ngIf="!cadastroLinha.estado.valid" (click)="resetarPorta()" [disabled]="disablebotaoresetar">{{nomebotaoresetar}}</button> -->
+                        </div>
+                        <div *ngIf="!cadastroLinha.estado">
+                            <clr-icon shape="warning-standard" style="color: red;"></clr-icon>
+                            Problema ao buscar Estado da Linha
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-vertical table-compact">
+            <tbody>
+                <tr>
+                    <th colspan="2" style="text-align: center;">Serviços da Linha</th>
+                </tr>
+                <tr *ngFor="let servico of cadastroLinha.servicos">
+                    <th>{{servico.desc}}</th>
+                    <td>{{servico.key}}</td>
+                </tr>
+                <tr *ngIf="cadastroLinha.servicos.length == 0">
+                    <td style="text-align: center;">Cliente não possui serviços cadastrados.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <loading-component [searching]="isLoading" [searchWhat]="'Buscando Informações de Linha...'"></loading-component>
+</div>

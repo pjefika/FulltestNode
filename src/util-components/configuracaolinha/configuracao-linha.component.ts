@@ -26,7 +26,7 @@ export class ConfiguracaoLinhaComponent extends SuperComponentService implements
         if (!this.validaTipo()) {
             this.naoimplementado();
         } else {
-            this.systemHolderService.btnResumoInfosAtivo = true;
+            super.enablebtnresumoinfo();
         }
     }
 

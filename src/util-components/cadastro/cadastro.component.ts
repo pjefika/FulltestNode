@@ -27,11 +27,7 @@ export class CadastroComponent extends SuperComponentService implements OnInit {
     }
 
     public ngOnInit() {
-        setTimeout(() => {
-            // Deixar no time out pois informa exception pois muda muito rapido e a tela não entende.
-            this.systemHolderService.resumoInfosAtivo = false;
-            this.systemHolderService.btnResumoInfosAtivo = false;
-        }, 1);
+        super.disableresumoinfo();
         // Se cadastro não existe faz consulta -- Se existe pega da holder..
         this.doCadastro();
     }

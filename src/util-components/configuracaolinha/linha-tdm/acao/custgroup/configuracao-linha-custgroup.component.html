@@ -1,0 +1,8 @@
+<div class="row">
+    <div class="col-md-6">
+        <input type="text" [(ngModel)]="custgroup" style="width: 100%;">
+    </div>
+    <div class="col-md-6">
+        <button type="button" class="btn btn-primary btn-sm btn-block" [disabled]="btnSetCustDisabled" (click)="setCustgroup()">{{btnSetCustName}}</button>
+    </div>
+</div>

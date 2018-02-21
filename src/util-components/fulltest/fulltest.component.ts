@@ -28,11 +28,8 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
     public ngOnInit() {
         if (!this.variavelHolderService.certification) {
             this.doCertification();
-        }        
-        setTimeout(() => {
-            // Deixar no time out pois informa exception pois muda muito rapido e a tela não entende.
-            this.systemHolderService.btnResumoInfosAtivo = true;
-        }, 1);
+        }
+        super.enablebtnresumoinfo();
     }
 
     private doCertification() {
