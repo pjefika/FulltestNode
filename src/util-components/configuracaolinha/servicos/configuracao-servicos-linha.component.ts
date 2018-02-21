@@ -6,20 +6,34 @@ import { ConfiguracaoManobraLinhaService } from '../manobralinha/configuracao-ma
 import { VariavelHolderService } from '../../../util/holder/variavelholder.service';
 import { DynamicRouterService } from '../../dynamicrouter/dynamic-router.service';
 import { ConfiguracaoLinhaComponent } from '../configuracao-linha.component';
+import { ConfiguracaoServicosLinhaService } from './configuracao-servicos-linha.service';
+import { ServicoLinha } from '../../../viewmodel/linha/servicolinha';
+import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'configuracao-servicos-linha-component',
     templateUrl: 'configuracao-servicos-linha.component.html',
-    providers: [ConfiguracaoManobraLinhaService]
+    providers: [ConfiguracaoServicosLinhaService, ConfiguracaoManobraLinhaService]
 })
 
 export class ConfiguracaoServicosLinhaComponent extends SuperComponentService implements OnInit {
 
-    constructor(private configuracaoManobraLinhaService: ConfiguracaoManobraLinhaService,
+    private isLoading: boolean = false;
+
+    private listaDeServicos: ServicoLinha[];
+
+    private formServicosSelecionada: FormGroup;
+
+    private btnSetServicoNome: string = "Alterar";
+    private btnSetServicoDisabled: boolean = false;
+
+    constructor(private configuracaoServicosLinhaService: ConfiguracaoServicosLinhaService,
+        private configuracaoManobraLinhaService: ConfiguracaoManobraLinhaService,
         public toastyComponent: ToastyComponent,
         public systemHolderService: SystemHolderService,
         public variavelHolderService: VariavelHolderService,
-        public dynamicRouterService: DynamicRouterService) {
+        public dynamicRouterService: DynamicRouterService,
+        private fb: FormBuilder) {
         super(toastyComponent, systemHolderService);
     }
 
@@ -29,7 +43,9 @@ export class ConfiguracaoServicosLinhaComponent extends SuperComponentService im
 
     private validaLinha() {
         if (super.validaSeLinhaEstaCriada(this.variavelHolderService.cadastroLinha)) {
-            super.callToasty("Ops, ocorreu um erro.", "Linha ãão está criada, por favor realize a criação da linha.", "error", 5000);
+            this.getServicos();
+        } else {
+            super.callToasty("Ops, ocorreu um erro.", "Linha não está criada, por favor realize a criação da linha.", "error", 5000);
             this.dynamicRouterService.component = ConfiguracaoLinhaComponent;
         }
     }
@@ -42,6 +58,64 @@ export class ConfiguracaoServicosLinhaComponent extends SuperComponentService im
             }
         });
         return valid;
+    }
+
+    private addandremoveservicefromlist(servico: string, action: boolean) {
+        const servicosFormArray = <FormArray>this.formServicosSelecionada.controls.servicos;
+        if (action) {
+            servicosFormArray.push(new FormControl(servico));
+        } else {
+            let index = servicosFormArray.controls.findIndex(x => x.value == servico)
+            servicosFormArray.removeAt(index);
+        }
+    }
+
+    private atualizaListaDeServicos(servico: string, isChecked: boolean) {
+        if (isChecked) {
+            this.addandremoveservicefromlist(servico, true);
+        } else {
+            this.addandremoveservicefromlist(servico, false);
+        }
+    }
+
+
+    private getServicos() {
+        this.isLoading = true;
+        this.configuracaoServicosLinhaService
+            .getServicos()
+            .then(resposta => {
+                this.listaDeServicos = resposta;
+            }, erro => {
+                super.callToasty("Ops, ocorreu um erro.", erro.mError, "error", 5000);
+            })
+            .then(() => {
+                this.isLoading = false;
+                this.formServicosSelecionada = this.fb.group({
+                    servicos: this.fb.array([])
+                });
+                this.validaServicosDoCliente();
+            });
+    }
+
+    private validaServicosDoCliente() {
+        this.variavelHolderService.cadastroLinha.servicos.forEach(elementA => {
+            this.listaDeServicos.forEach(elementB => {
+                if (elementA.nome === elementB.nome) {
+                    this.addandremoveservicefromlist(elementA.nome, true);
+                }
+            });
+        });
+    }
+
+    private setServicos() {
+
+        this.btnSetServicoNome = "Aguarde...";
+        this.btnSetServicoDisabled = true;
+
+        let lstServSelect = this.formServicosSelecionada.value.servicos;
+
+        console.log(lstServSelect);
+
     }
 
 }

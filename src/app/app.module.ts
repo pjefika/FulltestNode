@@ -60,6 +60,7 @@ import { ConfiguracaoManobraLinhaComponent } from '../util-components/configurac
 import { ConfiguracaoLinhaCreateDeleteComponent } from '../util-components/configuracaolinha/linhacreatedelete/configuracao-linha-create-delete.component';
 import { LinhaDeleteComponent } from '../util-components/configuracaolinha/linhacreatedelete/delete/linha-delete.component';
 import { LinhaCreateComponent } from '../util-components/configuracaolinha/linhacreatedelete/create/linha-create.component';
+import { ConfiguracaoServicosLinhaComponent } from '../util-components/configuracaolinha/servicos/configuracao-servicos-linha.component';
 
 
 @NgModule({
@@ -112,7 +113,8 @@ import { LinhaCreateComponent } from '../util-components/configuracaolinha/linha
 		ConfiguracaoManobraLinhaComponent,
 		ConfiguracaoLinhaCreateDeleteComponent,
 		LinhaDeleteComponent,
-		LinhaCreateComponent
+		LinhaCreateComponent,
+		ConfiguracaoServicosLinhaComponent
 	],
 	imports: [
 		/**
@@ -174,7 +176,8 @@ import { LinhaCreateComponent } from '../util-components/configuracaolinha/linha
 		ConfiguracaoManobraLinhaComponent,
 		ConfiguracaoLinhaCreateDeleteComponent,
 		LinhaDeleteComponent,
-		LinhaCreateComponent
+		LinhaCreateComponent,
+		ConfiguracaoServicosLinhaComponent
 	]
 })
 

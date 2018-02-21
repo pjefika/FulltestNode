@@ -67,7 +67,7 @@ export class SuperComponentService extends AlertService {
         }, 1);
     }
 
-    public validaSeLinhaEstaCriada(cadastroLinha: CadastroLinha): boolean {
+    public validaSeLinhaEstaCriada(cadastroLinha: CadastroLinha): boolean {        
         let valid: boolean = false;
         if (cadastroLinha.status === "CREATED") {
             valid = true;
