@@ -21,6 +21,8 @@ export class ConfiguracaoLinhaTdmComponent extends SuperComponentService impleme
 
     private editarInfoLinhas: boolean = false;
 
+    private btnGetInformacoesDisabled: boolean = false;
+
     constructor(private configuracaoLinhaTdmService: ConfiguracaoLinhaTdmService,
         public toastyComponent: ToastyComponent,
         public systemHolderService: SystemHolderService,
@@ -30,7 +32,11 @@ export class ConfiguracaoLinhaTdmComponent extends SuperComponentService impleme
 
     public ngOnInit() {
         super.enabledisablesidenav(true);
-        if (!this.variavelHolderService.cadastroLinha) {
+        this.doGetInformacoes();
+    }
+
+    public doGetInformacoes(reload?: boolean) {
+        if (!this.variavelHolderService.cadastroLinha || reload) {
             if (this.systemHolderService.ableMock) {
                 this.getInformacoesMock();
             } else {
@@ -41,8 +47,10 @@ export class ConfiguracaoLinhaTdmComponent extends SuperComponentService impleme
         }
     }
 
+
     private getInformacoes() {
         this.isLoading = true;
+        this.btnGetInformacoesDisabled = true;
         this.configuracaoLinhaTdmService
             .getInformacoes(this.variavelHolderService.cadastro.linha)
             .then(resposta => {
@@ -57,6 +65,7 @@ export class ConfiguracaoLinhaTdmComponent extends SuperComponentService impleme
             })
             .then(() => {
                 this.isLoading = false;
+                this.btnGetInformacoesDisabled = false;
             });
     }
 

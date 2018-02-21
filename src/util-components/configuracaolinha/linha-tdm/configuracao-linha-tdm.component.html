@@ -86,5 +86,6 @@
             </tbody>
         </table>
     </div>
+    <button class="btn btn-primary btn-block" (click)="doGetInformacoes(true)" [disabled]="btnGetInformacoesDisabled">Buscar Informações da Linha</button>
     <loading-component [searching]="isLoading" [searchWhat]="'Buscando Informações de Linha...'"></loading-component>
 </div>
