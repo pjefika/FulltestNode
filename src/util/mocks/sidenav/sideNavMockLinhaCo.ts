@@ -1,5 +1,7 @@
 import { SideNav } from "../../../viewmodel/sidenav/sidenav";
 import { ConfiguracaoLinhaComponent } from "../../../util-components/configuracaolinha/configuracao-linha.component";
+import { ConfiguracaoManobraLinhaComponent } from "../../../util-components/configuracaolinha/manobralinha/configuracao-manobra-linha.component";
+import { ConfiguracaoLinhaCreateDeleteComponent } from "../../../util-components/configuracaolinha/linhacreatedelete/configuracao-linha-create-delete.component";
 
 export const SideNavMockLinhaCO: SideNav[] = [
     {
@@ -7,16 +9,16 @@ export const SideNavMockLinhaCO: SideNav[] = [
         component: ConfiguracaoLinhaComponent,
         icon: "view-list"
     },
-    // {
-    //     nome: "Manobrar",
-    //     component: ManobrarLinhaComponent,
-    //     icon: "switch"
-    // },
-    // {
-    //     nome: "Linha",
-    //     component: LinhaComponent,
-    //     icon: "phone-handset"
-    // },
+    {
+        nome: "Manobrar",
+        component: ConfiguracaoManobraLinhaComponent,
+        icon: "switch"
+    },
+    {
+        nome: "Linha",
+        component: ConfiguracaoLinhaCreateDeleteComponent,
+        icon: "phone-handset"
+    },
     // {
     //     nome: "Serviço",
     //     component: ServicoLinhaComponent,

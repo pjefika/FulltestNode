@@ -1,0 +1,14 @@
+<div>
+    <h3>Deletar Linha</h3>
+    <button type="button" class="btn btn-primary btn-block" (click)="abrirModal = true">Deletar Linha</button>
+    <clr-modal [(clrModalOpen)]="abrirModal" [clrModalStaticBackdrop]="true">
+        <h3 class="modal-title">Deletar Linha</h3>
+        <div class="modal-body">
+            <p>Relmente deseja deletar a linha?</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="deletarLinha()" [disabled]="btnDeleteDisabled">{{btnDeleteName}}</button>
+            <button type="button" class="btn btn-primary" (click)="abrirModal = false">Não</button>
+        </div>
+    </clr-modal>
+</div>

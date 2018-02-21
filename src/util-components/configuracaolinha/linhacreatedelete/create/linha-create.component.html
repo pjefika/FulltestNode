@@ -1,0 +1,36 @@
+<div>
+    <h3 class="titulo-da-pagina">Criar Linha</h3>
+    <div *ngIf="cadastroBinado">
+        <table class="table table-vertical table-compact">
+            <tr>
+                <th colspan="2">Informações linha binada</th>
+            </tr>
+            <tr>
+                <td>Len</td>
+                <td>{{cadastroBinado.len.len}}</td>
+            </tr>
+            <tr *ngIf="cadInstanciaBinada">
+                <td>Central</td>
+                <td>{{cadastroBinado.central}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>Instância Binada: </label>
+            <input type="text" style="width: 100%;" [(ngModel)]="instanciaBinada" placeholder="Insira a instância binada">
+            <button type="button" class="btn btn-info-outline btn-block" [clrLoading]="isLoading" [disabled]="isLoading" (click)="getLinhaBinada()">{{btnConsultaName}}</button>
+        </div>
+        <div class="col-md-6">
+            <div *ngIf="listaLensLivres">
+                <label>Selecione o LEN Livre:</label>
+                <div class="select">
+                    <select [(ngModel)]="qualLen">
+                        <option [ngValue]="l.len" *ngFor="let l of listaLensLivres.fac">{{l.len.len}}</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary btn-block" (click)="createLinha()" [disabled]="btnCriarDisable">{{btnCriarName}}</button>
+            </div>
+        </div>
+    </div>
+</div>

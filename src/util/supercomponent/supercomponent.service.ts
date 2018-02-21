@@ -4,6 +4,7 @@ import { SystemHolderService } from '../holder/systemHolder.service';
 import { ToastyComponent } from '../../util-components/toasty/toasty.component';
 import { AlertService } from '../alert/alert.service';
 import { Certification } from '../../viewmodel/fulltest/certification';
+import { CadastroLinha } from '../../viewmodel/linha/cadlinha';
 
 @Injectable()
 export class SuperComponentService extends AlertService {
@@ -64,6 +65,14 @@ export class SuperComponentService extends AlertService {
         setTimeout(() => {
             this.systemHolderService.sideNavAtivo = enable;
         }, 1);
+    }
+
+    public validaSeLinhaEstaCriada(cadastroLinha: CadastroLinha): boolean {
+        let valid: boolean = false;
+        if (cadastroLinha.status === "CREATED") {
+            valid = true;
+        }
+        return valid;
     }
 
 }

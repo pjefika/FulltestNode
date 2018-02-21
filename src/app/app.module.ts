@@ -56,6 +56,10 @@ import { SidenavComponent } from '../util-components/sidenav/sidenav.component';
 import { ConfiguracaoLinhaTdmComponent } from '../util-components/configuracaolinha/linha-tdm/configuracao-linha-tdm.component';
 import { ConfiguracaoLinhaCustgroupComponent } from '../util-components/configuracaolinha/linha-tdm/acao/custgroup/configuracao-linha-custgroup.component';
 import { ConfiguracaoLinhaNcosComponent } from '../util-components/configuracaolinha/linha-tdm/acao/ncos/configuracao-linha-ncos.component';
+import { ConfiguracaoManobraLinhaComponent } from '../util-components/configuracaolinha/manobralinha/configuracao-manobra-linha.component';
+import { ConfiguracaoLinhaCreateDeleteComponent } from '../util-components/configuracaolinha/linhacreatedelete/configuracao-linha-create-delete.component';
+import { LinhaDeleteComponent } from '../util-components/configuracaolinha/linhacreatedelete/delete/linha-delete.component';
+import { LinhaCreateComponent } from '../util-components/configuracaolinha/linhacreatedelete/create/linha-create.component';
 
 
 @NgModule({
@@ -104,7 +108,11 @@ import { ConfiguracaoLinhaNcosComponent } from '../util-components/configuracaol
 		ConfiguracaoLinhaComponent,
 		ConfiguracaoLinhaTdmComponent,
 		ConfiguracaoLinhaCustgroupComponent,
-		ConfiguracaoLinhaNcosComponent
+		ConfiguracaoLinhaNcosComponent,
+		ConfiguracaoManobraLinhaComponent,
+		ConfiguracaoLinhaCreateDeleteComponent,
+		LinhaDeleteComponent,
+		LinhaCreateComponent
 	],
 	imports: [
 		/**
@@ -162,7 +170,11 @@ import { ConfiguracaoLinhaNcosComponent } from '../util-components/configuracaol
 		FulltestVlanComponent,
 		FulltestSerialOntOltComponent,
 		ResumoInfosComponent,
-		ConfiguracaoLinhaComponent
+		ConfiguracaoLinhaComponent,
+		ConfiguracaoManobraLinhaComponent,
+		ConfiguracaoLinhaCreateDeleteComponent,
+		LinhaDeleteComponent,
+		LinhaCreateComponent
 	]
 })
 

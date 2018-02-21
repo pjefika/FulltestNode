@@ -21,7 +21,7 @@ export class ConfiguracaoLinhaTdmComponent extends SuperComponentService impleme
 
     private editarInfoLinhas: boolean = false;
 
-    private btnGetInformacoesDisabled: boolean = false;
+    private btnGetInformacoesDisabled: boolean = true;
 
     constructor(private configuracaoLinhaTdmService: ConfiguracaoLinhaTdmService,
         public toastyComponent: ToastyComponent,
@@ -47,15 +47,15 @@ export class ConfiguracaoLinhaTdmComponent extends SuperComponentService impleme
         }
     }
 
-
     private getInformacoes() {
         this.isLoading = true;
-        this.btnGetInformacoesDisabled = true;
+        this.btnGetInformacoesDisabled = false;
         this.configuracaoLinhaTdmService
             .getInformacoes(this.variavelHolderService.cadastro.linha)
             .then(resposta => {
                 this.cadastroLinha = resposta;
                 this.variavelHolderService.cadastroLinha = resposta;
+                this.systemHolderService.liberarSideNav = true;
             }, erro => {
                 if (erro.mError === "Linha não pertence a Central." && this.variavelHolderService.cadastro.instancia === this.variavelHolderService.cadastroLinha.dn) {
                     super.callToasty("Ops, aconteceu algo.", "Necessário associação de número de equipamento.", "error", 5000);
@@ -65,16 +65,19 @@ export class ConfiguracaoLinhaTdmComponent extends SuperComponentService impleme
             })
             .then(() => {
                 this.isLoading = false;
-                this.btnGetInformacoesDisabled = false;
+                this.btnGetInformacoesDisabled = true;
             });
     }
 
     private getInformacoesMock() {
         this.isLoading = true;
+        this.btnGetInformacoesDisabled = false;
         setTimeout(() => {
             this.cadastroLinha = this.configuracaoLinhaTdmService.getInformacoesMock();
             this.variavelHolderService.cadastroLinha = this.configuracaoLinhaTdmService.getInformacoesMock();
+            this.systemHolderService.liberarSideNav = true;
             this.isLoading = false;
+            this.btnGetInformacoesDisabled = true;
         }, 1000);
     }
 
