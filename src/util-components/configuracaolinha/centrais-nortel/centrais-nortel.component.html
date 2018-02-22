@@ -1,8 +1,8 @@
 <clr-modal [(clrModalOpen)]="systemHolderService.centraisNortelAtivo" [clrModalSize]="'xl'">
     <h3 class="modal-title">Administração Centrais Nortel</h3>
     <div class="modal-body">
-        <loading-component [searching]="searchingNortelInfos" [searchWhat]="'Buscando Conexões Nortel...'"></loading-component>
-        <div *ngIf="infosNortelTela">
+        <loading-component [searching]="isLoading" [searchWhat]="infoLoading"></loading-component>
+        <div *ngIf="infosNortelTela && !isLoading">
             <div class="row">
                 <div class="col-md-6">
                     <table class="table table-compact table-vertical margin-pra-cima">
@@ -77,7 +77,6 @@
                     <clr-dg-pagination #pagination [clrDgPageSize]="7"></clr-dg-pagination>
                 </clr-dg-footer>
             </clr-datagrid>
-
         </div>
     </div>
     <div class="modal-footer">

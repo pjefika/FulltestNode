@@ -102,4 +102,5 @@ export class TemplateComponent extends SuperComponentService implements OnInit {
     private holderReset() {
         this.holderResetService.reset();
     }
+
 }

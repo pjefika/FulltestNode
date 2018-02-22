@@ -31,9 +31,9 @@
                     <clr-icon shape="caret down"></clr-icon>
                 </button>
                 <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-                    <!-- <a clrDropdownItem (click)="holderService.modalAdm = true;" *ngIf="nivelmaiorquedez">Administração</a>
-                    <a clrDropdownItem (click)="holderService.centraisNortelModal = true;" *ngIf="nivelmaiorquedez">Centrais Nortel</a>
+                    <!-- <a clrDropdownItem (click)="holderService.modalAdm = true;" *ngIf="nivelmaiorquedez">Administração</a>                    
                     <a clrDropdownItem (click)="holderService.modalLogError = true;">Log de Ações</a> -->
+                    <a clrDropdownItem (click)="systemHolderService.centraisNortelAtivo = true;" *ngIf="systemHolderService.isAdm">Centrais Nortel</a>
                     <a clrDropdownItem (click)="sair()">Sair</a>
                 </clr-dropdown-menu>
             </clr-dropdown>
@@ -54,9 +54,9 @@
             </div>
 
             <toasty-component></toasty-component>
-            <!-- <adm-component></adm-component>
-            <centrais-nortel-component></centrais-nortel-component>
+            <!-- <adm-component></adm-component>            
             <error-log-component></error-log-component> -->
+            <centrais-nortel-component></centrais-nortel-component>
 
             <div class="ir-para-direita" *ngIf="systemHolderService.btnResumoInfosAtivo">
                 <button type="button" class="btn btn-icon btn-primary btn-sm" (click)="hoResumo()">

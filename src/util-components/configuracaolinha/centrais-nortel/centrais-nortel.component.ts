@@ -47,7 +47,6 @@ class CentralIPFilter implements StringFilter<InfoNortelConection> {
     }
 }
 
-
 @Component({
     selector: 'centrais-nortel-component',
     templateUrl: 'centrais-nortel.component.html',
@@ -63,15 +62,20 @@ export class CentraisNortelComponent extends SuperComponentService implements On
 
     private infosNortelTela: InfosNortelTela;
 
+    private infoLoading: string;
+
     constructor(private centraisNortelService: CentraisNortelService,
         public toastyComponent: ToastyComponent,
         public systemHolderService: SystemHolderService) {
         super(toastyComponent, systemHolderService);
     }
 
-    public ngOnInit() { }
+    public ngOnInit() {
+        this.getContextDMS();
+    }
 
     private getContextDMS() {
+        this.infoLoading = "Buscando Conexões Nortel...";
         this.isLoading = true;
         this.centraisNortelService
             .getContextDMS()
@@ -86,6 +90,7 @@ export class CentraisNortelComponent extends SuperComponentService implements On
     }
 
     private connection(conec: string) {
+        this.infoLoading = "Aguarde...";
         this.isLoading = true;
         this.centraisNortelService
             .connection(conec)
@@ -101,6 +106,7 @@ export class CentraisNortelComponent extends SuperComponentService implements On
     }
 
     private connectSwitch(ip: string) {
+        this.infoLoading = "Ativando Conexão...";
         this.isLoading = true;
         this.centraisNortelService
             .connectSwitch(ip)
@@ -113,7 +119,9 @@ export class CentraisNortelComponent extends SuperComponentService implements On
                 this.isLoading = false;
             })
     }
+
     private disconnectSwitch(ip: string) {
+        this.infoLoading = "Desativando Conexão...";
         this.isLoading = false;
         this.centraisNortelService
             .disconnectSwitch(ip)

@@ -67,6 +67,7 @@ import { ConfiguracaoEstadoPortaComponent } from '../util-components/configuraca
 import { ConfiguracaoLinhaImsComponent } from '../util-components/configuracaolinha/linha-ims/configuracao-linha-ims.component';
 import { AcsComponent } from '../util-components/acs/acs.component';
 import { ManobrarComponent } from '../util-components/manobrar/manobrar.component';
+import { CentraisNortelComponent } from '../util-components/configuracaolinha/centrais-nortel/centrais-nortel.component';
 
 
 @NgModule({
@@ -126,7 +127,8 @@ import { ManobrarComponent } from '../util-components/manobrar/manobrar.componen
 		ConfiguracaoPortaMetalicoComponent,
 		ConfiguracaoEstadoPortaComponent,
 		AcsComponent,
-		ManobrarComponent
+		ManobrarComponent,
+		CentraisNortelComponent
 	],
 	imports: [
 		/**
