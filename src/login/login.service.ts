@@ -38,4 +38,8 @@ export class LoginService extends SuperService {
             .catch(super.handleError);
     }
 
+    public getUsuarioMock(): Usuario {
+        return JSON.parse('{"login":"G0034481","nivel":10}');
+    }
+
 }

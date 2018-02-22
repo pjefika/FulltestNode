@@ -5,6 +5,7 @@ import { LoginService } from './login.service';
 import { Md5 } from 'ts-md5/dist/md5';
 import { AlertService } from '../util/alert/alert.service';
 import { ToastyComponent } from '../util-components/toasty/toasty.component';
+import { SystemHolderService } from '../util/holder/systemHolder.service';
 
 @Component({
     selector: 'login-component',
@@ -20,7 +21,8 @@ export class LoginComponent extends AlertService implements OnInit {
 
     constructor(public util: UtilService,
         private loginService: LoginService,
-        public toastyComponent: ToastyComponent) {
+        public toastyComponent: ToastyComponent,
+        public systemHolderService: SystemHolderService) {
         super(toastyComponent);
     }
 
@@ -32,7 +34,15 @@ export class LoginComponent extends AlertService implements OnInit {
         });
     }
 
-    public entrar() {
+    private doEntrar() {
+        if (this.systemHolderService.ableMock) {
+            this.entrarMock();
+        } else {
+            this.entrar();
+        }
+    }
+
+    private entrar() {
         this.logando = true;
         this.loginService
             .autentica(this.usuario)
@@ -57,6 +67,18 @@ export class LoginComponent extends AlertService implements OnInit {
                 super.callAlert("error", "Usuário ou senha incorretos, por favor verifique.");
                 this.logando = false;
             });
+    }
+
+    private entrarMock() {
+        this.logando = true;
+        setTimeout(() => {
+            this.usuario = this.loginService.getUsuarioMock();
+            sessionStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
+            this.util.navigate('./');
+            this.logando = false;
+        }, 1000);
+
+
     }
 
 }

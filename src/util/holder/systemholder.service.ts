@@ -40,6 +40,8 @@ export class SystemHolderService {
     public jaPesquisouAcs: boolean = false;
     public mensagemAlertAcs: Mensagem;
 
+    public centraisNortelAtivo: boolean = false;
+
     constructor() { }
 
 }
