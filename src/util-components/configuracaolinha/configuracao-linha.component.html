@@ -1,5 +1,5 @@
 <div *ngIf="variavelHolderService.cadastro">
-    <div *ngIf="variavelHolderService.cadastro.linha.tipo">
+    <div *ngIf="variavelHolderService.cadastro.linha">
         <configuracao-linha-tdm-component *ngIf="variavelHolderService.cadastro.linha.tipo === 'TDM'"></configuracao-linha-tdm-component>
         <!-- <configuracao-linha-ims-component *ngIf="variavelHolderService.cadastro.linha.tipo === 'IMS'"></configuracao-linha-ims-component> -->
     </div>

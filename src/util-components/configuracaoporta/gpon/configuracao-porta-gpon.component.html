@@ -1,0 +1,11 @@
+<div *ngIf="confPorta">
+    <configuracao-estado-porta-component [estadoPorta]="confPorta.estadoPorta"></configuracao-estado-porta-component>
+    <fulltest-parametros-component [parametros]="confPorta.parametros"></fulltest-parametros-component>
+    <fulltest-profile-component [profileConfPorta]="confPorta.profile"></fulltest-profile-component>
+    <fulltest-serial-ont-olt-component [serial]="confPorta.estadoPorta"></fulltest-serial-ont-olt-component>
+    <!-- Mostrar Configurações de VLAN's passando o parametro de cada um -->
+    <fulltest-vlan-component [vlan]="confPorta.vlanBanda"></fulltest-vlan-component>
+    <fulltest-vlan-component [vlan]="confPorta.vlanVoip"></fulltest-vlan-component>
+    <fulltest-vlan-component [vlan]="confPorta.vlanVod"></fulltest-vlan-component>
+    <fulltest-vlan-component [vlan]="confPorta.vlanMulticast"></fulltest-vlan-component>
+</div>

@@ -61,6 +61,9 @@ import { ConfiguracaoLinhaCreateDeleteComponent } from '../util-components/confi
 import { LinhaDeleteComponent } from '../util-components/configuracaolinha/linhacreatedelete/delete/linha-delete.component';
 import { LinhaCreateComponent } from '../util-components/configuracaolinha/linhacreatedelete/create/linha-create.component';
 import { ConfiguracaoServicosLinhaComponent } from '../util-components/configuracaolinha/servicos/configuracao-servicos-linha.component';
+import { ConfiguracaoPortaComponent } from '../util-components/configuracaoporta/configuracao-porta.component';
+import { ConfiguracaoPortaMetalicoComponent } from '../util-components/configuracaoporta/metalico/configuracao-porta-metalico.component';
+import { ConfiguracaoEstadoPortaComponent } from '../util-components/configuracaoporta/validscomponentes/configuracao-estado-porta.component';
 
 
 @NgModule({
@@ -114,7 +117,10 @@ import { ConfiguracaoServicosLinhaComponent } from '../util-components/configura
 		ConfiguracaoLinhaCreateDeleteComponent,
 		LinhaDeleteComponent,
 		LinhaCreateComponent,
-		ConfiguracaoServicosLinhaComponent
+		ConfiguracaoServicosLinhaComponent,
+		ConfiguracaoPortaComponent,
+		ConfiguracaoPortaMetalicoComponent,
+		ConfiguracaoEstadoPortaComponent
 	],
 	imports: [
 		/**
@@ -177,7 +183,10 @@ import { ConfiguracaoServicosLinhaComponent } from '../util-components/configura
 		ConfiguracaoLinhaCreateDeleteComponent,
 		LinhaDeleteComponent,
 		LinhaCreateComponent,
-		ConfiguracaoServicosLinhaComponent
+		ConfiguracaoServicosLinhaComponent,
+		ConfiguracaoPortaComponent,
+		ConfiguracaoPortaMetalicoComponent,
+		ConfiguracaoEstadoPortaComponent
 	]
 })
 

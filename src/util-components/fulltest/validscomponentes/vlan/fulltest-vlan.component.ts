@@ -29,9 +29,7 @@ export class FulltestVlanComponent extends SuperComponentService implements OnIn
         super(toastyComponent, systemHolderService);
     }
 
-    public ngOnInit() {
-        console.log(this.vlan);
-    }
+    public ngOnInit() { }
 
     public qualVlan(nome: string) {
         switch (nome) {

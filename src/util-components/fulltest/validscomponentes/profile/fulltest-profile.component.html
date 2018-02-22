@@ -1,29 +1,24 @@
-<div class="row" *ngIf="profile">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-9">
-        <table class="table table-compact">
-            <thead>
-                <tr>
-                    <th colspan="2" style="text-align: center;">{{profile.nome}}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Estado</td>
-                    <td>{{profile.mensagem}}
-                        <clr-icon class="is-success" shape="check" *ngIf="profile.resultado"></clr-icon>
-                        <clr-icon class="is-error" shape="times" *ngIf="!profile.resultado"></clr-icon>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Configurado (Down/Up)</td>
-                    <td>
-                        {{stringVelocidade(profile.result.down)}}/{{stringVelocidade(profile.result.up)}}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col-xs-2"></div>
-    <div class="row"></div>
+<div *ngIf="profile">
+    <table class="table table-compact">
+        <thead>
+            <tr>
+                <th colspan="2" style="text-align: center;">{{profile.nome}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Estado</td>
+                <td>{{profile.mensagem}}
+                    <clr-icon class="is-success" shape="check" *ngIf="profile.resultado"></clr-icon>
+                    <clr-icon class="is-error" shape="times" *ngIf="!profile.resultado"></clr-icon>
+                </td>
+            </tr>
+            <tr>
+                <td>Configurado (Down/Up)</td>
+                <td>
+                    {{stringVelocidade(profile.result.down)}}/{{stringVelocidade(profile.result.up)}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

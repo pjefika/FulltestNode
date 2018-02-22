@@ -3,6 +3,7 @@ import { Customer } from '../../viewmodel/customer/customer';
 import { Fulltest } from '../../viewmodel/fulltest/fulltest';
 import { Certification } from '../../viewmodel/fulltest/certification';
 import { CadastroLinha } from '../../viewmodel/linha/cadlinha';
+import { ConfPorta } from '../../viewmodel/confporta/confporta';
 
 @Injectable()
 export class VariavelHolderService {
@@ -14,6 +15,8 @@ export class VariavelHolderService {
     public certification: Certification;
 
     public cadastroLinha: CadastroLinha;
+
+    public confPorta: ConfPorta;
 
     constructor() { }
 }

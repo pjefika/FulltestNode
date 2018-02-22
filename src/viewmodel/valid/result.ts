@@ -1,6 +1,6 @@
 export class Result {
     nome: string;
-    type: string;
+    type?: string;
 
     // Estado da porta.
     adminState?: boolean;

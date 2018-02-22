@@ -2,6 +2,7 @@ import { SubNav } from "../../../viewmodel/subnav/subnav";
 import { CadastroComponent } from "../../../util-components/cadastro/cadastro.component";
 import { FulltestComponent } from "../../../util-components/fulltest/fulltest.component";
 import { ConfiguracaoLinhaComponent } from "../../../util-components/configuracaolinha/configuracao-linha.component";
+import { ConfiguracaoPortaComponent } from "../../../util-components/configuracaoporta/configuracao-porta.component";
 
 export const SubNavMockCo: SubNav[] = [
     {
@@ -21,8 +22,8 @@ export const SubNavMockCo: SubNav[] = [
         component: ConfiguracaoLinhaComponent,
         haveSideNav: true
     },
-    // {
-    //     nome: "Configurações de Porta",
-    //     component: ConfiguracoesPortaComponent
-    // }
+    {
+        nome: "Configurações de Porta",
+        component: ConfiguracaoPortaComponent
+    }
 ]
