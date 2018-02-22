@@ -9,6 +9,7 @@ import { ConfPorta } from '../../viewmodel/confporta/confporta';
 @Component({
     selector: 'configuracao-porta-component',
     templateUrl: 'configuracao-porta.component.html',
+    styleUrls: ['configuracao-porta.component.css'],
     providers: [ConfiguracaoPortaService]
 })
 

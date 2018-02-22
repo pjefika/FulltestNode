@@ -9,6 +9,7 @@ import { Valid } from '../../../../viewmodel/valid/valid';
 @Component({
     selector: 'fulltest-confiabilidade-rede-component',
     templateUrl: 'fulltest-confiabilidade-rede.component.html',
+    styleUrls: ['fulltest-confiabilidade-rede.component.css'],
     providers: [FulltestConfiabilidadeRedeService]
 })
 

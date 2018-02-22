@@ -58,6 +58,7 @@ export class CadastroComponent extends SuperComponentService implements OnInit {
                 if (super.ifIsCadastro(this.cadastro)) {
                     this.variavelHolderService.cadastro = this.cadastro;
                 } else {
+                    this.systemHolderService.modalWizardCadastroIsOpen = true; // Validar...
                     this.callAlert("alert-danger", "Atenção não existe informações de cadastro em nossas bases.");
                 }
             }, erro => {

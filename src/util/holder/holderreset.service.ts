@@ -15,12 +15,16 @@ export class HolderResetService {
     }
 
     private resetVariavelHolder() {
-        // this.variavelHolderService.instancia = null;
         this.variavelHolderService.cadastro = null;
         this.variavelHolderService.certification = null;
+        this.variavelHolderService.cadastroLinha = null;
+        this.variavelHolderService.confPorta = null;
+        this.variavelHolderService.equipamento = null;
     }
 
     private resetSystemHolder() {
+        this.systemHolderService.jaPesquisouAcs = false;
+        this.systemHolderService.mensagemAlertAcs = null;
 
     }
 

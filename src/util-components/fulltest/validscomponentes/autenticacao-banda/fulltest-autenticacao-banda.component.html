@@ -1,98 +1,87 @@
 <div *ngIf="autenticacao">
-    <div class="row" *ngIf="autenticacaoBanda">
-        <div class="col-xs-1">
-        </div>
-        <div class="col-xs-9">
-            <clr-datagrid class="datagrid-compact">
-                <clr-dg-placeholder>Falha ao realizar consulta de autenticação.</clr-dg-placeholder>
-                <clr-dg-row *ngIf="autenticacaoBanda.mensagem">
-                    <clr-dg-cell>Mensagem</clr-dg-cell>
-                    <clr-dg-cell>{{autenticacaoBanda.mensagem}}</clr-dg-cell>
-                </clr-dg-row>
-                <clr-dg-row *ngIf="autenticacaoBanda.status">
-                    <clr-dg-cell>Estado</clr-dg-cell>
-                    <clr-dg-cell>
-                        {{autenticacaoBanda.status}}
-                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="autenticacaoBanda.status=='Start'||autenticacaoBanda.status=='Alive'"></clr-icon>
-                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="autenticacaoBanda.status!='Start'&&autenticacaoBanda.status!='Alive'"></clr-icon>
-                    </clr-dg-cell>
-                </clr-dg-row>
-                <clr-dg-row *ngIf="autenticacaoBanda.data">
-                    <clr-dg-cell>Data</clr-dg-cell>
-                    <clr-dg-cell>{{((autenticacaoBanda.data/1000)| amFromUnix) | amDateFormat:'DD/MM/YYYY HH:mm:ss'}}</clr-dg-cell>
-                </clr-dg-row>
-                <clr-dg-row *ngIf="autenticacaoBanda.ip_address_v4">
-                    <clr-dg-cell>Endereço Ipv4</clr-dg-cell>
-                    <clr-dg-cell>{{autenticacaoBanda.ip_address_v4}}</clr-dg-cell>
-                </clr-dg-row>
-                <clr-dg-row *ngIf="autenticacaoBanda.ip_address_v6">
-                    <clr-dg-cell>Endereço Ipv6</clr-dg-cell>
-                    <clr-dg-cell>{{autenticacaoBanda.ip_address_v6}}</clr-dg-cell>
-                </clr-dg-row>
-                <clr-dg-row *ngIf="autenticacaoBanda.ipv6_network">
-                    <clr-dg-cell>Rede Ipv6</clr-dg-cell>
-                    <clr-dg-cell>{{autenticacaoBanda.ipv6_network}}</clr-dg-cell>
-                </clr-dg-row>
-                <clr-dg-row *ngIf="autenticacaoBanda.cabinet">
-                    <clr-dg-cell>Armário</clr-dg-cell>
-                    <clr-dg-cell>{{autenticacaoBanda.cabinet}}</clr-dg-cell>
-                </clr-dg-row>
-                <clr-dg-row *ngIf="autenticacaoBanda.rin">
-                    <clr-dg-cell>RIN</clr-dg-cell>
-                    <clr-dg-cell>
-                        {{autenticacaoBanda.rin}}
-                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="autenticacaoBanda.rin==variavelHolderService.cadastro.radius.rin"></clr-icon>
-                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="autenticacaoBanda.rin!=variavelHolderService.cadastro.radius.rin"></clr-icon>
-                    </clr-dg-cell>
-                </clr-dg-row>
-                <clr-dg-row *ngIf="autenticacaoBanda.porta">
-                    <clr-dg-cell>Porta</clr-dg-cell>
-                    <clr-dg-cell>{{autenticacaoBanda.porta}}
-                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="autenticacaoBanda.porta.toString()==variavelHolderService.cadastro.radius.porta"></clr-icon>
-                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="autenticacaoBanda.porta.toString()!=variavelHolderService.cadastro.radius.porta"></clr-icon>
-                    </clr-dg-cell>
-                </clr-dg-row>
-                <clr-dg-row *ngIf="autenticacaoBanda.bras">
-                    <clr-dg-cell>BRAS</clr-dg-cell>
-                    <clr-dg-cell>{{autenticacaoBanda.bras}}</clr-dg-cell>
-                </clr-dg-row>
-                <clr-dg-row *ngIf="autenticacaoBanda.userName">
-                    <clr-dg-cell>Usuário</clr-dg-cell>
-                    <clr-dg-cell>
-                        {{autenticacaoBanda.userName}}
-                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="(autenticacaoBanda.userName.includes('pro')&&variavelHolderService.cadastro.radius.isIpFixo)||(!autenticacaoBanda.userName.includes('pro')&&!variavelHolderService.cadastro.radius.isIpFixo)"></clr-icon>
-                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="(autenticacaoBanda.userName.includes('pro')&&!variavelHolderService.cadastro.radius.isIpFixo)||(!autenticacaoBanda.userName.includes('pro')&&variavelHolderService.cadastro.radius.isIpFixo)"></clr-icon>
-                    </clr-dg-cell>
-                </clr-dg-row>
-                <clr-dg-row *ngIf="autenticacaoBanda.profile">
-                    <clr-dg-cell>Perfil de Velocidade</clr-dg-cell>
-                    <clr-dg-cell>{{autenticacaoBanda.profile}}
-                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="matchProfile(autenticacaoBanda.profile, variavelHolderService.cadastro.radius.profile)"></clr-icon>
-                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="!matchProfile(autenticacaoBanda.profile, variavelHolderService.cadastro.radius.profile)"></clr-icon>
-                    </clr-dg-cell>
-                </clr-dg-row>
-                <clr-dg-row *ngIf="autenticacaoBanda.designador">
-                    <clr-dg-cell>Designador</clr-dg-cell>
-                    <clr-dg-cell>{{autenticacaoBanda.designador}}
-                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="variavelHolderService.cadastro.designador.includes(autenticacaoBanda.designador)"></clr-icon>
-                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="!variavelHolderService.cadastro.designador.includes(autenticacaoBanda.designador)"></clr-icon>
-                    </clr-dg-cell>
-                </clr-dg-row>
-                <clr-dg-row *ngIf="autenticacaoBanda.cgnat">
-                    <clr-dg-cell>CGNAT</clr-dg-cell>
-                    <clr-dg-cell>{{autenticacaoBanda.cgnat.status.descricao.value}}</clr-dg-cell>
-                </clr-dg-row>
-            </clr-datagrid>
-        </div>
-        <div class="col-xs-2"></div>
+    <div *ngIf="autenticacaoBanda">
+        <clr-datagrid class="datagrid-compact">
+            <clr-dg-placeholder>Falha ao realizar consulta de autenticação.</clr-dg-placeholder>
+            <clr-dg-row *ngIf="autenticacaoBanda.mensagem">
+                <clr-dg-cell>Mensagem</clr-dg-cell>
+                <clr-dg-cell>{{autenticacaoBanda.mensagem}}</clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-row *ngIf="autenticacaoBanda.status">
+                <clr-dg-cell>Estado</clr-dg-cell>
+                <clr-dg-cell>
+                    {{autenticacaoBanda.status}}
+                    <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="autenticacaoBanda.status=='Start'||autenticacaoBanda.status=='Alive'"></clr-icon>
+                    <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="autenticacaoBanda.status!='Start'&&autenticacaoBanda.status!='Alive'"></clr-icon>
+                </clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-row *ngIf="autenticacaoBanda.data">
+                <clr-dg-cell>Data</clr-dg-cell>
+                <clr-dg-cell>{{((autenticacaoBanda.data/1000)| amFromUnix) | amDateFormat:'DD/MM/YYYY HH:mm:ss'}}</clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-row *ngIf="autenticacaoBanda.ip_address_v4">
+                <clr-dg-cell>Endereço Ipv4</clr-dg-cell>
+                <clr-dg-cell>{{autenticacaoBanda.ip_address_v4}}</clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-row *ngIf="autenticacaoBanda.ip_address_v6">
+                <clr-dg-cell>Endereço Ipv6</clr-dg-cell>
+                <clr-dg-cell>{{autenticacaoBanda.ip_address_v6}}</clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-row *ngIf="autenticacaoBanda.ipv6_network">
+                <clr-dg-cell>Rede Ipv6</clr-dg-cell>
+                <clr-dg-cell>{{autenticacaoBanda.ipv6_network}}</clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-row *ngIf="autenticacaoBanda.cabinet">
+                <clr-dg-cell>Armário</clr-dg-cell>
+                <clr-dg-cell>{{autenticacaoBanda.cabinet}}</clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-row *ngIf="autenticacaoBanda.rin">
+                <clr-dg-cell>RIN</clr-dg-cell>
+                <clr-dg-cell>
+                    {{autenticacaoBanda.rin}}
+                    <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="autenticacaoBanda.rin==variavelHolderService.cadastro.radius.rin"></clr-icon>
+                    <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="autenticacaoBanda.rin!=variavelHolderService.cadastro.radius.rin"></clr-icon>
+                </clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-row *ngIf="autenticacaoBanda.porta">
+                <clr-dg-cell>Porta</clr-dg-cell>
+                <clr-dg-cell>{{autenticacaoBanda.porta}}
+                    <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="autenticacaoBanda.porta.toString()==variavelHolderService.cadastro.radius.porta"></clr-icon>
+                    <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="autenticacaoBanda.porta.toString()!=variavelHolderService.cadastro.radius.porta"></clr-icon>
+                </clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-row *ngIf="autenticacaoBanda.bras">
+                <clr-dg-cell>BRAS</clr-dg-cell>
+                <clr-dg-cell>{{autenticacaoBanda.bras}}</clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-row *ngIf="autenticacaoBanda.userName">
+                <clr-dg-cell>Usuário</clr-dg-cell>
+                <clr-dg-cell>
+                    {{autenticacaoBanda.userName}}
+                    <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="(autenticacaoBanda.userName.includes('pro')&&variavelHolderService.cadastro.radius.isIpFixo)||(!autenticacaoBanda.userName.includes('pro')&&!variavelHolderService.cadastro.radius.isIpFixo)"></clr-icon>
+                    <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="(autenticacaoBanda.userName.includes('pro')&&!variavelHolderService.cadastro.radius.isIpFixo)||(!autenticacaoBanda.userName.includes('pro')&&variavelHolderService.cadastro.radius.isIpFixo)"></clr-icon>
+                </clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-row *ngIf="autenticacaoBanda.profile">
+                <clr-dg-cell>Perfil de Velocidade</clr-dg-cell>
+                <clr-dg-cell>{{autenticacaoBanda.profile}}
+                    <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="matchProfile(autenticacaoBanda.profile, variavelHolderService.cadastro.radius.profile)"></clr-icon>
+                    <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="!matchProfile(autenticacaoBanda.profile, variavelHolderService.cadastro.radius.profile)"></clr-icon>
+                </clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-row *ngIf="autenticacaoBanda.designador">
+                <clr-dg-cell>Designador</clr-dg-cell>
+                <clr-dg-cell>{{autenticacaoBanda.designador}}
+                    <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="variavelHolderService.cadastro.designador.includes(autenticacaoBanda.designador)"></clr-icon>
+                    <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="!variavelHolderService.cadastro.designador.includes(autenticacaoBanda.designador)"></clr-icon>
+                </clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-row *ngIf="autenticacaoBanda.cgnat">
+                <clr-dg-cell>CGNAT</clr-dg-cell>
+                <clr-dg-cell>{{autenticacaoBanda.cgnat.status.descricao.value}}</clr-dg-cell>
+            </clr-dg-row>
+        </clr-datagrid>
     </div>
-
-    <div class="row">
-        <div class="col-xs-3"></div>
-        <div class="col-xs-6 text-center">
-            <button class="btn btn-sm" [disabled]="btnConsultarDisabled" (click)="consultar()">{{btnConsultarName}}</button>
-        </div>
-        <div class="col-xs-3"></div>
+    <div class="align-to-center">
+        <button class="btn btn-sm" [disabled]="btnConsultarDisabled" (click)="consultarAutenticacao()">{{btnConsultarName}}</button>
     </div>
-
 </div>

@@ -23,25 +23,6 @@ export class ConfiguracaoLinhaComponent extends SuperComponentService implements
     }
 
     public ngOnInit() {
-        if (!this.validaTipo()) {
-            this.naoimplementado();
-        } else {
-            super.enablebtnresumoinfo();
-        }
+        super.enablebtnresumoinfo();
     }
-
-    public validaTipo(): boolean {
-        let valid: boolean = false;
-        if (this.variavelHolderService.cadastro.linha.tipo) {
-            valid = true;
-        } else {
-            valid = false;
-        }
-        return valid;
-    }
-
-    private naoimplementado() {
-        super.callAlert("alert-warning", "Funcionalidade indisponivel para este tipo de Central.");
-    }
-
 }

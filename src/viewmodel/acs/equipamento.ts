@@ -1,0 +1,50 @@
+import { DeviceId } from "./deviceid";
+
+export class Equipamento {
+    activated: boolean;
+    alarmsEnabled: boolean;
+    captured: boolean;
+    commonUniqueIdentifier: string;
+    community: string;
+    connectionRequestPassword: string;
+    connectionRequestURL: string;
+    connectionRequestUsername: string;
+    currentTime: number;
+    customAttribute1: string;
+    customAttribute10: string;
+    customAttribute2: string;
+    customAttribute3: string;
+    customAttribute4: string;
+    customAttribute5: string;
+    customAttribute6: string;
+    customAttribute7: string;
+    customAttribute8: string;
+    customAttribute9: string;
+    deleted: boolean;
+    deviceClass: string;
+    deviceGUID: number;
+    deviceId: DeviceId;
+    dynamicVariables: string;
+    firstContactTime: number;
+    HTTPPublicPassword: number;
+    HTTPPublicUsername: number;
+    IPAddress: string;
+    lastActivationTime: number;
+    lastCapturedBy: string;
+    lastCapturedTime: string;
+    lastContactTime: number;
+    macAddress: string;
+    managed: boolean;
+    manufacturer: string;
+    model: string;
+    modelName: string;
+    PPPPassword: string;
+    PPPUsername: string;
+    port: number;
+    portMappingRetryCount: number;
+    softwareVersion: string;
+    subscriberID: string;
+    type: number;
+    userTagArray: string;
+    domainName: string
+}

@@ -16,6 +16,7 @@ import { DynamicRouterService } from '../../../dynamicrouter/dynamic-router.serv
 @Component({
     selector: 'linha-create-component',
     templateUrl: 'linha-create.component.html',
+    styleUrls: ['linha-create.component.css'],
     providers: [ConfiguracaoLinhaCreateDeleteService, ConfiguracoesGeraisLinhaService, ConfiguracaoLinhaTdmService]
 })
 

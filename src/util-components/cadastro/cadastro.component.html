@@ -7,9 +7,9 @@
                 <cadastro-co-view-component [cadastro]="cadastro"></cadastro-co-view-component>
             </div>
             <div class="col-xs">
+                <acs-component *ngIf="variavelHolderService.cadastro" [designador]="variavelHolderService.cadastro.designador"></acs-component>
                 <!-- Não implementado... -->
-                <!-- <acs-component *ngIf="variavelHolderService.cadastro" [designador]="variavelHolderService.cadastro.designador"></acs-component>
-                <list-certification-component *ngIf="variavelHolderService.cadastro"></list-certification-component> -->
+                <!-- <list-certification-component *ngIf="variavelHolderService.cadastro"></list-certification-component> -->
             </div>
         </div>
     </div>

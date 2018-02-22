@@ -9,7 +9,8 @@ import { DynamicRouterService } from '../../dynamicrouter/dynamic-router.service
 
 @Component({
     selector: 'configuracao-linha-create-delete-component',
-    templateUrl: 'configuracao-linha-create-delete.component.html'
+    templateUrl: 'configuracao-linha-create-delete.component.html',
+    styleUrls: ['configuracao-linha-create-delete.component.css']
 })
 
 export class ConfiguracaoLinhaCreateDeleteComponent extends SuperComponentService implements OnInit {

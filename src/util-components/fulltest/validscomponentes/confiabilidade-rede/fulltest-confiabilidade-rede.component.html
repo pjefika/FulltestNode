@@ -1,52 +1,45 @@
-<div class="row" *ngIf="confRedeValid">
-    <div class="col-xs-1">
-    </div>
-    <div class="col-xs-9">
-        <table class="table table-compact">
-            <thead>
-                <tr>
-                    <th colspan=2>Informações de Rede</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="left">
-                        Confiabilidade de Rede
-                    </td>
-                    <td>
-                        <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="confRedeValid.resultado"></clr-icon>
-                        <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="!confRedeValid.resultado && confRedeValid.result.pctSuficiente"></clr-icon>
-                        <clr-icon shape="exclamation-triangle" *ngIf="!confRedeValid.resultado && !confRedeValid.result.pctSuficiente" class="is-warning is-solid"></clr-icon>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left">Pacotes Trafegados (Down/Up)</td>
-                    <td>{{confRedeValid.result.pctDown}} / {{confRedeValid.result.pctUp}}</td>
-                </tr>
-                <tr>
-                    <td class="left">CRC (Down/Up)</td>
-                    <td>{{confRedeValid.result.crcDown}} / {{confRedeValid.result.crcUp}}</td>
-                </tr>
-                <tr>
-                    <td class="left">FEC (Down/Up)</td>
-                    <td>{{confRedeValid.result.fecDown}} / {{confRedeValid.result.fecUp}}</td>
-                </tr>
-                <tr>
-                    <td class="left">Ressincronismo</td>
-                    <td>{{confRedeValid.result.resync}}</td>
-                </tr>
-            </tbody>
+<div *ngIf="confRedeValid">
+    <clr-tooltip class="tooltip-to-right">
+        <button clrTooltipTrigger class="btn btn-sm btn-link" [disabled]="btnCosultaDisable" (click)="consultar()">
+            <clr-icon shape="sync" *ngIf="!btnCosultaDisable"></clr-icon>
+            <span class="spinner spinner-sm" *ngIf="btnCosultaDisable"></span>
+            <clr-tooltip-content clrPosition="top-left">{{btnConsultaName}}</clr-tooltip-content>
+        </button>
+    </clr-tooltip>
+    <table class="table table-compact">
+        <thead>
+            <tr>
+                <th colspan=2>Informações de Rede</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="left">
+                    Confiabilidade de Rede
+                </td>
+                <td>
+                    <clr-icon shape="shield-check" class="is-solid is-success" *ngIf="confRedeValid.resultado"></clr-icon>
+                    <clr-icon shape="shield-x" class="is-solid is-error" *ngIf="!confRedeValid.resultado && confRedeValid.result.pctSuficiente"></clr-icon>
+                    <clr-icon shape="exclamation-triangle" *ngIf="!confRedeValid.resultado && !confRedeValid.result.pctSuficiente" class="is-warning is-solid"></clr-icon>
+                </td>
+            </tr>
+            <tr>
+                <td class="left">Pacotes Trafegados (Down/Up)</td>
+                <td>{{confRedeValid.result.pctDown}} / {{confRedeValid.result.pctUp}}</td>
+            </tr>
+            <tr>
+                <td class="left">CRC (Down/Up)</td>
+                <td>{{confRedeValid.result.crcDown}} / {{confRedeValid.result.crcUp}}</td>
+            </tr>
+            <tr>
+                <td class="left">FEC (Down/Up)</td>
+                <td>{{confRedeValid.result.fecDown}} / {{confRedeValid.result.fecUp}}</td>
+            </tr>
+            <tr>
+                <td class="left">Ressincronismo</td>
+                <td>{{confRedeValid.result.resync}}</td>
+            </tr>
+        </tbody>
 
-        </table>
-    </div>
-    <div class="col-xs-2">
-        <clr-tooltip>
-            <button clrTooltipTrigger class="btn btn-sm btn-link" [disabled]="btnCosultaDisable" (click)="consultar()">
-                <clr-icon shape="sync" *ngIf="!btnCosultaDisable"></clr-icon>
-                <span class="spinner spinner-sm" *ngIf="btnCosultaDisable"></span>
-                <clr-tooltip-content clrPosition="top-left">{{btnConsultaName}}</clr-tooltip-content>
-            </button>
-        </clr-tooltip>
-    </div>
-    <div class="row"></div>
+    </table>
 </div>

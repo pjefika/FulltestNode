@@ -64,6 +64,8 @@ import { ConfiguracaoServicosLinhaComponent } from '../util-components/configura
 import { ConfiguracaoPortaComponent } from '../util-components/configuracaoporta/configuracao-porta.component';
 import { ConfiguracaoPortaMetalicoComponent } from '../util-components/configuracaoporta/metalico/configuracao-porta-metalico.component';
 import { ConfiguracaoEstadoPortaComponent } from '../util-components/configuracaoporta/validscomponentes/configuracao-estado-porta.component';
+import { ConfiguracaoLinhaImsComponent } from '../util-components/configuracaolinha/linha-ims/configuracao-linha-ims.component';
+import { AcsComponent } from '../util-components/acs/acs.component';
 
 
 @NgModule({
@@ -111,6 +113,7 @@ import { ConfiguracaoEstadoPortaComponent } from '../util-components/configuraca
 		FulltestSerialOntOltComponent,
 		ConfiguracaoLinhaComponent,
 		ConfiguracaoLinhaTdmComponent,
+		ConfiguracaoLinhaImsComponent,
 		ConfiguracaoLinhaCustgroupComponent,
 		ConfiguracaoLinhaNcosComponent,
 		ConfiguracaoManobraLinhaComponent,
@@ -120,7 +123,8 @@ import { ConfiguracaoEstadoPortaComponent } from '../util-components/configuraca
 		ConfiguracaoServicosLinhaComponent,
 		ConfiguracaoPortaComponent,
 		ConfiguracaoPortaMetalicoComponent,
-		ConfiguracaoEstadoPortaComponent
+		ConfiguracaoEstadoPortaComponent,
+		AcsComponent
 	],
 	imports: [
 		/**

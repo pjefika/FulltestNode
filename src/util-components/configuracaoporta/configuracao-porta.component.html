@@ -1,5 +1,5 @@
 <div *ngIf="variavelHolderService.cadastro">
-    <h3>Configurações de Porta - {{variavelHolderService.cadastro.rede.tipo}}</h3>
+    <h3 class="titulo-da-pagina">Configurações de Porta - {{variavelHolderService.cadastro.rede.tipo}}</h3>
     <loading-component [searching]="isLoading" [searchWhat]="'Buscando Informações de Porta...'"></loading-component>
     <div *ngIf="!isLoading && confPorta">
         <configuracao-porta-metalico-component [confPorta]="confPorta" *ngIf="variavelHolderService.cadastro.rede.tipo === 'METALICA'"></configuracao-porta-metalico-component>

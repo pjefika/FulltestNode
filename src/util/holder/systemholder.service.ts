@@ -26,9 +26,9 @@ export class SystemHolderService {
     public subNavMenus: SubNav[]; // Aqui vai o enum de subnavs
     public liberarSubNav: boolean = false; // Libera a subnav
 
-    public sideNavAtivo: boolean = false;
-    public sideNavMenus: SideNav[];
-    public liberarSideNav: boolean = false;
+    public sideNavAtivo: boolean = false; // Aqui ativa e inativa sidenav
+    public sideNavMenus: SideNav[]; // Aqui vai o enum de sidenavs
+    public liberarSideNav: boolean = false; // Libera a sidenav
 
     public oldToastyMessages: [{ msg: string, type: string, time: number }]; // Toasty & Mensagem passadas pelo sistema.
 
@@ -36,6 +36,9 @@ export class SystemHolderService {
     public btnResumoInfosAtivo: boolean = false; // Mostra e esconde botão de informações de resumo.
 
     public qualView: string;
+
+    public jaPesquisouAcs: boolean = false;
+    public mensagemAlertAcs: Mensagem;
 
     constructor() { }
 

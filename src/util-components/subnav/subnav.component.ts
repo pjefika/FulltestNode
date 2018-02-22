@@ -25,15 +25,15 @@ export class SubnavComponent extends SuperComponentService implements OnInit {
     public ngOnInit() { }
 
     private abrecomponent(l: SubNav) {
-        if (!this.validaSeTemSideNav(l)) {
-            super.enabledisablesidenav(false);
-        }
         if (this.systemHolderService.liberarSubNav || l.ativo) {
             if (l.link) {
                 window.open(l.link);
             } else {
                 this.dynamicRouterService.component = l.component;
             }
+        }
+        if (!this.validaSeTemSideNav(l)) {
+            super.enabledisablesidenav(false);
         }
     }
 

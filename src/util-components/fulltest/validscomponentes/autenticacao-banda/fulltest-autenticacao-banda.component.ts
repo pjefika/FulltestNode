@@ -10,6 +10,7 @@ import { AutenticacaoBanda } from '../../../../viewmodel/fulltest/autenticacaoba
 @Component({
     selector: 'fulltest-autenticacao-banda-component',
     templateUrl: 'fulltest-autenticacao-banda.component.html',
+    styleUrls: ['fulltest-autenticacao-banda.component.css'],
     providers: [FulltestAutenticacaoBandaService]
 })
 
@@ -29,7 +30,7 @@ export class FulltestAutenticacaoBandaComponent extends SuperComponentService im
         super(toastyComponent, systemHolderService);
     }
 
-    public ngOnInit() { 
+    public ngOnInit() {
         // this.consultarAutenticacao();
     }
 

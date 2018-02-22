@@ -13,6 +13,7 @@ import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 @Component({
     selector: 'configuracao-servicos-linha-component',
     templateUrl: 'configuracao-servicos-linha.component.html',
+    styleUrls: ['configuracao-servicos-linha.component.css'],
     providers: [ConfiguracaoServicosLinhaService, ConfiguracaoManobraLinhaService]
 })
 

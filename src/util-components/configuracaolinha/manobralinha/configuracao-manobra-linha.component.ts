@@ -16,6 +16,7 @@ import { DynamicRouterService } from '../../dynamicrouter/dynamic-router.service
 @Component({
     selector: 'configuracao-manobra-linha-component',
     templateUrl: 'configuracao-manobra-linha.component.html',
+    styleUrls: ['configuracao-manobra-linha.component.css'],
     providers: [ConfiguracaoManobraLinhaService, ConfiguracoesGeraisLinhaService, ConfiguracaoLinhaTdmService]
 })
 

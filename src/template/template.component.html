@@ -65,8 +65,7 @@
             </div>
 
         </div>
-        <clr-vertical-nav *ngIf="systemHolderService.sideNavAtivo" [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="false"
-            [clr-nav-level]="2">
+        <clr-vertical-nav *ngIf="systemHolderService.sideNavAtivo" [clrVerticalNavCollapsible]="true" [clr-nav-level]="2">
             <sidenav-component [menus]="systemHolderService.sideNavMenus"></sidenav-component>
         </clr-vertical-nav>
     </div>

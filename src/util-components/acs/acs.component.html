@@ -1,0 +1,40 @@
+<div class="move-down">
+    <clr-stack-view *ngIf="variavelHolderService.equipamentos && !isLoading">
+        <clr-stack-header>Informações ACS Motive
+            <button class="stack-action btn btn-sm btn-link" (click)="doGetEquipamentoAssoc()" type="button" [disabled]="isLoading">
+                <clr-icon shape="refresh"></clr-icon>
+                Atualizar
+            </button>
+        </clr-stack-header>
+        <clr-stack-block *ngFor="let eqp of variavelHolderService.equipamentos">
+            <clr-stack-label>{{eqp.manufacturer | capitalize}} - {{eqp.deviceId.serialNumber | uppercase}}</clr-stack-label>
+            <clr-stack-content>
+                Ativo desde:
+                <b>{{eqp.firstContactTime | date:'dd/MM/yyyy HH:mm'}}</b>
+            </clr-stack-content>
+            <clr-stack-block>
+                <clr-stack-label>
+                    <button type="button" class="btn btn-icon btn-sm btn-link" (click)="abreSearchDevice(eqp.deviceGUID)">
+                        Visualizar na ACS
+                        <clr-icon shape="search"></clr-icon>
+                    </button>
+                </clr-stack-label>
+            </clr-stack-block>
+        </clr-stack-block>
+    </clr-stack-view>
+    <div *ngIf="!variavelHolderService.equipamentos">
+        <div class="row">
+            <div class="col-xs-9">
+                <h4>Informações ACS Motive</h4>
+            </div>
+            <div class="col-xs-3">
+                <button class="stack-action btn btn-sm btn-link btn-align" (click)="doGetEquipamentoAssoc()" type="button" [disabled]="isLoading">
+                    <clr-icon shape="refresh"></clr-icon>
+                    Atualizar
+                </button>
+            </div>
+        </div>
+    </div>
+    <alert-component *ngIf="!isLoading" [mensagem]="mensagem" [ativo]="ativo" [closeable]="false"></alert-component>
+    <loading-component [searching]="isLoading" [searchWhat]="'Buscando Equipamentos ACS - Motive...'"></loading-component>
+</div>
