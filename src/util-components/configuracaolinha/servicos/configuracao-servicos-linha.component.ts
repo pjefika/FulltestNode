@@ -78,7 +78,6 @@ export class ConfiguracaoServicosLinhaComponent extends SuperComponentService im
         }
     }
 
-
     private getServicos() {
         this.isLoading = true;
         this.configuracaoServicosLinhaService
@@ -108,14 +107,22 @@ export class ConfiguracaoServicosLinhaComponent extends SuperComponentService im
     }
 
     private setServicos() {
-
         this.btnSetServicoNome = "Aguarde...";
         this.btnSetServicoDisabled = true;
-
         let lstServSelect = this.formServicosSelecionada.value.servicos;
-
-        console.log(lstServSelect);
-
+        this.configuracaoServicosLinhaService
+            .setEditarServicos(this.variavelHolderService.cadastro, lstServSelect)
+            .then(resposta => {
+                this.variavelHolderService.cadastroLinha = resposta;
+                super.callToasty("Sucesso.", "Serviços Alterados com sucesso.", "success", 5000);
+                this.dynamicRouterService.component = ConfiguracaoLinhaComponent;
+            }, erro => {
+                super.callToasty("Ops, aconteceu algo.", erro.mError, "error", 5000);
+            })
+            .then(() => {
+                this.btnSetServicoNome = "Alterar";
+                this.btnSetServicoDisabled = false;
+            });
     }
 
 }
