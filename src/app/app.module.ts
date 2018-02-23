@@ -16,7 +16,7 @@ import { VariavelHolderService } from '../util/holder/variavelholder.service';
 import { SystemHolderService } from '../util/holder/systemHolder.service';
 import { ObjKeysPipe, KeyBeautifyingPipe, Capitalize } from '../util/objpipe/objpipe.service';
 import { Ng2OrderModule } from 'ng2-order-pipe'
-//Componentes
+//Componentes do Sistema
 import { TemplateComponent } from '../template/template.component';
 import { LoginComponent } from '../login/login.component';
 import { UtilService } from '../util/util.service';
@@ -68,7 +68,8 @@ import { ConfiguracaoLinhaImsComponent } from '../util-components/configuracaoli
 import { AcsComponent } from '../util-components/acs/acs.component';
 import { ManobrarComponent } from '../util-components/manobrar/manobrar.component';
 import { CentraisNortelComponent } from '../util-components/configuracaolinha/centrais-nortel/centrais-nortel.component';
-
+import { CadastroCrmViewComponent } from '../util-components/cadastro/crm-view/cadastro-crm-view.component';
+import { CadastroCrmTableAssertsComponent } from '../util-components/cadastro/crm-view/tableasserts/cadastro-crm-table-asserts.component';
 
 @NgModule({
 	declarations: [
@@ -128,7 +129,9 @@ import { CentraisNortelComponent } from '../util-components/configuracaolinha/ce
 		ConfiguracaoEstadoPortaComponent,
 		AcsComponent,
 		ManobrarComponent,
-		CentraisNortelComponent
+		CentraisNortelComponent,
+		CadastroCrmViewComponent,
+		CadastroCrmTableAssertsComponent
 	],
 	imports: [
 		/**
@@ -195,7 +198,9 @@ import { CentraisNortelComponent } from '../util-components/configuracaolinha/ce
 		ConfiguracaoPortaComponent,
 		ConfiguracaoPortaMetalicoComponent,
 		ConfiguracaoEstadoPortaComponent,
-		ManobrarComponent
+		ManobrarComponent,
+		CadastroCrmViewComponent,
+		CadastroCrmTableAssertsComponent
 	]
 })
 

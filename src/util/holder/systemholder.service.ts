@@ -42,6 +42,9 @@ export class SystemHolderService {
 
     public centraisNortelAtivo: boolean = false;
 
+    public isFulltestRunning: boolean = false;
+    public resultadoGlobalFulltest: boolean = false;
+
     constructor() { }
 
 }

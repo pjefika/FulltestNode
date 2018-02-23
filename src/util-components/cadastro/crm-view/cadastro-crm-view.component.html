@@ -1,12 +1,6 @@
 <div *ngIf="cadastro">
     <h3 class="titulo-pagina">Informações do Cliente</h3>
     <clr-stack-view class="col-xs-12">
-        <clr-stack-header>
-            <button class="stack-action btn btn-sm btn-link" (click)="systemHolderService.modalWizardCadastroIsOpen = true" type="button">
-                <clr-icon shape="pencil"></clr-icon>
-                Editar Cadastro
-            </button>
-        </clr-stack-header>
         <ng-container *ngFor="let entry of cadastro | objkeys" ngProjectAs="clr-stack-block">
             <ng-container *ngIf="hasStackBlockAtAll(entry)" ngProjectAs="clr-stack-block">
                 <generic-stack-block *ngIf="hasStackBlockDetail(entry)" [obj]="entry" ngProjectAs="clr-stack-block"></generic-stack-block>

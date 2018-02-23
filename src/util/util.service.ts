@@ -7,7 +7,8 @@ import { SystemHolderService } from './holder/systemHolder.service';
 @Injectable()
 export class UtilService {
 
-    constructor(private router: Router, public systemHolderService: SystemHolderService) { }
+    constructor(private router: Router, 
+        public systemHolderService: SystemHolderService) { }
 
     public isLogado(): Promise<boolean> {
         let localObj = JSON.parse(sessionStorage.getItem("user"));
@@ -44,6 +45,7 @@ export class UtilService {
     * Falso = CO
     */
     public validUser(): Boolean {
+        // console.log(this.systemHolderService.qualCadastro);
         let valid: boolean = false;
         if (sessionStorage.getItem('user')) {
             let usr = JSON.parse(sessionStorage.getItem('user'));

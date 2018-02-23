@@ -1,0 +1,46 @@
+<div *ngIf="cadastro">
+    <table class="table table-compact table-vertical" style="margin: 7px 0 0 0;" *ngIf="validAssertFinish">
+        <tbody>
+            <tr>
+                <th colspan="2">Tabela Resumo</th>
+            </tr>
+            <tr>
+                <th>Origem</th>
+                <td>{{cadastro.rede.planta === 'VIVO1' ? 'VIVO1 - Sophia' : 'VIVO2'}}</td>
+            </tr>
+            <tr *ngIf="cadastro.rede.planta=='VIVO1'">
+                <th>Eventos Massivos</th>
+                <td>
+                    <clr-icon shape="check" class="is-success" *ngIf="cadastro.eventos.length==0"></clr-icon>
+                    <clr-icon shape="times" class="is-error" *ngIf="cadastro.eventos.length>0"></clr-icon>
+                </td>
+            </tr>
+            <tr>
+                <th>Cadastro</th>
+                <td>
+                    <clr-icon shape="check" class="is-success" *ngIf="infoCadastro"></clr-icon>
+                    <clr-icon shape="times" class="is-error" *ngIf="!infoCadastro"></clr-icon>
+                </td>
+            </tr>
+            <tr>
+                <th>Sem Bloqueio</th>
+                <td>
+                    <clr-icon shape="check" class="is-success" *ngIf="!infoBloqueio"></clr-icon>
+                    <clr-icon shape="times" class="is-error" *ngIf="infoBloqueio"></clr-icon>
+                </td>
+            </tr>
+            <tr>
+                <th>Fulltest</th>
+                <td>
+                    <span class="spinner spinner-sm" *ngIf="systemHolderService.isFulltestRunning">
+                        Loading...
+                    </span>
+                    <div *ngIf="!systemHolderService.isFulltestRunning">
+                        <clr-icon shape="check" class="is-success" *ngIf="systemHolderService.resultadoGlobalFulltest"></clr-icon>
+                        <clr-icon shape="times" class="is-error" *ngIf="!systemHolderService.resultadoGlobalFulltest"></clr-icon>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

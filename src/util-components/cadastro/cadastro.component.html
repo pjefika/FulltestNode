@@ -14,8 +14,18 @@
         </div>
     </div>
 
-    <div *ngIf="systemHolderService.qualView === 'CRM'">
+    <div *ngIf="systemHolderService.qualView === 'CRM' && variavelHolderService.cadastro">
         <!-- Ver qual vai ser os comp de view para o CRM -->
+        <div class="row">
+            <div class="col-xs">
+                <cadastro-crm-view-component [cadastro]="cadastro"></cadastro-crm-view-component>
+            </div>
+            <div class="col-xs">
+                <acs-component *ngIf="variavelHolderService.cadastro" [designador]="variavelHolderService.cadastro.designador"></acs-component>
+            </div>
+        </div>
+        <cadastro-crm-table-asserts-component [cadastro]="cadastro"></cadastro-crm-table-asserts-component>
+        <fulltest-component class="comp-margin-top"></fulltest-component>
     </div>
     <evento-massivo-component *ngIf="variavelHolderService.cadastro" [eventos]="variavelHolderService.cadastro.eventos"></evento-massivo-component>
 </div>

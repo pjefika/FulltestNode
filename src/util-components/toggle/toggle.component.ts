@@ -16,14 +16,17 @@ export class ToggleComponent implements OnInit {
 
     constructor(public systemHolderService: SystemHolderService) { }
 
-    public ngOnInit() { }
+    public ngOnInit() {
+        this.systemHolderService.qualCadastro = this.qualCadastro;
+    }
 
     private hitclose() {
         this.modalIsOpen = false;
         this.systemHolderService.qualCadastro = this.qualCadastro;
     }
 
-    private escolheEFecha() {
+    private escolheEFecha(value: string) {
+        this.qualCadastro = value;
         this.nameButton = "Aguarde...";
         this.disableButton = true;
         this.systemHolderService.qualCadastro = this.qualCadastro;

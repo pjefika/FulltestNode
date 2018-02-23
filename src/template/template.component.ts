@@ -11,6 +11,8 @@ import { SuperComponentService } from '../util/supercomponent/supercomponent.ser
 import { ToastyComponent } from '../util-components/toasty/toasty.component';
 import { HolderResetService } from '../util/holder/holderreset.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { CadastroCrmViewComponent } from '../util-components/cadastro/crm-view/cadastro-crm-view.component';
+import { SubNavMockCrm } from '../util/mocks/subsnav/subNavMockCrm';
 
 @Component({
     selector: 'template-component',
@@ -81,11 +83,15 @@ export class TemplateComponent extends SuperComponentService implements OnInit {
     private busca() {
         this.holderReset();
         this.templateService.setFalseMenus();
+        this.setToDynamicComponent(CadastroComponent);
         if (this.util.validUser()) {
             // CRM
+            // this.setToDynamicComponent(CadastroCrmVFiewComponent);
+            this.systemHolderService.qualView = "CRM";
+            this.systemHolderService.subNavMenus = SubNavMockCrm;
         } else {
             // CO           
-            this.setToDynamicComponent(CadastroComponent);
+            // this.setToDynamicComponent(CadastroComponent);
             this.systemHolderService.qualView = "CO";
             this.systemHolderService.subNavMenus = SubNavMockCo;
         }

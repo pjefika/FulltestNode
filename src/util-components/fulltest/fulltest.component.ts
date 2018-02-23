@@ -44,9 +44,11 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
                 break;
             case "CRM":
                 if (this.systemHolderService.ableMock) {
-                    this.getCertificationCRMMock();
+                    // this.getCertificationCRMMock();
+                    this.getCertificationCOMock();
                 } else {
-                    this.getCertificationCRM();
+                    // this.getCertificationCRM();
+                    this.getCertificationCO();
                 }
                 break;
         }
@@ -54,11 +56,13 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
 
     private getCertificationCO() {
         this.isLoading = true;
+        this.systemHolderService.isFulltestRunning = true;
         this.fulltestService
             .getCertificationCO(this.variavelHolderService.cadastro)
             .then(resposta => {
                 if (super.ifIsFulltest(resposta)) {
                     this.variavelHolderService.certification = resposta;
+                    this.systemHolderService.resultadoGlobalFulltest = this.variavelHolderService.certification.fulltest.resultado;
                 } else {
                     super.callToasty("Ops, Aconteceu algo.", "Informações de Fulltest veio vazia, por favor tente novamente.", "error", 5000);
                 }
@@ -67,16 +71,18 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
             })
             .then(() => {
                 this.isLoading = false;
-                console.log(this.variavelHolderService.certification);
-
+                this.systemHolderService.isFulltestRunning = false;
+                // console.log(this.variavelHolderService.certification);
             });
     }
 
     private getCertificationCOMock() {
         this.isLoading = true;
+        this.systemHolderService.isFulltestRunning = true;
         setTimeout(() => {
             this.variavelHolderService.certification = this.fulltestService.getCertificationCOMock();
             this.isLoading = false;
+            this.systemHolderService.isFulltestRunning = false;
         }, 1000);
     }
 

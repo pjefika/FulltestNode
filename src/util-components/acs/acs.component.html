@@ -1,6 +1,7 @@
-<div class="move-down">
+<div>
+    <h3 class="titulo-pagina" *ngIf="variavelHolderService.equipamentos && !isLoading">Informações do Cliente</h3>
     <clr-stack-view *ngIf="variavelHolderService.equipamentos && !isLoading">
-        <clr-stack-header>Informações ACS Motive
+        <clr-stack-header>
             <button class="stack-action btn btn-sm btn-link" (click)="doGetEquipamentoAssoc()" type="button" [disabled]="isLoading">
                 <clr-icon shape="refresh"></clr-icon>
                 Atualizar
@@ -25,7 +26,7 @@
     <div *ngIf="!variavelHolderService.equipamentos">
         <div class="row">
             <div class="col-xs-9">
-                <h4>Informações ACS Motive</h4>
+                <h3 class="titulo-pagina">Informações ACS Motive</h3>
             </div>
             <div class="col-xs-3">
                 <button class="stack-action btn btn-sm btn-link btn-align" (click)="doGetEquipamentoAssoc()" type="button" [disabled]="isLoading">

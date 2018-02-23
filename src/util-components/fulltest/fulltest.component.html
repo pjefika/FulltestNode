@@ -1,5 +1,5 @@
 <div>
-    <h3 class="titulo-da-pagina">Informações de Fulltest</h3>
+    <h3 [class]="systemHolderService.qualCadastro != 'CRM'? 'titulo-da-pagina': ''">Informações de Fulltest</h3>
     <div *ngIf="variavelHolderService.certification && !isLoading">
         <info-geral-fulltest-component [certification]="variavelHolderService.certification"></info-geral-fulltest-component>
         <info-fulltest-table-component [certification]="variavelHolderService.certification"></info-fulltest-table-component>
