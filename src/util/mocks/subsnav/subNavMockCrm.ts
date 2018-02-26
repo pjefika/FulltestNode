@@ -1,10 +1,10 @@
 import { SubNav } from "../../../viewmodel/subnav/subnav";
-import { CadastroCrmViewComponent } from "../../../util-components/cadastro/crm-view/cadastro-crm-view.component";
+import { CadastroComponent } from "../../../util-components/cadastro/cadastro.component";
 
 export const SubNavMockCrm: SubNav[] = [
     {
         nome: "Fulltest",
-        component: CadastroCrmViewComponent
+        component: CadastroComponent
     },
     {
         nome: "Link ACS Arris",

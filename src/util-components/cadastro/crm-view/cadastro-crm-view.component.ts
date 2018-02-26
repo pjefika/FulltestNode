@@ -22,8 +22,7 @@ export class CadastroCrmViewComponent implements OnInit {
 
     public ngOnInit() {
         this.validAsserts();
-        console.log(this.cadastro);
-
+        // console.log(this.cadastro);
     }
 
     public hasStackBlockDetail(obj: any) {
