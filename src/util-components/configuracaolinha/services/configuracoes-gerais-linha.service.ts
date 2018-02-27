@@ -20,7 +20,8 @@ export class ConfiguracoesGeraisLinhaService extends SuperService {
             rqst: "post",
             command: this.urlService.pathStealerAPI + "linha/",
             _data: _data,
-            otherUrl: "http://10.40.198.168:8080/",
+            path: "NotImplemented",
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 60000
         }
         return this.urlService.request(this.infoResquest)
@@ -37,9 +38,10 @@ export class ConfiguracoesGeraisLinhaService extends SuperService {
         _data = { dms: dms, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
+            path: "NotImplemented",
             command: this.urlService.pathDmsAPI + "dms/consultarConfiguracoesShelf",
             _data: _data,
-            otherUrl: "http://10.200.35.67:80/",
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 200000
         }
         return this.urlService.request(this.infoResquest)
@@ -58,7 +60,8 @@ export class ConfiguracoesGeraisLinhaService extends SuperService {
             rqst: "post",
             command: this.urlService.pathDmsAPI + "dms/resetarPorta",
             _data: _data,
-            otherUrl: "http://10.200.35.67:80/",
+            path: "NotImplemented",
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 200000
         }
         //(this.infoResquest)

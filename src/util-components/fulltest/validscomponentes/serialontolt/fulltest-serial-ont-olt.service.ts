@@ -20,7 +20,9 @@ export class FulltestSerialOntOltService extends SuperService {
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathFulltestAPI + "configPorta/setOntToOlt",
+            path: "NotImplemented",
             _data: _data,
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
@@ -37,7 +39,9 @@ export class FulltestSerialOntOltService extends SuperService {
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathFulltestAPI + "configPorta/unsetOntFromOlt",
+            path: "NotImplemented",
             _data: _data,
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 120000
         }
         return this.urlService.request(this.infoResquest)

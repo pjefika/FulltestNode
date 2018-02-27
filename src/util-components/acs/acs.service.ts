@@ -16,7 +16,9 @@ export class AcsService extends SuperService {
         _data = { criterio: "SUBSCRIBER", input: input, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
+            path: "NotImplemented",
             command: this.urlService.pathAcs + "search/search",
+            otherUrl: this.urlService.otherUrlMake(),
             _data: _data,
             timeout: 60000
         };
@@ -29,11 +31,8 @@ export class AcsService extends SuperService {
 
     public abreSearchDevice(deviceId: number) {
         this.infoResquest = {
-            rqst: "",
-            command: "",
             _data: deviceId,
-            otherUrl: "http://10.40.198.168/acs/searchEqp/",
-            timeout: 60000
+            otherUrl: "http://10.40.198.168/acs/searchEqp/"
         };
         this.urlService.linkurl(this.infoResquest);
     }

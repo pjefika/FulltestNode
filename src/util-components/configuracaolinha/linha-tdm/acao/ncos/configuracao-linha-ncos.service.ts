@@ -16,7 +16,8 @@ export class ConfiguracaoLinhaNcosService extends SuperService {
         this.infoResquest = {
             rqst: "get",
             command: this.urlService.pathDmsAPI + "dms/ncos",
-            otherUrl: "http://10.200.35.67:80/",
+            path: "NotImplemented",
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 1200000
         }
         return this.urlService.request(this.infoResquest)
@@ -35,7 +36,8 @@ export class ConfiguracaoLinhaNcosService extends SuperService {
             rqst: "post",
             command: this.urlService.pathDmsAPI + "dms/editarNcos",
             _data: _data,
-            otherUrl: "http://10.200.35.67:80/",
+            path: "NotImplemented",
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 200000
         }
         return this.urlService.request(this.infoResquest)

@@ -17,7 +17,26 @@ export class FulltestService extends SuperService {
         _data = { customer: cadastro, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathCustomerAPI + "certification/execByParam/",
+            path: "customerAPI/",
+            command: "certification/execByParam/",
+            _data: _data,
+            timeout: 1200000
+        }
+        return this.urlService.request(this.infoResquest)
+            .then(data => {
+                return data as Certification
+            })
+            .catch(super.handleError);
+    }
+
+    public getCertificationCOParam(instancia: string) {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let _data: { parameter: string, executor: string };
+        _data = { parameter: instancia, executor: usr.user };
+        this.infoResquest = {
+            rqst: "post",
+            path: "customerAPI/",
+            command: "certification/execByParam/",
             _data: _data,
             timeout: 1200000
         }

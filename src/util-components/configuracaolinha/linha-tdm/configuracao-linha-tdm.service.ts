@@ -20,7 +20,8 @@ export class ConfiguracaoLinhaTdmService extends SuperService {
             rqst: "post",
             command: this.urlService.pathDmsAPI + "dms/consultar",
             _data: _data,
-            otherUrl: "http://10.200.35.67:80/",
+            path: "NotImplemented",
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 50000
         }
         return this.urlService.request(this.infoResquest)

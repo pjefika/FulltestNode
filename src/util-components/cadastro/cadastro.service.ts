@@ -15,10 +15,11 @@ export class CadastroService extends SuperService {
         _data = { parameter: instancia, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathCustomerAPI + "customer/findByParameter",
+            path: "customerAPI/",
+            command: "customer/findByParameter",
             _data: _data,
             timeout: 63000
-        };
+        };        
         return this.urlService.request(this.infoResquest)
             .then(response => {
                 return response as Customer

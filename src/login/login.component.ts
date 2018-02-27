@@ -16,8 +16,8 @@ import { SystemHolderService } from '../util/holder/systemHolder.service';
 
 export class LoginComponent extends AlertService implements OnInit {
 
-    usuario = new Usuario();
-    logando: boolean = false;
+    private usuario = new Usuario();
+    private logando: boolean = false;
 
     constructor(public util: UtilService,
         private loginService: LoginService,

@@ -96,6 +96,7 @@ export class CentraisNortelComponent extends SuperComponentService implements On
             .connection(conec)
             .then(resposta => {
                 this.listInfoNortelConection = resposta;
+                super.callToasty("Sucesso", "Comando realizado com sucesso", "success", 5000);
             }, erro => {
                 super.callToasty("Ops, ocorreu um erro.", erro.mError, "error", 5000);
             })
@@ -112,6 +113,7 @@ export class CentraisNortelComponent extends SuperComponentService implements On
             .connectSwitch(ip)
             .then(data => {
                 this.getContextDMS();
+                super.callToasty("Sucesso", "Comando realizado com sucesso", "success", 5000);
             }, error => {
                 super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
             })
@@ -127,6 +129,7 @@ export class CentraisNortelComponent extends SuperComponentService implements On
             .disconnectSwitch(ip)
             .then(data => {
                 this.getContextDMS();
+                super.callToasty("Sucesso", "Comando realizado com sucesso", "success", 5000);
             }, error => {
                 super.callToasty("Ops, ocorreu um erro.", error.mError, "error", 5000);
             })

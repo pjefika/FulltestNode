@@ -13,7 +13,9 @@ export class EnumService extends SuperService {
         this.infoResquest = {
             rqst: "get",
             command: this.urlService.pathFulltestAPI + "listEnums/tecTv",
-            timeout: 5000
+            path: "NotImplemented",
+            otherUrl: this.urlService.otherUrlMake(),
+            timeout: 10000
         };
         return this.urlService
             .request(this.infoResquest)
@@ -27,7 +29,9 @@ export class EnumService extends SuperService {
         this.infoResquest = {
             rqst: "get",
             command: this.urlService.pathFulltestAPI + "listEnums/tecVoz",
-            timeout: 5000
+            path: "NotImplemented",
+            otherUrl: this.urlService.otherUrlMake(),
+            timeout: 10000
         };
         return this.urlService
             .request(this.infoResquest)
@@ -41,7 +45,9 @@ export class EnumService extends SuperService {
         this.infoResquest = {
             rqst: "get",
             command: this.urlService.pathFulltestAPI + "listEnums/velocidades",
-            timeout: 5000
+            path: "NotImplemented",
+            otherUrl: this.urlService.otherUrlMake(),
+            timeout: 10000
         };
         return this.urlService
             .request(this.infoResquest)

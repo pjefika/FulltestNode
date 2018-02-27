@@ -12,8 +12,9 @@ export class LoginService extends SuperService {
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathAuth + "autentica/verificarCredencial",
+            path: "NotImplemented",
             _data: usuario,
-            otherUrl: "http://10.40.195.81:8080/",
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 6000
         }
         return this.urlService.request(this.infoResquest)
@@ -28,7 +29,8 @@ export class LoginService extends SuperService {
             rqst: "get",
             command: this.urlService.pathAuth + "autentica/consultar/",
             _data: usuario.login,
-            otherUrl: "http://10.40.195.81:8080/",
+            path: "NotImplemented",
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 6000
         }
         return this.urlService.request(this.infoResquest)

@@ -40,7 +40,7 @@ export class SuperComponentService extends AlertService {
 
     public ifIsFulltest(certification: Certification): boolean {
         let valid: boolean = false;
-        if (certification) {
+        if (certification.id) {
             return true;
         }
         return valid;

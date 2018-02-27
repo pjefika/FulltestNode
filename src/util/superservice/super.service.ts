@@ -29,4 +29,13 @@ export class SuperService {
         }
         return Promise.reject(er);
     }
+
+    public verifyIsReturningDataException(data: any): Promise<boolean> {
+        let valid: boolean = false;
+        if (data.message && data.message === "Falha ao acionar Serviço!") {
+            valid = true;
+        }
+        return Promise.reject(valid);
+    }
+
 }

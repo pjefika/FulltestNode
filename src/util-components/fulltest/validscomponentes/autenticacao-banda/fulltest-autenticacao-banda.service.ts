@@ -18,7 +18,8 @@ export class FulltestAutenticacaoBandaService extends SuperService {
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathStealerAPI + "oss/auth/",
-            otherUrl: "http://10.40.198.168:8080/",
+            path: "NotImplemented",
+            otherUrl: this.urlService.otherUrlMake(),
             _data: _data,
             timeout: 120000
         }

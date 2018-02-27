@@ -22,7 +22,8 @@ export class ConfiguracaoManobraLinhaService extends SuperService {
             rqst: "post",
             command: this.urlService.pathDmsAPI + "dms/manobrarLinha",
             _data: _data,
-            otherUrl: "http://10.40.198.168:8080/",
+            path: "NotImplemented",
+            otherUrl: this.urlService.otherUrlMake(),
             timeout: 200000
         }
         return this.urlService.request(this.infoResquest)
@@ -41,7 +42,8 @@ export class ConfiguracaoManobraLinhaService extends SuperService {
             rqst: "post",
             command: this.urlService.pathDmsAPI + "dms/editarServicos",
             _data: _data,
-            otherUrl: "http://10.40.198.168:8080/",
+            path: "NotImplemented",
+            otherUrl: this.urlService.otherUrlMake(),
             timeout: 200000
         }
         return this.urlService.request(this.infoResquest)

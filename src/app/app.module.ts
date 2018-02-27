@@ -70,6 +70,7 @@ import { ManobrarComponent } from '../util-components/manobrar/manobrar.componen
 import { CentraisNortelComponent } from '../util-components/configuracaolinha/centrais-nortel/centrais-nortel.component';
 import { CadastroCrmViewComponent } from '../util-components/cadastro/crm-view/cadastro-crm-view.component';
 import { CadastroCrmTableAssertsComponent } from '../util-components/cadastro/crm-view/tableasserts/cadastro-crm-table-asserts.component';
+import { DirectUrlsService } from '../util/urlservice/direct.urls.service';
 
 @NgModule({
 	declarations: [
@@ -156,6 +157,7 @@ import { CadastroCrmTableAssertsComponent } from '../util-components/cadastro/cr
 		SystemHolderService,
 		UtilService,
 		UrlService,
+		DirectUrlsService,
 		SuperService,
 		DynamicRouterService,
 		AlertService,

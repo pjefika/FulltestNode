@@ -12,13 +12,16 @@ export class ConfiguracaoPortaService extends SuperService {
     }
 
     public getConfigPorta(cadastro: Customer): Promise<ConfPorta> {
+        delete cadastro.servicos.origem;
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { cust: any, executor: string };
         _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
             command: this.urlService.pathFulltestAPI + "configPorta/",
+            path: "NotImplemented",
             _data: _data,
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 1200000
         }
         return this.urlService.request(this.infoResquest)

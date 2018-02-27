@@ -13,8 +13,9 @@ export class CentraisNortelService extends SuperService {
     public getContextDMS(): Promise<InfoNortelConection[]> {
         this.infoResquest = {
             rqst: "get",
+            path: "NotImplemented",
             command: this.urlService.pathDmsAPI + "contextDMS/",
-            otherUrl: "http://10.200.35.67:80/",
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 60000
         }
         return this.urlService.request(this.infoResquest)
@@ -29,7 +30,8 @@ export class CentraisNortelService extends SuperService {
             rqst: "get",
             command: this.urlService.pathDmsAPI + "contextDMS/connection/",
             _data: conection,
-            otherUrl: "http://10.200.35.67:80/",
+            path: "NotImplemented",
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 60000
         }
         return this.urlService.request(this.infoResquest)
@@ -46,7 +48,8 @@ export class CentraisNortelService extends SuperService {
             rqst: "post",
             command: this.urlService.pathDmsAPI + "contextDMS/connectSwitch",
             _data: _data,
-            otherUrl: "http://10.200.35.67:80/",
+            path: "NotImplemented",
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 60000
         }
         return this.urlService.request(this.infoResquest)
@@ -61,9 +64,10 @@ export class CentraisNortelService extends SuperService {
         _data = { ip: ip }
         this.infoResquest = {
             rqst: "post",
+            path: "NotImplemented",
             command: this.urlService.pathDmsAPI + "contextDMS/disconnectSwitch",
             _data: _data,
-            otherUrl: "http://10.200.35.67:80/",
+            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 60000
         }
         return this.urlService.request(this.infoResquest)
