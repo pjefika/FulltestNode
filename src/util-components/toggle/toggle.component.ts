@@ -22,19 +22,13 @@ export class ToggleComponent implements OnInit {
 
     private hitclose() {
         this.modalIsOpen = false;
-        this.systemHolderService.qualCadastro = this.qualCadastro;
     }
 
-    private escolheEFecha(value: string) {
-        this.qualCadastro = value;
+    private escolheEFecha() {
         this.nameButton = "Aguarde...";
-        this.disableButton = true;
         this.systemHolderService.qualCadastro = this.qualCadastro;
-        setTimeout(() => {
-            this.nameButton = "Voltar";
-            this.disableButton = false;
-            this.modalIsOpen = false;
-        }, 200);
+        this.nameButton = "Voltar";
+        this.hitclose();
     }
 
 }
