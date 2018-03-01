@@ -13,10 +13,13 @@
             <tr class="left">
                 <td class="left">Resultado</td>
                 <td>
-                    <clr-icon shape="check" *ngIf="certification.resultado" class="is-success"></clr-icon>
-                    <clr-icon shape="times" *ngIf="!certification.resultado" class="is-error"></clr-icon>
+                    <clr-icon shape="check" *ngIf="certification.resultado === 'OK'" class="isSuccess"></clr-icon>
+                    <clr-icon shape="times" *ngIf="certification.resultado === 'FISICAL' || certification.resultado === 'FORWARDED_CO' || certification.resultado === 'TO_FIX'"
+                        class="isError"></clr-icon>
+                    <clr-icon shape="exclamation-triangle" *ngIf="certification.resultado === 'FIXED'" class="isWarning"></clr-icon>
                 </td>
             </tr>
         </tbody>
     </table>
+    <alert-component [mensagem]="mensagem" [ativo]="ativo" [closeable]="false"></alert-component>
 </div>

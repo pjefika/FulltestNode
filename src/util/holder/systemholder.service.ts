@@ -7,7 +7,7 @@ import { SideNav } from '../../viewmodel/sidenav/sidenav';
 export class SystemHolderService {
 
     public isLinkProd: boolean = false; // Valida se link é produção ou não
-    public ableMock: boolean = true; // Habilita mock
+    public ableMock: boolean = false; // Habilita mock
 
     public mensagemAntigas: Mensagem[]; // Alerts e Toastys ocorridos na sessão do usuário
 
@@ -38,7 +38,6 @@ export class SystemHolderService {
     public qualView: string;
 
     public jaPesquisouAcs: boolean = false;
-    public mensagemAlertAcs: Mensagem;
 
     public centraisNortelAtivo: boolean = false;
 

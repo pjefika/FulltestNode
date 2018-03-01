@@ -20,7 +20,7 @@ export class VariavelHolderService {
 
     public confPorta: ConfPorta;
 
-    public equipamento: Equipamento[];
+    public equipamentos: Equipamento[];
 
     public certificationValidManobra: Fulltest;
 

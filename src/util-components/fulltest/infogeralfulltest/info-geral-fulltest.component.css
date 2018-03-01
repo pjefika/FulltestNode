@@ -1,0 +1,11 @@
+.isSuccess {
+    color: green;
+}
+
+.isWarning {
+    color: orange;
+}
+
+.isError {
+    color: red;
+}

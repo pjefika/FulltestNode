@@ -29,7 +29,7 @@ export class AcsComponent extends SuperComponentService implements OnInit {
         if (!this.systemHolderService.jaPesquisouAcs) {
             this.doGetEquipamentoAssoc();
         } else {
-            // super.callAlert(this.systemHolderService.mensagemAlertAcs.type, this.systemHolderService.mensagemAlertAcs.msg);
+            this.mountAlert();
         }
     }
 
@@ -43,15 +43,14 @@ export class AcsComponent extends SuperComponentService implements OnInit {
     }
 
     private getEquipamentoAssoc() {
-        this.variavelHolderService.equipamento = null;
+        this.variavelHolderService.equipamentos = null;
         this.isLoading = true;
         this.acsService
             .getEquipamentoAssoc(this.designador)
             .then(resposta => {
-                this.variavelHolderService.equipamento = resposta;
+                this.variavelHolderService.equipamentos = resposta;
             }, erro => {
-                super.callAlert("alert-warning", "Cliente não possui equipamento associado na motive.");
-                this.systemHolderService.mensagemAlertAcs = { type: "alert-warning", msg: "Cliente não possui equipamento associado na motive." };
+                this.mountAlert();
             })
             .then(() => {
                 this.isLoading = false;
@@ -60,16 +59,22 @@ export class AcsComponent extends SuperComponentService implements OnInit {
     }
 
     private getEquipamentoAssocMock() {
-        this.variavelHolderService.equipamento = null;
+        this.variavelHolderService.equipamentos = null;
         this.isLoading = true;
         setTimeout(() => {
-            this.variavelHolderService.equipamento = this.acsService.getEquipamentoAssocMock();
+            this.variavelHolderService.equipamentos = this.acsService.getEquipamentoAssocMock();
             this.isLoading = false;
         }, 1000);
     }
 
     private abreSearchDevice(deviceId: number) {
         this.acsService.abreSearchDevice(deviceId);
+    }
+
+    private mountAlert() {
+        if (!this.variavelHolderService.equipamentos) {
+            super.callAlert("alert-warning", "Cliente não possui equipamento associado na motive.");
+        }
     }
 
 }
