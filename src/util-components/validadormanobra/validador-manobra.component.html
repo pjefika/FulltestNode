@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-md marginbottom">
+        <loading-component [searching]="isLoadingGetValid" [searchWhat]="'Realizando Fulltest'"></loading-component>
+        <div *ngIf="!isLoadingGetValid && variavelHolderService.certificationValidManobra">
+            <h3 class="titulo-da-pagina">Informações de Manobra</h3>
+            <validador-info-fulltest-table-component [fulltest]="variavelHolderService.certificationValidManobra"></validador-info-fulltest-table-component>
+            <validador-manobra-fulltest-table-component [fulltest]="variavelHolderService.certificationValidManobra"></validador-manobra-fulltest-table-component>
+        </div>
+    </div>
+    <div class="col-md" *ngIf="variavelHolderService.certificationValidManobra">
+        <h3 class="titulo-da-pagina">Informações de Manobra</h3>
+        <div *ngIf="analiseIsDone">
+            <validacoes-manobra-table-component class="marginspace" [analitico]="variavelHolderService.certificationValidManobraAnalitico"></validacoes-manobra-table-component>
+            <alert-component [mensagem]="mensagem" [ativo]="ativo" [closeable]="false"></alert-component>
+        </div>
+        <div *ngIf="!analiseIsDone">
+            <form class="compact">
+                <section class="form-block">
+                    <div class="form-group">
+                        <label>Ordem: </label>
+                        <label for="idordem" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left ahundredpercent"
+                            [class.invalid]="ordemInput.invalid && (ordemInput.dirty || ordemInput.touched)">
+                            <input ngModel name="ordem" type="text" id="idordem" [(ngModel)]="ordem" #ordemInput="ngModel" required placeholder="Insira a ordem"
+                                (change)="enterBtnInput()" class="ahundredpercent">
+                            <span class="tooltip-content">Este campo precisa ser preenchido</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="selecMotivo">Motivo Informado: </label>
+                        <div class="select ahundredpercent" id="selecMotivo">
+                            <select [(ngModel)]="motivoSelected" name="motivoSelected">
+                                <option *ngFor="let value of listaMotivos" [ngValue]="value.name">{{value.motivo}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+            </form>
+            <button class="btn btn-primary btn-block" [disabled]="btnValidarManobraDisabled" [clrLoading]="btnValidarManobraLoading"
+                (click)="doGetValidacaoAssertsMock()">{{btnValidarManobraName}}</button>
+        </div>
+    </div>
+</div>

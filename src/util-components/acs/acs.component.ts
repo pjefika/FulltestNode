@@ -29,7 +29,7 @@ export class AcsComponent extends SuperComponentService implements OnInit {
         if (!this.systemHolderService.jaPesquisouAcs) {
             this.doGetEquipamentoAssoc();
         } else {
-            super.callAlert(this.systemHolderService.mensagemAlertAcs.type, this.systemHolderService.mensagemAlertAcs.msg);
+            // super.callAlert(this.systemHolderService.mensagemAlertAcs.type, this.systemHolderService.mensagemAlertAcs.msg);
         }
     }
 

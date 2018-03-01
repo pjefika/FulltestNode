@@ -5,6 +5,7 @@ import { Certification } from '../../viewmodel/fulltest/certification';
 import { CadastroLinha } from '../../viewmodel/linha/cadlinha';
 import { ConfPorta } from '../../viewmodel/confporta/confporta';
 import { Equipamento } from '../../viewmodel/acs/equipamento';
+import { Analitico } from '../../viewmodel/manobrar/analitico';
 
 @Injectable()
 export class VariavelHolderService {
@@ -20,6 +21,10 @@ export class VariavelHolderService {
     public confPorta: ConfPorta;
 
     public equipamento: Equipamento[];
+
+    public certificationValidManobra: Fulltest;
+
+    public certificationValidManobraAnalitico: Analitico;
 
     constructor() { }
 }

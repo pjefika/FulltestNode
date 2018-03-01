@@ -64,7 +64,6 @@ export class UrlService extends DirectUrlsService implements RequestActionInterf
                 }
                 break;
             default:
-                console.log(infoResquest);
                 console.log("Não encontrado...");
                 break;
         }
@@ -99,9 +98,9 @@ export class UrlService extends DirectUrlsService implements RequestActionInterf
      */
     public postJoin(infoResquests: InfoRequest[]) {
         return Observable.forkJoin(
-            this.http.post(`${this.url}` + infoResquests[0].command, JSON.stringify(infoResquests[0]._data), this.options)
+            this.http.post(infoResquests[0].command, JSON.stringify(infoResquests[0]._data), this.options)
                 .map(resposta => resposta.json()),
-            this.http.post(`${this.url}` + infoResquests[1].command, JSON.stringify(infoResquests[1]._data), this.options)
+            this.http.post(infoResquests[1].command, JSON.stringify(infoResquests[1]._data), this.options)
                 .map(resposta => resposta.json())
         )
             .map(resposta => {

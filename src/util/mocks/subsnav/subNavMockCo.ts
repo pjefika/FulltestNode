@@ -3,7 +3,7 @@ import { CadastroComponent } from "../../../util-components/cadastro/cadastro.co
 import { FulltestComponent } from "../../../util-components/fulltest/fulltest.component";
 import { ConfiguracaoLinhaComponent } from "../../../util-components/configuracaolinha/configuracao-linha.component";
 import { ConfiguracaoPortaComponent } from "../../../util-components/configuracaoporta/configuracao-porta.component";
-import { ManobrarComponent } from "../../../util-components/manobrar/manobrar.component";
+import { ValidadorManobraComponent } from "../../../util-components/validadormanobra/validador-manobra.component";
 
 export const SubNavMockCo: SubNav[] = [
     {
@@ -16,7 +16,7 @@ export const SubNavMockCo: SubNav[] = [
     },
     {
         nome: "Validador Manobra",
-        component: ManobrarComponent
+        component: ValidadorManobraComponent
     },
     {
         nome: "Configuração Linha",

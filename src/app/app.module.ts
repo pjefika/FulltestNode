@@ -66,11 +66,14 @@ import { ConfiguracaoPortaMetalicoComponent } from '../util-components/configura
 import { ConfiguracaoEstadoPortaComponent } from '../util-components/configuracaoporta/validscomponentes/configuracao-estado-porta.component';
 import { ConfiguracaoLinhaImsComponent } from '../util-components/configuracaolinha/linha-ims/configuracao-linha-ims.component';
 import { AcsComponent } from '../util-components/acs/acs.component';
-import { ManobrarComponent } from '../util-components/manobrar/manobrar.component';
 import { CentraisNortelComponent } from '../util-components/configuracaolinha/centrais-nortel/centrais-nortel.component';
 import { CadastroCrmViewComponent } from '../util-components/cadastro/crm-view/cadastro-crm-view.component';
 import { CadastroCrmTableAssertsComponent } from '../util-components/cadastro/crm-view/tableasserts/cadastro-crm-table-asserts.component';
 import { DirectUrlsService } from '../util/urlservice/direct.urls.service';
+import { ValidadorManobraComponent } from '../util-components/validadormanobra/validador-manobra.component';
+import { ValidadorInfoFulltestTableComponent } from '../util-components/validadormanobra/validadormanobrafulltestgeral/validador-info-fulltest-table.component';
+import { ValidadorManobraFulltestTableComponent } from '../util-components/validadormanobra/validadormanobrafulltesttable/validador-manobra-fulltest-table.component';
+import { ValidacoesManobraTableComponent } from '../util-components/validadormanobra/validacoesmanobratable/validacoes-manobra-table.component';
 
 @NgModule({
 	declarations: [
@@ -129,10 +132,14 @@ import { DirectUrlsService } from '../util/urlservice/direct.urls.service';
 		ConfiguracaoPortaMetalicoComponent,
 		ConfiguracaoEstadoPortaComponent,
 		AcsComponent,
-		ManobrarComponent,
 		CentraisNortelComponent,
 		CadastroCrmViewComponent,
-		CadastroCrmTableAssertsComponent
+		CadastroCrmTableAssertsComponent,
+		ValidadorManobraComponent,
+		ValidacoesManobraTableComponent,
+
+		ValidadorInfoFulltestTableComponent,
+		ValidadorManobraFulltestTableComponent
 	],
 	imports: [
 		/**
@@ -200,9 +207,13 @@ import { DirectUrlsService } from '../util/urlservice/direct.urls.service';
 		ConfiguracaoPortaComponent,
 		ConfiguracaoPortaMetalicoComponent,
 		ConfiguracaoEstadoPortaComponent,
-		ManobrarComponent,
 		CadastroCrmViewComponent,
-		CadastroCrmTableAssertsComponent
+		CadastroCrmTableAssertsComponent,
+		ValidadorManobraComponent,
+		ValidacoesManobraTableComponent,
+
+		ValidadorInfoFulltestTableComponent,
+		ValidadorManobraFulltestTableComponent
 	]
 })
 

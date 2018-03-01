@@ -1,0 +1,14 @@
+<div *ngIf="analitico">
+    <table class="table table-compact table-vertical marginspace">
+        <tbody>
+            <tr>
+                <th colspan="2" style="text-align: center;">Validações Manobra</th>
+            </tr>
+            <tr *ngFor="let value of analitico.analises">
+                <th>{{value.motivo.motivo}}</th>
+                <th>{{value.conclusao.frase}}</th>
+            </tr>
+        </tbody>
+    </table>
+    <alert-component [mensagem]="mensagem" [ativo]="ativo" [closeable]="false"></alert-component>
+</div>
