@@ -13,8 +13,8 @@ export class DirectUrlsService extends SuperService {
     public url: string;
 
     // Urls swarm de Produção e QA
-    public urlSwarmQA: string = "http://10.40.196.182";
-    public urlSwarmProd: string = "http://10.40.198.168";
+    public urlSwarmQA: string = "http://10.40.196.182"; // QA
+    public urlSwarmProd: string = "http://10.40.198.168"; // Produção
 
     public urlNQA: string = "http://10.40.195.81:8080/";
     public urlNProd: string = "http://10.40.198.168:8080/";
