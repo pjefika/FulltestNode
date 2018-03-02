@@ -16,7 +16,7 @@ export class SuperComponentService extends AlertService {
 
     public ifIsCadastro(cadastro: Customer): boolean {
         let valid: boolean = false;
-        if (cadastro) {
+        if (cadastro.instancia) {
             if (cadastro.linha.dn && !cadastro.designador) {
                 valid = true;
                 this.systemHolderService.subNavMenus.forEach(subnav => {
@@ -32,10 +32,10 @@ export class SuperComponentService extends AlertService {
                     subnav.ativo = true;
                 });
                 valid = true;
-                if (cadastro.instancia) {
-                    this.systemHolderService.subnavAtivo = true;
-                }
+                this.systemHolderService.subnavAtivo = true;
             }
+        } else {
+            super.callToasty("Ops, Aconteceu algo", "Instância invalida, por favor insira novamente a instância.", "warning", 5000);
         }
         return valid;
     }
