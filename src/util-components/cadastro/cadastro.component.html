@@ -1,6 +1,6 @@
 <div class="move-up">
     <loading-component class="comp-align" [searching]="isLoading" [searchWhat]="'Buscando Informações Técnicas...'"></loading-component>
-    <div *ngIf="systemHolderService.qualView === 'CO' && variavelHolderService.cadastro">
+    <div *ngIf="systemHolderService.qualView === 'CO' && variavelHolderService.cadastro && variavelHolderService.cadastro.instancia">
         <cadastro-wizard-component></cadastro-wizard-component>
         <div class="row">
             <div class="col-xs">
@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div *ngIf="systemHolderService.qualView === 'CRM' && variavelHolderService.cadastro">
+    <div *ngIf="systemHolderService.qualView === 'CRM' && variavelHolderService.cadastro && variavelHolderService.cadastro.instancia">
         <div class="row">
             <div class="col-xs">
                 <cadastro-crm-view-component [cadastro]="cadastro"></cadastro-crm-view-component>

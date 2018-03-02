@@ -32,7 +32,9 @@ export class SuperComponentService extends AlertService {
                     subnav.ativo = true;
                 });
                 valid = true;
-                this.systemHolderService.subnavAtivo = true;
+                if (cadastro.instancia) {
+                    this.systemHolderService.subnavAtivo = true;
+                }
             }
         }
         return valid;

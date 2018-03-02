@@ -33,7 +33,7 @@ export class CadastroComponent extends SuperComponentService implements OnInit {
     }
 
     private doCadastro() {
-        if (this.variavelHolderService.instancia) {
+        if (this.variavelHolderService.instancia && this.variavelHolderService.instancia.length === 10) {
             this.variavelHolderService.instancia = this.variavelHolderService.instancia.trim();
             if (this.variavelHolderService.cadastro) {
                 this.cadastro = this.variavelHolderService.cadastro;
