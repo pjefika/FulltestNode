@@ -15,18 +15,18 @@
                     <clr-icon style="color: red" shape="times" *ngIf="!vlan.resultado"></clr-icon>
                 </td>
             </tr>
-            <tr>
+            <tr *ngIf="vlan.result">
                 <th>State:</th>
                 <td>
                     <clr-icon style="color: green" shape="check" *ngIf="vlan.result.state === 'UP'"></clr-icon>
                     <clr-icon style="color: red" shape="times" *ngIf="vlan.result.state === 'DOWN'"></clr-icon>
                 </td>
             </tr>
-            <tr>
+            <tr *ngIf="vlan.result">
                 <th>CVLAN:</th>
                 <td>{{vlan.result.cvlan}}</td>
             </tr>
-            <tr>
+            <tr *ngIf="vlan.result">
                 <th>SVLAN:</th>
                 <td>{{vlan.result.svlan}}</td>
             </tr>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanDisabled" (click)="qualVlan(vlan.nome)">{{btnSetVlanName}}</button>
+                    <button *ngIf="vlan.result" class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanDisabled" (click)="qualVlan(vlan.nome)">{{btnSetVlanName}}</button>
                     <button class="btn btn-primary btn-sm btn-block" *ngIf="vlan.result && vlan.result.pctDown && vlan.result.pctUp && vlan.mensagem != 'Cliente sem TV Híbrida.'"
                         [disabled]="btnResetVlanDisabled" (click)="resetIptvStatistics()">{{btnResetVlanName}}</button>
                 </td>
