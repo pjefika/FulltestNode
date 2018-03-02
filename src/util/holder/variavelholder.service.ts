@@ -26,5 +26,7 @@ export class VariavelHolderService {
 
     public certificationValidManobraAnalitico: Analitico;
 
+    public listCertifications: Certification[];
+
     constructor() { }
 }

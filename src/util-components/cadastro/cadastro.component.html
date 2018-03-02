@@ -8,8 +8,7 @@
             </div>
             <div class="col-xs">
                 <acs-component *ngIf="variavelHolderService.cadastro" [designador]="variavelHolderService.cadastro.designador"></acs-component>
-                <!-- Não implementado... -->
-                <!-- <list-certification-component *ngIf="variavelHolderService.cadastro"></list-certification-component> -->
+                <log-list-certification-component *ngIf="variavelHolderService.cadastro"></log-list-certification-component>
             </div>
         </div>
     </div>

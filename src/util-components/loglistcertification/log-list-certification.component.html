@@ -1,0 +1,52 @@
+<div>
+    <loading-component [searching]="isLoading" [searchWhat]="'Buscando Logs Certification...'"></loading-component>
+    <div *ngIf="variavelHolderService.listCertifications">
+        <clr-stack-view>
+            <clr-stack-header>
+                Lista de certifications
+                <button class="stack-action btn btn-sm btn-link" (click)="getCertification();" type="button">
+                    <clr-icon shape="refresh"></clr-icon>
+                    Atualizar
+                </button>
+            </clr-stack-header>
+            <clr-stack-block *ngFor="let certification of variavelHolderService.listCertifications">
+                <clr-stack-label>
+                    Resultado
+                </clr-stack-label>
+                <clr-stack-content>
+                    {{certification.resultado}}
+                    <clr-icon shape="check" *ngIf="certification.resultado === 'OK'" style="color: green;"></clr-icon>
+                    <clr-icon shape="times" *ngIf="certification.resultado === 'FISICAL' || certification.resultado === 'FORWARDED_CO' || certification.resultado === 'TO_FIX'"
+                        style="color: red;"></clr-icon>
+                    <clr-icon shape="exclamation-triangle" *ngIf="certification.resultado === 'FIXED'" style="color: orange"></clr-icon>
+                </clr-stack-content>
+                <clr-stack-block>
+                    <clr-stack-label>Mensagem</clr-stack-label>
+                    <clr-stack-content>{{certification.fulltest.mensagem}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Data Inicio</clr-stack-label>
+                    <clr-stack-content>{{((certification.fulltest.dataInicio / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY hh:mm'}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Data Fim</clr-stack-label>
+                    <clr-stack-content>{{((certification.fulltest.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY hh:mm'}}</clr-stack-content>
+                </clr-stack-block>
+            </clr-stack-block>
+        </clr-stack-view>
+    </div>
+    <div *ngIf="alertAtivo">
+        <div class="row">
+            <div class="col-xs-9">
+                <h4>Lista de certifications</h4>
+            </div>
+            <div class="col-xs-3">
+                <button class="stack-action btn btn-sm btn-link btn-align" (click)="getCertification();" type="button">
+                    <clr-icon shape="refresh"></clr-icon>
+                    Atualizar
+                </button>
+            </div>
+        </div>
+        <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
+    </div>
+</div>
