@@ -12,7 +12,7 @@ export class ConfiguracaoPortaService extends SuperService {
     }
 
     public getConfigPorta(cadastro: Customer): Promise<ConfPorta> {
-        delete cadastro.servicos.origem;
+        delete cadastro.servicos.origem; // Retirar futuro...
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { cust: any, executor: string };
         _data = { cust: cadastro, executor: usr.user };

@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="col-md" *ngIf="variavelHolderService.certificationValidManobra">
-        <h3 class="titulo-da-pagina">Informações de Manobra</h3>
+        <h3 class="titulo-da-pagina">Validações Manobra</h3>
         <div *ngIf="analiseIsDone">
             <validacoes-manobra-table-component class="marginspace" [analitico]="variavelHolderService.certificationValidManobraAnalitico"></validacoes-manobra-table-component>
             <alert-component [mensagem]="mensagem" [ativo]="ativo" [closeable]="false"></alert-component>
@@ -36,7 +36,7 @@
                 </section>
             </form>
             <button class="btn btn-primary btn-block" [disabled]="btnValidarManobraDisabled" [clrLoading]="btnValidarManobraLoading"
-                (click)="doGetValidacaoAssertsMock()">{{btnValidarManobraName}}</button>
+                (click)="doGetValidacaoAsserts()">{{btnValidarManobraName}}</button>
         </div>
     </div>
 </div>

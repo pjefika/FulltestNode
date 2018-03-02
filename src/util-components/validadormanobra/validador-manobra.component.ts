@@ -15,7 +15,7 @@ import { Motivo } from '../../viewmodel/manobrar/motivo';
 
 export class ValidadorManobraComponent extends SuperComponentService implements OnInit {
 
-    private ordem: string = "8-2Q6NY8OG";
+    private ordem: string;
     private motivoSelected: string;
 
     private isLoadingGetValid: boolean = false;
@@ -40,8 +40,10 @@ export class ValidadorManobraComponent extends SuperComponentService implements 
             if (!this.variavelHolderService.certificationValidManobra) {
                 this.doGetValidacao();
             } else {
-                this.analiseIsDone = true;
-                this.mountValidatorAlert();
+                if (this.variavelHolderService.certificationValidManobraAnalitico) {
+                    this.analiseIsDone = true;
+                    this.mountValidatorAlert();
+                }
             }
         }
         super.enablebtnresumoinfo();
@@ -93,7 +95,7 @@ export class ValidadorManobraComponent extends SuperComponentService implements 
         }, 1000);
     }
 
-    private doGetValidacaoAssertsMock() {
+    private doGetValidacaoAsserts() {
         if (this.systemHolderService.ableMock) {
             this.getValidacaoAssertsMock();
         } else {
@@ -187,12 +189,14 @@ export class ValidadorManobraComponent extends SuperComponentService implements 
     }
 
     private mountValidatorAlert() {
-        if (this.variavelHolderService.certificationValidManobraAnalitico.manobrar) {
-            let _manobraMotivo = "Liberar manobra - " + this.variavelHolderService.certificationValidManobraAnalitico.conclusao.conclusao.frase + ": " + this.variavelHolderService.certificationValidManobraAnalitico.conclusao.motivo.motivo;
-            super.callAlert("alert-success", _manobraMotivo);
-        } else {
-            let _manobraMotivo = "Manobra negada - Conclusão: " + this.variavelHolderService.certificationValidManobraAnalitico.conclusao.conclusao.frase;
-            super.callAlert("alert-danger", _manobraMotivo);
+        if (this.variavelHolderService.certificationValidManobraAnalitico) {
+            if (this.variavelHolderService.certificationValidManobraAnalitico.manobrar) {
+                let _manobraMotivo = "Liberar manobra - " + this.variavelHolderService.certificationValidManobraAnalitico.conclusao.conclusao.frase + ": " + this.variavelHolderService.certificationValidManobraAnalitico.conclusao.motivo.motivo;
+                super.callAlert("alert-success", _manobraMotivo);
+            } else {
+                let _manobraMotivo = "Manobra negada - Conclusão: " + this.variavelHolderService.certificationValidManobraAnalitico.conclusao.conclusao.frase;
+                super.callAlert("alert-danger", _manobraMotivo);
+            }
         }
     }
 

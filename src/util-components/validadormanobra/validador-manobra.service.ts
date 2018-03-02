@@ -60,6 +60,7 @@ export class ValidadorManobraService extends SuperService {
     }
 
     public getValidacao(cadastro: Customer): Promise<Fulltest> {
+        delete cadastro.servicos.origem; // Retirar futuro...
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { cust: any, executor: string };
         _data = { cust: cadastro, executor: usr.user };
