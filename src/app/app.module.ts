@@ -74,6 +74,7 @@ import { ValidadorManobraComponent } from '../util-components/validadormanobra/v
 import { ValidadorInfoFulltestTableComponent } from '../util-components/validadormanobra/validadormanobrafulltestgeral/validador-info-fulltest-table.component';
 import { ValidadorManobraFulltestTableComponent } from '../util-components/validadormanobra/validadormanobrafulltesttable/validador-manobra-fulltest-table.component';
 import { ValidacoesManobraTableComponent } from '../util-components/validadormanobra/validacoesmanobratable/validacoes-manobra-table.component';
+import { ConfiguracaoPortaGponComponent } from '../util-components/configuracaoporta/gpon/configuracao-porta-gpon.component';
 
 @NgModule({
 	declarations: [
@@ -137,6 +138,7 @@ import { ValidacoesManobraTableComponent } from '../util-components/validadorman
 		CadastroCrmTableAssertsComponent,
 		ValidadorManobraComponent,
 		ValidacoesManobraTableComponent,
+		ConfiguracaoPortaGponComponent,
 
 		ValidadorInfoFulltestTableComponent,
 		ValidadorManobraFulltestTableComponent
@@ -211,6 +213,7 @@ import { ValidacoesManobraTableComponent } from '../util-components/validadorman
 		CadastroCrmTableAssertsComponent,
 		ValidadorManobraComponent,
 		ValidacoesManobraTableComponent,
+		ConfiguracaoPortaGponComponent,
 
 		ValidadorInfoFulltestTableComponent,
 		ValidadorManobraFulltestTableComponent
