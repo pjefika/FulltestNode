@@ -35,7 +35,7 @@
             </clr-stack-block>
         </clr-stack-view>
     </div>
-    <div *ngIf="alertAtivo">
+    <div *ngIf="ativo">
         <div class="row">
             <div class="col-xs-9">
                 <h4>Lista de certifications</h4>
@@ -47,6 +47,6 @@
                 </button>
             </div>
         </div>
-        <alert-component [msg]="msg" [ativo]="alertAtivo" [closeable]="false"></alert-component>
+        <alert-component [mensagem]="mensagem" [ativo]="ativo" [closeable]="false"></alert-component>
     </div>
 </div>

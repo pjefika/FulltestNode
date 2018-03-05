@@ -18,7 +18,7 @@ export class AlertComponent implements OnInit, OnChanges {
 
     public ngOnInit() { }
 
-    public ngOnChanges(simpleChanges: SimpleChanges) {        
+    public ngOnChanges(simpleChanges: SimpleChanges) {
         if (simpleChanges.mensagem) {
             if (simpleChanges.mensagem.currentValue != simpleChanges.mensagem.previousValue) {
                 this.addMsg(simpleChanges.mensagem);

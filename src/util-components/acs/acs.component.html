@@ -1,5 +1,5 @@
 <div>
-    <h3 class="titulo-pagina" *ngIf="variavelHolderService.equipamentos && !isLoading">Informações do Cliente</h3>
+    <h3 class="titulo-pagina" *ngIf="variavelHolderService.equipamentos && !isLoading">Informações ACS Motive</h3>
     <clr-stack-view *ngIf="variavelHolderService.equipamentos && !isLoading">
         <clr-stack-header>
             <button class="stack-action btn btn-sm btn-link" (click)="doGetEquipamentoAssoc()" type="button" [disabled]="isLoading">

@@ -11,7 +11,7 @@ export class AlertService {
 
     constructor(public toastyComponent: ToastyComponent) { }
 
-    public callAlert(alertType: string, alertMsg: string) {
+    public callAlert(alertType: string, alertMsg: string) {        
         this.mensagem = {
             type: alertType,
             msg: alertMsg

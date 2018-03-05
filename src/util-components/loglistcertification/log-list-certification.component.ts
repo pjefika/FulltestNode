@@ -28,12 +28,11 @@ export class LogListCertificationComponent extends SuperComponentService impleme
             this.doGetCertification();
         }
     }
-    
+
     private doGetCertification() {
         if (this.systemHolderService.ableMock) {
             this.getCertificationByCustomerMock();
         } else {
-            // this.getCertificationByCustomerMock();
             this.getCertificationByCustomer();
         }
     }
