@@ -24,20 +24,17 @@ export class LogListCertificationComponent extends SuperComponentService impleme
     }
 
     public ngOnInit() {
-
         if (!this.variavelHolderService.listCertifications) {
             this.doGetCertification();
         }
-
-
     }
-
+    
     private doGetCertification() {
         if (this.systemHolderService.ableMock) {
             this.getCertificationByCustomerMock();
         } else {
-            this.getCertificationByCustomerMock();
-            // this.getCertificationByCustomer();
+            // this.getCertificationByCustomerMock();
+            this.getCertificationByCustomer();
         }
     }
 
