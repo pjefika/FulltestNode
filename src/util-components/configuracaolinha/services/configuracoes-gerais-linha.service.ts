@@ -21,7 +21,7 @@ export class ConfiguracoesGeraisLinhaService extends SuperService {
             command: this.urlService.pathStealerAPI + "linha/",
             _data: _data,
             path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(true),
+            otherUrl: this.urlService.otherUrlMake(),
             timeout: 60000
         }
         return this.urlService.request(this.infoResquest)
