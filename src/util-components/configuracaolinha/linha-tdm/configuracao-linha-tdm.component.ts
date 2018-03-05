@@ -5,6 +5,8 @@ import { ToastyComponent } from '../../toasty/toasty.component';
 import { SystemHolderService } from '../../../util/holder/systemHolder.service';
 import { VariavelHolderService } from '../../../util/holder/variavelholder.service';
 import { CadastroLinha } from '../../../viewmodel/linha/cadlinha';
+import { DynamicRouterService } from '../../dynamicrouter/dynamic-router.service';
+import { LinhaCreateComponent } from '../linhacreatedelete/create/linha-create.component';
 
 @Component({
     selector: 'configuracao-linha-tdm-component',
@@ -26,7 +28,8 @@ export class ConfiguracaoLinhaTdmComponent extends SuperComponentService impleme
     constructor(private configuracaoLinhaTdmService: ConfiguracaoLinhaTdmService,
         public toastyComponent: ToastyComponent,
         public systemHolderService: SystemHolderService,
-        public variavelHolderService: VariavelHolderService) {
+        public variavelHolderService: VariavelHolderService,
+        public dynamicRouterService: DynamicRouterService) {
         super(toastyComponent, systemHolderService);
     }
 
@@ -55,7 +58,12 @@ export class ConfiguracaoLinhaTdmComponent extends SuperComponentService impleme
             .then(resposta => {
                 this.cadastroLinha = resposta;
                 this.variavelHolderService.cadastroLinha = resposta;
-                this.systemHolderService.liberarSideNav = true;
+                if (this.cadastroLinha.status === "NOT_CREATED") {
+                    super.callToasty("Alerta", "Linha não esta criada por favor realize a configuração da mesma.", "warning", 5000);
+                    this.dynamicRouterService.component = LinhaCreateComponent;
+                } else {
+                    this.systemHolderService.liberarSideNav = true;
+                }
             }, erro => {
                 if (erro.mError === "Linha não pertence a Central." && this.variavelHolderService.cadastro.instancia === this.variavelHolderService.cadastroLinha.dn) {
                     super.callToasty("Ops, aconteceu algo.", "Necessário associação de número de equipamento.", "error", 5000);

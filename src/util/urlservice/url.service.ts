@@ -51,9 +51,9 @@ export class UrlService extends DirectUrlsService implements RequestActionInterf
         switch (infoResquest.path) {
             case "customerAPI/":
                 if (this.systemHolderService.isLinkProd) {
-                    this.url = this.stealerProd + infoResquest.path + infoResquest.command;
+                    this.url = this.customerProd + infoResquest.path + infoResquest.command;
                 } else {
-                    this.url = this.stealerQA + infoResquest.path + infoResquest.command;
+                    this.url = this.customerQA + infoResquest.path + infoResquest.command;
                 }
                 break;
             case "fulltestAPI/":
@@ -61,6 +61,13 @@ export class UrlService extends DirectUrlsService implements RequestActionInterf
                     this.url = this.fulltestProd + infoResquest.path + infoResquest.command;
                 } else {
                     this.url = this.fulltestQA + infoResquest.path + infoResquest.command;
+                }
+                break;
+            case "stealerAPI/":
+                if (this.systemHolderService.isLinkProd) {
+                    this.url = this.stealerProd + infoResquest.path + infoResquest.command;
+                } else {
+                    this.url = this.stealerQA + infoResquest.path + infoResquest.command;
                 }
                 break;
             default:

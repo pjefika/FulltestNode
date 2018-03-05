@@ -17,12 +17,19 @@ export class FulltestConfiabilidadeRedeService extends SuperService {
         _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathFulltestAPI + "configPorta/getConfiabilidadeRede",
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(true),
+            path: "fulltestAPI/",
+            command: "configPorta/getConfiabilidadeRede",
             _data: _data,
             timeout: 120000
         }
+        // this.infoResquest = {
+        //     rqst: "post",
+        //     command: this.urlService.pathFulltestAPI + "configPorta/getConfiabilidadeRede",
+        //     path: "NotImplemented",
+        //     otherUrl: this.urlService.otherUrlMake(true),
+        //     _data: _data,
+        //     timeout: 120000
+        // }
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as Valid

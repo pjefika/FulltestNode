@@ -21,11 +21,14 @@ export class DirectUrlsService extends SuperService {
     public urlNSixtySeven: string = "http://10.200.35.67:80/";
 
     // Portas para referenciar o deploy    
-    public stealerQA: string = this.urlSwarmQA + ":7171/";
-    public stealerProd: string = this.urlSwarmProd + ":7171/";
+    public customerQA: string = this.urlSwarmQA + ":7171/";
+    public customerProd: string = this.urlSwarmProd + ":7171/";
 
     public fulltestQA: string = this.urlSwarmQA + ":7172/";
     public fulltestProd: string = this.urlSwarmProd + ":7172/";
+
+    public stealerQA: string = this.urlSwarmQA + ":7173/";
+    public stealerProd: string = this.urlSwarmProd + ":7173/";
 
     // Paths names para os projetos.
     public pathFulltestAPI = "fulltestAPI/";

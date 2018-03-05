@@ -19,12 +19,19 @@ export class FulltestSerialOntOltService extends SuperService {
         _data = { cust: cadastro, executor: usr.user, serial: { serial: serial } };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathFulltestAPI + "configPorta/setOntToOlt",
-            path: "NotImplemented",
+            path: "fulltestAPI/",
+            command: "configPorta/setOntToOlt",
             _data: _data,
-            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 120000
         }
+        // this.infoResquest = {
+        //     rqst: "post",
+        //     command: this.urlService.pathFulltestAPI + "configPorta/setOntToOlt",
+        //     path: "NotImplemented",
+        //     _data: _data,
+        //     otherUrl: this.urlService.otherUrlMake(true),
+        //     timeout: 120000
+        // }
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as ResultSerial
@@ -38,12 +45,19 @@ export class FulltestSerialOntOltService extends SuperService {
         _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathFulltestAPI + "configPorta/unsetOntFromOlt",
-            path: "NotImplemented",
+            path: "fulltestAPI/",
+            command: "configPorta/unsetOntFromOlt",
             _data: _data,
-            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 120000
         }
+        // this.infoResquest = {
+        //     rqst: "post",
+        //     command: this.urlService.pathFulltestAPI + "configPorta/unsetOntFromOlt",
+        //     path: "NotImplemented",
+        //     _data: _data,
+        //     otherUrl: this.urlService.otherUrlMake(true),
+        //     timeout: 120000
+        // }
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as ReturnResultSerial[]

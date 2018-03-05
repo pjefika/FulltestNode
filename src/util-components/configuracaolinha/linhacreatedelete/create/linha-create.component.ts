@@ -124,6 +124,7 @@ export class LinhaCreateComponent extends SuperComponentService implements OnIni
                     if (resposta.status === "CREATED") {
                         super.callToasty("Sucesso", "Linha criada com sucesso.", "success", 5000);
                         this.dynamicRouterService.component = ConfiguracaoLinhaComponent;
+                        this.systemHolderService.liberarSideNav = true;
                     }
                 }, erro => {
                     super.callToasty("Ops, ocorreu um erro.", erro.mError, "error", 5000);
