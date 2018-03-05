@@ -51,4 +51,21 @@ export class ConfiguracaoLinhaNcosComponent extends SuperComponentService implem
             });
     }
 
+    private setNcos() {
+        this.btnSetNcosDisabled = true;
+        this.btnSetNcosName = "Aguarde...";
+        this.configuracaoLinhaNcosService
+            .setNcos(this.variavelHolderService.cadastro.linha, this.ncos)
+            .then(resposta => {
+                this.variavelHolderService.cadastroLinha = resposta;
+                super.callToasty("Sucesso", "NCOS alterado com sucesso.", "success", 5000);
+            }, erro => {
+                super.callToasty("Ops, aconteceu algo.", erro.mError, "error", 5000);
+            })
+            .then(() => {
+                this.btnSetNcosDisabled = false;
+                this.btnSetNcosName = "Alterar";
+            });
+    }
+
 }
