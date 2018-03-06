@@ -5,13 +5,13 @@ import { InfoRequest } from '../../viewmodel/inforequest/inforequest';
 import { Headers, RequestOptions, Http } from '@angular/http';
 import { SystemHolderService } from '../holder/systemHolder.service';
 
-import 'rxjs/add/operator/timeout'
-
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/Rx';
-
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
+
+import 'rxjs/Rx';
+import 'rxjs/add/operator/timeout'
+import 'rxjs/add/operator/toPromise';
+
 import { DirectUrlsService } from './direct.urls.service';
 
 @Injectable()
@@ -105,17 +105,40 @@ export class UrlService extends DirectUrlsService implements RequestActionInterf
      */
     public postJoin(infoResquests: InfoRequest[]) {
         return Observable.forkJoin(
-            this.http.post(infoResquests[0].command, JSON.stringify(infoResquests[0]._data), this.options)
+            this.http.post(this.moutPathForFork(infoResquests[0]), JSON.stringify(infoResquests[0]._data), this.options)
                 .map(resposta => resposta.json()),
-            this.http.post(infoResquests[1].command, JSON.stringify(infoResquests[1]._data), this.options)
-                .map(resposta => resposta.json())
-        )
-            .map(resposta => {
+            this.http.post(this.moutPathForFork(infoResquests[1]), JSON.stringify(infoResquests[1]._data), this.options)
+                .map(resposta => resposta.json()))
+            .map(resposta => {                
                 return resposta;
             }, erro => {
                 super.handleErrorKing;
-            })
-            .timeout(infoResquests[0].timeout);
+            });
+    }
+
+    private moutPathForFork(infoRequest: InfoRequest): string {
+        switch (infoRequest.path) {
+            case "customerAPI/":
+                if (this.systemHolderService.isLinkProd) {
+                    return this.customerProd + infoRequest.path + infoRequest.command;
+                } else {
+                    return this.customerQA + infoRequest.path + infoRequest.command;
+                }
+            case "fulltestAPI/":
+                if (this.systemHolderService.isLinkProd) {
+                    return this.fulltestProd + infoRequest.path + infoRequest.command;
+                } else {
+                    return this.fulltestQA + infoRequest.path + infoRequest.command;
+                }
+            case "stealerAPI/":
+                if (this.systemHolderService.isLinkProd) {
+                    return this.stealerProd + infoRequest.path + infoRequest.command;
+                } else {
+                    return this.stealerQA + infoRequest.path + infoRequest.command;
+                }
+            default:
+                console.log("Não encontrado...");
+        }
     }
 
     public linkurl(infoResquest: InfoRequest) {

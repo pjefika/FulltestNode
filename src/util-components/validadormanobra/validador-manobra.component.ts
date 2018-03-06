@@ -40,6 +40,7 @@ export class ValidadorManobraComponent extends SuperComponentService implements 
             if (!this.variavelHolderService.certificationValidManobra) {
                 this.doGetValidacao();
             } else {
+                this.getListaMotivo();
                 if (this.variavelHolderService.certificationValidManobraAnalitico) {
                     this.analiseIsDone = true;
                     this.mountValidatorAlert();
@@ -108,9 +109,10 @@ export class ValidadorManobraComponent extends SuperComponentService implements 
             this.btnValidarManobraName = "Validando Manobra";
             this.btnValidarManobraDisabled = true;
             this.btnValidarManobraLoading = true;
+
             this.validadorManobraService
                 .getValidacaoAsserts(this.variavelHolderService.cadastro, this.ordem)
-                .map(resposta => {
+                .subscribe(resposta => {
                     resposta[0].forEach(assert => {
                         this.variavelHolderService.cadastro.asserts.push(assert);
                     });
@@ -125,7 +127,6 @@ export class ValidadorManobraComponent extends SuperComponentService implements 
                     this.btnValidarManobraLoading = false;
                     this.apagaInformacoesValidacao();
                 });
-
         } else {
             super.callToasty("Ops, ocorreu um erro.", "Por favor preencha os campos", "error", 5000);
         }
