@@ -22,15 +22,7 @@ export class ConfiguracaoPortaService extends SuperService {
             command: "configPorta/",
             _data: _data,
             timeout: 120000
-        }
-        // this.infoResquest = {
-        //     rqst: "post",
-        //     command: this.urlService.pathFulltestAPI + "configPorta/",
-        //     path: "NotImplemented",
-        //     _data: _data,
-        //     otherUrl: this.urlService.otherUrlMake(true),
-        //     timeout: 1200000
-        // }
+        }        
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as ConfPorta

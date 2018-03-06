@@ -22,14 +22,6 @@ export class FulltestVlanService extends SuperService {
             _data: _data,
             timeout: 120000
         }
-        // this.infoResquest = {
-        //     rqst: "post",
-        //     command: this.urlService.pathFulltestAPI + "configPorta/" + whatSet,
-        //     path: "NotImplemented",
-        //     _data: _data,
-        //     otherUrl: this.urlService.otherUrlMake(true),
-        //     timeout: 120000
-        // }
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as Valid
