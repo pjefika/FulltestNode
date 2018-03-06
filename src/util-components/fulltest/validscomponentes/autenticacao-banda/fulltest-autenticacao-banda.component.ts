@@ -31,7 +31,7 @@ export class FulltestAutenticacaoBandaComponent extends SuperComponentService im
     }
 
     public ngOnInit() {
-        // this.consultarAutenticacao();
+        this.consultarAutenticacao();
     }
 
     public consultarAutenticacao() {
