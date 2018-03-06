@@ -66,12 +66,11 @@ export class ValidadorManobraService extends SuperService {
         _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathFulltestAPI + "fulltest/manobra/",
-            path: "NotImplemented",
+            path: "fulltestAPI/",
+            command: "fulltest/manobra/",
             _data: _data,
-            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 120000
-        }
+        }       
         return this.urlService
             .request(this.infoResquest)
             .then(data => {

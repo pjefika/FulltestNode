@@ -10,13 +10,14 @@ export class EnumService extends SuperService {
     }
 
     public getEnumTv(): Promise<String[]> {
+
         this.infoResquest = {
             rqst: "get",
-            command: this.urlService.pathFulltestAPI + "listEnums/tecTv",
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(),
-            timeout: 10000
+            path: "fulltestAPI/",
+            command: "listEnums/tecTv",
+            timeout: 120000
         };
+
         return this.urlService
             .request(this.infoResquest)
             .then(data => {
@@ -28,11 +29,11 @@ export class EnumService extends SuperService {
     public getEnumVoz(): Promise<String[]> {
         this.infoResquest = {
             rqst: "get",
-            command: this.urlService.pathFulltestAPI + "listEnums/tecVoz",
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(),
-            timeout: 10000
+            path: "fulltestAPI/",
+            command: "listEnums/tecVoz",
+            timeout: 120000
         };
+
         return this.urlService
             .request(this.infoResquest)
             .then(data => {
@@ -44,11 +45,11 @@ export class EnumService extends SuperService {
     public getEnumVelocidades(): Promise<String[]> {
         this.infoResquest = {
             rqst: "get",
-            command: this.urlService.pathFulltestAPI + "listEnums/velocidades",
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(),
-            timeout: 10000
+            path: "fulltestAPI/",
+            command: "listEnums/velocidades",
+            timeout: 120000
         };
+        
         return this.urlService
             .request(this.infoResquest)
             .then(data => {
