@@ -21,14 +21,14 @@
                     <clr-icon shape="exclamation-triangle" *ngIf="certification.resultado === 'FIXED'" style="color: orange"></clr-icon>
                 </clr-stack-content>
                 <clr-stack-block>
-                    <clr-stack-label>Mensagem</clr-stack-label>
-                    <clr-stack-content>{{certification.fulltest.mensagem}}</clr-stack-content>
+                    <clr-stack-label>Orientação</clr-stack-label>
+                    <clr-stack-content>{{certification.orientacao}}</clr-stack-content>
                 </clr-stack-block>
-                <clr-stack-block>
+                <clr-stack-block *ngIf="certification.fulltest">
                     <clr-stack-label>Data Inicio</clr-stack-label>
                     <clr-stack-content>{{((certification.fulltest.dataInicio / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY hh:mm'}}</clr-stack-content>
                 </clr-stack-block>
-                <clr-stack-block>
+                <clr-stack-block *ngIf="certification.fulltest">
                     <clr-stack-label>Data Fim</clr-stack-label>
                     <clr-stack-content>{{((certification.fulltest.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY hh:mm'}}</clr-stack-content>
                 </clr-stack-block>

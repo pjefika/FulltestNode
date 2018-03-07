@@ -22,6 +22,7 @@ export class HolderResetService {
         this.variavelHolderService.equipamentos = null;
         this.variavelHolderService.certificationValidManobra = null;
         this.variavelHolderService.certificationValidManobraAnalitico = null;
+        this.variavelHolderService.listCertifications = null;
     }
 
     private resetSystemHolder() {
