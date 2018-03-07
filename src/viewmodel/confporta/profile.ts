@@ -1,7 +1,8 @@
 import { Valid } from "../valid/valid";
-import { DownValues } from "./downvalues";
+import { VelValues } from "./velvalues";
 
 export class Profile {
     atual: Valid;
-    downValues: DownValues;
+    downValues: VelValues[];
+    upValues: VelValues[];
 }

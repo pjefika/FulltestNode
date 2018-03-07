@@ -19,6 +19,31 @@
                     {{stringVelocidade(profile.result.down)}}/{{stringVelocidade(profile.result.up)}}
                 </td>
             </tr>
+            <tr>
+                <td>{{labelNameProfile}}</td>
+                <td>
+                    <div class="select">
+                        <select [(ngModel)]="profile.result.down">
+                            <option *ngFor="let vel of profileConfPorta.downValues" [ngValue]="vel.vel">{{vel.desc}}</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr *ngIf="!isMetalico">
+                <td>Profile Up</td>
+                <td>
+                    <div class="select">
+                        <select [(ngModel)]="profile.result.up">
+                            <option *ngFor="let vel of profileConfPorta.downValues" [ngValue]="vel.vel">{{vel.desc}}</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-primary btn-sm btn-block" [disabled]="setProfileBtnDisable" (click)="setProfile()">{{setProfileBtnName}}</button>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

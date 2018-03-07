@@ -18,7 +18,7 @@ export class AcsService extends SuperService {
             rqst: "post",
             path: "NotImplemented",
             command: this.urlService.pathAcs + "search/search",
-            otherUrl: this.urlService.otherUrlMake(),
+            otherUrl: this.urlService.otherUrlMake(true),
             _data: _data,
             timeout: 60000
         };

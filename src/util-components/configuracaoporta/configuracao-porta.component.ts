@@ -51,7 +51,7 @@ export class ConfiguracaoPortaComponent extends SuperComponentService implements
                 this.confPorta = resposta;
                 this.variavelHolderService.confPorta = this.confPorta;
             }, erro => {
-                this.callToasty("Ops, ocorreu um erro.", erro.mError, "error", 5000);
+                super.callToasty("Ops, ocorreu um erro.", erro.mError, "error", 5000);
             })
             .then(() => {
                 this.isLoading = false;
