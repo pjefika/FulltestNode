@@ -53,11 +53,13 @@ export class ConfiguracaoServicosLinhaComponent extends SuperComponentService im
 
     private veSeEstaCheck(servico: string): boolean {
         let valid = false;
-        this.variavelHolderService.cadastroLinha.servicos.forEach(element => {
-            if (servico === element.nome) {
-                valid = true;
-            }
-        });
+        if (this.variavelHolderService.cadastroLinha) {
+            this.variavelHolderService.cadastroLinha.servicos.forEach(element => {
+                if (servico === element.nome) {
+                    valid = true;
+                }
+            });
+        }
         return valid;
     }
 

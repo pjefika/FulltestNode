@@ -26,9 +26,13 @@ export class FulltestProfileService extends SuperService {
         return this.urlService
             .request(this.infoResquest)
             .then(resposta => {
-                return resposta as Result;
+                return resposta.atual.result as Result;
             })
             .catch(this.handleError);
+    }
+
+    public setProfileMock(): Result {
+        return JSON.parse('{"nome":"Profile","type":"telecom.properties.ProfileMetalico","profileUp":"5","profileDown":"50","down":"VEL_51200","up":"VEL_5120"}') as Result;
     }
 
 }

@@ -53,6 +53,14 @@ export class FulltestProfileComponent extends SuperComponentService implements O
         return vels[0];
     }
 
+    private doSetProfile() {
+        if (this.systemHolderService.ableMock) {
+            this.setProfileMock();
+        } else {
+            this.setProfile();
+        }
+    }
+
     private setProfile() {
         this.setProfileBtnDisable = true;
         this.setProfileBtnName = "Aguarde...";
@@ -68,6 +76,19 @@ export class FulltestProfileComponent extends SuperComponentService implements O
                 this.setProfileBtnDisable = false;
                 this.setProfileBtnName = "Alterar Profile";
             });
+    }
+
+    private setProfileMock() {
+        this.setProfileBtnDisable = true;
+        this.setProfileBtnName = "Aguarde...";
+        setTimeout(() => {
+            console.log(this.fulltestProfileService.setProfileMock());
+            this.profile.result = this.fulltestProfileService.setProfileMock();
+            this.setProfileBtnDisable = false;
+            this.setProfileBtnName = "Alterar Profile";
+        }, 1000);
+
+
     }
 
 }
