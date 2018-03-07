@@ -33,20 +33,28 @@ export class CadastroComponent extends SuperComponentService implements OnInit {
     }
 
     private doCadastro() {
-        if (this.variavelHolderService.instancia && this.variavelHolderService.instancia.length === 10) {
+        if (this.variavelHolderService.instancia) {
             this.variavelHolderService.instancia = this.variavelHolderService.instancia.trim();
             if (this.variavelHolderService.cadastro) {
                 this.cadastro = this.variavelHolderService.cadastro;
             } else {
-                if (this.systemHolderService.ableMock) {
-                    this.getCadastroMock();
+                if (this.variavelHolderService.instancia.length === 10) {
+                    if (this.systemHolderService.ableMock) {
+                        this.getCadastroMock();
+                    } else {
+                        this.getCadastro();
+                    }
                 } else {
-                    this.getCadastro();
+                    this.mountInstanciaInvalida();
                 }
             }
         } else {
-            super.callToasty("Ops, aconteceu algo.", "Por favor insira uma instância valida.", "warning", 5000);
+            this.mountInstanciaInvalida();
         }
+    }
+
+    private mountInstanciaInvalida() {
+        super.callToasty("Ops, aconteceu algo.", "Por favor insira uma instância valida.", "warning", 5000);
     }
 
     private getCadastro() {
