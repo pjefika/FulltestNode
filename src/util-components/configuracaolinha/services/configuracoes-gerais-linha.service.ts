@@ -18,12 +18,19 @@ export class ConfiguracoesGeraisLinhaService extends SuperService {
         _data = { instancia: instancia, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathStealerAPI + "linha/",
+            path: "stealerAPI/",
+            command: "linha/",
             _data: _data,
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(),
-            timeout: 60000
-        }
+            timeout: 6000
+        };
+        // this.infoResquest = {
+        //     rqst: "post",
+        //     command: this.urlService.pathStealerAPI + "linha/",
+        //     _data: _data,
+        //     path: "NotImplemented",
+        //     otherUrl: this.urlService.otherUrlMake(),
+        //     timeout: 60000
+        // }
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as Linha;

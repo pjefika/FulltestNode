@@ -31,12 +31,12 @@ export class DirectUrlsService extends SuperService {
     public stealerProd: string = this.urlSwarmProd + ":7173/";
 
     // Paths names para os projetos.
-    public pathFulltestAPI = "fulltestAPI/";
-    public pathStealerAPI = "stealerAPI/";
+    // public pathFulltestAPI = "fulltestAPI/";
+    // public pathStealerAPI = "stealerAPI/";
     public pathAuth = "efikaAuth/";
     public pathDmsAPI = "dmsAPI/";
     public pathAcs = "acs/";
-    public pathCustomerAPI = "customerAPI/";
+    // public pathCustomerAPI = "customerAPI/";
 
     constructor() {
         super();

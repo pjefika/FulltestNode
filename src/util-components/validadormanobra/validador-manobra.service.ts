@@ -45,7 +45,7 @@ export class ValidadorManobraService extends SuperService {
         this.infoResquest = {
             rqst: "post",
             path: "NotImplemented",
-            command: this.urlService.pathFulltestAPI + "manobra/analitico",
+            command: "fulltestAPI/manobra/analitico",
             _data: _data,
             otherUrl: this.urlService.otherUrlMake(true),
             timeout: 60000

@@ -31,15 +31,15 @@ export class ConfiguracaoPortaComponent extends SuperComponentService implements
         super.enablebtnresumoinfo();
     }
 
-    private doGetConfigPorta() {
-        if (this.variavelHolderService.confPorta) {
-            this.confPorta = this.variavelHolderService.confPorta;
-        } else {
+    private doGetConfigPorta(reload?: boolean) {
+        if (!this.variavelHolderService.confPorta || reload) {
             if (this.systemHolderService.ableMock) {
                 this.getConfigPortaMock();
             } else {
                 this.getConfigPorta();
             }
+        } else {
+            this.confPorta = this.variavelHolderService.confPorta;
         }
     }
 
