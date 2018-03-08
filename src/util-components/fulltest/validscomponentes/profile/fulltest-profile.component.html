@@ -19,7 +19,7 @@
                     {{stringVelocidade(profile.result.down)}}/{{stringVelocidade(profile.result.up)}}
                 </td>
             </tr>
-            <tr>
+            <tr *ngIf="profileConfPorta">
                 <td>{{labelNameProfile}}</td>
                 <td>
                     <div class="select">
@@ -29,7 +29,7 @@
                     </div>
                 </td>
             </tr>
-            <tr *ngIf="!isMetalico">
+            <tr *ngIf="!isMetalico && profileConfPorta">
                 <td>Profile Up</td>
                 <td>
                     <div class="select">
@@ -39,7 +39,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr *ngIf="profileConfPorta">
                 <td colspan="2">
                     <button class="btn btn-primary btn-sm btn-block" [disabled]="setProfileBtnDisable" (click)="doSetProfile()">{{setProfileBtnName}}</button>
                 </td>

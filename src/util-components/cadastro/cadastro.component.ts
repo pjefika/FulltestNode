@@ -38,7 +38,7 @@ export class CadastroComponent extends SuperComponentService implements OnInit {
             if (this.variavelHolderService.cadastro) {
                 this.cadastro = this.variavelHolderService.cadastro;
             } else {
-                if (this.variavelHolderService.instancia.length === 10) {
+                if (this.variavelHolderService.instancia.length >= 10) {
                     if (this.systemHolderService.ableMock) {
                         this.getCadastroMock();
                     } else {

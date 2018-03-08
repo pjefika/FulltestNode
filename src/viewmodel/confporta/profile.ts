@@ -3,6 +3,6 @@ import { VelValues } from "./velvalues";
 
 export class Profile {
     atual: Valid;
-    downValues: VelValues[];
-    upValues: VelValues[];
+    downValues?: VelValues[];
+    upValues?: VelValues[];
 }
