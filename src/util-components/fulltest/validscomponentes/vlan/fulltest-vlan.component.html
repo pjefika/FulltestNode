@@ -42,7 +42,7 @@
                 <th>Pacotes Down/Up:</th>
                 <td>{{vlan.result.pctDown}} / {{vlan.result.pctUp}} </td>
             </tr>
-            <tr>
+            <tr *ngIf="systemHolderService.qualView === 'CO'">
                 <td colspan="2">
                     <button *ngIf="vlan.result" class="btn btn-primary btn-sm btn-block" [disabled]="btnSetVlanDisabled" (click)="qualVlan(vlan.nome)">{{btnSetVlanName}}</button>
                     <button class="btn btn-primary btn-sm btn-block" *ngIf="vlan.result && vlan.result.pctDown && vlan.result.pctUp && vlan.mensagem != 'Cliente sem TV Híbrida.'"
