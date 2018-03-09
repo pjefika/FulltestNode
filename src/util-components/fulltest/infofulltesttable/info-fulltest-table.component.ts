@@ -22,7 +22,7 @@ export class InfoFulltestTableComponent extends SuperComponentService implements
         super(toastyComponent, systemHolderService);
     }
 
-    public ngOnInit() {        
+    public ngOnInit() {
         // super.callAlert(this.certification.fulltest.resultado ? 'alert-success' : 'alert-danger', this.certification.fulltest.mensagem);
     }
 
@@ -52,12 +52,7 @@ export class InfoFulltestTableComponent extends SuperComponentService implements
 
     public hasCheck(valid: Valid) {
         if (this.variavelHolderService.cadastro) {
-            if (valid.resultado &&
-                (
-                    !valid.nome.includes('MAC') ||
-                    (valid.nome.includes('MAC') && this.variavelHolderService.cadastro.rede.planta != 'VIVO2')
-                )
-            ) {
+            if (valid.resultado && (!valid.nome.includes('MAC') || (valid.nome.includes('MAC') && this.variavelHolderService.cadastro.rede.planta != 'VIVO2'))) {
                 return true;
             }
             return false;
@@ -66,8 +61,8 @@ export class InfoFulltestTableComponent extends SuperComponentService implements
 
     public hasTimes(valid: Valid) {
         if (this.variavelHolderService.cadastro) {
-            if (!valid.resultado && !valid.foiCorrigido &&
-                (valid.nome != 'Associação Serial ONT' && this.variavelHolderService.cadastro.rede.planta != 'VIVO2')) {
+            if (!valid.resultado && !valid.foiCorrigido) {
+                //&& (valid.nome != 'Associação Serial ONT' && this.variavelHolderService.cadastro.rede.planta != 'VIVO2')
                 return true;
             }
             return false;
