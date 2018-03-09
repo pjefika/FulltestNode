@@ -62,6 +62,7 @@ export class InfoFulltestTableComponent extends SuperComponentService implements
     public hasTimes(valid: Valid) {
         if (this.variavelHolderService.cadastro) {
             if (!valid.resultado && !valid.foiCorrigido) {
+                // Retirado do if pois nao estava entrando no caso de uso do parametro.
                 //&& (valid.nome != 'Associação Serial ONT' && this.variavelHolderService.cadastro.rede.planta != 'VIVO2')
                 return true;
             }
