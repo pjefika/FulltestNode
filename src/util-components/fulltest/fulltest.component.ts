@@ -18,6 +18,8 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
 
     private btnFulltestDisable: boolean = false;
 
+    private modalEventosMassivos: boolean = false;
+
     constructor(private fulltestService: FulltestService,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,
@@ -75,29 +77,7 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
             .then(() => {
                 this.isLoading = false;
                 this.systemHolderService.isFulltestRunning = false;
-                // console.log(this.variavelHolderService.certification);
             });
-
-        /*
-        * Envia somente instancia e faz consulta do customer automativo.... 
-        */
-        // this.fulltestService
-        //     .getCertificationCOParam(this.variavelHolderService.cadastro.instancia)
-        //     .then(resposta => {
-        //         if (super.ifIsFulltest(resposta)) {
-        //             this.variavelHolderService.certification = resposta;
-        //             this.systemHolderService.resultadoGlobalFulltest = this.variavelHolderService.certification.fulltest.resultado;
-        //         } else {
-        //             super.callToasty("Ops, Aconteceu algo.", "Informações de Fulltest veio vazia, por favor tente novamente.", "error", 5000);
-        //         }
-        //     }, erro => {
-        //         super.callToasty("Ops, Aconteceu algo.", erro.mError, "error", 5000);
-        //     })
-        //     .then(() => {
-        //         this.isLoading = false;
-        //         this.systemHolderService.isFulltestRunning = false;
-        //         // console.log(this.variavelHolderService.certification);
-        //     });
     }
 
     private getCertificationCOMock() {

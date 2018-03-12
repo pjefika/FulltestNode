@@ -4,7 +4,7 @@ import { Servico } from "../cadastro/servico";
 import { Linha } from "../cadastro/linha";
 import { Radius } from "../cadastro/radius";
 import { Assert } from "../asserts/assert";
-import { Evento } from "../evento/evento";
+import { ListEvento } from "../evento/listevento";
 
 export class Customer {
     designador: string;
@@ -17,5 +17,5 @@ export class Customer {
     linha: Linha;
     radius: Radius;
     asserts: Assert[];
-    eventos: Evento[];
+    eventos: ListEvento[];
 }

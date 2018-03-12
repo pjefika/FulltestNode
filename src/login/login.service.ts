@@ -14,7 +14,7 @@ export class LoginService extends SuperService {
             command: this.urlService.pathAuth + "autentica/verificarCredencial",
             path: "NotImplemented",
             _data: usuario,
-            otherUrl: this.urlService.otherUrlMake(true),
+            otherUrl: "http://10.40.195.81:8080/", //this.urlService.otherUrlMake(),
             timeout: 6000
         }
         return this.urlService.request(this.infoResquest)
@@ -30,7 +30,7 @@ export class LoginService extends SuperService {
             command: this.urlService.pathAuth + "autentica/consultar/",
             _data: usuario.login,
             path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(true),
+            otherUrl: "http://10.40.195.81:8080/", // this.urlService.otherUrlMake(),
             timeout: 6000
         }
         return this.urlService.request(this.infoResquest)

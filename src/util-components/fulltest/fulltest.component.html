@@ -1,7 +1,7 @@
 <div>
     <h3 [class]="systemHolderService.qualCadastro != 'CRM'? 'titulo-da-pagina': ''">Informações de Fulltest</h3>
     <div *ngIf="variavelHolderService.certification && !isLoading">
-        <info-geral-fulltest-component [certification]="variavelHolderService.certification"></info-geral-fulltest-component>        
+        <info-geral-fulltest-component [certification]="variavelHolderService.certification"></info-geral-fulltest-component>
         <info-fulltest-table-component [certification]="variavelHolderService.certification"></info-fulltest-table-component>
     </div>
     <button *ngIf="!isLoading" type="button" class="btn btn-primary btn-block" (click)="doCertification()" [disabled]="btnFulltestDisable">Realizar Fulltest</button>
@@ -17,4 +17,16 @@
             <button type="button" class="btn btn-primary" (click)="abreModal = false">Não seguir</button>
         </div>
     </clr-modal> -->
+
+    <clr-modal [(clrModalOpen)]="modalEventosMassivos">
+        <h3 class="modal-title">Eventos Massivos</h3>
+        <div class="modal-body">
+            <p>O cliente possui um evento massivo, deseja relmente continuar com os testes e validações?</p>
+            <eventos-massivos-component [eventos]="variavelHolderService.cadastro.eventos"></eventos-massivos-component>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="doCertification()">Continuar</button>
+            <button type="button" class="btn btn-outline" (click)="btnModalEnable = false">Não Seguir</button>
+        </div>
+    </clr-modal>
 </div>
