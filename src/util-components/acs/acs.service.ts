@@ -16,11 +16,10 @@ export class AcsService extends SuperService {
         _data = { criterio: "SUBSCRIBER", input: input, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            path: "NotImplemented",
-            command: this.urlService.pathAcs + "search/search",
-            otherUrl: this.urlService.otherUrlMake(true),
+            path: "search/search",
+            command: "acs",
             _data: _data,
-            timeout: 60000
+            timeout: 120000
         };
         return this.urlService.request(this.infoResquest)
             .then(response => {
@@ -38,7 +37,6 @@ export class AcsService extends SuperService {
     }
 
     public getEquipamentoAssocMock(): Equipamento[] {
-
         return JSON.parse('');
     }
 

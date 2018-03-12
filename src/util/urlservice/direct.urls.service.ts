@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { SuperService } from '../superservice/super.service';
+import { ExceptionService } from '../exceptionservice/exception.service';
 
 @Injectable()
-export class DirectUrlsService extends SuperService {
+export class DirectUrlsService extends ExceptionService {
 
     // IPS: 
     //  "http://10.40.195.81:8080/"  QA
@@ -31,14 +31,9 @@ export class DirectUrlsService extends SuperService {
     public stealerProd: string = this.urlSwarmProd + ":7173/";
 
     // Paths names para os projetos.
-    // public pathFulltestAPI = "fulltestAPI/";
-    // public pathStealerAPI = "stealerAPI/";
     public pathAuth = "efikaAuth/";
     public pathDmsAPI = "dmsAPI/";
     public pathAcs = "acs/";
-    // public pathCustomerAPI = "customerAPI/";
 
-    constructor() {
-        super();
-    }
+    constructor() { super() }
 }

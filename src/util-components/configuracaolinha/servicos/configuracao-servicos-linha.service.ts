@@ -15,10 +15,9 @@ export class ConfiguracaoServicosLinhaService extends SuperService {
     public getServicos(): Promise<ServicoLinha[]> {
         this.infoResquest = {
             rqst: "get",
-            command: this.urlService.pathDmsAPI + "dms/servicos",
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(true),
-            timeout: 1200000
+            path: "dms/servicos",
+            command: "dmsAPI",
+            timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {
@@ -34,11 +33,10 @@ export class ConfiguracaoServicosLinhaService extends SuperService {
         _data = { instancia: cad.instancia, dms: dms, services: services, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathDmsAPI + "dms/editarServicos",
+            path: "dms/editarServicos",
+            command: "dmsAPI",
             _data: _data,
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(true),
-            timeout: 1200000
+            timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

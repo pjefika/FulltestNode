@@ -16,10 +16,10 @@ export class LogListCertificationService extends SuperService {
         _data = { instancia: instancia };
         this.infoResquest = {
             rqst: "post",
-            command: "certification/findByCustomer",
-            path: "customerAPI/",
+            path: "certification/findByCustomer/",
+            command: "customerAPI",
             _data: _data,
-            timeout: 60000
+            timeout: 120000
         };
         return this.urlService.request(this.infoResquest)
             .then(response => {

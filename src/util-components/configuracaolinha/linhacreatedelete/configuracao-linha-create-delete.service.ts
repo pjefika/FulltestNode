@@ -19,11 +19,10 @@ export class ConfiguracaoLinhaCreateDeleteService extends SuperService {
         _data = { dms: dms, len: cadastroLinha.len, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathDmsAPI + "dms/deletarLinha",
+            path: "dms/deletarLinha",
+            command: "dmsAPI",
             _data: _data,
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(true),
-            timeout: 200000
+            timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {
@@ -39,11 +38,10 @@ export class ConfiguracaoLinhaCreateDeleteService extends SuperService {
         _data = { dms: dms, len: len, confBinada: cadastroLinhaBinada, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            path: "NotImplemented",
-            command: this.urlService.pathDmsAPI + "dms/criarLinha",
+            path: "dms/criarLinha",
+            command: "dmsAPI",
             _data: _data,
-            otherUrl: this.urlService.otherUrlMake(true),
-            timeout: 200000
+            timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

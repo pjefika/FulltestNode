@@ -109,7 +109,6 @@ export class ValidadorManobraComponent extends SuperComponentService implements 
             this.btnValidarManobraName = "Validando Manobra";
             this.btnValidarManobraDisabled = true;
             this.btnValidarManobraLoading = true;
-
             this.validadorManobraService
                 .getValidacaoAsserts(this.variavelHolderService.cadastro, this.ordem)
                 .subscribe(resposta => {

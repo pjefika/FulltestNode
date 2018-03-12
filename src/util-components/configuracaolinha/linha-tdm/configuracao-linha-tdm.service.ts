@@ -18,12 +18,11 @@ export class ConfiguracaoLinhaTdmService extends SuperService {
         _data = { dms: dms, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathDmsAPI + "dms/consultar",
+            path: "dms/consultar",
+            command: "dmsAPI",
             _data: _data,
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(true),
-            timeout: 50000
-        }
+            timeout: 120000
+        };
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as CadastroLinha

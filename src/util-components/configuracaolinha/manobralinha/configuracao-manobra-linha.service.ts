@@ -20,11 +20,10 @@ export class ConfiguracaoManobraLinhaService extends SuperService {
         _data = { dms: dms, len: len, confBinada: cadastroLinhaBinada, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathDmsAPI + "dms/manobrarLinha",
+            path: "dms/manobrarLinha",
+            command: "dmsAPI",
             _data: _data,
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(),
-            timeout: 200000
+            timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {
@@ -40,11 +39,10 @@ export class ConfiguracaoManobraLinhaService extends SuperService {
         _data = { instancia: cad.instancia, dms: dms, services: services, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathDmsAPI + "dms/editarServicos",
+            path: "dms/editarServicos",
+            command: "dmsAPI",
             _data: _data,
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(),
-            timeout: 200000
+            timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

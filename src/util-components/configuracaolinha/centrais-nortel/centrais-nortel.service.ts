@@ -13,11 +13,10 @@ export class CentraisNortelService extends SuperService {
     public getContextDMS(): Promise<InfoNortelConection[]> {
         this.infoResquest = {
             rqst: "get",
-            path: "NotImplemented",
-            command: this.urlService.pathDmsAPI + "contextDMS/",
-            otherUrl: this.urlService.otherUrlMake(true),
-            timeout: 60000
-        }
+            path: "contextDMS/",
+            command: "dmsAPI",
+            timeout: 120000
+        };
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as InfoNortelConection[]
@@ -28,12 +27,10 @@ export class CentraisNortelService extends SuperService {
     public connection(conection: string): Promise<InfoNortelConection[]> {
         this.infoResquest = {
             rqst: "get",
-            command: this.urlService.pathDmsAPI + "contextDMS/connection/",
-            _data: conection,
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(true),
-            timeout: 60000
-        }
+            path: "contextDMS/connection/",
+            command: "dmsAPI",
+            timeout: 120000
+        };
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as InfoNortelConection[]
@@ -46,12 +43,11 @@ export class CentraisNortelService extends SuperService {
         _data = { ip: ip }
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathDmsAPI + "contextDMS/connectSwitch",
+            path: "contextDMS/connectSwitch",
+            command: "dmsAPI",
             _data: _data,
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(true),
-            timeout: 60000
-        }
+            timeout: 120000
+        };
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as InfoNortelConection
@@ -64,12 +60,11 @@ export class CentraisNortelService extends SuperService {
         _data = { ip: ip }
         this.infoResquest = {
             rqst: "post",
-            path: "NotImplemented",
-            command: this.urlService.pathDmsAPI + "contextDMS/disconnectSwitch",
+            path: "contextDMS/disconnectSwitch",
+            command: "dmsAPI",
             _data: _data,
-            otherUrl: this.urlService.otherUrlMake(true),
-            timeout: 60000
-        }
+            timeout: 120000
+        };
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as InfoNortelConection

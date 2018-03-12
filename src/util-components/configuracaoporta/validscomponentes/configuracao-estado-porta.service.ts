@@ -18,11 +18,11 @@ export class ConfiguracaoEstadoPortaService extends SuperService {
         _data = { cust: cadastro, executor: usr.user, estadoPorta: estadoPorta };
         this.infoResquest = {
             rqst: "post",
-            path: "fulltestAPI/",
-            command: "configPorta/setAdminState",
+            path: "configPorta/setAdminState",
+            command: "fulltestAPI",
             _data: _data,
             timeout: 120000
-        }
+        };
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as Valid

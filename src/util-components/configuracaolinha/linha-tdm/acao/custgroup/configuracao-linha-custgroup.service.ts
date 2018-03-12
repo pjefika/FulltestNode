@@ -18,11 +18,10 @@ export class ConfiguracaoLinhaCustgroupService extends SuperService {
         _data = { dms: dms, custGrp: custgroup, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathDmsAPI + "dms/editarCustGrp",
+            path: "dms/editarCustGrp",
+            command: "dmsAPI",
             _data: _data,
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(true),
-            timeout: 200000
+            timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

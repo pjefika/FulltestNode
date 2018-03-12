@@ -11,10 +11,9 @@ export class LoginService extends SuperService {
     public autentica(usuario: Usuario): Promise<Boolean> {
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathAuth + "autentica/verificarCredencial",
-            path: "NotImplemented",
+            command: "authAPI",
+            path: "autentica/verificarCredencial",
             _data: usuario,
-            otherUrl: "http://10.40.195.81:8080/", //this.urlService.otherUrlMake(),
             timeout: 6000
         }
         return this.urlService.request(this.infoResquest)
@@ -25,12 +24,12 @@ export class LoginService extends SuperService {
     }
 
     public getUsuario(usuario: Usuario): Promise<Usuario> {
+
         this.infoResquest = {
             rqst: "get",
-            command: this.urlService.pathAuth + "autentica/consultar/",
+            command: "authAPI",
+            path: "autentica/consultar/",
             _data: usuario.login,
-            path: "NotImplemented",
-            otherUrl: "http://10.40.195.81:8080/", // this.urlService.otherUrlMake(),
             timeout: 6000
         }
         return this.urlService.request(this.infoResquest)

@@ -18,19 +18,11 @@ export class ConfiguracoesGeraisLinhaService extends SuperService {
         _data = { instancia: instancia, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            path: "stealerAPI/",
-            command: "linha/",
+            path: "linha/",
+            command: "stealerAPI",
             _data: _data,
-            timeout: 6000
-        };
-        // this.infoResquest = {
-        //     rqst: "post",
-        //     command: this.urlService.pathStealerAPI + "linha/",
-        //     _data: _data,
-        //     path: "NotImplemented",
-        //     otherUrl: this.urlService.otherUrlMake(),
-        //     timeout: 60000
-        // }
+            timeout: 120000
+        }
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as Linha;
@@ -45,13 +37,13 @@ export class ConfiguracoesGeraisLinhaService extends SuperService {
         _data = { dms: dms, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            path: "NotImplemented",
-            command: this.urlService.pathDmsAPI + "dms/consultarConfiguracoesShelf",
+            path: "dms/consultarConfiguracoesShelf",
+            command: "dmsAPI",
             _data: _data,
-            otherUrl: this.urlService.otherUrlMake(true),
-            timeout: 200000
+            timeout: 120000
         }
-        return this.urlService.request(this.infoResquest)
+        return this.urlService
+            .request(this.infoResquest)
             .then(data => {
                 return data as ConfLensLivres;
             })
@@ -65,10 +57,9 @@ export class ConfiguracoesGeraisLinhaService extends SuperService {
         _data = { dms: dms, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathDmsAPI + "dms/resetarPorta",
+            path: "dms/resetarPorta",
+            command: "dmsAPI",
             _data: _data,
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(true),
             timeout: 200000
         }
         //(this.infoResquest)

@@ -14,11 +14,10 @@ export class ConfiguracaoLinhaNcosService extends SuperService {
 
     public getNcos(): Promise<Ncos[]> {
         this.infoResquest = {
-            rqst: "get",
-            command: this.urlService.pathDmsAPI + "dms/ncos",
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(true),
-            timeout: 1200000
+            rqst: "post",
+            path: "dms/ncos",
+            command: "dmsAPI",
+            timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {
@@ -34,11 +33,10 @@ export class ConfiguracaoLinhaNcosService extends SuperService {
         _data = { dms: dms, ncos: ncos, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            command: this.urlService.pathDmsAPI + "dms/editarNcos",
+            path: "dms/editarNcos",
+            command: "dmsAPI",
             _data: _data,
-            path: "NotImplemented",
-            otherUrl: this.urlService.otherUrlMake(true),
-            timeout: 200000
+            timeout: 120000
         }
         return this.urlService.request(this.infoResquest)
             .then(data => {

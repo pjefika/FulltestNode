@@ -21,10 +21,10 @@ export class ValidadorManobraService extends SuperService {
     public getListaMotivo(): Promise<Motivo[]> {
         this.infoResquest = {
             rqst: "get",
-            path: "fulltestAPI/",
-            command: "manobra/motivos",
+            path: "manobra/motivos",
+            command: "fulltestAPI",
             timeout: 120000
-        }
+        };
         return this.urlService
             .request(this.infoResquest)
             .then(data => {
@@ -41,22 +41,14 @@ export class ValidadorManobraService extends SuperService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { cust: Customer, motivo: string, executor: string }
         _data = { cust: cadastro, motivo: motivoSelected, executor: usr.user }
-
         this.infoResquest = {
             rqst: "post",
-            path: "NotImplemented",
-            command: "fulltestAPI/manobra/analitico",
+            path: "fulltestAPI/manobra/analitico",
+            command: "fulltestAPI",
             _data: _data,
-            otherUrl: this.urlService.otherUrlMake(true),
-            timeout: 60000
-        }
-        // this.infoResquest = {
-        //     rqst: "post",
-        //     path: "fulltestAPI/",
-        //     command: "manobra/analitico",
-        //     _data: _data,
-        //     timeout: 120000
-        // }
+            otherUrl: "http://10.200.35.67:80/",
+            timeout: 120000
+        };
         return this.urlService
             .request(this.infoResquest)
             .then(data => {
@@ -74,12 +66,13 @@ export class ValidadorManobraService extends SuperService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { cust: any, executor: string };
         _data = { cust: cadastro, executor: usr.user };
+
         this.infoResquest = {
             rqst: "post",
-            path: "fulltestAPI/",
-            command: "fulltest/manobra/",
+            path: "fulltest/manobra/",
+            command: "fulltestAPI",
             _data: _data,
-            timeout: 120000
+            timeout: 60000
         }
         return this.urlService
             .request(this.infoResquest)
@@ -101,44 +94,28 @@ export class ValidadorManobraService extends SuperService {
         infoResquests = [
             {
                 _data: cadastro,
-                command: "manobra/asserts",
-                path: "fulltestAPI/"
+                command: "fulltestAPI",
+                path: "manobra/asserts",
+                otherUrl: "http://10.40.196.182:7172/fulltestAPI/manobra/asserts"
+
             }, {
                 _data: _data,
-                command: "manobra/asserts",
-                path: "stealerAPI/"
+                command: "stealerAPI",
+                path: "manobra/asserts",
+                otherUrl: "http://10.40.196.182:7173/stealerAPI/manobra/asserts"
             }
         ];
         return Observable.forkJoin(
-            this.http.post(this.moutPathForFork(infoResquests[0]), JSON.stringify(infoResquests[0]._data), this.urlService.options)
+            this.http.post(infoResquests[0].otherUrl, JSON.stringify(infoResquests[0]._data), this.urlService.options)
                 .map(resposta => resposta.json()),
-            this.http.post(this.moutPathForFork(infoResquests[1]), JSON.stringify(infoResquests[1]._data), this.urlService.options)
+            this.http.post(infoResquests[1].otherUrl, JSON.stringify(infoResquests[1]._data), this.urlService.options)
                 .map(resposta => resposta.json()))
             .map(resposta => {
                 return resposta;
             }, erro => {
                 super.handleErrorKing;
             });
-    }
-
-    private moutPathForFork(infoRequest: InfoRequest): string {
-        switch (infoRequest.path) {
-            case "fulltestAPI/":
-                if (this.systemHolderService.isLinkProd) {
-                    return this.urlService.fulltestProd + infoRequest.path + infoRequest.command;
-                } else {
-                    return this.urlService.fulltestQA + infoRequest.path + infoRequest.command;
-                }
-            case "stealerAPI/":
-                if (this.systemHolderService.isLinkProd) {
-                    return this.urlService.stealerProd + infoRequest.path + infoRequest.command;
-                } else {
-                    return this.urlService.stealerQA + infoRequest.path + infoRequest.command;
-                }
-            default:
-                console.log("Não encontrado...");
-        }
-    }
+    }    
 
     public getValidacaoAssertsMock(): Assert[] {
         return JSON.parse('[{"asserts":"IS_REPARO","value":true,"creationDate":1519914982606},{"asserts":"AUTH_ABERTURA_ORDEM","value":true,"creationDate":1519914982802},{"asserts":"HAS_SYNC","value":true,"creationDate":1519914943005},{"asserts":"REDE_CONFIAVEL","value":true,"creationDate":1519914943005},{"asserts":"RESYNC_MENOR_300","value":true,"creationDate":1519914943005},{"asserts":"RESYNC_MENOR_50","value":true,"creationDate":1519914943005},{"asserts":"RESYNC_MENOR_5","value":true,"creationDate":1519914943005},{"asserts":"PACOTES_DOWN_MAIOR_6000","value":true,"creationDate":1519914943005},{"asserts":"PACOTES_UP_MAIOR_4000","value":true,"creationDate":1519914943005},{"asserts":"ATT_DOWN_OK","value":false,"creationDate":1519914943005},{"asserts":"ATT_UP_OK","value":false,"creationDate":1519914943005},{"asserts":"IS_SIP","value":false,"creationDate":1519914943005}]');

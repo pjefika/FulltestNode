@@ -15,8 +15,8 @@ export class CadastroService extends SuperService {
         _data = { parameter: instancia, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            path: "customerAPI/",
-            command: "customer/findByParameter",
+            path: "customer/findByParameter",
+            command: "customerAPI",
             _data: _data,
             timeout: 63000
         };

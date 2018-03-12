@@ -18,11 +18,11 @@ export class ConfiguracaoPortaService extends SuperService {
         _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            path: "fulltestAPI/",
-            command: "configPorta/",
+            path: "configPorta/",
+            command: "fulltestAPI",
             _data: _data,
             timeout: 120000
-        }        
+        };
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as ConfPorta
