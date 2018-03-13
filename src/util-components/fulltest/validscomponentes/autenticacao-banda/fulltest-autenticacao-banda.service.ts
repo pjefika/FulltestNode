@@ -17,11 +17,11 @@ export class FulltestAutenticacaoBandaService extends SuperService {
         _data = { macOrIp: result.mac, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            path: "stealerAPI",
-            command: "oss/auth/",
+            path: "oss/auth/",
+            command: "stealerAPI",
             _data: _data,
             timeout: 120000
-        }        
+        }
         return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as AutenticacaoBanda
