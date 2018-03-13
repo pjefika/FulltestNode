@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { DirectUrlsService } from './direct.urls.service';
 import { SystemHolderService } from '../holder/systemHolder.service';
 import { Headers, RequestOptions, Http } from '@angular/http';
 import { InfoRequest } from '../../viewmodel/inforequest/inforequest';

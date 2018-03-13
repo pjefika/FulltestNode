@@ -69,7 +69,6 @@ import { AcsComponent } from '../util-components/acs/acs.component';
 import { CentraisNortelComponent } from '../util-components/configuracaolinha/centrais-nortel/centrais-nortel.component';
 import { CadastroCrmViewComponent } from '../util-components/cadastro/crm-view/cadastro-crm-view.component';
 import { CadastroCrmTableAssertsComponent } from '../util-components/cadastro/crm-view/tableasserts/cadastro-crm-table-asserts.component';
-import { DirectUrlsService } from '../util/urlservice/direct.urls.service';
 import { ValidadorManobraComponent } from '../util-components/validadormanobra/validador-manobra.component';
 import { ValidadorInfoFulltestTableComponent } from '../util-components/validadormanobra/validadormanobrafulltestgeral/validador-info-fulltest-table.component';
 import { ValidadorManobraFulltestTableComponent } from '../util-components/validadormanobra/validadormanobrafulltesttable/validador-manobra-fulltest-table.component';
@@ -168,7 +167,6 @@ import { LogListCertificationComponent } from '../util-components/loglistcertifi
 		SystemHolderService,
 		UtilService,
 		UrlService,
-		DirectUrlsService,
 		SuperService,
 		DynamicRouterService,
 		AlertService,
