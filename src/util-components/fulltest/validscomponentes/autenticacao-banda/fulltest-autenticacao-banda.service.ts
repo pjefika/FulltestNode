@@ -17,7 +17,7 @@ export class FulltestAutenticacaoBandaService extends SuperService {
         _data = { macOrIp: result.mac, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            path: "stealerAPI/",
+            path: "stealerAPI",
             command: "oss/auth/",
             _data: _data,
             timeout: 120000
