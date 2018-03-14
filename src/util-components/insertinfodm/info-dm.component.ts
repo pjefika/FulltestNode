@@ -20,10 +20,7 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
         super(toastyComponent, systemHolderService);
     }
 
-    public ngOnInit() { 
-        console.log("entrou aq");
-        
-    }
+    public ngOnInit() { }
 
     private setInfosDm() {
         let caminho: string;
