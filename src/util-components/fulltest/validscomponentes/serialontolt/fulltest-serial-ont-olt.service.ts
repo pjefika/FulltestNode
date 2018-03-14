@@ -19,7 +19,7 @@ export class FulltestSerialOntOltService extends SuperService {
         _data = { cust: cadastro, executor: usr.user, serial: { serial: serial } };
         this.infoResquest = {
             rqst: "post",
-            path: "fulltestAPI/",
+            path: "fulltestAPI",
             command: "configPorta/setOntToOlt",
             _data: _data,
             timeout: 120000
@@ -37,7 +37,7 @@ export class FulltestSerialOntOltService extends SuperService {
         _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            path: "fulltestAPI/",
+            path: "fulltestAPI",
             command: "configPorta/unsetOntFromOlt",
             _data: _data,
             timeout: 120000

@@ -18,7 +18,7 @@ export class FulltestProfileService extends SuperService {
         _data = { cust: cadastro, executor: usr.user, profile: result };
         this.infoResquest = {
             rqst: "post",
-            path: "fulltestAPI/",
+            path: "fulltestAPI",
             command: "configPorta/setProfile",
             _data: _data,
             timeout: 1200000

@@ -17,7 +17,7 @@ export class FulltestVlanService extends SuperService {
         _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            path: "fulltestAPI/",
+            path: "fulltestAPI",
             command: "configPorta/" + whatSet,
             _data: _data,
             timeout: 120000
@@ -35,7 +35,7 @@ export class FulltestVlanService extends SuperService {
         _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            path: "fulltestAPI/",
+            path: "fulltestAPI",
             command: "configPorta/resetIptvStatistics",
             _data: _data,
             timeout: 120000
