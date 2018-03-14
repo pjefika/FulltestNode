@@ -12,82 +12,81 @@
                 <section class="form-block">
                     <div class="form-group">
                         <label>Ip DSLAM:</label>
-                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.ipDslam ? '': 'invalid'">
-                            <input type="text" required [(ngModel)]="cadastro.rede.ipDslam" name="ipDslam" placeholder="Insira o ipDslam" />
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="variavelHolderService.cadastro.rede.ipDslam ? '': 'invalid'">
+                            <input type="text" required [(ngModel)]="variavelHolderService.cadastro.rede.ipDslam" name="ipDslam" placeholder="Insira o ipDslam" />
                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label>Vendor DSLAM:</label>
-                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.vendorDslam ? '': 'invalid'">
-                            <input type="text" required [(ngModel)]="cadastro.rede.vendorDslam" name="vendorDslam" placeholder="Insira o Vendor DSLAM"
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="variavelHolderService.cadastro.rede.vendorDslam ? '': 'invalid'">
+                            <input type="text" required [(ngModel)]="variavelHolderService.cadastro.rede.vendorDslam" name="vendorDslam" placeholder="Insira o Vendor DSLAM"
                             />
                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label>Modelo DSLAM:</label>
-                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.modeloDslam ? '': 'invalid'">
-                            <input type="text" required [(ngModel)]="cadastro.rede.modeloDslam" name="modeloDslam" placeholder="Insira o Modelo DSLAM"
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="variavelHolderService.cadastro.rede.modeloDslam ? '': 'invalid'">
+                            <input type="text" required [(ngModel)]="variavelHolderService.cadastro.rede.modeloDslam" name="modeloDslam" placeholder="Insira o Modelo DSLAM"
                             />
                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label>Slot:</label>
-                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.slot ? '': 'invalid'">
-                            <input type="text" required [(ngModel)]="cadastro.rede.slot" name="slot" placeholder="Insira o Slot" />
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="variavelHolderService.cadastro.rede.slot ? '': 'invalid'">
+                            <input type="text" required [(ngModel)]="variavelHolderService.cadastro.rede.slot" name="slot" placeholder="Insira o Slot" />
                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label>Porta:</label>
-                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.porta ? '': 'invalid'">
-                            <input type="text" required [(ngModel)]="cadastro.rede.porta" name="porta" placeholder="Insira a Porta" />
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="variavelHolderService.cadastro.rede.porta ? '': 'invalid'">
+                            <input type="text" required [(ngModel)]="variavelHolderService.cadastro.rede.porta" name="porta" placeholder="Insira a Porta" />
                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label>Endereço Sequencial da Porta:</label>
-                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.sequencial ? '': 'invalid'">
-                            <input type="text" required [(ngModel)]="cadastro.rede.sequencial" name="sequencial" placeholder="Insira o Endereço Sequencial da Porta"
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="variavelHolderService.cadastro.rede.sequencial ? '': 'invalid'">
+                            <input type="text" required [(ngModel)]="variavelHolderService.cadastro.rede.sequencial" name="sequencial" placeholder="Insira o Endereço Sequencial da Porta"
                             />
                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                         </label>
                     </div>
-                    <div class="form-group" *ngIf="cadastro.rede.tipo === 'GPON'">
+                    <div class="form-group" *ngIf="variavelHolderService.cadastro.rede.tipo === 'GPON'">
                         <label>Porta Lógica:</label>
-                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.logica ? '': 'invalid'">
-                            <input type="text" required [(ngModel)]="cadastro.rede.logica" name="logica" placeholder="Insira a Porta Lógica"
-                            />
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="variavelHolderService.cadastro.rede.logica ? '': 'invalid'">
+                            <input type="text" required [(ngModel)]="variavelHolderService.cadastro.rede.logica" name="logica" placeholder="Insira a Porta Lógica" />
                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label>RIN:</label>
-                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.rin ? '': 'invalid'">
-                            <input type="text" required [(ngModel)]="cadastro.rede.rin" name="rin" placeholder="Insira o RIN" />
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="variavelHolderService.cadastro.rede.rin ? '': 'invalid'">
+                            <input type="text" required [(ngModel)]="variavelHolderService.cadastro.rede.rin" name="rin" placeholder="Insira o RIN" />
                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label>Vlan VoIP:</label>
-                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.vlanVoip ? '': 'invalid'">
-                            <input type="text" required [(ngModel)]="cadastro.rede.vlanVoip" name="vlanVoip" placeholder="Vlan VoIP" />
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="variavelHolderService.cadastro.rede.vlanVoip ? '': 'invalid'">
+                            <input type="text" required [(ngModel)]="variavelHolderService.cadastro.rede.vlanVoip" name="vlanVoip" placeholder="Vlan VoIP" />
                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label>Vlan VoD:</label>
-                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.vlanVod ? '': 'invalid'">
-                            <input type="text" required [(ngModel)]="cadastro.rede.vlanVod" name="vlanVod" placeholder="Insira o Vlan VoD" />
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="variavelHolderService.cadastro.rede.vlanVod ? '': 'invalid'">
+                            <input type="text" required [(ngModel)]="variavelHolderService.cadastro.rede.vlanVod" name="vlanVod" placeholder="Insira o Vlan VoD" />
                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label>Vlan Multicast:</label>
-                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.rede.vlanMulticast ? '': 'invalid'">
-                            <input type="text" required [(ngModel)]="cadastro.rede.vlanMulticast" name="vlanMulticast" placeholder="Insira o Vlan Multicast"
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="variavelHolderService.cadastro.rede.vlanMulticast ? '': 'invalid'">
+                            <input type="text" required [(ngModel)]="variavelHolderService.cadastro.rede.vlanMulticast" name="vlanMulticast" placeholder="Insira o Vlan Multicast"
                             />
                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                         </label>
@@ -95,7 +94,7 @@
                 </section>
             </form>
             <div>
-                <button type="button" class="btn btn-icon btn-primary" (click)="abrirModal();" *ngIf="cadastro.rede.planta === 'VIVO1'">
+                <button type="button" class="btn btn-icon btn-primary" (click)="abrirModal()" *ngIf="variavelHolderService.cadastro.rede.planta === 'VIVO1'">
                     Inserir cadastro DM
                 </button>
             </div>
@@ -108,22 +107,22 @@
                     <div class="form-group">
                         <label>Velocidade de Download:</label>
                         <div class="select">
-                            <select [(ngModel)]="cadastro.servicos.velDown" name="velDown" #name="ngModel">
+                            <select [(ngModel)]="variavelHolderService.cadastro.servicos.velDown" name="velDown" #name="ngModel">
                                 <option *ngFor="let velocidade of listEnumVelocidades" [ngValue]="velocidade">{{velocidade}}</option>
                             </select>
                         </div>
-                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.servicos.velDown ? '': 'invalid'">
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="variavelHolderService.cadastro.servicos.velDown ? '': 'invalid'">
                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label>Velocidade de Upload:</label>
                         <div class="select">
-                            <select [(ngModel)]="cadastro.servicos.velUp" name="velUp" #name="ngModel">
+                            <select [(ngModel)]="variavelHolderService.cadastro.servicos.velUp" name="velUp" #name="ngModel">
                                 <option *ngFor="let velocidade of listEnumVelocidades" [ngValue]="velocidade">{{velocidade}}</option>
                             </select>
                         </div>
-                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="cadastro.servicos.velUp ? '': 'invalid'">
+                        <label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md tooltip-bottom-left" [ngClass]="variavelHolderService.cadastro.servicos.velUp ? '': 'invalid'">
 
                             <span class="tooltip-content">Este campo precisa ser preenchido</span>
                         </label>
@@ -131,7 +130,7 @@
                     <div class="form-group">
                         <label>Tipo TV: </label>
                         <div class="select">
-                            <select [(ngModel)]="cadastro.servicos.tipoTv" name="tipotv">
+                            <select [(ngModel)]="variavelHolderService.cadastro.servicos.tipoTv" name="tipotv">
                                 <option [ngValue]="SemTV">Sem TV</option>
                                 <option *ngFor="let tv of listEnumTv" [ngValue]="tv">{{tv}}</option>
                             </select>
@@ -140,7 +139,7 @@
                     <div class="form-group">
                         <label>Tipo Linha: </label>
                         <div class="select">
-                            <select [(ngModel)]="cadastro.servicos.tipoLinha" name="tipolinha">
+                            <select [(ngModel)]="variavelHolderService.cadastro.servicos.tipoLinha" name="tipolinha">
                                 <option *ngFor="let linha of listEnumVoz" [ngValue]="linha">{{linha}}</option>
                             </select>
                         </div>

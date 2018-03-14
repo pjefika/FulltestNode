@@ -18,7 +18,7 @@ export class CadastroWizardComponent implements OnInit {
     @ViewChild("paginarede") public paginarede: WizardPage;
     @ViewChild("paginaservico") public paginaservico: WizardPage;
 
-    public cadastro: Customer;
+    // public cadastro: Customer;
 
     private listEnumTv: String[];
     private listEnumVoz: String[];
@@ -35,12 +35,12 @@ export class CadastroWizardComponent implements OnInit {
         private enumService: EnumService,
         public systemHolderService: SystemHolderService,
         public variavelHolderService: VariavelHolderService) {
-        this.cadastro = this.variavelHolderService.cadastro;
+        // this.cadastro = this.variavelHolderService.cadastro;
     }
 
     private abrirModal() {
-        this.systemHolderService.modalWizardCadastroIsOpen = true;
-        this.systemHolderService.modalInfoDMIsOpen = false;
+        this.systemHolderService.modalWizardCadastroIsOpen = false;
+        this.systemHolderService.modalInfoDMIsOpen = true;
     }
 
     public ngOnInit(): void {
@@ -60,10 +60,10 @@ export class CadastroWizardComponent implements OnInit {
     }
 
     private validaCadastroFull() {
-        if (!this.cadastro.rede.tipo) {
+        if (!this.variavelHolderService.cadastro.rede.tipo) {
             this.jumpToPaginaRede();
             this.systemHolderService.modalWizardCadastroIsOpen = true;
-        } else if (!this.cadastro.servicos.velDown && !this.cadastro.servicos.velDown) {
+        } else if (!this.variavelHolderService.cadastro.servicos.velDown && !this.variavelHolderService.cadastro.servicos.velDown) {
             this.jumpToPaginaServico();
             this.systemHolderService.modalWizardCadastroIsOpen = true;
         }
@@ -111,7 +111,7 @@ export class CadastroWizardComponent implements OnInit {
     }
 
     private validCadastroRedeEServico(): Boolean {
-        if (!this.cadastro.rede.vendorDslam || (!this.cadastro.servicos.velDown && !this.cadastro.servicos.velUp)) {
+        if (!this.variavelHolderService.cadastro.rede.vendorDslam || (!this.variavelHolderService.cadastro.servicos.velDown && !this.variavelHolderService.cadastro.servicos.velUp)) {
             // this.systemHolderService.liberarSubNav = false;
             return false;
         } else {
@@ -123,7 +123,7 @@ export class CadastroWizardComponent implements OnInit {
     private onCommit() {
         if (this.validCadastroRedeEServico()) {
             this.wizardmodal.forceFinish();
-            this.variavelHolderService.cadastro = this.cadastro;
+            this.variavelHolderService.cadastro = this.variavelHolderService.cadastro;
         } else {
             this.alertMsg = true;
             this.msg = {

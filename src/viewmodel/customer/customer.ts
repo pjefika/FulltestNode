@@ -11,11 +11,11 @@ export class Customer {
     instancia: string;
     designadorAcesso: string;
     designadorTv: string;
-    rede: Rede;
-    redeExterna: RedeExterna;
-    servicos: Servico;
-    linha: Linha;
-    radius: Radius;
-    asserts: Assert[];
-    eventos: ListEvento[];
+    rede?: Rede;
+    redeExterna?: RedeExterna;
+    servicos?: Servico;
+    linha?: Linha;
+    radius?: Radius;
+    asserts?: Assert[];
+    eventos?: ListEvento[];
 }
