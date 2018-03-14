@@ -77,8 +77,8 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
             },
             servicos: {
                 origem: null,
-                velDown: Number(this.findNextIndex("Velocidade Down/Up:").split("/").shift()),
-                velUp: Number(this.findNextIndex("Velocidade Down/Up:").split("/").pop()),
+                velDown: this.validVelocidade(Number(this.findNextIndex("Velocidade Down/Up:").split("/").shift()), "down"),
+                velUp: this.validVelocidade(Number(this.findNextIndex("Velocidade Down/Up:").split("/").pop()), "up"),
                 tipoTv: null,
                 tipoLinha: "SIP"
             },
@@ -90,7 +90,6 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
         this.systemHolderService.modalInfoDMIsOpen = false;
     }
 
-
     private findDlsamCad() {
         console.log("Entrou Dslam");
         // console.log(this.arrayInfo);
@@ -101,6 +100,23 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
         let index = this.arrayInfo.indexOf(campo);
         if (index >= 0 && index < this.arrayInfo.length - 1) {
             return this.arrayInfo[index + 1];
+        }
+    }
+
+    private validVelocidade(vel: number, what: string): number {
+        switch (what) {
+            case "down":
+                if (vel) {
+                    return vel;
+                } else {
+                    return this.variavelHolderService.cadastro.servicos.velDown;
+                }
+            case "up":
+                if (vel) {
+                    return vel;
+                } else {
+                    return this.variavelHolderService.cadastro.servicos.velUp;
+                }
         }
     }
 
