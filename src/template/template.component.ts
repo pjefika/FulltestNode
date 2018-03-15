@@ -81,17 +81,13 @@ export class TemplateComponent extends SuperComponentService implements OnInit {
     * Busca a instância 
     */
     private busca() {
-        this.holderReset();
+        this.holderResetService.reset();
         this.templateService.setFalseMenus();
         this.setToDynamicComponent(CadastroComponent);
         if (this.util.validUser()) {
-            // CRM
-            // this.setToDynamicComponent(CadastroCrmVFiewComponent);
             this.systemHolderService.qualView = "CRM";
             this.systemHolderService.subNavMenus = SubNavMockCrm;
         } else {
-            // CO           
-            // this.setToDynamicComponent(CadastroComponent);
             this.systemHolderService.qualView = "CO";
             this.systemHolderService.subNavMenus = SubNavMockCo;
         }
@@ -103,10 +99,6 @@ export class TemplateComponent extends SuperComponentService implements OnInit {
         } else {
             this.systemHolderService.resumoInfosAtivo = true;
         }
-    }
-
-    private holderReset() {
-        this.holderResetService.reset();
     }
 
 }

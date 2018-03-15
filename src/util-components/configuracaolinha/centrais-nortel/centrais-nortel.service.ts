@@ -29,6 +29,7 @@ export class CentraisNortelService extends SuperService {
             rqst: "get",
             path: "contextDMS/connection/",
             command: "dmsAPI",
+            _data: conection,
             timeout: 120000
         };
         return this.urlService.request(this.infoResquest)

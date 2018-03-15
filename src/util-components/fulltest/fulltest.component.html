@@ -22,7 +22,7 @@
         <h3 class="modal-title">Eventos Massivos</h3>
         <div class="modal-body">
             <p>O cliente possui um evento massivo, deseja relmente continuar com os testes e validações?</p>
-            <eventos-massivos-component [eventos]="variavelHolderService.cadastro.eventos"></eventos-massivos-component>
+            <eventos-massivos-component [eventos]="variavelHolderService.cadastro.eventos" *ngIf="variavelHolderService.cadastro"></eventos-massivos-component>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-success" (click)="doCertification()">Continuar</button>

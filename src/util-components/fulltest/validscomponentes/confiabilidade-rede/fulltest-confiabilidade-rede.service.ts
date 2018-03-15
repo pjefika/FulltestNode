@@ -17,8 +17,8 @@ export class FulltestConfiabilidadeRedeService extends SuperService {
         _data = { cust: cadastro, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
-            path: "fulltestAPI",
-            command: "configPorta/getConfiabilidadeRede",
+            path: "configPorta/getConfiabilidadeRede",
+            command: "fulltestAPI",
             _data: _data,
             timeout: 120000
         }

@@ -8,7 +8,6 @@ export class HolderResetService {
     constructor(public systemHolderService: SystemHolderService,
         public variavelHolderService: VariavelHolderService) { }
 
-
     public reset() {
         this.resetVariavelHolder();
         this.resetSystemHolder();
