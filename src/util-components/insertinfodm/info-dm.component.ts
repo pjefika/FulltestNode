@@ -120,4 +120,9 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
         }
     }
 
+    private voltar() {
+        this.systemHolderService.modalWizardCadastroIsOpen = true;
+        this.systemHolderService.modalInfoDMIsOpen = false;
+    }
+
 }
