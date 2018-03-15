@@ -4,7 +4,7 @@
         <cadastro-wizard-component></cadastro-wizard-component>
         <div class="row">
             <div class="col-xs">
-                <cadastro-co-view-component [cadastro]="cadastro"></cadastro-co-view-component>
+                <cadastro-co-view-component [cadastro]="variavelHolderService.cadastro"></cadastro-co-view-component>
             </div>
             <div class="col-xs-5">
                 <acs-component *ngIf="variavelHolderService.cadastro" [designador]="variavelHolderService.cadastro.designador"></acs-component>
