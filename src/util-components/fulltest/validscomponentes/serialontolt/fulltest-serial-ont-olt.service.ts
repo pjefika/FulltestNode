@@ -28,7 +28,7 @@ export class FulltestSerialOntOltService extends SuperService {
             .then(resposta => {
                 return resposta as ResultSerial;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public unsetOntFromOlt(cadastro: Customer) {
@@ -45,7 +45,7 @@ export class FulltestSerialOntOltService extends SuperService {
             .then(resposta => {
                 return resposta as ReturnResultSerial[];
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
 }

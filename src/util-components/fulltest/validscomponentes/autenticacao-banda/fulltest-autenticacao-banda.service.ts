@@ -26,6 +26,6 @@ export class FulltestAutenticacaoBandaService extends SuperService {
             .then(resposta => {
                 return resposta as AutenticacaoBanda;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 }

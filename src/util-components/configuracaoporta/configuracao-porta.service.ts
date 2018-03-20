@@ -27,7 +27,7 @@ export class ConfiguracaoPortaService extends SuperService {
             .then(resposta => {
                 return resposta as ConfPorta;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public getConfigPortaMock(): ConfPorta {

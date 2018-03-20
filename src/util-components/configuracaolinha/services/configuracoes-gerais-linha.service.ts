@@ -27,7 +27,7 @@ export class ConfiguracoesGeraisLinhaService extends SuperService {
             .then(resposta => {
                 return resposta as Linha;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public getLensLivres(linha: Linha): Promise<ConfLensLivres> {
@@ -45,7 +45,7 @@ export class ConfiguracoesGeraisLinhaService extends SuperService {
             .then(resposta => {
                 return resposta as ConfLensLivres;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public resetarPorta(linha: Linha): Promise<CadastroLinha> {
@@ -63,7 +63,7 @@ export class ConfiguracoesGeraisLinhaService extends SuperService {
             .then(resposta => {
                 return resposta as CadastroLinha;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
 

@@ -25,7 +25,7 @@ export class AcsService extends SuperService {
             .then(resposta => {
                 return resposta as Equipamento[];
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public abreSearchDevice(deviceId: number) {

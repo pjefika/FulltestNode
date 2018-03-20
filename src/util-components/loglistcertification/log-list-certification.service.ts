@@ -25,7 +25,7 @@ export class LogListCertificationService extends SuperService {
             .then(resposta => {
                 return resposta as Certification[];
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public getCertificationByCustomerMock(): Certification[] {

@@ -26,7 +26,7 @@ export class FulltestVlanService extends SuperService {
             .then(resposta => {
                 return resposta as Valid;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public resetIptvStatistics(cadastro: Customer) {
@@ -43,7 +43,7 @@ export class FulltestVlanService extends SuperService {
             .then(resposta => {
                 return resposta as any[];
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
 }

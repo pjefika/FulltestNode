@@ -24,7 +24,7 @@ export class ConfiguracaoLinhaNcosService extends SuperService {
             .then(resposta => {
                 return resposta as Ncos[];
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public setNcos(linha: Linha, ncos: string): Promise<CadastroLinha> {
@@ -42,7 +42,7 @@ export class ConfiguracaoLinhaNcosService extends SuperService {
             .then(resposta => {
                 return resposta as CadastroLinha;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
 }

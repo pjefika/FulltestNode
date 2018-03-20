@@ -27,7 +27,7 @@ export class ConfiguracaoLinhaCustgroupService extends SuperService {
             .then(resposta => {
                 return resposta as CadastroLinha;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
 }

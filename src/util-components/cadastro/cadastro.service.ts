@@ -24,7 +24,7 @@ export class CadastroService extends SuperService {
             .then(resposta => {
                 return resposta as Customer;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public getCadastroMock(): Customer {

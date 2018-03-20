@@ -28,7 +28,7 @@ export class ConfiguracaoLinhaCreateDeleteService extends SuperService {
             .then(resposta => {
                 return resposta as CadastroLinha;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public setCriarLinha(linha: Linha, len: Len, cadastroLinhaBinada: CadastroLinha): Promise<CadastroLinha> {
@@ -46,6 +46,6 @@ export class ConfiguracaoLinhaCreateDeleteService extends SuperService {
             .then(resposta => {
                 return resposta as CadastroLinha;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 }

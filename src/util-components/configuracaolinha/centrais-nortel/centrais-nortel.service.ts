@@ -21,7 +21,7 @@ export class CentraisNortelService extends SuperService {
             .then(resposta => {
                 return resposta as InfoNortelConection[];
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public connection(conection: string): Promise<InfoNortelConection[]> {
@@ -35,7 +35,7 @@ export class CentraisNortelService extends SuperService {
             .then(resposta => {
                 return resposta as InfoNortelConection[];
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public connectSwitch(ip: string): Promise<InfoNortelConection> {
@@ -51,7 +51,7 @@ export class CentraisNortelService extends SuperService {
             .then(resposta => {
                 return resposta as InfoNortelConection;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public disconnectSwitch(ip: string): Promise<InfoNortelConection> {
@@ -67,7 +67,7 @@ export class CentraisNortelService extends SuperService {
             .then(resposta => {
                 return resposta as InfoNortelConection;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
 }

@@ -23,7 +23,7 @@ export class ConfiguracaoServicosLinhaService extends SuperService {
             .then(resposta => {
                 return resposta as ServicoLinha[];
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public setEditarServicos(cad: Customer, services: string[]): Promise<CadastroLinha> {
@@ -41,6 +41,6 @@ export class ConfiguracaoServicosLinhaService extends SuperService {
             .then(resposta => {
                 return resposta as CadastroLinha;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 }

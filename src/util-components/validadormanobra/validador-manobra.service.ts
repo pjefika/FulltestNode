@@ -28,7 +28,7 @@ export class ValidadorManobraService extends SuperService {
             .then(resposta => {
                 return resposta as Motivo[];
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public getListaMotivoMock(): Motivo[] {
@@ -49,7 +49,7 @@ export class ValidadorManobraService extends SuperService {
             .then(resposta => {
                 return resposta as Analitico;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public getAnaliticoMock(): Analitico {
@@ -71,7 +71,7 @@ export class ValidadorManobraService extends SuperService {
             .then(resposta => {
                 return resposta as Fulltest;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public getValidacaoMock(): Fulltest {

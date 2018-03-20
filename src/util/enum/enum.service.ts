@@ -20,7 +20,7 @@ export class EnumService extends SuperService {
             .then(resposta => {
                 return resposta as String[];
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public getEnumVoz(): Promise<String[]> {
@@ -33,7 +33,7 @@ export class EnumService extends SuperService {
             .then(resposta => {
                 return resposta as String[];
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public getEnumVelocidades(): Promise<String[]> {
@@ -46,7 +46,7 @@ export class EnumService extends SuperService {
             .then(resposta => {
                 return resposta as String[];
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
 }

@@ -27,7 +27,7 @@ export class ConfiguracaoEstadoPortaService extends SuperService {
             .then(resposta => {
                 return resposta as Valid;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
 }

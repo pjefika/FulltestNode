@@ -26,7 +26,7 @@ export class FulltestService extends SuperService {
             .then(resposta => {
                 return resposta as Certification;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public getCertificationCOMock(): Certification {

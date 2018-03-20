@@ -28,7 +28,7 @@ export class FulltestProfileService extends SuperService {
             .then(resposta => {
                 return resposta.atual.result as Result;
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public setProfileMock(): Result {
