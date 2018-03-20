@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
+import { ɵb } from 'HttpEasyRequestForPostGet';
+import { Http } from '@angular/http';
 
 @Injectable()
-export class ExceptionService {
+export class ExceptionService extends ɵb {
 
-    constructor() { }
-    
+    constructor(public http: Http) {
+        super(http);
+    }
+
     public handleError(error: any): Promise<any> {
         return Promise.reject(error);
     }

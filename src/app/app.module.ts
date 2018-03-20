@@ -16,11 +16,13 @@ import { VariavelHolderService } from '../util/holder/variavelholder.service';
 import { SystemHolderService } from '../util/holder/systemHolder.service';
 import { ObjKeysPipe, KeyBeautifyingPipe, Capitalize } from '../util/objpipe/objpipe.service';
 import { Ng2OrderModule } from 'ng2-order-pipe'
+
+import { RequestModule } from 'HttpEasyRequestForPostGet';
+
 //Componentes do Sistema
 import { TemplateComponent } from '../template/template.component';
 import { LoginComponent } from '../login/login.component';
 import { UtilService } from '../util/util.service';
-import { UrlService } from '../util/urlservice/url.service';
 import { SuperService } from '../util/superservice/super.service';
 import { DynamicComponent } from '../util-components/dynamiccomponent/dynamic.component';
 import { DynamicRouterComponent } from '../util-components/dynamicrouter/dynamic-router.component';
@@ -159,7 +161,8 @@ import { InfoDmComponent } from '../util-components/insertinfodm/info-dm.compone
 		AppRoutingModule,
 		MomentModule,
 		ToastyModule.forRoot(),
-		Ng2OrderModule
+		Ng2OrderModule,
+		RequestModule
 	],
 	providers: [
 		/**
@@ -168,7 +171,6 @@ import { InfoDmComponent } from '../util-components/insertinfodm/info-dm.compone
 		VariavelHolderService,
 		SystemHolderService,
 		UtilService,
-		UrlService,
 		SuperService,
 		DynamicRouterService,
 		AlertService,

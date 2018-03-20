@@ -1,56 +1,50 @@
 import { Injectable } from '@angular/core';
 import { SuperService } from '../superservice/super.service';
-import { UrlService } from '../urlservice/url.service';
+import { Http } from '@angular/http';
+import { LinkService } from '../urlservice/link.service';
 
 @Injectable()
 export class EnumService extends SuperService {
 
-    constructor(private urlService: UrlService) {
-        super();
+    constructor(public http: Http) {
+        super(http);
     }
 
     public getEnumTv(): Promise<String[]> {
-        this.infoResquest = {
-            rqst: "get",
-            path: "listEnums/tecTv",
-            command: "fulltestAPI",
-            timeout: 120000
+        this.infoRequest = {
+            requestType: "GET",
+            url: this.mountLink(this.getLinksMock(), "fulltestAPI", "listEnums/tecTv"),
+            timeout: 10000
         };
-        return this.urlService
-            .request(this.infoResquest)
-            .then(data => {
-                return data as String[];
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as String[];
             })
             .catch(super.handleError);
     }
 
     public getEnumVoz(): Promise<String[]> {
-        this.infoResquest = {
-            rqst: "get",
-            path: "listEnums/tecVoz",
-            command: "fulltestAPI",
-            timeout: 120000
+        this.infoRequest = {
+            requestType: "GET",
+            url: this.mountLink(this.getLinksMock(), "fulltestAPI", "listEnums/tecVoz"),
+            timeout: 10000
         };
-
-        return this.urlService
-            .request(this.infoResquest)
-            .then(data => {
-                return data as String[];
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as String[];
             })
             .catch(super.handleError);
     }
 
     public getEnumVelocidades(): Promise<String[]> {
-        this.infoResquest = {
-            rqst: "get",
-            path: "listEnums/velocidades",
-            command: "fulltestAPI",
-            timeout: 120000
+        this.infoRequest = {
+            requestType: "GET",
+            url: this.mountLink(this.getLinksMock(), "fulltestAPI", "listEnums/velocidades"),
+            timeout: 10000
         };
-        return this.urlService
-            .request(this.infoResquest)
-            .then(data => {
-                return data as String[];
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as String[];
             })
             .catch(super.handleError);
     }

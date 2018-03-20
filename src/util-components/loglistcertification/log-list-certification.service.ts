@@ -1,31 +1,31 @@
 import { Injectable } from '@angular/core';
 import { SuperService } from '../../util/superservice/super.service';
-import { UrlService } from '../../util/urlservice/url.service';
 import { Certification } from '../../viewmodel/fulltest/certification';
+import { Http } from '@angular/http';
+import { LinkService } from '../../util/urlservice/link.service';
 
 @Injectable()
 export class LogListCertificationService extends SuperService {
 
-    constructor(private urlService: UrlService) {
-        super();
+    constructor(public http: Http) {
+        super(http);
     }
 
     public getCertificationByCustomer(instancia: string): Promise<Certification[]> {
         // let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { instancia: string };
         _data = { instancia: instancia };
-        this.infoResquest = {
-            rqst: "post",
-            path: "certification/findByCustomer/",
-            command: "customerAPI",
+        this.infoRequest = {
+            requestType: "POST",
+            url: this.mountLink(this.getLinksMock(), "customerAPI", "certification/findByCustomer/"),
             _data: _data,
             timeout: 120000
         };
-        return this.urlService.request(this.infoResquest)
-            .then(response => {
-                return response as Certification[]
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as Certification[];
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
     public getCertificationByCustomerMock(): Certification[] {

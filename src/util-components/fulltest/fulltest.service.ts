@@ -1,50 +1,33 @@
 import { Injectable } from '@angular/core';
 import { SuperService } from '../../util/superservice/super.service';
-import { UrlService } from '../../util/urlservice/url.service';
 import { Customer } from '../../viewmodel/customer/customer';
 import { Certification } from '../../viewmodel/fulltest/certification';
+import { Http } from '@angular/http';
+import { LinkService } from '../../util/urlservice/link.service';
 
 @Injectable()
 export class FulltestService extends SuperService {
 
-    constructor(private urlService: UrlService) {
-        super();
+    constructor(public http: Http) {
+        super(http);
     }
 
     public getCertificationCO(cadastro: Customer) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { customer: any, executor: string };
         _data = { customer: cadastro, executor: usr.user };
-        this.infoResquest = {
-            rqst: "post",
-            path: "certification/execByParam/",
-            command: "customerAPI",
+        this.infoRequest = {
+            requestType: "POST",
+            url: this.mountLink(this.getLinksMock(), "customerAPI", "certification/execByParam/"),
             _data: _data,
             timeout: 120000
         };
-        return this.urlService.request(this.infoResquest)
-            .then(data => {
-                return data as Certification
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as Certification;
             })
             .catch(super.handleError);
     }
-    // public getCertificationCOParam(instancia: string) {
-    //     let usr = JSON.parse(sessionStorage.getItem('user'));
-    //     let _data: { parameter: string, executor: string };
-    //     _data = { parameter: instancia, executor: usr.user };
-    //     this.infoResquest = {
-    //         rqst: "post",
-    //         path: "certification/execByParam/",
-    //         command: "customerAPI",
-    //         _data: _data,
-    //         timeout: 120000
-    //     };
-    //     return this.urlService.request(this.infoResquest)
-    //         .then(data => {
-    //             return data as Certification
-    //         })
-    //         .catch(super.handleError);
-    // }
 
     public getCertificationCOMock(): Certification {
         return JSON.parse('{"resultado":"FIXED","orientacao":"Alterado estado da porta para UP","id":"5a9ec8dbcb66bf0145a752cc","blocks":[{"resultado":"OK","orientacao":"OK","asserts":[{"resultado":"OK","orientacao":"Não há bloqueio no Radius.","nome":"HAS_BLOQ_RADIUS"},{"resultado":"OK","orientacao":"Radius e Inventário de Rede OK.","nome":"IS_INV_REDE_EQUALS_RADIUS"},{"resultado":"OK","orientacao":"Inventário de Rede OK.","nome":"HAS_INV_REDE"},{"resultado":"OK","orientacao":"Inventário de Serviços OK.","nome":"HAS_INV_SERV"}],"nome":{"beautyName":"Cadastro","name":"CADASTRO"}},{"resultado":"OK","orientacao":"OK","asserts":[{"resultado":"OK","orientacao":"Vlan de Banda configurado corretamente.Vlan de VoIP configurado corretamente.","nome":"IS_VLANS_OK"},{"resultado":"OK","orientacao":"Profile configurado corretamente.","nome":"IS_PROFILE_OK"}],"nome":{"beautyName":"Serviços","name":"SERVICOS"}},{"resultado":"OK","orientacao":"OK","asserts":[],"nome":{"beautyName":"Performance","name":"PERFORMANCE"}},{"resultado":"FIXED","orientacao":"Alterado estado da porta para UP","asserts":[{"resultado":"FIXED","orientacao":"Alterado estado da porta para UP","nome":"IS_ADM_UP"},{"resultado":"FISICAL","orientacao":"Sem sincronismo/link.","nome":"IS_OPER_UP"},{"resultado":"FISICAL","orientacao":"Parâmetros fora do padrão (entre -8 e -28).","nome":"IS_PARAM_OK"},{"resultado":"TO_FIX","orientacao":"Não foi possível alterar o estado da porta para UP","nome":"IS_ONT_ASSOC"},{"resultado":"FISICAL","orientacao":"Não identificado MAC do modem, solicite ao cliente que reinicialize o equipamento e execute o teste novamente.","nome":"HAS_MAC_DSLAM"}],"nome":{"beautyName":"Conectividade","name":"CONECTIVIDADE"}}],"dataInicio":1520355482760,"dataFim":1520355547834,"customer":{"designador":"ARQ-81CEOKPOC-013","instancia":"1633351800","designadorAcesso":"ARQ-01701684-069","designadorTv":null,"rede":{"tipo":"GPON","origem":"ONLINE","planta":"VIVO2","ipDslam":"10.214.57.6","vendorDslam":"ALCATEL","modeloDslam":"GPON_CARD","idOnt":null,"terminal":null,"ipMulticast":null,"nrc":null,"slot":8,"porta":1,"sequencial":1542,"logica":6,"rin":3,"vlanVoip":1003,"vlanVod":3003,"vlanMulticast":4000,"cvlan":1642,"bhs":null},"redeExterna":{"tipo":null,"origem":null,"planta":null,"splitter1n":null,"splitter2n":null,"caboAlim":null,"fibra1n":null,"fibra2n":null},"servicos":{"origem":null,"velDown":51200,"velUp":5120,"tipoTv":null,"tipoLinha":"SIP"},"linha":{"tipo":"IMS","dn":"1633351800","central":"SPSPO_JUS03"},"radius":{"status":"ATIVO","armario":"SPARQ_G1A02","rin":"003","velocidade":"51200 - 5120","ipFixo":"NAO ENCONTROU","profile":"r5120b51200 op:ARQ-81CEOKPOC-013","porta":"1542","isIpFixo":false},"asserts":[{"asserts":"DIVERGENCIA_TBS_RADIUS","value":false,"creationDate":1520355480918},{"asserts":"CIRCUITO_ATIVO","value":true,"creationDate":1520355480918},{"asserts":"HAS_BLOQUEIO_RADIUS","value":false,"creationDate":1520355480918}],"eventos":[]},"executor":"G0034481","fulltest":{"resultado":false,"dataInicio":1520355482772,"dataFim":1520355547819,"mensagem":"Falha ao acionar Serviço!","id":null,"cl":{"designador":"ARQ-81CEOKPOC-013","instancia":"1633351800","designadorAcesso":"ARQ-01701684-069","designadorTv":null,"rede":{"tipo":"GPON","origem":"ONLINE","planta":"VIVO2","ipDslam":"10.214.57.6","vendorDslam":"ALCATEL","modeloDslam":"GPON_CARD","idOnt":null,"terminal":null,"ipMulticast":null,"nrc":null,"slot":8,"porta":1,"sequencial":1542,"logica":6,"rin":3,"vlanVoip":1003,"vlanVod":3003,"vlanMulticast":4000,"cvlan":1642,"bhs":null},"redeExterna":{"tipo":null,"origem":null,"planta":null,"splitter1n":null,"splitter2n":null,"caboAlim":null,"fibra1n":null,"fibra2n":null},"servicos":{"origem":null,"velDown":51200,"velUp":5120,"tipoTv":null,"tipoLinha":"SIP"},"linha":{"tipo":"IMS","dn":"1633351800","central":"SPSPO_JUS03"},"radius":{"status":"ATIVO","armario":"SPARQ_G1A02","rin":"003","velocidade":"51200 - 5120","ipFixo":"NAO ENCONTROU","profile":"r5120b51200 op:ARQ-81CEOKPOC-013","porta":"1542","isIpFixo":false},"asserts":[{"asserts":"DIVERGENCIA_TBS_RADIUS","value":false,"creationDate":1520355480918},{"asserts":"CIRCUITO_ATIVO","value":true,"creationDate":1520355480918},{"asserts":"HAS_BLOQUEIO_RADIUS","value":false,"creationDate":1520355480918}],"eventos":[]},"valids":[{"nome":"Estado Administrativo da Porta","mensagem":"Alterado estado da porta para UP","resultado":false,"foiCorrigido":true,"result":{"nome":"Estado da Porta","type":"br.net.gvt.efika.fulltest.model.telecom.properties.EstadoDaPorta","adminState":false,"operState":false}},{"nome":"Estado Operacional da Porta","mensagem":"Identificado que o modem está sem sincronismo, certifique-se com o cliente se está ligado e com os cabos conectados. Se sim, solicite ao cliente que reinicialize o modem e teste novamente.","resultado":false,"foiCorrigido":null,"result":{"nome":"Estado da Porta","type":"br.net.gvt.efika.fulltest.model.telecom.properties.EstadoDaPorta","adminState":false,"operState":false}},{"nome":"Associação Serial ONT","mensagem":"Não foi possível alterar o estado da porta para UP","resultado":false,"foiCorrigido":false,"result":{"nome":"Associação Serial ONT","type":"br.net.gvt.efika.fulltest.model.telecom.properties.gpon.SerialOntGpon","serial":"","idOnt":null,"slot":null,"porta":null}},{"nome":"Parâmetros Ópticos","mensagem":"Parâmetros fora do padrão (entre -8 e -28).","resultado":false,"foiCorrigido":null,"result":{"nome":"Parâmetros Ópticos","type":"br.net.gvt.efika.fulltest.model.telecom.properties.gpon.TabelaParametrosGpon","potOnt":0.0,"potOlt":0.0}},{"nome":"Profile","mensagem":"Profile configurado corretamente.","resultado":true,"foiCorrigido":false,"result":{"nome":"Profile","type":"br.net.gvt.efika.fulltest.model.telecom.properties.Profile","profileUp":"HSI_5M_RETAIL_UP","profileDown":"HSI_50M_RETAIL_DOWN","down":"VEL_51200","up":"VEL_5120"}},{"nome":"Vlan Banda Larga","mensagem":"Vlan de Banda configurado corretamente.","resultado":true,"foiCorrigido":false,"result":{"nome":"Vlan Banda Larga","type":"br.net.gvt.efika.fulltest.model.telecom.properties.VlanBanda","cvlan":1642,"svlan":3,"pctDown":null,"pctUp":null,"state":"UP"}},{"nome":"Vlan VoIP","mensagem":"Vlan de VoIP configurado corretamente.","resultado":true,"foiCorrigido":false,"result":{"nome":"Vlan VoIP","type":"br.net.gvt.efika.fulltest.model.telecom.properties.VlanVoip","cvlan":1642,"svlan":1003,"pctDown":null,"pctUp":null,"state":"UP"}},{"nome":"Vlan VoD/IPTV","mensagem":"Cliente sem TV.","resultado":true,"foiCorrigido":false,"result":null},{"nome":"MAC do Equipamento","mensagem":"Não identificado MAC do modem, solicite ao cliente que reinicialize o equipamento e execute o teste novamente.","resultado":false,"foiCorrigido":null,"result":{"nome":"MAC do Equipamento","type":"br.net.gvt.efika.fulltest.model.telecom.properties.DeviceMAC","mac":""}}]}}');

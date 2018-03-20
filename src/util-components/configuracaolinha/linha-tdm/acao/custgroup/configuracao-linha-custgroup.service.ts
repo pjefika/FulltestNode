@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { SuperService } from '../../../../../util/superservice/super.service';
-import { UrlService } from '../../../../../util/urlservice/url.service';
 import { Linha } from '../../../../../viewmodel/cadastro/linha';
 import { CadastroLinha } from '../../../../../viewmodel/linha/cadlinha';
+import { Http } from '@angular/http';
+import { LinkService } from '../../../../../util/urlservice/link.service';
 
 @Injectable()
 export class ConfiguracaoLinhaCustgroupService extends SuperService {
 
-    constructor(private urlService: UrlService) {
-        super();
+    constructor(public http: Http) {
+        super(http,);
     }
 
     public setCustGroup(linha: Linha, custgroup: string): Promise<CadastroLinha> {
@@ -16,16 +17,15 @@ export class ConfiguracaoLinhaCustgroupService extends SuperService {
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, custGrp: string, executor: string };
         _data = { dms: dms, custGrp: custgroup, executor: usr.user };
-        this.infoResquest = {
-            rqst: "post",
-            path: "dms/editarCustGrp",
-            command: "dmsAPI",
+        this.infoRequest = {
+            requestType: "POST",
+            url: this.mountLink(this.getLinksMock(), "dmsAPI", "dms/editarCustGrp"),
             _data: _data,
-            timeout: 120000
-        }
-        return this.urlService.request(this.infoResquest)
-            .then(data => {
-                return data as CadastroLinha;
+            timeout: 20000
+        };
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as CadastroLinha;
             })
             .catch(super.handleError);
     }

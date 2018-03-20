@@ -1,40 +1,39 @@
 import { Injectable } from '@angular/core';
 import { SuperService } from '../../../util/superservice/super.service';
-import { UrlService } from '../../../util/urlservice/url.service';
 import { InfoNortelConection } from '../../../viewmodel/linha/centrais-nortel/infos-nortel-conection';
+import { Http } from '@angular/http';
+import { LinkService } from '../../../util/urlservice/link.service';
 
 @Injectable()
 export class CentraisNortelService extends SuperService {
 
-    constructor(private urlService: UrlService) {
-        super();
+    constructor(public http: Http) {
+        super(http);
     }
 
     public getContextDMS(): Promise<InfoNortelConection[]> {
-        this.infoResquest = {
-            rqst: "get",
-            path: "contextDMS/",
-            command: "dmsAPI",
-            timeout: 120000
+        this.infoRequest = {
+            requestType: "GET",
+            url: this.mountLink(this.getLinksMock(), "dmsAPI", "contextDMS/"),
+            timeout: 60000
         };
-        return this.urlService.request(this.infoResquest)
-            .then(data => {
-                return data as InfoNortelConection[]
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as InfoNortelConection[];
             })
             .catch(super.handleError);
     }
 
     public connection(conection: string): Promise<InfoNortelConection[]> {
-        this.infoResquest = {
-            rqst: "get",
-            path: "contextDMS/connection/",
-            command: "dmsAPI",
+        this.infoRequest = {
+            requestType: "GET",
+            url: this.mountLink(this.getLinksMock(), "dmsAPI", "contextDMS/connection"),
             _data: conection,
-            timeout: 120000
+            timeout: 60000
         };
-        return this.urlService.request(this.infoResquest)
-            .then(data => {
-                return data as InfoNortelConection[]
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as InfoNortelConection[];
             })
             .catch(super.handleError);
     }
@@ -42,16 +41,15 @@ export class CentraisNortelService extends SuperService {
     public connectSwitch(ip: string): Promise<InfoNortelConection> {
         let _data: { ip: string };
         _data = { ip: ip }
-        this.infoResquest = {
-            rqst: "post",
-            path: "contextDMS/connectSwitch",
-            command: "dmsAPI",
+        this.infoRequest = {
+            requestType: "POST",
+            url: this.mountLink(this.getLinksMock(), "dmsAPI", "contextDMS/connectSwitch"),
             _data: _data,
-            timeout: 120000
+            timeout: 60000
         };
-        return this.urlService.request(this.infoResquest)
-            .then(data => {
-                return data as InfoNortelConection
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as InfoNortelConection;
             })
             .catch(super.handleError);
     }
@@ -59,16 +57,15 @@ export class CentraisNortelService extends SuperService {
     public disconnectSwitch(ip: string): Promise<InfoNortelConection> {
         let _data: { ip: string };
         _data = { ip: ip }
-        this.infoResquest = {
-            rqst: "post",
-            path: "contextDMS/disconnectSwitch",
-            command: "dmsAPI",
+        this.infoRequest = {
+            requestType: "POST",
+            url: this.mountLink(this.getLinksMock(), "dmsAPI", "contextDMS/disconnectSwitch"),
             _data: _data,
-            timeout: 120000
+            timeout: 60000
         };
-        return this.urlService.request(this.infoResquest)
-            .then(data => {
-                return data as InfoNortelConection
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as InfoNortelConection;
             })
             .catch(super.handleError);
     }

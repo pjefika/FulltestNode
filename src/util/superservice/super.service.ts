@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
-import { InfoRequest } from '../../viewmodel/inforequest/inforequest';
+
+import { Http } from '@angular/http';
+import { InfoRequest } from 'HttpEasyRequestForPostGet/app/modules/viewmodel/inforequest';
+import { UrlEndPoint } from '../../viewmodel/url/urlendpoint';
+import { LinkService } from '../urlservice/link.service';
 
 @Injectable()
-export class SuperService {
+export class SuperService extends LinkService {
 
-    public infoResquest: InfoRequest;
+    // Import ViewModel for Setup the request.
+    public infoRequest: InfoRequest;
 
-    constructor() { }
+    constructor(public http: Http) {
+        super(http);
+    }
 
     public handleError(error: any): Promise<any> {
         return Promise.reject(error);
@@ -36,6 +43,16 @@ export class SuperService {
             valid = true;
         }
         return Promise.reject(valid);
+    }
+
+    public mountLink(endpoint: UrlEndPoint, deploy: string, path: string): string {
+        let url: string;
+        endpoint.endpoints.forEach(endpoint => {
+            if (endpoint.nome === deploy) {
+                url = endpoint.url + path;
+            }
+        });
+        return url;
     }
 
 }

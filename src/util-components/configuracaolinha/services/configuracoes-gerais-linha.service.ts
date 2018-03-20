@@ -1,31 +1,31 @@
 import { Injectable } from '@angular/core';
-import { UrlService } from '../../../util/urlservice/url.service';
 import { SuperService } from '../../../util/superservice/super.service';
 import { Linha } from '../../../viewmodel/cadastro/linha';
 import { ConfLensLivres } from '../../../viewmodel/linha/lens-livres/confLensLivres';
 import { CadastroLinha } from '../../../viewmodel/linha/cadlinha';
+import { Http } from '@angular/http';
+import { LinkService } from '../../../util/urlservice/link.service';
 
 @Injectable()
 export class ConfiguracoesGeraisLinhaService extends SuperService {
 
-    constructor(private urlService: UrlService) {
-        super()
+    constructor(public http: Http) {
+        super(http);
     }
 
     public getLinha(instancia: string): Promise<Linha> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { instancia: string, executor: string };
         _data = { instancia: instancia, executor: usr.user };
-        this.infoResquest = {
-            rqst: "post",
-            path: "linha/",
-            command: "stealerAPI",
+        this.infoRequest = {
+            requestType: "POST",
+            url: this.mountLink(this.getLinksMock(), "stealerAPI", "linha/"),
             _data: _data,
             timeout: 120000
-        }
-        return this.urlService.request(this.infoResquest)
-            .then(data => {
-                return data as Linha;
+        };
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as Linha;
             })
             .catch(super.handleError);
     }
@@ -35,17 +35,15 @@ export class ConfiguracoesGeraisLinhaService extends SuperService {
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, executor: string };
         _data = { dms: dms, executor: usr.user };
-        this.infoResquest = {
-            rqst: "post",
-            path: "dms/consultarConfiguracoesShelf",
-            command: "dmsAPI",
+        this.infoRequest = {
+            requestType: "POST",
+            url: this.mountLink(this.getLinksMock(), "dmsAPI", "dms/consultarConfiguracoesShelf"),
             _data: _data,
             timeout: 120000
-        }
-        return this.urlService
-            .request(this.infoResquest)
-            .then(data => {
-                return data as ConfLensLivres;
+        };
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as ConfLensLivres;
             })
             .catch(super.handleError);
     }
@@ -55,17 +53,15 @@ export class ConfiguracoesGeraisLinhaService extends SuperService {
         let dms = { dn: linha.dn, central: linha.central }
         let _data: { dms: any, executor: string };
         _data = { dms: dms, executor: usr.user };
-        this.infoResquest = {
-            rqst: "post",
-            path: "dms/resetarPorta",
-            command: "dmsAPI",
+        this.infoRequest = {
+            requestType: "POST",
+            url: this.mountLink(this.getLinksMock(), "dmsAPI", "dms/resetarPorta"),
             _data: _data,
-            timeout: 200000
-        }
-        //(this.infoResquest)
-        return this.urlService.request(this.infoResquest)
-            .then(data => {
-                return data as CadastroLinha;
+            timeout: 120000
+        };
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as CadastroLinha;
             })
             .catch(super.handleError);
     }

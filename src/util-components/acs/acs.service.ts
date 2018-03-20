@@ -1,39 +1,40 @@
 import { Injectable } from '@angular/core';
 import { SuperService } from '../../util/superservice/super.service';
-import { UrlService } from '../../util/urlservice/url.service';
 import { Equipamento } from '../../viewmodel/acs/equipamento';
+import { Http } from '@angular/http';
+import { LinkService } from '../../util/urlservice/link.service';
 
 @Injectable()
 export class AcsService extends SuperService {
 
-    constructor(private urlService: UrlService) {
-        super();
+    constructor(public http: Http) {
+        super(http);
     }
 
     public getEquipamentoAssoc(input: string): Promise<Equipamento[]> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { criterio: string, input: string, executor: string };
         _data = { criterio: "SUBSCRIBER", input: input, executor: usr.user };
-        this.infoResquest = {
-            rqst: "post",
-            path: "search/search",
-            command: "acs",
+        this.infoRequest = {
+            requestType: "POST",
+            url: this.mountLink(this.getLinksMock(), "acs", "search/search"),
             _data: _data,
             timeout: 120000
         };
-        return this.urlService.request(this.infoResquest)
-            .then(response => {
-                return response as Equipamento[]
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as Equipamento[];
             })
             .catch(super.handleError);
     }
 
     public abreSearchDevice(deviceId: number) {
-        this.infoResquest = {
+        this.infoRequest = {
+            url: "http://10.40.198.168/acs/searchEqp/",
             _data: deviceId,
-            otherUrl: "http://10.40.198.168/acs/searchEqp/"
+            timeout: 1000
         };
-        this.urlService.linkurl(this.infoResquest);
+        return super.goToUrl(this.infoRequest);
     }
 
     public getEquipamentoAssocMock(): Equipamento[] {

@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { UrlEndPoint } from '../../viewmodel/url/urlendpoint';
 import { InfoRequest } from '../../viewmodel/inforequest/inforequest';
 import { ExceptionService } from '../exceptionservice/exception.service';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class LinkService extends ExceptionService {
 
-    constructor() {
-        super();
+    constructor(public http: Http) {
+        super(http);
     }
 
     public mountInfoLinkRequestProd(): InfoRequest {

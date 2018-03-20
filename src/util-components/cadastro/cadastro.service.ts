@@ -1,28 +1,28 @@
 import { Injectable } from '@angular/core';
 import { SuperService } from '../../util/superservice/super.service';
-import { UrlService } from '../../util/urlservice/url.service';
 import { Customer } from '../../viewmodel/customer/customer';
+import { Http } from '@angular/http';
+import { LinkService } from '../../util/urlservice/link.service';
 @Injectable()
 export class CadastroService extends SuperService {
 
-    constructor(private urlService: UrlService) {
-        super();
+    constructor(public http: Http) {
+        super(http);
     }
 
     public getCadastro(instancia: string): Promise<Customer> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { parameter: string, executor: string };
         _data = { parameter: instancia, executor: usr.user };
-        this.infoResquest = {
-            rqst: "post",
-            path: "customer/findByParameter",
-            command: "customerAPI",
+        this.infoRequest = {
+            requestType: "POST",
+            url: this.mountLink(this.getLinksMock(), "customerAPI", "customer/findByParameter"),
             _data: _data,
-            timeout: 63000
+            timeout: 60000
         };
-        return this.urlService.request(this.infoResquest)
-            .then(response => {
-                return response as Customer
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as Customer;
             })
             .catch(super.handleError);
     }

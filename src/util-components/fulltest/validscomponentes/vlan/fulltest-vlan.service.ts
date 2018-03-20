@@ -1,30 +1,30 @@
 import { Injectable } from '@angular/core';
 import { SuperService } from '../../../../util/superservice/super.service';
 import { Customer } from '../../../../viewmodel/customer/customer';
-import { UrlService } from '../../../../util/urlservice/url.service';
 import { Valid } from '../../../../viewmodel/valid/valid';
+import { Http } from '@angular/http';
+import { LinkService } from '../../../../util/urlservice/link.service';
 
 @Injectable()
 export class FulltestVlanService extends SuperService {
 
-    constructor(private urlService: UrlService) {
-        super();
+    constructor(public http: Http) {
+        super(http);
     }
 
     public setVlanGeneric(cadastro: Customer, whatSet: string) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { cust: any, executor: string };
         _data = { cust: cadastro, executor: usr.user };
-        this.infoResquest = {
-            rqst: "post",
-            path: "configPorta/" + whatSet,
-            command: "fulltestAPI",
+        this.infoRequest = {
+            requestType: "POST",
+            url: this.mountLink(this.getLinksMock(), "fulltestAPI", "configPorta/" + whatSet),
             _data: _data,
             timeout: 120000
-        }
-        return this.urlService.request(this.infoResquest)
-            .then(data => {
-                return data as Valid
+        };
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as Valid;
             })
             .catch(super.handleError);
     }
@@ -33,16 +33,15 @@ export class FulltestVlanService extends SuperService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { cust: any, executor: string };
         _data = { cust: cadastro, executor: usr.user };
-        this.infoResquest = {
-            rqst: "post",
-            path: "configPorta/resetIptvStatistics",
-            command: "fulltestAPI",
+        this.infoRequest = {
+            requestType: "POST",
+            url: this.mountLink(this.getLinksMock(), "fulltestAPI", "configPorta/resetIptvStatistics"),
             _data: _data,
             timeout: 120000
         };
-        return this.urlService.request(this.infoResquest)
-            .then(data => {
-                return data as any[]
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as any[];
             })
             .catch(super.handleError);
     }

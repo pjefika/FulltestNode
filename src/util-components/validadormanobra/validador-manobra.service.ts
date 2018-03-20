@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { SuperService } from '../../util/superservice/super.service';
-import { UrlService } from '../../util/urlservice/url.service';
 import { Motivo } from '../../viewmodel/manobrar/motivo';
 import { Customer } from '../../viewmodel/customer/customer';
 import { Analitico } from '../../viewmodel/manobrar/analitico';
@@ -10,25 +9,24 @@ import { Fulltest } from '../../viewmodel/fulltest/fulltest';
 import { Assert } from '../../viewmodel/asserts/assert';
 import { Http } from '@angular/http';
 import { SystemHolderService } from '../../util/holder/systemHolder.service';
+import { LinkService } from '../../util/urlservice/link.service';
 
 @Injectable()
 export class ValidadorManobraService extends SuperService {
 
-    constructor(private urlService: UrlService, private http: Http, public systemHolderService: SystemHolderService) {
-        super();
+    constructor(public http: Http) {
+        super(http);
     }
 
     public getListaMotivo(): Promise<Motivo[]> {
-        this.infoResquest = {
-            rqst: "get",
-            path: "manobra/motivos",
-            command: "fulltestAPI",
+        this.infoRequest = {
+            requestType: "GET",
+            url: this.mountLink(this.getLinksMock(), "fulltestAPI", "manobra/motivos"),
             timeout: 120000
         };
-        return this.urlService
-            .request(this.infoResquest)
-            .then(data => {
-                return data as Motivo[]
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as Motivo[];
             })
             .catch(super.handleError);
     }
@@ -41,18 +39,15 @@ export class ValidadorManobraService extends SuperService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { cust: Customer, motivo: string, executor: string }
         _data = { cust: cadastro, motivo: motivoSelected, executor: usr.user }
-        this.infoResquest = {
-            rqst: "post",
-            path: "fulltestAPI/manobra/analitico",
-            command: "fulltestAPI",
+        this.infoRequest = {
+            requestType: "POST",
+            url: "http://10.200.35.67:80/" + "fulltestAPI/manobra/analitico",
             _data: _data,
-            otherUrl: "http://10.200.35.67:80/",
             timeout: 120000
         };
-        return this.urlService
-            .request(this.infoResquest)
-            .then(data => {
-                return data as Analitico;
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as Analitico;
             })
             .catch(super.handleError);
     }
@@ -66,18 +61,15 @@ export class ValidadorManobraService extends SuperService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { cust: any, executor: string };
         _data = { cust: cadastro, executor: usr.user };
-
-        this.infoResquest = {
-            rqst: "post",
-            path: "fulltest/manobra/",
-            command: "fulltestAPI",
+        this.infoRequest = {
+            requestType: "POST",
+            url: this.mountLink(this.getLinksMock(), "fulltestAPI", "fulltest/manobra/"),
             _data: _data,
-            timeout: 60000
-        }
-        return this.urlService
-            .request(this.infoResquest)
-            .then(data => {
-                return data as Fulltest
+            timeout: 120000
+        };
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as Fulltest;
             })
             .catch(super.handleError);
     }
@@ -106,16 +98,16 @@ export class ValidadorManobraService extends SuperService {
             }
         ];
         return Observable.forkJoin(
-            this.http.post(infoResquests[0].otherUrl, JSON.stringify(infoResquests[0]._data), this.urlService.options)
+            this.http.post(infoResquests[0].otherUrl, JSON.stringify(infoResquests[0]._data), this.options)
                 .map(resposta => resposta.json()),
-            this.http.post(infoResquests[1].otherUrl, JSON.stringify(infoResquests[1]._data), this.urlService.options)
+            this.http.post(infoResquests[1].otherUrl, JSON.stringify(infoResquests[1]._data), this.options)
                 .map(resposta => resposta.json()))
             .map(resposta => {
                 return resposta;
             }, erro => {
                 super.handleErrorKing;
             });
-    }    
+    }
 
     public getValidacaoAssertsMock(): Assert[] {
         return JSON.parse('[{"asserts":"IS_REPARO","value":true,"creationDate":1519914982606},{"asserts":"AUTH_ABERTURA_ORDEM","value":true,"creationDate":1519914982802},{"asserts":"HAS_SYNC","value":true,"creationDate":1519914943005},{"asserts":"REDE_CONFIAVEL","value":true,"creationDate":1519914943005},{"asserts":"RESYNC_MENOR_300","value":true,"creationDate":1519914943005},{"asserts":"RESYNC_MENOR_50","value":true,"creationDate":1519914943005},{"asserts":"RESYNC_MENOR_5","value":true,"creationDate":1519914943005},{"asserts":"PACOTES_DOWN_MAIOR_6000","value":true,"creationDate":1519914943005},{"asserts":"PACOTES_UP_MAIOR_4000","value":true,"creationDate":1519914943005},{"asserts":"ATT_DOWN_OK","value":false,"creationDate":1519914943005},{"asserts":"ATT_UP_OK","value":false,"creationDate":1519914943005},{"asserts":"IS_SIP","value":false,"creationDate":1519914943005}]');
