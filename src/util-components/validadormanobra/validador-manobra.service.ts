@@ -3,13 +3,13 @@ import { SuperService } from '../../util/superservice/super.service';
 import { Motivo } from '../../viewmodel/manobrar/motivo';
 import { Customer } from '../../viewmodel/customer/customer';
 import { Analitico } from '../../viewmodel/manobrar/analitico';
-import { InfoRequest } from '../../viewmodel/inforequest/inforequest';
 import { Observable } from 'rxjs/Observable';
 import { Fulltest } from '../../viewmodel/fulltest/fulltest';
 import { Assert } from '../../viewmodel/asserts/assert';
 import { Http } from '@angular/http';
 import { SystemHolderService } from '../../util/holder/systemHolder.service';
 import { LinkService } from '../../util/urlservice/link.service';
+import { InfoRequest } from 'HttpEasyRequestForPostGet/app/modules/viewmodel/inforequest';
 
 @Injectable()
 export class ValidadorManobraService extends SuperService {
@@ -86,21 +86,18 @@ export class ValidadorManobraService extends SuperService {
         infoResquests = [
             {
                 _data: cadastro,
-                command: "fulltestAPI",
-                path: "manobra/asserts",
-                otherUrl: "http://10.40.196.182:7172/fulltestAPI/manobra/asserts"
-
+                url: "http://10.40.196.182:7172/fulltestAPI/manobra/asserts",
+                timeout: 1
             }, {
                 _data: _data,
-                command: "stealerAPI",
-                path: "manobra/asserts",
-                otherUrl: "http://10.40.196.182:7173/stealerAPI/manobra/asserts"
+                url: "http://10.40.196.182:7173/stealerAPI/manobra/asserts",
+                timeout: 1
             }
         ];
         return Observable.forkJoin(
-            this.http.post(infoResquests[0].otherUrl, JSON.stringify(infoResquests[0]._data), this.options)
+            this.http.post(infoResquests[0].url, JSON.stringify(infoResquests[0]._data), this.options)
                 .map(resposta => resposta.json()),
-            this.http.post(infoResquests[1].otherUrl, JSON.stringify(infoResquests[1]._data), this.options)
+            this.http.post(infoResquests[1].url, JSON.stringify(infoResquests[1]._data), this.options)
                 .map(resposta => resposta.json()))
             .map(resposta => {
                 return resposta;

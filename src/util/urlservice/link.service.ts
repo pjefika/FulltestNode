@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { UrlEndPoint } from '../../viewmodel/url/urlendpoint';
-import { InfoRequest } from '../../viewmodel/inforequest/inforequest';
 import { ExceptionService } from '../exceptionservice/exception.service';
 import { Http } from '@angular/http';
+import { InfoRequest } from 'HttpEasyRequestForPostGet/app/modules/viewmodel/inforequest';
 
 @Injectable()
 export class LinkService extends ExceptionService {
+
+    // Import ViewModel for Setup the request.
+    public infoRequest: InfoRequest;
 
     constructor(public http: Http) {
         super(http);
@@ -13,23 +16,23 @@ export class LinkService extends ExceptionService {
 
     public mountInfoLinkRequestProd(): InfoRequest {
         let infoRequest: InfoRequest;
-        infoRequest = {
-            rqst: "get",
-            command: "getlinks",
-            path: "getlinks/",
-            otherUrl: ""
-        }
+        // infoRequest = {
+        //     rqst: "get",
+        //     command: "getlinks",
+        //     path: "getlinks/",
+        //     otherUrl: ""
+        // }
         return infoRequest;
     }
 
     public mountInfoLinkRequestQA(): InfoRequest {
         let infoRequest: InfoRequest;
-        infoRequest = {
-            rqst: "get",
-            command: "getlinks",
-            path: "getlinks/",
-            otherUrl: ""
-        }
+        // infoRequest = {
+        //     rqst: "get",
+        //     command: "getlinks",
+        //     path: "getlinks/",
+        //     otherUrl: ""
+        // }
         return infoRequest;
     }
 
