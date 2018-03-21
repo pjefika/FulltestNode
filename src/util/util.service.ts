@@ -4,10 +4,12 @@ import 'rxjs/add/operator/toPromise';
 import { Router } from '@angular/router';
 import { SystemHolderService } from './holder/systemHolder.service';
 
+declare var require: any
+
 @Injectable()
 export class UtilService {
 
-    constructor(private router: Router, 
+    constructor(private router: Router,
         public systemHolderService: SystemHolderService) { }
 
     public isLogado(): Promise<boolean> {
@@ -27,6 +29,12 @@ export class UtilService {
             }
         }
         return valid;
+    }
+
+    public getVersion(): string {
+        const { version: appVersion } = require('../../package.json'); // Versão da aplicação na package.json
+        let version: string = appVersion;
+        return version;
     }
 
     // public isAtualizado() {

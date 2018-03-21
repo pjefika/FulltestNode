@@ -8,9 +8,6 @@ import { LinkService } from '../urlservice/link.service';
 @Injectable()
 export class SuperService extends LinkService {
 
-    // // Import ViewModel for Setup the request.
-    // public infoRequest: InfoRequest;
-
     constructor(public http: Http) {
         super(http);
     }

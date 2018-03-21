@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilService } from '../util/util.service';
 
 @Component({
     templateUrl: 'principal.component.html',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 
 export class PrincipalComponent implements OnInit {
 
-    constructor() { }
+    private version: string;
 
-    public ngOnInit() { }
+    constructor(public util: UtilService) { }
+
+    public ngOnInit() {
+        this.getVersion();
+    }
+
+    private getVersion() {
+        this.version = this.util.getVersion();
+    }
 }

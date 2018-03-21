@@ -35,6 +35,8 @@ import { SubNavMockCrm } from '../util/mocks/subsnav/subNavMockCrm';
 
 export class TemplateComponent extends SuperComponentService implements OnInit {
 
+    private version: string;
+
     constructor(public util: UtilService,
         public systemHolderService: SystemHolderService,
         public variavelHolderService: VariavelHolderService,
@@ -54,7 +56,7 @@ export class TemplateComponent extends SuperComponentService implements OnInit {
                 } else {
                     this.systemHolderService.isAdm = this.util.getNv(10);
                     this.setToDynamicComponent(PrincipalComponent);
-                    this.showToggle();
+                    this.showToggle();                    
                 }
             }));
     }
