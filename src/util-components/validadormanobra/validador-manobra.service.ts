@@ -86,11 +86,13 @@ export class ValidadorManobraService extends SuperService {
         infoResquests = [
             {
                 _data: cadastro,
-                url: "http://10.40.196.182:7172/fulltestAPI/manobra/asserts",
+                // url: "http://10.40.198.168:7172/fulltestAPI/manobra/asserts", 
+                url: this.mountLink(this.getLinksMock(), "fulltestAPI", "manobra/asserts"),
                 timeout: 1
             }, {
                 _data: _data,
-                url: "http://10.40.196.182:7173/stealerAPI/manobra/asserts",
+                url: this.mountLink(this.getLinksMock(), "stealerAPI", "manobra/asserts"),
+                // url: "http://10.40.198.168:7173/stealerAPI/manobra/asserts",
                 timeout: 1
             }
         ];
