@@ -27,7 +27,7 @@ export class CentraisNortelService extends SuperService {
     public connection(conection: string): Promise<InfoNortelConection[]> {
         this.infoRequest = {
             requestType: "GET",
-            url: this.mountLink(this.getLinksMock(), "dmsAPI", "contextDMS/connection"),
+            url: this.mountLink(this.getLinksMock(), "dmsAPI", "contextDMS/connection/"),
             _data: conection,
             timeout: 60000
         };
