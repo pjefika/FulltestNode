@@ -6,6 +6,8 @@ import { LogListCertificationService } from './log-list-certification.service';
 import { VariavelHolderService } from '../../util/holder/variavelholder.service';
 import { Certification } from '../../viewmodel/fulltest/certification';
 
+import * as _ from "lodash";
+
 @Component({
     selector: 'log-list-certification-component',
     templateUrl: 'log-list-certification.component.html',
@@ -43,7 +45,7 @@ export class LogListCertificationComponent extends SuperComponentService impleme
             .getCertificationByCustomer(this.variavelHolderService.cadastro.instancia)
             .then(resposta => {
                 if (resposta.length > 0) {
-                    this.variavelHolderService.listCertifications = resposta;
+                    this.variavelHolderService.listCertifications = _.orderBy(resposta, "dataInicio", ['desc']);
                 } else {
                     super.callAlert("alert-warning", "Não encontrados nenhum log de Fulltest.");
                 }
