@@ -46,6 +46,8 @@ export class SystemHolderService {
 
     public historyCertificationValidTime: number = 1800000; // <- 30 Minutos
 
+    public loginRememberMe: boolean;
+
     constructor() { }
 
 }

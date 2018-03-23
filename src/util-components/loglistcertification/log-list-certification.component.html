@@ -11,7 +11,7 @@
             </clr-stack-header>
             <clr-stack-block *ngFor="let certification of variavelHolderService.listCertifications">
                 <clr-stack-label>
-                    {{validdatedif(certification.fulltest.dataInicio)}}: FKID?
+                    {{validdatedif(certification.dataInicio)}}: FKID?
                 </clr-stack-label>
                 <clr-stack-content>
                     {{certification.resultado}}
@@ -24,11 +24,11 @@
                     <clr-stack-label>Orientação</clr-stack-label>
                     <clr-stack-content>{{certification.orientacao}}</clr-stack-content>
                 </clr-stack-block>
-                <clr-stack-block *ngIf="certification.fulltest">
+                <clr-stack-block>
                     <clr-stack-label>Data Inicio</clr-stack-label>
                     <clr-stack-content>{{((certification.dataInicio / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm'}}</clr-stack-content>
                 </clr-stack-block>
-                <clr-stack-block *ngIf="certification.fulltest">
+                <clr-stack-block>
                     <clr-stack-label>Data Fim</clr-stack-label>
                     <clr-stack-content>{{((certification.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm'}}</clr-stack-content>
                 </clr-stack-block>

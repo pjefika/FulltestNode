@@ -34,6 +34,12 @@ export class LoginComponent extends AlertService implements OnInit {
         });
     }
 
+    private validRememberMe() {
+
+
+
+    }
+
     private doEntrar() {
         if (this.systemHolderService.ableMock) {
             this.entrarMock();
