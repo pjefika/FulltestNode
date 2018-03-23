@@ -44,6 +44,8 @@ export class SystemHolderService {
     public isFulltestRunning: boolean = false;
     public resultadoGlobalFulltest: boolean = false;
 
+    public historyCertificationValidTime: number = 1800000; // <- 30 Minutos
+
     constructor() { }
 
 }

@@ -11,7 +11,7 @@
             </clr-stack-header>
             <clr-stack-block *ngFor="let certification of variavelHolderService.listCertifications">
                 <clr-stack-label>
-                    Resultado
+                    {{validdatedif(certification.fulltest.dataInicio)}}: FKID?
                 </clr-stack-label>
                 <clr-stack-content>
                     {{certification.resultado}}
@@ -26,11 +26,11 @@
                 </clr-stack-block>
                 <clr-stack-block *ngIf="certification.fulltest">
                     <clr-stack-label>Data Inicio</clr-stack-label>
-                    <clr-stack-content>{{((certification.fulltest.dataInicio / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY hh:mm'}}</clr-stack-content>
+                    <clr-stack-content>{{((certification.dataInicio / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm'}}</clr-stack-content>
                 </clr-stack-block>
                 <clr-stack-block *ngIf="certification.fulltest">
                     <clr-stack-label>Data Fim</clr-stack-label>
-                    <clr-stack-content>{{((certification.fulltest.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY hh:mm'}}</clr-stack-content>
+                    <clr-stack-content>{{((certification.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm'}}</clr-stack-content>
                 </clr-stack-block>
             </clr-stack-block>
         </clr-stack-view>

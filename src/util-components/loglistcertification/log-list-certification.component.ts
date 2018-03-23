@@ -6,7 +6,9 @@ import { LogListCertificationService } from './log-list-certification.service';
 import { VariavelHolderService } from '../../util/holder/variavelholder.service';
 import { Certification } from '../../viewmodel/fulltest/certification';
 
-import * as _ from "lodash";
+// import * as _ from "lodash";
+
+import * as moment from 'moment';
 
 @Component({
     selector: 'log-list-certification-component',
@@ -45,7 +47,7 @@ export class LogListCertificationComponent extends SuperComponentService impleme
             .getCertificationByCustomer(this.variavelHolderService.cadastro.instancia)
             .then(resposta => {
                 if (resposta.length > 0) {
-                    this.variavelHolderService.listCertifications = _.orderBy(resposta, "dataInicio", ['desc']);
+                    this.variavelHolderService.listCertifications = resposta; //_.orderBy(resposta, "dataInicio", ['desc']);
                 } else {
                     super.callAlert("alert-warning", "Não encontrados nenhum log de Fulltest.");
                 }
@@ -73,8 +75,16 @@ export class LogListCertificationComponent extends SuperComponentService impleme
 
     private mountAlert() {
         super.callAlert("alert-warning", "Não encontrados nenhum log de Fulltest.");
-        // if (this.variavelHolderService.listCertifications.length > 0) { }
     }
 
+    private validdatedif(end: number): string {
+        let valid: string;
+        if (Math.abs(moment().diff(end)) < this.systemHolderService.historyCertificationValidTime) {
+            valid = "Valido";
+        } else {
+            valid = "Expirado";
+        }
+        return valid;
+    }
 
 }
