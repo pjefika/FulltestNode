@@ -12,4 +12,5 @@ export class Certification {
     customer: Customer;
     executor: string;
     fulltest?: Fulltest;
+    system?: string;
 }

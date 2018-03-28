@@ -14,8 +14,8 @@ export class FulltestService extends SuperService {
 
     public getCertificationCO(cadastro: Customer) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
-        let _data: { customer: any, executor: string };
-        _data = { customer: cadastro, executor: usr.user };
+        let _data: { customer: any, executor: string, system: string };
+        _data = { customer: cadastro, executor: usr.user, system: "CO" };
         this.infoRequest = {
             requestType: "POST",
             url: this.mountLink(this.getLinksMock(), "customerAPI", "certification/execByParam/"),

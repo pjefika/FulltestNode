@@ -21,6 +21,10 @@
                     <clr-icon shape="exclamation-triangle" *ngIf="certification.resultado === 'FIXED'" style="color: orange"></clr-icon>
                 </clr-stack-content>
                 <clr-stack-block>
+                    <clr-stack-label>Sistema</clr-stack-label>
+                    <clr-stack-content>{{certification.system}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
                     <clr-stack-label>Orientação</clr-stack-label>
                     <clr-stack-content>{{certification.orientacao}}</clr-stack-content>
                 </clr-stack-block>

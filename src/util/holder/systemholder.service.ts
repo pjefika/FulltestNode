@@ -39,8 +39,6 @@ export class SystemHolderService {
 
     public jaPesquisouAcs: boolean = false;
 
-    public centraisNortelAtivo: boolean = false;
-
     public isFulltestRunning: boolean = false;
     public resultadoGlobalFulltest: boolean = false;
 

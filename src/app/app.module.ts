@@ -68,7 +68,6 @@ import { ConfiguracaoPortaMetalicoComponent } from '../util-components/configura
 import { ConfiguracaoEstadoPortaComponent } from '../util-components/configuracaoporta/validscomponentes/configuracao-estado-porta.component';
 import { ConfiguracaoLinhaImsComponent } from '../util-components/configuracaolinha/linha-ims/configuracao-linha-ims.component';
 import { AcsComponent } from '../util-components/acs/acs.component';
-import { CentraisNortelComponent } from '../util-components/configuracaolinha/centrais-nortel/centrais-nortel.component';
 import { CadastroCrmViewComponent } from '../util-components/cadastro/crm-view/cadastro-crm-view.component';
 import { CadastroCrmTableAssertsComponent } from '../util-components/cadastro/crm-view/tableasserts/cadastro-crm-table-asserts.component';
 import { ValidadorManobraComponent } from '../util-components/validadormanobra/validador-manobra.component';
@@ -136,7 +135,6 @@ import { InfoDmComponent } from '../util-components/insertinfodm/info-dm.compone
 		ConfiguracaoPortaMetalicoComponent,
 		ConfiguracaoEstadoPortaComponent,
 		AcsComponent,
-		CentraisNortelComponent,
 		CadastroCrmViewComponent,
 		CadastroCrmTableAssertsComponent,
 		ValidadorManobraComponent,

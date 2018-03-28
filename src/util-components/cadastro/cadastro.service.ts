@@ -12,8 +12,8 @@ export class CadastroService extends SuperService {
 
     public getCadastro(instancia: string): Promise<Customer> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
-        let _data: { parameter: string, executor: string };
-        _data = { parameter: instancia, executor: usr.user };
+        let _data: { parameter: string, executor: string, system: string };
+        _data = { parameter: instancia, executor: usr.user, system: "CO" };
         this.infoRequest = {
             requestType: "POST",
             url: this.mountLink(this.getLinksMock(), "customerAPI", "customer/findByParameter"),
