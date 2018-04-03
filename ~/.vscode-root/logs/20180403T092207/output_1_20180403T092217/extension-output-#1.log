@@ -1,0 +1,13 @@
+Looking for git in: git
+Using git 2.14.1 from git
+> git rev-parse --show-toplevel
+> git config --get commit.template
+Open repository: /home/G0034481/Documentos/AngularPJs/FulltestNode
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse refatoracao
+> git rev-parse --symbolic-full-name --abbrev-ref refatoracao@{u}
+> git rev-list --left-right refatoracao...origin/refatoracao
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git check-ignore -z --stdin

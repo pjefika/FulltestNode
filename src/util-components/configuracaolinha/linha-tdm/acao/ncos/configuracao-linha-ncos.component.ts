@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SuperComponentService } from '../../../../../util/supercomponent/supercomponent.service';
 import { ToastyComponent } from '../../../../toasty/toasty.component';
-import { SystemHolderService } from '../../../../../util/holder/systemHolder.service';
 import { ConfiguracaoLinhaNcosService } from './configuracao-linha-ncos.service';
 import { VariavelHolderService } from '../../../../../util/holder/variavelholder.service';
 import { Ncos } from '../../../../../viewmodel/linha/ncos';
+import { SystemHolderService } from '../../../../../util/holder/systemholder.service';
 
 @Component({
     selector: 'configuracao-linha-ncos-component',

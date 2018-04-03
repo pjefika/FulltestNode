@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SuperComponentService } from '../../util/supercomponent/supercomponent.service';
 import { ToastyComponent } from '../toasty/toasty.component';
-import { SystemHolderService } from '../../util/holder/systemHolder.service';
 import { ListEvento } from '../../viewmodel/evento/listevento';
+import { SystemHolderService } from '../../util/holder/systemholder.service';
 
 @Component({
     selector: 'eventos-massivos-component',

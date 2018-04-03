@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TemplateService } from './template.service';
 import { UtilService } from '../util/util.service';
-import { SystemHolderService } from '../util/holder/systemHolder.service';
 import { DynamicRouterService } from '../util-components/dynamicrouter/dynamic-router.service';
 import { PrincipalComponent } from '../principal/principal.component';
 import { VariavelHolderService } from '../util/holder/variavelholder.service';
@@ -13,6 +12,7 @@ import { HolderResetService } from '../util/holder/holderreset.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { CadastroCrmViewComponent } from '../util-components/cadastro/crm-view/cadastro-crm-view.component';
 import { SubNavMockCrm } from '../util/mocks/subsnav/subNavMockCrm';
+import { SystemHolderService } from '../util/holder/systemholder.service';
 
 @Component({
     selector: 'template-component',

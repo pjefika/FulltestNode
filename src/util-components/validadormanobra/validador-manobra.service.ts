@@ -7,7 +7,6 @@ import { Observable } from 'rxjs/Observable';
 import { Fulltest } from '../../viewmodel/fulltest/fulltest';
 import { Assert } from '../../viewmodel/asserts/assert';
 import { Http } from '@angular/http';
-import { SystemHolderService } from '../../util/holder/systemHolder.service';
 import { LinkService } from '../../util/urlservice/link.service';
 import { InfoRequest } from 'HttpEasyRequestForPostGet/app/modules/viewmodel/inforequest';
 

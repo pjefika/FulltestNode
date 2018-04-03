@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SystemHolderService } from '../util/holder/systemHolder.service';
+import { SystemHolderService } from '../util/holder/systemholder.service';
 
 @Injectable()
 export class TemplateService {

@@ -4,7 +4,7 @@ import { SuperComponentService } from '../../util/supercomponent/supercomponent.
 import { Customer } from '../../viewmodel/customer/customer';
 import { ToastyComponent } from '../toasty/toasty.component';
 import { VariavelHolderService } from '../../util/holder/variavelholder.service';
-import { SystemHolderService } from '../../util/holder/systemHolder.service';
+import { SystemHolderService } from '../../util/holder/systemholder.service';
 
 @Component({
     selector: 'cadastro-component',

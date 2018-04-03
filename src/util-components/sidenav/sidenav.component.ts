@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { VariavelHolderService } from '../../util/holder/variavelholder.service';
 import { DynamicRouterService } from '../dynamicrouter/dynamic-router.service';
-import { SystemHolderService } from '../../util/holder/systemHolder.service';
 import { SideNavMockLinhaCO } from '../../util/mocks/sidenav/sideNavMockLinhaCo';
 import { SubNav } from '../../viewmodel/subnav/subnav';
 import { SubNavMockCo } from '../../util/mocks/subsnav/subNavMockCo';
 import { ConfiguracaoLinhaComponent } from '../configuracaolinha/configuracao-linha.component';
 import { SideNav } from '../../viewmodel/sidenav/sidenav';
+import { SystemHolderService } from '../../util/holder/systemholder.service';
 
 @Component({
     selector: 'sidenav-component',

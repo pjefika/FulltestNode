@@ -5,7 +5,7 @@ import { LoginService } from './login.service';
 import { Md5 } from 'ts-md5/dist/md5';
 import { AlertService } from '../util/alert/alert.service';
 import { ToastyComponent } from '../util-components/toasty/toasty.component';
-import { SystemHolderService } from '../util/holder/systemHolder.service';
+import { SystemHolderService } from '../util/holder/systemholder.service';
 
 @Component({
     selector: 'login-component',

@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SubNav } from '../../viewmodel/subnav/subnav';
 import { DynamicRouterService } from '../dynamicrouter/dynamic-router.service';
-import { SystemHolderService } from '../../util/holder/systemHolder.service';
 import { ToastyComponent } from '../toasty/toasty.component';
 import { SuperComponentService } from '../../util/supercomponent/supercomponent.service';
+import { SystemHolderService } from '../../util/holder/systemholder.service';
 
 @Component({
     selector: 'subnav-component',

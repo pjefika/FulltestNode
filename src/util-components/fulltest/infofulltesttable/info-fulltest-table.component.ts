@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Fulltest } from '../../../viewmodel/fulltest/fulltest';
 import { SuperComponentService } from '../../../util/supercomponent/supercomponent.service';
 import { ToastyComponent } from '../../toasty/toasty.component';
-import { SystemHolderService } from '../../../util/holder/systemHolder.service';
 import { Valid } from '../../../viewmodel/valid/valid';
 import { VariavelHolderService } from '../../../util/holder/variavelholder.service';
 import { Certification } from '../../../viewmodel/fulltest/certification';
+import { SystemHolderService } from '../../../util/holder/systemholder.service';
 
 @Component({
     selector: 'info-fulltest-table-component',

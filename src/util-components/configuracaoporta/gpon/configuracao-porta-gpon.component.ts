@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SuperComponentService } from '../../../util/supercomponent/supercomponent.service';
 import { ConfPorta } from '../../../viewmodel/confporta/confporta';
 import { ToastyComponent } from '../../toasty/toasty.component';
-import { SystemHolderService } from '../../../util/holder/systemHolder.service';
 import { VariavelHolderService } from '../../../util/holder/variavelholder.service';
+import { SystemHolderService } from '../../../util/holder/systemholder.service';
 
 @Component({
     selector: 'configuracao-porta-gpon-component',

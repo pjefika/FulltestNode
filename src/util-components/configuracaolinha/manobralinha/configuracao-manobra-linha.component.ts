@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfiguracaoManobraLinhaService } from './configuracao-manobra-linha.service';
 import { SuperComponentService } from '../../../util/supercomponent/supercomponent.service';
-import { SystemHolderService } from '../../../util/holder/systemHolder.service';
 import { ToastyComponent } from '../../toasty/toasty.component';
 import { VariavelHolderService } from '../../../util/holder/variavelholder.service';
 import { ConfiguracoesGeraisLinhaService } from '../services/configuracoes-gerais-linha.service';
@@ -12,6 +11,7 @@ import { ConfLensLivres } from '../../../viewmodel/linha/lens-livres/confLensLiv
 import { Len } from '../../../viewmodel/linha/len';
 import { ConfiguracaoLinhaComponent } from '../configuracao-linha.component';
 import { DynamicRouterService } from '../../dynamicrouter/dynamic-router.service';
+import { SystemHolderService } from '../../../util/holder/systemholder.service';
 
 @Component({
     selector: 'configuracao-manobra-linha-component',

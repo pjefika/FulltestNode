@@ -2,8 +2,8 @@ import { Wizard, WizardPage } from 'clarity-angular';
 import { Component, Input, ViewChild, OnInit } from '@angular/core';
 import { EnumService } from '../../../util/enum/enum.service';
 import { Customer } from '../../../viewmodel/customer/customer';
-import { SystemHolderService } from '../../../util/holder/systemHolder.service';
 import { VariavelHolderService } from '../../../util/holder/variavelholder.service';
+import { SystemHolderService } from '../../../util/holder/systemholder.service';
 
 @Component({
     selector: 'cadastro-wizard-component',

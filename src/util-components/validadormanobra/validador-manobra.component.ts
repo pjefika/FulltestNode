@@ -3,8 +3,8 @@ import { ValidadorManobraService } from './validador-manobra.service';
 import { VariavelHolderService } from '../../util/holder/variavelholder.service';
 import { ToastyComponent } from '../toasty/toasty.component';
 import { SuperComponentService } from '../../util/supercomponent/supercomponent.service';
-import { SystemHolderService } from '../../util/holder/systemHolder.service';
 import { Motivo } from '../../viewmodel/manobrar/motivo';
+import { SystemHolderService } from '../../util/holder/systemholder.service';
 
 @Component({
     selector: 'validador-manobra-component',

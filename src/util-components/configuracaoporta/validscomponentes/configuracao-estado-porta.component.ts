@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SuperComponentService } from '../../../util/supercomponent/supercomponent.service';
 import { ToastyComponent } from '../../toasty/toasty.component';
-import { SystemHolderService } from '../../../util/holder/systemHolder.service';
 import { VariavelHolderService } from '../../../util/holder/variavelholder.service';
 import { ConfiguracaoEstadoPortaService } from './configuracao-estado-porta.service';
 import { Valid } from '../../../viewmodel/valid/valid';
+import { SystemHolderService } from '../../../util/holder/systemholder.service';
 
 @Component({
     selector: 'configuracao-estado-porta-component',

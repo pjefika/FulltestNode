@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { SuperComponentService } from '../../../../util/supercomponent/supercomponent.service';
 import { ConfiguracaoLinhaCreateDeleteService } from '../configuracao-linha-create-delete.service';
 import { ToastyComponent } from '../../../toasty/toasty.component';
-import { SystemHolderService } from '../../../../util/holder/systemHolder.service';
 import { VariavelHolderService } from '../../../../util/holder/variavelholder.service';
 import { Linha } from '../../../../viewmodel/cadastro/linha';
 import { CadastroLinha } from '../../../../viewmodel/linha/cadlinha';
@@ -12,6 +11,7 @@ import { ConfiguracoesGeraisLinhaService } from '../../services/configuracoes-ge
 import { ConfiguracaoLinhaTdmService } from '../../linha-tdm/configuracao-linha-tdm.service';
 import { ConfiguracaoLinhaComponent } from '../../configuracao-linha.component';
 import { DynamicRouterService } from '../../../dynamicrouter/dynamic-router.service';
+import { SystemHolderService } from '../../../../util/holder/systemholder.service';
 
 @Component({
     selector: 'linha-create-component',

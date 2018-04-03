@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SuperComponentService } from '../../../util/supercomponent/supercomponent.service';
 import { ToastyComponent } from '../../toasty/toasty.component';
-import { SystemHolderService } from '../../../util/holder/systemHolder.service';
 import { ConfiguracaoManobraLinhaService } from '../manobralinha/configuracao-manobra-linha.service';
 import { VariavelHolderService } from '../../../util/holder/variavelholder.service';
 import { DynamicRouterService } from '../../dynamicrouter/dynamic-router.service';
@@ -9,6 +8,7 @@ import { ConfiguracaoLinhaComponent } from '../configuracao-linha.component';
 import { ConfiguracaoServicosLinhaService } from './configuracao-servicos-linha.service';
 import { ServicoLinha } from '../../../viewmodel/linha/servicolinha';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
+import { SystemHolderService } from '../../../util/holder/systemholder.service';
 
 @Component({
     selector: 'configuracao-servicos-linha-component',

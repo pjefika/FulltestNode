@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Md5 } from 'ts-md5/dist/md5';
 import 'rxjs/add/operator/toPromise';
 import { Router } from '@angular/router';
-import { SystemHolderService } from './holder/systemHolder.service';
+import { SystemHolderService } from './holder/systemholder.service';
 
 declare var require: any
 

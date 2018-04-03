@@ -3,7 +3,7 @@ import { FulltestService } from './fulltest.service';
 import { VariavelHolderService } from '../../util/holder/variavelholder.service';
 import { SuperComponentService } from '../../util/supercomponent/supercomponent.service';
 import { ToastyComponent } from '../toasty/toasty.component';
-import { SystemHolderService } from '../../util/holder/systemHolder.service';
+import { SystemHolderService } from '../../util/holder/systemholder.service';
 
 @Component({
     selector: 'fulltest-component',

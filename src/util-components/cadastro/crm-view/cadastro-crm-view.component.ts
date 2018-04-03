@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Customer } from '../../../viewmodel/customer/customer';
 import { Assert } from '../../../viewmodel/asserts/assert';
-import { SystemHolderService } from '../../../util/holder/systemHolder.service';
+import { SystemHolderService } from '../../../util/holder/systemholder.service';
 
 @Component({
     selector: 'cadastro-crm-view-component',

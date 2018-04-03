@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { SystemHolderService } from './systemHolder.service';
 import { VariavelHolderService } from './variavelholder.service';
+import { SystemHolderService } from './systemholder.service';
+
 
 @Injectable()
 export class HolderResetService {

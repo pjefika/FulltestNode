@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SuperComponentService } from '../../../../util/supercomponent/supercomponent.service';
 import { ToastyComponent } from '../../../toasty/toasty.component';
-import { SystemHolderService } from '../../../../util/holder/systemHolder.service';
 import { VariavelHolderService } from '../../../../util/holder/variavelholder.service';
 import { FulltestAutenticacaoBandaService } from './fulltest-autenticacao-banda.service';
 import { Valid } from '../../../../viewmodel/valid/valid';
 import { AutenticacaoBanda } from '../../../../viewmodel/fulltest/autenticacaobanda/autenticacaobanda';
+import { SystemHolderService } from '../../../../util/holder/systemholder.service';
 
 @Component({
     selector: 'fulltest-autenticacao-banda-component',

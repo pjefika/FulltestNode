@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { SuperComponentService } from '../../../util/supercomponent/supercomponent.service';
 import { ToastyComponent } from '../../toasty/toasty.component';
-import { SystemHolderService } from '../../../util/holder/systemHolder.service';
 import { VariavelHolderService } from '../../../util/holder/variavelholder.service';
 import { LinhaCreateComponent } from './create/linha-create.component';
 import { LinhaDeleteComponent } from './delete/linha-delete.component';
 import { DynamicRouterService } from '../../dynamicrouter/dynamic-router.service';
+import { SystemHolderService } from '../../../util/holder/systemholder.service';
 
 @Component({
     selector: 'configuracao-linha-create-delete-component',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty';
-import { SystemHolderService } from '../../util/holder/systemHolder.service';
+import { SystemHolderService } from '../../util/holder/systemholder.service';
 
 @Component({
     selector: 'toasty-component',

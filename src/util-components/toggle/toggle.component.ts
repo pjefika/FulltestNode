@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SystemHolderService } from '../../util/holder/systemHolder.service';
+import { SystemHolderService } from '../../util/holder/systemholder.service';
 
 @Component({
     selector: 'toggle-component',

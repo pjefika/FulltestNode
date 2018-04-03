@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { SystemHolderService } from '../../util/holder/systemHolder.service';
 import { Mensagem } from '../../viewmodel/alertmessage/mensagem';
+import { SystemHolderService } from '../../util/holder/systemholder.service';
 
 @Component({
     selector: 'alert-component',

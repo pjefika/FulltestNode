@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 import { MomentModule } from 'angular2-moment';
 import { ToastyModule } from 'ng2-toasty';
 import { VariavelHolderService } from '../util/holder/variavelholder.service';
-import { SystemHolderService } from '../util/holder/systemHolder.service';
 import { ObjKeysPipe, KeyBeautifyingPipe, Capitalize } from '../util/objpipe/objpipe.service';
 import { Ng2OrderModule } from 'ng2-order-pipe'
 
@@ -77,6 +76,7 @@ import { ValidacoesManobraTableComponent } from '../util-components/validadorman
 import { ConfiguracaoPortaGponComponent } from '../util-components/configuracaoporta/gpon/configuracao-porta-gpon.component';
 import { LogListCertificationComponent } from '../util-components/loglistcertification/log-list-certification.component';
 import { InfoDmComponent } from '../util-components/insertinfodm/info-dm.component';
+import { SystemHolderService } from '../util/holder/systemholder.service';
 
 @NgModule({
 	declarations: [

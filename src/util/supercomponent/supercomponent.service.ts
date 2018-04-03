@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../../viewmodel/customer/customer';
-import { SystemHolderService } from '../holder/systemHolder.service';
 import { ToastyComponent } from '../../util-components/toasty/toasty.component';
 import { AlertService } from '../alert/alert.service';
 import { Certification } from '../../viewmodel/fulltest/certification';
 import { CadastroLinha } from '../../viewmodel/linha/cadlinha';
+import { SystemHolderService } from '../holder/systemholder.service';
 
 @Injectable()
 export class SuperComponentService extends AlertService {

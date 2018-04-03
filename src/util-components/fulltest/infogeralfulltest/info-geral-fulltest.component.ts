@@ -3,7 +3,7 @@ import { Fulltest } from '../../../viewmodel/fulltest/fulltest';
 import { Certification } from '../../../viewmodel/fulltest/certification';
 import { SuperComponentService } from '../../../util/supercomponent/supercomponent.service';
 import { ToastyComponent } from '../../toasty/toasty.component';
-import { SystemHolderService } from '../../../util/holder/systemHolder.service';
+import { SystemHolderService } from '../../../util/holder/systemholder.service';
 
 @Component({
     selector: 'info-geral-fulltest-component',

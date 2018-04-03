@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ConfiguracaoLinhaTdmService } from './configuracao-linha-tdm.service';
 import { SuperComponentService } from '../../../util/supercomponent/supercomponent.service';
 import { ToastyComponent } from '../../toasty/toasty.component';
-import { SystemHolderService } from '../../../util/holder/systemHolder.service';
 import { VariavelHolderService } from '../../../util/holder/variavelholder.service';
 import { CadastroLinha } from '../../../viewmodel/linha/cadlinha';
 import { DynamicRouterService } from '../../dynamicrouter/dynamic-router.service';
 import { LinhaCreateComponent } from '../linhacreatedelete/create/linha-create.component';
+import { SystemHolderService } from '../../../util/holder/systemholder.service';
 
 @Component({
     selector: 'configuracao-linha-tdm-component',
