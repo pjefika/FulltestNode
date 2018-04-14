@@ -16,8 +16,8 @@ export class FulltestSerialOntOltService extends SuperService {
 
     public setOntToOlt(cadastro: Customer, serial: string, type: string) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
-        let _data: { cust: any, executor: string, serial: { serial: string } };
-        _data = { cust: cadastro, executor: usr.user, serial: { serial: serial } };
+        let _data: { cust: any, executor: string, serial: { serial: string, type: string } };
+        _data = { cust: cadastro, executor: usr.user, serial: { serial: serial, type: type } };
         this.infoRequest = {
             requestType: "POST",
             url: this.mountLink(this.getLinksMock(), "fulltestAPI", "configPorta/setOntToOlt/"),
