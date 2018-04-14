@@ -14,7 +14,7 @@ export class FulltestSerialOntOltService extends SuperService {
         super(http);
     }
 
-    public setOntToOlt(cadastro: Customer, serial: string) {
+    public setOntToOlt(cadastro: Customer, serial: string, type: string) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { cust: any, executor: string, serial: { serial: string } };
         _data = { cust: cadastro, executor: usr.user, serial: { serial: serial } };

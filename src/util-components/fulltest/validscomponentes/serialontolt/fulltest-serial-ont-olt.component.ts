@@ -66,7 +66,7 @@ export class FulltestSerialOntOltComponent extends SuperComponentService impleme
             this.btnSetDisabled = true;
             this.btnSetName = "Aguarde...";
             this.fulltestSerialOntOltService
-                .setOntToOlt(this.variavelHolderService.cadastro, this.serialSelecionado)
+                .setOntToOlt(this.variavelHolderService.cadastro, this.serialSelecionado, this.serial.result.type)
                 .then(data => {
                     if (data.resultado) {
                         this.serial.resultado = data;
