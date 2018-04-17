@@ -3,4 +3,5 @@ export class ReturnResultSerial {
     slot: string;
     porta: string;
     nome: string;
+    type: string;
 }

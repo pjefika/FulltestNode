@@ -20,7 +20,7 @@
                 <td>
                     <div class="select">
                         <select [(ngModel)]="serialSelecionado">
-                            <option *ngFor="let serial of returnResultSerial" [ngValue]="serial.serial" [disabled]="serial.slot != variavelHolderService.cadastro.rede.slot || serial.porta != variavelHolderService.cadastro.rede.porta">{{serial.serial + " Slot:" + serial.slot + " Porta:" + serial.porta}}</option>
+                            <option *ngFor="let serial of returnResultSerial" [ngValue]="serial" [disabled]="serial.slot != variavelHolderService.cadastro.rede.slot || serial.porta != variavelHolderService.cadastro.rede.porta">{{serial.serial + " Slot:" + serial.slot + " Porta:" + serial.porta}}</option>
                         </select>
                     </div>
                 </td>

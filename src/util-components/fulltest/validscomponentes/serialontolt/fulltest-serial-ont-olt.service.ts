@@ -14,10 +14,10 @@ export class FulltestSerialOntOltService extends SuperService {
         super(http);
     }
 
-    public setOntToOlt(cadastro: Customer, serial: string, type: string) {
+    public setOntToOlt(cadastro: Customer, serial: ReturnResultSerial) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { cust: any, executor: string, serial: { serial: string, type: string } };
-        _data = { cust: cadastro, executor: usr.user, serial: { serial: serial, type: type } };
+        _data = { cust: cadastro, executor: usr.user, serial: { serial: serial.serial, type: serial.type } };
         this.infoRequest = {
             requestType: "POST",
             url: this.mountLink(this.getLinksMock(), "fulltestAPI", "configPorta/setOntToOlt/"),

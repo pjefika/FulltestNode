@@ -19,7 +19,7 @@ export class FulltestSerialOntOltComponent extends SuperComponentService impleme
 
     private returnResultSerial: ReturnResultSerial[];
 
-    private serialSelecionado: string;
+    private serialSelecionado: ReturnResultSerial;
 
     private btnUnSetDisabled: boolean = false;
     private btnUnSetName: string = "Desassociar Ont";
@@ -48,7 +48,7 @@ export class FulltestSerialOntOltComponent extends SuperComponentService impleme
         this.fulltestSerialOntOltService
             .unsetOntFromOlt(this.variavelHolderService.cadastro)
             .then(resultado => {
-                this.returnResultSerial = resultado;
+                this.returnResultSerial = resultado;             
                 this.serial.resultado = false;
                 super.callToasty("Sucesso", "Comando realizado com sucesso.", "success", 5000);
             }, erro => {
@@ -66,11 +66,11 @@ export class FulltestSerialOntOltComponent extends SuperComponentService impleme
             this.btnSetDisabled = true;
             this.btnSetName = "Aguarde...";
             this.fulltestSerialOntOltService
-                .setOntToOlt(this.variavelHolderService.cadastro, this.serialSelecionado, this.serial.result.type)
+                .setOntToOlt(this.variavelHolderService.cadastro, this.serialSelecionado)
                 .then(data => {
                     if (data.resultado) {
                         this.serial.resultado = data;
-                        this.serial.mensagem = this.serialSelecionado;
+                        this.serial.mensagem = this.serialSelecionado.serial;
                         this.callToasty("Sucesso", "Comando realizado com sucesso.", "success", 5000);
                     } else {
                         this.callToasty("Ops, ocorreu um erro.", "Não foi possivel associar Ont, resultado voltou como Negativo.", "error", 5000);
