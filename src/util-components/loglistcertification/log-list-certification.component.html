@@ -11,7 +11,7 @@
             </clr-stack-header>
             <clr-stack-block *ngFor="let certification of variavelHolderService.listCertifications">
                 <clr-stack-label>
-                    {{validdatedif(certification.dataInicio)}}: FKID?
+                    {{validdatedif(certification.dataInicio)}}: {{certification.fkId}}
                 </clr-stack-label>
                 <clr-stack-content>
                     {{certification.resultado}}
@@ -20,10 +20,10 @@
                         style="color: red;"></clr-icon>
                     <clr-icon shape="exclamation-triangle" *ngIf="certification.resultado === 'FIXED'" style="color: orange"></clr-icon>
                 </clr-stack-content>
-                <clr-stack-block>
+                <!-- <clr-stack-block>
                     <clr-stack-label>Sistema</clr-stack-label>
                     <clr-stack-content>{{certification.system}}</clr-stack-content>
-                </clr-stack-block>
+                </clr-stack-block> -->
                 <clr-stack-block>
                     <clr-stack-label>Orientação</clr-stack-label>
                     <clr-stack-content>{{certification.orientacao}}</clr-stack-content>

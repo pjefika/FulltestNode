@@ -13,4 +13,5 @@ export class Certification {
     executor: string;
     fulltest?: Fulltest;
     system?: string;
+    fkId: string;
 }
