@@ -71,7 +71,7 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
                         this.systemHolderService.resultadoGlobalFulltest = this.variavelHolderService.certification.fulltest.resultado;
                     }
                 } else {
-                    super.callToasty("Ops, Aconteceu algo.", resposta.orientacao, "error", 5000);
+                    super.callToasty("Ops, Aconteceu algo.", resposta.localizedMessage, "error", 5000);
                 }
             }, erro => {
                 super.callToasty("Ops, Aconteceu algo.", erro.mError, "error", 5000);

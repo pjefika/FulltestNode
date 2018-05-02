@@ -18,7 +18,7 @@ export class CadastroService extends SuperService {
             requestType: "POST",
             url: this.mountLink(this.getLinksMock(), "customerAPI", "customer/findByParameter"),
             _data: _data,
-            timeout: 60000
+            timeout: 120000
         };
         return super.request(this.infoRequest)
             .then(resposta => {
