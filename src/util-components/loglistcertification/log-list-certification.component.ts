@@ -87,4 +87,16 @@ export class LogListCertificationComponent extends SuperComponentService impleme
         return valid;
     }
 
+    private validtodisablefinalize(end: number) {
+        let valid: boolean = false;
+        if (this.validdatedif(end) === "Expirado") {
+            valid = true;
+        }
+        return valid;
+    }
+
+    private validtodisableifclicked() {
+        
+    }
+
 }

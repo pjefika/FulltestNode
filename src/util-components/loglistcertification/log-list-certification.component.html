@@ -9,7 +9,7 @@
                     Atualizar
                 </button>
             </clr-stack-header>
-            <clr-stack-block *ngFor="let certification of variavelHolderService.listCertifications">
+            <clr-stack-block *ngFor="let certification of variavelHolderService.listCertifications; let i = index">
                 <clr-stack-label>
                     {{validdatedif(certification.dataInicio)}}: {{certification.fkId}}
                 </clr-stack-label>
@@ -35,6 +35,21 @@
                 <clr-stack-block>
                     <clr-stack-label>Data Fim</clr-stack-label>
                     <clr-stack-content>{{((certification.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm'}}</clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block>
+                    <clr-stack-label>Finalizado CO</clr-stack-label>
+                    <clr-stack-content>
+                        <div class="radio-inline">
+                            <input type="radio" [name]="'radiocheckfinalize'+ i" [id]="'radiocheckfinalize_1' + i" [disabled]="validtodisablefinalize(certification.dataInicio)"
+                                [value]="certification.final">
+                            <label [for]="'radiocheckfinalize_1' + i">Sim</label>
+                        </div>
+                        <div class="radio-inline">
+                            <input type="radio" [name]="'radiocheckfinalize'+ i" [id]="'radiocheckfinalize_2' + i" [disabled]="validtodisablefinalize(certification.dataInicio)"
+                                [value]="certification.final">
+                            <label [for]="'radiocheckfinalize_2' + i">Não</label>
+                        </div>
+                    </clr-stack-content>
                 </clr-stack-block>
             </clr-stack-block>
         </clr-stack-view>

@@ -14,4 +14,5 @@ export class Certification {
     fulltest?: Fulltest;
     system?: string;
     fkId: string;
+    final?: string = "N/A";
 }
