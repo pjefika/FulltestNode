@@ -32,6 +32,7 @@
 		"clarity-angular": "^0.10.26",
 		"clarity-icons": "^0.10.26",
 		"clarity-ui": "^0.10.26",
+		"classlist.js": "^1.1.20150312",
 		"clipboard": "^1.7.1",
 		"core-js": "^2.5.3",
 		"lodash": "^4.17.5",
