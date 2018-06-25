@@ -1,0 +1,28 @@
+{
+    "endpoints":[
+        {
+            "nome":"customerAPI",
+            "url":"http://192.168.4.225:7171/customerAPI/"
+        },
+        {
+            "nome":"fulltestAPI",
+            "url":"http://192.168.4.225:7172/fulltestAPI/"
+        },
+        {
+            "nome":"stealerAPI",
+            "url":"http://192.168.4.225:7173/stealerAPI/"
+        },
+        {
+            "nome":"authAPI",
+            "url":"http://192.168.4.225:7176/authAPI/"
+        },
+        {
+            "nome":"dmsAPI",
+            "url":"http://10.200.35.67:80/dmsAPI/"
+        },
+        {
+            "nome":"acs",
+            "url":"http://192.168.4.225:7177/acsAPI/"
+        }
+    ]
+}

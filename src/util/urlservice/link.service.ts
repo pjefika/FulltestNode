@@ -4,8 +4,12 @@ import { ExceptionService } from '../exceptionservice/exception.service';
 import { Http } from '@angular/http';
 import { InfoRequest } from 'HttpEasyRequestForPostGet/app/modules/viewmodel/inforequest';
 
+declare var require: any
+
 @Injectable()
 export class LinkService extends ExceptionService {
+
+    private whatlink: string = "PROD"; // valida link produção. // PROD // QA // EXT
 
     // Import ViewModel for Setup the request.
     public infoRequest: InfoRequest;
@@ -37,9 +41,18 @@ export class LinkService extends ExceptionService {
     }
 
     public getLinksMock(): UrlEndPoint {
-        //Mock Produção
-        return JSON.parse('{"endpoints":[{"nome":"customerAPI","url":"http://10.40.198.168:7171/customerAPI/"},{"nome":"fulltestAPI","url":"http://10.40.198.168:7172/fulltestAPI/"},{"nome":"stealerAPI","url":"http://10.40.198.168:7173/stealerAPI/"},{"nome":"authAPI","url":"http://10.40.198.168:7176/authAPI/"},{"nome":"dmsAPI","url":"http://10.200.35.67:80/dmsAPI/"},{"nome":"acs","url":"http://10.40.198.168:7177/acsAPI/"}]}');
-        //Mock QA
-        // return JSON.parse('{"endpoints":[{"nome":"customerAPI","url":"http://10.40.196.182:7171/customerAPI/"},{"nome":"fulltestAPI","url":"http://10.40.196.182:7172/fulltestAPI/"},{"nome":"stealerAPI","url":"http://10.40.196.182:7173/stealerAPI/"},{"nome":"authAPI","url":"http://10.40.196.182:7176/authAPI/"},{"nome":"dmsAPI","url":"http://10.200.35.67:80/dmsAPI/"},{"nome":"acs","url":"http://10.200.35.67:80/acs/"}]}');
+        let urls: UrlEndPoint;
+        switch (this.whatlink) {
+            case "PROD":
+                urls = require('../../assets/mocks/links/links-prod.json'); //Mock Produção
+                break;
+            case "QA":
+                urls = require('../../assets/mocks/links/links-qa.json'); //Mock QA
+                break;
+            case "EXT":
+                urls = require('../../assets/mocks/links/links-ext.json'); //Mock EXT
+                break;
+        }
+        return urls;
     }
 }
