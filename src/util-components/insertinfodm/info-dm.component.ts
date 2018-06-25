@@ -92,6 +92,7 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
         }
         this.systemHolderService.modalWizardCadastroIsOpen = true;
         this.systemHolderService.modalInfoDMIsOpen = false;
+        this.infoDm = null;
         // console.log(this.variavelHolderService.cadastro);
     }
 
@@ -136,7 +137,8 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
         }
         this.systemHolderService.modalWizardCadastroIsOpen = true;
         this.systemHolderService.modalInfoDMIsOpen = false;
-        console.log(this.variavelHolderService.cadastro);
+        this.infoDm = null;
+        // console.log(this.variavelHolderService.cadastro);
     }
 
     private findNextIndex(campo: string): string {
