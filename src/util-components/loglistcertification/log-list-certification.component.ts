@@ -44,7 +44,7 @@ export class LogListCertificationComponent extends SuperComponentService impleme
     private getCertificationByCustomer() {
         this.isLoading = true;
         this.logListCertificationService
-            .getCertificationByCustomer(this.variavelHolderService.cadastro.instancia)
+            .getCertificationByCustomer(this.variavelHolderService.instancia)
             .then(resposta => {
                 if (resposta.length > 0) {
                     this.variavelHolderService.listCertifications = resposta; //_.orderBy(resposta, "dataInicio", ['desc']);

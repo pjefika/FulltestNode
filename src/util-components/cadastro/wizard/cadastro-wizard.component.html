@@ -100,7 +100,8 @@
                 </section>
             </form>
             <div>
-                <button type="button" class="btn btn-icon btn-primary" (click)="abrirModal()" *ngIf="variavelHolderService.cadastro.rede.planta === 'VIVO1'">
+                <!-- *ngIf="variavelHolderService.cadastro.rede.planta === 'VIVO1'" -->
+                <button type="button" class="btn btn-icon btn-primary" (click)="abrirModal()" *ngIf="variavelHolderService.cadastro.rede.planta != 'VIVO2'">
                     Inserir cadastro DM
                 </button>
             </div>
