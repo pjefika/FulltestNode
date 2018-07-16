@@ -12,14 +12,13 @@ export class LogListCertificationService extends SuperService {
     }
 
     public getCertificationByCustomer(instancia: string): Promise<Certification[]> {
-        // let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { instancia: string };
         _data = { instancia: instancia };
         this.infoRequest = {
             requestType: "POST",
             url: this.mountLink(this.getLinksMock(), "customerAPI", "certification/findByCustomer/"),
             _data: _data,
-            timeout: 120000
+            timeout: 35000
         };
         return super.request(this.infoRequest)
             .then(resposta => {

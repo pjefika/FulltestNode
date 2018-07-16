@@ -2,19 +2,19 @@
     "endpoints": [
         {
             "nome": "customerAPI",
-            "url": "http://10.40.196.182:7171/customerAPI/"
+            "url": "http://10.40.196.172:7171/customerAPI/"
         },
         {
             "nome": "fulltestAPI",
-            "url": "http://10.40.196.182:7172/fulltestAPI/"
+            "url": "http://10.40.196.172:7172/fulltestAPI/"
         },
         {
             "nome": "stealerAPI",
-            "url": "http://10.40.196.182:7173/stealerAPI/"
+            "url": "http://10.40.196.172:7173/stealerAPI/"
         },
         {
             "nome": "authAPI",
-            "url": "http://10.40.196.182:7176/authAPI/"
+            "url": "http://10.40.196.172:7176/authAPI/"
         },
         {
             "nome": "dmsAPI",
