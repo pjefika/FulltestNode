@@ -6,7 +6,10 @@ import { SideNav } from '../../viewmodel/sidenav/sidenav';
 @Injectable()
 export class SystemHolderService {
 
-    public isLinkProd: boolean = true; // Valida se link é produção ou não // Deprecate
+    /**
+     * Variavel isLinkProd Deprecate Utilizar variavel (whatlink) dentro da Serviço (LinkService) para informar qual EndPoint
+     */
+    //public isLinkProd: boolean = true; // Valida se link é produção ou não // Deprecate
     public ableMock: boolean = false; // Habilita mock
 
     public mensagemAntigas: Mensagem[]; // Alerts e Toastys ocorridos na sessão do usuário

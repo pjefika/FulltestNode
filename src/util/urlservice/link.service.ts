@@ -18,28 +18,6 @@ export class LinkService extends ExceptionService {
         super(http);
     }
 
-    public mountInfoLinkRequestProd(): InfoRequest {
-        let infoRequest: InfoRequest;
-        // infoRequest = {
-        //     rqst: "get",
-        //     command: "getlinks",
-        //     path: "getlinks/",
-        //     otherUrl: ""
-        // }
-        return infoRequest;
-    }
-
-    public mountInfoLinkRequestQA(): InfoRequest {
-        let infoRequest: InfoRequest;
-        // infoRequest = {
-        //     rqst: "get",
-        //     command: "getlinks",
-        //     path: "getlinks/",
-        //     otherUrl: ""
-        // }
-        return infoRequest;
-    }
-
     public getLinksMock(): UrlEndPoint {
         let urls: UrlEndPoint;
         switch (this.whatlink) {
