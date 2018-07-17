@@ -34,7 +34,9 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
                 }
                 return item.trim();
             });
-
+            if (!this.validIfExist(caminho)) {
+                caminho = null;
+            }
             switch (caminho) {
                 case "OLT":
                     this.findOltCad();
@@ -43,7 +45,7 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
                     this.findDlsamCad();
                     break;
                 default:
-                    super.callToasty("Ops aconteceu algo", "Funcionalidade não implementada, para este tipo de DSLAM", "error", 6000);
+                    super.callToasty("Ops aconteceu algo", "Por favor verifique os dados colados, pois não identificamos padrões do cadastro.", "error", 6000);
                     break;
             }
         } else {
@@ -113,7 +115,7 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
                 terminal: this.findNextIndex("Telefone/LP:"),
                 ipMulticast: null,
                 nrc: null,
-                slot: Number(this.findNextIndex("Dados Slot :")),
+                slot: Number(this.doSplit(this.findNextIndex("Dados Slot :"))),
                 porta: Number(this.findNextIndex("Dados Porta :")),
                 sequencial: null,
                 logica: null,
@@ -165,9 +167,36 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
         }
     }
 
+    private doSplit(campo: string): string {
+        let valueR: string;
+        if (campo.search("-") !== -1) {
+            valueR = campo.split("-").shift();
+        } else {
+            valueR = campo;
+        }
+        return valueR;
+    }
+
     private voltar() {
         this.systemHolderService.modalWizardCadastroIsOpen = true;
         this.systemHolderService.modalInfoDMIsOpen = false;
+    }
+
+    private validIfExist(caminho: string): boolean {
+        let valid: boolean = false;
+        switch (caminho) {
+            case "OLT":
+                if (this.findNextIndex("Nome Rede:")) {
+                    valid = true;
+                }
+                break;
+            case "DSLAM":
+                if (this.findNextIndex("Dados Ip Rede :")) {
+                    valid = true;
+                }
+                break;
+        }
+        return valid;
     }
 
 }

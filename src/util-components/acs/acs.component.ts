@@ -50,6 +50,7 @@ export class AcsComponent extends SuperComponentService implements OnInit {
             .then(resposta => {
                 this.variavelHolderService.equipamentos = resposta;
             }, erro => {
+                this.callToasty("Ops, aconteceu algo.", erro.mError, "error", 5000);
                 this.mountAlert();
             })
             .then(() => {
