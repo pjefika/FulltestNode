@@ -15,4 +15,5 @@ export class Certification {
     system?: string;
     fkId: string;
     final?: string = "N/A";
+    tipo: string;
 }

@@ -23,9 +23,15 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
     public ngOnInit() { }
 
     private setInfosDm() {
+        console.log(this.infoDm);
+
         let caminho: string;
         if (this.infoDm) {
             this.arrayInfo = this.infoDm.split("\n").map(function (item) {
+
+                console.log(item);
+                
+
                 if (item === "OLT") {
                     caminho = item;
                 }
@@ -53,10 +59,16 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
         }
     }
 
+    private validnavegador() {
+        if (true) {
+            
+        }
+    }
+
     private findOltCad() {
         this.variavelHolderService.cadastro = {
             designador: this.variavelHolderService.cadastro.designador,
-            instancia: this.findNextIndex("Telefone/LP:"),
+            instancia: this.findNextIndex("Telefone / ID ACESSO:"),
             designadorAcesso: this.variavelHolderService.cadastro.designadorAcesso,
             designadorTv: null,
             rede: {
@@ -101,7 +113,7 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
     private findDlsamCad() {
         this.variavelHolderService.cadastro = {
             designador: this.variavelHolderService.cadastro.designador,
-            instancia: this.findNextIndex("Telefone/LP:"),
+            instancia: this.findNextIndex("Telefone / ID ACESSO:"),
             designadorAcesso: this.variavelHolderService.cadastro.designadorAcesso,
             designadorTv: null,
             rede: {

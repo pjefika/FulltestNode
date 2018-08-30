@@ -28,5 +28,7 @@ export class VariavelHolderService {
 
     public listCertifications: Certification[];
 
+    public idfulltest: string;
+
     constructor() { }
 }

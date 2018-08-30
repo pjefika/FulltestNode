@@ -33,8 +33,8 @@ export class LoginComponent extends AlertService implements OnInit {
             }
         });
     }
-    
-    private doEntrar() {
+
+    public doEntrar() {
         if (this.systemHolderService.ableMock) {
             this.entrarMock();
         } else {

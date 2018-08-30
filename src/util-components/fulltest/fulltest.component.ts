@@ -14,11 +14,13 @@ import { SystemHolderService } from '../../util/holder/systemholder.service';
 
 export class FulltestComponent extends SuperComponentService implements OnInit {
 
-    private isLoading: boolean = false;
+    public isLoading: boolean = false;
 
-    private btnFulltestDisable: boolean = false;
+    public btnFulltestDisable: boolean = false;
 
-    private modalEventosMassivos: boolean = false;
+    public modalEventosMassivos: boolean = false;
+
+    public whatisloading: string;
 
     constructor(private fulltestService: FulltestService,
         public variavelHolderService: VariavelHolderService,
@@ -28,8 +30,10 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
     }
 
     public ngOnInit() {
-        if (!this.variavelHolderService.certification) {
+        if (!this.variavelHolderService.idfulltest) {
             this.doCertification();
+        } else {
+            this.getCertificationCOnew(this.variavelHolderService.idfulltest);
         }
         super.enablebtnresumoinfo();
     }
@@ -41,7 +45,8 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
                 if (this.systemHolderService.ableMock) {
                     this.getCertificationCOMock();
                 } else {
-                    this.getCertificationCO();
+                    // this.getCertificationCO();
+                    this.setCertificationCOnew();
                 }
                 break;
             case "CRM":
@@ -92,12 +97,57 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
         }, 1000);
     }
 
-    private getCertificationCRM() {
-        // Não implementado.
+    private setCertificationCOnew() {
+        this.setloadinginfo("Realizando Fulltest");
+        this.fulltestService
+            .setCertificationCOnew(this.variavelHolderService.cadastro)
+            .then(resposta => {
+                if (super.ifIsFulltest(resposta)) {
+                    this.variavelHolderService.certification = resposta;
+                    this.getCertificationCOnew(resposta.id);
+                }
+            }, error => {
+                super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 10000);
+            })
+            .then(() => {
+                this.systemHolderService.isFulltestRunning = false;
+            });
     }
 
-    private getCertificationCRMMock() {
-        // Não implementado.
+    private getCertificationCOnew(id: string) {
+        this.setloadinginfo("Realizando Fulltest");
+        this.variavelHolderService.idfulltest = id;
+        let getinfosinterval = setInterval(() => {
+            this.fulltestService
+                .getCertificationCOnew(id)
+                .then(resposta => {
+                    if (resposta.fulltest) {
+                        this.whatisloading = resposta.fulltest.mensagem;
+                    }
+                    this.variavelHolderService.certification = resposta;
+                }, error => {
+                    super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 10000);
+                    clearInterval(getinfosinterval);
+                })
+                .then(() => {
+                    /**
+                     * Parar a busca se terminado...
+                     */
+                    if (this.variavelHolderService.certification.dataFim) {
+                        this.isLoading = false;
+                        clearInterval(getinfosinterval);
+                    }
+                });
+        }, 5000);
     }
+
+    private setloadinginfo(msg: string) {
+        this.isLoading = true;
+        this.whatisloading = msg;
+        this.systemHolderService.isFulltestRunning = true;
+    }
+
+
+
 
 }

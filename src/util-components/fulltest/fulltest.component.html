@@ -4,8 +4,10 @@
         <info-geral-fulltest-component [certification]="variavelHolderService.certification"></info-geral-fulltest-component>
         <info-fulltest-table-component [certification]="variavelHolderService.certification"></info-fulltest-table-component>
     </div>
-    <button *ngIf="!isLoading" type="button" class="btn btn-primary btn-block" (click)="doCertification()" [disabled]="btnFulltestDisable">Realizar Fulltest</button>
-    <loading-component [searching]="isLoading" [searchWhat]="'Realizando Fulltest...'"></loading-component>
+    <button *ngIf="!isLoading" type="button" class="btn btn-primary btn-block" (click)="doCertification()" [disabled]="btnFulltestDisable">Realizar
+        Fulltest
+    </button>
+    <loading-component [searching]="isLoading" [searchWhat]="whatisloading"></loading-component>
     <!-- <clr-modal [(clrModalOpen)]="abreModal" [clrModalClosable]="false" [clrModalSize]="'lg'">
         <h3 class="modal-title">Cliente com Evento Massivo</h3>
         <div class="modal-body">

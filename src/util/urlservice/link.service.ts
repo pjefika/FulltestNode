@@ -9,7 +9,7 @@ declare var require: any
 @Injectable()
 export class LinkService extends ExceptionService {
 
-    private whatlink: string = "QA"; // valida link produção. // PROD // QA // EXT
+    private whatlink: string = "PROD"; // valida link produção. // PROD // QA // EXT
 
     // Import ViewModel for Setup the request.
     public infoRequest: InfoRequest;
@@ -29,6 +29,9 @@ export class LinkService extends ExceptionService {
                 break;
             case "EXT":
                 urls = require('../../assets/mocks/links/links-ext.json'); //Mock EXT
+                break;
+            case "EXTC":
+                urls = require('../../assets/mocks/links/links-extc.json'); //Mock EXTC
                 break;
         }
         return urls;

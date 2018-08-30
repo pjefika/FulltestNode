@@ -1,0 +1,28 @@
+{
+    "endpoints":[
+        {
+            "nome":"customerAPI",
+            "url":"http://10.129.241.147:7171/customerAPI/"
+        },
+        {
+            "nome":"fulltestAPI",
+            "url":"http://10.129.241.147:7172/fulltestAPI/"
+        },
+        {
+            "nome":"stealerAPI",
+            "url":"http://10.129.241.147:7173/stealerAPI/"
+        },
+        {
+            "nome":"authAPI",
+            "url":"http://10.129.241.147:7176/authAPI/"
+        },
+        {
+            "nome":"dmsAPI",
+            "url":"http://10.129.241.147:80/dmsAPI/"
+        },
+        {
+            "nome":"acs",
+            "url":"http://10.129.241.147:7177/acsAPI/"
+        }
+    ]
+}
