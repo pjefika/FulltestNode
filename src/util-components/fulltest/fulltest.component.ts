@@ -46,7 +46,7 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
                     this.getCertificationCOMock();
                 } else {
                     // this.getCertificationCO();
-                    this.setCertificationCOnew();
+                    this.setCertificationCOnewBanda();
                 }
                 break;
             case "CRM":
@@ -58,6 +58,14 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
                     this.getCertificationCO();
                 }
                 break;
+        }
+    }
+
+    private doCertificationTV() {
+        if (this.systemHolderService.ableMock) {
+
+        } else {
+            this.setCertificationCOnewTV();
         }
     }
 
@@ -97,10 +105,27 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
         }, 1000);
     }
 
-    private setCertificationCOnew() {
+    private setCertificationCOnewBanda() {
         this.setloadinginfo("Realizando Fulltest");
         this.fulltestService
-            .setCertificationCOnew(this.variavelHolderService.cadastro)
+            .setCertificationCOnew(this.variavelHolderService.cadastro, "BANDA")
+            .then(resposta => {
+                if (super.ifIsFulltest(resposta)) {
+                    this.variavelHolderService.certification = resposta;
+                    this.getCertificationCOnew(resposta.id);
+                }
+            }, error => {
+                super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 10000);
+            })
+            .then(() => {
+                this.systemHolderService.isFulltestRunning = false;
+            });
+    }
+
+    private setCertificationCOnewTV() {
+        this.setloadinginfo("Realizando Fulltest");
+        this.fulltestService
+            .setCertificationCOnew(this.variavelHolderService.cadastro, "TV")
             .then(resposta => {
                 if (super.ifIsFulltest(resposta)) {
                     this.variavelHolderService.certification = resposta;
@@ -117,27 +142,35 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
     private getCertificationCOnew(id: string) {
         this.setloadinginfo("Realizando Fulltest");
         this.variavelHolderService.idfulltest = id;
+        let isexec: boolean = false;
         let getinfosinterval = setInterval(() => {
-            this.fulltestService
-                .getCertificationCOnew(id)
-                .then(resposta => {
-                    if (resposta.fulltest) {
-                        this.whatisloading = resposta.fulltest.mensagem;
-                    }
-                    this.variavelHolderService.certification = resposta;
-                }, error => {
-                    super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 10000);
-                    clearInterval(getinfosinterval);
-                })
-                .then(() => {
-                    /**
-                     * Parar a busca se terminado...
-                     */
-                    if (this.variavelHolderService.certification.dataFim) {
+            if (isexec === false) {
+                isexec = true;
+                this.fulltestService
+                    .getCertificationCOnew(id)
+                    .then(resposta => {
+                        if (resposta.fulltest) {
+                            this.whatisloading = resposta.fulltest.mensagem;
+                        }
+                        this.variavelHolderService.certification = resposta;
+                    }, error => {
+                        super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 10000);
                         this.isLoading = false;
                         clearInterval(getinfosinterval);
-                    }
-                });
+                    })
+                    .then(() => {
+                        /**
+                         * Parar a busca se terminado...
+                         */
+                        if (this.variavelHolderService.certification.fulltest) {
+                            if (this.variavelHolderService.certification.fulltest.dataFim) {
+                                this.isLoading = false;
+                                clearInterval(getinfosinterval);
+                            }
+                        }
+                        isexec = false;
+                    });
+            }
         }, 5000);
     }
 
@@ -146,8 +179,4 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
         this.whatisloading = msg;
         this.systemHolderService.isFulltestRunning = true;
     }
-
-
-
-
 }

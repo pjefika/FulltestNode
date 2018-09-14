@@ -40,7 +40,8 @@ export class ValidadorManobraService extends SuperService {
         _data = { cust: cadastro, motivo: motivoSelected, executor: usr.user }
         this.infoRequest = {
             requestType: "POST",
-            url: "http://10.200.35.67:80/" + "fulltestAPI/manobra/analitico",
+            url: this.mountLink(this.getLinksMock(), "fulltestAPI", "manobra/analitico"),
+            // url: "http://10.200.35.67:80/" + "fulltestAPI/manobra/analitico",
             _data: _data,
             timeout: 120000
         };
@@ -85,13 +86,11 @@ export class ValidadorManobraService extends SuperService {
         infoResquests = [
             {
                 _data: cadastro,
-                // url: "http://10.40.198.168:7172/fulltestAPI/manobra/asserts", 
                 url: this.mountLink(this.getLinksMock(), "fulltestAPI", "manobra/asserts"),
                 timeout: 1
             }, {
                 _data: _data,
                 url: this.mountLink(this.getLinksMock(), "stealerAPI", "manobra/asserts"),
-                // url: "http://10.40.198.168:7173/stealerAPI/manobra/asserts",
                 timeout: 1
             }
         ];

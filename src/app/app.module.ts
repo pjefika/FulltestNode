@@ -77,6 +77,7 @@ import { ConfiguracaoPortaGponComponent } from '../util-components/configuracaop
 import { LogListCertificationComponent } from '../util-components/loglistcertification/log-list-certification.component';
 import { InfoDmComponent } from '../util-components/insertinfodm/info-dm.component';
 import { SystemHolderService } from '../util/holder/systemholder.service';
+import { ValidsTVComponent } from '../util-components/fulltest/validstv/valids-tv.component';
 
 @NgModule({
 	declarations: [
@@ -144,7 +145,9 @@ import { SystemHolderService } from '../util/holder/systemholder.service';
 		InfoDmComponent,
 
 		ValidadorInfoFulltestTableComponent,
-		ValidadorManobraFulltestTableComponent
+		ValidadorManobraFulltestTableComponent,
+
+		ValidsTVComponent
 	],
 	imports: [
 		/**

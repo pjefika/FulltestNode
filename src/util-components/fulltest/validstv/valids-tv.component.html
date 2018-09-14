@@ -1,0 +1,26 @@
+<loading-component [searching]="isLoading" [searchWhat]="whatisloading"></loading-component>
+<div *ngIf="blockTv">
+    <table class="table table-compact margin-geral-table">
+        <thead>
+            <tr class="left">
+                <th colspan="2">{{blockTv.nome.beautyName}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="left">
+                <td class="left">Orientação</td>
+                <td>{{blockTv.orientacao}}</td>
+            </tr>
+            <tr class="left">
+                <td class="left">Resultado</td>
+                <td>
+                    {{blockTv.resultado}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<button *ngIf="variavelHolderService.cadastro.servicos.tipoTv === 'IPTV'" type="button" class="btn btn-primary btn-block"
+    (click)="docertification()" [disabled]="isLoading">Testar HPNA</button>
+
+<!-- -->

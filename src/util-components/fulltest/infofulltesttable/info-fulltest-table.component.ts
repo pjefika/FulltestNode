@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Fulltest } from '../../../viewmodel/fulltest/fulltest';
 import { SuperComponentService } from '../../../util/supercomponent/supercomponent.service';
 import { ToastyComponent } from '../../toasty/toasty.component';
 import { Valid } from '../../../viewmodel/valid/valid';

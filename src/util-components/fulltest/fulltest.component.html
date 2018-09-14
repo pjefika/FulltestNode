@@ -1,6 +1,7 @@
 <div>
     <h3 [class]="systemHolderService.qualCadastro != 'CRM'? 'titulo-da-pagina': ''">Informações de Fulltest</h3>
     <div *ngIf="variavelHolderService.certification && !isLoading">
+        <valids-tv-component></valids-tv-component>
         <info-geral-fulltest-component [certification]="variavelHolderService.certification"></info-geral-fulltest-component>
         <info-fulltest-table-component [certification]="variavelHolderService.certification"></info-fulltest-table-component>
     </div>
@@ -8,17 +9,6 @@
         Fulltest
     </button>
     <loading-component [searching]="isLoading" [searchWhat]="whatisloading"></loading-component>
-    <!-- <clr-modal [(clrModalOpen)]="abreModal" [clrModalClosable]="false" [clrModalSize]="'lg'">
-        <h3 class="modal-title">Cliente com Evento Massivo</h3>
-        <div class="modal-body">
-            <p>O cliente possui um evento massivo, deseja relmente continuar com os testes e validações?</p>
-            <evento-massivo-component *ngIf="holderService.cadastro" [eventos]="cadastro.eventos"></evento-massivo-component>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-success" (click)="realizaFulltest()">Continuar</button>
-            <button type="button" class="btn btn-primary" (click)="abreModal = false">Não seguir</button>
-        </div>
-    </clr-modal> -->
 
     <clr-modal [(clrModalOpen)]="modalEventosMassivos">
         <h3 class="modal-title">Eventos Massivos</h3>

@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="certification.fulltest">
     <table class="table table-compact margin-geral-table">
         <thead>
             <tr class="left">
@@ -6,17 +6,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="left">
+            <tr class="left" *ngIf="certification.fulltest.dataFim && certification.fulltest.dataInicio">
                 <td class="left">Duração do Fulltest</td>
-                <td>{{certification.dataFim | amDifference: certification.dataInicio: 'seconds'}} Segundos</td>
+                <td>{{certification.fulltest.dataFim | amDifference: certification.fulltest.dataInicio: 'seconds'}}
+                    Segundos</td>
             </tr>
             <tr class="left">
                 <td class="left">Resultado</td>
                 <td>
-                    <clr-icon shape="check" *ngIf="certification.resultado === 'OK'" class="isSuccess"></clr-icon>
-                    <clr-icon shape="times" *ngIf="certification.resultado === 'FISICAL' || certification.resultado === 'FORWARDED_CO' || certification.resultado === 'TO_FIX'"
-                        class="isError"></clr-icon>
-                    <clr-icon shape="exclamation-triangle" *ngIf="certification.resultado === 'FIXED'" class="isWarning"></clr-icon>
+                    <clr-icon shape="check" *ngIf="certification.fulltest.resultado" class="isSuccess"></clr-icon>
+                    <clr-icon shape="times" *ngIf="!certification.fulltest.resultado" class="isError"></clr-icon>
+                    <!-- <clr-icon shape="exclamation-triangle" *ngIf="certification.fulltest.resultado === 'FIXED'" class="isWarning"></clr-icon> -->
                 </td>
             </tr>
         </tbody>

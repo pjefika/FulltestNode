@@ -2,7 +2,7 @@
     "endpoints": [
         {
             "nome": "customerAPI",
-            "url": "http://10.40.196.172:7171/customerAPI/"
+            "url": "http://10.40.196.172:7179/customerAPI/"
         },
         {
             "nome": "fulltestAPI",

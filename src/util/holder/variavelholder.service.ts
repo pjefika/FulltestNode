@@ -16,6 +16,8 @@ export class VariavelHolderService {
 
     public certification: Certification;
 
+    public certificationTV: Certification;
+
     public cadastroLinha: CadastroLinha;
 
     public confPorta: ConfPorta;
@@ -29,6 +31,8 @@ export class VariavelHolderService {
     public listCertifications: Certification[];
 
     public idfulltest: string;
+
+    public idfulltestTV: string;
 
     constructor() { }
 }

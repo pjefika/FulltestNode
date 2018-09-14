@@ -2,7 +2,7 @@
     "endpoints":[
         {
             "nome":"customerAPI",
-            "url":"http://10.40.198.168:7171/customerAPI/"
+            "url":"http://10.40.198.168:7179/customerAPI/"
         },
         {
             "nome":"fulltestAPI",
@@ -10,7 +10,7 @@
         },
         {
             "nome":"stealerAPI",
-            "url":"http://10.40.198.168:7173/stealerAPI/"
+            "url":"http://10.40.198.168:7180/stealerAPI/"
         },
         {
             "nome":"authAPI",
