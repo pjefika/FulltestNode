@@ -1,0 +1,17 @@
+.isError {
+    background-color: orange;
+    font-weight: bolder;
+}
+
+.roubapadding {
+    margin-top: 0 !important;
+}
+
+.aligntitlevertical{
+    vertical-align: middle;
+}
+
+.textc {
+    color: red;
+    font-weight: bolder;
+}

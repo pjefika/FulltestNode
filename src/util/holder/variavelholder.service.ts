@@ -6,6 +6,8 @@ import { CadastroLinha } from '../../viewmodel/linha/cadlinha';
 import { ConfPorta } from '../../viewmodel/confporta/confporta';
 import { Equipamento } from '../../viewmodel/acs/equipamento';
 import { Analitico } from '../../viewmodel/manobrar/analitico';
+import { FulltestTV } from '../../viewmodel/fulltest-tv/fulltest-tv';
+import { ListManobraCertification } from '../../viewmodel/manobrar/listmanobra';
 
 @Injectable()
 export class VariavelHolderService {
@@ -29,6 +31,8 @@ export class VariavelHolderService {
     public certificationValidManobraAnalitico: Analitico;
 
     public listCertifications: Certification[];
+
+    public listCertificationManobra: ListManobraCertification[];
 
     public idfulltest: string;
 

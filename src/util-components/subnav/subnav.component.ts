@@ -37,7 +37,7 @@ export class SubnavComponent extends SuperComponentService implements OnInit {
         }
     }
 
-    private subNavActive(l: SubNav): Boolean {
+    public subNavActive(l: SubNav): Boolean {
         let active = false;
         if (l.component === this.dynamicRouterService.component) {
             active = true;

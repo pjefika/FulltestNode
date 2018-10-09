@@ -17,37 +17,42 @@ export class InfoGeralFulltestComponent extends SuperComponentService implements
 
     constructor(public toastyComponent: ToastyComponent,
         public systemHolderService: SystemHolderService) {
-        super(toastyComponent, systemHolderService)
+        super(toastyComponent, systemHolderService);
     }
 
     public ngOnInit() {
         this.switchMountAlert();
     }
 
-    private mountAlert(whatType: string) {
-        super.callAlert(whatType, this.certification.orientacao);
-    }
-
     private switchMountAlert() {
-        switch (this.certification.resultado) {
-            case "OK":
+        // console.log(this.certification);
+        if (this.certification.fulltest) {
+            if (this.certification.fulltest.resultado) {
                 this.mountAlert("alert-success");
-                break;
-            case "FISICAL":
+            } else {
                 this.mountAlert("alert-danger");
-                break;
-            case "FORWARDED_CO":
-                this.mountAlert("alert-danger");
-                break;
-            case "TO_FIX":
-                this.mountAlert("alert-warning");
-                break;
-            case "FIXED":
-                this.mountAlert("alert-warning");
-                break;
+            }
         }
+        // switch (this.certification.resultado) {
+        //     case "OK":
+        //         this.mountAlert("alert-success");
+        //         break;
+        //     case "FISICAL":
+        //         this.mountAlert("alert-danger");
+        //         break;
+        //     case "FORWARDED_CO":
+        //         this.mountAlert("alert-danger");
+        //         break;
+        //     case "TO_FIX":
+        //         this.mountAlert("alert-warning");
+        //         break;
+        //     case "FIXED":
+        //         this.mountAlert("alert-warning");
+        //         break;
+        // }
     }
 
-
-
+    private mountAlert(whatType: string) {
+        super.callAlert(whatType, this.certification.fulltest.mensagem);
+    }
 }

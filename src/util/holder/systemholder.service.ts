@@ -47,8 +47,6 @@ export class SystemHolderService {
 
     public historyCertificationValidTime: number = 3600000; // <- 1800000 30 Minutos // 3600000 1 hora
 
-    public isloadingcertificationtv: boolean = false;
-
     constructor() { }
 
 }

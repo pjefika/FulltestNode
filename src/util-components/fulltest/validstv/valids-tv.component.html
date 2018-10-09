@@ -1,26 +1,50 @@
-<loading-component [searching]="isLoading" [searchWhat]="whatisloading"></loading-component>
-<div *ngIf="blockTv">
-    <table class="table table-compact margin-geral-table">
-        <thead>
-            <tr class="left">
-                <th colspan="2">{{blockTv.nome.beautyName}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="left">
-                <td class="left">Orientação</td>
-                <td>{{blockTv.orientacao}}</td>
-            </tr>
-            <tr class="left">
-                <td class="left">Resultado</td>
-                <td>
-                    {{blockTv.resultado}}
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<button *ngIf="variavelHolderService.cadastro.servicos.tipoTv === 'IPTV'" type="button" class="btn btn-primary btn-block"
-    (click)="docertification()" [disabled]="isLoading">Testar HPNA</button>
+<div>
+    <loading-component [searching]="isLoading" [searchWhat]="whatisloading"></loading-component>
+    <div *ngIf="variavelHolderService.certificationTV">
+        <table class="table table-compact margin-geral-table">
+            <tbody>
+                <tr>
+                    <th class="th-title">Diagnóstico HPNA</th>
+                </tr>
+                <tr>
+                    <th>{{blockTv.orientacao}}</th>
+                </tr>
+                <tr>
+                    <th>
+                        <clr-icon shape="check" *ngIf="blockTv.resultado === 'OK'" class="isSuccess"></clr-icon>
+                        <clr-icon shape="times" *ngIf="blockTv.resultado !== 'OK'" class="isError"></clr-icon>
+                    </th>
+                </tr>
+                <!-- <tr>
+                    <th>MAC</th>
+                    <th>BaudRate</th>
+                    <th>Serial</th>
+                    <th>Tecnologia</th>
+                    <th>PacketsReceived</th>
+                    <th>Attenuation</th>
+                    <th>PacketsLost</th>
+                    <th>SNR</th>
+                    <th>PhyRate</th>
+                    <th>Certified</th>
+                    <th>IsPvr</th>
+                </tr>
+                <tr>
+                    <th>{{stb.mac}}</th>
+                    <th>{{stb.baudRate}}</th>
+                    <th>{{stb.serial}}</th>
+                    <th>{{stb.tecnologia}}</th>
+                    <th>{{stb.packetsReceived}}</th>
+                    <th>{{stb.attenuation}}</th>
+                    <th>{{stb.packetsLost}}</th>
+                    <th>{{stb.snr}}</th>
+                    <th>{{stb.phyRate}}</th>
+                    <th>{{stb.certified}}</th>
+                    <th>{{stb.isPvr}}</th>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+    <button *ngIf="variavelHolderService.cadastro.servicos.tipoTv === 'IPTV'" type="button" class="btn btn-primary btn-block"
+        (click)="docertification()" [disabled]="isLoading">Testar HPNA</button>
 
-<!-- -->
+</div>

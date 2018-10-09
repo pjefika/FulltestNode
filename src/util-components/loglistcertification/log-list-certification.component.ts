@@ -9,10 +9,14 @@ import { Certification } from '../../viewmodel/fulltest/certification';
 
 import * as moment from 'moment';
 import { SystemHolderService } from '../../util/holder/systemholder.service';
+import { Valid } from '../../viewmodel/valid/valid';
+import { Fulltest } from '../../viewmodel/fulltest/fulltest';
+import { Block } from '../../viewmodel/block/block';
 
 @Component({
     selector: 'log-list-certification-component',
     templateUrl: 'log-list-certification.component.html',
+    styleUrls: ["log-list-certification.component.css"],
     providers: [LogListCertificationService]
 })
 
@@ -96,7 +100,42 @@ export class LogListCertificationComponent extends SuperComponentService impleme
     }
 
     private validtodisableifclicked() {
-        
+
+    }
+
+    public validarMacTrocaModem(certification: Certification): boolean {
+        let t: boolean = false;
+        if (certification.fulltest && certification.fulltest.valids) {
+            certification.fulltest.valids.forEach(e => {
+                if (e && e.nome === "MAC do Equipamento" && e.mensagem.includes("(MODEM TROCADO)")) {
+                    t = true;
+                }
+            });
+        }
+        return t;
+    }
+
+    public validarShowBlockHPNA(blocks: Block[]): boolean {
+        let t: boolean = false;
+        if (blocks) {
+            blocks.forEach(e => {
+                if (e.nome.name === "HPNA") {
+                    t = true;
+                }
+            });
+        }
+        return t;
+    }
+
+    public validBlockHPNAGetName(blocks: Block[]): string {
+        let m: string;
+        blocks.forEach(e => {
+            if (e.nome.name === "HPNA") {
+                m = e.orientacao;
+            }
+        });
+        return m;
+
     }
 
 }

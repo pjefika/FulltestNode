@@ -28,25 +28,52 @@
                     <clr-stack-label>Orientação</clr-stack-label>
                     <clr-stack-content>{{certification.orientacao}}</clr-stack-content>
                 </clr-stack-block>
+                <clr-stack-block *ngIf="validarMacTrocaModem(certification)">
+
+                    <clr-stack-label>
+                        <span class="aligntitlevertical">Trocado Modem</span>
+                    </clr-stack-label>
+
+                    <clr-stack-content>
+
+                        <div class="alert alert-warning roubapadding">
+                            <div class="alert-items">
+                                <div class="alert-item static">
+                                    <span class="alert-text textc">
+                                        {{validarMacTrocaModem(certification) ? 'Modem Trocado' : ''}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block *ngIf="validarShowBlockHPNA(certification.blocks)">
+                    <clr-stack-label>Diagnóstico HPNA</clr-stack-label>
+                    <clr-stack-content>{{validBlockHPNAGetName(certification.blocks)}}</clr-stack-content>
+                </clr-stack-block>
                 <clr-stack-block>
                     <clr-stack-label>Data Inicio</clr-stack-label>
-                    <clr-stack-content>{{((certification.dataInicio / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm'}}</clr-stack-content>
+                    <clr-stack-content>{{((certification.dataInicio / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY
+                        HH:mm'}}</clr-stack-content>
                 </clr-stack-block>
                 <clr-stack-block>
                     <clr-stack-label>Data Fim</clr-stack-label>
-                    <clr-stack-content>{{((certification.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm'}}</clr-stack-content>
+                    <clr-stack-content>{{((certification.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY
+                        HH:mm'}}</clr-stack-content>
                 </clr-stack-block>
                 <clr-stack-block>
                     <clr-stack-label>Finalizado CO</clr-stack-label>
                     <clr-stack-content>
                         <div class="radio-inline">
-                            <input type="radio" [name]="'radiocheckfinalize'+ i" [id]="'radiocheckfinalize_1' + i" [disabled]="validtodisablefinalize(certification.dataInicio)"
-                                [value]="certification.final">
+                            <input type="radio" [name]="'radiocheckfinalize'+ i" [id]="'radiocheckfinalize_1' + i"
+                                [disabled]="validtodisablefinalize(certification.dataInicio)" [value]="certification.final">
                             <label [for]="'radiocheckfinalize_1' + i">Sim</label>
                         </div>
                         <div class="radio-inline">
-                            <input type="radio" [name]="'radiocheckfinalize'+ i" [id]="'radiocheckfinalize_2' + i" [disabled]="validtodisablefinalize(certification.dataInicio)"
-                                [value]="certification.final">
+                            <input type="radio" [name]="'radiocheckfinalize'+ i" [id]="'radiocheckfinalize_2' + i"
+                                [disabled]="validtodisablefinalize(certification.dataInicio)" [value]="certification.final">
                             <label [for]="'radiocheckfinalize_2' + i">Não</label>
                         </div>
                     </clr-stack-content>

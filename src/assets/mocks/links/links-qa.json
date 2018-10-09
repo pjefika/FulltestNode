@@ -2,7 +2,7 @@
     "endpoints": [
         {
             "nome": "customerAPI",
-            "url": "http://10.40.196.172:7179/customerAPI/"
+            "url": "http://10.40.197.85:7179/customerAPI/"
         },
         {
             "nome": "fulltestAPI",
@@ -10,7 +10,7 @@
         },
         {
             "nome": "stealerAPI",
-            "url": "http://10.40.196.172:7173/stealerAPI/"
+            "url": "http://10.40.196.172:7180/stealerAPI/"
         },
         {
             "nome": "authAPI",
@@ -22,7 +22,7 @@
         },
         {
             "nome": "acs",
-            "url": "http://10.200.35.67:80/acs/"
+            "url": "http://10.40.196.172:7177/acsAPI/"
         }
     ]
 }

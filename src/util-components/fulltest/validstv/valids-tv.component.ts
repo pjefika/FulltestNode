@@ -15,7 +15,6 @@ import { Block } from '../../../viewmodel/block/block';
 
 export class ValidsTVComponent extends SuperComponentService implements OnInit {
 
-
     public isLoading: boolean = false;
     public whatisloading: string;
 
@@ -29,60 +28,54 @@ export class ValidsTVComponent extends SuperComponentService implements OnInit {
     }
 
     public ngOnInit() {
-        // if (this.id && !this.systemHolderService.isloadingcertificationtv) {
-        //     this.doSetCertificationCOnewTV();
-        // }
+
     }
 
     public docertification() {
         if (this.systemHolderService.ableMock) {
             this.doSetCertificationCOnewTVMock();
         } else {
+            // this.doSetCertificationCOnewTVMock();
             this.doSetCertificationCOnewTV();
         }
     }
 
     private doSetCertificationCOnewTV() {
-        this.systemHolderService.isloadingcertificationtv = true;
         this.isLoading = true;
         this.whatisloading = "Realizando teste HPNA";
         this.validsTVService
-            .setcertificationbyid(this.variavelHolderService.certification.id)
+            .setcertificationbyid(this.variavelHolderService.cadastro, this.variavelHolderService.certification.id)
             .then(resposta => {
                 this.variavelHolderService.certificationTV = resposta;
-                this.getinfoblocktv();
             }, error => {
                 super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 10000);
             })
             .then(() => {
-                this.isLoading = false;
-                this.systemHolderService.isloadingcertificationtv = false;
+                this.getinfoblocktv();
             });
     }
 
     private doSetCertificationCOnewTVMock() {
-        this.systemHolderService.isloadingcertificationtv = true;
         this.isLoading = true;
         this.whatisloading = "Realizando teste HPNA";
         this.validsTVService
             .setcertificationbyidMock()
             .then(resposta => {
                 this.variavelHolderService.certificationTV = resposta;
-                this.getinfoblocktv();
             }, error => {
                 super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 10000);
             })
             .then(() => {
-                this.isLoading = false;
-                this.systemHolderService.isloadingcertificationtv = false;
+                this.getinfoblocktv();
             });
     }
 
-    private getinfoblocktv() {
+    public getinfoblocktv() {
         this.variavelHolderService.certificationTV.blocks.forEach(b => {
             if (b.nome.name === "HPNA") {
                 this.blockTv = b;
             }
         });
+        this.isLoading = false;
     }
 }

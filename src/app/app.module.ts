@@ -78,6 +78,7 @@ import { LogListCertificationComponent } from '../util-components/loglistcertifi
 import { InfoDmComponent } from '../util-components/insertinfodm/info-dm.component';
 import { SystemHolderService } from '../util/holder/systemholder.service';
 import { ValidsTVComponent } from '../util-components/fulltest/validstv/valids-tv.component';
+import { LogListManobraComponent } from '../util-components/loglistmanobra/log-list-manobra.component';
 
 @NgModule({
 	declarations: [
@@ -147,7 +148,8 @@ import { ValidsTVComponent } from '../util-components/fulltest/validstv/valids-t
 		ValidadorInfoFulltestTableComponent,
 		ValidadorManobraFulltestTableComponent,
 
-		ValidsTVComponent
+		ValidsTVComponent,
+		LogListManobraComponent
 	],
 	imports: [
 		/**
@@ -222,7 +224,8 @@ import { ValidsTVComponent } from '../util-components/fulltest/validstv/valids-t
 		LogListCertificationComponent,
 
 		ValidadorInfoFulltestTableComponent,
-		ValidadorManobraFulltestTableComponent
+		ValidadorManobraFulltestTableComponent,
+		LogListManobraComponent
 	]
 })
 

@@ -143,35 +143,59 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
         this.setloadinginfo("Realizando Fulltest");
         this.variavelHolderService.idfulltest = id;
         let isexec: boolean = false;
+        let isError: boolean = false;
+        let countError: number = 0;
         let getinfosinterval = setInterval(() => {
             if (isexec === false) {
                 isexec = true;
                 this.fulltestService
                     .getCertificationCOnew(id)
                     .then(resposta => {
+                        this.variavelHolderService.certification = resposta;
                         if (resposta.fulltest) {
                             this.whatisloading = resposta.fulltest.mensagem;
                         }
-                        this.variavelHolderService.certification = resposta;
                     }, error => {
                         super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 10000);
-                        this.isLoading = false;
-                        clearInterval(getinfosinterval);
+                        // this.isLoading = false;
+                        isError = true;
+                        countError++;
+                        // clearInterval(getinfosinterval);
                     })
                     .then(() => {
                         /**
                          * Parar a busca se terminado...
                          */
-                        if (this.variavelHolderService.certification.fulltest) {
+                        if (isError && countError > 2) {
+                            clearInterval(getinfosinterval);
+                            super.callToasty("Ops, Aconteceu algo.", this.variavelHolderService.certification.orientacao, "error", 10000);
+                            this.isLoading = false;
+                        } else if (this.variavelHolderService.certification.fulltest) {
                             if (this.variavelHolderService.certification.fulltest.dataFim) {
                                 this.isLoading = false;
                                 clearInterval(getinfosinterval);
+                                this.setmessagefinish();
                             }
+                        } else if (this.variavelHolderService.certification.dataFim) {
+                            this.isLoading = false;
+                            clearInterval(getinfosinterval);
+                            this.setmessagefinish();
                         }
                         isexec = false;
                     });
             }
         }, 5000);
+    }
+
+    private setmessagefinish() {
+        if (this.variavelHolderService.certification.resultado === "FISICAL"
+            || this.variavelHolderService.certification.resultado === "FORWARDED_CO"
+            || this.variavelHolderService.certification.resultado === "TO_FIX") {
+            super.callToasty("Ops, Aconteceu algo.", this.variavelHolderService.certification.orientacao, "error", 10000);
+        }
+        // else {
+        //     super.callToasty("Info", this.variavelHolderService.certification.orientacao, "info", 10000);
+        // }
     }
 
     private setloadinginfo(msg: string) {
