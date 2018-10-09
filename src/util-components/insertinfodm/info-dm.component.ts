@@ -22,16 +22,13 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
 
     public ngOnInit() { }
 
-    private setInfosDm() {
-        console.log(this.infoDm);
+    public setInfosDm() {
+        // console.log(this.infoDm);
 
         let caminho: string;
         if (this.infoDm) {
             this.arrayInfo = this.infoDm.split("\n").map(function (item) {
-
-                console.log(item);
-                
-
+                // console.log(item);
                 if (item === "OLT") {
                     caminho = item;
                 }
@@ -59,16 +56,10 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
         }
     }
 
-    private validnavegador() {
-        if (true) {
-            
-        }
-    }
-
     private findOltCad() {
         this.variavelHolderService.cadastro = {
             designador: this.variavelHolderService.cadastro.designador,
-            instancia: this.findNextIndex("Telefone / ID ACESSO:"),
+            instancia: this.findNextIndex("Terminal/ID ACESSO:"),
             designadorAcesso: this.variavelHolderService.cadastro.designadorAcesso,
             designadorTv: null,
             rede: {
@@ -113,7 +104,7 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
     private findDlsamCad() {
         this.variavelHolderService.cadastro = {
             designador: this.variavelHolderService.cadastro.designador,
-            instancia: this.findNextIndex("Telefone / ID ACESSO:"),
+            instancia: this.findNextIndex("Terminal/ID ACESSO:"),
             designadorAcesso: this.variavelHolderService.cadastro.designadorAcesso,
             designadorTv: null,
             rede: {
@@ -156,10 +147,30 @@ export class InfoDmComponent extends SuperComponentService implements OnInit {
     }
 
     private findNextIndex(campo: string): string {
-        let index = this.arrayInfo.indexOf(campo);
-        if (index >= 0 && index < this.arrayInfo.length - 1) {
-            return this.arrayInfo[index + 1];
+        let c: string;
+        if (campo === "Telefone / ID ACESSO:" && this.variavelHolderService.cadastro.instancia) {
+
+
+
+
+
+            // // console.log(this.arrayInfo);
+            // this.arrayInfo.forEach(e => {
+            //     // let index = e.search("Telefone / ID ACESSO:");
+            //     console.log(e.includes("Telefone / ID ACESSO:"));
+            //     // if (index >= 0 && index < (this.arrayInfo.length - 1)) {
+            //     //     console.log(this.arrayInfo[index]);
+
+            //     //     c = this.arrayInfo[index].split(" ")[4];
+            //     // }
+            // });
+        } else {
+            let index = this.arrayInfo.indexOf(campo);
+            if (index >= 0 && index < (this.arrayInfo.length - 1)) {
+                c = this.arrayInfo[index + 1];
+            }
         }
+        return c;
     }
 
     private validVelocidade(vel: number, what: string): number {
