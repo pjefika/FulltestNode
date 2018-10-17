@@ -4,6 +4,8 @@ import { Http } from '@angular/http';
 import { Customer } from '../../viewmodel/customer/customer';
 import { ListManobraCertification } from '../../viewmodel/manobrar/listmanobra';
 
+declare var require: any
+
 @Injectable()
 export class LogListManobraService extends SuperService {
 
@@ -12,8 +14,6 @@ export class LogListManobraService extends SuperService {
     }
 
     public findManobraByCustomer(customer: Customer): Promise<ListManobraCertification[]> {
-        // let _data: { customer: Customer };
-        // _data = { customer: customer };
         this.infoRequest = {
             requestType: "POST",
             url: this.mountLink(this.getLinksMock(), "customerAPI", "certification/findManobraByCustomer/"),
@@ -25,6 +25,12 @@ export class LogListManobraService extends SuperService {
                 return resposta as ListManobraCertification[];
             })
             .catch(super.handleErrorKing);
+    }
+
+    public findManobraByCustomerMock(): ListManobraCertification[] {
+        let list: ListManobraCertification[];
+        list = require('../../assets/mocks/loglistmanobra/manobra.json'); //Mock Produção
+        return list;
     }
 
 }

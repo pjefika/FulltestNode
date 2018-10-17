@@ -24,7 +24,11 @@ export class LogListManobraComponent extends SuperComponentService implements On
     }
 
     public ngOnInit() {
-        this.findManobraByCustomer();
+        if (this.systemHolderService.ableMock) {
+            this.findManobraByCustomerMock();
+        } else {
+            this.findManobraByCustomer();
+        }
     }
 
     private findManobraByCustomer() {
@@ -44,6 +48,10 @@ export class LogListManobraComponent extends SuperComponentService implements On
                 this.isLoading = false;
             })
 
+    }
+
+    private findManobraByCustomerMock() {
+        this.variavelHolderService.listCertificationManobra = this.logListManobraService.findManobraByCustomerMock();
     }
 
 }
