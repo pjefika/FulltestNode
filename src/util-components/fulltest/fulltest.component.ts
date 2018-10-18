@@ -144,6 +144,7 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
         this.variavelHolderService.idfulltest = id;
         let isexec: boolean = false;
         let isError: boolean = false;
+        let msgError: string;
         let countError: number = 0;
         let getinfosinterval = setInterval(() => {
             if (isexec === false) {
@@ -156,7 +157,8 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
                             this.whatisloading = resposta.fulltest.mensagem;
                         }
                     }, error => {
-                        super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 10000);
+                        msgError = error.mError;
+                        // super.callToasty("Ops, Aconteceu algo.", error.mError, "error", 10000);
                         // this.isLoading = false;
                         isError = true;
                         countError++;
@@ -168,7 +170,7 @@ export class FulltestComponent extends SuperComponentService implements OnInit {
                          */
                         if (isError && countError > 2) {
                             clearInterval(getinfosinterval);
-                            super.callToasty("Ops, Aconteceu algo.", this.variavelHolderService.certification.orientacao, "error", 10000);
+                            super.callToasty("Ops, Aconteceu algo.", msgError, "error", 10000);
                             this.isLoading = false;
                         } else if (this.variavelHolderService.certification.fulltest) {
                             if (this.variavelHolderService.certification.fulltest.dataFim) {

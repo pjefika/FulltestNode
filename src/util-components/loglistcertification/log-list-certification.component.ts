@@ -22,7 +22,7 @@ import { Block } from '../../viewmodel/block/block';
 
 export class LogListCertificationComponent extends SuperComponentService implements OnInit {
 
-    private isLoading: boolean = false;
+    public isLoading: boolean = false;
 
     constructor(private logListCertificationService: LogListCertificationService,
         public toastyComponent: ToastyComponent,

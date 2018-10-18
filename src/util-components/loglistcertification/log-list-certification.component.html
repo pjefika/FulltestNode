@@ -76,7 +76,21 @@
             </clr-stack-block>
         </clr-stack-view>
     </div>
-    <div *ngIf="!variavelHolderService.listCertifications">
+    <div *ngIf="!variavelHolderService.listCertifications && !isLoading">
+
+        <div class="row">
+            <div class="col-md-9">
+                <h4>Historico de Certificação</h4>
+            </div>
+            <div class="col-md-3">
+                <button class="stack-action btn btn-sm btn-link marginToAlign" (click)="doGetCertification();" type="button">
+                    <clr-icon shape="refresh"></clr-icon>
+                    Atualizar
+                </button>
+            </div>
+        </div>
+
+
         <alert-component [mensagem]="mensagem" [ativo]="ativo" [closeable]="false"></alert-component>
     </div>
 </div>

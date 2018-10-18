@@ -4,7 +4,7 @@
         <clr-stack-view>
             <clr-stack-header>
                 Historico de Validação de Manobra
-                <button class="stack-action btn btn-sm btn-link" (click)="doGetCertification();" type="button">
+                <button class="stack-action btn btn-sm btn-link" (click)="doFindManobraByCustomer();" type="button">
                     <clr-icon shape="refresh"></clr-icon>
                     Atualizar
                 </button>
@@ -30,7 +30,20 @@
             </clr-stack-block>
         </clr-stack-view>
     </div>
-    <div *ngIf="!variavelHolderService.listCertificationManobra">
+    <div *ngIf="!variavelHolderService.listCertificationManobra && !isLoading">
+
+        <div class="row">
+            <div class="col-md-9">
+                <h4>Historico de Validação de Manobra</h4>
+            </div>
+            <div class="col-md-3">
+                <button class="stack-action btn btn-sm btn-link marginToAlign" (click)="doGetCertification();" type="button">
+                    <clr-icon shape="refresh"></clr-icon>
+                    Atualizar
+                </button>
+            </div>
+        </div>
+
         <alert-component [mensagem]="mensagem" [ativo]="ativo" [closeable]="false"></alert-component>
     </div>
 </div>

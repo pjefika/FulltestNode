@@ -23,6 +23,7 @@ export class HolderResetService {
         this.variavelHolderService.certificationValidManobra = null;
         this.variavelHolderService.certificationValidManobraAnalitico = null;
         this.variavelHolderService.listCertifications = null;
+        this.variavelHolderService.listCertificationManobra = null;
         this.variavelHolderService.idfulltest = null;
     }
 

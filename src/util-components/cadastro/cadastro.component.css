@@ -11,3 +11,9 @@
    margin-top: 20%;
    margin-left: 40%;
 }
+
+.hr-marginTopBottom {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}

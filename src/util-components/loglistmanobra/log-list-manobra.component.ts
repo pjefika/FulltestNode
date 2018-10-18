@@ -24,6 +24,12 @@ export class LogListManobraComponent extends SuperComponentService implements On
     }
 
     public ngOnInit() {
+        if (!this.variavelHolderService.listCertificationManobra) {
+            this.doFindManobraByCustomer();
+        }
+    }
+
+    private doFindManobraByCustomer() {
         if (this.systemHolderService.ableMock) {
             this.findManobraByCustomerMock();
         } else {
