@@ -1804,7 +1804,7 @@
         "manobrar":false,
         "motivoSaida":null,
         "motivoEntrada":"NAO_ATINGE",
-        "analise":{
+        "analises":{
             "analises":[
                 {
                     "motivo":"AUTH_SINC",

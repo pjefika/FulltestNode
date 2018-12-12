@@ -5,6 +5,8 @@ import { SystemHolderService } from '../../util/holder/systemholder.service';
 import { VariavelHolderService } from '../../util/holder/variavelholder.service';
 import { LogListManobraService } from './log-list-manobra.service';
 
+import * as moment from 'moment';
+
 @Component({
     selector: 'log-list-manobra-component',
     templateUrl: 'log-list-manobra.component.html',
@@ -58,6 +60,16 @@ export class LogListManobraComponent extends SuperComponentService implements On
 
     private findManobraByCustomerMock() {
         this.variavelHolderService.listCertificationManobra = this.logListManobraService.findManobraByCustomerMock();
+    }
+
+    public validdatedif(end: number): string {
+        let valid: string;
+        if (Math.abs(moment().diff(end)) < 600000) { // 10 Minutos
+            valid = "Valido";
+        } else {
+            valid = "Expirado";
+        }
+        return valid;
     }
 
 }

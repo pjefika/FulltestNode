@@ -11,7 +11,7 @@ export class ListManobraCertification {
     manobrar: boolean;
     motivoSaida: string;
     motivoEntrada: string;
-    analise: Analitico;
+    analises: Analitico;
     dataHora: number;
 
 }

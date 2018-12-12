@@ -16,7 +16,7 @@ export class LogListManobraService extends SuperService {
     public findManobraByCustomer(customer: Customer): Promise<ListManobraCertification[]> {
         this.infoRequest = {
             requestType: "POST",
-            url: this.mountLink(this.getLinksMock(), "customerAPI", "certification/findManobraByCustomer/"),
+            url: this.mountLink(this.getLinksMock(), "fulltestAPI", "fulltest/findManobraByCustomer/"),
             _data: customer,
             timeout: 35000
         };

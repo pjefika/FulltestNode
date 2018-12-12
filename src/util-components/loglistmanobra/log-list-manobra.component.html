@@ -11,20 +11,28 @@
             </clr-stack-header>
             <clr-stack-block *ngFor="let certification of variavelHolderService.listCertificationManobra; let i = index">
                 <clr-stack-label>
-                    {{certification.analise.conclusao.beautyMotivo}}
+                    {{validdatedif(certification.datahora)}}:
+                    {{certification.analises.conclusao.motivo ?
+                    certification.analises.conclusao.motivo :
+                    certification.motivoEntrada}}
                 </clr-stack-label>
                 <clr-stack-content>
-                    {{certification.analise.conclusao.beautyConclusao}}
-                    <clr-icon shape="check" *ngIf="certification.analise.manobrar" style="color: green;"></clr-icon>
-                    <clr-icon shape="times" *ngIf="!certification.analise.manobrar" style="color: red;"></clr-icon>
+                    {{certification.analises.conclusao.conclusao}}
+                    <!-- <clr-icon shape="check" *ngIf="certification.analises.manobrar" style="color: green;"></clr-icon>
+                    <clr-icon shape="times" *ngIf="!certification.analises.manobrar" style="color: red;"></clr-icon> -->
                 </clr-stack-content>
-                <clr-stack-block *ngFor="let analise of certification.analise.analises">
-                    <clr-stack-label>{{analise.beautyMotivo}}</clr-stack-label>
+                <clr-stack-block>
+                    <clr-stack-label>Data do comando</clr-stack-label>
                     <clr-stack-content>
-                        {{analise.beautyConclusao}}
-                        <!-- <clr-icon shape="check" *ngIf="analise.conclusao === 'PORTA_OK'" style="color: green;"></clr-icon>
-                        <clr-icon shape="times" *ngIf="analise.conclusao === 'PORTA_NOK'" style="color: red;"></clr-icon> -->
-
+                        {{((certification.datahora/1000)| amFromUnix) | amDateFormat:'DD/MM/YYYY HH:mm:ss'}}
+                    </clr-stack-content>
+                </clr-stack-block>
+                <clr-stack-block *ngFor="let analise of certification.analises.analises">
+                    <clr-stack-label>{{analise.motivo}}</clr-stack-label>
+                    <clr-stack-content>
+                        {{analise.conclusao}}
+                        <clr-icon shape="check" *ngIf="analise.conclusao === 'PORTA_OK'" style="color: green;"></clr-icon>
+                        <clr-icon shape="times" *ngIf="analise.conclusao === 'PORTA_NOK'" style="color: red;"></clr-icon>
                     </clr-stack-content>
                 </clr-stack-block>
             </clr-stack-block>

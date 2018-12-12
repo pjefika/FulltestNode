@@ -51,15 +51,19 @@ export class LoginComponent extends AlertService implements OnInit {
                     this.loginService
                         .getUsuario(this.usuario)
                         .then(data => {
-                            this.usuario = data;
-                            sessionStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
-                            this.util.navigate('./');
+                            if (data.nivel < 2) {
+                                super.callAlert("warning", "Você não possui nível de acesso para entrar na ferramenta.");
+                            } else {
+                                this.usuario = data;
+                                sessionStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
+                                this.util.navigate('./');
+                            }
                         });
                 } else {
                     //type: "warning", msg: "Usuário ou senha incorretos, por favor verifique."
                     super.callAlert("warning", "Usuário ou senha incorretos, por favor verifique.");
                     this.usuario.senha = "";
-                }
+                } 10.40
                 this.logando = false;
             }, error => {
                 this.usuario.login = "";
