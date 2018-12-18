@@ -51,7 +51,7 @@ export class LoginComponent extends AlertService implements OnInit {
                     this.loginService
                         .getUsuario(this.usuario)
                         .then(data => {
-                            if (data.nivel < 2) {
+                            if (data.nivel < 1) {
                                 super.callAlert("warning", "Você não possui nível de acesso para entrar na ferramenta.");
                             } else {
                                 this.usuario = data;
