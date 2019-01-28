@@ -64,7 +64,7 @@ export class LogListManobraComponent extends SuperComponentService implements On
 
     public validdatedif(end: number): string {
         let valid: string;
-        if (Math.abs(moment().diff(end)) < 720000) { // 12 Minutos
+        if (Math.abs(moment().diff(end)) < 900000) { // 12 Minutos
             valid = "Valido";
         } else {
             valid = "Expirado";

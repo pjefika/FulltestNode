@@ -28,6 +28,7 @@
                     <clr-icon shape="caret down"></clr-icon>
                 </button>
                 <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+                    <a clrDropdownItem target="_blank" href="http://efika/web/views/mudaSenha.view.php">Mudar Senha</a>
                     <a clrDropdownItem (click)="sair()">Sair</a>
                 </clr-dropdown-menu>
             </clr-dropdown>
@@ -42,7 +43,8 @@
                 <div class="col-md">
                     <dynamic-router-component [component]="dynamicRouterService.component"></dynamic-router-component>
                 </div>
-                <div class="col-md-4" *ngIf="variavelHolderService.cadastro && systemHolderService.resumoInfosAtivo" [@flyInOut]="'in'">
+                <div class="col-md-4" *ngIf="variavelHolderService.cadastro && systemHolderService.resumoInfosAtivo"
+                    [@flyInOut]="'in'">
                     <resumo-infos-component [cadastro]="variavelHolderService.cadastro"></resumo-infos-component>
                 </div>
             </div>
