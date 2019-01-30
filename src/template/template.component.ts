@@ -105,9 +105,9 @@ export class TemplateComponent extends SuperComponentService implements OnInit {
         }
     }
 
-    public trocaSenha: boolean = false
+    
     public trocaSenhaToggle() {
-        this.trocaSenha = !this.trocaSenha
+        this.systemHolderService.trocandoSenha = !this.systemHolderService.trocandoSenha
     }
 
 }

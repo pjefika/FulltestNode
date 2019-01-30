@@ -1,4 +1,4 @@
-<clr-modal [(clrModalOpen)]="trocandoSenha" [clrModalSize]="'md'">
+<clr-modal [(clrModalOpen)]="systemHolderService.trocandoSenha" [clrModalSize]="'md'">
 	<h3 class="modal-title">Alteração de senha</h3>
 	<div class="modal-body">
 		<div *ngIf="!loadingPass; else loadin">

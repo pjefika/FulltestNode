@@ -20,8 +20,6 @@ export class AtualizasenhaComponent extends AlertService implements OnInit {
     super(toastyComponent);
   }
 
-  @Input() trocandoSenha: boolean = false
-
   public novaSenha: string
   public novaSenha1: string
 
@@ -62,7 +60,7 @@ export class AtualizasenhaComponent extends AlertService implements OnInit {
     return this.novaSenha === this.novaSenha1
   }
   public close() {
-    this.trocandoSenha = false
+    this.systemHolderService.trocandoSenha = false
   }
 
 
