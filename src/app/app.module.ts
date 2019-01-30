@@ -79,6 +79,8 @@ import { InfoDmComponent } from '../util-components/insertinfodm/info-dm.compone
 import { SystemHolderService } from '../util/holder/systemholder.service';
 import { ValidsTVComponent } from '../util-components/fulltest/validstv/valids-tv.component';
 import { LogListManobraComponent } from '../util-components/loglistmanobra/log-list-manobra.component';
+import { AtualizasenhaComponent } from '../util-components/atualizasenha/atualizasenha.component';
+import { LoginService } from '../login/login.service';
 
 @NgModule({
 	declarations: [
@@ -149,7 +151,8 @@ import { LogListManobraComponent } from '../util-components/loglistmanobra/log-l
 		ValidadorManobraFulltestTableComponent,
 
 		ValidsTVComponent,
-		LogListManobraComponent
+		LogListManobraComponent,
+		AtualizasenhaComponent
 	],
 	imports: [
 		/**
@@ -179,7 +182,8 @@ import { LogListManobraComponent } from '../util-components/loglistmanobra/log-l
 		AlertService,
 		EnumService,
 		SuperComponentService,
-		ToastyComponent
+		ToastyComponent,
+		LoginService
 	],
 	bootstrap: [AppComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],

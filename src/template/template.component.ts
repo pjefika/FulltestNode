@@ -47,6 +47,8 @@ export class TemplateComponent extends SuperComponentService implements OnInit {
         super(toastyComponent, systemHolderService);
     }
 
+
+
     public ngOnInit() {
         this.util
             .isLogado()
@@ -56,7 +58,7 @@ export class TemplateComponent extends SuperComponentService implements OnInit {
                 } else {
                     this.systemHolderService.isAdm = this.util.getNv(10);
                     this.setToDynamicComponent(PrincipalComponent);
-                    this.showToggle();                    
+                    this.showToggle();
                 }
             }));
     }
@@ -101,6 +103,11 @@ export class TemplateComponent extends SuperComponentService implements OnInit {
         } else {
             this.systemHolderService.resumoInfosAtivo = true;
         }
+    }
+
+    public trocaSenha: boolean = false
+    public trocaSenhaToggle() {
+        this.trocaSenha = !this.trocaSenha
     }
 
 }

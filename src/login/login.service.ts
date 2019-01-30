@@ -25,6 +25,20 @@ export class LoginService extends SuperService {
             .catch(super.handleErrorKing);
     }
 
+    public atualizaSenha(usuario: Usuario): Promise<Boolean> {
+        this.infoRequest = {
+            requestType: "POST",
+            url: this.mountLink(this.getLinksMock(), "authAPI", "autentica/atualizarCredencial"),
+            _data: usuario,
+            timeout: 5000
+        };
+        return super.request(this.infoRequest)
+            .then(resposta => {
+                return resposta as Boolean;
+            })
+            .catch(super.handleErrorKing);
+    }
+
     public getUsuario(usuario: Usuario): Promise<Usuario> {
         this.infoRequest = {
             requestType: "GET",

@@ -1,0 +1,30 @@
+<clr-modal [(clrModalOpen)]="trocandoSenha" [clrModalSize]="'md'">
+	<h3 class="modal-title">Alteração de senha</h3>
+	<div class="modal-body">
+		<div *ngIf="!loadingPass; else loadin">
+			<div class="clr-form">
+				<div class="clr-form-group">
+					<label>Insira nova senha</label>
+					<input type="password" name="newpass" [(ngModel)]="novaSenha" clrPassword />
+				</div><br>
+				<div class="clr-form-group">
+					<label>Repita a nova senha</label>
+					<input type="password" name="newpass1" [(ngModel)]="novaSenha1" clrPassword />
+				</div>
+			</div>
+		</div>
+		<ng-template #loadin>
+			<span class="spinner spinner-inline">
+				Loading...
+			</span>
+			<span>
+				Atualizando Senha
+			</span>
+		</ng-template>
+		<p>{{retornin}}</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline" (click)="close()">Cancel</button>
+		<button type="button" class="btn btn-primary" (click)="atualizaSenha()">Atualizar</button>
+	</div>
+</clr-modal>
