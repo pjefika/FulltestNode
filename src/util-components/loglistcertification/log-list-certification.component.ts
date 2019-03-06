@@ -135,7 +135,10 @@ export class LogListCertificationComponent extends SuperComponentService impleme
             }
         });
         return m;
+    }
 
+    public dateFimValid() {
+        
     }
 
 }

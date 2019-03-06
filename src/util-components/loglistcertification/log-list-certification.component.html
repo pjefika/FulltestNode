@@ -11,14 +11,17 @@
             </clr-stack-header>
             <clr-stack-block *ngFor="let certification of variavelHolderService.listCertifications; let i = index">
                 <clr-stack-label>
-                    {{validdatedif(certification.dataInicio)}}: {{certification.fkId}}
+                    {{validdatedif(certification.dataInicio)}}:
+                    {{certification.fkId ? certification.fkId : 'Fulltest em andamento'}}
                 </clr-stack-label>
                 <clr-stack-content>
                     {{certification.resultado}}
                     <clr-icon shape="check" *ngIf="certification.resultado === 'OK'" style="color: green;"></clr-icon>
-                    <clr-icon shape="times" *ngIf="certification.resultado === 'FISICAL' || certification.resultado === 'FORWARDED_CO' || certification.resultado === 'TO_FIX'"
+                    <clr-icon shape="times"
+                        *ngIf="certification.resultado === 'FISICAL' || certification.resultado === 'FORWARDED_CO' || certification.resultado === 'TO_FIX'"
                         style="color: red;"></clr-icon>
-                    <clr-icon shape="exclamation-triangle" *ngIf="certification.resultado === 'FIXED'" style="color: orange"></clr-icon>
+                    <clr-icon shape="exclamation-triangle" *ngIf="certification.resultado === 'FIXED'"
+                        style="color: orange"></clr-icon>
                 </clr-stack-content>
                 <!-- <clr-stack-block>
                     <clr-stack-label>Sistema</clr-stack-label>
@@ -55,20 +58,23 @@
                 </clr-stack-block>
                 <clr-stack-block>
                     <clr-stack-label>Data Fim</clr-stack-label>
-                    <clr-stack-content>{{((certification.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY
-                        HH:mm'}}</clr-stack-content>
+                    <clr-stack-content>
+                        {{ certification.dataFim ? (((certification.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm') : 'S/N' }}
+                    </clr-stack-content>
                 </clr-stack-block>
                 <clr-stack-block>
                     <clr-stack-label>Finalizado CO</clr-stack-label>
                     <clr-stack-content>
                         <div class="radio-inline">
                             <input type="radio" [name]="'radiocheckfinalize'+ i" [id]="'radiocheckfinalize_1' + i"
-                                [disabled]="validtodisablefinalize(certification.dataInicio)" [value]="certification.final">
+                                [disabled]="validtodisablefinalize(certification.dataInicio)"
+                                [value]="certification.final">
                             <label [for]="'radiocheckfinalize_1' + i">Sim</label>
                         </div>
                         <div class="radio-inline">
                             <input type="radio" [name]="'radiocheckfinalize'+ i" [id]="'radiocheckfinalize_2' + i"
-                                [disabled]="validtodisablefinalize(certification.dataInicio)" [value]="certification.final">
+                                [disabled]="validtodisablefinalize(certification.dataInicio)"
+                                [value]="certification.final">
                             <label [for]="'radiocheckfinalize_2' + i">Não</label>
                         </div>
                     </clr-stack-content>
@@ -83,7 +89,8 @@
                 <h4>Historico de Certificação</h4>
             </div>
             <div class="col-md-3">
-                <button class="stack-action btn btn-sm btn-link marginToAlign" (click)="doGetCertification();" type="button">
+                <button class="stack-action btn btn-sm btn-link marginToAlign" (click)="doGetCertification();"
+                    type="button">
                     <clr-icon shape="refresh"></clr-icon>
                     Atualizar
                 </button>
