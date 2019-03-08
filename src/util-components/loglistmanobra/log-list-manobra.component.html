@@ -9,7 +9,8 @@
                     Atualizar
                 </button>
             </clr-stack-header>
-            <clr-stack-block *ngFor="let certification of variavelHolderService.listCertificationManobra; let i = index">
+            <clr-stack-block
+                *ngFor="let certification of variavelHolderService.listCertificationManobra; let i = index">
                 <clr-stack-label>
                     {{validdatedif(certification.datahora)}}:
                     {{certification.analises.conclusao.motivo ?
@@ -24,15 +25,17 @@
                 <clr-stack-block>
                     <clr-stack-label>Data do comando</clr-stack-label>
                     <clr-stack-content>
-                        {{((certification.datahora/1000)| amFromUnix) | amDateFormat:'DD/MM/YYYY HH:mm:ss'}}
+                        {{certification.datahora | amDateFormat:'DD/MM/YYYY HH:mm:ss'}}
                     </clr-stack-content>
                 </clr-stack-block>
                 <clr-stack-block *ngFor="let analise of certification.analises.analises">
                     <clr-stack-label>{{analise.motivo}}</clr-stack-label>
                     <clr-stack-content>
                         {{analise.conclusao}}
-                        <clr-icon shape="check" *ngIf="analise.conclusao === 'PORTA_OK'" style="color: green;"></clr-icon>
-                        <clr-icon shape="times" *ngIf="analise.conclusao === 'PORTA_NOK'" style="color: red;"></clr-icon>
+                        <clr-icon shape="check" *ngIf="analise.conclusao === 'PORTA_OK'" style="color: green;">
+                        </clr-icon>
+                        <clr-icon shape="times" *ngIf="analise.conclusao === 'PORTA_NOK'" style="color: red;">
+                        </clr-icon>
                     </clr-stack-content>
                 </clr-stack-block>
             </clr-stack-block>
@@ -45,7 +48,8 @@
                 <h4>Historico de Validação de Manobra</h4>
             </div>
             <div class="col-md-3">
-                <button class="stack-action btn btn-sm btn-link marginToAlign" (click)="doFindManobraByCustomer()" type="button">
+                <button class="stack-action btn btn-sm btn-link marginToAlign" (click)="doFindManobraByCustomer()"
+                    type="button">
                     <clr-icon shape="refresh"></clr-icon>
                     Atualizar
                 </button>
