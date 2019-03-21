@@ -99,10 +99,6 @@ export class LogListCertificationComponent extends SuperComponentService impleme
         return valid;
     }
 
-    private validtodisableifclicked() {
-
-    }
-
     public validarMacTrocaModem(certification: Certification): boolean {
         let t: boolean = false;
         if (certification.fulltest && certification.fulltest.valids) {
