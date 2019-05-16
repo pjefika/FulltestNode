@@ -18,7 +18,7 @@
         },
         {
             "nome": "dmsAPI",
-            "url": "http://10.200.35.67:80/dmsAPI/"
+            "url": "http://10.40.196.172:7175/dmsAPI/"
         },
         {
             "nome": "acs",

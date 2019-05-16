@@ -53,6 +53,7 @@ export class InfoGeralFulltestComponent extends SuperComponentService implements
     }
 
     private mountAlert(whatType: string) {
-        super.callAlert(whatType, this.certification.fulltest.mensagem);
+        let frase:string = whatType.includes("danger") ? this.certification.orientacao : this.certification.fulltest.mensagem
+        super.callAlert(whatType, frase);
     }
 }
