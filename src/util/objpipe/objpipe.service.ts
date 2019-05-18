@@ -59,3 +59,13 @@ export class Capitalize implements PipeTransform {
     }
 
 }
+
+
+@Pipe({ name: 'isObj' })
+export class isObj implements PipeTransform {
+
+    transform(value: any) {
+        return typeof value === "object"
+    }
+
+}

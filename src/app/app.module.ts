@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { MomentModule } from 'angular2-moment';
 import { ToastyModule } from 'ng2-toasty';
 import { VariavelHolderService } from '../util/holder/variavelholder.service';
-import { ObjKeysPipe, KeyBeautifyingPipe, Capitalize } from '../util/objpipe/objpipe.service';
+import { ObjKeysPipe, KeyBeautifyingPipe, Capitalize, isObj } from '../util/objpipe/objpipe.service';
 import { Ng2OrderModule } from 'ng2-order-pipe'
 
 import { RequestModule } from 'HttpEasyRequestForPostGet';
@@ -98,6 +98,7 @@ import { LoginService } from '../login/login.service';
 		ObjKeysPipe,
 		KeyBeautifyingPipe,
 		Capitalize,
+		isObj,
 		/**
 		 * Componentes que serão inseridos na tela.
 		 */
