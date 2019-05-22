@@ -110,9 +110,18 @@ export class ConfiguracaoServicosLinhaComponent extends SuperComponentService im
     }
 
     private setServicos() {
+        console.log(this.listaDeServicos)
+        console.log(this.formServicosSelecionada.value.servicos)
         this.btnSetServicoNome = "Aguarde...";
         this.btnSetServicoDisabled = true;
-        let lstServSelect = this.formServicosSelecionada.value.servicos;
+        let lstServSelect: any[] = [];
+        let s: string[] = this.formServicosSelecionada.value.servicos
+        this.listaDeServicos.forEach(x=>{
+            if(s.includes(x.nome)){
+                lstServSelect.push(x)
+            }
+        })
+
         this.configuracaoServicosLinhaService
             .setEditarServicos(this.variavelHolderService.cadastro, lstServSelect)
             .then(resposta => {

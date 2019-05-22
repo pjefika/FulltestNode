@@ -9,7 +9,7 @@ declare var require: any
 @Injectable()
 export class LinkService extends ExceptionService {
 
-    private whatlink: string = "QA"; // valida link produção. // PROD // QA // EXT
+    private whatlink: string = "PROD"; // valida link produção. // PROD // QA // EXT
 
     // Import ViewModel for Setup the request.
     public infoRequest: InfoRequest;
