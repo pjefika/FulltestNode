@@ -7,12 +7,15 @@
             <clr-stack-content *ngIf="!(entry.value | isObj)"> {{entry.value}}</clr-stack-content>
             <ng-container *ngIf="entry.value | isObj" ngProjectAs="clr-stack-block">
                 <ng-container *ngFor="let entr of entry.value | objkeys" ngProjectAs="clr-stack-block">
-                    <ng-container *ngFor="let ent of entr.value | objkeys" ngProjectAs="clr-stack-block">
-                        <clr-stack-block>
-                            <clr-stack-label>{{ent.key | beautifying}}</clr-stack-label>
-                            <clr-stack-content> {{ent.value}}</clr-stack-content>
-                        </clr-stack-block>
-                    </ng-container>
+                    <clr-stack-block>
+                        <clr-stack-label>{{entr.key | beautifying}}</clr-stack-label>
+                        <ng-container *ngFor="let ent of entr.value | objkeys" ngProjectAs="clr-stack-block">
+                            <clr-stack-block *ngIf="ent.value">
+                                <clr-stack-label>{{ent.key | beautifying}}</clr-stack-label>
+                                <clr-stack-content> {{ent.value}}</clr-stack-content>
+                            </clr-stack-block>
+                        </ng-container>
+                    </clr-stack-block>
                 </ng-container>
             </ng-container>
         </clr-stack-block>
