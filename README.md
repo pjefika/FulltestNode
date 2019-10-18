@@ -1,4 +1,4 @@
-# FulltestNode
+# Efika Fulltest (2.0) with CLARITY v0.13
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.0.
 
