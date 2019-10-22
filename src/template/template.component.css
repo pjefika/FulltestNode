@@ -10,3 +10,50 @@ a.disabled {
 .ir-para-direita {
     float: right;    
 }
+
+.buscar {
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-align: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -ms-flex: 0 0 auto;
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+    max-width: 600px;
+    padding: 0;
+    color: #fafafa;
+    opacity: 1;
+}
+.buscar input {
+    background: #fff;
+    border: 1 solid #fff;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.tooltip .tooltip-content.tooltip-md, .tooltip.tooltip-md>.tooltip-content {
+    width: 150px;
+}
+
+.tooltip.tooltip-bottom-right>.tooltip-content, .tooltip .tooltip-content.tooltip-bottom-right {
+    font-size: .54167rem;
+    font-weight: 400;
+    letter-spacing: normal;
+    background: #000;
+    border-radius: .125rem;
+    color: #fff;
+    line-height: .75rem;
+    margin: 0;
+    padding: .375rem .5rem;
+    width: 10rem;
+    position: absolute;
+    bottom: auto;
+    top: 100%;
+    left: 50%;
+    right: auto;
+    border-top-left-radius: 0;
+    margin-top: .66667rem;
+    height: auto;
+    text-align: center;
+}
