@@ -81,6 +81,7 @@ import { ValidsTVComponent } from '../util-components/fulltest/validstv/valids-t
 import { LogListManobraComponent } from '../util-components/loglistmanobra/log-list-manobra.component';
 import { AtualizasenhaComponent } from '../util-components/atualizasenha/atualizasenha.component';
 import { LoginService } from '../login/login.service';
+import { AlertIconAndTypesService } from 'clarity-angular/emphasis/alert/providers/icon-and-types-service';
 
 @NgModule({
 	declarations: [
