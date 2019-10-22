@@ -1,41 +1,49 @@
-<div>
-    <h3 class="titulo-pagina" *ngIf="variavelHolderService.equipamentos && !isLoading">Informações ACS Motive</h3>
-    <clr-stack-view *ngIf="variavelHolderService.equipamentos && !isLoading">
-        <clr-stack-header>
-            <button class="stack-action btn btn-sm btn-link" (click)="doGetEquipamentoAssoc()" type="button" [disabled]="isLoading">
-                <clr-icon shape="refresh"></clr-icon>
-                Atualizar
-            </button>
-        </clr-stack-header>
-        <clr-stack-block *ngFor="let eqp of variavelHolderService.equipamentos">
-            <clr-stack-label>{{eqp.manufacturer | capitalize}} - {{eqp.deviceId.serialNumber | uppercase}}</clr-stack-label>
-            <clr-stack-content>
-                Ativo desde:
-                <b>{{eqp.firstContactTime | date:'dd/MM/yyyy HH:mm'}}</b>
-            </clr-stack-content>
-            <clr-stack-block>
-                <clr-stack-label>
-                    <button type="button" class="btn btn-icon btn-sm btn-link" (click)="abreSearchDevice(eqp.deviceId.serialNumber)">
-                        Visualizar na ACS
-                        <clr-icon shape="search"></clr-icon>
-                    </button>
-                </clr-stack-label>
-            </clr-stack-block>
-        </clr-stack-block>
-    </clr-stack-view>
-    <div *ngIf="!variavelHolderService.equipamentos">
-        <div class="row">
-            <div class="col-xs-9">
-                <h3 class="titulo-pagina">Informações ACS Motive</h3>
-            </div>
-            <div class="col-xs-3">
-                <button class="stack-action btn btn-sm btn-link btn-align" (click)="doGetEquipamentoAssoc()" type="button" [disabled]="isLoading">
-                    <clr-icon shape="refresh"></clr-icon>
-                    Atualizar
-                </button>
-            </div>
+<div class="card">
+    <div class="card-header">
+        <b>Informações do Efika ACS</b>
+        <button class="btn btn-primary btn-sm" (click)="doGetEquipamentoAssoc()" style="float: right; margin-top: 0px;"
+            type="button">
+            <clr-icon shape="refresh"></clr-icon>
+            &nbsp;Atualizar
+        </button>
+
+    </div>
+    <div class="card-block">
+        <div class="card-text">
+            <clr-tree-node>
+                <clr-icon shape="hard-disk"></clr-icon>
+                Equipamento
+                <ng-template [(clrIfExpanded)]="expanded" *ngFor="let eqp of variavelHolderService.equipamentos">
+                    <clr-tree-node *ngIf="eqp.manufacturer">
+                        <b>Fabricante:</b>&nbsp;{{eqp.manufacturer}}
+                    </clr-tree-node>
+                    <clr-tree-node *ngIf="eqp.modelName">
+                        <b>Modelo:</b>&nbsp;{{eqp.modelName}}
+                    </clr-tree-node>
+                    <clr-tree-node *ngIf="eqp.serialNumber">
+                        <b>Serial Number:</b>&nbsp;{{eqp.deviceId.serialNumber}}
+                    </clr-tree-node>
+                    <clr-tree-node *ngIf="eqp.macAddress">
+                        <b>MAC Address:</b>&nbsp;{{eqp.macAddress}}
+                    </clr-tree-node>
+                    <clr-tree-node *ngIf="eqp.softwareVersion">
+                        <b>Firmware:</b>&nbsp;{{eqp.softwareVersion}}
+                    </clr-tree-node>
+                    <clr-tree-node *ngIf="eqp.activated">
+                        <span *ngIf="eqp.activated === false"><b>Status:</b>&nbsp;<clr-icon shape="warning-standard"
+                                class="is-solid" style="color: darkorange"></clr-icon>&nbsp;INATIVO</span>
+                        <span *ngIf="eqp.activated === true"><b>Status:</b>&nbsp;<clr-icon shape="success-standard"
+                                class="is-solid" style="color: green"></clr-icon>&nbsp;ATIVO</span>
+                    </clr-tree-node>
+                    <clr-tree-node>
+                        <button class="btn btn-sm" (click)="abreSearchDevice(eqp.deviceId.serialNumber)"
+                            style="float: right; margin-top: 0px;" type="button">
+                            <clr-icon shape="eye"></clr-icon>
+                            &nbsp;ver este equipamento na acs
+                        </button>
+                    </clr-tree-node>
+                </ng-template>
+            </clr-tree-node>
         </div>
     </div>
-    <alert-component *ngIf="!isLoading" [mensagem]="mensagem" [ativo]="ativo" [closeable]="false"></alert-component>
-    <loading-component [searching]="isLoading" [searchWhat]="'Buscando Equipamentos ACS - Motive...'"></loading-component>
 </div>

@@ -5,3 +5,9 @@
 .titulo-pagina {
     margin-bottom: 10px;
 }
+
+clr-icon.clr-treenode-caret-icon {
+    margin: 5px !important;
+    border: 1px solid grey;
+    border-radius: 50%;
+}
