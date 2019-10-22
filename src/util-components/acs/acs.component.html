@@ -30,9 +30,9 @@
                         <b>Firmware:</b>&nbsp;{{eqp.softwareVersion}}
                     </clr-tree-node>
                     <clr-tree-node *ngIf="eqp.activated">
-                        <span *ngIf="eqp.activated === false"><b>Status:</b>&nbsp;<clr-icon shape="warning-standard"
+                        <span *ngIf="eqp.activated === false"><b>Status:</b>&nbsp;&nbsp;<clr-icon shape="warning-standard"
                                 class="is-solid" style="color: darkorange"></clr-icon>&nbsp;INATIVO</span>
-                        <span *ngIf="eqp.activated === true"><b>Status:</b>&nbsp;<clr-icon shape="success-standard"
+                        <span *ngIf="eqp.activated === true"><b>Status:</b>&nbsp;&nbsp;<clr-icon shape="success-standard"
                                 class="is-solid" style="color: green"></clr-icon>&nbsp;ATIVO</span>
                     </clr-tree-node>
                     <clr-tree-node>
