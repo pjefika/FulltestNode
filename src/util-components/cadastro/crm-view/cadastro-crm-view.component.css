@@ -1,3 +1,8 @@
 .titulo-pagina {
     margin-bottom: 10px;
 }
+
+.stack-view .stack-block-content>:last-child {
+    margin-bottom: 0;
+    font-weight: 900;
+}

@@ -1,28 +1,32 @@
 <div class="move-up">
-    <loading-component class="comp-align" [searching]="isLoading" [searchWhat]="'Buscando Informações Técnicas...'"></loading-component>
+    <loading-component class="comp-align" [searching]="isLoading" [searchWhat]="'Buscando Informações Técnicas...'">
+    </loading-component>
     <div *ngIf="systemHolderService.qualView === 'CO' && variavelHolderService.cadastro">
         <cadastro-wizard-component></cadastro-wizard-component>
         <div class="row">
             <div class="col-xs">
                 <cadastro-co-view-component [cadastro]="variavelHolderService.cadastro"></cadastro-co-view-component>
             </div>
-            <div class="col-xs-5">
-                <acs-component *ngIf="variavelHolderService.cadastro" [designador]="variavelHolderService.cadastro.designador"></acs-component>
-
-                <log-list-certification-component *ngIf="variavelHolderService.cadastro"></log-list-certification-component>
+            <div class="col-xs">
+                <acs-component *ngIf="variavelHolderService.cadastro"
+                    [designador]="variavelHolderService.cadastro.designador"></acs-component>
+            </div>
+            <div class="col-xs">
+                <log-list-certification-component *ngIf="variavelHolderService.cadastro">
+                </log-list-certification-component>
                 <hr class="hr-marginTopBottom">
                 <log-list-manobra-component *ngIf="variavelHolderService.cadastro"></log-list-manobra-component>
-
             </div>
         </div>
     </div>
     <div *ngIf="systemHolderService.qualView === 'CRM' && variavelHolderService.cadastro">
-        <div class="row">
-            <div class="col-xs">
+        <div class="clr-row">
+            <div class="clr-col-sm-12 clr-col-md-6">
                 <cadastro-crm-view-component [cadastro]="cadastro"></cadastro-crm-view-component>
             </div>
-            <div class="col-xs">
-                <acs-component *ngIf="variavelHolderService.cadastro" [designador]="variavelHolderService.cadastro.designador"></acs-component>
+            <div class="clr-col-sm-12 clr-col-md-6">
+                <acs-component *ngIf="variavelHolderService.cadastro"
+                    [designador]="variavelHolderService.cadastro.designador"></acs-component>
             </div>
         </div>
         <cadastro-crm-table-asserts-component [cadastro]="cadastro"></cadastro-crm-table-asserts-component>

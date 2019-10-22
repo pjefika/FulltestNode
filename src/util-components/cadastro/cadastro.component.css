@@ -17,3 +17,8 @@
     margin-bottom: 20px;
     opacity: 0.5;
 }
+
+.stack-view .stack-block-content>:last-child {
+    margin-bottom: 0;
+    font-weight: 900;
+}
