@@ -50,6 +50,7 @@ export class TemplateComponent extends SuperComponentService implements OnInit {
 
 
     public ngOnInit() {
+        this.getVersion()
         this.util
             .isLogado()
             .then((result => {
@@ -108,6 +109,10 @@ export class TemplateComponent extends SuperComponentService implements OnInit {
     
     public trocaSenhaToggle() {
         this.systemHolderService.trocandoSenha = !this.systemHolderService.trocandoSenha
+    }
+
+    private getVersion() {
+        this.version = this.util.getVersion();
     }
 
 }

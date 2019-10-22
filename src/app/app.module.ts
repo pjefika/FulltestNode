@@ -81,7 +81,7 @@ import { ValidsTVComponent } from '../util-components/fulltest/validstv/valids-t
 import { LogListManobraComponent } from '../util-components/loglistmanobra/log-list-manobra.component';
 import { AtualizasenhaComponent } from '../util-components/atualizasenha/atualizasenha.component';
 import { LoginService } from '../login/login.service';
-import { AlertIconAndTypesService } from 'clarity-angular/emphasis/alert/providers/icon-and-types-service';
+import { ValidadordowngradeComponent } from './validadordowngrade/validadordowngrade.component';
 
 @NgModule({
 	declarations: [
@@ -151,10 +151,10 @@ import { AlertIconAndTypesService } from 'clarity-angular/emphasis/alert/provide
 
 		ValidadorInfoFulltestTableComponent,
 		ValidadorManobraFulltestTableComponent,
-
 		ValidsTVComponent,
 		LogListManobraComponent,
-		AtualizasenhaComponent
+		AtualizasenhaComponent,
+		ValidadordowngradeComponent
 	],
 	imports: [
 		/**
@@ -228,7 +228,7 @@ import { AlertIconAndTypesService } from 'clarity-angular/emphasis/alert/provide
 		ValidacoesManobraTableComponent,
 		ConfiguracaoPortaGponComponent,
 		LogListCertificationComponent,
-
+		ValidadordowngradeComponent,
 		ValidadorInfoFulltestTableComponent,
 		ValidadorManobraFulltestTableComponent,
 		LogListManobraComponent

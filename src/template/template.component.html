@@ -16,13 +16,13 @@
         </div>
         <div class="buscar">
             <label for="search_input" for="search_input" aria-haspopup="true" role="tooltip"
-                class="tooltip tooltip-lg tooltip-bottom-right" style="padding: 35px;">
+                class="tooltip tooltip-lg tooltip-bottom-right" style="padding: 15px;">
                 <input id="search_input" name="instancia" type="text" placeholder="Buscar cadastro..."
                     [(ngModel)]="variavelHolderService.instancia" (keyup.enter)="busca()">
                 <span class="tooltip-content">Após inserir a instância pressione "Enter" ou pressione o botão "BUSCAR CADASTRO".</span>
             </label>
             <button class="btn btn-primary btn-sm" (click)="busca()"
-                style="background: #005f82; border: 1px solid #005f82; margin-left: -25px;">
+                style="background: #005f82; border: 1px solid #005f82; margin-left: -10px;">
                 <clr-icon shape="search"></clr-icon>
                 buscar cadastro
             </button>
@@ -69,4 +69,5 @@
             <sidenav-component [menus]="systemHolderService.sideNavMenus"></sidenav-component>
         </clr-vertical-nav>
     </div>
+    <span style="font-size: 12px;">&nbsp;{{version}}</span>
 </clr-main-container>
