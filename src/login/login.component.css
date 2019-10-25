@@ -1,0 +1,26 @@
+.login-wrapper {
+    background: transparent;
+    background-size: 100%;
+    background-position: 21rem 0;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.btn-primary .btn, .btn.btn-primary {
+    border-color: #003244;
+    background-color: #003244;
+    color: #fff;
+}
+
+.btn-primary .btn:hover, .btn.btn-primary:hover {
+    background-color: #00202b;
+    color: #18edff;
+}

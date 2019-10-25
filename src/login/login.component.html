@@ -1,13 +1,31 @@
 <div class="login-wrapper" (keyup.enter)="doEntrar()">
+    <video autoplay muted loop id="myVideo">
+        <source src="http://10.40.198.168/img/back-vid2.mp4" type="video/mp4">
+    </video>
     <form class="login" (ngSubmit)="doEntrar()">
         <label class="title">
-            <h3 class="welcome">Bem-Vindo ao</h3>
-            Efika Fulltest
-            <h5 class="hint">Utilize seu login e senha para entrar</h5>
+            <h3 class="welcome">Seja bem-vindo ao</h3>
+            <b style="font-weight: 900;">Efika Fulltest</b>
+            <br/>
+            <br/>
+            <div class="alert alert-info alert-sm" role="alert">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+                        </div>
+                        <span class="alert-text">
+                            Use sua <code>matrícula</code> e <code>senha</code> do <b>Efika</b> para entrar.
+                        </span>
+                    </div>
+                </div>
+            </div>
         </label>
         <div class="login-group">
-            <input [(ngModel)]="usuario.login" class="username" type="text" id="login_username" placeholder="Usuário" name="login">
-            <input [(ngModel)]="usuario.senha" class="password" type="password" id="login_password" placeholder="Senha" name="senha">            
+            <input [(ngModel)]="usuario.login" class="username" type="text" id="login_username" placeholder="Usuário"
+                name="login">
+            <input [(ngModel)]="usuario.senha" class="password" type="password" id="login_password" placeholder="Senha"
+                name="senha">
             <div class="error active" *ngIf="ativo">
                 {{mensagem.msg}}
             </div>

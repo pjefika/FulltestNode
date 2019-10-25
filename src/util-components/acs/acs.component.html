@@ -1,14 +1,14 @@
 <div class="card">
     <div class="card-header">
         <b>Informações do Efika ACS</b>
-        <button class="btn btn-primary btn-sm" (click)="doGetEquipamentoAssoc()" style="float: right; margin-top: 0px;"
+        <button [clrLoading]="atualizaACS" class="btn btn-primary btn-sm" (click)="doGetEquipamentoAssoc()" style="float: right; margin-top: 0px;"
             type="button">
             <clr-icon shape="refresh"></clr-icon>
             &nbsp;Atualizar
         </button>
 
     </div>
-    <div class="card-block">
+    <div class="card-block" *ngIf="variavelHolderService.equipamentos">
         <div class="card-text">
             <clr-tree-node>
                 <clr-icon shape="hard-disk"></clr-icon>
