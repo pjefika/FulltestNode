@@ -1,103 +1,84 @@
 <div>
-    <loading-component [searching]="isLoading" [searchWhat]="'Buscando Logs Certification...'"></loading-component>
     <div *ngIf="variavelHolderService.listCertifications">
-        <clr-stack-view>
-            <clr-stack-header>
-                Historico de Certificação
-                <button class="stack-action btn btn-sm btn-link" (click)="doGetCertification();" type="button">
-                    <clr-icon shape="refresh"></clr-icon>
-                    Atualizar
-                </button>
-            </clr-stack-header>
-            <clr-stack-block *ngFor="let certification of variavelHolderService.listCertifications; let i = index">
-                <clr-stack-label>
-                    {{validdatedif(certification.dataInicio)}}:
-                    {{certification.fkId ? certification.fkId : 'Fulltest em andamento'}}
-                </clr-stack-label>
-                <clr-stack-content>
-                    {{certification.resultado}}
-                    <clr-icon shape="check" *ngIf="certification.resultado === 'OK'" style="color: green;"></clr-icon>
-                    <clr-icon shape="times"
-                        *ngIf="certification.resultado === 'FISICAL' || certification.resultado === 'FORWARDED_CO' || certification.resultado === 'TO_FIX'"
-                        style="color: red;"></clr-icon>
-                    <clr-icon shape="exclamation-triangle" *ngIf="certification.resultado === 'FIXED'"
-                        style="color: orange"></clr-icon>
-                </clr-stack-content>
-                <!-- <clr-stack-block>
-                    <clr-stack-label>Sistema</clr-stack-label>
-                    <clr-stack-content>{{certification.system}}</clr-stack-content>
-                </clr-stack-block> -->
-                <clr-stack-block>
-                    <clr-stack-label>Orientação</clr-stack-label>
-                    <clr-stack-content>{{certification.orientacao}}</clr-stack-content>
-                </clr-stack-block>
-                <clr-stack-block *ngIf="validarMacTrocaModem(certification)">
-                    <clr-stack-label>
-                        <span class="aligntitlevertical">Trocado Modem</span>
-                    </clr-stack-label>
-                    <clr-stack-content>
-                        <div class="alert alert-warning roubapadding">
-                            <div class="alert-items">
-                                <div class="alert-item static">
-                                    <span class="alert-text textc">
-                                        {{validarMacTrocaModem(certification) ? 'Modem Trocado' : ''}}
-                                    </span>
-                                </div>
-                            </div>
+        <div class="clr-row">
+            <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <b>Histórico de Certificações</b>
+                        <button [clrLoading]="atualizaACS" class="btn btn-primary btn-sm"
+                            (click)="doGetCertification();" style="float: right; margin-top: 0px;" type="button">
+                            <clr-icon shape="refresh"></clr-icon>
+                            &nbsp;Atualizar
+                        </button>
+                    </div>
+                    <div class="card-block" >
+                        <div class="card-text">
+                            <loading-component [searching]="isLoading"
+                                [searchWhat]="'buscando logs de certificação...'">
+                            </loading-component>
+                            <clr-stack-view *ngIf="!isLoading">
+                                <clr-stack-block
+                                    *ngFor="let certification of variavelHolderService.listCertifications; let i = index">
+                                    <clr-stack-label>
+                                        {{certification.fkId ? certification.fkId : 'Fulltest em andamento'}}
+                                    </clr-stack-label>
+                                    <clr-stack-content>
+                                        <span class="label label-success"
+                                            *ngIf="certification.resultado === 'OK'">{{certification.resultado}}</span>
+                                        <span class="label label-warning"
+                                            *ngIf="certification.resultado === 'FIXED'">{{certification.resultado}}</span>
+                                        <span class="label label-danger"
+                                            *ngIf="certification.resultado === 'FISICAL' || certification.resultado === 'FORWARDED_CO' || certification.resultado === 'TO_FIX'">
+                                            {{certification.resultado}}
+                                        </span>
+                                        <!--validate fulltest-->
+                                        {{validdatedif(certification.dataInicio) | uppercase}}
+                                    </clr-stack-content>
+                                    <clr-stack-block>
+                                        <clr-stack-label>Executor</clr-stack-label>
+                                        <clr-stack-content>{{certification.executor}}</clr-stack-content>
+                                    </clr-stack-block>
+                                    <clr-stack-block>
+                                        <clr-stack-label>Orientação/Resultado</clr-stack-label>
+                                        <clr-stack-content>{{certification.orientacao}}</clr-stack-content>
+                                    </clr-stack-block>
+                                    <clr-stack-block>
+                                        <clr-stack-label>Data Início</clr-stack-label>
+                                        <clr-stack-content>
+                                            {{((certification.dataInicio / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm'}}
+                                        </clr-stack-content>
+                                    </clr-stack-block>
+                                    <clr-stack-block>
+                                        <clr-stack-label>Data Final</clr-stack-label>
+                                        <clr-stack-content>
+                                            {{((certification.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm'}}
+                                        </clr-stack-content>
+                                    </clr-stack-block>
+                                    <clr-stack-block>
+                                        <clr-stack-label>Finalizado CO</clr-stack-label>
+                                        <clr-stack-content>
+                                            <div class="radio-inline">
+                                                <input type="radio" [name]="'radiocheckfinalize'+ i"
+                                                    [id]="'radiocheckfinalize_1' + i"
+                                                    [disabled]="validtodisablefinalize(certification.dataInicio)"
+                                                    [value]="certification.final">
+                                                <label [for]="'radiocheckfinalize_1' + i">Sim</label>
+                                            </div>
+                                            <div class="radio-inline">
+                                                <input type="radio" [name]="'radiocheckfinalize'+ i"
+                                                    [id]="'radiocheckfinalize_2' + i"
+                                                    [disabled]="validtodisablefinalize(certification.dataInicio)"
+                                                    [value]="certification.final">
+                                                <label [for]="'radiocheckfinalize_2' + i">Não</label>
+                                            </div>
+                                        </clr-stack-content>
+                                    </clr-stack-block>
+                                </clr-stack-block>
+                            </clr-stack-view>
                         </div>
-                    </clr-stack-content>
-                </clr-stack-block>
-                <clr-stack-block *ngIf="validarShowBlockHPNA(certification.blocks)">
-                    <clr-stack-label>Diagnóstico HPNA</clr-stack-label>
-                    <clr-stack-content>{{validBlockHPNAGetName(certification.blocks)}}</clr-stack-content>
-                </clr-stack-block>
-                <clr-stack-block>
-                    <clr-stack-label>Data Inicio</clr-stack-label>
-                    <clr-stack-content>{{((certification.dataInicio / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY
-                        HH:mm'}}</clr-stack-content>
-                </clr-stack-block>
-                <clr-stack-block>
-                    <clr-stack-label>Data Fim</clr-stack-label>
-                    <clr-stack-content>
-                        {{ certification.dataFim ? (((certification.dataFim / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm') : 'S/N' }}
-                    </clr-stack-content>
-                </clr-stack-block>
-                <clr-stack-block>
-                    <clr-stack-label>Finalizado CO</clr-stack-label>
-                    <clr-stack-content>
-                        <div class="radio-inline">
-                            <input type="radio" [name]="'radiocheckfinalize'+ i" [id]="'radiocheckfinalize_1' + i"
-                                [disabled]="validtodisablefinalize(certification.dataInicio)"
-                                [value]="certification.final">
-                            <label [for]="'radiocheckfinalize_1' + i">Sim</label>
-                        </div>
-                        <div class="radio-inline">
-                            <input type="radio" [name]="'radiocheckfinalize'+ i" [id]="'radiocheckfinalize_2' + i"
-                                [disabled]="validtodisablefinalize(certification.dataInicio)"
-                                [value]="certification.final">
-                            <label [for]="'radiocheckfinalize_2' + i">Não</label>
-                        </div>
-                    </clr-stack-content>
-                </clr-stack-block>
-            </clr-stack-block>
-        </clr-stack-view>
-    </div>
-    <div *ngIf="!variavelHolderService.listCertifications && !isLoading">
-
-        <div class="row">
-            <div class="col-md-9">
-                <h4>Historico de Certificação</h4>
-            </div>
-            <div class="col-md-3">
-                <button class="stack-action btn btn-sm btn-link marginToAlign" (click)="doGetCertification();"
-                    type="button">
-                    <clr-icon shape="refresh"></clr-icon>
-                    Atualizar
-                </button>
+                    </div>
+                </div>
             </div>
         </div>
-
-
-        <alert-component [mensagem]="mensagem" [ativo]="ativo" [closeable]="false"></alert-component>
     </div>
 </div>

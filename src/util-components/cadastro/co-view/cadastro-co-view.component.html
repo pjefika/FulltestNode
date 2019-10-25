@@ -46,7 +46,7 @@
                         <clr-stack-content><span class="label label-info">Não possui TV</span></clr-stack-content>
                     </clr-stack-block>
 
-                    <clr-stack-block *ngIf="cadastro && cadastro.rede">
+                    <clr-stack-block *ngIf="cadastro && cadastro.rede" [clrSbExpanded]="true">
                         <clr-stack-label>Rede</clr-stack-label>
                         <clr-stack-content>{{cadastro.rede.planta}}</clr-stack-content>
                         <clr-stack-block *ngIf="cadastro && cadastro.rede && cadastro.rede.ipDslam">

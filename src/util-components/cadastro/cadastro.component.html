@@ -10,15 +10,15 @@
             <div class="col-xs">
                 <acs-component *ngIf="variavelHolderService.cadastro"
                     [designador]="variavelHolderService.cadastro.designador"></acs-component>
-            </div>
-            <div class="col-xs">
                 <log-list-certification-component *ngIf="variavelHolderService.cadastro">
                 </log-list-certification-component>
-                <hr class="hr-marginTopBottom">
+            </div>
+            <div class="col-xs">
                 <log-list-manobra-component *ngIf="variavelHolderService.cadastro"></log-list-manobra-component>
             </div>
         </div>
     </div>
+    <!--CRM-->
     <div *ngIf="systemHolderService.qualView === 'CRM' && variavelHolderService.cadastro">
         <div class="clr-row">
             <div class="clr-col-sm-12 clr-col-md-6">
