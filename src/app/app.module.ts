@@ -81,7 +81,7 @@ import { ValidsTVComponent } from '../util-components/fulltest/validstv/valids-t
 import { LogListManobraComponent } from '../util-components/loglistmanobra/log-list-manobra.component';
 import { AtualizasenhaComponent } from '../util-components/atualizasenha/atualizasenha.component';
 import { LoginService } from '../login/login.service';
-import { ValidadordowngradeComponent } from './validadordowngrade/validadordowngrade.component';
+import { ValidadorDowngradeComponent } from '../util-components/validadordowngrade/validador-downgrade.component';
 
 @NgModule({
 	declarations: [
@@ -148,13 +148,12 @@ import { ValidadordowngradeComponent } from './validadordowngrade/validadordowng
 		ConfiguracaoPortaGponComponent,
 		LogListCertificationComponent,
 		InfoDmComponent,
-
 		ValidadorInfoFulltestTableComponent,
 		ValidadorManobraFulltestTableComponent,
 		ValidsTVComponent,
 		LogListManobraComponent,
 		AtualizasenhaComponent,
-		ValidadordowngradeComponent
+		ValidadorDowngradeComponent
 	],
 	imports: [
 		/**
@@ -228,10 +227,10 @@ import { ValidadordowngradeComponent } from './validadordowngrade/validadordowng
 		ValidacoesManobraTableComponent,
 		ConfiguracaoPortaGponComponent,
 		LogListCertificationComponent,
-		ValidadordowngradeComponent,
 		ValidadorInfoFulltestTableComponent,
 		ValidadorManobraFulltestTableComponent,
-		LogListManobraComponent
+		LogListManobraComponent,
+		ValidadorDowngradeComponent
 	]
 })
 

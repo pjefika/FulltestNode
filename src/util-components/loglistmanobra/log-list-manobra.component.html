@@ -1,61 +1,143 @@
 <div>
-    <loading-component [searching]="isLoading" [searchWhat]="'Buscando Logs Certification...'"></loading-component>
-    <div *ngIf="variavelHolderService.listCertificationManobra">
-        <clr-stack-view>
-            <clr-stack-header>
-                Historico de Validação de Manobra
-                <button class="stack-action btn btn-sm btn-link" (click)="doFindManobraByCustomer();" type="button">
-                    <clr-icon shape="refresh"></clr-icon>
-                    Atualizar
-                </button>
-            </clr-stack-header>
-            <clr-stack-block
-                *ngFor="let certification of variavelHolderService.listCertificationManobra; let i = index">
-                <clr-stack-label>
-                    {{validdatedif(certification.datahora)}}:
-                    {{certification.analises.conclusao.motivo ?
-                    certification.analises.conclusao.motivo :
-                    certification.motivoEntrada}}
-                </clr-stack-label>
-                <clr-stack-content>
-                    {{certification.analises.conclusao.conclusao}}
-                    <!-- <clr-icon shape="check" *ngIf="certification.analises.manobrar" style="color: green;"></clr-icon>
-                    <clr-icon shape="times" *ngIf="!certification.analises.manobrar" style="color: red;"></clr-icon> -->
-                </clr-stack-content>
-                <clr-stack-block>
-                    <clr-stack-label>Data do comando</clr-stack-label>
-                    <clr-stack-content>
-                        {{certification.datahora | amDateFormat:'DD/MM/YYYY HH:mm:ss'}}
-                    </clr-stack-content>
-                </clr-stack-block>
-                <clr-stack-block *ngFor="let analise of certification.analises.analises">
-                    <clr-stack-label>{{analise.motivo}}</clr-stack-label>
-                    <clr-stack-content>
-                        {{analise.conclusao}}
-                        <clr-icon shape="check" *ngIf="analise.conclusao === 'PORTA_OK'" style="color: green;">
-                        </clr-icon>
-                        <clr-icon shape="times" *ngIf="analise.conclusao === 'PORTA_NOK'" style="color: red;">
-                        </clr-icon>
-                    </clr-stack-content>
-                </clr-stack-block>
-            </clr-stack-block>
-        </clr-stack-view>
-    </div>
-    <div *ngIf="!variavelHolderService.listCertificationManobra && !isLoading">
+    <loading-component [searching]="isLoading" [searchWhat]="'Buscando Validações...'"></loading-component>
+    <div>
+        <div class="clr-row">
+            <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <b>Histórico de Validações</b>
+                        <button [clrLoading]="atualizaACS" class="btn btn-primary btn-sm"
+                            (click)="doFindManobraByCustomer();" style="float: right; margin-top: 0px;" type="button">
+                            <clr-icon shape="refresh"></clr-icon>
+                            &nbsp;Atualizar
+                        </button>
+                    </div>
+                    <div class="card-block">
+                        <div class="card-text">
 
-        <div class="row">
-            <div class="col-md-9">
-                <h4>Historico de Validação de Manobra</h4>
-            </div>
-            <div class="col-md-3">
-                <button class="stack-action btn btn-sm btn-link marginToAlign" (click)="doFindManobraByCustomer()"
-                    type="button">
-                    <clr-icon shape="refresh"></clr-icon>
-                    Atualizar
-                </button>
+                            <clr-stack-view>
+                                <clr-stack-header>Manobra</clr-stack-header>
+                                <div class="alert alert-warning" role="alert" *ngIf="!variavelHolderService.listCertificationManobra">
+                                    <div class="alert-items">
+                                        <div class="alert-item static">
+                                            <div class="alert-icon-wrapper">
+                                                <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+                                            </div>
+                                            <span class="alert-text">
+                                                Nenhum log de Validação Manobra foi encontrado.
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <clr-stack-block [clrSbExpanded]="true"
+                                    *ngFor="let certification of variavelHolderService.listCertificationManobra; let i = index">
+                                    <clr-stack-label>
+                                        {{validdatedif(certification.datahora)}}:
+                                        {{certification.analises.conclusao.motivo ?
+                                            certification.analises.conclusao.motivo :
+                                            certification.motivoEntrada}}
+                                    </clr-stack-label>
+                                    <clr-stack-content>
+                                        {{certification.analises.conclusao.conclusao}}
+                                        <clr-icon shape="check" *ngIf="certification.analises.manobrar"
+                                            style="color: green;"></clr-icon>
+                                        <clr-icon shape="times" *ngIf="!certification.analises.manobrar"
+                                            style="color: red;"></clr-icon>
+                                    </clr-stack-content>
+                                    <clr-stack-block>
+                                        <clr-stack-label>Data do comando</clr-stack-label>
+                                        <clr-stack-content>
+                                            {{certification.datahora | amDateFormat:'DD/MM/YYYY HH:mm:ss'}}
+                                        </clr-stack-content>
+                                    </clr-stack-block>
+                                    <clr-stack-block *ngFor="let analise of certification.analises.analises">
+                                        <clr-stack-label>{{analise.motivo}}</clr-stack-label>
+                                        <clr-stack-content>
+                                            {{analise.conclusao}}
+                                            <clr-icon shape="check" *ngIf="analise.conclusao === 'PORTA_OK'"
+                                                style="color: green;">
+                                            </clr-icon>
+                                            <clr-icon shape="times" *ngIf="analise.conclusao === 'PORTA_NOK'"
+                                                style="color: red;">
+                                            </clr-icon>
+                                        </clr-stack-content>
+                                    </clr-stack-block>
+                                </clr-stack-block>
+                            </clr-stack-view>
+
+
+                            <clr-stack-view>
+                                <clr-stack-header>Downgrade</clr-stack-header>
+                                <div class="alert alert-warning" role="alert">
+                                    <div class="alert-items">
+                                        <div class="alert-item static">
+                                            <div class="alert-icon-wrapper">
+                                                <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+                                            </div>
+                                            <span class="alert-text">
+                                                Nenhum log de Validação Downgrade foi encontrado.
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <clr-stack-block [clrSbExpanded]="true"
+                                    *ngFor="let certification of variavelHolderService.listCertificationManobra; let i = index">
+                                    <clr-stack-label>
+                                        {{validdatedif(certification.datahora)}}:
+                                        {{certification.analises.conclusao.motivo ?
+                                                certification.analises.conclusao.motivo :
+                                                certification.motivoEntrada}}
+                                    </clr-stack-label>
+                                    <clr-stack-content>
+                                        {{certification.analises.conclusao.conclusao}}
+                                        <clr-icon shape="check" *ngIf="certification.analises.manobrar"
+                                            style="color: green;"></clr-icon>
+                                        <clr-icon shape="times" *ngIf="!certification.analises.manobrar"
+                                            style="color: red;"></clr-icon>
+                                    </clr-stack-content>
+                                    <clr-stack-block>
+                                        <clr-stack-label>Data do comando</clr-stack-label>
+                                        <clr-stack-content>
+                                            {{certification.datahora | amDateFormat:'DD/MM/YYYY HH:mm:ss'}}
+                                        </clr-stack-content>
+                                    </clr-stack-block>
+                                    <clr-stack-block *ngFor="let analise of certification.analises.analises">
+                                        <clr-stack-label>{{analise.motivo}}</clr-stack-label>
+                                        <clr-stack-content>
+                                            {{analise.conclusao}}
+                                            <clr-icon shape="check" *ngIf="analise.conclusao === 'PORTA_OK'"
+                                                style="color: green;">
+                                            </clr-icon>
+                                            <clr-icon shape="times" *ngIf="analise.conclusao === 'PORTA_NOK'"
+                                                style="color: red;">
+                                            </clr-icon>
+                                        </clr-stack-content>
+                                    </clr-stack-block>
+                                </clr-stack-block>
+                            </clr-stack-view>
+
+                            <!-- <div *ngIf="!variavelHolderService.listCertificationManobra && !isLoading">
+
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <h4>Historico de Validação de Manobra</h4>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button class="stack-action btn btn-sm btn-link marginToAlign"
+                                            (click)="doFindManobraByCustomer()" type="button">
+                                            <clr-icon shape="refresh"></clr-icon>
+                                            Atualizar
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <alert-component [mensagem]="mensagem" [ativo]="ativo" [closeable]="false"></alert-component>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <div>
-    <div *ngIf="variavelHolderService.listCertifications">
+    <div>
         <div class="clr-row">
             <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
                 <div class="card">
@@ -11,12 +11,25 @@
                             &nbsp;Atualizar
                         </button>
                     </div>
-                    <div class="card-block" >
+                    <div class="card-block">
                         <div class="card-text">
+
                             <loading-component [searching]="isLoading"
                                 [searchWhat]="'buscando logs de certificação...'">
                             </loading-component>
                             <clr-stack-view *ngIf="!isLoading">
+                                <div class="alert alert-warning" role="alert">
+                                    <div class="alert-items">
+                                        <div class="alert-item static">
+                                            <div class="alert-icon-wrapper">
+                                                <clr-icon shape="warning-standard"></clr-icon>
+                                            </div>
+                                            <span class="alert-text">
+                                                Não encontramos <b>FULLTEST</b> realizado para o cliente informado.
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <clr-stack-block
                                     *ngFor="let certification of variavelHolderService.listCertifications; let i = index">
                                     <clr-stack-label>
